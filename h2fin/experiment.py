@@ -23,7 +23,7 @@ from . import config, harness, prompts, tools
 from .agent import Trajectory, run_agent
 from .judge import judge_answer
 from .library import Library
-from .llm import LLM, supports_web_search
+from .llm import LLM, model_capabilities, supports_web_search
 from .recursion import run_task_parallel
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -118,6 +118,12 @@ def main(argv=None) -> int:
     log = _log_factory(out / "log.txt")
     exec_llm, editor, judge, retriever_factory, http = build_llms(args, log)
     if not args.offline:
+        info = model_capabilities(exec_llm.model)
+        if info is None:
+            sys.exit(f"Could not reach the Anthropic API with this ANTHROPIC_API_KEY (model lookup for "
+                     f"{exec_llm.model} failed). Check the key: it should start with 'sk-ant-' and be the full "
+                     "string copied from console.anthropic.com, not a placeholder.")
+        log(f"preflight: Anthropic API ok ({exec_llm.model})")
         ok, detail = tools.edgar_preflight()
         log(f"preflight: {detail}")
         if not ok and not args.allow_broken_edgar:
