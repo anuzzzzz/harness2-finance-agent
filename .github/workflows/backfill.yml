@@ -1,0 +1,41 @@
+name: backfill-runs
+
+# Pull full run folders (trajectories, harnesses, library) out of workflow artifacts and commit
+# them under runs/, so they can be read from the repo. Append a run id to .backfill-runs to
+# trigger it; the experiment workflow also commits its own run folder directly.
+on:
+  push:
+    paths: [".backfill-runs"]
+
+jobs:
+  backfill:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      actions: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download and commit
+        run: |
+          set -e
+          mkdir -p runs
+          for id in $(grep -E '^[0-9]+' .backfill-runs | sed 's/#.*//'); do
+            [ -z "$id" ] && continue
+            tmp=$(mktemp -d)
+            if gh run download "$id" -D "$tmp"; then
+              # artifact layout: <tmp>/run-<run_id>/runs/<run_id>/...
+              find "$tmp" -maxdepth 3 -type d -path '*/runs/*' | while read -r d; do
+                cp -r "$d" "runs/$(basename "$d")"
+              done
+            else
+              echo "could not download artifacts for run $id"
+            fi
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f runs/
+          git commit -m "runs: backfill full run folders [skip ci]" || exit 0
+          for i in 1 2 3; do git pull --rebase && git push && break || sleep 5; done
