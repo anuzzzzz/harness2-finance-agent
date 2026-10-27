@@ -1,0 +1,86 @@
+name: experiment
+
+on:
+  workflow_dispatch:
+    inputs:
+      tasks:
+        description: "Number of public questions (stratified order, max 50)"
+        default: "10"
+      k:
+        description: "Harness² budget k (parallel mode)"
+        default: "1"
+      executor:
+        description: "Executor model (haiku | sonnet | opus | fable | full id)"
+        default: "haiku"
+      editor:
+        description: "Editor / composer / reflector model"
+        default: "sonnet"
+      judge:
+        description: "Judge model"
+        default: "sonnet"
+      judge_votes:
+        description: "Judge samples per answer (majority per criterion)"
+        default: "3"
+      web_search:
+        description: "Give the executor Claude's hosted web search tool"
+        type: boolean
+        default: true
+      max_total_cost:
+        description: "Stop starting new tasks past this many USD"
+        default: "40"
+      workers:
+        description: "Parallel rollouts within a stage"
+        default: "2"
+      extra_args:
+        description: "Any extra flags for h2fin.experiment (e.g. --executor-effort high)"
+        default: ""
+
+concurrency:
+  group: experiment
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    permissions:
+      contents: write
+    env:
+      ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT || format('harness2-finance-agent {0} (github actions)', github.repository) }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Run
+        id: run
+        run: |
+          set -o pipefail
+          RUN_ID="$(date -u +%Y%m%d-%H%M%S)-k${{ inputs.k }}-${{ inputs.executor }}-n${{ inputs.tasks }}"
+          echo "run_id=$RUN_ID" >> "$GITHUB_OUTPUT"
+          WS=""; if [ "${{ inputs.web_search }}" != "true" ]; then WS="--no-web-search"; fi
+          python -m h2fin.experiment \
+            --tasks "${{ inputs.tasks }}" --k "${{ inputs.k }}" \
+            --executor "${{ inputs.executor }}" --editor "${{ inputs.editor }}" --judge "${{ inputs.judge }}" \
+            --judge-votes "${{ inputs.judge_votes }}" --max-total-cost "${{ inputs.max_total_cost }}" \
+            --workers "${{ inputs.workers }}" --run-id "$RUN_ID" $WS ${{ inputs.extra_args }} 2>&1 | tee run.log
+      - name: Upload full run (trajectories, harnesses, library)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: run-${{ steps.run.outputs.run_id }}
+          path: |
+            runs/
+            run.log
+          retention-days: 90
+      - name: Commit summary
+        if: success()
+        run: |
+          python -m h2fin.report
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add results/
+          git commit -m "results: ${{ steps.run.outputs.run_id }} [skip ci]" || exit 0
+          for i in 1 2 3; do git pull --rebase && git push && break || sleep 5; done
