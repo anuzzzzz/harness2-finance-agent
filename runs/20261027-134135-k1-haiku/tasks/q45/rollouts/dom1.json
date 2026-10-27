@@ -1,0 +1,106 @@
+{
+ "task_id": "q45",
+ "label": "dom1",
+ "question": "In 2024, what was Airbnb's (NASDAQ: ABNB) adjustment for Stock-based Compensation Expense?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "non_gaap_adjustment_lookup"
+     },
+     "output": "---\nname: non_gaap_adjustment_lookup\ndescription: Retrieve a company's full-year non-GAAP reconciling adjustment (e.g. stock-based compensation in Adjusted EBITDA) from the 10-K and cross-check it.\n---\n\n# Non-GAAP adjustment for a fiscal year\n\nANALYTIC MOVE: read one line item of the company's non-GAAP reconciliation (Adjusted EBITDA, adjusted net income, free cash flow) for the full fiscal year the question names.\n\nWHERE THE FULL-YEAR FIGURE LIVES\n1. Governing source: the 10-K for that fiscal year. The reconciliation is in MD&A under \"Non-GAAP Financial Measures\" or \"Key Business Metrics and Non-GAAP\", with an annual column. Use `edgar_search` with form 10-K and the ticker to get the URL.\n2. Cross-checks, all from the same 10-K:\n   - Cash flow statement (operating section) shows the stock-based compensation add-back.\n   - The equity note or the income statement footnote gives SBC by function.\n   - The MD&A line item should equal these, unless the reconciliation excludes some items. If they differ, report the reconciliation line as the answer, say why they differ, and give both.\n3. The Q4 8-K Exhibit 99.1 shareholder letter often shows only quarterly columns. Do not build a full-year figure by adding four quarters when one quarter has not been read from the table. A derived sum is a fallback only. If you use it, label it as derived and read every quarter from a document.\n\nANSWER CONTRACT\n- The figure with fiscal year, units (millions or thousands) and the exact row label from the reconciliation.\n- The prior-year comparative from the same table.\n- The document and table it came from, and the cross-check result.\n- If asked for the \"adjustment\", state the sign. An add-back is positive in the reconciliation.\n\nCHECKS BEFORE SUBMIT\n- The column is the full fiscal year, not a quarter or nine months.\n- Units match the table header.\n- The figure agrees across the reconciliation, the cash flow statement and the SBC footnote, or the difference is explained.\n- Name the `retrieve_information` call that produced the figure and quote the row.\n\nIN THIS TASK (Airbnb, FY2024; verified only as locations, not values)\n- The 10-K is https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm (accession 0001559720-25-000010). The Q4 letter is https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm.\n- The earlier run parsed only the letter. The letter's reconciliation is quarterly, and its extraction was garbled. The run never opened the 10-K. It summed the quarters (295, 382, 362 and an unconfirmed Q4 of 368 = 1,407), which it flagged as least verified.\n- Treat 1,407 as a lead. Confirm the annual figure in the 10-K reconciliation and the cash flow statement. Use `input_character_ranges` or a targeted prompt on the 10-K for \"Stock-based compensation expense\" in the Adjusted EBITDA table. If the Q4 quarter is below the nine-month-to-year difference, resolve it.\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00075165
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+      "key": "abnb_10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: abnb_10k. (452,800 characters)\nThe data_storage currently contains the following keys:\nabnb_10k\n",
+     "is_error": false,
+     "elapsed_s": 0.7,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000267885
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Airbnb 10-K, find the Adjusted EBITDA reconciliation table in the Non-GAAP Financial Measures section. Quote the exact row label and the full-year 2024 and 2023 values for \"Stock-based compensation expense\" (in millions). Also find the stock-based compensation add-back in the cash flow statement operating activities for 2024 and 2023, and the total stock-based compensation expense in the equity note for 2024. Report units from table headers. Document: {{abnb_10k}}"
+     },
+     "output": "**Adjusted EBITDA Reconciliation** (Item 7, Non-GAAP Financial Measures; header: \"in millions, except percentages\")\n\n- **Row label:** \"Stock-based compensation expense\"\n- **2023:** $1,120 million\n- **2024:** $1,407 million\n\n**Cash flow statement, operating activities** (Consolidated Statements of Cash Flows; header: \"in millions\")\n\n- **Row label:** \"Stock-based compensation expense\"\n- **2023:** $1,120 million\n- **2024:** $1,407 million\n\n**Equity note** (Note 12, Stock-Based Compensation and Employee Benefit Plan)\n\n- **2024:** The note states \"$1.4 billion\" in the text, which is the rounded form of the $1,407 million shown in the reconciliation and cash flow statement. The note text uses billions rather than the millions header used in the tables.",
+     "is_error": false,
+     "elapsed_s": 4.39,
+     "cost_usd": 0.093167
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000200175
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: Airbnb's 2024 stock-based compensation adjustment was $1,407 million (an add-back of +$1,407 million, reported in millions).**\n\n**Step-by-step:**\n1. The earlier quarterly sum (295 + 382 + 362 + an unconfirmed Q4 of 368 = 1,407) was treated only as a lead, not as the answer. I did not rely on it.\n2. I pulled Airbnb's FY2024 Form 10-K (accession 0001559720-25-000010) and extracted the relevant tables.\n3. **Adjusted EBITDA reconciliation** (Item 7, Non-GAAP Financial Measures; header \"in millions, except percentages\"): row \"Stock-based compensation expense\" = $1,407 million for 2024 and $1,120 million for 2023. Sign: positive add-back.\n4. **Cross-check, cash flow statement** (operating activities; header \"in millions\"): row \"Stock-based compensation expense\" = $1,407 million for 2024 and $1,120 million for 2023. This matches the reconciliation.\n5. **Cross-check, equity note** (Note 12, Stock-Based Compensation and Employee Benefit Plan): the text cites \"$1.4 billion\" for 2024, which is the rounded form of $1,407 million. This is consistent.\n\n**Conclusion:** The reconciliation, cash flow statement, and equity note all agree. The 2024 figure is $1,407 million, up from $1,120 million in 2023.\n\n**Caveat:** The 10-K tables were extracted by an automated parse, and I verified the figures through that extraction rather than by reading the raw table cells. The 2024 value agrees across three locations in the filing, which supports it.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year 2024 (Adjusted EBITDA reconciliation, cash flow statement, Note 12)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm\",\n            \"name\": \"Airbnb Q4 2024 shareholder letter (Exhibit 99.1), referenced as the quarterly source\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: Airbnb's 2024 stock-based compensation adjustment was $1,407 million (an add-back of +$1,407 million, reported in millions).**\n\n**Step-by-step:**\n1. The earlier quarterly sum (295 + 382 + 362 + an unconfirmed Q4 of 368 = 1,407) was treated only as a lead, not as the answer. I did not rely on it.\n2. I pulled Airbnb's FY2024 Form 10-K (accession 0001559720-25-000010) and extracted the relevant tables.\n3. **Adjusted EBITDA reconciliation** (Item 7, Non-GAAP Financial Measures; header \"in millions, except percentages\"): row \"Stock-based compensation expense\" = $1,407 million for 2024 and $1,120 million for 2023. Sign: positive add-back.\n4. **Cross-check, cash flow statement** (operating activities; header \"in millions\"): row \"Stock-based compensation expense\" = $1,407 million for 2024 and $1,120 million for 2023. This matches the reconciliation.\n5. **Cross-check, equity note** (Note 12, Stock-Based Compensation and Employee Benefit Plan): the text cites \"$1.4 billion\" for 2024, which is the rounded form of $1,407 million. This is consistent.\n\n**Conclusion:** The reconciliation, cash flow statement, and equity note all agree. The 2024 figure is $1,407 million, up from $1,120 million in 2023.\n\n**Caveat:** The 10-K tables were extracted by an automated parse, and I verified the figures through that extraction rather than by reading the raw table cells. The 2024 value agrees across three locations in the filing, which supports it.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year 2024 (Adjusted EBITDA reconciliation, cash flow statement, Note 12)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm\",\n            \"name\": \"Airbnb Q4 2024 shareholder letter (Exhibit 99.1), referenced as the quarterly source\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00065361
+  }
+ ],
+ "final_answer": "**Answer: Airbnb's 2024 stock-based compensation adjustment was $1,407 million (an add-back of +$1,407 million, reported in millions).**\n\n**Step-by-step:**\n1. The earlier quarterly sum (295 + 382 + 362 + an unconfirmed Q4 of 368 = 1,407) was treated only as a lead, not as the answer. I did not rely on it.\n2. I pulled Airbnb's FY2024 Form 10-K (accession 0001559720-25-000010) and extracted the relevant tables.\n3. **Adjusted EBITDA reconciliation** (Item 7, Non-GAAP Financial Measures; header \"in millions, except percentages\"): row \"Stock-based compensation expense\" = $1,407 million for 2024 and $1,120 million for 2023. Sign: positive add-back.\n4. **Cross-check, cash flow statement** (operating activities; header \"in millions\"): row \"Stock-based compensation expense\" = $1,407 million for 2024 and $1,120 million for 2023. This matches the reconciliation.\n5. **Cross-check, equity note** (Note 12, Stock-Based Compensation and Employee Benefit Plan): the text cites \"$1.4 billion\" for 2024, which is the rounded form of $1,407 million. This is consistent.\n\n**Conclusion:** The reconciliation, cash flow statement, and equity note all agree. The 2024 figure is $1,407 million, up from $1,120 million in 2023.\n\n**Caveat:** The 10-K tables were extracted by an automated parse, and I verified the figures through that extraction rather than by reading the raw table cells. The 2024 value agrees across three locations in the filing, which supports it.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year 2024 (Adjusted EBITDA reconciliation, cash flow statement, Note 12)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm\",\n            \"name\": \"Airbnb Q4 2024 shareholder letter (Exhibit 99.1), referenced as the quarterly source\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 5,
+  "input_tokens": 14,
+  "output_tokens": 2174,
+  "cache_creation_input_tokens": 153790,
+  "cache_read_input_tokens": 19457,
+  "web_search_requests": 0,
+  "cost_usd": 0.095041
+ },
+ "cost_usd": 0.095041,
+ "elapsed_s": 13.5,
+ "harness_label": "dom1"
+}

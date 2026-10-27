@@ -1,0 +1,6 @@
+<notes>
+dropped -> inv1 -> The base run submitted in 4 turns with the right filing, a source-text table and the correct arithmetic (85,002; 51.33%). That is 1/1 base rollouts with no failure to target. inv1's rollout also succeeded, but its gain over base was only two fewer turns and about $0.001 less cost, which one rollout cannot separate from noise.
+dropped -> inv1 task-fact block -> It embeds the answer values and URL for this one question in always-on guidance. That is task-specific leakage that would mislead later tasks in the library, and it also tells the agent to skip discovery. I do not adopt it.
+dropped -> inv1 generic tool guidance -> The base already did every step the guidance describes: select the filing, parse it, retrieve the table, sum the rows and cite the source. Adding always-on characters buys nothing here.
+kept -> dom1 (KEEP_BASE, no changes) -> The base run and dom1's run reached the same correct result at similar cost (about $0.09, 4 turns). No moment in either trajectory shows missing practitioner knowledge, and neither run failed to submit.
+</notes>

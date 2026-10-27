@@ -1,0 +1,1168 @@
+{
+ "task_id": "q42",
+ "k": 1,
+ "rollouts": {
+  "base1": {
+   "task_id": "q42",
+   "label": "base1",
+   "question": "Compare the FY24 dividend payout ratio of Coca-Cola (KO) to that of its competitors and rank in order from highest to lowest.",
+   "steps": [
+    {
+     "turn": 1,
+     "text": "**Ranking (FY2024 GAAP dividend payout ratio, highest to lowest):** Keurig Dr Pepper (~84.76%) > Coca-Cola (~78.63%) > PepsiCo (~76.69%) > Monster Beverage (0%)\n\n**Method:** Payout ratio = dividends \u00f7 GAAP earnings. I used the most direct figures available for each company. Coca-Cola uses aggregate dollars; KDP and PepsiCo use per-share figures, because I could not retrieve their aggregate dividends paid. Both bases are noted below.\n\n**Coca-Cola (KO)**\n- Dividends paid in 2024 were \n$8,359 million and $7,952 million during the years ended December 31, 2024 and 2023\n.\n- Net income attributable to Coca-Cola shareowners was \n10631\n million for 2024.\n- Payout = 8,359 \u00f7 10,631 = **78.63%**.\n- Cross-check on a per-share basis: \nOur annualized common stock dividend was $1.94 per share\n in 2024. Dividing that by 2024 diluted EPS of roughly $2.46 (not in my sources) gives about 78.9%, so the ranking holds.\n\n**PepsiCo (PEP)**\n- Dividends declared per share in 2024 were \n5.3300\n, per the Fidelity dividend table.\n- Diluted EPS was \n$6.95\n for 2024.\n- Payout = 5.33 \u00f7 6.95 = **76.69%**.\n- Aggregate dividends paid were not retrieved, so this is a per-share calculation.\n\n**Keurig Dr Pepper (KDP)**\n- Quarterly dividends declared in 2024 were $0.215 in February and May, then $0.23 in September and December. Nine-month declared dividends were \n$0.66 per share\n, so the full-year total is $0.66 + $0.23 = $0.89.\n- GAAP diluted EPS was \n$1.05 per diluted share\n for 2024, after a goodwill impairment.\n- Payout = 0.89 \u00f7 1.05 = **84.76%**.\n- On adjusted EPS of $1.92 (\nAdjusted diluted EPS increased 7.8% to $1.92\n), the ratio would be about 46.35%. The GAAP figure is inflated by the impairment, so the adjusted figure is a useful counterpoint.\n\n**Monster Beverage (MNST)**\n- Monster pays no dividend. \nTo date, Monster Beverage Corp has not paid any dividends.\n Its payout ratio is therefore **0%**.\n\n**Caveats**\n- Ranking is sensitive to basis. On GAAP EPS, KDP ranks first. On adjusted EPS, KDP falls to the bottom of the dividend payers.\n- The PepsiCo and KDP ratios are per-share approximations, not aggregate dividends divided by net income.\n- Third-party sites (MarketBeat, Investing.com, Fullratio) show trailing payout ratios of 63\u201382% for these companies, but those are TTM figures from later periods, not FY2024, so I did not use them.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\",\n            \"name\": \"Coca-Cola FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/Financial_Report.xlsx\",\n            \"name\": \"Coca-Cola FY2024 10-K Financial Report (net income attributable)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\",\n            \"name\": \"PepsiCo FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/Financial_Report.xlsx\",\n            \"name\": \"PepsiCo FY2024 10-K Financial Report (EPS)\"\n        },\n        {\n            \"url\": \"https://www.investing.com/equities/pepsico-dividends\",\n            \"name\": \"Fidelity PepsiCo dividend data (https://www.fidelity.co.uk/factsheet-data/factsheet/US7134481081-pepsico-inc/dividends)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813524000090/kdp-20240930.htm\",\n            \"name\": \"Keurig Dr Pepper Q3 2024 Form 10-Q\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\",\n            \"name\": \"Keurig Dr Pepper FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.keurigdrpepper.com/keurig-dr-pepper-reports-q4-and-full-year-2024-results-and-provides-2025-outlook-26/\",\n            \"name\": \"Keurig Dr Pepper Q4 and FY2024 results release\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813524000076/exhibit991keurigdrpepperde.htm\",\n            \"name\": \"Keurig Dr Pepper dividend increase release (Sept 2024)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813524000097/exhibit991keurigdrpepperde.htm\",\n            \"name\": \"Keurig Dr Pepper Q4 2024 dividend declaration\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813524000060/exhibit991keurigdrpepperde.htm\",\n            \"name\": \"Keurig Dr Pepper May 2024 dividend declaration\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000110465919002289/a19-2995_1ex99d1.htm\",\n            \"name\": \"Monster Beverage (no dividend history)\"\n        },\n        {\n            \"url\": \"https://divvydiary.com/en/monster-beverage-stock-US61174X1090\",\n            \"name\": \"Divvydiary Monster Beverage dividend page\"\n        }\n    ]\n}",
+     "thinking_chars": 0,
+     "searches": [
+      {
+       "id": "srvtoolu_017FzbhUZ211Yvw5Z4HJTYLL",
+       "query": "Coca-Cola KO dividend payout ratio 2024",
+       "results": [
+        {
+         "title": "COCA-COLA EUROPACIFIC PARTNERS plc - Form 6-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1650107/000165010725000015/ccep2024fyreport2nd6k.htm",
+         "page_age": null
+        },
+        {
+         "title": "COCA COLA CO - Form ARS - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/21344/000110465925024268/tm257314d2_ars.pdf",
+         "page_age": null
+        },
+        {
+         "title": "COCA COLA CO - Form 10-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm",
+         "page_age": null
+        },
+        {
+         "title": "COCA COLA FEMSA SAB DE CV - Form 6-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/910631/000129281424000663/kof20240305_6k.htm",
+         "page_age": null
+        },
+        {
+         "title": "Coca-Cola Stock Dividend History & KO Dividend Yield - Investing.com",
+         "url": "https://www.investing.com/equities/coca-cola-co-dividends",
+         "page_age": null
+        },
+        {
+         "title": "Coca-Cola (KO) Dividend History & Full Analysis",
+         "url": "https://www.tikr.com/blog/coca-cola-ko-full-dividend-analysis",
+         "page_age": "784 days ago"
+        },
+        {
+         "title": "Coca-Cola Co's Dividend Analysis",
+         "url": "https://finance.yahoo.com/news/coca-cola-cos-dividend-analysis-110150718.html",
+         "page_age": "865 days ago"
+        },
+        {
+         "title": "CocaCola (KO) Dividend Yield 2026, Date & History $KO",
+         "url": "https://www.marketbeat.com/stocks/NYSE/KO/dividend/",
+         "page_age": "104 days ago"
+        },
+        {
+         "title": "KO - Coca-Cola stock dividend history, payout ratio & dates",
+         "url": "https://fullratio.com/stocks/nyse-ko/dividend",
+         "page_age": "134 days ago"
+        }
+       ]
+      },
+      {
+       "id": "srvtoolu_01MfhbmR5EY7dDb8VHqjVXmV",
+       "query": "PepsiCo dividend payout ratio 2024",
+       "results": [
+        {
+         "title": "PEPSICO INC - Form ARS - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000130817925000292/pep4354281-ars.pdf",
+         "page_age": null
+        },
+        {
+         "title": "PEPSICO INC - Form DEF 14A - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000130817924000258/pep_courtesy-pdf.pdf",
+         "page_age": null
+        },
+        {
+         "title": "PEPSICO INC - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000052/pep-20240907.htm",
+         "page_age": null
+        },
+        {
+         "title": "PEPSICO INC - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000042/pep-20240615.htm",
+         "page_age": null
+        },
+        {
+         "title": "PEPSICO INC - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000017/pep-20240323.htm",
+         "page_age": null
+        },
+        {
+         "title": "PepsiCo Stock Dividend History & PEP Dividend Yield - Investing.com",
+         "url": "https://www.investing.com/equities/pepsico-dividends",
+         "page_age": null
+        },
+        {
+         "title": "PEPSICO INC - Form 10-K - FY2024 (Annual Financial Statement Tables - full year 2024)",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/Financial_Report.xlsx",
+         "page_age": null
+        },
+        {
+         "title": "PepsiCo Inc Share Dividends",
+         "url": "https://www.fidelity.co.uk/factsheet-data/factsheet/US7134481081-pepsico-inc/dividends",
+         "page_age": null
+        },
+        {
+         "title": "PEPSICO INC - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000010/q420238-kxexhibit991.htm",
+         "page_age": null
+        },
+        {
+         "title": "PepsiCo (PEP) Dividend Yield 2026, Date & History $PEP",
+         "url": "https://www.marketbeat.com/stocks/NASDAQ/PEP/dividend/",
+         "page_age": "102 days ago"
+        }
+       ]
+      },
+      {
+       "id": "srvtoolu_01XbMfXAUsEhPqUTJZbuuo3d",
+       "query": "Keurig Dr Pepper dividend payout ratio 2024",
+       "results": [
+        {
+         "title": "Keurig Dr Pepper Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813524000090/kdp-20240930.htm",
+         "page_age": null
+        },
+        {
+         "title": "Keurig Dr Pepper Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813524000076/exhibit991keurigdrpepperde.htm",
+         "page_age": null
+        },
+        {
+         "title": "Keurig Dr Pepper Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813524000097/exhibit991keurigdrpepperde.htm",
+         "page_age": null
+        },
+        {
+         "title": "Keurig Dr Pepper Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813524000060/exhibit991keurigdrpepperde.htm",
+         "page_age": null
+        },
+        {
+         "title": "Keurig Dr Pepper (KDP) Dividend Yield 2025, Date & History $KDP",
+         "url": "https://www.marketbeat.com/stocks/NASDAQ/KDP/dividend/",
+         "page_age": "408 days ago"
+        },
+        {
+         "title": "Keurig Dr Pepper (KDP) Dividend History, Yield & Ex-Dividend Date - TipRanks.com",
+         "url": "https://www.tipranks.com/stocks/kdp/dividends",
+         "page_age": "71 days ago"
+        },
+        {
+         "title": "Keurig Dr Pepper Hikes Dividend by 7%: What's Ahead for Investors?",
+         "url": "https://finance.yahoo.com/news/keurig-dr-pepper-hikes-dividend-190900454.html",
+         "page_age": "773 days ago"
+        },
+        {
+         "title": "KEURIG DR PEPPER Dividend Payout Ratio: 2.34 \u2014 311% Above",
+         "url": "https://www.gurufocus.com/term/payout/KDP",
+         "page_age": null
+        },
+        {
+         "title": "Keurig Dr Pepper Inc. dividends",
+         "url": "https://www.digrin.com/stocks/detail/KDP/",
+         "page_age": null
+        }
+       ]
+      },
+      {
+       "id": "srvtoolu_01HavE3bR1EpAyxbZdTZxND2",
+       "query": "Monster Beverage dividend payout ratio",
+       "results": [
+        {
+         "title": "MNST (Monster Beverage) Dividend Payout Ratio",
+         "url": "https://www.gurufocus.com/term/payout/MNST",
+         "page_age": null
+        },
+        {
+         "title": "Monster Beverage (LTS:0K34) Dividend Payout Ratio",
+         "url": "https://www.gurufocus.com/term/payout/LTS:0K34",
+         "page_age": null
+        },
+        {
+         "title": "Monster Beverage Corp - Form 8-K - FY2019",
+         "url": "https://www.sec.gov/Archives/edgar/data/865752/000110465919002289/a19-2995_1ex99d1.htm",
+         "page_age": null
+        },
+        {
+         "title": "Monster Beverage Corporation ( MNST) Key Metrics",
+         "url": "https://www.digrin.com/stocks/detail/MNST/key_metrics",
+         "page_age": null
+        },
+        {
+         "title": "Monster Beverage (MNST) Dividend History, Dates & Yield",
+         "url": "https://stockanalysis.com/stocks/mnst/dividend/",
+         "page_age": "784 days ago"
+        },
+        {
+         "title": "Monster Beverage Corporation Dividend Payout Ratio",
+         "url": "https://www.alphapilot.tech/finance/mnst/dividend-payout-ratio",
+         "page_age": "329 days ago"
+        },
+        {
+         "title": "Monster Beverage Corporation (MNST) No Dividend",
+         "url": "https://seekingalpha.com/symbol/MNST/dividends/hypothetical",
+         "page_age": "648 days ago"
+        },
+        {
+         "title": "Monster Beverage Corp - WKN A14U5Z, ISIN US61174X1090",
+         "url": "https://divvydiary.com/en/monster-beverage-stock-US61174X1090",
+         "page_age": null
+        },
+        {
+         "title": "Monster Beverage - 34 Year Dividend History",
+         "url": "https://www.macrotrends.net/stocks/charts/MNST/monster-beverage/dividend-yield-history",
+         "page_age": "3029 days ago"
+        },
+        {
+         "title": "Monster Beverage Corporation (MNST) Valuation Measures & Financial Statistics",
+         "url": "https://finance.yahoo.com/quote/MNST/key-statistics/",
+         "page_age": null
+        }
+       ]
+      },
+      {
+       "id": "srvtoolu_01PkinznGQCmYgyALN5LwKBo",
+       "query": "Coca-Cola 2024 net income attributable to shareholders full year results",
+       "results": [
+        {
+         "title": "COCA COLA CO - Form ARS - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/21344/000110465925024268/tm257314d2_ars.pdf",
+         "page_age": null
+        },
+        {
+         "title": "COCA COLA CO - Form 10-K - FY2024 (Annual Financial Statement Tables - full year 2024)",
+         "url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/Financial_Report.xlsx",
+         "page_age": null
+        },
+        {
+         "title": "COCA COLA CO - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/21344/000002134424000004/a2023q4earningsreleaseex-9.htm",
+         "page_age": null
+        },
+        {
+         "title": "2024 Full Year Results",
+         "url": "https://www.coca-colahellenic.com/en/media/news/financial_news/2025/2024-full-year-results",
+         "page_age": "621 days ago"
+        },
+        {
+         "title": "Coca-Cola Consolidated, Inc. - Form 8-K - FY2025",
+         "url": "https://www.sec.gov/Archives/edgar/data/317540/000031754025000024/cokeq42024ex-991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Coca-Cola tops earnings estimates, hikes full-year outlook as global demand rises",
+         "url": "https://www.cnbc.com/2024/07/23/coca-cola-ko-q2-2024-earnings.html",
+         "page_age": "825 days ago"
+        },
+        {
+         "title": "Coca-Cola (KO) Q4 2024 earnings",
+         "url": "https://www.cnbc.com/2025/02/11/coca-cola-ko-q4-2024-earnings.html",
+         "page_age": "622 days ago"
+        },
+        {
+         "title": "COCA COLA BOTTLING CO CONSOLIDATED /DE/ - Form 10-K - FY2016",
+         "url": "https://www.sec.gov/Archives/edgar/data/0000317540/000156459016015048/coke-10k_20160103.htm",
+         "page_age": null
+        },
+        {
+         "title": "Coca-Cola Europacific Partners - Coca-Cola EP PLC - Preliminary Unaudited Results Q4 & FY 2024",
+         "url": "https://ir.cocacolaep.com/news-releases/news-release-details/coca-cola-ep-plc-preliminary-unaudited-results-q4-fy-2024",
+         "page_age": "620 days ago"
+        }
+       ]
+      },
+      {
+       "id": "srvtoolu_01Lu38KRd2Aqn3tNmg8X9FbX",
+       "query": "PepsiCo full year 2024 reported net income attributable to PepsiCo EPS",
+       "results": [
+        {
+         "title": "PEPSICO INC - Form 10-K - FY2024 (Annual Financial Statement Tables - full year 2024)",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/Financial_Report.xlsx",
+         "page_age": null
+        },
+        {
+         "title": "PEPSICO INC - Form DEF 14A - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000130817924000258/pep_courtesy-pdf.pdf",
+         "page_age": null
+        },
+        {
+         "title": "PEPSICO INC - Form 10-Q - FY2024 (Quarterly Earnings Tables - quarter ended Jun 2024)",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000042/Financial_Report.xlsx",
+         "page_age": null
+        },
+        {
+         "title": "PEPSICO INC - Form 10-Q - FY2024 (Quarterly Earnings Tables - quarter ended Sep 2024)",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000052/Financial_Report.xlsx",
+         "page_age": null
+        },
+        {
+         "title": "PEPSICO INC - Form 10-Q - FY2024 (Quarterly Earnings Tables - quarter ended Mar 2024)",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000017/Financial_Report.xlsx",
+         "page_age": null
+        },
+        {
+         "title": "PEPSICO INC - Form 10-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm",
+         "page_age": null
+        },
+        {
+         "title": "PEPSICO INC - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000010/q420238-kxexhibit991.htm",
+         "page_age": null
+        },
+        {
+         "title": "PEPSICO INC - Form ARS - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000130817925000292/pep4354281-ars.pdf",
+         "page_age": null
+        },
+        {
+         "title": "PEPSICO INC - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000019/q120248-kxexhibit991.htm",
+         "page_age": null
+        },
+        {
+         "title": "PEPSICO INC - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000043/q220248-kxexhibit991.htm",
+         "page_age": null
+        }
+       ]
+      },
+      {
+       "id": "srvtoolu_01DefucmvYiRdkGCZcdiVt64",
+       "query": "Keurig Dr Pepper full year 2024 results net income diluted EPS",
+       "results": [
+        {
+         "title": "Keurig Dr Pepper Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813524000006/ex991-keurigdrpepperreport.htm",
+         "page_age": null
+        },
+        {
+         "title": "Keurig Dr Pepper Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813524000073/kdp-20240630.htm",
+         "page_age": null
+        },
+        {
+         "title": "Keurig Dr Pepper Inc. - Form ARS - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1418135/000119312525096897/d893272dars.pdf",
+         "page_age": null
+        },
+        {
+         "title": "Keurig Dr Pepper Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813524000090/kdp-20240930.htm",
+         "page_age": null
+        },
+        {
+         "title": "Keurig Dr Pepper Inc. - Form 10-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm",
+         "page_age": null
+        },
+        {
+         "title": "Keurig Dr Pepper Reports Q4 and Full Year 2024 Results and Provides 2025 Outlook - Feb 25, 2025",
+         "url": "https://news.keurigdrpepper.com/2025-02-25-Keurig-Dr-Pepper-Reports-Q4-and-Full-Year-2024-Results-and-Provides-2025-Outlook",
+         "page_age": "609 days ago"
+        },
+        {
+         "title": "Keurig Dr Pepper Reports Q4 2024",
+         "url": "https://filecache.investorroom.com/mr5ir_keurig_drpepper/402/Keurig_Dr_Pepper_Reports_Q4_2024.pdf",
+         "page_age": "609 days ago"
+        },
+        {
+         "title": "Keurig Dr Pepper Full Year 2024 Earnings: EPS Misses Expectations",
+         "url": "https://finance.yahoo.com/news/keurig-dr-pepper-full-2024-124246281.html",
+         "page_age": "607 days ago"
+        },
+        {
+         "title": "Keurig Dr Pepper Reports Q4 and Full Year 2024 Results and Provides 2025 Outlook",
+         "url": "https://www.keurigdrpepper.com/keurig-dr-pepper-reports-q4-and-full-year-2024-results-and-provides-2025-outlook-26/",
+         "page_age": "609 days ago"
+        },
+        {
+         "title": "Keurig Dr Pepper EPS - Earnings per Share 2012-2026",
+         "url": "https://www.macrotrends.net/stocks/charts/KDP/keurig-dr-pepper/eps-earnings-per-share-diluted",
+         "page_age": null
+        }
+       ]
+      }
+     ],
+     "calls": [],
+     "stop_reason": "end_turn",
+     "cost_usd": 0.12322680000000001
+    },
+    {
+     "turn": 2,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "submit_final_result",
+       "input": {
+        "final_result": "**Ranking of FY2024 GAAP dividend payout ratios (highest to lowest):** Keurig Dr Pepper (~84.76%) > Coca-Cola (~78.63%) > PepsiCo (~76.69%) > Monster Beverage (0%)\n\n**Method:** Payout ratio = dividends \u00f7 GAAP earnings. Coca-Cola uses aggregate dollar figures from its 10-K. PepsiCo and KDP use per-share figures because I could not retrieve their aggregate dividends paid. Both bases are noted below.\n\n**Coca-Cola (KO)**\n- Cash dividends paid were $8,359 million in 2024, versus $7,952 million in 2023 (<cite index=\"3-1\">The Company paid dividends of $8,359 million and $7,952 million during the years ended December 31, 2024 and 2023</cite>).\n- Net income attributable to Coca-Cola shareowners was $10,631 million for 2024 (<cite index=\"40-1\">Net Income Attributable to Shareowners of The Coca-Cola Company 10631</cite>).\n- Payout = 8,359 \u00f7 10,631 = **78.63%**.\n- Per-share cross-check: the annualized 2024 dividend was $1.94 per share (<cite index=\"3-4\">Our annualized common stock dividend was $1.94 per share and $1.84 per share in 2024 and 2023</cite>). Dividing by 2024 diluted EPS of about $2.46 (not in my sources) gives roughly 78.9%, so the ranking holds.\n\n**PepsiCo (PEP)**\n- Dividends declared per share for 2024 were $5.33 (per the Fidelity dividend table: <cite index=\"17-4\">2024 | 5.3300 | 0.08</cite>).\n- 2024 diluted EPS was $6.95 (<cite index=\"48-1\">Diluted net income attributable to PepsiCo per common share $ 6.95</cite>).\n- Payout = 5.33 \u00f7 6.95 = **76.69%**, on a per-share basis.\n\n**Keurig Dr Pepper (KDP)**\n- Dividends declared in 2024 were $0.215 in February and May, then $0.23 in September and December. Nine-month declared dividends were $0.66 (<cite index=\"20-3\">total dividends of $0.66 per share and $0.615 per share for the first nine months of 2024 and 2023</cite>), so the full year is $0.66 + $0.23 = $0.89.\n- GAAP diluted EPS for 2024 was $1.05 (<cite index=\"62-10\">Diluted EPS decreased 32.3% to $1.05 per diluted share as compared to $1.55 in the prior year.</cite>), which was depressed by a goodwill impairment.\n- Payout = 0.89 \u00f7 1.05 = **84.76%**, on a per-share basis.\n- On adjusted diluted EPS of $1.92 (<cite index=\"64-6\">Adjusted diluted EPS increased 7.8% to $1.92</cite>), the ratio would be about 46.35%. The GAAP figure is inflated by the impairment, so the adjusted figure is a useful counterpoint.\n\n**Monster Beverage (MNST)**\n- Monster does not pay a dividend (<cite index=\"36-3\">To date, Monster Beverage Corp has not paid any dividends.</cite>), so its payout ratio is **0%**.\n\n**Caveats**\n- The ranking depends on the earnings basis. On GAAP EPS, KDP ranks first. On adjusted EPS, KDP drops to roughly 46%, below Coca-Cola and PepsiCo.\n- PepsiCo and KDP are per-share approximations, not aggregate dividends divided by net income.\n- Third-party TTM payout figures (for example, MarketBeat and Investing.com) reflect later periods, so I did not use them for FY2024.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\",\n            \"name\": \"Coca-Cola FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/Financial_Report.xlsx\",\n            \"name\": \"Coca-Cola FY2024 10-K Financial Report (net income attributable to shareowners)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\",\n            \"name\": \"PepsiCo FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/Financial_Report.xlsx\",\n            \"name\": \"PepsiCo FY2024 10-K Financial Report (EPS)\"\n        },\n        {\n            \"url\": \"https://www.fidelity.co.uk/factsheet-data/factsheet/US7134481081-pepsico-inc/dividends\",\n            \"name\": \"Fidelity PepsiCo Inc share dividends\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813524000090/kdp-20240930.htm\",\n            \"name\": \"Keurig Dr Pepper Q3 2024 Form 10-Q\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\",\n            \"name\": \"Keurig Dr Pepper FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://filecache.investorroom.com/mr5ir_keurig_drpepper/402/Keurig_Dr_Pepper_Reports_Q4_2024.pdf\",\n            \"name\": \"Keurig Dr Pepper Reports Q4 and Full Year 2024 Results\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813524000097/exhibit991keurigdrpepperde.htm\",\n            \"name\": \"Keurig Dr Pepper Q4 2024 dividend declaration\"\n        },\n        {\n            \"url\": \"https://divvydiary.com/en/monster-beverage-stock-US61174X1090\",\n            \"name\": \"Divvydiary Monster Beverage Corp dividend page\"\n        }\n    ]\n}"
+       },
+       "output": "**Ranking of FY2024 GAAP dividend payout ratios (highest to lowest):** Keurig Dr Pepper (~84.76%) > Coca-Cola (~78.63%) > PepsiCo (~76.69%) > Monster Beverage (0%)\n\n**Method:** Payout ratio = dividends \u00f7 GAAP earnings. Coca-Cola uses aggregate dollar figures from its 10-K. PepsiCo and KDP use per-share figures because I could not retrieve their aggregate dividends paid. Both bases are noted below.\n\n**Coca-Cola (KO)**\n- Cash dividends paid were $8,359 million in 2024, versus $7,952 million in 2023 (<cite index=\"3-1\">The Company paid dividends of $8,359 million and $7,952 million during the years ended December 31, 2024 and 2023</cite>).\n- Net income attributable to Coca-Cola shareowners was $10,631 million for 2024 (<cite index=\"40-1\">Net Income Attributable to Shareowners of The Coca-Cola Company 10631</cite>).\n- Payout = 8,359 \u00f7 10,631 = **78.63%**.\n- Per-share cross-check: the annualized 2024 dividend was $1.94 per share (<cite index=\"3-4\">Our annualized common stock dividend was $1.94 per share and $1.84 per share in 2024 and 2023</cite>). Dividing by 2024 diluted EPS of about $2.46 (not in my sources) gives roughly 78.9%, so the ranking holds.\n\n**PepsiCo (PEP)**\n- Dividends declared per share for 2024 were $5.33 (per the Fidelity dividend table: <cite index=\"17-4\">2024 | 5.3300 | 0.08</cite>).\n- 2024 diluted EPS was $6.95 (<cite index=\"48-1\">Diluted net income attributable to PepsiCo per common share $ 6.95</cite>).\n- Payout = 5.33 \u00f7 6.95 = **76.69%**, on a per-share basis.\n\n**Keurig Dr Pepper (KDP)**\n- Dividends declared in 2024 were $0.215 in February and May, then $0.23 in September and December. Nine-month declared dividends were $0.66 (<cite index=\"20-3\">total dividends of $0.66 per share and $0.615 per share for the first nine months of 2024 and 2023</cite>), so the full year is $0.66 + $0.23 = $0.89.\n- GAAP diluted EPS for 2024 was $1.05 (<cite index=\"62-10\">Diluted EPS decreased 32.3% to $1.05 per diluted share as compared to $1.55 in the prior year.</cite>), which was depressed by a goodwill impairment.\n- Payout = 0.89 \u00f7 1.05 = **84.76%**, on a per-share basis.\n- On adjusted diluted EPS of $1.92 (<cite index=\"64-6\">Adjusted diluted EPS increased 7.8% to $1.92</cite>), the ratio would be about 46.35%. The GAAP figure is inflated by the impairment, so the adjusted figure is a useful counterpoint.\n\n**Monster Beverage (MNST)**\n- Monster does not pay a dividend (<cite index=\"36-3\">To date, Monster Beverage Corp has not paid any dividends.</cite>), so its payout ratio is **0%**.\n\n**Caveats**\n- The ranking depends on the earnings basis. On GAAP EPS, KDP ranks first. On adjusted EPS, KDP drops to roughly 46%, below Coca-Cola and PepsiCo.\n- PepsiCo and KDP are per-share approximations, not aggregate dividends divided by net income.\n- Third-party TTM payout figures (for example, MarketBeat and Investing.com) reflect later periods, so I did not use them for FY2024.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\",\n            \"name\": \"Coca-Cola FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/Financial_Report.xlsx\",\n            \"name\": \"Coca-Cola FY2024 10-K Financial Report (net income attributable to shareowners)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\",\n            \"name\": \"PepsiCo FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/Financial_Report.xlsx\",\n            \"name\": \"PepsiCo FY2024 10-K Financial Report (EPS)\"\n        },\n        {\n            \"url\": \"https://www.fidelity.co.uk/factsheet-data/factsheet/US7134481081-pepsico-inc/dividends\",\n            \"name\": \"Fidelity PepsiCo Inc share dividends\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813524000090/kdp-20240930.htm\",\n            \"name\": \"Keurig Dr Pepper Q3 2024 Form 10-Q\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\",\n            \"name\": \"Keurig Dr Pepper FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://filecache.investorroom.com/mr5ir_keurig_drpepper/402/Keurig_Dr_Pepper_Reports_Q4_2024.pdf\",\n            \"name\": \"Keurig Dr Pepper Reports Q4 and Full Year 2024 Results\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813524000097/exhibit991keurigdrpepperde.htm\",\n            \"name\": \"Keurig Dr Pepper Q4 2024 dividend declaration\"\n        },\n        {\n            \"url\": \"https://divvydiary.com/en/monster-beverage-stock-US61174X1090\",\n            \"name\": \"Divvydiary Monster Beverage Corp dividend page\"\n        }\n    ]\n}",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.00252837
+    }
+   ],
+   "final_answer": "**Ranking of FY2024 GAAP dividend payout ratios (highest to lowest):** Keurig Dr Pepper (~84.76%) > Coca-Cola (~78.63%) > PepsiCo (~76.69%) > Monster Beverage (0%)\n\n**Method:** Payout ratio = dividends \u00f7 GAAP earnings. Coca-Cola uses aggregate dollar figures from its 10-K. PepsiCo and KDP use per-share figures because I could not retrieve their aggregate dividends paid. Both bases are noted below.\n\n**Coca-Cola (KO)**\n- Cash dividends paid were $8,359 million in 2024, versus $7,952 million in 2023 (<cite index=\"3-1\">The Company paid dividends of $8,359 million and $7,952 million during the years ended December 31, 2024 and 2023</cite>).\n- Net income attributable to Coca-Cola shareowners was $10,631 million for 2024 (<cite index=\"40-1\">Net Income Attributable to Shareowners of The Coca-Cola Company 10631</cite>).\n- Payout = 8,359 \u00f7 10,631 = **78.63%**.\n- Per-share cross-check: the annualized 2024 dividend was $1.94 per share (<cite index=\"3-4\">Our annualized common stock dividend was $1.94 per share and $1.84 per share in 2024 and 2023</cite>). Dividing by 2024 diluted EPS of about $2.46 (not in my sources) gives roughly 78.9%, so the ranking holds.\n\n**PepsiCo (PEP)**\n- Dividends declared per share for 2024 were $5.33 (per the Fidelity dividend table: <cite index=\"17-4\">2024 | 5.3300 | 0.08</cite>).\n- 2024 diluted EPS was $6.95 (<cite index=\"48-1\">Diluted net income attributable to PepsiCo per common share $ 6.95</cite>).\n- Payout = 5.33 \u00f7 6.95 = **76.69%**, on a per-share basis.\n\n**Keurig Dr Pepper (KDP)**\n- Dividends declared in 2024 were $0.215 in February and May, then $0.23 in September and December. Nine-month declared dividends were $0.66 (<cite index=\"20-3\">total dividends of $0.66 per share and $0.615 per share for the first nine months of 2024 and 2023</cite>), so the full year is $0.66 + $0.23 = $0.89.\n- GAAP diluted EPS for 2024 was $1.05 (<cite index=\"62-10\">Diluted EPS decreased 32.3% to $1.05 per diluted share as compared to $1.55 in the prior year.</cite>), which was depressed by a goodwill impairment.\n- Payout = 0.89 \u00f7 1.05 = **84.76%**, on a per-share basis.\n- On adjusted diluted EPS of $1.92 (<cite index=\"64-6\">Adjusted diluted EPS increased 7.8% to $1.92</cite>), the ratio would be about 46.35%. The GAAP figure is inflated by the impairment, so the adjusted figure is a useful counterpoint.\n\n**Monster Beverage (MNST)**\n- Monster does not pay a dividend (<cite index=\"36-3\">To date, Monster Beverage Corp has not paid any dividends.</cite>), so its payout ratio is **0%**.\n\n**Caveats**\n- The ranking depends on the earnings basis. On GAAP EPS, KDP ranks first. On adjusted EPS, KDP drops to roughly 46%, below Coca-Cola and PepsiCo.\n- PepsiCo and KDP are per-share approximations, not aggregate dividends divided by net income.\n- Third-party TTM payout figures (for example, MarketBeat and Investing.com) reflect later periods, so I did not use them for FY2024.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\",\n            \"name\": \"Coca-Cola FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/Financial_Report.xlsx\",\n            \"name\": \"Coca-Cola FY2024 10-K Financial Report (net income attributable to shareowners)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\",\n            \"name\": \"PepsiCo FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/Financial_Report.xlsx\",\n            \"name\": \"PepsiCo FY2024 10-K Financial Report (EPS)\"\n        },\n        {\n            \"url\": \"https://www.fidelity.co.uk/factsheet-data/factsheet/US7134481081-pepsico-inc/dividends\",\n            \"name\": \"Fidelity PepsiCo Inc share dividends\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813524000090/kdp-20240930.htm\",\n            \"name\": \"Keurig Dr Pepper Q3 2024 Form 10-Q\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\",\n            \"name\": \"Keurig Dr Pepper FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://filecache.investorroom.com/mr5ir_keurig_drpepper/402/Keurig_Dr_Pepper_Reports_Q4_2024.pdf\",\n            \"name\": \"Keurig Dr Pepper Reports Q4 and Full Year 2024 Results\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813524000097/exhibit991keurigdrpepperde.htm\",\n            \"name\": \"Keurig Dr Pepper Q4 2024 dividend declaration\"\n        },\n        {\n            \"url\": \"https://divvydiary.com/en/monster-beverage-stock-US61174X1090\",\n            \"name\": \"Divvydiary Monster Beverage Corp dividend page\"\n        }\n    ]\n}",
+   "fallback_text": "**Ranking (FY2024 GAAP dividend payout ratio, highest to lowest):** Keurig Dr Pepper (~84.76%) > Coca-Cola (~78.63%) > PepsiCo (~76.69%) > Monster Beverage (0%)\n\n**Method:** Payout ratio = dividends \u00f7 GAAP earnings. I used the most direct figures available for each company. Coca-Cola uses aggregate dollars; KDP and PepsiCo use per-share figures, because I could not retrieve their aggregate dividends paid. Both bases are noted below.\n\n**Coca-Cola (KO)**\n- Dividends paid in 2024 were \n$8,359 million and $7,952 million during the years ended December 31, 2024 and 2023\n.\n- Net income attributable to Coca-Cola shareowners was \n10631\n million for 2024.\n- Payout = 8,359 \u00f7 10,631 = **78.63%**.\n- Cross-check on a per-share basis: \nOur annualized common stock dividend was $1.94 per share\n in 2024. Dividing that by 2024 diluted EPS of roughly $2.46 (not in my sources) gives about 78.9%, so the ranking holds.\n\n**PepsiCo (PEP)**\n- Dividends declared per share in 2024 were \n5.3300\n, per the Fidelity dividend table.\n- Diluted EPS was \n$6.95\n for 2024.\n- Payout = 5.33 \u00f7 6.95 = **76.69%**.\n- Aggregate dividends paid were not retrieved, so this is a per-share calculation.\n\n**Keurig Dr Pepper (KDP)**\n- Quarterly dividends declared in 2024 were $0.215 in February and May, then $0.23 in September and December. Nine-month declared dividends were \n$0.66 per share\n, so the full-year total is $0.66 + $0.23 = $0.89.\n- GAAP diluted EPS was \n$1.05 per diluted share\n for 2024, after a goodwill impairment.\n- Payout = 0.89 \u00f7 1.05 = **84.76%**.\n- On adjusted EPS of $1.92 (\nAdjusted diluted EPS increased 7.8% to $1.92\n), the ratio would be about 46.35%. The GAAP figure is inflated by the impairment, so the adjusted figure is a useful counterpoint.\n\n**Monster Beverage (MNST)**\n- Monster pays no dividend. \nTo date, Monster Beverage Corp has not paid any dividends.\n Its payout ratio is therefore **0%**.\n\n**Caveats**\n- Ranking is sensitive to basis. On GAAP EPS, KDP ranks first. On adjusted EPS, KDP falls to the bottom of the dividend payers.\n- The PepsiCo and KDP ratios are per-share approximations, not aggregate dividends divided by net income.\n- Third-party sites (MarketBeat, Investing.com, Fullratio) show trailing payout ratios of 63\u201382% for these companies, but those are TTM figures from later periods, not FY2024, so I did not use them.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\",\n            \"name\": \"Coca-Cola FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/Financial_Report.xlsx\",\n            \"name\": \"Coca-Cola FY2024 10-K Financial Report (net income attributable)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\",\n            \"name\": \"PepsiCo FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/Financial_Report.xlsx\",\n            \"name\": \"PepsiCo FY2024 10-K Financial Report (EPS)\"\n        },\n        {\n            \"url\": \"https://www.investing.com/equities/pepsico-dividends\",\n            \"name\": \"Fidelity PepsiCo dividend data (https://www.fidelity.co.uk/factsheet-data/factsheet/US7134481081-pepsico-inc/dividends)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813524000090/kdp-20240930.htm\",\n            \"name\": \"Keurig Dr Pepper Q3 2024 Form 10-Q\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\",\n            \"name\": \"Keurig Dr Pepper FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.keurigdrpepper.com/keurig-dr-pepper-reports-q4-and-full-year-2024-results-and-provides-2025-outlook-26/\",\n            \"name\": \"Keurig Dr Pepper Q4 and FY2024 results release\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813524000076/exhibit991keurigdrpepperde.htm\",\n            \"name\": \"Keurig Dr Pepper dividend increase release (Sept 2024)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813524000097/exhibit991keurigdrpepperde.htm\",\n            \"name\": \"Keurig Dr Pepper Q4 2024 dividend declaration\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813524000060/exhibit991keurigdrpepperde.htm\",\n            \"name\": \"Keurig Dr Pepper May 2024 dividend declaration\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000110465919002289/a19-2995_1ex99d1.htm\",\n            \"name\": \"Monster Beverage (no dividend history)\"\n        },\n        {\n            \"url\": \"https://divvydiary.com/en/monster-beverage-stock-US61174X1090\",\n            \"name\": \"Divvydiary Monster Beverage dividend page\"\n        }\n    ]\n}",
+   "submitted": true,
+   "turns": 2,
+   "stop": "submitted",
+   "error": "",
+   "usage": {
+    "calls": 2,
+    "input_tokens": 12,
+    "output_tokens": 8447,
+    "cache_creation_input_tokens": 62574,
+    "cache_read_input_tokens": 112728,
+    "web_search_requests": 7,
+    "cost_usd": 0.125755
+   },
+   "cost_usd": 0.125755,
+   "elapsed_s": 36.3,
+   "harness_label": "base1"
+  },
+  "inv1": {
+   "task_id": "q42",
+   "label": "inv1",
+   "question": "Compare the FY24 dividend payout ratio of Coca-Cola (KO) to that of its competitors and rank in order from highest to lowest.",
+   "steps": [
+    {
+     "turn": 1,
+     "text": "I'll pull the FY2024 10-K filings for the peers (PepsiCo, Keurig Dr Pepper, Monster Beverage) and apply the same formula as Coca-Cola: cash-flow-statement dividends paid divided by net income attributable to shareholders.",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "PepsiCo annual report 2024 10-K dividends paid",
+        "ciks": [
+         "PEP"
+        ],
+        "start_date": "2025-01-01",
+        "end_date": "2025-04-07",
+        "form_types": [
+         "10-K"
+        ]
+       },
+       "output": "{\"total_matching_documents\": 2, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-04\", \"period_ending\": \"2024-12-28\", \"company\": \"PEPSICO INC  (PEP)  (CIK 0000077476)\", \"ciks\": [\"0000077476\"], \"accession\": \"0000077476-25-000007\", \"document\": \"pep-20241228.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-04\", \"period_ending\": \"2024-12-28\", \"company\": \"PEPSICO INC  (PEP)  (CIK 0000077476)\", \"ciks\": [\"0000077476\"], \"accession\": \"0000077476-25-000007\", \"document\": \"pepsico2024form10-kxex476.htm\", \"description\": \"DESCRIPTION OF SECURITIES\", \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pepsico2024form10-kxex476.htm\"}]}",
+       "is_error": false,
+       "elapsed_s": 1.35,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "Keurig Dr Pepper annual report 2024 10-K dividends paid",
+        "ciks": [
+         "KDP"
+        ],
+        "start_date": "2025-01-01",
+        "end_date": "2025-04-07",
+        "form_types": [
+         "10-K"
+        ]
+       },
+       "output": "{\"total_matching_documents\": 2, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-25\", \"period_ending\": \"2024-12-31\", \"company\": \"Keurig Dr Pepper Inc.  (KDP)  (CIK 0001418135)\", \"ciks\": [\"0001418135\"], \"accession\": \"0001418135-25-000013\", \"document\": \"kdp-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-25\", \"period_ending\": \"2024-12-31\", \"company\": \"Keurig Dr Pepper Inc.  (KDP)  (CIK 0001418135)\", \"ciks\": [\"0001418135\"], \"accession\": \"0001418135-25-000013\", \"document\": \"kdp-ex1019ghostlifestylell.htm\", \"description\": \"EX-10.19 GHOST LIFESTYLE LLC CONTRIBUTION AND MERGER AGREEMENT\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-ex1019ghostlifestylell.htm\"}]}",
+       "is_error": false,
+       "elapsed_s": 0.35,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "Monster Beverage annual report 2024 10-K cash dividends",
+        "ciks": [
+         "MNST"
+        ],
+        "start_date": "2025-01-01",
+        "end_date": "2025-04-07",
+        "form_types": [
+         "10-K"
+        ]
+       },
+       "output": "{\"total_matching_documents\": 1, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-28\", \"period_ending\": \"2024-12-31\", \"company\": \"Monster Beverage Corp  (MNST)  (CIK 0000865752)\", \"ciks\": [\"0000865752\"], \"accession\": \"0001410578-25-000248\", \"document\": \"mnst-20241231x10k.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\"}]}",
+       "is_error": false,
+       "elapsed_s": 0.47,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.0012670250000000002
+    },
+    {
+     "turn": 2,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm",
+        "key": "pep_10k_2024"
+       },
+       "output": "SUCCESS: The result has been saved to the data storage under the key: pep_10k_2024. (479,973 characters)\nThe data_storage currently contains the following keys:\npep_10k_2024\n",
+       "is_error": false,
+       "elapsed_s": 0.73,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm",
+        "key": "kdp_10k_2024"
+       },
+       "output": "SUCCESS: The result has been saved to the data storage under the key: kdp_10k_2024. (403,591 characters)\nThe data_storage currently contains the following keys:\npep_10k_2024\nkdp_10k_2024\n",
+       "is_error": false,
+       "elapsed_s": 0.63,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm",
+        "key": "mnst_10k_2024"
+       },
+       "output": "SUCCESS: The result has been saved to the data storage under the key: mnst_10k_2024. (469,739 characters)\nThe data_storage currently contains the following keys:\npep_10k_2024\nkdp_10k_2024\nmnst_10k_2024\n",
+       "is_error": false,
+       "elapsed_s": 1.45,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.000492815
+    },
+    {
+     "turn": 3,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "retrieve_information",
+       "input": {
+        "prompt": "From this PepsiCo FY2024 10-K, quote verbatim the cash flow statement row for dividends paid (fiscal 2024 column, in millions), and the row 'Net income attributable to PepsiCo' (fiscal 2024 column, in millions). Also state the units. Text: {{pep_10k_2024}}"
+       },
+       "output": "**Cash dividends paid (Consolidated Statement of Cash Flows, FY2024): $(7,229) million**\n\nVerbatim row: \"Cash dividends paid(7,229)(6,682)(6,172)\"\n\n**Net income attributable to PepsiCo (FY2024): $9,578 million**\n\nThe cash flow statement has no row with this exact label. Its first line is \"Net income $9,626,\" which includes noncontrolling interests. The row \"Net Income Attributable to PepsiCo\" appears in the Consolidated Statement of Income, where the verbatim line is: \"Net Income Attributable to PepsiCo$9,578 $9,074 $8,910\"\n\n**Units:** Millions of U.S. dollars. The statements are labeled \"(in millions),\" except per-share amounts. In the cash flow statement, parentheses denote an outflow, so the dividends figure is negative.",
+       "is_error": false,
+       "elapsed_s": 8.91,
+       "cost_usd": 0.108314
+      },
+      {
+       "name": "retrieve_information",
+       "input": {
+        "prompt": "From this Keurig Dr Pepper FY2024 10-K, quote verbatim the cash flow statement row for dividends paid (fiscal 2024 column, in millions), and the row 'Net income attributable to KDP' (or net income) for 2024 in millions. Also state the units and any statement that KDP pays dividends. Text: {{kdp_10k_2024}}"
+       },
+       "output": "**Cash dividends paid (FY2024, in millions):** The cash flow statement row reads verbatim:\n\n> \"Cash dividends paid(1,194)(1,142)(1,080)\"\n\nThe 2024 column is **$(1,194) million**, shown as a cash outflow.\n\n**Net income (FY2024, in millions):** The filing has no row labeled \"Net income attributable to KDP\" in the primary statements. The income statement and cash flow statement both show net income, which for 2024 is **$1,441 million**:\n\n> Income statement: \"Net income$1,441 $2,181 $1,436\"\n\nThe income statement also shows \"Net income including non-controlling interest 1,441\" and \"Less: Net loss attributable to non-controlling interest\u2014\", so net income attributable to KDP equals $1,441 million. The text \"Net income attributable to KDP1,441\" appears only in the supplemental guarantor table, which covers the Parent and Guarantors, not the consolidated total.\n\n**Units:** The consolidated statements are in millions of U.S. dollars, except per-share data (for example, \"in millions, except per share data\").\n\n**Dividend statement:** Yes, KDP pays dividends. Item 5 states: \"KDP's Board has declared a regular quarterly cash dividend and expects to continue to pay such dividends on a quarterly basis.\" The MD&A reports total declared dividends of $0.89 per share for 2024, and the cash flow statement shows $1,194 million paid.",
+       "is_error": false,
+       "elapsed_s": 7.42,
+       "cost_usd": 0.091655
+      },
+      {
+       "name": "retrieve_information",
+       "input": {
+        "prompt": "From this Monster Beverage FY2024 10-K, quote verbatim any statement about cash dividends (whether the company has paid or declared cash dividends), and the net income for 2024 in thousands. Text: {{mnst_10k_2024}}"
+       },
+       "output": "**Cash dividends (verbatim, Item 5, Part II):**\n\n> \"We have not paid cash dividends to our stockholders since our inception and do not anticipate paying cash dividends in the foreseeable future.\"\n\nThe 10-K contains no other statement about declaring or paying cash dividends. The only other mentions of \"dividends\" are the performance graph footnote (\"Annual return assumes reinvestment of dividends\") and a generic forward-looking statements list item (\"...capital expenditures, dividends, capital structure...\"). Neither addresses cash dividends paid or declared.\n\n**Net income for 2024:** $1,509,048 thousand",
+       "is_error": false,
+       "elapsed_s": 4.67,
+       "cost_usd": 0.107008
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.00039502
+    },
+    {
+     "turn": 4,
+     "text": "**Result: FY2024 dividend payout ratios, ranked highest to lowest**\n\nFormula, applied to every company: cash-flow-statement dividends paid divided by FY2024 net income attributable to the company's shareholders, both from each company's FY2024 10-K. I did not retrieve the Coca-Cola filing again. Its figures ($8,359M dividends paid; $10,631M net income attributable to shareowners) are the ones given in the task.\n\n1. **Keurig Dr Pepper (KDP): 82.86%** (fiscal year ends Dec 31, 2024)\n   - Cash dividends paid: $1,194M (cash flow statement, 2024 column, in millions).\n   - Net income: $1,441M. The filing shows no separate \"attributable to KDP\" line in the consolidated statements, and the net loss attributable to non-controlling interest is nil, so net income equals the attributable figure.\n   - 1,194 / 1,441 = 82.86%.\n\n2. **Coca-Cola (KO): 78.63%** (fiscal year ends Dec 31, 2024)\n   - Cash dividends paid: $8,359M. Net income attributable to shareowners: $10,631M.\n   - 8,359 / 10,631 = 78.63%.\n\n3. **PepsiCo (PEP): 75.48%** (fiscal year ended Dec 28, 2024)\n   - Cash dividends paid: $7,229M (cash flow statement, 2024 column, in millions).\n   - Net income attributable to PepsiCo: $9,578M (consolidated statement of income, in millions). The cash flow statement starts from total net income of $9,626M, which includes non-controlling interests, so I used the attributable line.\n   - 7,229 / 9,578 = 75.48%.\n\n4. **Monster Beverage (MNST): 0%** (fiscal year ended Dec 31, 2024)\n   - The 10-K states: \"We have not paid cash dividends to our stockholders since our inception and do not anticipate paying cash dividends in the foreseeable future.\"\n   - Net income for 2024 was $1,509,048 thousand, but with no dividends the payout is 0%.\n\n**Ranking:** KDP (82.86%) > KO (78.63%) > PEP (75.48%) > MNST (0%).\n\n**Scope and caveats:**\n- The peer set is PepsiCo, Keurig Dr Pepper and Monster Beverage. Other beverage competitors, such as National Beverage or Celsius, were not checked.\n- Coca-Cola's ratio is from the task's stated figures, not a fresh retrieval from its 10-K.\n- Per-share cross-checks (declared dividends divided by diluted EPS) were not run, so they are not part of this ranking.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\",\n            \"name\": \"PepsiCo, Inc. Form 10-K for fiscal year ended December 28, 2024\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\",\n            \"name\": \"Keurig Dr Pepper Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\",\n            \"name\": \"Monster Beverage Corp. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [],
+     "stop_reason": "end_turn",
+     "cost_usd": 0.0011412850000000001
+    },
+    {
+     "turn": 5,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "submit_final_result",
+       "input": {
+        "final_result": "FY2024 dividend payout ratio ranking (highest to lowest)\n\nFormula, applied to every company: cash-flow-statement dividends paid divided by FY2024 net income attributable to the company's shareholders, both taken from each company's FY2024 10-K.\n\n1. Keurig Dr Pepper (KDP): 82.86% (fiscal year ended Dec 31, 2024)\n- Cash dividends paid: $1,194M (cash flow statement, 2024 column, millions). Source: KDP FY2024 10-K.\n- Net income: $1,441M. The consolidated statements show no separate \"attributable to KDP\" line. Net loss attributable to non-controlling interest is shown as nil, so net income equals the attributable figure.\n- 1,194 / 1,441 = 82.86%.\n\n2. Coca-Cola (KO): 78.63% (fiscal year ended Dec 31, 2024)\n- Cash dividends paid: $8,359M. Net income attributable to shareowners: $10,631M. Source: figures given in the task (Coca-Cola FY2024 10-K). I did not re-retrieve these in this run.\n- 8,359 / 10,631 = 78.63%.\n\n3. PepsiCo (PEP): 75.48% (fiscal year ended Dec 28, 2024)\n- Cash dividends paid: $7,229M (cash flow statement, 2024 column, millions). Source: PEP FY2024 10-K.\n- Net income attributable to PepsiCo: $9,578M (consolidated statement of income, millions). The cash flow statement starts from total net income of $9,626M, which includes non-controlling interests, so the attributable line was used.\n- 7,229 / 9,578 = 75.48%.\n\n4. Monster Beverage (MNST): 0% (fiscal year ended Dec 31, 2024)\n- The FY2024 10-K states that the company has never paid cash dividends to stockholders and does not expect to in the foreseeable future (Item 5).\n- 2024 net income was $1,509,048 thousand, but with no dividends paid the payout ratio is 0%.\n\nRanking: KDP (82.86%) > KO (78.63%) > PEP (75.48%) > MNST (0%).\n\nScope and caveats:\n- Peer set: PepsiCo, Keurig Dr Pepper and Monster Beverage. Other competitors (for example National Beverage or Celsius) were not checked.\n- Per-share cross-checks (declared dividends divided by diluted EPS) were not run and are not part of the ranking.\n\nSources:\n{\"sources\": [\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\", \"name\": \"PepsiCo, Inc. Form 10-K for fiscal year ended December 28, 2024\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\", \"name\": \"Keurig Dr Pepper Inc. Form 10-K for fiscal year ended December 31, 2024\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\", \"name\": \"Monster Beverage Corp. Form 10-K for fiscal year ended December 31, 2024\"}\n]}"
+       },
+       "output": "FY2024 dividend payout ratio ranking (highest to lowest)\n\nFormula, applied to every company: cash-flow-statement dividends paid divided by FY2024 net income attributable to the company's shareholders, both taken from each company's FY2024 10-K.\n\n1. Keurig Dr Pepper (KDP): 82.86% (fiscal year ended Dec 31, 2024)\n- Cash dividends paid: $1,194M (cash flow statement, 2024 column, millions). Source: KDP FY2024 10-K.\n- Net income: $1,441M. The consolidated statements show no separate \"attributable to KDP\" line. Net loss attributable to non-controlling interest is shown as nil, so net income equals the attributable figure.\n- 1,194 / 1,441 = 82.86%.\n\n2. Coca-Cola (KO): 78.63% (fiscal year ended Dec 31, 2024)\n- Cash dividends paid: $8,359M. Net income attributable to shareowners: $10,631M. Source: figures given in the task (Coca-Cola FY2024 10-K). I did not re-retrieve these in this run.\n- 8,359 / 10,631 = 78.63%.\n\n3. PepsiCo (PEP): 75.48% (fiscal year ended Dec 28, 2024)\n- Cash dividends paid: $7,229M (cash flow statement, 2024 column, millions). Source: PEP FY2024 10-K.\n- Net income attributable to PepsiCo: $9,578M (consolidated statement of income, millions). The cash flow statement starts from total net income of $9,626M, which includes non-controlling interests, so the attributable line was used.\n- 7,229 / 9,578 = 75.48%.\n\n4. Monster Beverage (MNST): 0% (fiscal year ended Dec 31, 2024)\n- The FY2024 10-K states that the company has never paid cash dividends to stockholders and does not expect to in the foreseeable future (Item 5).\n- 2024 net income was $1,509,048 thousand, but with no dividends paid the payout ratio is 0%.\n\nRanking: KDP (82.86%) > KO (78.63%) > PEP (75.48%) > MNST (0%).\n\nScope and caveats:\n- Peer set: PepsiCo, Keurig Dr Pepper and Monster Beverage. Other competitors (for example National Beverage or Celsius) were not checked.\n- Per-share cross-checks (declared dividends divided by diluted EPS) were not run and are not part of the ranking.\n\nSources:\n{\"sources\": [\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\", \"name\": \"PepsiCo, Inc. Form 10-K for fiscal year ended December 28, 2024\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\", \"name\": \"Keurig Dr Pepper Inc. Form 10-K for fiscal year ended December 31, 2024\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\", \"name\": \"Monster Beverage Corp. Form 10-K for fiscal year ended December 31, 2024\"}\n]}",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.00105403
+    }
+   ],
+   "final_answer": "FY2024 dividend payout ratio ranking (highest to lowest)\n\nFormula, applied to every company: cash-flow-statement dividends paid divided by FY2024 net income attributable to the company's shareholders, both taken from each company's FY2024 10-K.\n\n1. Keurig Dr Pepper (KDP): 82.86% (fiscal year ended Dec 31, 2024)\n- Cash dividends paid: $1,194M (cash flow statement, 2024 column, millions). Source: KDP FY2024 10-K.\n- Net income: $1,441M. The consolidated statements show no separate \"attributable to KDP\" line. Net loss attributable to non-controlling interest is shown as nil, so net income equals the attributable figure.\n- 1,194 / 1,441 = 82.86%.\n\n2. Coca-Cola (KO): 78.63% (fiscal year ended Dec 31, 2024)\n- Cash dividends paid: $8,359M. Net income attributable to shareowners: $10,631M. Source: figures given in the task (Coca-Cola FY2024 10-K). I did not re-retrieve these in this run.\n- 8,359 / 10,631 = 78.63%.\n\n3. PepsiCo (PEP): 75.48% (fiscal year ended Dec 28, 2024)\n- Cash dividends paid: $7,229M (cash flow statement, 2024 column, millions). Source: PEP FY2024 10-K.\n- Net income attributable to PepsiCo: $9,578M (consolidated statement of income, millions). The cash flow statement starts from total net income of $9,626M, which includes non-controlling interests, so the attributable line was used.\n- 7,229 / 9,578 = 75.48%.\n\n4. Monster Beverage (MNST): 0% (fiscal year ended Dec 31, 2024)\n- The FY2024 10-K states that the company has never paid cash dividends to stockholders and does not expect to in the foreseeable future (Item 5).\n- 2024 net income was $1,509,048 thousand, but with no dividends paid the payout ratio is 0%.\n\nRanking: KDP (82.86%) > KO (78.63%) > PEP (75.48%) > MNST (0%).\n\nScope and caveats:\n- Peer set: PepsiCo, Keurig Dr Pepper and Monster Beverage. Other competitors (for example National Beverage or Celsius) were not checked.\n- Per-share cross-checks (declared dividends divided by diluted EPS) were not run and are not part of the ranking.\n\nSources:\n{\"sources\": [\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\", \"name\": \"PepsiCo, Inc. Form 10-K for fiscal year ended December 28, 2024\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\", \"name\": \"Keurig Dr Pepper Inc. Form 10-K for fiscal year ended December 31, 2024\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\", \"name\": \"Monster Beverage Corp. Form 10-K for fiscal year ended December 31, 2024\"}\n]}",
+   "fallback_text": "**Result: FY2024 dividend payout ratios, ranked highest to lowest**\n\nFormula, applied to every company: cash-flow-statement dividends paid divided by FY2024 net income attributable to the company's shareholders, both from each company's FY2024 10-K. I did not retrieve the Coca-Cola filing again. Its figures ($8,359M dividends paid; $10,631M net income attributable to shareowners) are the ones given in the task.\n\n1. **Keurig Dr Pepper (KDP): 82.86%** (fiscal year ends Dec 31, 2024)\n   - Cash dividends paid: $1,194M (cash flow statement, 2024 column, in millions).\n   - Net income: $1,441M. The filing shows no separate \"attributable to KDP\" line in the consolidated statements, and the net loss attributable to non-controlling interest is nil, so net income equals the attributable figure.\n   - 1,194 / 1,441 = 82.86%.\n\n2. **Coca-Cola (KO): 78.63%** (fiscal year ends Dec 31, 2024)\n   - Cash dividends paid: $8,359M. Net income attributable to shareowners: $10,631M.\n   - 8,359 / 10,631 = 78.63%.\n\n3. **PepsiCo (PEP): 75.48%** (fiscal year ended Dec 28, 2024)\n   - Cash dividends paid: $7,229M (cash flow statement, 2024 column, in millions).\n   - Net income attributable to PepsiCo: $9,578M (consolidated statement of income, in millions). The cash flow statement starts from total net income of $9,626M, which includes non-controlling interests, so I used the attributable line.\n   - 7,229 / 9,578 = 75.48%.\n\n4. **Monster Beverage (MNST): 0%** (fiscal year ended Dec 31, 2024)\n   - The 10-K states: \"We have not paid cash dividends to our stockholders since our inception and do not anticipate paying cash dividends in the foreseeable future.\"\n   - Net income for 2024 was $1,509,048 thousand, but with no dividends the payout is 0%.\n\n**Ranking:** KDP (82.86%) > KO (78.63%) > PEP (75.48%) > MNST (0%).\n\n**Scope and caveats:**\n- The peer set is PepsiCo, Keurig Dr Pepper and Monster Beverage. Other beverage competitors, such as National Beverage or Celsius, were not checked.\n- Coca-Cola's ratio is from the task's stated figures, not a fresh retrieval from its 10-K.\n- Per-share cross-checks (declared dividends divided by diluted EPS) were not run, so they are not part of this ranking.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\",\n            \"name\": \"PepsiCo, Inc. Form 10-K for fiscal year ended December 28, 2024\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\",\n            \"name\": \"Keurig Dr Pepper Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\",\n            \"name\": \"Monster Beverage Corp. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+   "submitted": true,
+   "turns": 5,
+   "stop": "submitted",
+   "error": "",
+   "usage": {
+    "calls": 8,
+    "input_tokens": 26,
+    "output_tokens": 7162,
+    "cache_creation_input_tokens": 494548,
+    "cache_read_input_tokens": 34340,
+    "web_search_requests": 0,
+    "cost_usd": 0.311327
+   },
+   "cost_usd": 0.311327,
+   "elapsed_s": 46.8,
+   "harness_label": "inv1"
+  },
+  "dom1": {
+   "task_id": "q42",
+   "label": "dom1",
+   "question": "Compare the FY24 dividend payout ratio of Coca-Cola (KO) to that of its competitors and rank in order from highest to lowest.",
+   "steps": [
+    {
+     "turn": 1,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "load_skill",
+       "input": {
+        "name": "dividend_payout_peer_compare"
+       },
+       "output": "---\nname: dividend_payout_peer_compare\ndescription: Compare dividend payout ratios across a company and its competitors for a fiscal year and rank them, on one consistent basis from each company's 10-K.\n---\n\n# Dividend payout ratio: peer comparison and ranking\n\n**Analytic move:** compare. Inputs are, for each company, FY dividends and FY earnings. The result is a ranked list on one basis.\n\n## Definition (state it in the answer)\nPayout ratio = common dividends \u00f7 net income attributable to common shareholders, for the same fiscal year.\n- Primary basis: aggregate cash dividends paid (cash flow statement, financing section, \"dividends paid\" or \"cash dividends paid\") \u00f7 GAAP net income attributable to the company (income statement).\n- Use the same basis for every company. Do not divide dollars by dollars for one company and per-share by per-share for another.\n- Per-share declared dividends \u00f7 diluted GAAP EPS is an acceptable cross-check, and it is the fallback only if the aggregate paid figure cannot be retrieved. If you fall back, say so and apply it to every company.\n- Dividends declared and dividends paid differ by timing (a Q4 dividend declared in December may be paid in January). Say which one you used.\n- GAAP and adjusted/non-GAAP payout differ materially when there are impairments or one-offs. Rank on GAAP. Add one line showing the adjusted figure only if the company's own release reconciles it.\n\n## Peer set\n- Competitors means direct peers in the same line of business that file with the SEC and have FY2024 data. For Coca-Cola, start from PepsiCo, Keurig Dr Pepper and Monster Beverage. Add other listed bottlers or beverage peers only if you can open their filings (for example Coca-Cola Consolidated).\n- State the peer set in the answer. A company that pays no dividend has a payout ratio of 0% and goes last. Show it rather than omitting it.\n- Fiscal year ends differ (for example PepsiCo's FY2024 ends in late December and KDP's on Dec 31). Use each company's fiscal 2024 and state the period end.\n\n## Where the figures live\n- 10-K Item 8: the consolidated statements of cash flows (dividends paid), and the income statement (net income attributable to shareowners, diluted EPS).\n- Equity statement or notes: dividends declared per share.\n- Do not use aggregator pages (payout ratio TTM on MarketBeat, GuruFocus and similar) as the figure. They use different periods and bases. Only filings dated on or before April 07, 2025 count.\n\n## Task facts to re-verify (found in a prior run, not yet confirmed from opened documents)\n- In this task, Coca-Cola's 10-K reportedly shows dividends paid of $8,359M in 2024 and net income attributable to shareowners of $10,631M, a ratio of about 78.63%. Confirm both from the opened 10-K (cash flow statement and income statement).\n- The earlier run did not retrieve PepsiCo's or KDP's aggregate dividends paid, and it mixed bases. Retrieve each company's cash-flow dividends and net income from its own FY2024 10-K.\n\n## Answer contract\n1. A ranked list from highest to lowest payout ratio, with Coca-Cola's rank clearly marked.\n2. A table per company with: fiscal year end, dividends ($M), net income attributable to the company ($M), ratio to two decimals, and the source document.\n3. The arithmetic shown, unrounded until the end.\n4. The basis stated (paid vs declared, GAAP) and the peer set stated.\n5. Before submitting, confirm every figure comes from an opened primary document (not from memory or search snippets), and that the period, units (millions) and share count basis match across companies.\n",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.000757525
+    },
+    {
+     "turn": 2,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "Coca-Cola annual report 2024 dividends paid net income attributable shareowners",
+        "form_types": [
+         "10-K"
+        ],
+        "start_date": "2025-01-01",
+        "end_date": "2025-04-07"
+       },
+       "output": "{\"total_matching_documents\": 3, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-20\", \"period_ending\": \"2024-12-31\", \"company\": \"COCA COLA CO  (KO)  (CIK 0000021344)\", \"ciks\": [\"0000021344\"], \"accession\": \"0000021344-25-000011\", \"document\": \"ko-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-21\", \"period_ending\": \"2024-12-28\", \"company\": \"KELLANOVA  (K)  (CIK 0000055067)\", \"ciks\": [\"0000055067\"], \"accession\": \"0001628280-25-007118\", \"document\": \"k-20241228.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/55067/000162828025007118/k-20241228.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-24\", \"period_ending\": \"2024-12-31\", \"company\": \"BERKSHIRE HATHAWAY INC  (BRK-A, BRK-B)  (CIK 0001067983)\", \"ciks\": [\"0001067983\"], \"accession\": \"0000950170-25-025210\", \"document\": \"brka-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1067983/000095017025025210/brka-20241231.htm\"}]}",
+       "is_error": false,
+       "elapsed_s": 0.5,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "PepsiCo 10-K 2024 cash dividends paid net income attributable PepsiCo",
+        "form_types": [
+         "10-K"
+        ],
+        "start_date": "2025-01-01",
+        "end_date": "2025-04-07"
+       },
+       "output": "{\"total_matching_documents\": 69, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-04\", \"period_ending\": \"2024-12-28\", \"company\": \"PEPSICO INC  (PEP)  (CIK 0000077476)\", \"ciks\": [\"0000077476\"], \"accession\": \"0000077476-25-000007\", \"document\": \"pep-20241228.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-03\", \"period_ending\": \"2024-12-31\", \"company\": \"Celsius Holdings, Inc.  (CELH)  (CIK 0001341766)\", \"ciks\": [\"0001341766\"], \"accession\": \"0001341766-25-000024\", \"document\": \"celh-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1341766/000134176625000024/celh-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-19\", \"period_ending\": \"2024-12-31\", \"company\": \"YUM BRANDS INC  (YUM)  (CIK 0001041061)\", \"ciks\": [\"0001041061\"], \"accession\": \"0001041061-25-000013\", \"document\": \"yum-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1041061/000104106125000013/yum-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-21\", \"period_ending\": \"2024-12-31\", \"company\": \"Cannaisseur Group Inc.  (TCRG)  (CIK 0001879270)\", \"ciks\": [\"0001879270\"], \"accession\": \"0001185185-25-000206\", \"document\": \"tcrg10k123124.htm\", \"description\": \"FORM 10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1879270/000118518525000206/tcrg10k123124.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-25\", \"period_ending\": \"2024-12-31\", \"company\": \"Keurig Dr Pepper Inc.  (KDP)  (CIK 0001418135)\", \"ciks\": [\"0001418135\"], \"accession\": \"0001418135-25-000013\", \"document\": \"kdp-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-26\", \"period_ending\": \"2024-12-31\", \"company\": \"BRINKS CO  (BCO)  (CIK 0000078890)\", \"ciks\": [\"0000078890\"], \"accession\": \"0000078890-25-000059\", \"document\": \"bco-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/78890/000007889025000059/bco-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-26\", \"period_ending\": \"2024-12-31\", \"company\": \"Zevia PBC  (ZVIA)  (CIK 0001854139)\", \"ciks\": [\"0001854139\"], \"accession\": \"0000950170-25-027728\", \"document\": \"zvia-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1854139/000095017025027728/zvia-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-18\", \"period_ending\": \"2024-12-28\", \"company\": \"FLOWERS FOODS INC  (FLO)  (CIK 0001128928)\", \"ciks\": [\"0001128928\"], \"accession\": \"0000950170-25-022243\", \"document\": \"flo-20241228.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1128928/000095017025022243/flo-20241228.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-20\", \"period_ending\": \"2024-12-31\", \"company\": \"GTJ REIT, INC.  (CIK 0001368757)\", \"ciks\": [\"0001368757\"], \"accession\": \"0000950170-25-042607\", \"document\": \"gttj-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1368757/000095017025042607/gttj-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-27\", \"period_ending\": \"2024-12-31\", \"company\": \"Primo Brands Corp  (PRMB)  (CIK 0002042694)\", \"ciks\": [\"0002042694\"], \"accession\": \"0002042694-25-000003\", \"document\": \"prmb-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/2042694/000204269425000003/prmb-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-27\", \"period_ending\": \"2025-02-01\", \"company\": \"DICK'S SPORTING GOODS, INC.  (DKS)  (CIK 0001089063)\", \"ciks\": [\"0001089063\"], \"accession\": \"0001089063-25-000012\", \"document\": \"dks-20250201.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1089063/000108906325000012/dks-20250201.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-20\", \"period_ending\": \"2024-12-31\", \"company\": \"INTERPUBLIC GROUP OF COMPANIES, INC.  (IPG)  (CIK 0000051644)\", \"ciks\": [\"0000051644\"], \"accession\": \"0000051644-25-000024\", \"document\": \"ipg-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/51644/000005164425000024/ipg-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-04-01\", \"period_ending\": \"2025-02-01\", \"company\": \"KROGER CO  (KR)  (CIK 0000056873)\", \"ciks\": [\"0000056873\"], \"accession\": \"0001558370-25-004267\", \"document\": \"kr-20250201x10k.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/56873/000155837025004267/kr-20250201x10k.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-21\", \"period_ending\": \"2024-12-31\", \"company\": \"Apollo Realty Income Solutions, Inc.  (CIK 0001882850)\", \"ciks\": [\"0001882850\"], \"accession\": \"0000950170-25-043328\", \"document\": \"ck0001882850-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1882850/000095017025043328/ck0001882850-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-28\", \"period_ending\": \"2024-12-31\", \"company\": \"Monster Beverage Corp  (MNST)  (CIK 0000865752)\", \"ciks\": [\"0000865752\"], \"accession\": \"0001410578-25-000248\", \"document\": \"mnst-20241231x10k.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-20\", \"period_ending\": \"2024-12-31\", \"company\": \"Coca-Cola Consolidated, Inc.  (COKE)  (CIK 0000317540)\", \"ciks\": [\"0000317540\"], \"accession\": \"0000317540-25-000025\", \"document\": \"coke-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/317540/000031754025000025/coke-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-20\", \"period_ending\": \"2024-12-31\", \"company\": \"LAUREATE EDUCATION, INC.  (LAUR)  (CIK 0000912766)\", \"ciks\": [\"0000912766\"], \"accession\": \"0001628280-25-006557\", \"document\": \"laur-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/912766/000162828025006557/laur-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-14\", \"period_ending\": \"2024-12-31\", \"company\": \"WESCO INTERNATIONAL INC  (WCC, WCC-PA)  (CIK 0000929008)\", \"ciks\": [\"0000929008\"], \"accession\": \"0000929008-25-000005\", \"document\": \"wcc-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/929008/000092900825000005/wcc-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-21\", \"period_ending\": \"2024-12-31\", \"company\": \"Restaurant Brands International Inc.  (QSR)  (CIK 0001618756)\", \"ciks\": [\"0001618756\"], \"accession\": \"0001618756-25-000087\", \"document\": \"qsr-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1618756/000161875625000087/qsr-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-05\", \"period_ending\": \"2024-12-31\", \"company\": \"Mondelez International, Inc.  (MDLZ)  (CIK 0001103982)\", \"ciks\": [\"0001103982\"], \"accession\": \"0001103982-25-000030\", \"document\": \"mdlz-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1103982/000110398225000030/mdlz-20241231.htm\"}]}",
+       "is_error": false,
+       "elapsed_s": 0.46,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "Keurig Dr Pepper 10-K 2024 dividends paid net income",
+        "form_types": [
+         "10-K"
+        ],
+        "start_date": "2025-01-01",
+        "end_date": "2025-04-07"
+       },
+       "output": "{\"total_matching_documents\": 18, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-25\", \"period_ending\": \"2024-12-31\", \"company\": \"Keurig Dr Pepper Inc.  (KDP)  (CIK 0001418135)\", \"ciks\": [\"0001418135\"], \"accession\": \"0001418135-25-000013\", \"document\": \"kdp-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-20\", \"period_ending\": \"2024-12-31\", \"company\": \"Coca-Cola Consolidated, Inc.  (COKE)  (CIK 0000317540)\", \"ciks\": [\"0000317540\"], \"accession\": \"0000317540-25-000025\", \"document\": \"coke-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/317540/000031754025000025/coke-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-03\", \"period_ending\": \"2024-12-31\", \"company\": \"Celsius Holdings, Inc.  (CELH)  (CIK 0001341766)\", \"ciks\": [\"0001341766\"], \"accession\": \"0001341766-25-000024\", \"document\": \"celh-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1341766/000134176625000024/celh-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-04\", \"period_ending\": \"2024-12-28\", \"company\": \"PEPSICO INC  (PEP)  (CIK 0000077476)\", \"ciks\": [\"0000077476\"], \"accession\": \"0000077476-25-000007\", \"document\": \"pep-20241228.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-18\", \"period_ending\": \"2024-12-31\", \"company\": \"HERSHEY CO  (HSY)  (CIK 0000047111)\", \"ciks\": [\"0000047111\"], \"accession\": \"0000047111-25-000014\", \"document\": \"hsy-20241231.htm\", \"description\": \"THE HERSHEY COMPANY FORM 10-K FOR THE YEAR ENDED DECEMBER 31, 2024\", \"url\": \"https://www.sec.gov/Archives/edgar/data/47111/000004711125000014/hsy-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-20\", \"period_ending\": \"2024-12-31\", \"company\": \"Peakstone Realty Trust  (PKST)  (CIK 0001600626)\", \"ciks\": [\"0001600626\"], \"accession\": \"0001600626-25-000017\", \"document\": \"pkst-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1600626/000160062625000017/pkst-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-05\", \"period_ending\": \"2024-12-31\", \"company\": \"Mondelez International, Inc.  (MDLZ)  (CIK 0001103982)\", \"ciks\": [\"0001103982\"], \"accession\": \"0001103982-25-000030\", \"document\": \"mdlz-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1103982/000110398225000030/mdlz-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-26\", \"period_ending\": \"2024-12-31\", \"company\": \"Zevia PBC  (ZVIA)  (CIK 0001854139)\", \"ciks\": [\"0001854139\"], \"accession\": \"0000950170-25-027728\", \"document\": \"zvia-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1854139/000095017025027728/zvia-20241231.htm\"}, {\"form\": \"10-K/A\", \"file_date\": \"2025-03-07\", \"period_ending\": \"2024-12-28\", \"company\": \"KELLANOVA  (K)  (CIK 0000055067)\", \"ciks\": [\"0000055067\"], \"accession\": \"0000055067-25-000127\", \"document\": \"k-20241228.htm\", \"description\": \"10-K/A\", \"url\": \"https://www.sec.gov/Archives/edgar/data/55067/000005506725000127/k-20241228.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-27\", \"period_ending\": \"2024-12-29\", \"company\": \"Krispy Kreme, Inc.  (DNUT)  (CIK 0001857154)\", \"ciks\": [\"0001857154\"], \"accession\": \"0001857154-25-000013\", \"document\": \"dnut-20241229.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1857154/000185715425000013/dnut-20241229.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-14\", \"period_ending\": \"2024-12-31\", \"company\": \"TreeHouse Foods, Inc.  (THS)  (CIK 0001320695)\", \"ciks\": [\"0001320695\"], \"accession\": \"0001320695-25-000007\", \"document\": \"ths-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1320695/000132069525000007/ths-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-03\", \"period_ending\": \"2024-12-31\", \"company\": \"CROWN HOLDINGS, INC.  (CCK)  (CIK 0001219601)\", \"ciks\": [\"0001219601\"], \"accession\": \"0001219601-25-000009\", \"document\": \"cck-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1219601/000121960125000009/cck-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-28\", \"period_ending\": \"2024-12-31\", \"company\": \"Monster Beverage Corp  (MNST)  (CIK 0000865752)\", \"ciks\": [\"0000865752\"], \"accession\": \"0001410578-25-000248\", \"document\": \"mnst-20241231x10k.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-12\", \"period_ending\": \"2024-12-31\", \"company\": \"Westrock Coffee Co  (WEST)  (CIK 0001806347)\", \"ciks\": [\"0001806347\"], \"accession\": \"0001558370-25-002804\", \"document\": \"west-20241231x10k.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1806347/000155837025002804/west-20241231x10k.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-27\", \"period_ending\": \"2024-12-31\", \"company\": \"Primo Brands Corp  (PRMB)  (CIK 0002042694)\", \"ciks\": [\"0002042694\"], \"accession\": \"0002042694-25-000003\", \"document\": \"prmb-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/2042694/000204269425000003/prmb-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-28\", \"period_ending\": \"2024-12-31\", \"company\": \"Vistra Corp.  (VST)  (CIK 0001692819)\", \"ciks\": [\"0001692819\"], \"accession\": \"0001692819-25-000013\", \"document\": \"vistra-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1692819/000169281925000013/vistra-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-20\", \"period_ending\": \"2024-12-31\", \"company\": \"COCA COLA CO  (KO)  (CIK 0000021344)\", \"ciks\": [\"0000021344\"], \"accession\": \"0000021344-25-000011\", \"document\": \"ko-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-25\", \"period_ending\": \"2024-12-31\", \"company\": \"Keurig Dr Pepper Inc.  (KDP)  (CIK 0001418135)\", \"ciks\": [\"0001418135\"], \"accession\": \"0001418135-25-000013\", \"document\": \"kdp-ex1019ghostlifestylell.htm\", \"description\": \"EX-10.19 GHOST LIFESTYLE LLC CONTRIBUTION AND MERGER AGREEMENT\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-ex1019ghostlifestylell.htm\"}]}",
+       "is_error": false,
+       "elapsed_s": 0.54,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "Monster Beverage 10-K 2024 dividends net income",
+        "form_types": [
+         "10-K"
+        ],
+        "start_date": "2025-01-01",
+        "end_date": "2025-04-07"
+       },
+       "output": "{\"total_matching_documents\": 20, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-28\", \"period_ending\": \"2024-12-31\", \"company\": \"Monster Beverage Corp  (MNST)  (CIK 0000865752)\", \"ciks\": [\"0000865752\"], \"accession\": \"0001410578-25-000248\", \"document\": \"mnst-20241231x10k.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-20\", \"period_ending\": \"2024-12-31\", \"company\": \"Coca-Cola Consolidated, Inc.  (COKE)  (CIK 0000317540)\", \"ciks\": [\"0000317540\"], \"accession\": \"0000317540-25-000025\", \"document\": \"coke-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/317540/000031754025000025/coke-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-20\", \"period_ending\": \"2024-12-31\", \"company\": \"COCA COLA CO  (KO)  (CIK 0000021344)\", \"ciks\": [\"0000021344\"], \"accession\": \"0000021344-25-000011\", \"document\": \"ko-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-25\", \"period_ending\": \"2024-12-28\", \"company\": \"BOSTON BEER CO INC  (SAM)  (CIK 0000949870)\", \"ciks\": [\"0000949870\"], \"accession\": \"0000950170-25-026756\", \"document\": \"sam-20241228.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/949870/000095017025026756/sam-20241228.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-03\", \"period_ending\": \"2024-12-31\", \"company\": \"Celsius Holdings, Inc.  (CELH)  (CIK 0001341766)\", \"ciks\": [\"0001341766\"], \"accession\": \"0001341766-25-000024\", \"document\": \"celh-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1341766/000134176625000024/celh-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-10\", \"period_ending\": \"2024-12-31\", \"company\": \"YERBAE BRANDS CORP.  (YERBF)  (CIK 0001978133)\", \"ciks\": [\"0001978133\"], \"accession\": \"0001493152-25-009611\", \"document\": \"form10-k.htm\", \"description\": null, \"url\": \"https://www.sec.gov/Archives/edgar/data/1978133/000149315225009611/form10-k.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-26\", \"period_ending\": \"2024-12-31\", \"company\": \"Zevia PBC  (ZVIA)  (CIK 0001854139)\", \"ciks\": [\"0001854139\"], \"accession\": \"0000950170-25-027728\", \"document\": \"zvia-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1854139/000095017025027728/zvia-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-04\", \"period_ending\": \"2024-12-28\", \"company\": \"PEPSICO INC  (PEP)  (CIK 0000077476)\", \"ciks\": [\"0000077476\"], \"accession\": \"0000077476-25-000007\", \"document\": \"pep-20241228.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-27\", \"period_ending\": \"2024-12-31\", \"company\": \"Primo Brands Corp  (PRMB)  (CIK 0002042694)\", \"ciks\": [\"0002042694\"], \"accession\": \"0002042694-25-000003\", \"document\": \"prmb-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/2042694/000204269425000003/prmb-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-26\", \"period_ending\": \"2024-12-31\", \"company\": \"Vita Coco Company, Inc.  (COCO)  (CIK 0001482981)\", \"ciks\": [\"0001482981\"], \"accession\": \"0001482981-25-000032\", \"document\": \"coco-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1482981/000148298125000032/coco-20241231.htm\"}, {\"form\": \"10-K/A\", \"file_date\": \"2025-01-29\", \"period_ending\": \"2023-12-31\", \"company\": \"AMERICAN REBEL HOLDINGS INC  (AREB, AREBW)  (CIK 0001648087)\", \"ciks\": [\"0001648087\"], \"accession\": \"0001493152-25-004183\", \"document\": \"form10-ka.htm\", \"description\": null, \"url\": \"https://www.sec.gov/Archives/edgar/data/1648087/000149315225004183/form10-ka.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-07\", \"period_ending\": \"2024-12-31\", \"company\": \"LAS VEGAS SANDS CORP  (LVS)  (CIK 0001300514)\", \"ciks\": [\"0001300514\"], \"accession\": \"0001300514-25-000040\", \"document\": \"lvs-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1300514/000130051425000040/lvs-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-03\", \"period_ending\": \"2024-12-31\", \"company\": \"BRC Inc.  (BRCC)  (CIK 0001891101)\", \"ciks\": [\"0001891101\"], \"accession\": \"0001891101-25-000006\", \"document\": \"brcc-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1891101/000189110125000006/brcc-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-21\", \"period_ending\": \"2024-12-31\", \"company\": \"Cannaisseur Group Inc.  (TCRG)  (CIK 0001879270)\", \"ciks\": [\"0001879270\"], \"accession\": \"0001185185-25-000206\", \"document\": \"tcrg10k123124.htm\", \"description\": \"FORM 10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1879270/000118518525000206/tcrg10k123124.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-18\", \"period_ending\": \"2024-12-31\", \"company\": \"TPG Twin Brook Capital Income Fund  (CIK 0001913724)\", \"ciks\": [\"0001913724\"], \"accession\": \"0001913724-25-000015\", \"document\": \"agci-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1913724/000191372425000015/agci-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-27\", \"period_ending\": \"2024-12-31\", \"company\": \"Yoshiharu Global Co.  (YOSH)  (CIK 0001898604)\", \"ciks\": [\"0001898604\"], \"accession\": \"0001641172-25-000804\", \"document\": \"form10-k.htm\", \"description\": null, \"url\": \"https://www.sec.gov/Archives/edgar/data/1898604/000164117225000804/form10-k.htm\"}, {\"form\": \"10-K/A\", \"file_date\": \"2025-03-07\", \"period_ending\": \"2024-12-28\", \"company\": \"KELLANOVA  (K)  (CIK 0000055067)\", \"ciks\": [\"0000055067\"], \"accession\": \"0000055067-25-000127\", \"document\": \"k-20241228.htm\", \"description\": \"10-K/A\", \"url\": \"https://www.sec.gov/Archives/edgar/data/55067/000005506725000127/k-20241228.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-31\", \"period_ending\": \"2024-12-31\", \"company\": \"Synergy CHC Corp.  (SNYR)  (CIK 0001562733)\", \"ciks\": [\"0001562733\"], \"accession\": \"0001213900-25-026254\", \"document\": \"ea0235758-10k_synergy.htm\", \"description\": \"ANNUAL REPORT\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1562733/000121390025026254/ea0235758-10k_synergy.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-26\", \"period_ending\": \"2024-12-31\", \"company\": \"TKO Group Holdings, Inc.  (TKO)  (CIK 0001973266)\", \"ciks\": [\"0001973266\"], \"accession\": \"0000950170-25-027778\", \"document\": \"tko-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000095017025027778/tko-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-04-03\", \"period_ending\": \"2024-12-31\", \"company\": \"Falcon's Beyond Global, Inc.  (FBYD, FBYDW)  (CIK 0001937987)\", \"ciks\": [\"0001937987\"], \"accession\": \"0000950170-25-049918\", \"document\": \"fbyd-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1937987/000095017025049918/fbyd-20241231.htm\"}]}",
+       "is_error": false,
+       "elapsed_s": 0.39,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.0005685550000000001
+    },
+    {
+     "turn": 3,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm",
+        "key": "ko10k"
+       },
+       "output": "SUCCESS: The result has been saved to the data storage under the key: ko10k. (655,758 characters)\nThe data_storage currently contains the following keys:\nko10k\n",
+       "is_error": false,
+       "elapsed_s": 1.1,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm",
+        "key": "pep10k"
+       },
+       "output": "SUCCESS: The result has been saved to the data storage under the key: pep10k. (479,973 characters)\nThe data_storage currently contains the following keys:\nko10k\npep10k\n",
+       "is_error": false,
+       "elapsed_s": 1.04,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm",
+        "key": "kdp10k"
+       },
+       "output": "SUCCESS: The result has been saved to the data storage under the key: kdp10k. (403,591 characters)\nThe data_storage currently contains the following keys:\nko10k\npep10k\nkdp10k\n",
+       "is_error": false,
+       "elapsed_s": 0.9,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm",
+        "key": "mnst10k"
+       },
+       "output": "SUCCESS: The result has been saved to the data storage under the key: mnst10k. (469,739 characters)\nThe data_storage currently contains the following keys:\nko10k\npep10k\nkdp10k\nmnst10k\n",
+       "is_error": false,
+       "elapsed_s": 0.89,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.001735025
+    },
+    {
+     "turn": 4,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "retrieve_information",
+       "input": {
+        "prompt": "From this Coca-Cola 2024 10-K text: {{ko10k}}. Find (1) the consolidated statement of cash flows line for dividends paid in 2024 (in millions), (2) net income attributable to shareowners of The Coca-Cola Company for 2024 (in millions), (3) diluted earnings per share 2024, (4) dividends declared per share 2024. Quote the exact figures and the section they appear in."
+       },
+       "output": "Here are the four figures, all from the 2024 Form 10-K:\n\n1. **Dividends paid in 2024: $8,359 million.** This is the \"Dividends\" line under **Financing Activities** in the **Consolidated Statements of Cash Flows**: \"Dividends(8,359)(7,952)(7,616).\"\n\n2. **Net income attributable to shareowners of The Coca-Cola Company, 2024: $10,631 million.** This is in the **Consolidated Statements of Income**: \"Net Income Attributable to Shareowners of The Coca-Cola Company $10,631 $10,714 $9,542.\"\n\n3. **Diluted net income per share, 2024: $2.46.** This is in the **Consolidated Statements of Income**: \"Diluted Net Income Per Share1 $2.46 $2.47 $2.19.\"\n\n4. **Dividends declared per share, 2024: $1.94.** This is in the **Consolidated Statements of Shareowners' Equity**: \"Dividends (per share \u2014 $1.94, $1.84 and $1.76 in 2024, 2023 and 2022, respectively).\" The MD&A (Liquidity section, \"Dividends\") also gives \"Our annualized common stock dividend was $1.94 per share and $1.84 per share in 2024 and 2023.\"",
+       "is_error": false,
+       "elapsed_s": 10.76,
+       "cost_usd": 0.141835
+      },
+      {
+       "name": "retrieve_information",
+       "input": {
+        "prompt": "From this PepsiCo 2024 10-K text: {{pep10k}}. Find (1) the consolidated statement of cash flows line for cash dividends paid in 2024 (in millions), (2) net income attributable to PepsiCo for 2024 (in millions), (3) diluted EPS 2024, (4) dividends declared per share 2024. Quote the exact figures and the section they appear in."
+       },
+       "output": "Here are the four figures, with the section each comes from:\n\n1. **Cash dividends paid, 2024: $(7,229) million.** This is the \"Cash dividends paid\" line under **Financing Activities** in the **Consolidated Statement of Cash Flows**.\n\n2. **Net income attributable to PepsiCo, 2024: $9,578 million.** This is in the **Consolidated Statement of Income**, and the same figure appears in the Consolidated Statement of Equity.\n\n3. **Diluted EPS, 2024: $6.95.** This is the \"Diluted\" line under \"Net Income Attributable to PepsiCo per Common Share\" in the **Consolidated Statement of Income**.\n\n4. **Dividends declared per share, 2024: $5.3300.** This is in footnote (a) to the **Consolidated Statement of Equity**: \"Cash dividends declared per common share were $5.3300, $4.9450 and $4.5250 for 2024, 2023 and 2022, respectively.\"\n\nThe dividends paid ($7,229 million) differ from the dividends declared in the equity statement ($7,347 million, shown as \"Cash dividends declared\" under Retained Earnings). The difference reflects timing, since the cash flow line is on a paid basis.",
+       "is_error": false,
+       "elapsed_s": 4.59,
+       "cost_usd": 0.108341
+      },
+      {
+       "name": "retrieve_information",
+       "input": {
+        "prompt": "From this Keurig Dr Pepper 2024 10-K text: {{kdp10k}}. Find (1) the consolidated statement of cash flows line for dividends paid in 2024 (in millions), (2) net income for 2024 (in millions) and net income attributable to KDP common stockholders, (3) diluted EPS 2024, (4) dividends declared per share 2024. Quote exact figures and section."
+       },
+       "output": "**1. Dividends paid in 2024:** **$(1,194) million**, shown as **\"Cash dividends paid (1,194)\"** in the Financing activities section of the Consolidated Statements of Cash Flows. The 2024 column is the first of the three years presented.\n\n**2. Net income for 2024:** **$1,441 million**.\n- The Consolidated Statements of Income shows \"Net income including non-controlling interest 1,441\" and then \"Less: Net loss attributable to non-controlling interest \u2014 \" for 2024.\n- Net income attributable to KDP is therefore also **$1,441 million**, shown as \"Net income $1,441.\" The non-controlling interest line is zero for 2024.\n\n**3. Diluted EPS for 2024:** **$1.05**, shown as \"Diluted 1.05\" under \"Earnings per common share\" in the Consolidated Statements of Income. Basic EPS was $1.06.\n\n**4. Dividends declared per share for 2024:** **$0.89 per share**. The Consolidated Statements of Changes in Stockholders' Equity shows \"Dividends declared, $0.89 per share\" for 2024. The MD&A (Principal Uses of Capital Resources, Regular Quarterly Dividends) also states \"We have declared total dividends of $0.89 per share and $0.83 per share for the years ended December 31, 2024 and 2023, respectively.\"",
+       "is_error": false,
+       "elapsed_s": 6.79,
+       "cost_usd": 0.091335
+      },
+      {
+       "name": "retrieve_information",
+       "input": {
+        "prompt": "From this Monster Beverage 2024 10-K text: {{mnst10k}}. Find (1) whether Monster paid any cash dividends in 2024 (it may have paid none), (2) net income attributable to Monster for 2024 (in thousands or millions), (3) any statement of cash flows dividend line. Quote exact figures and section."
+       },
+       "output": "**1. Cash dividends in 2024: none.** Item 5 (Market for Registrant's Common Equity) states: \"We have not paid cash dividends to our stockholders since our inception and do not anticipate paying cash dividends in the foreseeable future.\"\n\n**2. Net income for 2024: $1,509,048 thousand (about $1.51 billion).** This is from the Consolidated Statements of Income (p. 77): \"NET INCOME $ 1,509,048 $ 1,630,988 $ 1,191,624\" for 2024, 2023, and 2022. The statement shows no noncontrolling interest line, so this figure is the net income for Monster. Diluted EPS was $1.49.\n\n**3. Dividend line in the cash flow statement: none.** The Consolidated Statements of Cash Flows (p. 80) have no dividends paid line. The financing activities section lists only:\n- (Payments) borrowings on short-term debt: (8,223)\n- Borrowings on credit facilities: 750,000\n- Payments on credit facilities: (375,000)\n- Payments for debt issuance costs: (2,904)\n- Issuance of common stock: 78,973\n- Purchases of common stock held in treasury: (3,771,875)\n- Net cash used in financing activities: (3,329,029)\n\nThe Consolidated Statements of Stockholders' Equity (p. 79) also have no dividend entries. The large financing outflow was from share repurchases, not dividends.",
+       "is_error": false,
+       "elapsed_s": 12.47,
+       "cost_usd": 0.107785
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.00064867
+    },
+    {
+     "turn": 5,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "submit_final_result",
+       "input": {
+        "final_result": "\n**Ranking: FY2024 dividend payout ratio (highest to lowest)**\n\n1. Keurig Dr Pepper (KDP): 82.86%\n2. **Coca-Cola (KO): 78.63% (rank 2 of 4)**\n3. PepsiCo (PEP): 75.48%\n4. Monster Beverage (MNST): 0.00% (pays no dividend)\n\n**Basis and definition**\n- Payout ratio = cash dividends paid (cash flow statement, financing activities) \u00f7 net income attributable to the company (GAAP, income statement), same fiscal year, in $ millions.\n- Paid basis was used, not declared, for all companies. I did not use the per-share fallback, since aggregate paid figures were available for each company.\n- Ratios are rounded to two decimals only at the end.\n\n**Peer set:** PepsiCo, Keurig Dr Pepper and Monster Beverage, the three starting peers named in the skill. Coca-Cola Consolidated (COKE) was not included because it is a bottler and I did not open its FY2024 filing for this comparison. Monster is included at 0% because it pays no cash dividend.\n\n**Company data (FY2024, from each company's FY2024 10-K)**\n\n| Company | Period end | Cash dividends paid ($M) | Net income attributable ($M) | Payout ratio |\n|---|---|---|---|---|\n| KDP | Dec 31, 2024 | 1,194 | 1,441 | 1,194 \u00f7 1,441 = 82.86% |\n| KO | Dec 31, 2024 | 8,359 | 10,631 | 8,359 \u00f7 10,631 = 78.63% |\n| PEP | Dec 28, 2024 | 7,229 | 9,578 | 7,229 \u00f7 9,578 = 75.48% |\n| MNST | Dec 31, 2024 | 0 | 1,509.048 (\u22481,509) | 0.00% |\n\n**Notes on each input**\n- **KO:** Dividends paid of $8,359M appear under Financing Activities in the Consolidated Statements of Cash Flows. Net income attributable to shareowners of The Coca-Cola Company of $10,631M appears in the Consolidated Statements of Income. Diluted EPS was $2.46 and dividends declared were $1.94 per share. This confirms the figures from the prior run.\n- **PEP:** \"Cash dividends paid\" of $(7,229)M is in Financing Activities. Net income attributable to PepsiCo of $9,578M is from the Consolidated Statement of Income. Dividends declared were $7,347M ($5.33 per share), a timing difference from the paid figure.\n- **KDP:** \"Cash dividends paid\" of $(1,194)M is in Financing Activities. Net income of $1,441M has zero non-controlling interest, so it is also net income attributable to KDP. Diluted EPS was $1.05 and dividends declared were $0.89 per share.\n- **MNST:** The 10-K states it has not paid cash dividends and has no dividend line in its cash flow statement or equity statement. Net income was $1,509,048 thousand. Its payout ratio is 0%, so it ranks last.\n\n**Arithmetic (unrounded until the end)**\n- KDP: 1,194 \u00f7 1,441 = 0.828591\u2026 \u2192 82.86%\n- KO: 8,359 \u00f7 10,631 = 0.786276\u2026 \u2192 78.63%\n- PEP: 7,229 \u00f7 9,578 = 0.754750\u2026 \u2192 75.48%\n- MNST: 0 \u00f7 1,509.048 = 0.00%\n\n**Caveat:** The payout ratios are on a GAAP, paid basis. The adjusted (non-GAAP) figures were not reconciled here. Coca-Cola's rank is 2nd on this basis.\n\n```json\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\",\n            \"name\": \"The Coca-Cola Company FY2024 Form 10-K (filed 2025-02-20)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\",\n            \"name\": \"PepsiCo FY2024 Form 10-K (period ended 2024-12-28, filed 2025-02-04)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\",\n            \"name\": \"Keurig Dr Pepper FY2024 Form 10-K (filed 2025-02-25)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\",\n            \"name\": \"Monster Beverage FY2024 Form 10-K (filed 2025-02-28)\"\n        }\n    ]\n}\n```\n"
+       },
+       "output": "\n**Ranking: FY2024 dividend payout ratio (highest to lowest)**\n\n1. Keurig Dr Pepper (KDP): 82.86%\n2. **Coca-Cola (KO): 78.63% (rank 2 of 4)**\n3. PepsiCo (PEP): 75.48%\n4. Monster Beverage (MNST): 0.00% (pays no dividend)\n\n**Basis and definition**\n- Payout ratio = cash dividends paid (cash flow statement, financing activities) \u00f7 net income attributable to the company (GAAP, income statement), same fiscal year, in $ millions.\n- Paid basis was used, not declared, for all companies. I did not use the per-share fallback, since aggregate paid figures were available for each company.\n- Ratios are rounded to two decimals only at the end.\n\n**Peer set:** PepsiCo, Keurig Dr Pepper and Monster Beverage, the three starting peers named in the skill. Coca-Cola Consolidated (COKE) was not included because it is a bottler and I did not open its FY2024 filing for this comparison. Monster is included at 0% because it pays no cash dividend.\n\n**Company data (FY2024, from each company's FY2024 10-K)**\n\n| Company | Period end | Cash dividends paid ($M) | Net income attributable ($M) | Payout ratio |\n|---|---|---|---|---|\n| KDP | Dec 31, 2024 | 1,194 | 1,441 | 1,194 \u00f7 1,441 = 82.86% |\n| KO | Dec 31, 2024 | 8,359 | 10,631 | 8,359 \u00f7 10,631 = 78.63% |\n| PEP | Dec 28, 2024 | 7,229 | 9,578 | 7,229 \u00f7 9,578 = 75.48% |\n| MNST | Dec 31, 2024 | 0 | 1,509.048 (\u22481,509) | 0.00% |\n\n**Notes on each input**\n- **KO:** Dividends paid of $8,359M appear under Financing Activities in the Consolidated Statements of Cash Flows. Net income attributable to shareowners of The Coca-Cola Company of $10,631M appears in the Consolidated Statements of Income. Diluted EPS was $2.46 and dividends declared were $1.94 per share. This confirms the figures from the prior run.\n- **PEP:** \"Cash dividends paid\" of $(7,229)M is in Financing Activities. Net income attributable to PepsiCo of $9,578M is from the Consolidated Statement of Income. Dividends declared were $7,347M ($5.33 per share), a timing difference from the paid figure.\n- **KDP:** \"Cash dividends paid\" of $(1,194)M is in Financing Activities. Net income of $1,441M has zero non-controlling interest, so it is also net income attributable to KDP. Diluted EPS was $1.05 and dividends declared were $0.89 per share.\n- **MNST:** The 10-K states it has not paid cash dividends and has no dividend line in its cash flow statement or equity statement. Net income was $1,509,048 thousand. Its payout ratio is 0%, so it ranks last.\n\n**Arithmetic (unrounded until the end)**\n- KDP: 1,194 \u00f7 1,441 = 0.828591\u2026 \u2192 82.86%\n- KO: 8,359 \u00f7 10,631 = 0.786276\u2026 \u2192 78.63%\n- PEP: 7,229 \u00f7 9,578 = 0.754750\u2026 \u2192 75.48%\n- MNST: 0 \u00f7 1,509.048 = 0.00%\n\n**Caveat:** The payout ratios are on a GAAP, paid basis. The adjusted (non-GAAP) figures were not reconciled here. Coca-Cola's rank is 2nd on this basis.\n\n```json\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\",\n            \"name\": \"The Coca-Cola Company FY2024 Form 10-K (filed 2025-02-20)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\",\n            \"name\": \"PepsiCo FY2024 Form 10-K (period ended 2024-12-28, filed 2025-02-04)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\",\n            \"name\": \"Keurig Dr Pepper FY2024 Form 10-K (filed 2025-02-25)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\",\n            \"name\": \"Monster Beverage FY2024 Form 10-K (filed 2025-02-28)\"\n        }\n    ]\n}\n```\n",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.001744175
+    }
+   ],
+   "final_answer": "\n**Ranking: FY2024 dividend payout ratio (highest to lowest)**\n\n1. Keurig Dr Pepper (KDP): 82.86%\n2. **Coca-Cola (KO): 78.63% (rank 2 of 4)**\n3. PepsiCo (PEP): 75.48%\n4. Monster Beverage (MNST): 0.00% (pays no dividend)\n\n**Basis and definition**\n- Payout ratio = cash dividends paid (cash flow statement, financing activities) \u00f7 net income attributable to the company (GAAP, income statement), same fiscal year, in $ millions.\n- Paid basis was used, not declared, for all companies. I did not use the per-share fallback, since aggregate paid figures were available for each company.\n- Ratios are rounded to two decimals only at the end.\n\n**Peer set:** PepsiCo, Keurig Dr Pepper and Monster Beverage, the three starting peers named in the skill. Coca-Cola Consolidated (COKE) was not included because it is a bottler and I did not open its FY2024 filing for this comparison. Monster is included at 0% because it pays no cash dividend.\n\n**Company data (FY2024, from each company's FY2024 10-K)**\n\n| Company | Period end | Cash dividends paid ($M) | Net income attributable ($M) | Payout ratio |\n|---|---|---|---|---|\n| KDP | Dec 31, 2024 | 1,194 | 1,441 | 1,194 \u00f7 1,441 = 82.86% |\n| KO | Dec 31, 2024 | 8,359 | 10,631 | 8,359 \u00f7 10,631 = 78.63% |\n| PEP | Dec 28, 2024 | 7,229 | 9,578 | 7,229 \u00f7 9,578 = 75.48% |\n| MNST | Dec 31, 2024 | 0 | 1,509.048 (\u22481,509) | 0.00% |\n\n**Notes on each input**\n- **KO:** Dividends paid of $8,359M appear under Financing Activities in the Consolidated Statements of Cash Flows. Net income attributable to shareowners of The Coca-Cola Company of $10,631M appears in the Consolidated Statements of Income. Diluted EPS was $2.46 and dividends declared were $1.94 per share. This confirms the figures from the prior run.\n- **PEP:** \"Cash dividends paid\" of $(7,229)M is in Financing Activities. Net income attributable to PepsiCo of $9,578M is from the Consolidated Statement of Income. Dividends declared were $7,347M ($5.33 per share), a timing difference from the paid figure.\n- **KDP:** \"Cash dividends paid\" of $(1,194)M is in Financing Activities. Net income of $1,441M has zero non-controlling interest, so it is also net income attributable to KDP. Diluted EPS was $1.05 and dividends declared were $0.89 per share.\n- **MNST:** The 10-K states it has not paid cash dividends and has no dividend line in its cash flow statement or equity statement. Net income was $1,509,048 thousand. Its payout ratio is 0%, so it ranks last.\n\n**Arithmetic (unrounded until the end)**\n- KDP: 1,194 \u00f7 1,441 = 0.828591\u2026 \u2192 82.86%\n- KO: 8,359 \u00f7 10,631 = 0.786276\u2026 \u2192 78.63%\n- PEP: 7,229 \u00f7 9,578 = 0.754750\u2026 \u2192 75.48%\n- MNST: 0 \u00f7 1,509.048 = 0.00%\n\n**Caveat:** The payout ratios are on a GAAP, paid basis. The adjusted (non-GAAP) figures were not reconciled here. Coca-Cola's rank is 2nd on this basis.\n\n```json\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\",\n            \"name\": \"The Coca-Cola Company FY2024 Form 10-K (filed 2025-02-20)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\",\n            \"name\": \"PepsiCo FY2024 Form 10-K (period ended 2024-12-28, filed 2025-02-04)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\",\n            \"name\": \"Keurig Dr Pepper FY2024 Form 10-K (filed 2025-02-25)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\",\n            \"name\": \"Monster Beverage FY2024 Form 10-K (filed 2025-02-28)\"\n        }\n    ]\n}\n```\n",
+   "fallback_text": "",
+   "submitted": true,
+   "turns": 5,
+   "stop": "submitted",
+   "error": "",
+   "usage": {
+    "calls": 9,
+    "input_tokens": 28,
+    "output_tokens": 7577,
+    "cache_creation_input_tokens": 728180,
+    "cache_read_input_tokens": 49925,
+    "web_search_requests": 0,
+    "cost_usd": 0.454751
+   },
+   "cost_usd": 0.454751,
+   "elapsed_s": 59.6,
+   "harness_label": "dom1"
+  },
+  "agg1": {
+   "task_id": "q42",
+   "label": "agg1",
+   "question": "Compare the FY24 dividend payout ratio of Coca-Cola (KO) to that of its competitors and rank in order from highest to lowest.",
+   "steps": [
+    {
+     "turn": 1,
+     "text": "I'll pull the FY2024 10-K filings for Coca-Cola and its main beverage peers, starting with the filing index for each.",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "Coca-Cola annual report 2024 dividends paid net income attributable",
+        "ciks": [
+         "KO"
+        ],
+        "start_date": "2025-01-01",
+        "end_date": "2025-04-07",
+        "form_types": [
+         "10-K"
+        ]
+       },
+       "output": "{\"total_matching_documents\": 1, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-20\", \"period_ending\": \"2024-12-31\", \"company\": \"COCA COLA CO  (KO)  (CIK 0000021344)\", \"ciks\": [\"0000021344\"], \"accession\": \"0000021344-25-000011\", \"document\": \"ko-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\"}]}",
+       "is_error": false,
+       "elapsed_s": 1.08,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "PepsiCo annual report 2024 dividends paid net income attributable",
+        "ciks": [
+         "PEP"
+        ],
+        "start_date": "2025-01-01",
+        "end_date": "2025-04-07",
+        "form_types": [
+         "10-K"
+        ]
+       },
+       "output": "{\"total_matching_documents\": 1, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-04\", \"period_ending\": \"2024-12-28\", \"company\": \"PEPSICO INC  (PEP)  (CIK 0000077476)\", \"ciks\": [\"0000077476\"], \"accession\": \"0000077476-25-000007\", \"document\": \"pep-20241228.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\"}]}",
+       "is_error": false,
+       "elapsed_s": 0.48,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "Keurig Dr Pepper annual report 2024 dividends paid net income",
+        "ciks": [
+         "KDP"
+        ],
+        "start_date": "2025-01-01",
+        "end_date": "2025-04-07",
+        "form_types": [
+         "10-K"
+        ]
+       },
+       "output": "{\"total_matching_documents\": 2, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-25\", \"period_ending\": \"2024-12-31\", \"company\": \"Keurig Dr Pepper Inc.  (KDP)  (CIK 0001418135)\", \"ciks\": [\"0001418135\"], \"accession\": \"0001418135-25-000013\", \"document\": \"kdp-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-25\", \"period_ending\": \"2024-12-31\", \"company\": \"Keurig Dr Pepper Inc.  (KDP)  (CIK 0001418135)\", \"ciks\": [\"0001418135\"], \"accession\": \"0001418135-25-000013\", \"document\": \"kdp-ex1019ghostlifestylell.htm\", \"description\": \"EX-10.19 GHOST LIFESTYLE LLC CONTRIBUTION AND MERGER AGREEMENT\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-ex1019ghostlifestylell.htm\"}]}",
+       "is_error": false,
+       "elapsed_s": 0.5,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "Monster Beverage annual report 2024 cash dividends net income",
+        "ciks": [
+         "MNST"
+        ],
+        "start_date": "2025-01-01",
+        "end_date": "2025-04-07",
+        "form_types": [
+         "10-K"
+        ]
+       },
+       "output": "{\"total_matching_documents\": 1, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-28\", \"period_ending\": \"2024-12-31\", \"company\": \"Monster Beverage Corp  (MNST)  (CIK 0000865752)\", \"ciks\": [\"0000865752\"], \"accession\": \"0001410578-25-000248\", \"document\": \"mnst-20241231x10k.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\"}]}",
+       "is_error": false,
+       "elapsed_s": 0.52,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.001328025
+    },
+    {
+     "turn": 2,
+     "text": "I found the FY2024 10-K for each company. Next I'll open all four filings.",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm",
+        "key": "ko_10k_2024"
+       },
+       "output": "SUCCESS: The result has been saved to the data storage under the key: ko_10k_2024. (655,758 characters)\nThe data_storage currently contains the following keys:\nko_10k_2024\n",
+       "is_error": false,
+       "elapsed_s": 0.69,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm",
+        "key": "pep_10k_2024"
+       },
+       "output": "SUCCESS: The result has been saved to the data storage under the key: pep_10k_2024. (479,973 characters)\nThe data_storage currently contains the following keys:\nko_10k_2024\npep_10k_2024\n",
+       "is_error": false,
+       "elapsed_s": 0.78,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm",
+        "key": "kdp_10k_2024"
+       },
+       "output": "SUCCESS: The result has been saved to the data storage under the key: kdp_10k_2024. (403,591 characters)\nThe data_storage currently contains the following keys:\nko_10k_2024\npep_10k_2024\nkdp_10k_2024\n",
+       "is_error": false,
+       "elapsed_s": 0.57,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm",
+        "key": "mnst_10k_2024"
+       },
+       "output": "SUCCESS: The result has been saved to the data storage under the key: mnst_10k_2024. (469,739 characters)\nThe data_storage currently contains the following keys:\nko_10k_2024\npep_10k_2024\nkdp_10k_2024\nmnst_10k_2024\n",
+       "is_error": false,
+       "elapsed_s": 0.64,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.0005925250000000001
+    },
+    {
+     "turn": 3,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "retrieve_information",
+       "input": {
+        "prompt": "From this Coca-Cola FY2024 10-K, quote verbatim the consolidated statement of cash flows row \"Dividends paid\" for 2024 (in millions), and the income statement row \"Net income attributable to shareholders of The Coca-Cola Company\" for 2024 (in millions), and diluted net income per share for 2024. Also any dividends declared per share in 2024. State the column period and units. {{ko_10k_2024}}"
+       },
+       "output": "**1. Consolidated Statement of Cash Flows, \"Dividends\" row (2024):**\n\"Dividends(8,359)(7,952)(7,616)\"\n- Column: Year Ended December 31, 2024 (first column; the row is under Financing Activities)\n- Units: in millions (USD), shown as a negative (cash outflow): **$(8,359) million**\n- Note: the filing's label is \"Dividends,\" not \"Dividends paid.\"\n\n**2. Consolidated Statement of Income, net income attributable row (2024):**\n\"Net Income Attributable to Shareowners of The Coca-Cola Company $10,631 $10,714 $9,542\"\n- Column: Year Ended December 31, 2024 (first column)\n- Units: in millions (USD): **$10,631 million**\n- Note: the filing uses \"Shareowners,\" not \"Shareholders.\"\n\n**3. Diluted net income per share (2024):**\n\"Diluted Net Income Per Share1 $2.46 $2.47 $2.19\"\n- Column: Year Ended December 31, 2024\n- Units: US dollars per share: **$2.46**\n\n**4. Dividends declared per share (2024):**\nFrom the Consolidated Statements of Shareowners' Equity, Reinvested Earnings section: \"Dividends (per share \u2014 $1.94, $1.84 and $1.76 in 2024, 2023 and 2022, respectively)\"\n- Period: year ended December 31, 2024\n- Units: US dollars per share: **$1.94**\n- Note: the filing labels this as dividends per share in the equity statement and says in Item 7 that \"Our annualized common stock dividend was $1.94 per share and $1.84 per share in 2024 and 2023, respectively.\" It does not use the word \"declared\" for this figure. The February 2025 increase to a $0.51 quarterly dividend relates to 2025, not 2024.",
+       "is_error": false,
+       "elapsed_s": 6.97,
+       "cost_usd": 0.143176
+      },
+      {
+       "name": "retrieve_information",
+       "input": {
+        "prompt": "From this PepsiCo FY2024 10-K (fiscal year ended December 28, 2024), quote verbatim the consolidated statement of cash flows row \"Cash dividends paid\" for fiscal 2024 (in millions), and the income statement row \"Net income attributable to PepsiCo\" for fiscal 2024 (in millions), and any declared dividends per share for 2024. State column period and units. {{pep_10k_2024}}"
+       },
+       "output": "**Cash dividends paid (Consolidated Statement of Cash Flows, Financing Activities)**\n- Verbatim row: \"Cash dividends paid (7,229)(6,682)(6,172)\"\n- Fiscal 2024 value: **$(7,229) million**, a cash outflow\n- Column: fiscal year ended December 28, 2024 (the first of three columns; the others are fiscal 2023 and 2022)\n- Units: U.S. dollars in millions\n\n**Net Income Attributable to PepsiCo (Consolidated Statement of Income)**\n- Verbatim row: \"Net Income Attributable to PepsiCo $9,578 $9,074 $8,910\"\n- Fiscal 2024 value: **$9,578 million**\n- Column: fiscal year ended December 28, 2024 (the first of three columns; the others are fiscal 2023 and 2022)\n- Units: U.S. dollars in millions, except per-share amounts\n\n**Declared dividends per share for 2024 (Consolidated Statement of Equity, footnote (a))**\n- Verbatim: \"Cash dividends declared per common share were $5.3300, $4.9450 and $4.5250 for 2024, 2023 and 2022, respectively.\"\n- Fiscal 2024 value: **$5.3300 per common share**\n- Units: U.S. dollars per common share\n\nThe statement of equity also shows total cash dividends declared of $(7,347) million for 2024 under Retained Earnings. This differs from the $7,229 million paid in cash, consistent with the timing of dividend payments.",
+       "is_error": false,
+       "elapsed_s": 8.6,
+       "cost_usd": 0.109228
+      },
+      {
+       "name": "retrieve_information",
+       "input": {
+        "prompt": "From this Keurig Dr Pepper FY2024 10-K, quote verbatim the consolidated statement of cash flows row for dividends paid for 2024 (in millions), the income statement row \"Net income\" and \"Net income attributable to common stockholders\" or equivalent for 2024 (in millions), and dividends declared per share in 2024. State column period and units. {{kdp_10k_2024}}"
+       },
+       "output": "**1. Cash dividends paid (Consolidated Statements of Cash Flows, Financing activities)**\n\nVerbatim row: \"Cash dividends paid(1,194)(1,142)(1,080)\"\n\n- Column: Year Ended December 31, 2024 (first column)\n- Units: US$ in millions\n- Value: $(1,194) million, shown in parentheses as a cash outflow\n\n**2. Net income (Consolidated Statements of Income)**\n\nVerbatim row: \"Net income$1,441 $2,181 $1,436\"\n\n- Column: Year Ended December 31, 2024 (first column)\n- Units: US$ in millions\n- Value: $1,441 million\n\nThe income statement has no separate line labeled \"Net income attributable to common stockholders.\" The closest equivalent is the line above \"Net income,\" which is \"Less: Net loss attributable to non-controlling interest\" and shows \"\u2014\" for 2024. The 2024 figure for net income attributable to KDP is therefore also $1,441 million. The MD&A guarantor table also states \"Net income attributable to KDP 1,441\" for 2024.\n\n**3. Dividends declared per share (Consolidated Statements of Changes in Stockholders' Equity)**\n\nVerbatim row: \"Dividends declared, $0.89 per share\u2014 \u2014 \u2014 (1,207)\u2014 (1,207)\u2014 (1,207)\"\n\n- Period: Year Ended December 31, 2024\n- Units: US$ per share (the $1,207 total in the row is in US$ millions)\n- Value: $0.89 per share",
+       "is_error": false,
+       "elapsed_s": 7.26,
+       "cost_usd": 0.092255
+      },
+      {
+       "name": "retrieve_information",
+       "input": {
+        "prompt": "From this Monster Beverage FY2024 10-K, quote verbatim any cash dividends paid in 2024 (cash flow statement or stockholders equity), net income for 2024 (in thousands), and whether the company paid any cash dividend in 2024 or stated it has never paid cash dividends. {{mnst_10k_2024}}"
+       },
+       "output": "**Cash dividends in 2024:** No cash dividends were paid. The Item 5 disclosure states verbatim: \"We have not paid cash dividends to our stockholders since our inception and do not anticipate paying cash dividends in the foreseeable future.\"\n\nThe cash flow statement and the statement of stockholders' equity contain no dividend line items. The financing section of the cash flow statement lists only debt, stock issuance, and treasury stock purchases.\n\n**Net income for 2024:** $1,509,048 thousand, as shown on the Consolidated Statements of Income: \"NET INCOME $ 1,509,048 $ 1,630,988 $ 1,191,624.\"",
+       "is_error": false,
+       "elapsed_s": 3.31,
+       "cost_usd": 0.106734
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.0005626899999999999
+    },
+    {
+     "turn": 4,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "submit_final_result",
+       "input": {
+        "final_result": "FY2024 dividend payout ratio ranking (basis: cash dividends paid from the cash flow statement divided by GAAP net income attributable to shareholders, same fiscal year, from each company's FY2024 10-K):\n\n1. Keurig Dr Pepper (KDP): 82.86%\n   - Cash dividends paid, FY2024: $1,194 million (cash flow statement, Financing activities, year ended Dec 31, 2024, USD millions)\n   - Net income attributable to KDP, FY2024: $1,441 million (income statement; no non-controlling interest in 2024, so net income = attributable net income)\n   - Calculation: 1,194 / 1,441 = 82.86%\n   - Cross-check (declared basis): dividends declared $0.89/share in 2024 per the equity statement ($1,207 million total declared)\n   - Source: KDP FY2024 10-K (kdp-20241231.htm)\n\n2. Coca-Cola (KO): 78.63%\n   - Dividends paid, FY2024: $8,359 million (cash flow statement, labelled \"Dividends\", year ended Dec 31, 2024)\n   - Net income attributable to shareowners of The Coca-Cola Company, FY2024: $10,631 million\n   - Calculation: 8,359 / 10,631 = 78.63%\n   - Cross-check (declared basis): $1.94 annualized dividend per share / $2.46 diluted EPS = 78.86%\n   - Source: KO FY2024 10-K (ko-20241231.htm)\n\n3. PepsiCo (PEP): 75.48%\n   - Cash dividends paid, FY2024: $7,229 million (cash flow statement, fiscal year ended Dec 28, 2024)\n   - Net income attributable to PepsiCo, FY2024: $9,578 million\n   - Calculation: 7,229 / 9,578 = 75.48%\n   - Declared dividends per share 2024: $5.3300 (total declared $7,347 million); a diluted EPS figure was not retrieved, so no per-share cross-check is shown\n   - Source: PEP FY2024 10-K (pep-20241228.htm)\n\n4. Monster Beverage (MNST): 0.00%\n   - The 10-K states: \"We have not paid cash dividends to our stockholders since our inception and do not anticipate paying cash dividends in the foreseeable future.\" No dividend lines appear in the cash flow or equity statements.\n   - Net income for 2024: $1,509,048 thousand\n   - Source: MNST FY2024 10-K (mnst-20241231x10k.htm)\n\nNotes: KO and PEP fiscal years end Dec 31 and Dec 28, 2024 respectively; KDP and MNST end Dec 31. Ratios are on a paid basis as specified; the declared-basis cross-checks are labelled and do not change the ranking. Figures were retrieved from the cited primary filings. Competitor set chosen: PepsiCo, Keurig Dr Pepper, Monster Beverage (the question's competitor set was not specified; other beverage peers such as Coca-Cola Consolidated or National Beverage were not included).\n\nSources:\n{\n    \"sources\": [\n        {\"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\", \"name\": \"Coca-Cola FY2024 10-K\"},\n        {\"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\", \"name\": \"PepsiCo FY2024 10-K\"},\n        {\"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\", \"name\": \"Keurig Dr Pepper FY2024 10-K\"},\n        {\"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\", \"name\": \"Monster Beverage FY2024 10-K\"}\n    ]\n}"
+       },
+       "output": "FY2024 dividend payout ratio ranking (basis: cash dividends paid from the cash flow statement divided by GAAP net income attributable to shareholders, same fiscal year, from each company's FY2024 10-K):\n\n1. Keurig Dr Pepper (KDP): 82.86%\n   - Cash dividends paid, FY2024: $1,194 million (cash flow statement, Financing activities, year ended Dec 31, 2024, USD millions)\n   - Net income attributable to KDP, FY2024: $1,441 million (income statement; no non-controlling interest in 2024, so net income = attributable net income)\n   - Calculation: 1,194 / 1,441 = 82.86%\n   - Cross-check (declared basis): dividends declared $0.89/share in 2024 per the equity statement ($1,207 million total declared)\n   - Source: KDP FY2024 10-K (kdp-20241231.htm)\n\n2. Coca-Cola (KO): 78.63%\n   - Dividends paid, FY2024: $8,359 million (cash flow statement, labelled \"Dividends\", year ended Dec 31, 2024)\n   - Net income attributable to shareowners of The Coca-Cola Company, FY2024: $10,631 million\n   - Calculation: 8,359 / 10,631 = 78.63%\n   - Cross-check (declared basis): $1.94 annualized dividend per share / $2.46 diluted EPS = 78.86%\n   - Source: KO FY2024 10-K (ko-20241231.htm)\n\n3. PepsiCo (PEP): 75.48%\n   - Cash dividends paid, FY2024: $7,229 million (cash flow statement, fiscal year ended Dec 28, 2024)\n   - Net income attributable to PepsiCo, FY2024: $9,578 million\n   - Calculation: 7,229 / 9,578 = 75.48%\n   - Declared dividends per share 2024: $5.3300 (total declared $7,347 million); a diluted EPS figure was not retrieved, so no per-share cross-check is shown\n   - Source: PEP FY2024 10-K (pep-20241228.htm)\n\n4. Monster Beverage (MNST): 0.00%\n   - The 10-K states: \"We have not paid cash dividends to our stockholders since our inception and do not anticipate paying cash dividends in the foreseeable future.\" No dividend lines appear in the cash flow or equity statements.\n   - Net income for 2024: $1,509,048 thousand\n   - Source: MNST FY2024 10-K (mnst-20241231x10k.htm)\n\nNotes: KO and PEP fiscal years end Dec 31 and Dec 28, 2024 respectively; KDP and MNST end Dec 31. Ratios are on a paid basis as specified; the declared-basis cross-checks are labelled and do not change the ranking. Figures were retrieved from the cited primary filings. Competitor set chosen: PepsiCo, Keurig Dr Pepper, Monster Beverage (the question's competitor set was not specified; other beverage peers such as Coca-Cola Consolidated or National Beverage were not included).\n\nSources:\n{\n    \"sources\": [\n        {\"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\", \"name\": \"Coca-Cola FY2024 10-K\"},\n        {\"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\", \"name\": \"PepsiCo FY2024 10-K\"},\n        {\"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\", \"name\": \"Keurig Dr Pepper FY2024 10-K\"},\n        {\"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\", \"name\": \"Monster Beverage FY2024 10-K\"}\n    ]\n}",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.0014656500000000002
+    }
+   ],
+   "final_answer": "FY2024 dividend payout ratio ranking (basis: cash dividends paid from the cash flow statement divided by GAAP net income attributable to shareholders, same fiscal year, from each company's FY2024 10-K):\n\n1. Keurig Dr Pepper (KDP): 82.86%\n   - Cash dividends paid, FY2024: $1,194 million (cash flow statement, Financing activities, year ended Dec 31, 2024, USD millions)\n   - Net income attributable to KDP, FY2024: $1,441 million (income statement; no non-controlling interest in 2024, so net income = attributable net income)\n   - Calculation: 1,194 / 1,441 = 82.86%\n   - Cross-check (declared basis): dividends declared $0.89/share in 2024 per the equity statement ($1,207 million total declared)\n   - Source: KDP FY2024 10-K (kdp-20241231.htm)\n\n2. Coca-Cola (KO): 78.63%\n   - Dividends paid, FY2024: $8,359 million (cash flow statement, labelled \"Dividends\", year ended Dec 31, 2024)\n   - Net income attributable to shareowners of The Coca-Cola Company, FY2024: $10,631 million\n   - Calculation: 8,359 / 10,631 = 78.63%\n   - Cross-check (declared basis): $1.94 annualized dividend per share / $2.46 diluted EPS = 78.86%\n   - Source: KO FY2024 10-K (ko-20241231.htm)\n\n3. PepsiCo (PEP): 75.48%\n   - Cash dividends paid, FY2024: $7,229 million (cash flow statement, fiscal year ended Dec 28, 2024)\n   - Net income attributable to PepsiCo, FY2024: $9,578 million\n   - Calculation: 7,229 / 9,578 = 75.48%\n   - Declared dividends per share 2024: $5.3300 (total declared $7,347 million); a diluted EPS figure was not retrieved, so no per-share cross-check is shown\n   - Source: PEP FY2024 10-K (pep-20241228.htm)\n\n4. Monster Beverage (MNST): 0.00%\n   - The 10-K states: \"We have not paid cash dividends to our stockholders since our inception and do not anticipate paying cash dividends in the foreseeable future.\" No dividend lines appear in the cash flow or equity statements.\n   - Net income for 2024: $1,509,048 thousand\n   - Source: MNST FY2024 10-K (mnst-20241231x10k.htm)\n\nNotes: KO and PEP fiscal years end Dec 31 and Dec 28, 2024 respectively; KDP and MNST end Dec 31. Ratios are on a paid basis as specified; the declared-basis cross-checks are labelled and do not change the ranking. Figures were retrieved from the cited primary filings. Competitor set chosen: PepsiCo, Keurig Dr Pepper, Monster Beverage (the question's competitor set was not specified; other beverage peers such as Coca-Cola Consolidated or National Beverage were not included).\n\nSources:\n{\n    \"sources\": [\n        {\"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\", \"name\": \"Coca-Cola FY2024 10-K\"},\n        {\"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm\", \"name\": \"PepsiCo FY2024 10-K\"},\n        {\"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\", \"name\": \"Keurig Dr Pepper FY2024 10-K\"},\n        {\"url\": \"https://www.sec.gov/Archives/edgar/data/865752/000141057825000248/mnst-20241231x10k.htm\", \"name\": \"Monster Beverage FY2024 10-K\"}\n    ]\n}",
+   "fallback_text": "I found the FY2024 10-K for each company. Next I'll open all four filings.",
+   "submitted": true,
+   "turns": 4,
+   "stop": "submitted",
+   "error": "",
+   "usage": {
+    "calls": 8,
+    "input_tokens": 26,
+    "output_tokens": 8314,
+    "cache_creation_input_tokens": 718596,
+    "cache_read_input_tokens": 24339,
+    "web_search_requests": 0,
+    "cost_usd": 0.455343
+   },
+   "cost_usd": 0.455343,
+   "elapsed_s": 49.1,
+   "harness_label": "agg1"
+  }
+ },
+ "stages": {
+  "inv1": {
+   "dim": "INV",
+   "notes": "Motivating moment: base1 made one batch of web searches and submitted in the next turn. It computed KO from aggregate 10-K dollars (8,359 / 10,631 = 78.63%), but PepsiCo and KDP only from per-share numbers. The PepsiCo dividend came from a Fidelity table and the KDP full-year dividend was reconstructed from nine-month data plus a guessed Q4. It also left raw cite tags in the answer, and its KO cross-check used an EPS figure it said was not in its sources. The edit adds, in tool_guidance only: open all peers' 10-Ks together, use one formula and data basis across companies, treat per-share as a labelled cross-check, state the peer set, and write plain text without citation tags. It also records the KO facts the run did verify, labelled as task facts. No skill was added, because this is a short generic sequencing rule and the library shows skills only added a load turn.",
+   "keep_base": false,
+   "error": "",
+   "cost_usd": 0.0837205,
+   "inventory": "0 skills; 4,549 always-on chars",
+   "tree": {
+    "systemprompt.md": "You are a financial agent. You are given a question and you need to answer it using the tools provided.\nYou will not be able to interact with the user or ask clarifications, you must answer the question only based on the information provided.\n\nYou should answer all questions as if the current date is April 07, 2025.\n\nYou will have access to a data storage system. You can use this system to store parsed contents of HTML pages retrieved from the web.\nYou can then use the retrieve_information tool to apply answer questions or gather information from the stored documents using LLM-based prompts.\nThis data storage system is designed to help you avoid context window issues.\n\nWhen you have the final answer, you should call the `submit_final_result` tool with it. Your submission will not be processed unless you call this tool.\n\nYou should include any necessary step-by-step reasoning, justification, calculations, or explanation in your answer. You will be evaluated both on the accuracy of the final answer, and the correctness of the supporting logic.\n\nWhen possible, please provide any calculated answers to at least two decimal places (e.g. 18.78% rather than 19%). Please do not round intermediate steps in any calculations - you should only round your final answer.\n\nAt the end of your answer, you should provide your sources in a dictionary with the following format:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://example.com\",\n            \"name\": \"Name of the source\"\n        },\n        ...\n    ]\n}\n",
+    "guardrails.md": "",
+    "LongTermMEMORY.md": "",
+    "tool_guidance.md": "# Tool guidance\n\nBefore searching, decide which documents and periods the question needs: each company, form type (10-K, 10-Q, 8-K exhibit 99.1) and fiscal period. Then search with those filters, not the question's wording. Use only documents dated on or before April 07, 2025.\n\n- `edgar_search`: pass the ticker or CIK, a date range, and the form type. If it returns 0 results, change the filters once. If it still returns nothing, use `web_search` for the primary document. Do not repeat an empty `web_search`.\n- `web_search`: use it to find primary documents. A snippet or third-party page (dividend history sites, aggregators) is a lead, not evidence.\n- `parse_html_page`: store each primary document under a clear key (for example `ko_10k_2024`, `pep_10k_2024`). When the question needs several companies, open every company's FY 10-K in the same turn.\n- `retrieve_information`: ask one targeted question at a time per document. On long filings, use `input_character_ranges`. Ask for the exact figure with its period, unit and row label, quoted verbatim. If a row is unclear, check it in a second table (for example the cash flow statement) instead of inferring.\n\nEnough evidence means each figure that enters a calculation was read from a period-matching column of a primary document that was actually opened and retrieved. A figure seen only in a search result is a lead. Do not write that a figure was \"read from\" a filing unless a retrieve call on it returned it.\n\nPeer-comparison and ranking questions (several companies, one ratio):\n- First state the peer set and the single formula, and apply the SAME formula and data basis to every company. For a payout ratio, use the cash-flow-statement dividends paid divided by net income attributable to the company's shareholders, both from each company's FY10-K. Mixing one company's aggregate dollars with another's per-share figures makes the ranking non-comparable. Use per-share declared dividends divided by diluted EPS only as a labelled cross-check.\n- If a company's fiscal year does not match the calendar year, name its fiscal year end. If a peer pays no dividend, report 0% and quote the filing's statement saying so.\n- Where GAAP earnings are distorted (for example by an impairment), give the GAAP-basis ranking as the headline and mention the adjusted figure separately.\n- Keep full precision until the end. Give a ranked list, highest to lowest, with each company's inputs and ratio.\n\nIn this task (verified from Coca-Cola's FY2024 10-K): dividends paid were $8,359 million and net income attributable to shareowners was $10,631 million, so the payout is 78.63%. Re-verify peers from their own 10-Ks. In the prior run PepsiCo and KDP were done per-share only, because aggregate dividends paid were never retrieved.\n\nOutput: write plain text with no citation tags or markup. Before `submit_final_result`, re-check each figure against the retrieved text for period, units and label, and say which document each figure came from. Submit while budget remains.\n"
+   }
+  },
+  "dom1": {
+   "dim": "DOM",
+   "notes": "Motivation (base1): the run answered from search snippets and opened no filing. It mixed bases: aggregate dollars for KO ($8,359M / $10,631M) but per-share declared dividends over diluted EPS for PepsiCo and KDP. It added a KO cross-check using an EPS figure (\"$2.46\") that it admitted was not in its sources. It also built KDP's dividend as nine-month plus a guessed Q4 amount. Because of the mixed bases, the ranking (KDP > KO > PEP > MNST) is shaky. The new skill, loaded by a trigger line, fixes the definition (cash dividends paid \u00f7 GAAP net income attributable), requires the same basis for every peer, fixes the peer set and the placement of non-payers, and says where the figures live in the 10-K. It also records KO's figures as labelled leads to re-verify, not as established facts. Skill form was chosen because the trigger (a payout-ratio peer comparison) is recognisable and the content is reusable across the research desk. The always-on cost is one trigger line.",
+   "keep_base": false,
+   "error": "",
+   "cost_usd": 0.0952855,
+   "inventory": "1 skill; 1,704 always-on chars",
+   "tree": {
+    "systemprompt.md": "You are a financial agent. You are given a question and you need to answer it using the tools provided.\nYou will not be able to interact with the user or ask clarifications, you must answer the question only based on the information provided.\n\nYou should answer all questions as if the current date is April 07, 2025.\n\nYou will have access to a data storage system. You can use this system to store parsed contents of HTML pages retrieved from the web.\nYou can then use the retrieve_information tool to apply answer questions or gather information from the stored documents using LLM-based prompts.\nThis data storage system is designed to help you avoid context window issues.\n\nWhen a question compares dividend payout ratios (or dividend payouts against earnings) across a company and its competitors, call load_skill with `dividend_payout_peer_compare`.\n\nWhen you have the final answer, you should call the `submit_final_result` tool with it. Your submission will not be processed unless you call this tool.\n\nYou should include any necessary step-by-step reasoning, justification, calculations, or explanation in your answer. You will be evaluated both on the accuracy of the final answer, and the correctness of the supporting logic.\n\nWhen possible, please provide any calculated answers to at least two decimal places (e.g. 18.78% rather than 19%). Please do not round intermediate steps in any calculations - you should only round your final answer.\n\nAt the end of your answer, you should provide your sources in a dictionary with the following format:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://example.com\",\n            \"name\": \"Name of the source\"\n        },\n        ...\n    ]\n}\n",
+    "guardrails.md": "",
+    "LongTermMEMORY.md": "",
+    "tool_guidance.md": "",
+    "skills/dividend_payout_peer_compare/SKILL.md": "---\nname: dividend_payout_peer_compare\ndescription: Compare dividend payout ratios across a company and its competitors for a fiscal year and rank them, on one consistent basis from each company's 10-K.\n---\n\n# Dividend payout ratio: peer comparison and ranking\n\n**Analytic move:** compare. Inputs are, for each company, FY dividends and FY earnings. The result is a ranked list on one basis.\n\n## Definition (state it in the answer)\nPayout ratio = common dividends \u00f7 net income attributable to common shareholders, for the same fiscal year.\n- Primary basis: aggregate cash dividends paid (cash flow statement, financing section, \"dividends paid\" or \"cash dividends paid\") \u00f7 GAAP net income attributable to the company (income statement).\n- Use the same basis for every company. Do not divide dollars by dollars for one company and per-share by per-share for another.\n- Per-share declared dividends \u00f7 diluted GAAP EPS is an acceptable cross-check, and it is the fallback only if the aggregate paid figure cannot be retrieved. If you fall back, say so and apply it to every company.\n- Dividends declared and dividends paid differ by timing (a Q4 dividend declared in December may be paid in January). Say which one you used.\n- GAAP and adjusted/non-GAAP payout differ materially when there are impairments or one-offs. Rank on GAAP. Add one line showing the adjusted figure only if the company's own release reconciles it.\n\n## Peer set\n- Competitors means direct peers in the same line of business that file with the SEC and have FY2024 data. For Coca-Cola, start from PepsiCo, Keurig Dr Pepper and Monster Beverage. Add other listed bottlers or beverage peers only if you can open their filings (for example Coca-Cola Consolidated).\n- State the peer set in the answer. A company that pays no dividend has a payout ratio of 0% and goes last. Show it rather than omitting it.\n- Fiscal year ends differ (for example PepsiCo's FY2024 ends in late December and KDP's on Dec 31). Use each company's fiscal 2024 and state the period end.\n\n## Where the figures live\n- 10-K Item 8: the consolidated statements of cash flows (dividends paid), and the income statement (net income attributable to shareowners, diluted EPS).\n- Equity statement or notes: dividends declared per share.\n- Do not use aggregator pages (payout ratio TTM on MarketBeat, GuruFocus and similar) as the figure. They use different periods and bases. Only filings dated on or before April 07, 2025 count.\n\n## Task facts to re-verify (found in a prior run, not yet confirmed from opened documents)\n- In this task, Coca-Cola's 10-K reportedly shows dividends paid of $8,359M in 2024 and net income attributable to shareowners of $10,631M, a ratio of about 78.63%. Confirm both from the opened 10-K (cash flow statement and income statement).\n- The earlier run did not retrieve PepsiCo's or KDP's aggregate dividends paid, and it mixed bases. Retrieve each company's cash-flow dividends and net income from its own FY2024 10-K.\n\n## Answer contract\n1. A ranked list from highest to lowest payout ratio, with Coca-Cola's rank clearly marked.\n2. A table per company with: fiscal year end, dividends ($M), net income attributable to the company ($M), ratio to two decimals, and the source document.\n3. The arithmetic shown, unrounded until the end.\n4. The basis stated (paid vs declared, GAAP) and the peer set stated.\n5. Before submitting, confirm every figure comes from an opened primary document (not from memory or search snippets), and that the period, units (millions) and share count basis match across companies.\n"
+   }
+  },
+  "agg1": {
+   "dim": "AGG",
+   "notes": "kept -> inv1 tool_guidance (open all companies' 10-Ks together, same formula/basis, plain text) -> base1 mixed KO aggregate dollars with PEP/KDP per-share and used snippets (1/1 base); inv1 opened 10-Ks at turn 2 and got aggregate figures for peers with consistent basis in 5 turns.\nrevised -> inv1 task-facts paragraph (KO 8,359 / 10,631) dropped -> in inv1's rollout the embedded facts led it to skip the KO retrieval and cite \"figures given in the task\", leaving the subject company unverified; dom1 re-read KO from the filing. Added a rule to open the subject company's 10-K too and not rely on remembered or prompt-supplied figures.\ndropped -> dom1 skill dividend_payout_peer_compare and its systemprompt trigger line -> dom1 spent turn 1 loading the skill and reached the same ranking/values (KDP 82.86, KO 78.63, PEP 75.48, MNST 0) as inv1 at higher cost ($0.455 vs $0.311); a library lesson says skills only added load turns. Its useful content (paid vs declared, peer set, non-payers 0%, fiscal year ends, GAAP headline) is folded into the short tool_guidance paragraph instead.\nkept -> dom1 content on paid-vs-declared basis, fallback applying to all companies, and verifying KO from its own 10-K -> dom1 retrieved KO, PEP, KDP, MNST in one batched turn with multi-figure prompts; merged as a \"ask for several related figures at once\" line.\nNo candidate rollout produced nothing: both submitted, so neither edit is flagged unsafe. Both candidates reached identical numbers, so the merge is supported but not independently proven.",
+   "keep_base": false,
+   "error": "",
+   "cost_usd": 0.0712187,
+   "inventory": "0 skills; 4,625 always-on chars",
+   "tree": {
+    "systemprompt.md": "You are a financial agent. You are given a question and you need to answer it using the tools provided.\nYou will not be able to interact with the user or ask clarifications, you must answer the question only based on the information provided.\n\nYou should answer all questions as if the current date is April 07, 2025.\n\nYou will have access to a data storage system. You can use this system to store parsed contents of HTML pages retrieved from the web.\nYou can then use the retrieve_information tool to apply answer questions or gather information from the stored documents using LLM-based prompts.\nThis data storage system is designed to help you avoid context window issues.\n\nWhen you have the final answer, you should call the `submit_final_result` tool with it. Your submission will not be processed unless you call this tool.\n\nYou should include any necessary step-by-step reasoning, justification, calculations, or explanation in your answer. You will be evaluated both on the accuracy of the final answer, and the correctness of the supporting logic.\n\nWhen possible, please provide any calculated answers to at least two decimal places (e.g. 18.78% rather than 19%). Please do not round intermediate steps in any calculations - you should only round your final answer.\n\nAt the end of your answer, you should provide your sources in a dictionary with the following format:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://example.com\",\n            \"name\": \"Name of the source\"\n        },\n        ...\n    ]\n}\n",
+    "guardrails.md": "",
+    "LongTermMEMORY.md": "",
+    "tool_guidance.md": "# Tool guidance\n\nBefore searching, decide which documents and periods the question needs: each company, form type (10-K, 10-Q, 8-K exhibit 99.1) and fiscal period. Then search with those filters, not the question's wording. Use only documents dated on or before April 07, 2025.\n\n- `edgar_search`: pass the ticker or CIK, a date range, and the form type. If it returns 0 results, change the filters once. If it still returns nothing, use `web_search` for the primary document. Do not repeat an empty `web_search`.\n- `web_search`: use it to find primary documents. A snippet or third-party page (dividend history sites, aggregators, TTM ratio pages) is a lead, not evidence.\n- `parse_html_page`: store each primary document under a clear key (for example `ko_10k_2024`). When the question involves several companies, open every company's 10-K in the same turn, including the company the question is centred on. Do not rely on a figure remembered from an earlier run or stated in a prompt without re-reading it from the filing.\n- `retrieve_information`: ask one targeted question per document, and ask for several related figures at once (for example dividends paid, net income attributable, diluted EPS, declared dividends per share). On long filings, use `input_character_ranges`. Ask for exact figures with period, unit and row label, quoted verbatim. If a row is unclear, check it in a second table (for example the cash flow statement versus the income statement).\n\nEnough evidence means each figure that enters a calculation was read from a period-matching column of a primary document that was actually opened and retrieved. Do not write that a figure was \"read from\" a filing unless a retrieve call returned it.\n\nPeer-comparison and ranking questions (several companies, one ratio):\n- State the peer set and the single formula, and apply the SAME formula and data basis to every company. Never mix one company's aggregate dollars with another's per-share figures.\n- Dividend payout ratio: cash-flow-statement dividends paid divided by GAAP net income attributable to the company's shareholders, same fiscal year, both from each company's FY 10-K. Say that the basis is paid, not declared. Per-share declared dividends divided by diluted EPS is a labelled cross-check, or the fallback only if aggregate paid dividends cannot be retrieved. If you fall back, apply it to every company.\n- Name each company's fiscal year end where it differs from December 31. A peer that pays no dividend gets 0%, quoting the filing's statement, and is shown rather than omitted.\n- Where GAAP earnings are distorted (for example by an impairment), keep the GAAP ranking as the headline and mention any adjusted figure separately.\n- Keep full precision until the end. Give a ranked list highest to lowest, with each company's inputs, the arithmetic, and the source document.\n\nOutput: write plain text with no citation tags or markup. Before `submit_final_result`, re-check each figure against the retrieved text for period, units and label, and say which document each figure came from. Submit while budget remains.\n"
+   }
+  }
+ },
+ "chosen": "agg1",
+ "selection_why": "trivial: single final",
+ "selection_ids": {},
+ "experience": {
+  "cue": "A multi-company comparison or ranking on one ratio (payout, margin, leverage), where the base run answers from search snippets and mixes data bases across companies (aggregate dollars for one, per-share for others, or reconstructed figures).",
+  "lesson": "In tool_guidance.md, add a generic peer-comparison rule: state the peer set and one formula, and apply the same data basis to every company. Open every company's 10-K in the same turn, including the subject company, and retrieve the same line items from each. Treat per-share ratios only as a labelled cross-check. Do not embed the subject company's figures in the guidance as \"verified\". An agent that sees them will skip retrieving them (inv1 cited \"figures given in the task\"). If prior figures are mentioned, label them as leads and require re-reading from the filing. Do not build a skill for this.",
+  "evidence": "Rows 1 to 3. base1 mixed bases and used snippets. inv1 and agg1 opened the 10-Ks in parallel and produced like-for-like aggregate ratios in 4 to 5 turns. inv1's embedded KO facts led it to skip KO's retrieval, while agg1 re-read KO. dom1's skill reached the same numbers but added a load turn (about $0.455 against $0.311 for inv1 and $0.455 for agg1, so cost evidence is mixed).",
+  "confidence": "low. One rollout per arm. All three edited runs reached identical values, so the evidenced gain is consistent basis and filing-backed sourcing, not a different ranking. The inv1 skip-retrieval problem is a single instance."
+ },
+ "edits_record": "component: tool_guidance.md (peer-comparison rule: open every company's FY 10-K in one turn, one formula and data basis for all companies, per-share only as a labelled cross-check, plain text with no citation tags)\ncandidates: inv1, agg1 (dom1 carried the same content in a skill)\nchange: Added generic tool guidance. It defines the payout ratio as cash-flow-statement dividends paid divided by GAAP net income attributable. It requires the same basis for every peer. It says to open all 10-Ks together, to report non-payers as 0%, and to name fiscal year ends. It also bans citation markup.\nobserved: base1 answered from search snippets after one search turn. It mixed KO aggregate dollars (78.63%) with PEP and KDP per-share figures, and it reconstructed KDP's dividend from nine-month data plus a guessed Q4. It also left raw cite tags in the answer. inv1 and agg1 each ran edgar_search per ticker at turn 1, parsed all the 10-Ks in parallel at turn 2, and retrieved the cash-flow dividends and net income at turn 3. Both submitted aggregate-basis ratios: KDP 82.86%, KO 78.63%, PEP 75.48%, MNST 0%. KDP's rank (first) did not change from base1, but PEP's and KDP's values did (75.48 and 82.86 against 76.69 and 84.76). Each arm is one rollout, and dom1 reached the same numbers via the skill, so the effect of the guidance specifically is not isolated.\nverdict: helped\n\ncomponent: tool_guidance.md (inv1's task-facts paragraph giving KO's $8,359M and $10,631M as verified)\ncandidates: inv1\nchange: Embedded Coca-Cola's dividends and net income in the guidance and told the agent to re-verify the peers only.\nobserved: inv1 never opened KO's 10-K and cited \"figures given in the task\" in its answer. That left the subject company unverified in the delivered numbers. agg1 and dom1, which had no such paragraph, retrieved KO from the filing at turn 3 and turn 4 respectively. The values agreed with the embedded ones.\nverdict: hurt\n\ncomponent: tool_guidance.md (agg1's rule to open the subject company's 10-K too and not trust remembered or prompt-supplied figures; retrieve several related figures per call)\ncandidates: agg1\nchange: Replaced inv1's task-facts paragraph with a generic instruction to re-read the subject company's figures from its own filing. Added a line to ask for dividends paid, net income, diluted EPS and declared DPS in one retrieve call.\nobserved: agg1 retrieved KO, PEP, KDP and MNST in four parallel retrieve calls at turn 3 and submitted at turn 4. Its answer showed a KO declared-basis cross-check (1.94 / 2.46 = 78.86%), which base1 had done with an EPS figure it said was not in its sources. No PEP cross-check appeared because EPS was not requested for PEP. Since it is a single rollout, the contribution is confounded with the shared peer-comparison rule.\nverdict: confounded\n\ncomponent: skills/dividend_payout_peer_compare/SKILL.md and the systemprompt.md trigger line\ncandidates: dom1\nchange: Added a skill, loaded by a prompt trigger, with the same definition (paid basis, same basis for all companies), peer-set guidance and non-payer rule. It also embedded KO's figures as leads to re-verify.\nobserved: dom1 spent turn 1 on load_skill and then needed searches without ticker filters at turn 2. Its edgar_search results were noisy, with unrelated issuers such as Kellanova and Berkshire. It reached the same numbers as inv1 and agg1 in 5 turns at $0.455, against inv1's $0.311. It retrieved KO's figures from the filing, labelling them as leads to be re-verified, which is the behavior agg1 later wrote into tool_guidance. The load turn added cost with no visible gain over tool_guidance, though the cost differences also reflect ticker filters and are not cleanly attributable.\nverdict: no observed effect",
+ "library_added": true,
+ "editor_cost_usd": 0.391215,
+ "total_cost_usd": 1.738391,
+ "errors": []
+}

@@ -1,0 +1,86 @@
+{
+ "task_id": "q30",
+ "label": "inv1",
+ "question": "What is the maximum dilutive impact in number of shares of Snapchat's outstanding convertible notes as of 12/31/2024?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1564408/000156440825000019/snap-20241231.htm",
+      "key": "snap_10k_2024"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: snap_10k_2024. (614,017 characters)\nThe data_storage currently contains the following keys:\nsnap_10k_2024\n",
+     "is_error": false,
+     "elapsed_s": 1.03,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0009244
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this 10-K document, find the convertible notes note (Note 7 or similar). Quote verbatim any sentence containing \"maximum number of shares\" or \"maximum\" related to shares issuable upon conversion of the convertible notes, and the potentially dilutive / if-converted share amounts as of December 31, 2024. Also quote the EPS note table row \"Convertible Notes (if-converted)\" with values for 2024 and 2023, and the conversion rates per $1,000 principal and principal amounts for each series (2025, 2026, 2027, 2028, 2030 notes). Units and period must be stated.\n\nDocument: {{snap_10k_2024}}"
+     },
+     "output": "## Result: No maximum share cap for conversion is disclosed\n\nI found no sentence in the document that states a maximum number of shares issuable upon conversion of the Convertible Notes. The only \"maximum\" sentences relate to the 2017 Equity Incentive Plan, not the notes. For example, Item 11 states: \"The maximum number of shares of our Class A common stock available for future issuance under our 2017 Plan as of December 31, 2024 is 152,488,503.\" The Note 7 capped call disclosures use per-share cap prices, not a share cap. The conversion amounts below are therefore the stated initial conversion rates applied to principal.\n\n## 1. Potentially dilutive (if-converted) shares, as of December 31, 2024\n\nNote 3 (Net Loss per Share) states:\n\n> \"The following potentially dilutive shares were excluded from the calculation of diluted net loss per share because their effect would have been anti-dilutive:As of December 31,202420232022(in thousands)\u2026Convertible Notes (if-converted)85,94589,37989,379\"\n\nUnits: thousands of shares. Period: as of December 31 for each year.\n\nNote 3 also states:\n\n> \"For the periods presented, our potentially dilutive shares relating to stock options, RSUs, RSAs, and Convertible Notes were not included in the computation of diluted net loss per share as the effect of including these shares in the calculation would have been anti-dilutive.\"\n\nNote 7 states:\n\n> \"As of December 31, 2024, the if-converted value of the Convertible Notes did not exceed the principal amount.\"\n\n## 2. Conversion rates and principal by series\n\nUnits: conversion rates are Class A shares per $1,000 principal. Conversion prices are $ per share. Principal is in thousands of dollars as of December 31, 2024, from the Note 7 table.\n\n**2030 Notes (Note 7):**\n> \"The 2030 Notes are convertible into cash, shares of our Class A common stock, or a combination of cash and shares of our Class A common stock, at our election, at an initial conversion rate of 45.0846 shares of Class A common stock per $1,000 principal amount of 2030 Notes, which is equivalent to an initial conversion price of approximately $22.18 per share of our Class A common stock.\"\n\n**2028 Notes (Note 7):**\n> \"The 2028 Notes are convertible into cash, shares of our Class A common stock, or a combination of cash and shares of our Class A common stock, at our election, at an initial conversion rate of 17.7494 shares of Class A common stock per $1,000 principal amount of 2028 Notes, which is equivalent to an initial conversion price of approximately $56.34 per share of our Class A common stock.\"\n\n**2027 Notes (Note 7):**\n> \"The 2027 Notes are convertible into cash, shares of our Class A common stock, or a combination of cash and shares of our Class A common stock, at our election, at an initial conversion rate of 11.2042 shares of Class A common stock per $1,000 principal amount of 2027 Notes, which is equivalent to an initial conversion price of approximately $89.25 per share of our Class A common stock.\"\n\n**2026 Notes (Note 7):**\n> \"The 2026 Notes are convertible into cash, shares of our Class A common stock, or a combination of cash and shares of our Class A common stock, at our election, at an initial conversion rate of 43.8481 shares of Class A common stock per $1,000 principal amount of 2026 Notes, which is equivalent to an initial conversion price of approximately $22.81 per share of our Class A common stock.\"\n\n**2025 Notes (Note 7):**\n> \"The 2025 Notes are convertible into cash, shares of our Class A common stock, or a combination of cash and shares of our Class A common stock, at our election, at an initial conversion rate of 46.1233 shares of Class A common stock per $1,000 principal amount of 2025 Notes, which is equivalent to an initial conversion price of approximately $21.68 per share of our Class A common stock.\"\n\n**Outstanding principal as of December 31, 2024 (Note 7 table, in thousands):**\n\n| Series | Principal | Net carrying amount |\n|---|---|---|\n| 2025 Notes | $36,240 | $36,212 |\n| 2026 Notes | $249,754 | $249,130 |\n| 2027 Notes | $1,150,000 | $1,145,016 |\n| 2028 Notes | $1,500,000 | $1,491,018 |\n| 2030 Notes | $750,000 | $722,553 |\n| **Total** | **$3,685,994** | **$3,643,929** |\n\n## 3. Reconciliation (my calculation, not stated in the filing)\n\nPrincipal \u00d7 conversion rate \u00f7 1,000 gives approximately:\n- 2025: 1.67 million shares\n- 2026: 10.95 million shares\n- 2027: 12.89 million shares\n- 2028: 26.62 million shares\n- 2030: 33.81 million shares\n\nThe total is about 85.9 million shares, which matches the 85,945 thousand shares in the Note 3 table.",
+     "is_error": false,
+     "elapsed_s": 21.57,
+     "cost_usd": 0.132816
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00023727499999999998
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: about 85,945 thousand shares (\u224885.95 million Class A shares) as of 12/31/2024.**\n\nThis is the figure the filing reports for the potentially dilutive shares from the convertible notes. The filing does not give a separate \"maximum\" share number for the notes.\n\n**Step 1 \u2013 EPS note (Note 3, Net Loss per Share, FY2024 10-K).** The table of potentially dilutive shares excluded from diluted EPS as anti-dilutive shows \"Convertible Notes (if-converted)\" at 85,945 thousand shares as of 12/31/2024, versus 89,379 thousand as of 12/31/2023 and 89,379 thousand as of 12/31/2022. Units are thousands of shares.\n\n**Step 2 \u2013 Convertible notes note (Note 7).** The initial conversion rates (Class A shares per $1,000 principal) and principal outstanding at 12/31/2024 (in thousands of dollars) are:\n- 2025 Notes: 46.1233 shares per $1,000; principal $36,240\n- 2026 Notes: 43.8481 shares per $1,000; principal $249,754\n- 2027 Notes: 11.2042 shares per $1,000; principal $1,150,000\n- 2028 Notes: 17.7494 shares per $1,000; principal $1,500,000\n- 2030 Notes: 45.0846 shares per $1,000; principal $750,000\n\n**Step 3 \u2013 Reconciliation (my calculation, principal \u00d7 conversion rate \u00f7 1,000, in thousands of shares):**\n- 2025: 36,240 \u00d7 46.1233 / 1,000 = 1,671.7\n- 2026: 249,754 \u00d7 43.8481 / 1,000 = 10,950.3\n- 2027: 1,150,000 \u00d7 11.2042 / 1,000 = 12,884.8\n- 2028: 1,500,000 \u00d7 17.7494 / 1,000 = 26,624.1\n- 2030: 750,000 \u00d7 45.0846 / 1,000 = 33,813.5\n- Total \u2248 85,944.4 thousand, which agrees with the 85,945 thousand in Note 3 after rounding.\n\n**Check for a \"maximum\" figure.** I searched the 10-K for \"maximum\" language tied to the notes. The only \"maximum\" share figure found relates to the 2017 Equity Incentive Plan (152,488,503 shares available for future issuance), not the convertible notes. Note 7 states that the if-converted value did not exceed the principal amount at 12/31/2024, so the notes were not in a position where conversion value exceeded principal.\n\n**Caveat.** The 85,945 thousand figure is the if-converted share count from the notes at their initial conversion rates. It is the maximum dilutive effect the filing quantifies for the notes. The filing does not present it as a cap.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1564408/000156440825000019/snap-20241231.htm\",\n            \"name\": \"Snap Inc. FY2024 Form 10-K (accession 0001564408-25-000019), Notes 3 and 7\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: about 85,945 thousand shares (\u224885.95 million Class A shares) as of 12/31/2024.**\n\nThis is the figure the filing reports for the potentially dilutive shares from the convertible notes. The filing does not give a separate \"maximum\" share number for the notes.\n\n**Step 1 \u2013 EPS note (Note 3, Net Loss per Share, FY2024 10-K).** The table of potentially dilutive shares excluded from diluted EPS as anti-dilutive shows \"Convertible Notes (if-converted)\" at 85,945 thousand shares as of 12/31/2024, versus 89,379 thousand as of 12/31/2023 and 89,379 thousand as of 12/31/2022. Units are thousands of shares.\n\n**Step 2 \u2013 Convertible notes note (Note 7).** The initial conversion rates (Class A shares per $1,000 principal) and principal outstanding at 12/31/2024 (in thousands of dollars) are:\n- 2025 Notes: 46.1233 shares per $1,000; principal $36,240\n- 2026 Notes: 43.8481 shares per $1,000; principal $249,754\n- 2027 Notes: 11.2042 shares per $1,000; principal $1,150,000\n- 2028 Notes: 17.7494 shares per $1,000; principal $1,500,000\n- 2030 Notes: 45.0846 shares per $1,000; principal $750,000\n\n**Step 3 \u2013 Reconciliation (my calculation, principal \u00d7 conversion rate \u00f7 1,000, in thousands of shares):**\n- 2025: 36,240 \u00d7 46.1233 / 1,000 = 1,671.7\n- 2026: 249,754 \u00d7 43.8481 / 1,000 = 10,950.3\n- 2027: 1,150,000 \u00d7 11.2042 / 1,000 = 12,884.8\n- 2028: 1,500,000 \u00d7 17.7494 / 1,000 = 26,624.1\n- 2030: 750,000 \u00d7 45.0846 / 1,000 = 33,813.5\n- Total \u2248 85,944.4 thousand, which agrees with the 85,945 thousand in Note 3 after rounding.\n\n**Check for a \"maximum\" figure.** I searched the 10-K for \"maximum\" language tied to the notes. The only \"maximum\" share figure found relates to the 2017 Equity Incentive Plan (152,488,503 shares available for future issuance), not the convertible notes. Note 7 states that the if-converted value did not exceed the principal amount at 12/31/2024, so the notes were not in a position where conversion value exceeded principal.\n\n**Caveat.** The 85,945 thousand figure is the if-converted share count from the notes at their initial conversion rates. It is the maximum dilutive effect the filing quantifies for the notes. The filing does not present it as a cap.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1564408/000156440825000019/snap-20241231.htm\",\n            \"name\": \"Snap Inc. FY2024 Form 10-K (accession 0001564408-25-000019), Notes 3 and 7\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.001174915
+  }
+ ],
+ "final_answer": "**Answer: about 85,945 thousand shares (\u224885.95 million Class A shares) as of 12/31/2024.**\n\nThis is the figure the filing reports for the potentially dilutive shares from the convertible notes. The filing does not give a separate \"maximum\" share number for the notes.\n\n**Step 1 \u2013 EPS note (Note 3, Net Loss per Share, FY2024 10-K).** The table of potentially dilutive shares excluded from diluted EPS as anti-dilutive shows \"Convertible Notes (if-converted)\" at 85,945 thousand shares as of 12/31/2024, versus 89,379 thousand as of 12/31/2023 and 89,379 thousand as of 12/31/2022. Units are thousands of shares.\n\n**Step 2 \u2013 Convertible notes note (Note 7).** The initial conversion rates (Class A shares per $1,000 principal) and principal outstanding at 12/31/2024 (in thousands of dollars) are:\n- 2025 Notes: 46.1233 shares per $1,000; principal $36,240\n- 2026 Notes: 43.8481 shares per $1,000; principal $249,754\n- 2027 Notes: 11.2042 shares per $1,000; principal $1,150,000\n- 2028 Notes: 17.7494 shares per $1,000; principal $1,500,000\n- 2030 Notes: 45.0846 shares per $1,000; principal $750,000\n\n**Step 3 \u2013 Reconciliation (my calculation, principal \u00d7 conversion rate \u00f7 1,000, in thousands of shares):**\n- 2025: 36,240 \u00d7 46.1233 / 1,000 = 1,671.7\n- 2026: 249,754 \u00d7 43.8481 / 1,000 = 10,950.3\n- 2027: 1,150,000 \u00d7 11.2042 / 1,000 = 12,884.8\n- 2028: 1,500,000 \u00d7 17.7494 / 1,000 = 26,624.1\n- 2030: 750,000 \u00d7 45.0846 / 1,000 = 33,813.5\n- Total \u2248 85,944.4 thousand, which agrees with the 85,945 thousand in Note 3 after rounding.\n\n**Check for a \"maximum\" figure.** I searched the 10-K for \"maximum\" language tied to the notes. The only \"maximum\" share figure found relates to the 2017 Equity Incentive Plan (152,488,503 shares available for future issuance), not the convertible notes. Note 7 states that the if-converted value did not exceed the principal amount at 12/31/2024, so the notes were not in a position where conversion value exceeded principal.\n\n**Caveat.** The 85,945 thousand figure is the if-converted share count from the notes at their initial conversion rates. It is the maximum dilutive effect the filing quantifies for the notes. The filing does not present it as a cap.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1564408/000156440825000019/snap-20241231.htm\",\n            \"name\": \"Snap Inc. FY2024 Form 10-K (accession 0001564408-25-000019), Notes 3 and 7\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 3,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 4,
+  "input_tokens": 12,
+  "output_tokens": 6060,
+  "cache_creation_input_tokens": 205911,
+  "cache_read_input_tokens": 12979,
+  "web_search_requests": 0,
+  "cost_usd": 0.135152
+ },
+ "cost_usd": 0.135152,
+ "elapsed_s": 33.4,
+ "harness_label": "inv1"
+}

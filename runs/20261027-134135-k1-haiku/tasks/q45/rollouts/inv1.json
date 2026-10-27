@@ -1,0 +1,150 @@
+{
+ "task_id": "q45",
+ "label": "inv1",
+ "question": "In 2024, what was Airbnb's (NASDAQ: ABNB) adjustment for Stock-based Compensation Expense?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Airbnb annual report 2024 stock-based compensation adjusted EBITDA",
+      "ciks": [
+       "ABNB"
+      ],
+      "start_date": "2025-01-01",
+      "end_date": "2025-04-07",
+      "form_types": [
+       "10-K"
+      ]
+     },
+     "output": "{\"total_matching_documents\": 1, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-13\", \"period_ending\": \"2024-12-31\", \"company\": \"Airbnb, Inc.  (ABNB)  (CIK 0001559720)\", \"ciks\": [\"0001559720\"], \"accession\": \"0001559720-25-000010\", \"document\": \"abnb-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 1.04,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Airbnb Q4 2024 shareholder letter adjusted EBITDA reconciliation",
+      "ciks": [
+       "ABNB"
+      ],
+      "start_date": "2025-02-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "{\"total_matching_documents\": 1, \"page\": 1, \"results\": [{\"form\": \"8-K\", \"file_date\": \"2025-02-13\", \"period_ending\": \"2025-02-13\", \"company\": \"Airbnb, Inc.  (ABNB)  (CIK 0001559720)\", \"ciks\": [\"0001559720\"], \"accession\": \"0001193125-25-026054\", \"document\": \"d915198dex991.htm\", \"description\": \"EX-99.1\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.51,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000986275
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+      "key": "abnb_10k_2024"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: abnb_10k_2024. (452,800 characters)\nThe data_storage currently contains the following keys:\nabnb_10k_2024\n",
+     "is_error": false,
+     "elapsed_s": 0.58,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm",
+      "key": "abnb_q4_2024_letter"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: abnb_q4_2024_letter. (54,854 characters)\nThe data_storage currently contains the following keys:\nabnb_10k_2024\nabnb_q4_2024_letter\n",
+     "is_error": false,
+     "elapsed_s": 0.26,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00029161000000000004
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Airbnb 10-K for fiscal 2024, find the stock-based compensation line in the consolidated statements of cash flows (year ended December 31, 2024), and the stock-based compensation figure in the Adjusted EBITDA reconciliation if present. Quote the row verbatim with its period, units (in millions), and label. Also give the 2023 and 2022 values. Document: {{abnb_10k_2024}}"
+     },
+     "output": "**Consolidated Statements of Cash Flows** (Item 8, \"Adjustments to reconcile net income to cash provided by operating activities,\" in millions; columns are 2022, 2023, 2024):\n\n> Stock-based compensation expense930 1,120 1,407\n\n- **Year ended December 31, 2024:** $1,407 million\n- **Year ended December 31, 2023:** $1,120 million\n- **Year ended December 31, 2022:** $930 million\n\n**Adjusted EBITDA Reconciliation** (in the MD&A, in millions; columns are 2023, 2024):\n\n> Stock-based compensation expense1,120 1,407\n\n- **Year ended December 31, 2024:** $1,407 million\n- **Year ended December 31, 2023:** $1,120 million\n- **2022:** not presented in this reconciliation, which covers only 2023 and 2024.\n\nThe two statements agree for 2023 and 2024.",
+     "is_error": false,
+     "elapsed_s": 6.51,
+     "cost_usd": 0.09317
+    },
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Airbnb Q4 2024 shareholder letter, find the Adjusted EBITDA reconciliation table and the \"Stock-based compensation expense\" row. Quote the row verbatim with its column periods and units. Is there a full-year 2024 column? Document: {{abnb_q4_2024_letter}}"
+     },
+     "output": "**Stock-based compensation expense** row, quoted from the Adjusted EBITDA Reconciliation table:\n\n> Stock-based compensation expense 195 247 234 254 240 304 286 290 295 382 362 368\n\n**Column periods:** The table header reads \"Three Months Ended,\" with twelve quarterly columns in this order: Mar 31, Jun 30, Sept 30, Dec 31 for 2022, then 2023, then 2024. Mapped to the columns, the values are:\n\n| Period | SBC ($M) |\n|---|---|\n| Q1\u2013Q4 2022 | 195, 247, 234, 254 |\n| Q1\u2013Q4 2023 | 240, 304, 286, 290 |\n| Q1\u2013Q4 2024 | 295, 382, 362, 368 |\n\n**Units:** The table is labeled \"(in millions, except percentages),\" so the values are in $ millions.\n\n**Full-year 2024 column:** No. The reconciliation has only quarterly columns and no \"Year Ended\" column. The four 2024 quarters sum to $1,407M (295 + 382 + 362 + 368), which matches the full-year SBC figure in the letter's Statement of Operations footnote and the cash flow statement. That figure comes from those other tables, not from a column in the reconciliation.\n\nThe text extraction of this table is jumbled, with row labels interleaved with numbers. I mapped the values to periods by column order and checked them against the Q4 2023 ($290M) and Q4 2024 ($368M) figures in the separate SBC footnote, which match.",
+     "is_error": false,
+     "elapsed_s": 6.52,
+     "cost_usd": 0.003181
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000296945
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: Airbnb's stock-based compensation expense adjustment for fiscal 2024 was $1,407 million** (up from $1,120 million in 2023).\n\n**Supporting logic and sources**\n\n1. **FY2024 Form 10-K (primary, opened and checked).** In the consolidated statements of cash flows, the \"Stock-based compensation expense\" line under operating adjustments shows $930M (2022), $1,120M (2023) and $1,407M (2024), in millions. The Adjusted EBITDA reconciliation in the MD&A carries the same line: $1,120M for 2023 and $1,407M for 2024. The two statements agree. That reconciliation covers only 2023 and 2024, so there is no 2022 figure in it.\n\n2. **Q4 2024 shareholder letter (8-K Exhibit 99.1, cross-check).** The Adjusted EBITDA reconciliation is presented by quarter only, with no full-year column. The quarterly stock-based compensation figures for 2024 are $295M, $382M, $362M and $368M. These sum to $1,407M, matching the 10-K. The text extraction of this table was jumbled, so I mapped values to periods by column order and checked them against the separately disclosed Q4 2023 ($290M) and Q4 2024 ($368M) figures.\n\nUnit: US$ millions. Period: fiscal year ended December 31, 2024.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year ended December 31, 2024 (abnb-20241231.htm)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm\",\n            \"name\": \"Airbnb, Inc. Q4 2024 Shareholder Letter, Form 8-K Exhibit 99.1 (d915198dex991.htm)\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: Airbnb's stock-based compensation expense adjustment for fiscal 2024 was $1,407 million** (up from $1,120 million in 2023).\n\n**Supporting logic and sources**\n\n1. **FY2024 Form 10-K (primary, opened and checked).** In the consolidated statements of cash flows, the \"Stock-based compensation expense\" line under operating adjustments shows $930M (2022), $1,120M (2023) and $1,407M (2024), in millions. The Adjusted EBITDA reconciliation in the MD&A carries the same line: $1,120M for 2023 and $1,407M for 2024. The two statements agree. That reconciliation covers only 2023 and 2024, so there is no 2022 figure in it.\n\n2. **Q4 2024 shareholder letter (8-K Exhibit 99.1, cross-check).** The Adjusted EBITDA reconciliation is presented by quarter only, with no full-year column. The quarterly stock-based compensation figures for 2024 are $295M, $382M, $362M and $368M. These sum to $1,407M, matching the 10-K. The text extraction of this table was jumbled, so I mapped values to periods by column order and checked them against the separately disclosed Q4 2023 ($290M) and Q4 2024 ($368M) figures.\n\nUnit: US$ millions. Period: fiscal year ended December 31, 2024.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year ended December 31, 2024 (abnb-20241231.htm)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm\",\n            \"name\": \"Airbnb, Inc. Q4 2024 Shareholder Letter, Form 8-K Exhibit 99.1 (d915198dex991.htm)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0006421650000000001
+  }
+ ],
+ "final_answer": "**Answer: Airbnb's stock-based compensation expense adjustment for fiscal 2024 was $1,407 million** (up from $1,120 million in 2023).\n\n**Supporting logic and sources**\n\n1. **FY2024 Form 10-K (primary, opened and checked).** In the consolidated statements of cash flows, the \"Stock-based compensation expense\" line under operating adjustments shows $930M (2022), $1,120M (2023) and $1,407M (2024), in millions. The Adjusted EBITDA reconciliation in the MD&A carries the same line: $1,120M for 2023 and $1,407M for 2024. The two statements agree. That reconciliation covers only 2023 and 2024, so there is no 2022 figure in it.\n\n2. **Q4 2024 shareholder letter (8-K Exhibit 99.1, cross-check).** The Adjusted EBITDA reconciliation is presented by quarter only, with no full-year column. The quarterly stock-based compensation figures for 2024 are $295M, $382M, $362M and $368M. These sum to $1,407M, matching the 10-K. The text extraction of this table was jumbled, so I mapped values to periods by column order and checked them against the separately disclosed Q4 2023 ($290M) and Q4 2024 ($368M) figures.\n\nUnit: US$ millions. Period: fiscal year ended December 31, 2024.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year ended December 31, 2024 (abnb-20241231.htm)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm\",\n            \"name\": \"Airbnb, Inc. Q4 2024 Shareholder Letter, Form 8-K Exhibit 99.1 (d915198dex991.htm)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 6,
+  "input_tokens": 18,
+  "output_tokens": 3760,
+  "cache_creation_input_tokens": 175562,
+  "cache_read_input_tokens": 20512,
+  "web_search_requests": 0,
+  "cost_usd": 0.098568
+ },
+ "cost_usd": 0.098568,
+ "elapsed_s": 25.4,
+ "harness_label": "inv1"
+}

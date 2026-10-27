@@ -1,0 +1,147 @@
+{
+ "task_id": "q30",
+ "label": "agg1",
+ "question": "What is the maximum dilutive impact in number of shares of Snapchat's outstanding convertible notes as of 12/31/2024?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Snap convertible notes maximum number of shares potentially dilutive",
+      "ciks": [
+       "1564408"
+      ],
+      "start_date": "2025-01-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "{\"total_matching_documents\": 1, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-05\", \"period_ending\": \"2024-12-31\", \"company\": \"Snap Inc  (SNAP)  (CIK 0001564408)\", \"ciks\": [\"0001564408\"], \"accession\": \"0001564408-25-000019\", \"document\": \"snap-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1564408/000156440825000019/snap-20241231.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.72,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Snap Inc annual report 2024 convertible senior notes if-converted",
+      "ciks": [
+       "1564408"
+      ],
+      "form_types": [
+       "10-K"
+      ]
+     },
+     "output": "{\"total_matching_documents\": 6, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-05\", \"period_ending\": \"2024-12-31\", \"company\": \"Snap Inc  (SNAP)  (CIK 0001564408)\", \"ciks\": [\"0001564408\"], \"accession\": \"0001564408-25-000019\", \"document\": \"snap-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1564408/000156440825000019/snap-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-02-07\", \"period_ending\": \"2023-12-31\", \"company\": \"Snap Inc  (SNAP)  (CIK 0001564408)\", \"ciks\": [\"0001564408\"], \"accession\": \"0001564408-24-000019\", \"document\": \"snap-20231231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1564408/000156440824000019/snap-20231231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2023-02-01\", \"period_ending\": \"2022-12-31\", \"company\": \"Snap Inc  (SNAP)  (CIK 0001564408)\", \"ciks\": [\"0001564408\"], \"accession\": \"0001564408-23-000013\", \"document\": \"snap-20221231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1564408/000156440823000013/snap-20221231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2022-02-04\", \"period_ending\": \"2021-12-31\", \"company\": \"Snap Inc  (SNAP)  (CIK 0001564408)\", \"ciks\": [\"0001564408\"], \"accession\": \"0001564590-22-003868\", \"document\": \"snap-10k_20211231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1564408/000156459022003868/snap-10k_20211231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2021-02-05\", \"period_ending\": \"2020-12-31\", \"company\": \"Snap Inc  (SNAP)  (CIK 0001564408)\", \"ciks\": [\"0001564408\"], \"accession\": \"0001564590-21-004377\", \"document\": \"snap-10k_20201231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1564408/000156459021004377/snap-10k_20201231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2020-02-05\", \"period_ending\": \"2019-12-31\", \"company\": \"Snap Inc  (SNAP)  (CIK 0001564408)\", \"ciks\": [\"0001564408\"], \"accession\": \"0001564590-20-003323\", \"document\": \"snap-10k_20191231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1564408/000156459020003323/snap-10k_20191231.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.51,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00100015
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1564408/000156440825000019/snap-20241231.htm",
+      "key": "snap_10k_2024"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: snap_10k_2024. (614,017 characters)\nThe data_storage currently contains the following keys:\nsnap_10k_2024\n",
+     "is_error": false,
+     "elapsed_s": 0.86,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00033536
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Snap 10-K for FY2024, find the convertible notes disclosure: the table of potentially dilutive securities / anti-dilutive shares excluded from diluted net loss per share, including any row for 'Convertible notes' or 'if-converted' and the 'maximum number of shares' that could be issued under the convertible notes, quoted verbatim with period, units and row labels. Also list the principal outstanding and conversion rates for each convertible note series (2025 notes, 2026 notes, 2028 notes) as of December 31, 2024. {{snap_10k_2024}}"
+     },
+     "output": "## Anti-dilutive securities table (Note 3, Net Loss per Share)\n\nThe filing introduces the table with: \"The following potentially dilutive shares were excluded from the calculation of diluted net loss per share because their effect would have been anti-dilutive:\"\n\nThe table, quoted as it appears (period: as of December 31; units: in thousands of shares):\n\n| Row label | 2024 | 2023 | 2022 |\n|---|---|---|---|\n| Stock options | 680 | 1,697 | 3,159 |\n| Unvested RSUs and RSAs | 134,253 | 157,130 | 132,392 |\n| Convertible Notes (if-converted) | 85,945 | 89,379 | 89,379 |\n\nThe filing does not use the phrase \"maximum number of shares.\" The closest figure is the **Convertible Notes (if-converted)** row: **85,945 thousand shares** as of December 31, 2024. I checked this against the note terms (principal \u00d7 conversion rate, summed across all five series) and it reconciles to about 85.9 million shares.\n\n## Convertible notes outstanding and conversion rates (as of December 31, 2024)\n\n| Series | Principal outstanding | Conversion rate (shares per $1,000) | Implied conversion price | Approx. shares if converted |\n|---|---|---|---|---|\n| 2025 Notes | $36,240 thousand ($36.2 million) | 46.1233 | ~$21.68 | ~1.67 million |\n| 2026 Notes | $249,754 thousand ($249.8 million) | 43.8481 | ~$22.81 | ~10.95 million |\n| 2028 Notes | $1,500,000 thousand ($1.50 billion) | 17.7494 | ~$56.34 | ~26.62 million |\n\nThe filing also covers two series not in your list:\n\n| Series | Principal outstanding | Conversion rate | Implied conversion price |\n|---|---|---|---|\n| 2027 Notes | $1,150,000 thousand | 11.2042 | ~$89.25 |\n| 2030 Notes | $750,000 thousand | 45.0846 | ~$22.18 |\n\nThe 2025 Notes were convertible on or after February 1, 2025. The other series did not meet their sale-price conversion condition as of December 31, 2024.",
+     "is_error": false,
+     "elapsed_s": 11.91,
+     "cost_usd": 0.127585
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00022281
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Snap 10-K for FY2024, search for 'maximum conversion rate', 'make-whole', 'capped call' and 'maximum number of shares' in the convertible notes note. Quote verbatim any stated maximum conversion rate per $1,000 principal for each series (2025, 2026, 2027, 2028, 2030 notes) and any capped call cap price and number of shares, with the period. {{snap_10k_2024}}"
+     },
+     "output": "The filing does not state a **maximum** conversion rate for any series. It gives only **initial** conversion rates, which are subject to adjustment. The search term \"maximum conversion rate\" does not appear. The filing also does not state a number of shares for any capped call transaction, only cap prices.\n\n**Initial conversion rates (Note 7, \"Convertible Notes\")**\n\n- **2025 Notes:** \"...at an initial conversion rate of 46.1233 shares of Class A common stock per $1,000 principal amount of 2025 Notes, which is equivalent to an initial conversion price of approximately $21.68 per share of our Class A common stock.\" (Period: issuance, April 2020.)\n- **2026 Notes:** \"...at an initial conversion rate of 43.8481 shares of Class A common stock per $1,000 principal amount of 2026 Notes, which is equivalent to an initial conversion price of approximately $22.81 per share of our Class A common stock.\" (Period: issuance, August 2019.)\n- **2027 Notes:** \"...at an initial conversion rate of 11.2042 shares of Class A common stock per $1,000 principal amount of 2027 Notes, which is equivalent to an initial conversion price of approximately $89.25 per share of our Class A common stock.\" (Period: issuance, April 2021.)\n- **2028 Notes:** \"...at an initial conversion rate of 17.7494 shares of Class A common stock per $1,000 principal amount of 2028 Notes, which is equivalent to an initial conversion price of approximately $56.34 per share of our Class A common stock.\" (Period: issuance, February 2022.)\n- **2030 Notes:** \"...at an initial conversion rate of 45.0846 shares of Class A common stock per $1,000 principal amount of 2030 Notes, which is equivalent to an initial conversion price of approximately $22.18 per share of our Class A common stock. The conversion rate is subject to customary adjustments for certain events as described in the indenture governing the 2030 Notes.\" (Period: issuance, May 2024.)\n\n**Make-whole provisions**\n\n- Note 7 (2030 Notes): \"Holders of the 2030 Notes who convert the 2030 Notes in connection with a make-whole fundamental change, as defined in the indenture governing the 2030 Notes, or in connection with a redemption are entitled to an increase in the conversion rate.\"\n- Risk Factors: \"if a make-whole fundamental change as defined in each of the indentures governing the Convertible Notes, or the Indentures, occurs prior to the maturity date of the Convertible Notes, we will in some cases be required to increase the conversion rate for a holder that elects to convert its Convertible Notes in connection with such make-whole fundamental change.\"\n\nThe filing does not quantify the make-whole increase or give a maximum adjusted rate.\n\n**Capped call cap prices (Note 7, \"Capped Call Transactions\")**\n\n\"The cap price of the 2025 Capped Call Transactions, the 2026 Capped Call Transactions, the 2027 Capped Call Transactions, the 2028 Capped Call Transactions, and the 2030 Capped Call Transactions is initially $32.12, $32.58, $121.02, $93.90, and $33.48 per share of our Class A common stock, respectively. All are subject to certain adjustments under the terms of the Capped Call Transactions.\"\n\n- 2025: $32.12\n- 2026: $32.58\n- 2027: $121.02\n- 2028: $93.90\n- 2030: $33.48\n\nThese are initial amounts as of issuance. The filing also says: \"In May 2024, we entered into agreements to terminate all of the 2025 Capped Call Transactions,\" and \"As of December 31, 2024, the remaining Capped Call Transactions were out-of-the-money.\"\n\n**Capped call share counts:** The filing does not state a number of shares for any capped call transaction. It gives only net costs ($100.0M, $102.1M, $86.8M, $177.0M, and $68.9M for 2025, 2026, 2027, 2028, and 2030, respectively).\n\n**\"Maximum number of shares\"**\n\nThe only matches are in the equity plan discussion, not the convertible notes. For example, \"The maximum number of shares of our Class A common stock available for future issuance under our 2017 Plan as of December 31, 2024 is 152,488,503.\" Nothing in the filing ties a maximum share count to the convertible notes.",
+     "is_error": false,
+     "elapsed_s": 15.44,
+     "cost_usd": 0.130626
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00048041999999999996
+  },
+  {
+   "turn": 5,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: about 85.9 million shares (85,945 thousand) is the maximum dilutive impact reported for Snap's convertible notes as of December 31, 2024.** The 10-K does not state a separate \"maximum\" figure, so this is the figure the filing reports for the if-converted shares.\n\n**Source figure (FY2024 10-K, Note 3, Net Loss per Share):** The filing says the following potentially dilutive shares were excluded from diluted net loss per share because they would be anti-dilutive. Units are thousands of shares, as of December 31:\n- Stock options: 680 (2024)\n- Unvested RSUs and RSAs: 134,253 (2024)\n- Convertible Notes (if-converted): 85,945 (2024), versus 89,379 (2023) and 89,379 (2022)\n\n**Cross-check (Note 7, Convertible Notes; principal \u00d7 initial conversion rate, in thousands of shares):**\n\n| Series | Principal (Dec 31, 2024) | Conversion rate per $1,000 | Shares (thousands) |\n|---|---|---|---|\n| 2025 Notes | $36,240 | 46.1233 | 1,671.6 |\n| 2026 Notes | $249,754 | 43.8481 | 10,950.3 |\n| 2027 Notes | $1,150,000 | 11.2042 | 12,884.8 |\n| 2028 Notes | $1,500,000 | 17.7494 | 26,624.1 |\n| 2030 Notes | $750,000 | 45.0846 | 33,813.5 |\n| **Total** | | | **85,944.3** |\n\nThe component sum (about 85,944 thousand) matches the reported 85,945 thousand within rounding.\n\n**Caveats:**\n- The filing gives only initial conversion rates. It states no maximum conversion rate for any series. It does mention make-whole increases to the 2030 Notes' conversion rate, but it does not quantify them, so no higher maximum can be computed from the filing.\n- Capped calls are separate and do not reduce the gross share count. The 2025 capped calls were terminated in May 2024, and the remaining capped calls were out-of-the-money at December 31, 2024. The filing gives no share counts for them, only cap prices.\n- The principal and conversion-rate figures were extracted from the 10-K text by a retrieval tool. The period, units and reconciliation were checked against the reported total.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1564408/000156440825000019/snap-20241231.htm\",\n            \"name\": \"Snap Inc. Form 10-K for fiscal year ended December 31, 2024 (filed 2025-02-05)\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: about 85.9 million shares (85,945 thousand) is the maximum dilutive impact reported for Snap's convertible notes as of December 31, 2024.** The 10-K does not state a separate \"maximum\" figure, so this is the figure the filing reports for the if-converted shares.\n\n**Source figure (FY2024 10-K, Note 3, Net Loss per Share):** The filing says the following potentially dilutive shares were excluded from diluted net loss per share because they would be anti-dilutive. Units are thousands of shares, as of December 31:\n- Stock options: 680 (2024)\n- Unvested RSUs and RSAs: 134,253 (2024)\n- Convertible Notes (if-converted): 85,945 (2024), versus 89,379 (2023) and 89,379 (2022)\n\n**Cross-check (Note 7, Convertible Notes; principal \u00d7 initial conversion rate, in thousands of shares):**\n\n| Series | Principal (Dec 31, 2024) | Conversion rate per $1,000 | Shares (thousands) |\n|---|---|---|---|\n| 2025 Notes | $36,240 | 46.1233 | 1,671.6 |\n| 2026 Notes | $249,754 | 43.8481 | 10,950.3 |\n| 2027 Notes | $1,150,000 | 11.2042 | 12,884.8 |\n| 2028 Notes | $1,500,000 | 17.7494 | 26,624.1 |\n| 2030 Notes | $750,000 | 45.0846 | 33,813.5 |\n| **Total** | | | **85,944.3** |\n\nThe component sum (about 85,944 thousand) matches the reported 85,945 thousand within rounding.\n\n**Caveats:**\n- The filing gives only initial conversion rates. It states no maximum conversion rate for any series. It does mention make-whole increases to the 2030 Notes' conversion rate, but it does not quantify them, so no higher maximum can be computed from the filing.\n- Capped calls are separate and do not reduce the gross share count. The 2025 capped calls were terminated in May 2024, and the remaining capped calls were out-of-the-money at December 31, 2024. The filing gives no share counts for them, only cap prices.\n- The principal and conversion-rate figures were extracted from the 10-K text by a retrieval tool. The period, units and reconciliation were checked against the reported total.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1564408/000156440825000019/snap-20241231.htm\",\n            \"name\": \"Snap Inc. Form 10-K for fiscal year ended December 31, 2024 (filed 2025-02-05)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0009643350000000001
+  }
+ ],
+ "final_answer": "**Answer: about 85.9 million shares (85,945 thousand) is the maximum dilutive impact reported for Snap's convertible notes as of December 31, 2024.** The 10-K does not state a separate \"maximum\" figure, so this is the figure the filing reports for the if-converted shares.\n\n**Source figure (FY2024 10-K, Note 3, Net Loss per Share):** The filing says the following potentially dilutive shares were excluded from diluted net loss per share because they would be anti-dilutive. Units are thousands of shares, as of December 31:\n- Stock options: 680 (2024)\n- Unvested RSUs and RSAs: 134,253 (2024)\n- Convertible Notes (if-converted): 85,945 (2024), versus 89,379 (2023) and 89,379 (2022)\n\n**Cross-check (Note 7, Convertible Notes; principal \u00d7 initial conversion rate, in thousands of shares):**\n\n| Series | Principal (Dec 31, 2024) | Conversion rate per $1,000 | Shares (thousands) |\n|---|---|---|---|\n| 2025 Notes | $36,240 | 46.1233 | 1,671.6 |\n| 2026 Notes | $249,754 | 43.8481 | 10,950.3 |\n| 2027 Notes | $1,150,000 | 11.2042 | 12,884.8 |\n| 2028 Notes | $1,500,000 | 17.7494 | 26,624.1 |\n| 2030 Notes | $750,000 | 45.0846 | 33,813.5 |\n| **Total** | | | **85,944.3** |\n\nThe component sum (about 85,944 thousand) matches the reported 85,945 thousand within rounding.\n\n**Caveats:**\n- The filing gives only initial conversion rates. It states no maximum conversion rate for any series. It does mention make-whole increases to the 2030 Notes' conversion rate, but it does not quantify them, so no higher maximum can be computed from the filing.\n- Capped calls are separate and do not reduce the gross share count. The 2025 capped calls were terminated in May 2024, and the remaining capped calls were out-of-the-money at December 31, 2024. The filing gives no share counts for them, only cap prices.\n- The principal and conversion-rate figures were extracted from the 10-K text by a retrieval tool. The period, units and reconciliation were checked against the reported total.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1564408/000156440825000019/snap-20241231.htm\",\n            \"name\": \"Snap Inc. Form 10-K for fiscal year ended December 31, 2024 (filed 2025-02-05)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 5,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 7,
+  "input_tokens": 20,
+  "output_tokens": 7260,
+  "cache_creation_input_tokens": 405610,
+  "cache_read_input_tokens": 31200,
+  "web_search_requests": 0,
+  "cost_usd": 0.261213
+ },
+ "cost_usd": 0.261213,
+ "elapsed_s": 42.6,
+ "harness_label": "agg1"
+}
