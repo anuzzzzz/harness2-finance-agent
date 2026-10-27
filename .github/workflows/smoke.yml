@@ -8,6 +8,8 @@ jobs:
   offline:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -17,6 +19,30 @@ jobs:
       - run: python -m pytest -q tests
       - run: python -m h2fin.experiment --offline --tasks 2 --k 2 --run-id smoke --out /tmp/runs && rm -f results/smoke.json
       - name: EDGAR reachability (same User-Agent the experiment uses)
+        id: edgar
+        continue-on-error: true
         env:
           SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT || format('{0} harness2-finance-agent {1}+{0}@users.noreply.github.com', github.actor, github.actor_id) }}
-        run: python -c "from h2fin.tools import edgar_preflight; ok, d = edgar_preflight(); print(d); raise SystemExit(0 if ok else 1)"
+        run: |
+          mkdir -p diagnostics
+          python - <<'PY' 2>&1 | tee diagnostics/edgar-check.txt
+          import os, requests
+          from h2fin import tools
+          print("user-agent:", tools._ua())
+          ok, d = tools.edgar_preflight()
+          print(d)
+          r = requests.get(tools.EFTS_URL, params={"q": '"annual report"', "forms": "10-K"}, headers={"User-Agent": tools._ua()}, timeout=60)
+          print("raw efts status:", r.status_code, "| server:", r.headers.get("server"), "| body:", r.text[:400].replace("\n", " "))
+          r = requests.get("https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001065280&type=10-K&count=1&output=atom", headers={"User-Agent": tools._ua()}, timeout=60)
+          print("raw browse-edgar status:", r.status_code, "| body:", r.text[:200].replace("\n", " "))
+          raise SystemExit(0 if ok else 1)
+          PY
+      - name: Record the EDGAR check in the repo
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -f diagnostics/edgar-check.txt
+          git commit -m "diagnostics: EDGAR check from the smoke workflow [skip ci]" || exit 0
+          for i in 1 2 3; do git pull --rebase && git push && break || sleep 5; done
+      - run: test "${{ steps.edgar.outcome }}" = "success"
