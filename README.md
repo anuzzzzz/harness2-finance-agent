@@ -14,6 +14,45 @@ but an `ANTHROPIC_API_KEY`:
 Results land in [`results/`](results/README.md) (one row per run) and every trajectory, harness
 diff and library entry is kept as a workflow artifact.
 
+## Findings (50 public questions, Haiku 5.5 executor, Sonnet 5.5 editor and judge, k=1)
+
+Run [`20261027-150346-k1-haiku`](runs/20261027-150346-k1-haiku/summary.md); full table in [`results/`](results/README.md).
+
+| arm | correct | criteria pass rate | opened a filing | used web search | cost / question |
+|---|---|---|---|---|---|
+| base (Vals harness as published) | 62% | 77.2% | 52% of runs | 88% | $0.09 |
+| **Harness²** (propose → probe → compose, library across questions) | **72%** | **83.8%** | 98% | 16% | $1.05 |
+| matched-cost control (4 base runs, blind pick) | 62% | 79.6% | 52% | 82% | ~$0.36 |
+| static rule (three hand-written sentences: open the primary filing) | 68% | 82.2% | 80% | 58% | $0.11 |
+
+1. **Harness² beats the published harness.** Paired per question: 8 better, 1 worse, 41 ties; sign test
+   p = 0.04; mean +6.6 points of pass rate (bootstrap 95% CI +1.5 to +13.3). No answer key is visible
+   to the loop; the judge runs afterwards; 0 of 3,908 web-result URLs hit a blocked domain.
+2. **It changed the agent's behavior completely.** Under the stock prompt Haiku opened a filing in half
+   its runs and answered the rest from search snippets. Under the composed harnesses it opened a filing in
+   98% and used web search in 16%. The score moved less than the behavior because most questions were
+   answerable from snippets and the remaining misses are judgment calls (peer sets, basis choices).
+3. **The gain is not distinguishable from one hand-written rule or from four stock re-runs.** Harness²
+   vs static: 6 / 5 / 39, p = 1.00. Harness² vs control: 6 / 3 / 41, p = 0.51. The oracle best of four
+   stock runs is 70% / 85.0%, i.e. the stock prompt already contains Harness²-level answers at the
+   same spend; Harness² reaches them with one final run instead of a perfect picker.
+4. **38 of 50 composed harnesses carry sec.gov URLs found by the base run.** The paper allows task-level
+   facts in a task-level harness, but it means the Harness² run is partly a second pass with a map,
+   which the static arm does not get. One entrenchment case: on q14 the composed harness reused the
+   base run's inputs and scored the same 16.7% while three fresh stock runs scored 50–67%.
+5. **The library worked as described.** Composers kept a DOM skill in 15 of the first 25 questions and
+   4 of the last 25, after repeated library lessons that skills cost a turn and gain nothing; always-on
+   guidance grew from ~3.1k to ~3.9k chars. Where it helped: numerical reasoning (75 → 100% correct),
+   simple qualitative retrieval (78 → 89%), beat-or-miss (43 → 57%), complex retrieval (33 → 67%).
+   Where it did nothing: market analysis (0 → 0%), trends, adjustments.
+
+Reading: recursive harnessing found a real defect in the published harness, with no grader in the
+loop, at 12× the cost of a base run; what it found is one rule a practitioner writes in five minutes,
+and 50 questions cannot show anything beyond that. Next: a *library-distilled static arm* (the final
+library's generalized lessons as a fixed harness, ~$6 for 50 questions) to test whether the loop
+learned more than the three sentences; the 150 licensable questions for power; `--editor haiku` to rule
+out editor knowledge injection.
+
 ## Run it
 
 1. Add the repository secret `ANTHROPIC_API_KEY` (Settings → Secrets and variables → Actions).
