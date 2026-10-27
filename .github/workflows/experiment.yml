@@ -47,7 +47,7 @@ jobs:
       contents: write
     env:
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-      SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT || format('harness2-finance-agent {0} (github actions)', github.repository) }}
+      SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT || format('{0} harness2-finance-agent {1}+{0}@users.noreply.github.com', github.actor, github.actor_id) }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

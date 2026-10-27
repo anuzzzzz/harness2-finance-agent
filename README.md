@@ -17,8 +17,9 @@ diff and library entry is kept as a workflow artifact.
 ## Run it
 
 1. Add the repository secret `ANTHROPIC_API_KEY` (Settings → Secrets and variables → Actions).
-   Optionally add a repository *variable* `SEC_USER_AGENT` with your contact details — the SEC
-   asks every EDGAR client to identify itself.
+   Optionally add a repository *variable* `SEC_USER_AGENT` in the form `Your Name you@example.com`.
+   The SEC rejects every request whose User-Agent lacks an e-mail address (HTTP 403, "undeclared
+   automated tool"); without the variable the workflow uses your GitHub noreply address.
 2. Actions → **experiment** → *Run workflow*. Defaults: 10 questions, k=1, executor Haiku 5.5,
    editor and judge Sonnet 5.5, web search on, stop past $40.
 3. When it finishes: the summary is committed to `results/<run_id>.json` and the table in

@@ -125,3 +125,12 @@ def test_web_search_tool_blocks_answer_key_domains():
     assert ws["name"] == "web_search" and ws["max_uses"] == 3
     assert "github.com" in ws["blocked_domains"] and "vals.ai" in ws["blocked_domains"]
     assert set(config.WEB_SEARCH_BLOCKED_DOMAINS) <= set(ws["blocked_domains"])
+
+
+def test_sec_user_agent_always_carries_an_email(monkeypatch=None):
+    import os
+    os.environ["SEC_USER_AGENT"] = "no email here"
+    assert "@" in tools._ua()
+    os.environ["SEC_USER_AGENT"] = "Jane Doe jane@example.com"
+    assert tools._ua() == "Jane Doe jane@example.com"
+    del os.environ["SEC_USER_AGENT"]

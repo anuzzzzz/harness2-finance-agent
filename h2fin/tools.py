@@ -34,8 +34,13 @@ MAX_TOOL_OUTPUT_CHARS = 40_000      # cap on what goes back into the conversatio
 
 
 def _ua() -> str:
-    # SEC asks for a descriptive User-Agent with contact details.
-    return os.environ.get("SEC_USER_AGENT", "harness2-finance-agent research (github.com)")
+    """SEC's fair-access policy rejects any client whose User-Agent lacks a contact e-mail
+    ("Your Request Originates from an Undeclared Automated Tool", HTTP 403). The required shape
+    is `Company Name contact@domain`; set SEC_USER_AGENT to your own."""
+    ua = os.environ.get("SEC_USER_AGENT", "").strip()
+    if ua and "@" in ua:
+        return ua
+    return "harness2-finance-agent research 145967674+anuzzzzz@users.noreply.github.com"
 
 
 @dataclass
