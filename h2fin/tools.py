@@ -441,3 +441,23 @@ IMPLS: dict[str, Callable[[dict, ToolContext], str]] = {
     "load_skill": load_skill,
     "submit_final_result": submit_final_result,
 }
+
+
+def edgar_preflight(ctx: ToolContext | None = None) -> tuple[bool, str]:
+    """One cheap EDGAR query so a run never silently degrades to web-search-only (as happened
+    when the SEC rejected an e-mail-less User-Agent). Returns (ok, detail)."""
+    ctx = ctx or ToolContext(retriever=None)  # type: ignore[arg-type]
+    try:
+        r = _sec_get(ctx, EFTS_URL, params={"q": '"annual report"', "dateRange": "custom",
+                                            "startdt": "2025-01-01", "enddt": "2025-01-31", "forms": "10-K"})
+        if r.status_code != 200:
+            return False, f"EDGAR full-text search HTTP {r.status_code} (User-Agent: {_ua()!r})"
+        n = r.json().get("hits", {}).get("total", {}).get("value", 0)
+        if not n:
+            return False, "EDGAR full-text search returned no hits for a query that must match"
+        r2 = _sec_get(ctx, "https://www.sec.gov/Archives/edgar/data/1065280/000106528025000044/nflx-20241231.htm")
+        if r2.status_code != 200:
+            return False, f"EDGAR archive fetch HTTP {r2.status_code} (User-Agent: {_ua()!r})"
+        return True, f"EDGAR ok ({n} hits; archive fetch {len(r2.text):,} chars)"
+    except Exception as e:  # noqa: BLE001
+        return False, f"EDGAR preflight error: {type(e).__name__}: {e}"

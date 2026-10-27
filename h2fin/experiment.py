@@ -19,7 +19,7 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-from . import config, harness, prompts
+from . import config, harness, prompts, tools
 from .agent import Trajectory, run_agent
 from .judge import judge_answer
 from .library import Library
@@ -109,6 +109,7 @@ def main(argv=None) -> int:
     p.add_argument("--run-id", default=None)
     p.add_argument("--out", default="runs")
     p.add_argument("--offline", action="store_true", help="scripted models + canned HTTP; no network, no key")
+    p.add_argument("--allow-broken-edgar", action="store_true", help="run even if the EDGAR preflight fails")
     args = p.parse_args(argv)
 
     run_id = args.run_id or datetime.now(timezone.utc).strftime("%Y%m%d-%H%M%S") + f"-k{args.k}-{args.executor}"
@@ -116,6 +117,12 @@ def main(argv=None) -> int:
     out.mkdir(parents=True, exist_ok=True)
     log = _log_factory(out / "log.txt")
     exec_llm, editor, judge, retriever_factory, http = build_llms(args, log)
+    if not args.offline:
+        ok, detail = tools.edgar_preflight()
+        log(f"preflight: {detail}")
+        if not ok and not args.allow_broken_edgar:
+            sys.exit("EDGAR is not reachable; refusing to run a filings benchmark without filings. "
+                     "Set SEC_USER_AGENT to 'Your Name you@example.com' (or pass --allow-broken-edgar).")
     if not args.offline and not args.no_web_search:
         sup = supports_web_search(exec_llm.model)
         if sup is False:
