@@ -4,4 +4,4 @@ One row per run. *correct* = every rubric criterion passed (Vals' accuracy); *pa
 
 | run | executor / editor | k | tasks | web search | correct (base → H²) | pass rate (base → H²) | paired W/L/T | cost per task (base → H²) | run total |
 |---|---|---|---|---|---|---|---|---|---|
-| _(no runs yet)_ | | | | | | | | | |
+| `20261027-051421-k1-haiku-n10` | haiku-5-5 / sonnet-5-5 | 1 | 10 | on | 70.0% → 70.0% | 88.9% → 82.2% | 1/2/7 | $0.04 → $0.42 | $4.64 |
