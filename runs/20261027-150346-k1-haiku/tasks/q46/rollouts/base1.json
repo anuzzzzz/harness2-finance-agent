@@ -1,0 +1,308 @@
+{
+ "task_id": "q46",
+ "label": "base1",
+ "question": "As of December 2024, what has been Zillow's (NASDAQ:Z) acquisition strategy over the past 2 years and how does it align with the company's evolving revenue mix?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01JzYpCXYyWaK1cSszRvXVMT",
+     "query": "Zillow 2024 annual report acquisitions strategy revenue mix",
+     "results": []
+    }
+   ],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Zillow Group acquisition strategy revenue mix IMT rentals",
+      "ciks": [
+       "Z"
+      ],
+      "start_date": "2022-10-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "{\"total_matching_documents\": 3, \"page\": 1, \"results\": [{\"form\": \"8-K\", \"file_date\": \"2023-02-15\", \"period_ending\": \"2023-02-15\", \"company\": \"ZILLOW GROUP, INC.  (Z, ZG)  (CIK 0001617640)\", \"ciks\": [\"0001617640\"], \"accession\": \"0001617640-23-000006\", \"document\": \"exhibit993.htm\", \"description\": \"EX-99.3\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764023000006/exhibit993.htm\"}, {\"form\": \"ARS\", \"file_date\": \"2023-04-26\", \"period_ending\": \"2022-12-31\", \"company\": \"ZILLOW GROUP, INC.  (Z, ZG)  (CIK 0001617640)\", \"ciks\": [\"0001617640\"], \"accession\": \"0001617640-23-000060\", \"document\": \"zg202210k5a.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764023000060/zg202210k5a.pdf\"}, {\"form\": \"10-K\", \"file_date\": \"2023-02-15\", \"period_ending\": \"2022-12-31\", \"company\": \"ZILLOW GROUP, INC.  (Z, ZG)  (CIK 0001617640)\", \"ciks\": [\"0001617640\"], \"accession\": \"0001617640-23-000010\", \"document\": \"z-20221231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764023000010/z-20221231.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 1.21,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00024137
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01JzYpCXYyWaK1cSszRvXVMT",
+     "query": null,
+     "results": [
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-K - FY2024 (Annual Financial Statement Tables - full year 2024)",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000125/q32024991.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000125/exhibit993.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000012/exhibit993.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000095/exhibit993.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000069/exhibit993.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000012/q42023991.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000095/q22024991.htm",
+       "page_age": null
+      }
+     ]
+    },
+    {
+     "id": "srvtoolu_01VUtQzuqRVSvtDah7mHDDPt",
+     "query": "Zillow 10-K 2024 Follow Up Boss acquisition ShowingTime+ revenue by segment Residential Rentals Mortgages percent of total revenue",
+     "results": []
+    }
+   ],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm",
+      "key": "z10k2024"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: z10k2024. (467,105 characters)\nThe data_storage currently contains the following keys:\nz10k2024\n",
+     "is_error": false,
+     "elapsed_s": 0.66,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.01128726
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01VUtQzuqRVSvtDah7mHDDPt",
+     "query": null,
+     "results": [
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-K - FY2024 (Annual Financial Statement Tables - full year 2024)",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. (Form: 10-K, Received: 02/11/2025 16:21:55)",
+       "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001617640-25-000016.html?hash=0cbc5b58372fd7624126f2551e8e8a884de4b57fe379aaaa014e219af2339afa&dest=z-20241231_htm",
+       "page_age": "665 days ago"
+      },
+      {
+       "title": "How Does Zillow Make Money? Zillow Business Model (2026)",
+       "url": "https://fourweekmba.com/how-does-zillow-make-money/",
+       "page_age": "12 days ago"
+      },
+      {
+       "title": "exhibit993",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000015/exhibit993.htm",
+       "page_age": null
+      },
+      {
+       "title": "Growth In Residential, Rental And Mortgage Segments Lift Zillow In Q1",
+       "url": "https://www.inman.com/2024/05/01/growth-in-residential-rental-and-mortgage-segments-lift-zillow-in-q1/",
+       "page_age": "901 days ago"
+      },
+      {
+       "title": "How does Zillow make money?",
+       "url": "https://www.sharetribe.com/how-to-build/how-does-zillow-make-money/",
+       "page_age": "433 days ago"
+      },
+      {
+       "title": "Zillow Group Reports First-Quarter 2025 Financial Results",
+       "url": "https://www.prnewswire.com/news-releases/zillow-group-reports-first-quarter-2025-financial-results-302449000.html",
+       "page_age": "537 days ago"
+      },
+      {
+       "title": "Zillow Group, Inc. (ZG): Company Overview, Business Model & History",
+       "url": "https://dcfanalyst.com/blogs/overview/zg-overview",
+       "page_age": "36 days ago"
+      }
+     ]
+    },
+    {
+     "id": "srvtoolu_01ABXjqLMD8528VKfyrUFq4f",
+     "query": "Zillow acquires Aryeo 2024",
+     "results": []
+    }
+   ],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Zillow 10-K for FY2024, extract: (1) all acquisitions completed in 2023 and 2024 (names, dates, purchase prices, strategic rationale), including Aryeo and Follow Up Boss; (2) revenue by category for 2024 and 2023 (Residential, Mortgages, Rentals, Other, For Sale subtotal) with amounts and percentage of total revenue; (3) any statements about strategy shifts (e.g., Zillow Home Loans, mortgage marketplace, Zillow Offers, software investment, rentals growth). Quote exact figures and cite section context.\n\n{{z10k2024}}"
+     },
+     "output": "# Zillow Group FY2024 10-K: Extracted Data\n\nAll figures are in millions of USD unless noted. Section references are to the 10-K.\n\n## (1) Acquisitions, 2023\u20132024\n\n| Acquisition | Close Date | Purchase Price (per filing) | Business | Key Allocations |\n|---|---|---|---|---|\n| **Aryeo, Inc.** | July 31, 2023 | ~$15M cash, net of cash acquired, plus 380,259 Class C shares valued at $20M. Text says \"total consideration of $35 million, net of cash acquired\"; the allocation table totals **$38** (see note below). | Software company serving real estate photographers (Note 6). | Goodwill $26; intangibles $11 (customer relationships $5, 5-yr life; purchased content $4, 3-yr; developed technology $2, 3-yr) |\n| **Spruce Holdings, Inc.** (substantially all assets and liabilities) | September 11, 2023 | ~$19M cash, net of cash acquired; allocation table totals **$24** | \"Tech-enabled title and escrow platform\" (Note 6) | Goodwill $16 (tax-deductible); intangibles $2 (developed technology, 3-yr) |\n| **Enchant, LLC d/b/a Follow Up Boss** | December 8, 2023 | **$399** cash, net of cash acquired, plus contingent consideration of **up to $100** payable over three years. Total purchase price allocated: **$484** (cash $403 + contingent consideration $81 at fair value). | CRM system for real estate professionals (Item 1, Note 6) | Goodwill $402; intangibles $86 (developed technology $50, 4-yr; customer relationships $34, 7-yr; trade names $2, 7-yr) |\n| **Virtual Staging AI Inc.** | October 2024 | **Not disclosed.** Named only in Item 1A. | Not described | Not disclosed |\n\n**Aggregate 2023 cash paid for acquisitions, net:** $433 (cash flow statement). This reconciles to Follow Up Boss ($399) + Aryeo (~$15) + Spruce (~$19) = $433.\n\n**2024 cash paid for acquisitions, net:** $7 (cash flow statement). The filing does not attribute this amount to a specific acquisition.\n\n**Acquisition-related costs:** $4 (2023) and $1 (2024).\n\n**Strategic rationale (as stated in the filing):**\n- **Follow Up Boss:** \"The acquisition is consistent with our strategy to invest in a more integrated software experience for our customers\" (Note 6). In Item 1, Zillow says the company is \"continuing to integrate Follow Up Boss... into our suite of product offerings\" and that \"more than 80% of Enhanced Market connections are being managed through Follow Up Boss\" as of December 31, 2024.\n- **Aryeo:** Item 1 describes Aryeo and Follow Up Boss as software that \"provide real estate professionals tools to manage leads, create listings, and effectuate transactions.\" Zillow states it is \"investing in digital solutions to empower real estate professionals to drive a better consumer experience for movers\" (Item 1, \"Industry Software\").\n- **Spruce:** The filing does not state a specific rationale beyond its description as a tech-enabled title and escrow platform, and its inclusion among \"marketing software and technology solutions\" (Item 1).\n- **Virtual Staging AI:** No rationale is given.\n\n**Follow Up Boss earn-out status:** The first earn-out period has passed, with an \"expected payment of $33 million in February 2025\" (MD&A, Contractual Obligations). Contingent consideration at 12/31/2024 was $33 current plus $58 long-term, totaling $91 (Note 4).\n\n**Discrepancy to note:** Item 1A and Note 6 say the Virtual Staging AI acquisition occurred in October 2024, but the filing provides no price, rationale, or allocation. The Aryeo consideration is stated as $35 in the text and $38 in the allocation table. The filing does not reconcile these figures.\n\n## (2) Revenue by Category (Item 7",
+     "is_error": false,
+     "elapsed_s": 20.21,
+     "cost_usd": 0.102764
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.01138795
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01ABXjqLMD8528VKfyrUFq4f",
+     "query": null,
+     "results": [
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-Q - FY2024 (Quarterly Earnings Tables - quarter ended Sep 2024)",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000126/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-K - FY2024 (Annual Financial Statement Tables - full year 2024)",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-Q - FY2024 (Quarterly Earnings Tables - quarter ended Jun 2024)",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000094/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-Q - FY2024 (Quarterly Earnings Tables - quarter ended Mar 2024)",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000070/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000070/z-20240331.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000094/z-20240630.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000126/z-20240930.htm",
+       "page_age": null
+      },
+      {
+       "title": "Zillow Acquires Aryeo",
+       "url": "https://contrary.com/blog/zillow-acquires-aryeo",
+       "page_age": "1182 days ago"
+      },
+      {
+       "title": "PropTech Connect on LinkedIn: Zillow Group Acquires Aryeo to Help Deliver Richer Home Shopping\u2026",
+       "url": "https://www.linkedin.com/posts/proptech-connect_zillow-group-acquires-aryeo-to-help-deliver-activity-7096785759948402689-SZA7",
+       "page_age": "1170 days ago"
+      }
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Zillow FY2024 10-K, give the revenue table for years ended Dec 31, 2024 and 2023: Residential, Mortgages, For Sale revenue, Rentals, Other, Total revenue, in millions, and percentage of total for 2024 and 2023 if stated. Also the sentence describing total revenue growth and the Virtual Staging AI acquisition, and any statement on Zillow Home Loans / mortgage strategy and rentals/multifamily strategy.\n\n{{z10k2024}}"
+     },
+     "output": "## Revenue Table (Years Ended December 31, in millions)\n\n| Revenue Category | 2024 | % of Total 2024 | 2023 | % of Total 2023 |\n|---|---|---|---|---|\n| Residential | $1,594 | 71% | $1,452 | 75% |\n| Mortgages | 145 | 6% | 96 | 5% |\n| **For Sale revenue (subtotal)** | **1,739** | **78%** | **1,548** | **80%** |\n| Rentals | 453 | 20% | 357 | 18% |\n| Other | 44 | 2% | 40 | 2% |\n| **Total revenue** | **$2,236** | **100%** | **$1,945** | **100%** |\n\n*Source: MD&A Results of Operations table (p. 44) and Consolidated Statements of Operations (p. 62). Percentages are as stated in the filing.*\n\n## Total Revenue Growth\n\n\"For the years ended December 31, 2024 and 2023, we generated total revenue of $2.2 billion and $1.9 billion, respectively, representing a year-over-year increase of 15%.\" The MD&A also states that \"Total revenue increased $291 million, or 15%, to $2.2 billion.\"\n\n## Virtual Staging AI Acquisition\n\nThe 10-K mentions this acquisition only once, in the risk factor on acquisitions: \"we acquired ... Virtual Staging AI Inc. in October 2024.\" The filing gives no purchase price, accounting details, or revenue contribution. Note 6 (Acquisitions) covers only Follow Up Boss, Aryeo and Spruce.\n\n## Zillow Home Loans / Mortgage Strategy\n\n- **Operations:** Zillow Home Loans is available in 49 states and the District of Columbia. It originates mortgage loans and generally sells them on the secondary market.\n- **Integration with For Sale:** In Enhanced Markets, consumers are supported by Premier Agent partners and Zillow Home Loans loan officers. The company says it sees \"higher transaction conversion rates for agent partners working with buyers who choose Zillow Home Loans.\"\n- **Growth focus:** Mortgages revenue rose $49 million (51%), driven by a $64 million increase in mortgage originations revenue. This reflected a 101% increase in total loan origination volume to $3.1 billion, \"primarily driven by our strategic focus on growing Zillow Home Loans purchase loan origination volume.\"\n- **Margin:** Gain on sale margin increased 22%.\n- **Offset:** Custom Quote and Connect advertising revenue fell $12 million (15% fewer leads), reflecting \"our focus on organic growth of our mortgage origination operations.\"\n\n## Rentals / Multifamily Strategy\n\n- **Strategy:** Zillow is \"building a nationwide marketplace for renters and landlords.\" The company says its Rentals investments \"have yielded growth in Rentals traffic, multifamily property count, and Rentals revenue during 2024.\"\n- **2024 partnership and marketing:** It entered a strategic partnership with Realtor.com to provide all multifamily listings on that site and launched its first national marketing campaign for Zillow Rentals aimed at apartment seekers.\n- **Results:** Rentals revenue rose $96 million (27%). Quarterly revenue per average monthly rentals unique visitor increased 15% to $3.65, \"primarily driven by growth in multifamily property listings, which drove a 42% increase in multifamily rentals revenue.\" Average monthly rentals unique visitors rose 11% to 31 million.\n- **Outlook:** The company expects Rentals revenue to increase in absolute dollars in the three months ending March 31, 2025, \"driven primarily by our growth in multifamily revenue.\"\n- **Subsequent event (February 6, 2025):** Zillow entered a rentals partnership with Redfin, making it the exclusive provider of multifamily rental listings (25+ units) on the Redfin Rental Network. Zillow will make a $100 million upfront payment to Redfin and pay for leads generated through the network, for an initial five-year term with two optional two-year extensions.\n\n**Note on the filing:** The MD&A Residential per-visit discussion says revenue per visit rose \"from $0.162 for the year ended December 31, 2024,\" which appears to be a typo for 2023.",
+     "is_error": false,
+     "elapsed_s": 12.27,
+     "cost_usd": 0.098971
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.011736885
+  },
+  {
+   "turn": 5,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "\n**Short answer:** Over 2023\u20132024, Zillow's acquisitions were concentrated in real estate software that feeds its largest segment, Residential. Revenue growth and the mix shift toward Rentals and Mortgages came mostly from organic growth and partnerships, not from M&A. Acquisition spending also slowed sharply in 2024. (Scope note: I used the FY2024 10-K, filed February 2025, and the Q4 2024 results letter. I excluded later data such as 2025 quarterly results, since it postdates April 7, 2025.)\n\n**1. Acquisition strategy (2023\u20132024)**\n\n- **Software-first M&A.** Zillow's stated approach was to buy tools for agents and sellers. <cite index=\"1-3\">The acquisition is consistent with our strategy to invest in a more integrated software experience for our customers.</cite> The 10-K describes its software push this way: <cite index=\"12-4\">we acquired Aryeo and Follow Up Boss, which provide real estate professionals tools to manage leads, create listings, and effectuate transactions.</cite>\n- **Deals completed (per the FY2024 10-K):**\n  - Aryeo (July 31, 2023): software for real estate photographers. Filings state <cite index=\"19-3\">total consideration of $35 million, net of cash acquired</cite>, while the purchase price allocation table totals $38M. I flag this as a reporting inconsistency.\n  - Spruce (September 11, 2023): <cite index=\"19-4\">substantially all of the assets and liabilities of Spruce, a tech-enabled title and escrow platform, in exchange for approximately $19 million in cash, net of cash acquired.</cite>\n  - Follow Up Boss (December 8, 2023): <cite index=\"1-1\">$399 million in cash, net of cash acquired, and contingent consideration of up to $100 million in cash, payable over a three-year period</cite>. The total purchase price was $484M, including $81M of contingent consideration at fair value.\n  - Virtual Staging AI (October 2024): the filing names it only in a risk factor and gives no price or rationale.\n- **Scale of spending.** Net cash paid for acquisitions was $433M in 2023, so Follow Up Boss alone accounts for about 92.15% of that figure (399 / 433). In 2024, net cash paid for acquisitions fell to $7M, which shows a clear pause in M&A.\n- **Post-period pivot to partnerships.** In February 2025, Zillow <cite index=\"4-6\">entered a rentals partnership with Redfin, making it the exclusive provider of multifamily rental listings</cite> with a $100 million upfront payment to Redfin. This suggests that rentals growth was being pursued through commercial deals rather than acquisitions.\n\n**2. Evolving revenue mix**\n\n| Category | 2024 ($M) | % of total 2024 | 2023 ($M) | % of total 2023 | 2024 YoY growth |\n|---|---|---|---|---|---|\n| Residential | 1,594 | 71% | 1,452 | 75% | 9.78% |\n| Mortgages | 145 | 6% | 96 | 5% | 51.04% |\n| Rentals | 453 | 20% | 357 | 18% | 26.89% |\n| Other | 44 | 2% | 40 | 2% | 10.00% |\n| Total | 2,236 | 100% | 1,945 | 100% | 14.99% |\n\nSource for the table: the FY2024 10-K revenue table. Growth rates are my calculations from those figures, and the percentages match the filing.\n\nKey points:\n- Residential, the segment that includes the acquired software (Follow Up Boss, ShowingTime+), still produced most revenue but fell from 75% to 71% of the total.\n- Rentals and Mortgages gained share. Rentals rose from 18% to 20%, and Mortgages from 5% to 6%.\n- The Residential segment's growth was partly acquisition-driven. The 10-K attributes part of its increase to <cite index=\"4-2\">the inclusion of revenue from Follow Up Boss, which we acquired in December 2023</cite>, along with Premier Agent conversion gains.\n\n**3. How the strategy aligns with the mix shift**\n\n- **Alignment:** The software acquisitions reinforce the Residential franchise, which remains the core of the business, and they support the \"integrated transaction\" model. Acquired tools such as Follow Up Boss also help Zillow retain agent relationships in its Enhanced Markets.\n- **Partial misalignment or limited M&A role:** The mix shift toward Rentals and Mortgages was mostly organic. In Mortgages, the 10-K attributes the growth to <cite index=\"4-7\">our strategic focus on growing Zillow Home Loans purchase loan origination volume</cite>, and total origination volume rose 101%. Rentals grew through multifamily listings and marketing, not through acquisitions.\n- **Shift away from mortgage M&A:** Mortgage marketplace revenue declined as Zillow <cite index=\"7-4\">shifted strategic priority as we focus on organic growth of our mortgage origination business.</cite>\n- **Net assessment:** Zillow's 2023 acquisitions strengthened its software layer inside Residential, but the faster-growing Rentals and Mortgages lines gained share through organic investment and partnerships. As of the FY2024 10-K, the company was prioritizing organic growth and commercial partnerships in those segments, while acquisition activity was largely paused in 2024.\n\n**Sources**\n- Zillow FY2024 10-K (main document): https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm\n- Zillow FY2024 10-K financial report tables: https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/Financial_Report.xlsx\n- Zillow Q4 2024 shareholder letter exhibit: https://www.sec.gov/Archives/edgar/data/1617640/000161764025000015/exhibit993.htm\n- Zillow Q2 2024 shareholder letter exhibit: https://www.sec.gov/Archives/edgar/data/1617640/000161764024000095/exhibit993.htm\n- Zillow Q1 2024 shareholder letter exhibit: https://www.sec.gov/Archives/edgar/data/1617640/000161764024000069/exhibit993.htm\n- Zillow Q3 2024 10-Q (Aryeo and Spruce acquisitions): https://www.sec.gov/Archives/edgar/data/1617640/000161764024000126/z-20240930.htm\n"
+     },
+     "output": "\n**Short answer:** Over 2023\u20132024, Zillow's acquisitions were concentrated in real estate software that feeds its largest segment, Residential. Revenue growth and the mix shift toward Rentals and Mortgages came mostly from organic growth and partnerships, not from M&A. Acquisition spending also slowed sharply in 2024. (Scope note: I used the FY2024 10-K, filed February 2025, and the Q4 2024 results letter. I excluded later data such as 2025 quarterly results, since it postdates April 7, 2025.)\n\n**1. Acquisition strategy (2023\u20132024)**\n\n- **Software-first M&A.** Zillow's stated approach was to buy tools for agents and sellers. <cite index=\"1-3\">The acquisition is consistent with our strategy to invest in a more integrated software experience for our customers.</cite> The 10-K describes its software push this way: <cite index=\"12-4\">we acquired Aryeo and Follow Up Boss, which provide real estate professionals tools to manage leads, create listings, and effectuate transactions.</cite>\n- **Deals completed (per the FY2024 10-K):**\n  - Aryeo (July 31, 2023): software for real estate photographers. Filings state <cite index=\"19-3\">total consideration of $35 million, net of cash acquired</cite>, while the purchase price allocation table totals $38M. I flag this as a reporting inconsistency.\n  - Spruce (September 11, 2023): <cite index=\"19-4\">substantially all of the assets and liabilities of Spruce, a tech-enabled title and escrow platform, in exchange for approximately $19 million in cash, net of cash acquired.</cite>\n  - Follow Up Boss (December 8, 2023): <cite index=\"1-1\">$399 million in cash, net of cash acquired, and contingent consideration of up to $100 million in cash, payable over a three-year period</cite>. The total purchase price was $484M, including $81M of contingent consideration at fair value.\n  - Virtual Staging AI (October 2024): the filing names it only in a risk factor and gives no price or rationale.\n- **Scale of spending.** Net cash paid for acquisitions was $433M in 2023, so Follow Up Boss alone accounts for about 92.15% of that figure (399 / 433). In 2024, net cash paid for acquisitions fell to $7M, which shows a clear pause in M&A.\n- **Post-period pivot to partnerships.** In February 2025, Zillow <cite index=\"4-6\">entered a rentals partnership with Redfin, making it the exclusive provider of multifamily rental listings</cite> with a $100 million upfront payment to Redfin. This suggests that rentals growth was being pursued through commercial deals rather than acquisitions.\n\n**2. Evolving revenue mix**\n\n| Category | 2024 ($M) | % of total 2024 | 2023 ($M) | % of total 2023 | 2024 YoY growth |\n|---|---|---|---|---|---|\n| Residential | 1,594 | 71% | 1,452 | 75% | 9.78% |\n| Mortgages | 145 | 6% | 96 | 5% | 51.04% |\n| Rentals | 453 | 20% | 357 | 18% | 26.89% |\n| Other | 44 | 2% | 40 | 2% | 10.00% |\n| Total | 2,236 | 100% | 1,945 | 100% | 14.99% |\n\nSource for the table: the FY2024 10-K revenue table. Growth rates are my calculations from those figures, and the percentages match the filing.\n\nKey points:\n- Residential, the segment that includes the acquired software (Follow Up Boss, ShowingTime+), still produced most revenue but fell from 75% to 71% of the total.\n- Rentals and Mortgages gained share. Rentals rose from 18% to 20%, and Mortgages from 5% to 6%.\n- The Residential segment's growth was partly acquisition-driven. The 10-K attributes part of its increase to <cite index=\"4-2\">the inclusion of revenue from Follow Up Boss, which we acquired in December 2023</cite>, along with Premier Agent conversion gains.\n\n**3. How the strategy aligns with the mix shift**\n\n- **Alignment:** The software acquisitions reinforce the Residential franchise, which remains the core of the business, and they support the \"integrated transaction\" model. Acquired tools such as Follow Up Boss also help Zillow retain agent relationships in its Enhanced Markets.\n- **Partial misalignment or limited M&A role:** The mix shift toward Rentals and Mortgages was mostly organic. In Mortgages, the 10-K attributes the growth to <cite index=\"4-7\">our strategic focus on growing Zillow Home Loans purchase loan origination volume</cite>, and total origination volume rose 101%. Rentals grew through multifamily listings and marketing, not through acquisitions.\n- **Shift away from mortgage M&A:** Mortgage marketplace revenue declined as Zillow <cite index=\"7-4\">shifted strategic priority as we focus on organic growth of our mortgage origination business.</cite>\n- **Net assessment:** Zillow's 2023 acquisitions strengthened its software layer inside Residential, but the faster-growing Rentals and Mortgages lines gained share through organic investment and partnerships. As of the FY2024 10-K, the company was prioritizing organic growth and commercial partnerships in those segments, while acquisition activity was largely paused in 2024.\n\n**Sources**\n- Zillow FY2024 10-K (main document): https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm\n- Zillow FY2024 10-K financial report tables: https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/Financial_Report.xlsx\n- Zillow Q4 2024 shareholder letter exhibit: https://www.sec.gov/Archives/edgar/data/1617640/000161764025000015/exhibit993.htm\n- Zillow Q2 2024 shareholder letter exhibit: https://www.sec.gov/Archives/edgar/data/1617640/000161764024000095/exhibit993.htm\n- Zillow Q1 2024 shareholder letter exhibit: https://www.sec.gov/Archives/edgar/data/1617640/000161764024000069/exhibit993.htm\n- Zillow Q3 2024 10-Q (Aryeo and Spruce acquisitions): https://www.sec.gov/Archives/edgar/data/1617640/000161764024000126/z-20240930.htm\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00216088
+  }
+ ],
+ "final_answer": "\n**Short answer:** Over 2023\u20132024, Zillow's acquisitions were concentrated in real estate software that feeds its largest segment, Residential. Revenue growth and the mix shift toward Rentals and Mortgages came mostly from organic growth and partnerships, not from M&A. Acquisition spending also slowed sharply in 2024. (Scope note: I used the FY2024 10-K, filed February 2025, and the Q4 2024 results letter. I excluded later data such as 2025 quarterly results, since it postdates April 7, 2025.)\n\n**1. Acquisition strategy (2023\u20132024)**\n\n- **Software-first M&A.** Zillow's stated approach was to buy tools for agents and sellers. <cite index=\"1-3\">The acquisition is consistent with our strategy to invest in a more integrated software experience for our customers.</cite> The 10-K describes its software push this way: <cite index=\"12-4\">we acquired Aryeo and Follow Up Boss, which provide real estate professionals tools to manage leads, create listings, and effectuate transactions.</cite>\n- **Deals completed (per the FY2024 10-K):**\n  - Aryeo (July 31, 2023): software for real estate photographers. Filings state <cite index=\"19-3\">total consideration of $35 million, net of cash acquired</cite>, while the purchase price allocation table totals $38M. I flag this as a reporting inconsistency.\n  - Spruce (September 11, 2023): <cite index=\"19-4\">substantially all of the assets and liabilities of Spruce, a tech-enabled title and escrow platform, in exchange for approximately $19 million in cash, net of cash acquired.</cite>\n  - Follow Up Boss (December 8, 2023): <cite index=\"1-1\">$399 million in cash, net of cash acquired, and contingent consideration of up to $100 million in cash, payable over a three-year period</cite>. The total purchase price was $484M, including $81M of contingent consideration at fair value.\n  - Virtual Staging AI (October 2024): the filing names it only in a risk factor and gives no price or rationale.\n- **Scale of spending.** Net cash paid for acquisitions was $433M in 2023, so Follow Up Boss alone accounts for about 92.15% of that figure (399 / 433). In 2024, net cash paid for acquisitions fell to $7M, which shows a clear pause in M&A.\n- **Post-period pivot to partnerships.** In February 2025, Zillow <cite index=\"4-6\">entered a rentals partnership with Redfin, making it the exclusive provider of multifamily rental listings</cite> with a $100 million upfront payment to Redfin. This suggests that rentals growth was being pursued through commercial deals rather than acquisitions.\n\n**2. Evolving revenue mix**\n\n| Category | 2024 ($M) | % of total 2024 | 2023 ($M) | % of total 2023 | 2024 YoY growth |\n|---|---|---|---|---|---|\n| Residential | 1,594 | 71% | 1,452 | 75% | 9.78% |\n| Mortgages | 145 | 6% | 96 | 5% | 51.04% |\n| Rentals | 453 | 20% | 357 | 18% | 26.89% |\n| Other | 44 | 2% | 40 | 2% | 10.00% |\n| Total | 2,236 | 100% | 1,945 | 100% | 14.99% |\n\nSource for the table: the FY2024 10-K revenue table. Growth rates are my calculations from those figures, and the percentages match the filing.\n\nKey points:\n- Residential, the segment that includes the acquired software (Follow Up Boss, ShowingTime+), still produced most revenue but fell from 75% to 71% of the total.\n- Rentals and Mortgages gained share. Rentals rose from 18% to 20%, and Mortgages from 5% to 6%.\n- The Residential segment's growth was partly acquisition-driven. The 10-K attributes part of its increase to <cite index=\"4-2\">the inclusion of revenue from Follow Up Boss, which we acquired in December 2023</cite>, along with Premier Agent conversion gains.\n\n**3. How the strategy aligns with the mix shift**\n\n- **Alignment:** The software acquisitions reinforce the Residential franchise, which remains the core of the business, and they support the \"integrated transaction\" model. Acquired tools such as Follow Up Boss also help Zillow retain agent relationships in its Enhanced Markets.\n- **Partial misalignment or limited M&A role:** The mix shift toward Rentals and Mortgages was mostly organic. In Mortgages, the 10-K attributes the growth to <cite index=\"4-7\">our strategic focus on growing Zillow Home Loans purchase loan origination volume</cite>, and total origination volume rose 101%. Rentals grew through multifamily listings and marketing, not through acquisitions.\n- **Shift away from mortgage M&A:** Mortgage marketplace revenue declined as Zillow <cite index=\"7-4\">shifted strategic priority as we focus on organic growth of our mortgage origination business.</cite>\n- **Net assessment:** Zillow's 2023 acquisitions strengthened its software layer inside Residential, but the faster-growing Rentals and Mortgages lines gained share through organic investment and partnerships. As of the FY2024 10-K, the company was prioritizing organic growth and commercial partnerships in those segments, while acquisition activity was largely paused in 2024.\n\n**Sources**\n- Zillow FY2024 10-K (main document): https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm\n- Zillow FY2024 10-K financial report tables: https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/Financial_Report.xlsx\n- Zillow Q4 2024 shareholder letter exhibit: https://www.sec.gov/Archives/edgar/data/1617640/000161764025000015/exhibit993.htm\n- Zillow Q2 2024 shareholder letter exhibit: https://www.sec.gov/Archives/edgar/data/1617640/000161764024000095/exhibit993.htm\n- Zillow Q1 2024 shareholder letter exhibit: https://www.sec.gov/Archives/edgar/data/1617640/000161764024000069/exhibit993.htm\n- Zillow Q3 2024 10-Q (Aryeo and Spruce acquisitions): https://www.sec.gov/Archives/edgar/data/1617640/000161764024000126/z-20240930.htm\n",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 5,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 7,
+  "input_tokens": 20,
+  "output_tokens": 11781,
+  "cache_creation_input_tokens": 324013,
+  "cache_read_input_tokens": 76727,
+  "web_search_requests": 3,
+  "cost_usd": 0.238549
+ },
+ "cost_usd": 0.238549,
+ "elapsed_s": 62.1,
+ "harness_label": "base1"
+}

@@ -1,0 +1,123 @@
+{
+ "task_id": "q14",
+ "label": "dom1",
+ "question": "Approximate Zillow's Free Cash Flow as CFO - Capex. What was the trend of FCF margin from FY2022 to FY2024?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "fcf_margin_trend"
+     },
+     "output": "---\nname: fcf_margin_trend\ndescription: Compute free cash flow (CFO minus capex) and FCF margin (FCF / revenue) for several fiscal years and describe the trend, with consistent capex definition and flagged distortions.\n---\nANALYTIC MOVE: calculate then explain a trend. For each fiscal year: FCF = net cash provided by operating activities - capex; FCF margin = FCF / total revenue. Then state the direction year to year and over the whole span.\n\n1. Inputs, each retrieved from the cash-flow statement and income statement (not from memory), for every year asked: CFO, each investing-line capex item, total revenue. A 10-K carries three years of both statements, so the latest 10-K covers a 3-year window; open the older 10-K too if you need to confirm a year or if figures may have been recast.\n2. Capex definition. Name the lines used. Check the MD&A liquidity section for the company's own stated capex total and reconcile to it. Capitalized software is often inside \"purchases of intangible assets\" or a \"capitalized software\" line, not \"purchases of property and equipment\". Headline capex = PP&E purchases plus capitalized software / intangible purchases (the company-stated total when MD&A gives one). Because \"capex\" is ambiguous, also show the margin on PP&E-only as a one-line labelled alternate, and say whether the trend direction changes. Do not include acquisitions, investments or purchases of securities.\n3. Basis and period checks. Revenue and CFO must cover the same scope: if a business was moved to discontinued operations, the revenue line may be continuing operations only while the cash-flow statement still includes the discontinued business. Say so. Check units (millions) and that each figure's fiscal year matches the question.\n4. Distortions. A margin above 100% or a swing of more than ~10x signals a one-off (e.g. inventory liquidation, working-capital release, litigation settlement). Identify the cause from the MD&A cash-flow discussion, quantify it (e.g. change in inventory), and give the trend both as reported and with the distorted year flagged. Do not drop the year or smooth it silently.\n5. Compute with unrounded inputs; round only final margins to two decimals. Give FCF in dollars and margin in percent for every year, plus the change in percentage points between years.\n6. Answer contract: table of CFO, capex lines, FCF, revenue, margin per year; formulas with the arithmetic; trend sentence (direction year over year and end to end); distortion note; the capex-definition note; sources limited to documents actually opened.\n\nTask facts (Zillow Group, CIK 1617640; retrieved in a prior run from the FY2024 and FY2023 10-Ks; re-confirm in the text), $ millions, FY2022 / FY2023 / FY2024:\n- CFO 4,504 / 354 / 428. Purchases of property and equipment 115 / 135 / 143. Purchases of intangible assets (includes capitalized internal-use software) 25 / 30 / 28. Company-stated 2024 capex in MD&A: 171.\n- Total revenue 1,958 / 1,945 / 2,236 (continuing operations; Zillow Offers is wound down and discontinued, but its cash flows remain in the cash-flow statement).\n- FY2022 CFO is inflated by about 3,904 of decrease in inventory from the Zillow Offers wind-down, so the FY2022 margin (about 222.9% with capex 140) is not comparable to FY2023 (about 9.7% with capex 165) and FY2024 (about 11.5% with capex 171). PP&E-only alternates: about 224.1%, 11.3%, 12.7%.\n- 10-K URLs: FY2024 https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm ; FY2023 https://www.sec.gov/Archives/edgar/data/1617640/000161764024000022/z-20231231.htm ; FY2022 https://www.sec.gov/Archives/edgar/data/1617640/000161764023000010/z-20221231.htm . List the FY2022 filing as a source only if you opened it.\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Zillow Group annual report 10-K cash flows from operating activities",
+      "ciks": [
+       "ZG"
+      ],
+      "form_types": [
+       "10-K"
+      ],
+      "start_date": "2025-01-01"
+     },
+     "output": "{\"total_matching_documents\": 1, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-11\", \"period_ending\": \"2024-12-31\", \"company\": \"ZILLOW GROUP, INC.  (Z, ZG)  (CIK 0001617640)\", \"ciks\": [\"0001617640\"], \"accession\": \"0001617640-25-000016\", \"document\": \"z-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 1.16,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0008699
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm",
+      "key": "zg_10k_2024"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: zg_10k_2024. (467,105 characters)\nThe data_storage currently contains the following keys:\nzg_10k_2024\n",
+     "is_error": false,
+     "elapsed_s": 0.48,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00037892
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Zillow 10-K, extract: net cash provided by operating activities for 2024, 2023, 2022; purchases of property and equipment for each year; purchases of intangible assets (including capitalized internal-use software) for each year; total revenue for 2024, 2023, 2022; the decrease in inventory amounts for 2022; and any MD&A statement of total capital expenditures for 2024. Give exact figures in millions and note the table/section. Document: {{zg_10k_2024}}"
+     },
+     "output": "# Zillow Group, Inc. FY2024 Form 10-K: Extracted Figures (in millions, USD)\n\n| Item | 2024 | 2023 | 2022 | Source |\n|---|---|---|---|---|\n| Net cash provided by operating activities | $428 | $354 | $4,504 | Item 8, Consolidated Statements of Cash Flows; also MD&A, \"Summarized Cash Flow Information\" (2024 and 2023) |\n| Purchases of property and equipment | $(143) | $(135) | $(115) | Item 8, Consolidated Statements of Cash Flows, Investing activities |\n| Purchases of intangible assets (incl. capitalized internal-use software) | $(28) | $(30) | $(25) | Item 8, Consolidated Statements of Cash Flows, Investing activities |\n| Total revenue | $2,236 | $1,945 | $1,958 | Item 8, Consolidated Statements of Operations; also MD&A Results of Operations |\n\n**Additional items**\n\n- **Decrease in inventory, 2022:** $3,904. This is the \"Inventory\" line under Changes in operating assets and liabilities in the 2022 Consolidated Statements of Cash Flows (Item 8). It is a positive adjustment, so it represents a cash inflow from a reduction in inventory. It reflects the wind-down of Zillow Offers, which was completed in Q3 2022 (see Note 3). The 2022 operating cash flow of $4,504 is largely driven by this inventory liquidation. The 2024 and 2023 inventory lines are zero.\n- **MD&A capital expenditure statement, 2024:** Under Item 7, \"Liquidity and Capital Resources,\" in \"Cash Flows Provided By Investing Activities,\" the filing states: \"For the year ended December 31, 2024, net cash provided by investing activities was $395 million. This was primarily the result of $573 million of net proceeds from maturities and sales of investments and $171 million of purchases of property and equipment and intangible assets.\" The MD&A does not use the phrase \"total capital expenditures.\" The $171 million equals $143 (property and equipment) + $28 (intangible assets), which matches the cash flow statement. For comparison, the MD&A reports $165 million for 2023 ($135 + $30).",
+     "is_error": false,
+     "elapsed_s": 7.96,
+     "cost_usd": 0.09638
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00021233
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Zillow Group (FY ends Dec 31), FCF = net cash provided by operating activities (CFO) minus capex. Figures in $ millions, verified against the FY2024 10-K (Item 8 cash flow statement and income statement; MD&A liquidity section).\n\nInputs and results\n- FY2022: CFO 4,504; PP&E purchases 115; intangible assets incl. capitalized internal-use software 25; headline capex 140; FCF 4,364; total revenue 1,958; FCF margin 4,364 / 1,958 = 222.88%.\n- FY2023: CFO 354; PP&E 135; intangibles 30; headline capex 165; FCF 189; revenue 1,945; FCF margin 189 / 1,945 = 9.72%.\n- FY2024: CFO 428; PP&E 143; intangibles 28; headline capex 171; FCF 257; revenue 2,236; FCF margin 257 / 2,236 = 11.49%.\n\nCapex definition: headline capex = purchases of property and equipment + purchases of intangible assets (capitalized software). The FY2024 MD&A states $171 million of purchases of property and equipment and intangible assets for 2024, which reconciles to this definition (143 + 28). The MD&A figure for 2023 is $165 million, which also matches. Acquisitions, investments and securities purchases are excluded.\n\nPP&E-only alternate (labelled): FY2022 (4,504 - 115) / 1,958 = 224.16%; FY2023 (354 - 135) / 1,945 = 11.26%; FY2024 (428 - 143) / 2,236 = 12.75%. On this basis the FY2023 to FY2024 direction is also up, so the trend direction does not change.\n\nTrend\n- FY2022 to FY2023: margin fell by about 213.16 percentage points (222.88% to 9.72%).\n- FY2023 to FY2024: margin rose by about 1.78 percentage points (9.72% to 11.49%).\n- End to end (FY2022 to FY2024): margin fell by about 211.39 percentage points, but this is not a meaningful comparison.\n\nDistortion flag: FY2022 CFO is inflated by a 3,904 million inventory decrease (a cash inflow) from the wind-down of the Zillow Offers home-buying business, completed in Q3 2022. The FY2022 margin of about 223% is a one-off and is not comparable to later years. Excluding it, the underlying FCF margin trend from FY2023 to FY2024 is an improvement of roughly 1.78 percentage points, from about 9.7% to about 11.5%, with FCF rising from 189 to 257 million.\n\nBasis note: revenue is continuing operations only (Zillow Offers is discontinued), but the cash flow statement still includes the discontinued business's cash flows. This mismatch affects all years, most strongly FY2022.\n\nSources: Zillow Group FY2024 Form 10-K (filed 2025-02-11). I did not open the FY2023 or FY2022 10-Ks; the prior-year figures come from the comparative columns of the FY2024 10-K.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm\",\n            \"name\": \"Zillow Group, Inc. Form 10-K for fiscal year 2024\"\n        }\n    ]\n}"
+     },
+     "output": "Zillow Group (FY ends Dec 31), FCF = net cash provided by operating activities (CFO) minus capex. Figures in $ millions, verified against the FY2024 10-K (Item 8 cash flow statement and income statement; MD&A liquidity section).\n\nInputs and results\n- FY2022: CFO 4,504; PP&E purchases 115; intangible assets incl. capitalized internal-use software 25; headline capex 140; FCF 4,364; total revenue 1,958; FCF margin 4,364 / 1,958 = 222.88%.\n- FY2023: CFO 354; PP&E 135; intangibles 30; headline capex 165; FCF 189; revenue 1,945; FCF margin 189 / 1,945 = 9.72%.\n- FY2024: CFO 428; PP&E 143; intangibles 28; headline capex 171; FCF 257; revenue 2,236; FCF margin 257 / 2,236 = 11.49%.\n\nCapex definition: headline capex = purchases of property and equipment + purchases of intangible assets (capitalized software). The FY2024 MD&A states $171 million of purchases of property and equipment and intangible assets for 2024, which reconciles to this definition (143 + 28). The MD&A figure for 2023 is $165 million, which also matches. Acquisitions, investments and securities purchases are excluded.\n\nPP&E-only alternate (labelled): FY2022 (4,504 - 115) / 1,958 = 224.16%; FY2023 (354 - 135) / 1,945 = 11.26%; FY2024 (428 - 143) / 2,236 = 12.75%. On this basis the FY2023 to FY2024 direction is also up, so the trend direction does not change.\n\nTrend\n- FY2022 to FY2023: margin fell by about 213.16 percentage points (222.88% to 9.72%).\n- FY2023 to FY2024: margin rose by about 1.78 percentage points (9.72% to 11.49%).\n- End to end (FY2022 to FY2024): margin fell by about 211.39 percentage points, but this is not a meaningful comparison.\n\nDistortion flag: FY2022 CFO is inflated by a 3,904 million inventory decrease (a cash inflow) from the wind-down of the Zillow Offers home-buying business, completed in Q3 2022. The FY2022 margin of about 223% is a one-off and is not comparable to later years. Excluding it, the underlying FCF margin trend from FY2023 to FY2024 is an improvement of roughly 1.78 percentage points, from about 9.7% to about 11.5%, with FCF rising from 189 to 257 million.\n\nBasis note: revenue is continuing operations only (Zillow Offers is discontinued), but the cash flow statement still includes the discontinued business's cash flows. This mismatch affects all years, most strongly FY2022.\n\nSources: Zillow Group FY2024 Form 10-K (filed 2025-02-11). I did not open the FY2023 or FY2022 10-Ks; the prior-year figures come from the comparative columns of the FY2024 10-K.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm\",\n            \"name\": \"Zillow Group, Inc. Form 10-K for fiscal year 2024\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0013091300000000001
+  }
+ ],
+ "final_answer": "Zillow Group (FY ends Dec 31), FCF = net cash provided by operating activities (CFO) minus capex. Figures in $ millions, verified against the FY2024 10-K (Item 8 cash flow statement and income statement; MD&A liquidity section).\n\nInputs and results\n- FY2022: CFO 4,504; PP&E purchases 115; intangible assets incl. capitalized internal-use software 25; headline capex 140; FCF 4,364; total revenue 1,958; FCF margin 4,364 / 1,958 = 222.88%.\n- FY2023: CFO 354; PP&E 135; intangibles 30; headline capex 165; FCF 189; revenue 1,945; FCF margin 189 / 1,945 = 9.72%.\n- FY2024: CFO 428; PP&E 143; intangibles 28; headline capex 171; FCF 257; revenue 2,236; FCF margin 257 / 2,236 = 11.49%.\n\nCapex definition: headline capex = purchases of property and equipment + purchases of intangible assets (capitalized software). The FY2024 MD&A states $171 million of purchases of property and equipment and intangible assets for 2024, which reconciles to this definition (143 + 28). The MD&A figure for 2023 is $165 million, which also matches. Acquisitions, investments and securities purchases are excluded.\n\nPP&E-only alternate (labelled): FY2022 (4,504 - 115) / 1,958 = 224.16%; FY2023 (354 - 135) / 1,945 = 11.26%; FY2024 (428 - 143) / 2,236 = 12.75%. On this basis the FY2023 to FY2024 direction is also up, so the trend direction does not change.\n\nTrend\n- FY2022 to FY2023: margin fell by about 213.16 percentage points (222.88% to 9.72%).\n- FY2023 to FY2024: margin rose by about 1.78 percentage points (9.72% to 11.49%).\n- End to end (FY2022 to FY2024): margin fell by about 211.39 percentage points, but this is not a meaningful comparison.\n\nDistortion flag: FY2022 CFO is inflated by a 3,904 million inventory decrease (a cash inflow) from the wind-down of the Zillow Offers home-buying business, completed in Q3 2022. The FY2022 margin of about 223% is a one-off and is not comparable to later years. Excluding it, the underlying FCF margin trend from FY2023 to FY2024 is an improvement of roughly 1.78 percentage points, from about 9.7% to about 11.5%, with FCF rising from 189 to 257 million.\n\nBasis note: revenue is continuing operations only (Zillow Offers is discontinued), but the cash flow statement still includes the discontinued business's cash flows. This mismatch affects all years, most strongly FY2022.\n\nSources: Zillow Group FY2024 Form 10-K (filed 2025-02-11). I did not open the FY2023 or FY2022 10-Ks; the prior-year figures come from the comparative columns of the FY2024 10-K.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm\",\n            \"name\": \"Zillow Group, Inc. Form 10-K for fiscal year 2024\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 5,
+  "input_tokens": 14,
+  "output_tokens": 4411,
+  "cache_creation_input_tokens": 156980,
+  "cache_read_input_tokens": 21678,
+  "web_search_requests": 0,
+  "cost_usd": 0.09915
+ },
+ "cost_usd": 0.09915,
+ "elapsed_s": 22.7,
+ "harness_label": "dom1"
+}

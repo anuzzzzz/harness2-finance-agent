@@ -1,0 +1,166 @@
+{
+ "task_id": "q02",
+ "label": "dom1",
+ "question": "How has Netflix's (NASDAQ: NFLX) Average Revenue Per Paying User Changed from 2019 to 2024?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "multi_year_kpi_trend"
+     },
+     "output": "---\nname: multi_year_kpi_trend\ndescription: Trace how a company-reported operating KPI (ARM/ARPU, subscribers, margin, volume) changed across several fiscal years, chaining each 10-K's comparative columns and giving change, percent change, CAGR and per-year path.\n---\nANALYTIC MOVE: trace and calculate. Inputs: the KPI's annual value for every fiscal year in the window, as the company defines it. Result: start value, end value, absolute change, % change, CAGR, and the year-by-year path with the drivers the company gives.\n\n1. Name the company's own term for the KPI. \"ARPU\" or \"revenue per paying user\" is often reported under another name (Netflix: \"average monthly revenue per paying membership\", ARM). Say in the answer that the question's term maps to this metric. Confirm the definition in the filing (numerator, denominator, monthly or annual, taxes excluded).\n2. Locate the figure. It is in the 10-K MD&A (Results of Operations or Streaming Revenues table), which carries three fiscal years side by side. For a 2019-2024 window you need at least the FY2024 10-K (2024, 2023, 2022), the FY2021 or FY2022 10-K (2021, 2020, and 2022), and the FY2019 10-K (2019, 2018, 2017). Open each of these and retrieve the value from it. Do not fill a year from memory or a snippet.\n3. Match period and basis. Use the full fiscal-year figure, not a quarter (Q4) or a regional row. A multi-region table has global and per-region rows, and only the global row answers a company-level question. If a later 10-K restates an earlier year, use the latest filing's number and say so. Note the currency basis: reported vs constant-currency (FX-neutral) change are different figures, so label which one each percentage is.\n4. Calculation, unrounded until the end: change = end - start. % change = (end / start - 1) x 100. CAGR = (end / start)^(1 / number of years between them) - 1, where the number of years is end year minus start year (2019 to 2024 is 5). Also give each YoY change. State the share of the total change that fell in each sub-period, and check the direction words (\"sharply\", \"plateau\") against the numbers. A $0.09 move is not sharp.\n5. Answer contract: a headline sentence with start, end and change; a year-by-year table with units and the source filing of each year; the calculation; the company-stated drivers (price changes, plan mix, FX) quoted from the MD&A; and the caveat on definition or basis. List only documents you opened and retrieved from. Plain text with no citation markup.\n\nTask facts (Netflix, FY2019 to FY2024; the earlier run took these from snippets and the model's recall and did not open the filings, so re-confirm each in the opened text). Annual ARM in $: 2019 10.82, 2020 10.91, 2021 11.67, 2022 11.76, 2023 11.64, 2024 11.70. FY2019 10-K: https://www.sec.gov/Archives/edgar/data/1065280/000106528020000040/form10kq419.htm. FY2024 10-K: https://www.sec.gov/Archives/edgar/data/1065280/000106528025000044/nflx-20241231.htm. FY2023 10-K: https://www.sec.gov/Archives/edgar/data/1065280/000106528024000030/nflx-20231231.htm. For 2020 and 2021 find the FY2021 or FY2022 10-K HTML with edgar_search (the FY2022 annual report found in search is a PDF and cannot be parsed). Check that 2024 minus 2019 is 0.88, which is +8.13%. Netflix's FY2024 10-K also gives a constant-currency change for 2024.\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Netflix average monthly revenue per paying membership",
+      "ciks": [
+       "NFLX"
+      ],
+      "form_types": [
+       "10-K"
+      ],
+      "start_date": "2020-01-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "{\"total_matching_documents\": 6, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2024-01-26\", \"period_ending\": \"2023-12-31\", \"company\": \"NETFLIX INC  (NFLX)  (CIK 0001065280)\", \"ciks\": [\"0001065280\"], \"accession\": \"0001065280-24-000030\", \"document\": \"nflx-20231231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528024000030/nflx-20231231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2021-01-28\", \"period_ending\": \"2020-12-31\", \"company\": \"NETFLIX INC  (NFLX)  (CIK 0001065280)\", \"ciks\": [\"0001065280\"], \"accession\": \"0001065280-21-000040\", \"document\": \"nflx-20201231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528021000040/nflx-20201231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2022-01-27\", \"period_ending\": \"2021-12-31\", \"company\": \"NETFLIX INC  (NFLX)  (CIK 0001065280)\", \"ciks\": [\"0001065280\"], \"accession\": \"0001065280-22-000036\", \"document\": \"nflx-20211231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528022000036/nflx-20211231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2023-01-26\", \"period_ending\": \"2022-12-31\", \"company\": \"NETFLIX INC  (NFLX)  (CIK 0001065280)\", \"ciks\": [\"0001065280\"], \"accession\": \"0001065280-23-000035\", \"document\": \"nflx-20221231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528023000035/nflx-20221231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2020-01-29\", \"period_ending\": \"2019-12-31\", \"company\": \"NETFLIX INC  (NFLX)  (CIK 0001065280)\", \"ciks\": [\"0001065280\"], \"accession\": \"0001065280-20-000040\", \"document\": \"form10kq419.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528020000040/form10kq419.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-01-27\", \"period_ending\": \"2024-12-31\", \"company\": \"NETFLIX INC  (NFLX)  (CIK 0001065280)\", \"ciks\": [\"0001065280\"], \"accession\": \"0001065280-25-000044\", \"document\": \"nflx-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528025000044/nflx-20241231.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 1.34,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00093815
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528025000044/nflx-20241231.htm",
+      "key": "fy2024"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: fy2024. (275,605 characters)\nThe data_storage currently contains the following keys:\nfy2024\n",
+     "is_error": false,
+     "elapsed_s": 0.45,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528023000035/nflx-20221231.htm",
+      "key": "fy2022"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: fy2022. (228,304 characters)\nThe data_storage currently contains the following keys:\nfy2024\nfy2022\n",
+     "is_error": false,
+     "elapsed_s": 0.4,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528020000040/form10kq419.htm",
+      "key": "fy2019"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: fy2019. (226,208 characters)\nThe data_storage currently contains the following keys:\nfy2024\nfy2022\nfy2019\n",
+     "is_error": false,
+     "elapsed_s": 0.65,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0006571950000000001
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Netflix 10-K text: {{fy2024}}. Find the average monthly revenue per paying membership (ARM) for the full years 2024, 2023 and 2022 (global, in $). Also give the constant-currency change for 2024 vs 2023 if stated, and the MD&A drivers of ARM change (price changes, plan mix, FX). Quote the exact table row text."
+     },
+     "output": "**Global ARM (average monthly revenue per paying membership):**\n\n| Year | ARM |\n|---|---|\n| 2024 | $11.70 |\n| 2023 | $11.64 |\n| 2022 | $11.76 |\n\nThe exact table row from Item 7 reads: \"Average monthly revenue per paying membership $11.70 $11.64 $11.76 1 %\"\n\n**Constant-currency change, 2024 vs. 2023:** The filing states \"Constant currency change (3) 4%.\" Footnote (3) says the figure is calculated by assuming foreign exchange rates stayed at prior-year levels, and it excludes hedging gains or losses from both periods. The reported change is +1%, so the 4% constant-currency growth is about three points higher than the reported figure, which reflects unfavorable FX.\n\n**MD&A drivers:**\n\n- **Foreign exchange (negative):** Footnote (3) says revenues would have been about $1,424 million higher for 2024 at constant 2023 exchange rates. It attributes the unfavorable impact \"primarily\" to \"the devaluation of the Argentine peso relative to the U.S. dollar coupled with significant price increases in the local currency in this jurisdiction.\" Item 7A repeats this.\n- **Pricing (positive):** Streaming revenue growth is attributed to \"growth in average paying memberships and price increases, partially offset by unfavorable changes in foreign exchange rates.\" The filing does not separately quantify the price contribution to ARM.\n- **Hedging:** Streaming revenues include $124 million of hedging gains in 2024. These are excluded from the ARM calculation, and there were none in 2023 or 2022.\n- **Plan mix:** The filing does not quantify plan-mix effects on ARM. It mentions the ad-supported plan and extra member sub-accounts only qualitatively.\n\n**Regional ARM, for context:**\n\n| Region | 2024 | 2023 | 2022 | Change (reported) | Constant currency |\n|---|---|---|---|---|---|\n| UCAN | $17.20 | $16.28 | $15.86 | 6% | 6% |\n| EMEA | $10.96 | $10.87 | $10.99 | 1% | 1% |\n| LATAM | $8.24 | $8.66 | $8.48 | (5)% | 21% |\n| APAC | $7.29 | $7.64 | $8.50 | (5)% | (3)% |\n\nThe LATAM swing from 21% constant-currency growth to a 5% decline in reported ARM illustrates the currency effect.",
+     "is_error": false,
+     "elapsed_s": 8.57,
+     "cost_usd": 0.012442
+    },
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Netflix 10-K text: {{fy2022}}. Find the average monthly revenue per paying membership (ARM) for the full years 2022, 2021 and 2020 (global, in $). Quote the exact table row text and state the drivers given for ARM changes."
+     },
+     "output": "**Global average monthly revenue per paying membership (ARM):**\n\n| Year | ARM |\n|---|---|\n| 2022 | $11.76 |\n| 2021 | $11.67 |\n| 2020 | $10.91 |\n\nThe exact row from the consolidated performance highlights table reads:\n\n\"Average monthly revenue per paying membership $11.76 $11.67 $10.91 1 %\"\n\nThe 1% change is 2022 vs. 2021. The filing does not state the 2021 vs. 2020 change; it appears only in the prior-year 10-K. By my calculation, it was about 7%.\n\n**Drivers given for the 2022 change:**\n\n- **Price changes** increased ARM. The filing says the increase \"resulted from our price changes.\"\n- **Foreign exchange** partially offset that increase. The filing cites \"the strengthening of the U.S. dollar relative to certain foreign currencies.\" Had exchange rates stayed constant with 2021, revenues would have been about $1,773 million higher.\n\nThe filing gives no specific drivers for the 2021 vs. 2020 change in this document.",
+     "is_error": false,
+     "elapsed_s": 4.44,
+     "cost_usd": 0.009764
+    },
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Netflix 10-K text: {{fy2019}}. Find the average monthly revenue per paying membership (ARM) for the full years 2019, 2018 and 2017 (global, in $). Quote the exact table row text and state the drivers given for ARM changes."
+     },
+     "output": "**Global average monthly revenue per paying membership (ARM):**\n\n- **2019: $10.82**\n- **2018: $10.31**\n- **2017: $9.43**\n\n**Exact table row (Results of Operations, consolidated highlights):**\n\"Average monthly revenue per paying membership $10.82 $10.31 $9.43 5 % 9 %\"\n\nThe 5% and 9% figures are the year-over-year changes for 2019 vs. 2018 and 2018 vs. 2017.\n\n**Drivers given in this filing:**\n- For 2019 vs. 2018, the filing says the increase \"resulted from our price changes and plan mix, partially offset by unfavorable fluctuations in foreign exchange rates.\"\n- The filing does not give a separate driver explanation for the 2018 vs. 2017 change in global ARM. That discussion is in the FY2018 10-K, which this document references but does not include.",
+     "is_error": false,
+     "elapsed_s": 3.59,
+     "cost_usd": 0.009832
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00040775
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Answer: Netflix's \"average revenue per paying user\" maps to the company's own KPI, \"average monthly revenue per paying membership\" (ARM), a global monthly figure in US dollars. On that basis, ARM rose from $10.82 in 2019 to $11.70 in 2024, an increase of $0.88, or 8.13%. The compound annual growth rate over the five years is about 1.58%. The path was not steady: it rose in 2021, slipped in 2023, and recovered slightly in 2024.\n\nYear-by-year (global ARM, USD per month, full fiscal year):\n- 2019: $10.82 (FY2019 10-K, Results of Operations highlights table)\n- 2020: $10.91 (FY2022 10-K performance highlights table, prior-year column)\n- 2021: $11.67 (FY2022 10-K performance highlights table, prior-year column)\n- 2022: $11.76 (FY2022 10-K and FY2024 10-K comparative column)\n- 2023: $11.64 (FY2024 10-K)\n- 2024: $11.70 (FY2024 10-K)\n\nCalculations (unrounded until the end):\n- Absolute change 2019 to 2024: 11.70 - 10.82 = 0.88\n- Percent change: (11.70 / 10.82 - 1) x 100 = 8.13%\n- CAGR over 5 years: (11.70 / 10.82)^(1/5) - 1 = about 1.58%\n- Year-over-year changes: 2020 +$0.09 (+0.83%); 2021 +$0.76 (+6.97%); 2022 +$0.09 (+0.77%); 2023 -$0.12 (-1.02%); 2024 +$0.06 (+0.52%). The five changes sum to the $0.88 total.\n- About 96.6% of the net gain (0.85 of 0.88) came in 2019 to 2021, before ARM flattened.\n\nDrivers given in the filings:\n- 2019 vs 2018: the 10-K says ARM rose on price changes and plan mix, partly offset by unfavorable foreign exchange.\n- 2022 vs 2021 (+1% reported): the 10-K attributes the increase to price changes, partly offset by a stronger US dollar against certain currencies.\n- 2024 vs 2023 (+1% reported, +4% constant currency): the largest drag was the devaluation of the Argentine peso, and the 10-K cites price increases and paying membership growth as positives. Streaming revenue also included $124 million of hedging gains in 2024, which are excluded from ARM.\n- The 2021 and 2023 drivers were not retrieved from the filings I opened, so they are not stated here. The 2021 to 2020 move is my own calculation from the figures above, not a filing statement.\n\nCaveats: ARM is a reported-currency figure, so the reported changes include currency effects. Netflix excludes hedging gains and losses from ARM. The 2020 and 2021 values come from the FY2022 10-K's comparative columns rather than from the FY2020 or FY2021 filings.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528025000044/nflx-20241231.htm\",\n            \"name\": \"Netflix FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528023000035/nflx-20221231.htm\",\n            \"name\": \"Netflix FY2022 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528020000040/form10kq419.htm\",\n            \"name\": \"Netflix FY2019 Form 10-K\"\n        }\n    ]\n}"
+     },
+     "output": "Answer: Netflix's \"average revenue per paying user\" maps to the company's own KPI, \"average monthly revenue per paying membership\" (ARM), a global monthly figure in US dollars. On that basis, ARM rose from $10.82 in 2019 to $11.70 in 2024, an increase of $0.88, or 8.13%. The compound annual growth rate over the five years is about 1.58%. The path was not steady: it rose in 2021, slipped in 2023, and recovered slightly in 2024.\n\nYear-by-year (global ARM, USD per month, full fiscal year):\n- 2019: $10.82 (FY2019 10-K, Results of Operations highlights table)\n- 2020: $10.91 (FY2022 10-K performance highlights table, prior-year column)\n- 2021: $11.67 (FY2022 10-K performance highlights table, prior-year column)\n- 2022: $11.76 (FY2022 10-K and FY2024 10-K comparative column)\n- 2023: $11.64 (FY2024 10-K)\n- 2024: $11.70 (FY2024 10-K)\n\nCalculations (unrounded until the end):\n- Absolute change 2019 to 2024: 11.70 - 10.82 = 0.88\n- Percent change: (11.70 / 10.82 - 1) x 100 = 8.13%\n- CAGR over 5 years: (11.70 / 10.82)^(1/5) - 1 = about 1.58%\n- Year-over-year changes: 2020 +$0.09 (+0.83%); 2021 +$0.76 (+6.97%); 2022 +$0.09 (+0.77%); 2023 -$0.12 (-1.02%); 2024 +$0.06 (+0.52%). The five changes sum to the $0.88 total.\n- About 96.6% of the net gain (0.85 of 0.88) came in 2019 to 2021, before ARM flattened.\n\nDrivers given in the filings:\n- 2019 vs 2018: the 10-K says ARM rose on price changes and plan mix, partly offset by unfavorable foreign exchange.\n- 2022 vs 2021 (+1% reported): the 10-K attributes the increase to price changes, partly offset by a stronger US dollar against certain currencies.\n- 2024 vs 2023 (+1% reported, +4% constant currency): the largest drag was the devaluation of the Argentine peso, and the 10-K cites price increases and paying membership growth as positives. Streaming revenue also included $124 million of hedging gains in 2024, which are excluded from ARM.\n- The 2021 and 2023 drivers were not retrieved from the filings I opened, so they are not stated here. The 2021 to 2020 move is my own calculation from the figures above, not a filing statement.\n\nCaveats: ARM is a reported-currency figure, so the reported changes include currency effects. Netflix excludes hedging gains and losses from ARM. The 2020 and 2021 values come from the FY2022 10-K's comparative columns rather than from the FY2020 or FY2021 filings.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528025000044/nflx-20241231.htm\",\n            \"name\": \"Netflix FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528023000035/nflx-20221231.htm\",\n            \"name\": \"Netflix FY2022 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528020000040/form10kq419.htm\",\n            \"name\": \"Netflix FY2019 Form 10-K\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00149484
+  }
+ ],
+ "final_answer": "Answer: Netflix's \"average revenue per paying user\" maps to the company's own KPI, \"average monthly revenue per paying membership\" (ARM), a global monthly figure in US dollars. On that basis, ARM rose from $10.82 in 2019 to $11.70 in 2024, an increase of $0.88, or 8.13%. The compound annual growth rate over the five years is about 1.58%. The path was not steady: it rose in 2021, slipped in 2023, and recovered slightly in 2024.\n\nYear-by-year (global ARM, USD per month, full fiscal year):\n- 2019: $10.82 (FY2019 10-K, Results of Operations highlights table)\n- 2020: $10.91 (FY2022 10-K performance highlights table, prior-year column)\n- 2021: $11.67 (FY2022 10-K performance highlights table, prior-year column)\n- 2022: $11.76 (FY2022 10-K and FY2024 10-K comparative column)\n- 2023: $11.64 (FY2024 10-K)\n- 2024: $11.70 (FY2024 10-K)\n\nCalculations (unrounded until the end):\n- Absolute change 2019 to 2024: 11.70 - 10.82 = 0.88\n- Percent change: (11.70 / 10.82 - 1) x 100 = 8.13%\n- CAGR over 5 years: (11.70 / 10.82)^(1/5) - 1 = about 1.58%\n- Year-over-year changes: 2020 +$0.09 (+0.83%); 2021 +$0.76 (+6.97%); 2022 +$0.09 (+0.77%); 2023 -$0.12 (-1.02%); 2024 +$0.06 (+0.52%). The five changes sum to the $0.88 total.\n- About 96.6% of the net gain (0.85 of 0.88) came in 2019 to 2021, before ARM flattened.\n\nDrivers given in the filings:\n- 2019 vs 2018: the 10-K says ARM rose on price changes and plan mix, partly offset by unfavorable foreign exchange.\n- 2022 vs 2021 (+1% reported): the 10-K attributes the increase to price changes, partly offset by a stronger US dollar against certain currencies.\n- 2024 vs 2023 (+1% reported, +4% constant currency): the largest drag was the devaluation of the Argentine peso, and the 10-K cites price increases and paying membership growth as positives. Streaming revenue also included $124 million of hedging gains in 2024, which are excluded from ARM.\n- The 2021 and 2023 drivers were not retrieved from the filings I opened, so they are not stated here. The 2021 to 2020 move is my own calculation from the figures above, not a filing statement.\n\nCaveats: ARM is a reported-currency figure, so the reported changes include currency effects. Netflix excludes hedging gains and losses from ARM. The 2020 and 2021 values come from the FY2022 10-K's comparative columns rather than from the FY2020 or FY2021 filings.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528025000044/nflx-20241231.htm\",\n            \"name\": \"Netflix FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528023000035/nflx-20221231.htm\",\n            \"name\": \"Netflix FY2022 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528020000040/form10kq419.htm\",\n            \"name\": \"Netflix FY2019 Form 10-K\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 7,
+  "input_tokens": 22,
+  "output_tokens": 6574,
+  "cache_creation_input_tokens": 256064,
+  "cache_read_input_tokens": 23856,
+  "web_search_requests": 0,
+  "cost_usd": 0.035536
+ },
+ "cost_usd": 0.035536,
+ "elapsed_s": 37.0,
+ "harness_label": "dom1"
+}

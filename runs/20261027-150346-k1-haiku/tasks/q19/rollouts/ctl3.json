@@ -1,0 +1,121 @@
+{
+ "task_id": "q19",
+ "label": "ctl3",
+ "question": "As of April 07, 2025, what is the total value of MSCI's operating leases (in $'s, thousands) that are maturing in the next three years? What percentage?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "MSCI operating lease maturities future minimum lease payments 2025 2026 2027",
+      "ciks": [
+       "MSCI"
+      ],
+      "start_date": "2025-01-01"
+     },
+     "output": "{\"total_matching_documents\": 2, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-07\", \"period_ending\": \"2024-12-31\", \"company\": \"MSCI Inc.  (MSCI)  (CIK 0001408198)\", \"ciks\": [\"0001408198\"], \"accession\": \"0001408198-25-000053\", \"document\": \"msci-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm\"}, {\"form\": \"ARS\", \"file_date\": \"2025-03-12\", \"period_ending\": \"2024-12-31\", \"company\": \"MSCI Inc.  (MSCI)  (CIK 0001408198)\", \"ciks\": [\"0001408198\"], \"accession\": \"0001408198-25-000096\", \"document\": \"a2024msciannualreportforfi.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819825000096/a2024msciannualreportforfi.pdf\"}]}",
+     "is_error": false,
+     "elapsed_s": 1.35,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "MSCI Inc 10-K 2024 leases maturity analysis operating lease liabilities",
+      "start_date": "2025-01-01"
+     },
+     "output": "{\"total_matching_documents\": 356, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-07\", \"period_ending\": \"2024-12-31\", \"company\": \"MSCI Inc.  (MSCI)  (CIK 0001408198)\", \"ciks\": [\"0001408198\"], \"accession\": \"0001408198-25-000053\", \"document\": \"msci-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm\"}, {\"form\": \"8-K\", \"file_date\": \"2025-02-11\", \"period_ending\": \"2025-02-11\", \"company\": \"W. P. Carey Inc.  (WPC)  (CIK 0001025378)\", \"ciks\": [\"0001025378\"], \"accession\": \"0001025378-25-000022\", \"document\": \"exhibit993-investorprese.htm\", \"description\": \"EX-99.3\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1025378/000102537825000022/exhibit993-investorprese.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-20\", \"period_ending\": \"2024-12-31\", \"company\": \"City Office REIT, Inc.  (CIO, CIO-PA)  (CIK 0001593222)\", \"ciks\": [\"0001593222\"], \"accession\": \"0000950170-25-023714\", \"document\": \"cio-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1593222/000095017025023714/cio-20241231.htm\"}, {\"form\": \"ARS\", \"file_date\": \"2025-03-07\", \"period_ending\": \"2024-12-31\", \"company\": \"W.W. GRAINGER, INC.  (GWW)  (CIK 0000277135)\", \"ciks\": [\"0000277135\"], \"accession\": \"0001104659-25-021510\", \"document\": \"tm257487d2_ars.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/277135/000110465925021510/tm257487d2_ars.pdf\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-25\", \"period_ending\": \"2024-12-31\", \"company\": \"Artisan Partners Asset Management Inc.  (APAM)  (CIK 0001517302)\", \"ciks\": [\"0001517302\"], \"accession\": \"0001517302-25-000015\", \"document\": \"apam-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1517302/000151730225000015/apam-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-20\", \"period_ending\": \"2024-12-31\", \"company\": \"Broadstone Net Lease, Inc.  (BNL)  (CIK 0001424182)\", \"ciks\": [\"0001424182\"], \"accession\": \"0000950170-25-024123\", \"document\": \"bnl-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1424182/000095017025024123/bnl-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-27\", \"period_ending\": \"2024-12-31\", \"company\": \"Net Lease Office Properties  (NLOP)  (CIK 0001952976)\", \"ciks\": [\"0001952976\"], \"accession\": \"0001952976-25-000007\", \"document\": \"nlop-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1952976/000195297625000007/nlop-20241231.htm\"}, {\"form\": \"ARS\", \"file_date\": \"2025-03-19\", \"period_ending\": \"2024-12-31\", \"company\": \"Industrial Logistics Properties Trust  (ILPT)  (CIK 0001717307)\", \"ciks\": [\"0001717307\"], \"accession\": \"0001104659-25-025597\", \"document\": \"tm257954d4_ars.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1717307/000110465925025597/tm257954d4_ars.pdf\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-03\", \"period_ending\": \"2024-12-31\", \"company\": \"Plymouth Industrial REIT, Inc.  (PLYM)  (CIK 0001515816)\", \"ciks\": [\"0001515816\"], \"accession\": \"0001171520-25-000056\", \"document\": \"eps11788_plym-r12.htm\", \"description\": null, \"url\": \"https://www.sec.gov/Archives/edgar/data/1515816/000117152025000056/eps11788_plym-r12.htm\"}, {\"form\": \"ARS\", \"file_date\": \"2025-03-21\", \"period_ending\": \"2024-12-31\", \"company\": \"Broadstone Net Lease, Inc.  (BNL)  (CIK 0001424182)\", \"ciks\": [\"0001424182\"], \"accession\": \"0000950170-25-043196\", \"document\": \"bnl_ars_2025_for_ye_dec_.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1424182/000095017025043196/bnl_ars_2025_for_ye_dec_.pdf\"}, {\"form\": \"ARS\", \"file_date\": \"2025-03-21\", \"period_ending\": \"2024-12-31\", \"company\": \"Terreno Realty Corp  (TRNO)  (CIK 0001476150)\", \"ciks\": [\"0001476150\"], \"accession\": \"0001193125-25-059818\", \"document\": \"d895443dars.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1476150/000119312525059818/d895443dars.pdf\"}, {\"form\": \"ARS\", \"file_date\": \"2025-03-19\", \"period_ending\": \"2024-12-31\", \"company\": \"STAG Industrial, Inc.  (STAG)  (CIK 0001479094)\", \"ciks\": [\"0001479094\"], \"accession\": \"0001104659-25-025595\", \"document\": \"tm254006d2_ars.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1479094/000110465925025595/tm254006d2_ars.pdf\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-12\", \"period_ending\": \"2024-12-31\", \"company\": \"STAG Industrial, Inc.  (STAG)  (CIK 0001479094)\", \"ciks\": [\"0001479094\"], \"accession\": \"0001479094-25-000006\", \"document\": \"stag-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1479094/000147909425000006/stag-20241231.htm\"}, {\"form\": \"ARS\", \"file_date\": \"2025-03-17\", \"period_ending\": \"2024-12-31\", \"company\": \"VICI PROPERTIES INC.  (VICI)  (CIK 0001705696)\", \"ciks\": [\"0001705696\"], \"accession\": \"0001104659-25-024248\", \"document\": \"tm257879d3_ars.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1705696/000110465925024248/tm257879d3_ars.pdf\"}, {\"form\": \"ARS\", \"file_date\": \"2025-04-03\", \"period_ending\": \"2024-12-31\", \"company\": \"OFFICE PROPERTIES INCOME TRUST  (OPI, OPINL)  (CIK 0001456772)\", \"ciks\": [\"0001456772\"], \"accession\": \"0001104659-25-031673\", \"document\": \"tm257964d2_ars.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1456772/000110465925031673/tm257964d2_ars.pdf\"}, {\"form\": \"8-K\", \"file_date\": \"2025-03-05\", \"period_ending\": \"2025-03-05\", \"company\": \"Orion Office REIT Inc.  (ONL)  (CIK 0001873923)\", \"ciks\": [\"0001873923\"], \"accession\": \"0001873923-25-000031\", \"document\": \"exhibit992orionsupplemen.htm\", \"description\": \"EX-99.2\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1873923/000187392325000031/exhibit992orionsupplemen.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-12\", \"period_ending\": \"2024-12-31\", \"company\": \"W. P. Carey Inc.  (WPC)  (CIK 0001025378)\", \"ciks\": [\"0001025378\"], \"accession\": \"0001025378-25-000031\", \"document\": \"wpc-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1025378/000102537825000031/wpc-20241231.htm\"}, {\"form\": \"8-K\", \"file_date\": \"2025-03-05\", \"period_ending\": \"2025-03-05\", \"company\": \"Orion Office REIT Inc.  (ONL)  (CIK 0001873923)\", \"ciks\": [\"0001873923\"], \"accession\": \"0001873923-25-000031\", \"document\": \"exhibit991orionpressreleas.htm\", \"description\": \"EX-99.1\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1873923/000187392325000031/exhibit991orionpressreleas.htm\"}, {\"form\": \"ARS\", \"file_date\": \"2025-03-12\", \"period_ending\": \"2024-12-31\", \"company\": \"MSCI Inc.  (MSCI)  (CIK 0001408198)\", \"ciks\": [\"0001408198\"], \"accession\": \"0001408198-25-000096\", \"document\": \"a2024msciannualreportforfi.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819825000096/a2024msciannualreportforfi.pdf\"}, {\"form\": \"ARS\", \"file_date\": \"2025-03-26\", \"period_ending\": \"2024-12-31\", \"company\": \"Service Properties Trust  (SVC)  (CIK 0000945394)\", \"ciks\": [\"0000945394\"], \"accession\": \"0001104659-25-028238\", \"document\": \"tm257998d2_ars.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/945394/000110465925028238/tm257998d2_ars.pdf\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.53,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00025389
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm",
+      "key": "msci10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: msci10k. (407,848 characters)\nThe data_storage currently contains the following keys:\nmsci10k\n",
+     "is_error": false,
+     "elapsed_s": 0.56,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0006548150000000001
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this MSCI 10-K document: {{msci10k}}, find the operating lease maturity table in the Leases note (future minimum lease payments under operating leases by year: 2025, 2026, 2027, 2028, 2029, thereafter, total undiscounted, less imputed interest, present value). Return the exact figures in thousands for each line, and the exact wording of the table header/units. Also include the text around the table."
+     },
+     "output": "**Note 7. Leases** (Item 8, page 79 of the 10-K)\n\n**Text before the table:**\n\n> Maturities of the Company's operating lease liabilities, interest and other relevant line items in the Consolidated Statement of Financial Condition as of December 31, 2024 are as follows:\n\n**Table:**\n\n| Maturity of Lease Liabilities (in thousands) | Operating Leases |\n|---|---|\n| 2025 | $30,220 |\n| 2026 | 30,361 |\n| 2027 | 24,421 |\n| 2028 | 23,931 |\n| 2029 | 16,573 |\n| Thereafter | 40,099 |\n| Total lease payments | $165,605 |\n| Less: Interest | (19,601) |\n| Present value of lease liabilities | $146,004 |\n| Other accrued liabilities | $24,851 |\n| Long-term operating lease liabilities | $121,153 |\n\nThe header reads \"Maturity of Lease Liabilities\" with \"(in thousands)\" in the first column, and \"Operating Leases\" as the column heading. The table has no separate column for total undiscounted, imputed interest, or present value. Those are shown as the rows \"Total lease payments,\" \"Less: Interest,\" and \"Present value of lease liabilities.\"\n\n**Text after the table (in the same note, before the next table):**\n\n> Weighted-average remaining lease term and discount rate for the Company's operating leases are as follows:\n\nThe paragraph that precedes the maturity table in the lease-term discussion reads:\n\n> The Company's leases have remaining lease terms of up to approximately 11 years. Some of these leases have options to extend which, if exercised, would extend the maximum remaining term to approximately 22 years. Some of the leases also provide for early termination, the exercise of which would shorten the term of those leases by up to 5 years.",
+     "is_error": false,
+     "elapsed_s": 7.05,
+     "cost_usd": 0.088433
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00021101
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: $85,002 thousand (about $85.0 million) of MSCI's operating lease payments mature over the next three years, which is 51.33% of total undiscounted lease payments.**\n\n**Source data:** MSCI's Form 10-K for fiscal year ended December 31, 2024 (filed 2025-02-07), Note 7 \"Leases.\" The note gives the maturities of operating lease liabilities as of December 31, 2024, in thousands:\n\n| Year | Operating leases ($000s) |\n|---|---|\n| 2025 | 30,220 |\n| 2026 | 30,361 |\n| 2027 | 24,421 |\n| 2028 | 23,931 |\n| 2029 | 16,573 |\n| Thereafter | 40,099 |\n| Total lease payments | 165,605 |\n| Less: interest | (19,601) |\n| Present value of lease liabilities | 146,004 |\n\n**Calculation:**\n- Maturing in the next three years (2025\u20132027): 30,220 + 30,361 + 24,421 = 85,002 (thousands)\n- Share of total lease payments: 85,002 / 165,605 = 51.33%\n\n**Note on the denominator:** I used total undiscounted lease payments (165,605) because it is the full schedule of payments the 10-K lists. If you instead measure against the present value of lease liabilities (146,004), the three-year share is 85,002 / 146,004 = 58.22%. That figure compares undiscounted cash flows with a discounted balance, so I have not used it as the headline answer.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm\",\n            \"name\": \"MSCI Inc. Form 10-K for fiscal year 2024 (Note 7, Leases)\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: $85,002 thousand (about $85.0 million) of MSCI's operating lease payments mature over the next three years, which is 51.33% of total undiscounted lease payments.**\n\n**Source data:** MSCI's Form 10-K for fiscal year ended December 31, 2024 (filed 2025-02-07), Note 7 \"Leases.\" The note gives the maturities of operating lease liabilities as of December 31, 2024, in thousands:\n\n| Year | Operating leases ($000s) |\n|---|---|\n| 2025 | 30,220 |\n| 2026 | 30,361 |\n| 2027 | 24,421 |\n| 2028 | 23,931 |\n| 2029 | 16,573 |\n| Thereafter | 40,099 |\n| Total lease payments | 165,605 |\n| Less: interest | (19,601) |\n| Present value of lease liabilities | 146,004 |\n\n**Calculation:**\n- Maturing in the next three years (2025\u20132027): 30,220 + 30,361 + 24,421 = 85,002 (thousands)\n- Share of total lease payments: 85,002 / 165,605 = 51.33%\n\n**Note on the denominator:** I used total undiscounted lease payments (165,605) because it is the full schedule of payments the 10-K lists. If you instead measure against the present value of lease liabilities (146,004), the three-year share is 85,002 / 146,004 = 58.22%. That figure compares undiscounted cash flows with a discounted balance, so I have not used it as the headline answer.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm\",\n            \"name\": \"MSCI Inc. Form 10-K for fiscal year 2024 (Note 7, Leases)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000755
+  }
+ ],
+ "final_answer": "**Answer: $85,002 thousand (about $85.0 million) of MSCI's operating lease payments mature over the next three years, which is 51.33% of total undiscounted lease payments.**\n\n**Source data:** MSCI's Form 10-K for fiscal year ended December 31, 2024 (filed 2025-02-07), Note 7 \"Leases.\" The note gives the maturities of operating lease liabilities as of December 31, 2024, in thousands:\n\n| Year | Operating leases ($000s) |\n|---|---|\n| 2025 | 30,220 |\n| 2026 | 30,361 |\n| 2027 | 24,421 |\n| 2028 | 23,931 |\n| 2029 | 16,573 |\n| Thereafter | 40,099 |\n| Total lease payments | 165,605 |\n| Less: interest | (19,601) |\n| Present value of lease liabilities | 146,004 |\n\n**Calculation:**\n- Maturing in the next three years (2025\u20132027): 30,220 + 30,361 + 24,421 = 85,002 (thousands)\n- Share of total lease payments: 85,002 / 165,605 = 51.33%\n\n**Note on the denominator:** I used total undiscounted lease payments (165,605) because it is the full schedule of payments the 10-K lists. If you instead measure against the present value of lease liabilities (146,004), the three-year share is 85,002 / 146,004 = 58.22%. That figure compares undiscounted cash flows with a discounted balance, so I have not used it as the headline answer.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm\",\n            \"name\": \"MSCI Inc. Form 10-K for fiscal year 2024 (Note 7, Leases)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 5,
+  "input_tokens": 14,
+  "output_tokens": 3098,
+  "cache_creation_input_tokens": 141665,
+  "cache_read_input_tokens": 30284,
+  "web_search_requests": 0,
+  "cost_usd": 0.090308
+ },
+ "cost_usd": 0.090308,
+ "elapsed_s": 20.3,
+ "harness_label": "ctl3"
+}

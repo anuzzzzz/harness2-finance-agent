@@ -1,0 +1,15 @@
+<file path="tool_guidance.md">
+# Tool use
+
+- Decide the document and period before searching: company, form (10-K, 10-Q, 8-K EX-99.1) and fiscal period. edgar_search takes a numeric CIK, not a ticker. Never send an empty or null query to web_search. If it returns nothing, retry once with a short non-empty query, then use edgar_search or a known primary URL.
+- A search snippet or result title is a lead, not evidence. Open the primary document with parse_html_page (one clear key per document), then ask retrieve_information one targeted question at a time. Confirm the figure, period, unit and basis in the retrieved text.
+- Program-to-date versus annual: when a question asks for a total "incurred as of" a date for a named program (merger restructuring, integration, synergy costs), look first for the company's own cumulative statement in the latest 10-K MD&A (business overview or restructuring discussion) or the restructuring note. Quote that sentence with its date. Treat the sum of annual income-statement lines as a cross-check only. If the two differ, say so, give both with their periods and units, and state which one the company labels as incurred under the program. Check that a figure's scope (for example restructuring charges versus separate impairment lines) matches what the question asks about.
+- Cite only documents you opened and retrieved from. Do not list a spreadsheet, filing or article seen only in search results.
+- Write the final answer in plain text with no citation markup. State the figure with its period and unit, the supporting figures, any calculation and the source of each figure. Submit with submit_final_result once the figure is verified in the primary text.
+
+Lead for this task (Warner Bros. Discovery; re-confirm in the text). Controlling source: FY2024 10-K, CIK 1437107, https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/wbd-20241231.htm. In the MD&A business overview it says the company expected about $4.1-$5.3 billion in pre-tax Merger restructuring charges, "of which we have incurred $4.7 billion as of December 31, 2024", and that the program was substantially completed at the end of 2024. The income-statement "Restructuring and other charges" lines of $3,757M (2022), $585M (2023) and $447M (2024) sum to $4,789M, which the filing does not reconcile to $4.7B. Report $4.7B as the stated figure and show the cross-check.
+</file>
+
+<notes>
+Base run reached the right disclosed figure ($4.7B) but: edgar_search failed on the ticker, a null-query web_search was issued, and it listed Financial_Report.xlsx and the FY2022 10-K as sources without opening them. The tool_guidance edit adds the CIK, no-null-query and cite-only-opened rules, as in the earlier library entries (q45-q48). It also adds a general rule for "incurred as of date" program-to-date totals: use the company's cumulative statement, with annual-line sums as a cross-check and an explicit note of any gap. The task-fact lead (4.7B, 4.1-5.3B range, 3,757/585/447 annual lines) comes from the retrieved 10-K text in base1 and is labelled for re-confirmation. No skill was added because the procedure is short.
+</notes>

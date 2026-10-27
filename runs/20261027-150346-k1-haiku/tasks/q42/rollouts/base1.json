@@ -1,0 +1,316 @@
+{
+ "task_id": "q42",
+ "label": "base1",
+ "question": "Compare the FY24 dividend payout ratio of Coca-Cola (KO) to that of its competitors and rank in order from highest to lowest.",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "I'll pull the FY24 dividend and earnings figures for Coca-Cola and its main beverage peers.\n**Answer: On a GAAP basis, the FY24 ranking from highest to lowest payout ratio is Keurig Dr Pepper (84.76%), Coca-Cola (78.86%), then PepsiCo (76.69%). On an adjusted/core basis the order changes: Coca-Cola (67.36%), PepsiCo (65.32%), Keurig Dr Pepper (46.35%).**\n\n**Method:** Payout ratio = FY24 dividends declared per share \u00f7 FY24 diluted EPS. I used GAAP diluted EPS as the primary basis and company-adjusted EPS as a secondary check, since the companies report different non-GAAP measures.\n\n**Coca-Cola (KO)**\n- Dividends: \nOur annualized common stock dividend was $1.94 per share and $1.84 per share in 2024 and 2023, respectively.\n\n- EPS: \nFull Year EPS Declined Slightly to $2.46; Comparable EPS (Non-GAAP) Grew 7% to $2.88\n.\n- Payout: 1.94 \u00f7 2.46 = **78.86%** (GAAP); 1.94 \u00f7 2.88 = **67.36%** (comparable).\n\n**PepsiCo (PEP)**\n- Dividends: Quarterly declarations were \n$ 1.265 for the 12 weeks ended March 23, 2024\n-equivalent at Q1 and \n$ 1.355 for the 12 weeks ended September 7, 2024\n. Summing Q1 at $1.265 and Q2\u2013Q4 at $1.355 each gives $5.33 for FY24 (the 2024 annual report shows $5.3300 for the year, consistent with this sum).\n- EPS: \nEarnings per share (EPS) $1.11 $6.95\n (Q4 and full year 2024). Core EPS for 2024 was \n$8.16\n.\n- Payout: 5.33 \u00f7 6.95 = **76.69%** (GAAP); 5.33 \u00f7 8.16 = **65.32%** (core).\n\n**Keurig Dr Pepper (KDP)**\n- Dividends: \nWe have declared total dividends of $0.89 per share and $0.83 per share for the years ended December 31, 2024 and 2023, respectively.\n\n- EPS: \nDiluted EPS 1.05 1.55 1.01\n for 2024, 2023 and 2022. Adjusted diluted EPS was \n$1.92\n.\n- Payout: 0.89 \u00f7 1.05 = **84.76%** (GAAP); 0.89 \u00f7 1.92 = **46.35%** (adjusted).\n\n**Ranking**\n\n| Rank | Company | GAAP payout | Adjusted/core payout |\n|---|---|---|---|\n| 1 | Keurig Dr Pepper | 84.76% | 46.35% (3rd) |\n| 2 | Coca-Cola | 78.86% | 67.36% (1st) |\n| 3 | PepsiCo | 76.69% | 65.32% (2nd) |\n\n**Caveats**\n- I did not include Monster Beverage or Celsius, which do not pay a regular cash dividend, or National Beverage, whose FY24 payout depends on special dividends I did not verify.\n- The GAAP basis is the most comparable across these three companies, but KDP's GAAP EPS was depressed by non-operating items, which is why its ratio looks highest on GAAP and lowest on adjusted figures.\n- Figures are as of April 7, 2025, based on the FY24 filings and earnings releases.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\",\n            \"name\": \"Coca-Cola FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.coca-colacompany.com/content/dam/company/us/en/media-center/Coca-Cola%202024%20Q4%20Earnings%20Release_Full%20Release_2.11.25.pdf\",\n            \"name\": \"Coca-Cola Q4 and Full Year 2024 Earnings Release\"\n        },\n        {\n            \"url\": \"https://investors.pepsico.com/docs/pepsico-5v9wci20/media/Files/investors/q4-2024-earnings-release.pdf\",\n            \"name\": \"PepsiCo Q4 and Full-Year 2024 Earnings Release\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747624000052/pep-20240907.htm\",\n            \"name\": \"PepsiCo Q3 2024 Form 10-Q\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\",\n            \"name\": \"Keurig Dr Pepper FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://filecache.investorroom.com/mr5ir_keurig_drpepper/402/Keurig_Dr_Pepper_Reports_Q4_2024.pdf\",\n            \"name\": \"Keurig Dr Pepper Q4 and Full Year 2024 Results\"\n        }\n    ]\n}",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_019YDXukieceEstnx8moL4W2",
+     "query": "Coca-Cola 2024 annual report dividends per share net income diluted EPS",
+     "results": [
+      {
+       "title": "Coca-Cola Consolidated, Inc. - Form 10-K - FY2024 (Annual Financial Statement Tables - full year 2024)",
+       "url": "https://www.sec.gov/Archives/edgar/data/317540/000031754025000025/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "COCA COLA CO - Form ARS - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/21344/000110465925024268/tm257314d2_ars.pdf",
+       "page_age": null
+      },
+      {
+       "title": "Coca-Cola Reports Fourth Quarter and Full Year 2024 Results",
+       "url": "https://www.coca-colacompany.com/content/dam/company/us/en/media-center/Coca-Cola%202024%20Q4%20Earnings%20Release_Full%20Release_2.11.25.pdf",
+       "page_age": "623 days ago"
+      },
+      {
+       "title": "CocaCola (KO) Financials 2026 - Income Statement and Balance Sheet $KO",
+       "url": "https://www.marketbeat.com/stocks/NYSE/KO/financials/",
+       "page_age": "90 days ago"
+      },
+      {
+       "title": "Integrated Annual Report 2024",
+       "url": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/oar2024/cchbc-iar-2024.pdf.downloadasset.pdf",
+       "page_age": "621 days ago"
+      },
+      {
+       "title": "COCA COLA CO - Form DEF 14A - FY2025",
+       "url": "https://www.sec.gov/Archives/edgar/data/21344/000155837025003056/ko-20250430xdef14a_c.pdf",
+       "page_age": null
+      },
+      {
+       "title": "Full Year 2024 Results 13 February 2025",
+       "url": "https://www.coca-colahellenic.com/content/dam/cch/us/documents/investors-and-financial/results-reports-and-presentations/2025/2024-fy-results-presentation.pdf.downloadasset.pdf",
+       "page_age": "621 days ago"
+      },
+      {
+       "title": "Coca-Cola Consolidated, Inc. - Form 8-K - FY2025",
+       "url": "https://www.sec.gov/Archives/edgar/data/317540/000031754025000024/cokeq42024ex-991.htm",
+       "page_age": null
+      },
+      {
+       "title": "The Coca-Cola Company (KO) Income Statement - Yahoo Finance",
+       "url": "https://finance.yahoo.com/quote/KO/financials/",
+       "page_age": "318 days ago"
+      }
+     ]
+    },
+    {
+     "id": "srvtoolu_01XXSrtRXdPVYMFbAPmzWYpH",
+     "query": "PepsiCo 2024 full year dividends declared per share diluted EPS",
+     "results": [
+      {
+       "title": "PEPSICO INC - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000042/pep-20240615.htm",
+       "page_age": null
+      },
+      {
+       "title": "PEPSICO INC - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000052/pep-20240907.htm",
+       "page_age": null
+      },
+      {
+       "title": "PEPSICO INC - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000017/pep-20240323.htm",
+       "page_age": null
+      },
+      {
+       "title": "PEPSICO INC - Form DEF 14A - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/77476/000130817924000258/pep_courtesy-pdf.pdf",
+       "page_age": null
+      },
+      {
+       "title": "PEPSICO INC - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000010/q420238-kxexhibit991.htm",
+       "page_age": null
+      },
+      {
+       "title": "PEPSICO INC - Form ARS - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/77476/000130817925000292/pep4354281-ars.pdf",
+       "page_age": null
+      },
+      {
+       "title": "PepsiCo Reports Fourth Quarter and Full-Year 2024 Results;",
+       "url": "https://investors.pepsico.com/docs/pepsico-5v9wci20/media/Files/investors/q4-2024-earnings-release.pdf",
+       "page_age": "630 days ago"
+      },
+      {
+       "title": "PepsiCo Inc. Financial Analysis (2021-2024) (pdf) - CliffsNotes",
+       "url": "https://www.cliffsnotes.com/study-notes/29088985",
+       "page_age": "337 days ago"
+      },
+      {
+       "title": "PEPSICO INC - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/77476/000007747624000019/q120248-kxexhibit991.htm",
+       "page_age": null
+      },
+      {
+       "title": "PEPSICO INC - Form DEF 14A - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/77476/000130817924000258/pep4277421-def14a.htm",
+       "page_age": null
+      }
+     ]
+    },
+    {
+     "id": "srvtoolu_01HPpfiGQrCdqzVjMXeheGyr",
+     "query": "Keurig Dr Pepper 2024 full year dividends per share diluted EPS",
+     "results": [
+      {
+       "title": "Keurig Dr Pepper Inc. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813524000006/ex991-keurigdrpepperreport.htm",
+       "page_age": null
+      },
+      {
+       "title": "Keurig Dr Pepper Inc. - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm",
+       "page_age": null
+      },
+      {
+       "title": "Keurig Dr Pepper Inc. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813524000076/exhibit991keurigdrpepperde.htm",
+       "page_age": null
+      },
+      {
+       "title": "Keurig Dr Pepper Inc. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813524000005/exhibit991keurigdrpepperde.htm",
+       "page_age": null
+      },
+      {
+       "title": "Keurig Dr Pepper Reports Q4 2024",
+       "url": "https://filecache.investorroom.com/mr5ir_keurig_drpepper/402/Keurig_Dr_Pepper_Reports_Q4_2024.pdf",
+       "page_age": "609 days ago"
+      },
+      {
+       "title": "Keurig Dr Pepper Reports Q4 and Full Year 2024 Results and Provides 2025 Outlook",
+       "url": "https://www.keurigdrpepper.com/keurig-dr-pepper-reports-q4-and-full-year-2024-results-and-provides-2025-outlook-26/",
+       "page_age": "609 days ago"
+      },
+      {
+       "title": "Keurig Dr Pepper Reports Q4 and Full Year 2024 Results and Provides 2025 Outlook - Feb 25, 2025",
+       "url": "https://news.keurigdrpepper.com/2025-02-25-Keurig-Dr-Pepper-Reports-Q4-and-Full-Year-2024-Results-and-Provides-2025-Outlook",
+       "page_age": "609 days ago"
+      },
+      {
+       "title": "Keurig Dr Pepper Reports Q2 2024 Results and Reaffirms Fiscal 2024 Guidance",
+       "url": "https://www.keurigdrpepper.com/keurig-dr-pepper-reports-q2-2024-results-and-reaffirms-fiscal-2024-guidance/",
+       "page_age": "629 days ago"
+      },
+      {
+       "title": "Keurig Dr Pepper (KDP) Dividend History, Yield & Ex-Dividend Date - TipRanks.com",
+       "url": "https://www.tipranks.com/stocks/kdp/dividends",
+       "page_age": "71 days ago"
+      }
+     ]
+    },
+    {
+     "id": "srvtoolu_01DL6KbjR6roGT4j7m8Z669V",
+     "query": "Coca-Cola 2024 dividends declared per share $2.04 10-K",
+     "results": [
+      {
+       "title": "COCA COLA CO - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm",
+       "page_age": null
+      },
+      {
+       "title": "Coca-Cola (KO) April 2024 Dividend - Stock Events",
+       "url": "https://stockevents.app/en/event/dividends/37545002",
+       "page_age": null
+      },
+      {
+       "title": "Year-End - Coca-Cola Investor Relations",
+       "url": "https://investors.coca-colacompany.com/stock-info/year-end",
+       "page_age": "5205 days ago"
+      },
+      {
+       "title": "Document",
+       "url": "https://www.sec.gov/Archives/edgar/data/317540/000031754024000049/cokepressrelease082024.htm",
+       "page_age": null
+      },
+      {
+       "title": "How Much Will Coca-Cola Pay Out in Dividends in 2025?",
+       "url": "https://www.fool.com/investing/2024/11/12/how-much-will-coca-cola-pay-out-in-dividends-in-20/",
+       "page_age": "714 days ago"
+      },
+      {
+       "title": "Coca-Cola (KO) Dividend 2026: History, Ex-Dividend Dates & Yield - Stock Events",
+       "url": "https://stockevents.app/en/stock/KO/dividends",
+       "page_age": "134 days ago"
+      },
+      {
+       "title": "Coca-Cola Consolidated Announces Dividend Increase and Share Repurchase Program",
+       "url": "https://investor.cokeconsolidated.com/news-releases/news-release-details/coca-cola-consolidated-announces-dividend-increase-and-share",
+       "page_age": "797 days ago"
+      },
+      {
+       "title": "Board of Directors of The Coca-Cola Company Approves 63rd Consecutive Annual Dividend Increase :: The Coca-Cola Company (KO)",
+       "url": "https://investors.coca-colacompany.com/news-events/press-releases/detail/1129/board-of-directors-of-the-coca-cola-company-approves-63rd-consecutive-annual-dividend-increase",
+       "page_age": "614 days ago"
+      },
+      {
+       "title": "Coca-Cola Co (The) (NYSE:KO) Dividend History",
+       "url": "https://www.dividendinvestor.com/dividend-history-detail/ko/",
+       "page_age": "893 days ago"
+      },
+      {
+       "title": "Coca-Cola Co (KO) Dividends",
+       "url": "https://www.dividendmax.com/united-states/nyse/beverages/coca-cola-co/dividends",
+       "page_age": "118 days ago"
+      }
+     ]
+    },
+    {
+     "id": "srvtoolu_01Y8p1VC2rqVtiDji2y1XdxV",
+     "query": "Keurig Dr Pepper 2024 10-K cash dividends declared per common share",
+     "results": [
+      {
+       "title": "Keurig Dr Pepper Inc. - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm",
+       "page_age": null
+      },
+      {
+       "title": "Keurig Dr Pepper Declares Quarterly Dividend - Dec 10, 2024",
+       "url": "https://news.keurigdrpepper.com/2024-12-10-Keurig-Dr-Pepper-Declares-Quarterly-Dividend",
+       "page_age": "686 days ago"
+      },
+      {
+       "title": "Keurig Dr Pepper Declares Quarterly Dividend",
+       "url": "https://www.keurigdrpepper.com/keurig-dr-pepper-declares-quarterly-dividend-6/",
+       "page_age": "994 days ago"
+      },
+      {
+       "title": "Keurig Dr Pepper Declares Quarterly Dividend - May 15, 2024",
+       "url": "https://news.keurigdrpepper.com/2024-05-15-Keurig-Dr-Pepper-Declares-Quarterly-Dividend",
+       "page_age": "895 days ago"
+      },
+      {
+       "title": "Document",
+       "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813524000097/exhibit991keurigdrpepperde.htm",
+       "page_age": null
+      },
+      {
+       "title": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION WASHINGTON, D.C. 20549",
+       "url": "https://fortune.com/company-assets/826/quartr/quarterly-report-10-q-18ad3-2024-10-24-01-32-30.pdf",
+       "page_age": "733 days ago"
+      },
+      {
+       "title": "Keurig Dr Pepper Inc's Dividend Analysis",
+       "url": "https://finance.yahoo.com/news/keurig-dr-pepper-incs-dividend-110449060.html",
+       "page_age": "945 days ago"
+      },
+      {
+       "title": "Keurig Dr Pepper Inc - WKN A2JQPZ, ISIN US49271V1008",
+       "url": "https://divvydiary.com/en/keurig-dr-pepper-stock-US49271V1008",
+       "page_age": null
+      },
+      {
+       "title": "Keurig Dr Pepper Increases its Dividend by 7.0% and Declares Quarterly Dividend for Q3 2024",
+       "url": "https://www.stocktitan.net/news/KDP/keurig-dr-pepper-increases-its-dividend-by-7-0-and-declares-i2pi40pxs5rd.html",
+       "page_age": "774 days ago"
+      },
+      {
+       "title": "kdp-20240930",
+       "url": "https://www.sec.gov/Archives/edgar/data/1418135/000141813524000090/kdp-20240930.htm",
+       "page_age": null
+      }
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Answer: On a GAAP basis, the FY24 ranking from highest to lowest dividend payout ratio is Keurig Dr Pepper (84.76%), Coca-Cola (78.86%), then PepsiCo (76.69%). On an adjusted/core EPS basis the order changes: Coca-Cola (67.36%), PepsiCo (65.32%), Keurig Dr Pepper (46.35%).\n\nMethod: Payout ratio = FY24 dividends declared per share \u00f7 FY24 diluted EPS. GAAP diluted EPS is the primary basis; company-adjusted EPS is a secondary check.\n\nCoca-Cola (KO): FY24 annualized dividend $1.94/share (2023: $1.84). GAAP diluted EPS $2.46; comparable EPS $2.88. Payout: 1.94 \u00f7 2.46 = 78.86% (GAAP); 1.94 \u00f7 2.88 = 67.36% (comparable).\n\nPepsiCo (PEP): FY24 dividends declared $5.33/share (Q1 $1.265 + Q2\u2013Q4 $1.355 each). GAAP diluted EPS $6.95; 2024 core EPS $8.16. Payout: 5.33 \u00f7 6.95 = 76.69% (GAAP); 5.33 \u00f7 8.16 = 65.32% (core).\n\nKeurig Dr Pepper (KDP): FY24 dividends declared $0.89/share (2023: $0.83). GAAP diluted EPS $1.05; adjusted diluted EPS $1.92. Payout: 0.89 \u00f7 1.05 = 84.76% (GAAP); 0.89 \u00f7 1.92 = 46.35% (adjusted).\n\nRanking (GAAP): 1) Keurig Dr Pepper 84.76%; 2) Coca-Cola 78.86%; 3) PepsiCo 76.69%.\nRanking (adjusted/core): 1) Coca-Cola 67.36%; 2) PepsiCo 65.32%; 3) Keurig Dr Pepper 46.35%.\n\nCaveats: Monster Beverage and Celsius do not pay a regular cash dividend, so they were excluded; National Beverage was excluded because its payout depends on special dividends I did not verify. KDP's GAAP EPS was depressed by non-operating items, which explains its high GAAP ratio and low adjusted ratio.\n\nSources:\n- Coca-Cola FY2024 Form 10-K: https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\n- Coca-Cola Q4 and Full Year 2024 Earnings Release: https://www.coca-colacompany.com/content/dam/company/us/en/media-center/Coca-Cola%202024%20Q4%20Earnings%20Release_Full%20Release_2.11.25.pdf\n- PepsiCo Q4 and Full-Year 2024 Earnings Release: https://investors.pepsico.com/docs/pepsico-5v9wci20/media/Files/investors/q4-2024-earnings-release.pdf\n- PepsiCo Q3 2024 Form 10-Q: https://www.sec.gov/Archives/edgar/data/77476/000007747624000052/pep-20240907.htm\n- Keurig Dr Pepper FY2024 Form 10-K: https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\n- Keurig Dr Pepper Q4 and Full Year 2024 Results: https://filecache.investorroom.com/mr5ir_keurig_drpepper/402/Keurig_Dr_Pepper_Reports_Q4_2024.pdf"
+     },
+     "output": "Answer: On a GAAP basis, the FY24 ranking from highest to lowest dividend payout ratio is Keurig Dr Pepper (84.76%), Coca-Cola (78.86%), then PepsiCo (76.69%). On an adjusted/core EPS basis the order changes: Coca-Cola (67.36%), PepsiCo (65.32%), Keurig Dr Pepper (46.35%).\n\nMethod: Payout ratio = FY24 dividends declared per share \u00f7 FY24 diluted EPS. GAAP diluted EPS is the primary basis; company-adjusted EPS is a secondary check.\n\nCoca-Cola (KO): FY24 annualized dividend $1.94/share (2023: $1.84). GAAP diluted EPS $2.46; comparable EPS $2.88. Payout: 1.94 \u00f7 2.46 = 78.86% (GAAP); 1.94 \u00f7 2.88 = 67.36% (comparable).\n\nPepsiCo (PEP): FY24 dividends declared $5.33/share (Q1 $1.265 + Q2\u2013Q4 $1.355 each). GAAP diluted EPS $6.95; 2024 core EPS $8.16. Payout: 5.33 \u00f7 6.95 = 76.69% (GAAP); 5.33 \u00f7 8.16 = 65.32% (core).\n\nKeurig Dr Pepper (KDP): FY24 dividends declared $0.89/share (2023: $0.83). GAAP diluted EPS $1.05; adjusted diluted EPS $1.92. Payout: 0.89 \u00f7 1.05 = 84.76% (GAAP); 0.89 \u00f7 1.92 = 46.35% (adjusted).\n\nRanking (GAAP): 1) Keurig Dr Pepper 84.76%; 2) Coca-Cola 78.86%; 3) PepsiCo 76.69%.\nRanking (adjusted/core): 1) Coca-Cola 67.36%; 2) PepsiCo 65.32%; 3) Keurig Dr Pepper 46.35%.\n\nCaveats: Monster Beverage and Celsius do not pay a regular cash dividend, so they were excluded; National Beverage was excluded because its payout depends on special dividends I did not verify. KDP's GAAP EPS was depressed by non-operating items, which explains its high GAAP ratio and low adjusted ratio.\n\nSources:\n- Coca-Cola FY2024 Form 10-K: https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\n- Coca-Cola Q4 and Full Year 2024 Earnings Release: https://www.coca-colacompany.com/content/dam/company/us/en/media-center/Coca-Cola%202024%20Q4%20Earnings%20Release_Full%20Release_2.11.25.pdf\n- PepsiCo Q4 and Full-Year 2024 Earnings Release: https://investors.pepsico.com/docs/pepsico-5v9wci20/media/Files/investors/q4-2024-earnings-release.pdf\n- PepsiCo Q3 2024 Form 10-Q: https://www.sec.gov/Archives/edgar/data/77476/000007747624000052/pep-20240907.htm\n- Keurig Dr Pepper FY2024 Form 10-K: https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\n- Keurig Dr Pepper Q4 and Full Year 2024 Results: https://filecache.investorroom.com/mr5ir_keurig_drpepper/402/Keurig_Dr_Pepper_Reports_Q4_2024.pdf",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.058838235
+  }
+ ],
+ "final_answer": "Answer: On a GAAP basis, the FY24 ranking from highest to lowest dividend payout ratio is Keurig Dr Pepper (84.76%), Coca-Cola (78.86%), then PepsiCo (76.69%). On an adjusted/core EPS basis the order changes: Coca-Cola (67.36%), PepsiCo (65.32%), Keurig Dr Pepper (46.35%).\n\nMethod: Payout ratio = FY24 dividends declared per share \u00f7 FY24 diluted EPS. GAAP diluted EPS is the primary basis; company-adjusted EPS is a secondary check.\n\nCoca-Cola (KO): FY24 annualized dividend $1.94/share (2023: $1.84). GAAP diluted EPS $2.46; comparable EPS $2.88. Payout: 1.94 \u00f7 2.46 = 78.86% (GAAP); 1.94 \u00f7 2.88 = 67.36% (comparable).\n\nPepsiCo (PEP): FY24 dividends declared $5.33/share (Q1 $1.265 + Q2\u2013Q4 $1.355 each). GAAP diluted EPS $6.95; 2024 core EPS $8.16. Payout: 5.33 \u00f7 6.95 = 76.69% (GAAP); 5.33 \u00f7 8.16 = 65.32% (core).\n\nKeurig Dr Pepper (KDP): FY24 dividends declared $0.89/share (2023: $0.83). GAAP diluted EPS $1.05; adjusted diluted EPS $1.92. Payout: 0.89 \u00f7 1.05 = 84.76% (GAAP); 0.89 \u00f7 1.92 = 46.35% (adjusted).\n\nRanking (GAAP): 1) Keurig Dr Pepper 84.76%; 2) Coca-Cola 78.86%; 3) PepsiCo 76.69%.\nRanking (adjusted/core): 1) Coca-Cola 67.36%; 2) PepsiCo 65.32%; 3) Keurig Dr Pepper 46.35%.\n\nCaveats: Monster Beverage and Celsius do not pay a regular cash dividend, so they were excluded; National Beverage was excluded because its payout depends on special dividends I did not verify. KDP's GAAP EPS was depressed by non-operating items, which explains its high GAAP ratio and low adjusted ratio.\n\nSources:\n- Coca-Cola FY2024 Form 10-K: https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\n- Coca-Cola Q4 and Full Year 2024 Earnings Release: https://www.coca-colacompany.com/content/dam/company/us/en/media-center/Coca-Cola%202024%20Q4%20Earnings%20Release_Full%20Release_2.11.25.pdf\n- PepsiCo Q4 and Full-Year 2024 Earnings Release: https://investors.pepsico.com/docs/pepsico-5v9wci20/media/Files/investors/q4-2024-earnings-release.pdf\n- PepsiCo Q3 2024 Form 10-Q: https://www.sec.gov/Archives/edgar/data/77476/000007747624000052/pep-20240907.htm\n- Keurig Dr Pepper FY2024 Form 10-K: https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\n- Keurig Dr Pepper Q4 and Full Year 2024 Results: https://filecache.investorroom.com/mr5ir_keurig_drpepper/402/Keurig_Dr_Pepper_Reports_Q4_2024.pdf",
+ "fallback_text": "I'll pull the FY24 dividend and earnings figures for Coca-Cola and its main beverage peers.\n**Answer: On a GAAP basis, the FY24 ranking from highest to lowest payout ratio is Keurig Dr Pepper (84.76%), Coca-Cola (78.86%), then PepsiCo (76.69%). On an adjusted/core basis the order changes: Coca-Cola (67.36%), PepsiCo (65.32%), Keurig Dr Pepper (46.35%).**\n\n**Method:** Payout ratio = FY24 dividends declared per share \u00f7 FY24 diluted EPS. I used GAAP diluted EPS as the primary basis and company-adjusted EPS as a secondary check, since the companies report different non-GAAP measures.\n\n**Coca-Cola (KO)**\n- Dividends: \nOur annualized common stock dividend was $1.94 per share and $1.84 per share in 2024 and 2023, respectively.\n\n- EPS: \nFull Year EPS Declined Slightly to $2.46; Comparable EPS (Non-GAAP) Grew 7% to $2.88\n.\n- Payout: 1.94 \u00f7 2.46 = **78.86%** (GAAP); 1.94 \u00f7 2.88 = **67.36%** (comparable).\n\n**PepsiCo (PEP)**\n- Dividends: Quarterly declarations were \n$ 1.265 for the 12 weeks ended March 23, 2024\n-equivalent at Q1 and \n$ 1.355 for the 12 weeks ended September 7, 2024\n. Summing Q1 at $1.265 and Q2\u2013Q4 at $1.355 each gives $5.33 for FY24 (the 2024 annual report shows $5.3300 for the year, consistent with this sum).\n- EPS: \nEarnings per share (EPS) $1.11 $6.95\n (Q4 and full year 2024). Core EPS for 2024 was \n$8.16\n.\n- Payout: 5.33 \u00f7 6.95 = **76.69%** (GAAP); 5.33 \u00f7 8.16 = **65.32%** (core).\n\n**Keurig Dr Pepper (KDP)**\n- Dividends: \nWe have declared total dividends of $0.89 per share and $0.83 per share for the years ended December 31, 2024 and 2023, respectively.\n\n- EPS: \nDiluted EPS 1.05 1.55 1.01\n for 2024, 2023 and 2022. Adjusted diluted EPS was \n$1.92\n.\n- Payout: 0.89 \u00f7 1.05 = **84.76%** (GAAP); 0.89 \u00f7 1.92 = **46.35%** (adjusted).\n\n**Ranking**\n\n| Rank | Company | GAAP payout | Adjusted/core payout |\n|---|---|---|---|\n| 1 | Keurig Dr Pepper | 84.76% | 46.35% (3rd) |\n| 2 | Coca-Cola | 78.86% | 67.36% (1st) |\n| 3 | PepsiCo | 76.69% | 65.32% (2nd) |\n\n**Caveats**\n- I did not include Monster Beverage or Celsius, which do not pay a regular cash dividend, or National Beverage, whose FY24 payout depends on special dividends I did not verify.\n- The GAAP basis is the most comparable across these three companies, but KDP's GAAP EPS was depressed by non-operating items, which is why its ratio looks highest on GAAP and lowest on adjusted figures.\n- Figures are as of April 7, 2025, based on the FY24 filings and earnings releases.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm\",\n            \"name\": \"Coca-Cola FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.coca-colacompany.com/content/dam/company/us/en/media-center/Coca-Cola%202024%20Q4%20Earnings%20Release_Full%20Release_2.11.25.pdf\",\n            \"name\": \"Coca-Cola Q4 and Full Year 2024 Earnings Release\"\n        },\n        {\n            \"url\": \"https://investors.pepsico.com/docs/pepsico-5v9wci20/media/Files/investors/q4-2024-earnings-release.pdf\",\n            \"name\": \"PepsiCo Q4 and Full-Year 2024 Earnings Release\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/77476/000007747624000052/pep-20240907.htm\",\n            \"name\": \"PepsiCo Q3 2024 Form 10-Q\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm\",\n            \"name\": \"Keurig Dr Pepper FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://filecache.investorroom.com/mr5ir_keurig_drpepper/402/Keurig_Dr_Pepper_Reports_Q4_2024.pdf\",\n            \"name\": \"Keurig Dr Pepper Q4 and Full Year 2024 Results\"\n        }\n    ]\n}",
+ "submitted": true,
+ "turns": 1,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 1,
+  "input_tokens": 8,
+  "output_tokens": 6057,
+  "cache_creation_input_tokens": 43117,
+  "cache_read_input_tokens": 41931,
+  "web_search_requests": 5,
+  "cost_usd": 0.058838
+ },
+ "cost_usd": 0.058838,
+ "elapsed_s": 25.2,
+ "harness_label": "base1"
+}

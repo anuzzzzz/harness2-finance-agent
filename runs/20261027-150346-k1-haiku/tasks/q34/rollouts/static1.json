@@ -1,0 +1,133 @@
+{
+ "task_id": "q34",
+ "label": "static1",
+ "question": "In fiscal 2024, what percentage of Cloudflare's (NYSE: NET) revenue was derived from channel partners?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01DEq6UrYpubkJiJ1SQd7ijW",
+     "query": "Cloudflare 2024 annual report channel partners revenue percentage",
+     "results": []
+    }
+   ],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Cloudflare channel partners percentage of revenue",
+      "ciks": [
+       "NET"
+      ],
+      "start_date": "2025-01-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "{\"total_matching_documents\": 1, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-20\", \"period_ending\": \"2024-12-31\", \"company\": \"Cloudflare, Inc.  (NET)  (CIK 0001477333)\", \"ciks\": [\"0001477333\"], \"accession\": \"0001477333-25-000043\", \"document\": \"cloud-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1477333/000147733325000043/cloud-20241231.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.89,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00019836000000000002
+  },
+  {
+   "turn": 2,
+   "text": "In fiscal 2024, about 20.21% of Cloudflare's revenue came from channel partners.\n\nThe FY2024 Form 10-K reports revenue by type of customer. \nChannel partners $ 337,394 20 % $ 202,404 16 % $ 122,522 13 %\n for 2024, 2023, and 2022, against total revenue of \n$ 1,669,626 100 %\n for 2024.\n\n**Calculation:**\n- Channel partner revenue (FY2024): $337,394 thousand\n- Total revenue (FY2024): $1,669,626 thousand\n- Share: 337,394 \u00f7 1,669,626 = 0.202078 \u2192 **20.21%**\n\nThe 10-K's rounded figure is 20%, which matches. For context, the channel share was 16% in FY2023 and 13% in FY2022.",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01DEq6UrYpubkJiJ1SQd7ijW",
+     "query": null,
+     "results": [
+      {
+       "title": "Cloudflare, Inc. - Form 10-K - FY2024 (Annual Financial Statement Tables - full year 2024)",
+       "url": "https://www.sec.gov/Archives/edgar/data/1477333/000147733325000043/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "Cloudflare, Inc. - Form 10-Q - FY2024 (Quarterly Earnings Tables - quarter ended Sep 2024)",
+       "url": "https://www.sec.gov/Archives/edgar/data/1477333/000147733324000085/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "Cloudflare, Inc. - Form 10-Q - FY2024 (Quarterly Earnings Tables - quarter ended Jun 2024)",
+       "url": "https://www.sec.gov/Archives/edgar/data/1477333/000147733324000070/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "Cloudflare, Inc. - Form 10-Q - FY2024 (Quarterly Earnings Tables - quarter ended Mar 2024)",
+       "url": "https://www.sec.gov/Archives/edgar/data/1477333/000147733324000050/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "Cloudflare, Inc. - Form ARS - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1477333/000147733325000069/fy202410k1.pdf",
+       "page_age": null
+      },
+      {
+       "title": "Cloudflare, Inc. - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1477333/000147733324000070/cloud-20240630.htm",
+       "page_age": null
+      },
+      {
+       "title": "Cloudflare, Inc. - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1477333/000147733324000085/cloud-20240930.htm",
+       "page_age": null
+      },
+      {
+       "title": "Cloudflare, Inc. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1477333/000147733324000048/q124exhibit991.htm",
+       "page_age": null
+      },
+      {
+       "title": "Cloudflare, Inc. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1477333/000147733324000004/q423exhibit991.htm",
+       "page_age": null
+      },
+      {
+       "title": "Cloudflare, Inc. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1477333/000147733324000069/q224exhibit991.htm",
+       "page_age": null
+      }
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "In fiscal 2024, approximately 20.21% of Cloudflare's revenue was derived from channel partners (reported as 20% in the 10-K).\n\nCalculation: channel partners revenue $337,394 thousand \u00f7 total revenue $1,669,626 thousand = 0.202078 \u2192 20.21%.\n\nContext: the channel partner share was 16% in FY2023 ($202,404 thousand of $1,296,745 thousand) and 13% in FY2022 ($122,522 thousand of $975,241 thousand). The FY2024 breakdown shows direct customers at $1,332,232 thousand (80%).\n\nSource data: Cloudflare FY2024 Form 10-K (filed 2025-02-20), revenue disaggregation by type of customer.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1477333/000147733325000043/Financial_Report.xlsx\",\n            \"name\": \"Cloudflare, Inc. Form 10-K FY2024 - Financial Report (revenue by type of customer)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1477333/000147733325000043/cloud-20241231.htm\",\n            \"name\": \"Cloudflare, Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}"
+     },
+     "output": "In fiscal 2024, approximately 20.21% of Cloudflare's revenue was derived from channel partners (reported as 20% in the 10-K).\n\nCalculation: channel partners revenue $337,394 thousand \u00f7 total revenue $1,669,626 thousand = 0.202078 \u2192 20.21%.\n\nContext: the channel partner share was 16% in FY2023 ($202,404 thousand of $1,296,745 thousand) and 13% in FY2022 ($122,522 thousand of $975,241 thousand). The FY2024 breakdown shows direct customers at $1,332,232 thousand (80%).\n\nSource data: Cloudflare FY2024 Form 10-K (filed 2025-02-20), revenue disaggregation by type of customer.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1477333/000147733325000043/Financial_Report.xlsx\",\n            \"name\": \"Cloudflare, Inc. Form 10-K FY2024 - Financial Report (revenue by type of customer)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1477333/000147733325000043/cloud-20241231.htm\",\n            \"name\": \"Cloudflare, Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.011586215
+  }
+ ],
+ "final_answer": "In fiscal 2024, approximately 20.21% of Cloudflare's revenue was derived from channel partners (reported as 20% in the 10-K).\n\nCalculation: channel partners revenue $337,394 thousand \u00f7 total revenue $1,669,626 thousand = 0.202078 \u2192 20.21%.\n\nContext: the channel partner share was 16% in FY2023 ($202,404 thousand of $1,296,745 thousand) and 13% in FY2022 ($122,522 thousand of $975,241 thousand). The FY2024 breakdown shows direct customers at $1,332,232 thousand (80%).\n\nSource data: Cloudflare FY2024 Form 10-K (filed 2025-02-20), revenue disaggregation by type of customer.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1477333/000147733325000043/Financial_Report.xlsx\",\n            \"name\": \"Cloudflare, Inc. Form 10-K FY2024 - Financial Report (revenue by type of customer)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1477333/000147733325000043/cloud-20241231.htm\",\n            \"name\": \"Cloudflare, Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+ "fallback_text": "In fiscal 2024, about 20.21% of Cloudflare's revenue came from channel partners.\n\nThe FY2024 Form 10-K reports revenue by type of customer. \nChannel partners $ 337,394 20 % $ 202,404 16 % $ 122,522 13 %\n for 2024, 2023, and 2022, against total revenue of \n$ 1,669,626 100 %\n for 2024.\n\n**Calculation:**\n- Channel partner revenue (FY2024): $337,394 thousand\n- Total revenue (FY2024): $1,669,626 thousand\n- Share: 337,394 \u00f7 1,669,626 = 0.202078 \u2192 **20.21%**\n\nThe 10-K's rounded figure is 20%, which matches. For context, the channel share was 16% in FY2023 and 13% in FY2022.",
+ "submitted": true,
+ "turns": 2,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 2,
+  "input_tokens": 6,
+  "output_tokens": 1359,
+  "cache_creation_input_tokens": 7967,
+  "cache_read_input_tokens": 10860,
+  "web_search_requests": 1,
+  "cost_usd": 0.011784
+ },
+ "cost_usd": 0.011784,
+ "elapsed_s": 7.8,
+ "harness_label": "static1"
+}

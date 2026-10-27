@@ -1,0 +1,111 @@
+{
+ "task_id": "q24",
+ "label": "inv1",
+ "question": "As of March 10, 2025, what is the face value of Salesforce's debt excluding their sustainability notes?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Salesforce senior notes sustainability notes face value debt",
+      "start_date": "2025-01-01",
+      "end_date": "2025-04-07",
+      "ciks": [
+       "CRM"
+      ]
+     },
+     "output": "{\"total_matching_documents\": 1, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-03-05\", \"period_ending\": \"2025-01-31\", \"company\": \"Salesforce, Inc.  (CRM)  (CIK 0001108524)\", \"ciks\": [\"0001108524\"], \"accession\": \"0001108524-25-000006\", \"document\": \"crm-20250131.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1108524/000110852425000006/crm-20250131.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 1.07,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00023573000000000002
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852425000006/crm-20250131.htm",
+      "key": "crm10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: crm10k. (419,215 characters)\nThe data_storage currently contains the following keys:\ncrm10k\n",
+     "is_error": false,
+     "elapsed_s": 0.55,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00018003
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Salesforce 10-K, find the debt note table listing senior notes, sustainability notes, and total face value of debt as of January 31, 2025 (and as of the date March 10, 2025 if mentioned). Give the face value of each note, the sustainability notes subtotal, and the total face value excluding sustainability notes. Also quote the sentence describing the sustainability notes and any mention of total debt principal. Document: {{crm10k}}"
+     },
+     "output": "**Debt note (Note 9): outstanding principal as of January 31, 2025**\n\n| Instrument | Maturity | Contractual rate | Outstanding principal ($M) |\n|---|---|---|---|\n| 2024 Senior Notes | July 2024 | 0.625% | 0 (repaid in full in Q2 FY2025) |\n| 2028 Senior Notes | April 2028 | 3.70% | 1,500 |\n| **2028 Senior Sustainability Notes** | **July 2028** | **1.50%** | **1,000** |\n| 2031 Senior Notes | July 2031 | 1.95% | 1,500 |\n| 2041 Senior Notes | July 2041 | 2.70% | 1,250 |\n| 2051 Senior Notes | July 2051 | 2.90% | 2,000 |\n| 2061 Senior Notes | July 2061 | 3.05% | 1,250 |\n| **Total principal outstanding** | | | **8,500** |\n\n- **Sustainability notes subtotal:** $1,000M (the 2028 Senior Sustainability Notes)\n- **Total excluding sustainability notes:** $7,500M ($8,500M \u2212 $1,000M)\n\n**March 10, 2025:** The document does not mention this date. Its latest dated items are March 5, 2025 (auditor's report, signatures). Debt figures are given only as of January 31, 2025, with one exception: Item 5 and Note 11 mention repurchases through February 28, 2025, but no debt balance is given for that date.\n\n**Relevant quotes**\n\n- Sustainability notes: The document has no narrative sentence describing the sustainability notes' purpose or use of proceeds. The only descriptions are the table row in Note 9 (\"2028 Senior Sustainability Notes, July 2021, July 2028, 1.50%, $1,000\") and the exhibit index entry: \"Second Supplemental Indenture, dated July 12, 2021... (including Forms of the 2024, 2031, 2041, 2051, 2061 and Sustainability Notes).\"\n\n- Total debt principal: Note 9 states \"Total principal outstanding $8,500.\" Item 7 gives the same figure, \"Principal due on our outstanding debt obligations (1): 8,500 (2025) / 9,500 (2024),\" with footnote \"(1) Amounts do not include operating or financing lease obligations.\" The Item 7 Debt section also states: \"As of January 31, 2025, we had senior unsecured debt outstanding, with maturities starting in April 2028 and extending through July 2061 with a total carrying value of $8.4 billion.\"\n\nNote that the $8,500M is face value (principal). The carrying value is $8,433M after unamortized discounts and issuance costs.",
+     "is_error": false,
+     "elapsed_s": 11.12,
+     "cost_usd": 0.089157
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00017837999999999998
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: about $7,500 million ($7.5 billion) of face value (principal) excluding the sustainability notes.**\n\n**Key caveat on the date:** Salesforce's most recent debt disclosure before March 10, 2025 is its Form 10-K for the fiscal year ended January 31, 2025, filed March 5, 2025. The filing does not report a debt balance as of March 10, 2025, so the figures below are as of January 31, 2025, the closest available date.\n\n**Debt principal outstanding as of January 31, 2025 (Note 9 of the 10-K), in $ millions:**\n\n| Instrument | Maturity | Rate | Principal |\n|---|---|---|---|\n| 2024 Senior Notes | July 2024 | 0.625% | 0 (repaid in Q2 FY2025) |\n| 2028 Senior Notes | April 2028 | 3.70% | 1,500 |\n| 2028 Senior Sustainability Notes | July 2028 | 1.50% | 1,000 |\n| 2031 Senior Notes | July 2031 | 1.95% | 1,500 |\n| 2041 Senior Notes | July 2041 | 2.70% | 1,250 |\n| 2051 Senior Notes | July 2051 | 2.90% | 2,000 |\n| 2061 Senior Notes | July 2061 | 3.05% | 1,250 |\n| **Total principal** | | | **8,500** |\n\n**Calculation:**\n- Total face value of debt: $8,500M\n- Less sustainability notes (2028 Senior Sustainability Notes): $1,000M\n- Face value excluding sustainability notes: $8,500M \u2212 $1,000M = **$7,500M**\n\n**Supporting context:** The 10-K's Item 7 also shows principal due on outstanding debt of 8,500 for fiscal 2025 (excluding lease obligations). The carrying value is about $8.4 billion after unamortized discounts and issuance costs, but the question asks for face value, so the answer is $7.5 billion.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1108524/000110852425000006/crm-20250131.htm\",\n            \"name\": \"Salesforce, Inc. Form 10-K for fiscal year ended January 31, 2025 (filed March 5, 2025)\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: about $7,500 million ($7.5 billion) of face value (principal) excluding the sustainability notes.**\n\n**Key caveat on the date:** Salesforce's most recent debt disclosure before March 10, 2025 is its Form 10-K for the fiscal year ended January 31, 2025, filed March 5, 2025. The filing does not report a debt balance as of March 10, 2025, so the figures below are as of January 31, 2025, the closest available date.\n\n**Debt principal outstanding as of January 31, 2025 (Note 9 of the 10-K), in $ millions:**\n\n| Instrument | Maturity | Rate | Principal |\n|---|---|---|---|\n| 2024 Senior Notes | July 2024 | 0.625% | 0 (repaid in Q2 FY2025) |\n| 2028 Senior Notes | April 2028 | 3.70% | 1,500 |\n| 2028 Senior Sustainability Notes | July 2028 | 1.50% | 1,000 |\n| 2031 Senior Notes | July 2031 | 1.95% | 1,500 |\n| 2041 Senior Notes | July 2041 | 2.70% | 1,250 |\n| 2051 Senior Notes | July 2051 | 2.90% | 2,000 |\n| 2061 Senior Notes | July 2061 | 3.05% | 1,250 |\n| **Total principal** | | | **8,500** |\n\n**Calculation:**\n- Total face value of debt: $8,500M\n- Less sustainability notes (2028 Senior Sustainability Notes): $1,000M\n- Face value excluding sustainability notes: $8,500M \u2212 $1,000M = **$7,500M**\n\n**Supporting context:** The 10-K's Item 7 also shows principal due on outstanding debt of 8,500 for fiscal 2025 (excluding lease obligations). The carrying value is about $8.4 billion after unamortized discounts and issuance costs, but the question asks for face value, so the answer is $7.5 billion.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1108524/000110852425000006/crm-20250131.htm\",\n            \"name\": \"Salesforce, Inc. Form 10-K for fiscal year ended January 31, 2025 (filed March 5, 2025)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00077112
+  }
+ ],
+ "final_answer": "**Answer: about $7,500 million ($7.5 billion) of face value (principal) excluding the sustainability notes.**\n\n**Key caveat on the date:** Salesforce's most recent debt disclosure before March 10, 2025 is its Form 10-K for the fiscal year ended January 31, 2025, filed March 5, 2025. The filing does not report a debt balance as of March 10, 2025, so the figures below are as of January 31, 2025, the closest available date.\n\n**Debt principal outstanding as of January 31, 2025 (Note 9 of the 10-K), in $ millions:**\n\n| Instrument | Maturity | Rate | Principal |\n|---|---|---|---|\n| 2024 Senior Notes | July 2024 | 0.625% | 0 (repaid in Q2 FY2025) |\n| 2028 Senior Notes | April 2028 | 3.70% | 1,500 |\n| 2028 Senior Sustainability Notes | July 2028 | 1.50% | 1,000 |\n| 2031 Senior Notes | July 2031 | 1.95% | 1,500 |\n| 2041 Senior Notes | July 2041 | 2.70% | 1,250 |\n| 2051 Senior Notes | July 2051 | 2.90% | 2,000 |\n| 2061 Senior Notes | July 2061 | 3.05% | 1,250 |\n| **Total principal** | | | **8,500** |\n\n**Calculation:**\n- Total face value of debt: $8,500M\n- Less sustainability notes (2028 Senior Sustainability Notes): $1,000M\n- Face value excluding sustainability notes: $8,500M \u2212 $1,000M = **$7,500M**\n\n**Supporting context:** The 10-K's Item 7 also shows principal due on outstanding debt of 8,500 for fiscal 2025 (excluding lease obligations). The carrying value is about $8.4 billion after unamortized discounts and issuance costs, but the question asks for face value, so the answer is $7.5 billion.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1108524/000110852425000006/crm-20250131.htm\",\n            \"name\": \"Salesforce, Inc. Form 10-K for fiscal year ended January 31, 2025 (filed March 5, 2025)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 5,
+  "input_tokens": 14,
+  "output_tokens": 3649,
+  "cache_creation_input_tokens": 137156,
+  "cache_read_input_tokens": 22626,
+  "web_search_requests": 0,
+  "cost_usd": 0.090522
+ },
+ "cost_usd": 0.090522,
+ "elapsed_s": 22.1,
+ "harness_label": "inv1"
+}

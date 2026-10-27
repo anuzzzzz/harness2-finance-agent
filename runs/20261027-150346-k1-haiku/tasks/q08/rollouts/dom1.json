@@ -1,0 +1,270 @@
+{
+ "task_id": "q08",
+ "label": "dom1",
+ "question": "What was the total consideration cost TKO paid to acquired Endeavor assets measured at transaction close?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01VaPueMd8QcHM95VmvECNj3",
+     "query": "TKO acquisition Endeavor assets closing consideration",
+     "results": []
+    }
+   ],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "deal_consideration_at_close"
+     },
+     "output": "---\nname: deal_consideration_at_close\ndescription: Determine the total consideration an acquirer paid for acquired businesses as measured at closing (headline price vs. closing-date value, cash vs. equity, adjustments), from the closing 8-K and the acquirer's periodic filings.\n---\nANALYTIC MOVE: reconcile. Inputs: the headline price in the agreement, the closing-date settlement (cash, equity units issued, assumed debt, purchase-price adjustments), and the accounting basis. Result: one consideration figure at close, plus the bridge from the headline.\n\n1. Separate three numbers and never blur them: (a) headline price at signing; (b) adjustments settled at closing (working capital, volume-weighted-price true-ups); (c) consideration measured at close, meaning cash plus the value of equity issued at the closing-date price, plus any assumed debt or contingent items. Say which one the question asks for.\n2. Controlling sources, in order: the closing 8-K (Item 2.01 completion of acquisition, Item 3.02 unregistered share issuance, and any EX-99); the acquirer's next 10-Q or 10-K acquisition or business-combination note (consideration table, purchase price allocation); the subsequent-events note in the 10-K if the close came after year-end. Open at least the closing 8-K and the note, not only the MD&A summary.\n3. Equity component: units or shares issued x the price the filing states at close (or the closing-date market price in the note). Show the multiplication. Do not substitute the signing-date price.\n4. Check the accounting basis. If the deal was between entities under common control, the filing may record it at historical carrying amounts. Then state both the contractual consideration and the recorded amount, and say which the question's wording points to.\n5. If a filing gives a headline figure and a separate adjustment, show the sum (for example headline + adjustment) and say whether the adjustment was settled in cash or units. Say explicitly when the filing does not say.\n6. Check units ($ millions vs. billions), and that any shares issued to a third party (for example a licensor) are either included or explicitly excluded with a reason.\n7. Answer contract: headline sentence with the figure; the bridge (headline, adjustments, closing value) with the period and date of each; the calculation; the accounting-basis caveat; sources limited to documents opened and retrieved from. Plain text, no citation markup.\n\nTask facts (TKO Group, acquisition of Endeavor's PBR, On Location and IMG businesses; from one earlier run's retrievals, so re-confirm in the text). TKO Q1 2025 10-Q https://www.sec.gov/Archives/edgar/data/1973266/000095017025067220/tko-20250331.htm states total consideration of approximately $3.25 billion plus a $50 million purchase price adjustment. It also states that on Feb 28, 2025 about 26.54 million TKO OpCo common units and an equal number of Class B shares were issued to Endeavor. The 10-Q did not state a closing-date fair value, so look in the closing 8-K (filed 2025-02-28, accession 0001193125-25-040879) and the 10-K's acquisition and subsequent-events notes for a closing-date measure. The FY2024 10-K is https://www.sec.gov/Archives/edgar/data/1973266/000095017025027778/tko-20241231.htm.\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0008939
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01VaPueMd8QcHM95VmvECNj3",
+     "query": null,
+     "results": [
+      {
+       "title": "TKO Group Holdings, Inc. - Form ARS - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1973266/000119312525097003/d909805dars.pdf",
+       "page_age": null
+      },
+      {
+       "title": "10-Q",
+       "url": "https://www.sec.gov/Archives/edgar/data/1973266/000095017025067220/tko-20250331.htm",
+       "page_age": "19481 days ago"
+      },
+      {
+       "title": "TKO Acquires Professional Bull Riders, On Location, and IMG From Endeavor",
+       "url": "https://www.sportsvideo.org/2024/10/24/tko-acquires-professional-bull-riders-on-location-and-img-from-endeavor/",
+       "page_age": "732 days ago"
+      },
+      {
+       "title": "TKO Group Holdings, Inc. - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1973266/000095017024122364/tko-20240930.htm",
+       "page_age": null
+      },
+      {
+       "title": "TKO Group Holdings - TKO Announces Approval of Capital Return Program; Also Announces Strategic Acquisition of Sports Assets From Endeavor",
+       "url": "https://investor.tkogrp.com/news/news-details/2024/TKO-Announces-Approval-of-Capital-Return-Program-Also-Announces-Strategic-Acquisition-of-Sports-Assets-From-Endeavor/default.aspx",
+       "page_age": "733 days ago"
+      },
+      {
+       "title": "TKO Group Holdings, Inc. - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1973266/000095017025027778/tko-20241231.htm",
+       "page_age": null
+      },
+      {
+       "title": "Endeavor Group Holdings, Inc. - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1766363/000095017024122829/edr-20240930.htm",
+       "page_age": null
+      },
+      {
+       "title": "Endeavor Group Holdings, Inc. - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1766363/000095017025028394/edr-20241231.htm",
+       "page_age": null
+      },
+      {
+       "title": "Media Man Int on X: \"TKO Announces Approval of Capital Return Program; Also Announces Strategic Acquisition of Sports Assets From Endeavor October 24, 2024 TKO Announces Approval of Capital Return Program; Also Announces Strategic Acquisition of Sports Assets From Endeavor Board Authorized $2 Bi\u2026 / X",
+       "url": "https://x.com/mediamanint/status/1849609615128048067",
+       "page_age": "732 days ago"
+      },
+      {
+       "title": "description of business",
+       "url": "https://www.sec.gov/Archives/edgar/data/1973266/000119312525057890/R8.htm",
+       "page_age": "19481 days ago"
+      }
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1973266/000095017025067220/tko-20250331.htm",
+      "key": "tko10q"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: tko10q. (193,094 characters)\nThe data_storage currently contains the following keys:\ntko10q\n",
+     "is_error": false,
+     "elapsed_s": 0.74,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "TKO Endeavor Asset Acquisition completion closing units issued fair value",
+      "ciks": [
+       "1973266"
+      ],
+      "start_date": "2025-02-01"
+     },
+     "output": "{\"total_matching_documents\": 3, \"page\": 1, \"results\": [{\"form\": \"8-K\", \"file_date\": \"2025-03-19\", \"period_ending\": \"2025-03-19\", \"company\": \"TKO Group Holdings, Inc.  (TKO)  (CIK 0001973266)\", \"ciks\": [\"0001973266\"], \"accession\": \"0001193125-25-057890\", \"document\": \"d803159dex991.htm\", \"description\": \"EX-99.1\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000119312525057890/d803159dex991.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-26\", \"period_ending\": \"2024-12-31\", \"company\": \"TKO Group Holdings, Inc.  (TKO)  (CIK 0001973266)\", \"ciks\": [\"0001973266\"], \"accession\": \"0000950170-25-027778\", \"document\": \"tko-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000095017025027778/tko-20241231.htm\"}, {\"form\": \"8-K\", \"file_date\": \"2025-02-26\", \"period_ending\": \"2025-02-26\", \"company\": \"TKO Group Holdings, Inc.  (TKO)  (CIK 0001973266)\", \"ciks\": [\"0001973266\"], \"accession\": \"0000950170-25-027743\", \"document\": \"tko-ex99_1.htm\", \"description\": \"EX-99.1\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000095017025027743/tko-ex99_1.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.66,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.011284205
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this TKO 10-Q text, find all statements about the Endeavor Asset Acquisition's total consideration, purchase price adjustment, number of common units/Class B shares issued, closing date, and any fair value or purchase consideration measured at closing (including per-unit prices). Quote the relevant passages with exact figures. Text: {{tko10q}}"
+     },
+     "output": "## Endeavor Asset Acquisition: Consideration, Adjustments, Units/Shares, and Closing Date\n\n### Total consideration and purchase price adjustment\n\n**Note 1, Description of Business:**\n> \"In connection with the Endeavor Asset Acquisition Agreement, the TKO Parties acquired the Acquired Businesses for total consideration of approximately $3.25 billion plus a $50 million purchase price adjustment (based on the volume-weighted average sales price of TKO Class A common stock for the twenty-five trading days ending on October 23, 2024).\"\n\n**MD&A, Overview, Endeavor Asset Acquisition:**\n> \"In connection with the Endeavor Asset Acquisition Agreement, the TKO Parties acquired the Acquired Businesses for total consideration of approximately $3.25 billion plus a $50 million purchase price adjustment (based on the volume-weighted average sales price of TKO Class A common stock for the twenty five trading days ending on October 23, 2024).\"\n\nThe two passages differ slightly in punctuation (\"twenty-five\" vs. \"twenty five\"), but the figures are identical.\n\n### Number of common units and Class B shares issued\n\n**Note 1, Description of Business:**\n> \"Endeavor Group Holdings, Inc. received approximately 26.54 million common units of TKO OpCo and subscribed for an equivalent number of corresponding shares of TKO Class B common stock.\"\n\n**MD&A, Overview:**\n> \"Endeavor Group Holdings, Inc. received approximately 26.54 million common units of TKO OpCo and subscribed for an equivalent number of corresponding shares of TKO's Class B common stock.\"\n\n**Note 10, Stockholders' Equity:**\n> \"On February 28, 2025, as consideration paid in connection with the Endeavor Asset Acquisition, the Company issued approximately 26.54 million Common Units of TKO OpCo and an equivalent number of corresponding shares of TKO Class B common stock to Endeavor OpCo and certain of EGH's other subsidiaries. The equity consideration increased the nonredeemable non-controlling interest in TKO OpCo, with a corresponding increase to additional paid-in capital.\"\n\n**Note 13, Earnings Per Share:**\n> \"The consideration issued in the transaction consisted solely of TKO OpCo common units and an equivalent number of corresponding shares of TKO Class B common stock, which do not share in the earnings of TKO Group Holdings, Inc. and are therefore excluded from basic EPS.\"\n\nThe statement of stockholders' equity also shows 26,542 (thousands) Class B shares under \"Stock issuances and other, net,\" but no dollar amount is assigned to the units in the non-controlling interest column.\n\n### Closing date\n\n**Note 1, Description of Business:**\n> \"On February 28, 2025, TKO OpCo and TKO Group Holdings, Inc., (together with TKO OpCo, the 'TKO Parties'), completed the acquisition of the IMG business...\"\n\nThe agreement is dated October 23, 2024 (\"pursuant to a transaction agreement, dated as of October 23, 2024 (as amended, the 'Endeavor Asset Acquisition Agreement')\"). The Item 4 controls disclosure also states the acquisition was consummated during the quarter ended March 31, 2025.\n\n### Fair value or consideration measured at closing\n\nThe filing gives no per-unit price for the 26.54 million units/shares and no fair value measurement for the total consideration at closing. The only closing-date values disclosed are for the NFLP Shares and the RSU conversion:\n\n**Note 12, Equity-Based Compensation:**\n> \"Upon the close of the Endeavor Asset Acquisition, the Company issued 160,455 shares of TKO Class A common stock for an aggregate value of $23.5 million to NFL Properties LLC, as set forth in the Endeavor Asset Acquisition Agreement (such shares, the 'NFLP Shares').\"\n\n> \"In connection with the Endeavor Asset Acquisition, the Company converted each equity award of restricted stock units ('RSUs') held by employees of the Acquired Businesses into TKO RSUs of equal value and vesting conditions. The value of these was determined using the closing price of TKO Class A common stock on the day of the closing of the Endeavor Asset Acquisition.\"\n\nThe RSU conversion passage gives no dollar amount.\n\nRelated cash item, MD&A, Liquidity:\n> \"...contributions of $23.3 million from Endeavor Group Holdings, Inc. in connection with the Endeavor Asset Acquisition.\"\n\n### Derived figures (not stated in the filing)\n\nThese are my calculations, not disclosed figures:\n- **NFLP Shares price:** $23.5 million \u00f7 160,455 shares \u2248 $146.45 per Class A share.\n- **Implied consideration per unit:** $3.25 billion \u00f7 26.54 million units \u2248 $122.46. The filing does not say this is the per-unit price, and the $3.25 billion figure is \"approximately.\"\n\n### Caution\n\nNote 10 also describes a separate issuance of 160,455 Class A shares on March 4, 2025, with an aggregate value of $20 million, \"as consideration to a contract counterparty in connection with a commercial arrangement\" (Part II, Item 2). This share count matches the NFLP Shares but the value and counterparty differ, so it appears to be a different transaction.",
+     "is_error": false,
+     "elapsed_s": 14.37,
+     "cost_usd": 0.010655
+    },
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1973266/000119312525057890/R8.htm",
+      "key": "r8"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: r8. (6,814 characters)\nThe data_storage currently contains the following keys:\ntko10q\nr8\n",
+     "is_error": false,
+     "elapsed_s": 0.2,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00040028
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "TKO completion of acquisition Endeavor Asset Acquisition February 28, 2025",
+      "ciks": [
+       "1973266"
+      ],
+      "start_date": "2025-02-27",
+      "end_date": "2025-04-07"
+     },
+     "output": "{\"total_matching_documents\": 1, \"page\": 1, \"results\": [{\"form\": \"8-K\", \"file_date\": \"2025-03-19\", \"period_ending\": \"2025-03-19\", \"company\": \"TKO Group Holdings, Inc.  (TKO)  (CIK 0001973266)\", \"ciks\": [\"0001973266\"], \"accession\": \"0001193125-25-057890\", \"document\": \"d803159dex991.htm\", \"description\": \"EX-99.1\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000119312525057890/d803159dex991.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.96,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000677395
+  },
+  {
+   "turn": 5,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1973266/000119312525057890/d803159dex991.htm",
+      "key": "ex991"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: ex991. (269,820 characters)\nThe data_storage currently contains the following keys:\ntko10q\nr8\nex991\n",
+     "is_error": false,
+     "elapsed_s": 0.5,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this TKO 10-Q text, find any statement of the purchase consideration for the Endeavor Asset Acquisition in a purchase price allocation or business combination/common control note, and any closing-date fair value of the equity issued (units x price). Also find the \"Liquidity\" passage on contributions from Endeavor. Text: {{tko10q}}"
+     },
+     "output": "## 1. Purchase consideration for the Endeavor Asset Acquisition\n\nThe 10-Q does not contain a purchase price allocation. It describes the transaction as a **common control** acquisition, so the Acquired Businesses were recorded at historical carrying amounts rather than fair values.\n\nThe consideration statement appears in **Note 1, Description of Business**:\n\n> \"the TKO Parties acquired the Acquired Businesses for total consideration of approximately $3.25 billion plus a $50 million purchase price adjustment (based on the volume-weighted average sales price of TKO Class A common stock for the twenty-five trading days ending on October 23, 2024). Endeavor Group Holdings, Inc. received approximately 26.54 million common units of TKO OpCo and subscribed for an equivalent number of corresponding shares of TKO Class B common stock.\"\n\nNote 10, Stockholders' Equity, adds:\n\n> \"On February 28, 2025, as consideration paid in connection with the Endeavor Asset Acquisition, the Company issued approximately 26.54 million Common Units of TKO OpCo and an equivalent number of corresponding shares of TKO Class B common stock to Endeavor OpCo and certain of EGH's other subsidiaries. The equity consideration increased the nonredeemable non-controlling interest in TKO OpCo, with a corresponding increase to additional paid-in capital.\"\n\nThe MD&A repeats the $3.25 billion plus $50 million figure.\n\n## 2. Closing-date fair value of equity issued (units \u00d7 price)\n\nThe text does not provide this. It gives the share count (about 26.54 million TKO OpCo Common Units and equivalent Class B shares) but no closing-date share price. The $3.25 billion plus $50 million figure is priced off a VWAP ending October 23, 2024, not the February 28, 2025 closing date, so it is not a closing-date fair value of the equity.\n\nNote 11 also mentions 160,455 NFLP shares issued at closing \"for an aggregate value of $23.5 million\" under the Endeavor Asset Acquisition Agreement. That is a stated aggregate value, not a per-share closing price. Part II, Item 2 separately describes 160,455 Class A shares issued March 4, 2025, valued at $20 million, to a contract counterparty. The share count matches, but the date and value differ, so the two disclosures should be reconciled against the filing.\n\n## 3. Liquidity passage on contributions from Endeavor\n\nFrom **MD&A, Liquidity and Capital Resources, Cash Flows**:\n\n> \"Cash used in the three months ended March 31, 2025 primarily reflects net transfers to Endeavor Group Holdings, Inc. of $122.5 million, distributions to EGH and its subsidiaries of $44.3 million, dividends paid to holders of TKO Class A common stock of $31.1 million and net payments on debt of $11.0 million. These decreases were partially offset by contributions of $23.3 million from Endeavor Group Holdings, Inc. in connection with the Endeavor Asset Acquisition.\"\n\nThe cash flow statement shows \"Contributions from parent\" of $23,276 thousand in financing activities. The same statement also reports a non-cash \"Capital contribution from parent\" of $49,443 thousand, which the text does not discuss in the Liquidity passage.",
+     "is_error": false,
+     "elapsed_s": 11.56,
+     "cost_usd": 0.010038
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000398485
+  },
+  {
+   "turn": 6,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this TKO 8-K exhibit, find all statements about the Endeavor Asset Acquisition consideration, purchase price adjustment, closing date, units issued, and any value of equity consideration at closing (e.g., closing share price or fair value). Quote exact figures. Text: {{ex991}}"
+     },
+     "output": "## Endeavor Asset Acquisition: Consideration, Adjustment, Closing Date, and Units\n\n**Consideration and purchase price adjustment**\n\n- MD&A, \"Endeavor Asset Acquisition\": \"TKO acquired the Businesses for a total consideration of approximately $3.25 billion plus a $50 million purchase price adjustment (based on the volume-weighted average sales price of TKO PubCo Class A Common Stock for the twenty five trading days ending on October 23, 2024).\"\n- Note 1, \"Endeavor Asset Acquisition\": \"In connection with the Endeavor Asset Acquisition Agreement the TKO Parties acquired the Businesses for a total consideration of approximately $3.25 billion plus a $50 million purchase price adjustment (based on the volume-weighted average sales price of TKO PubCo Class A Common Stock for the twenty five trading days ending on October 23, 2024).\"\n\n**Closing date**\n\n- MD&A: \"On February 28, 2025, TKO Operating Company, LLC ... and TKO Group Holdings, Inc. ... completed the acquisition of the Professional Bull Riders ... pursuant to the Transaction Agreement, dated as of October 23, 2024 (as amended, the 'Endeavor Asset Acquisition Agreement').\"\n- Note 1: \"On February 28, 2025, TKO OpCo and TKO Group Holdings, Inc. ... completed the acquisition ...\"\n- Note 1 also states: \"On February 28, 2025, prior to the close of the Endeavor Asset Acquisition, Endeavor through its subsidiaries, had controlled approximately 54% of the voting interests in TKO ... Upon the consummation of the close of the Endeavor Asset Acquisition, Endeavor through its subsidiaries, controlled approximately 61% of the voting interest in TKO.\"\n- Auditor's report: the Businesses were acquired \"in a common control acquisition on February 28, 2025.\"\n- Note 19: the three-segment structure was identified \"effective February 28, 2025.\"\n\nThe October 23, 2024 date is the agreement date, not the closing date. The MD&A's \"November 2024 (the 'Closing Date')\" refers to the credit agreement amendment, not the acquisition, and the September 12, 2023 \"Closing Date\" in Note 4 refers to the WWE transaction.\n\n**Units issued**\n\n- MD&A: \"Endeavor received approximately 26.54 million common units of TKO and subscribed for an equal number of shares of TKO PubCo's Class B Common Stock.\"\n- Note 1: \"Endeavor received approximately 26.54 million common units of TKO and subscribed for an equal number of shares of TKO's Class B Common Stock.\"\n\n**Value of equity consideration at closing**\n\nThe document does not state a closing share price, a per-unit value, or a fair value of the approximately 26.54 million units issued in the Endeavor Asset Acquisition. The only share-price reference tied to the acquisition is the $50 million adjustment's measurement period, which uses the VWAP for the 25 trading days ending October 23, 2024, not the closing-date price.\n\nThe document does give share prices for other transactions, which should not be confused with this acquisition:\n- WWE transaction (Note 4): 83,161,123 Class A shares valued at $8,061.8 million, implying an approximately $96.94 per-share fair value.\n- November 2023 secondary offering: $79.80 per share; Company share repurchase at $76.41 per share.",
+     "is_error": false,
+     "elapsed_s": 13.1,
+     "cost_usd": 0.012619
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00048958
+  },
+  {
+   "turn": 7,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Short answer: TKO's filings give a total consideration of about $3.30 billion for the Endeavor assets (approximately $3.25 billion plus a $50 million purchase price adjustment). None of the filings I opened states a closing-date fair value for that consideration, so $3.30 billion is the contractual figure measured against the October 2024 price, not a figure measured at close.\n\nBridge and reasoning:\n1. Headline price at signing: The agreement was signed October 23, 2024. TKO stated that <cite index=\"6-5\">TKO will acquire the Endeavor assets for total consideration of $ 3.25 billion, based on the volume-weighted average sales price of TKO's Class A common stock for the twenty five trading days ending on October 23, 2024.</cite>\n2. Adjustment: The Q1 2025 10-Q states the businesses were acquired <cite index=\"10-1\">for a total consideration of approximately $3.25 billion plus a $50 million purchase price adjustment</cite>. The adjustment was described in the 10-K as <cite index=\"6-6\">subject to certain customary purchase price adjustments to be settled at the closing in equity and cash</cite>, but the filings do not split the $50 million between cash and equity.\n3. Closing date: The 10-Q states the acquisition <cite index=\"2-4\">was accounted for as a common control acquisition and was consummated on February 28, 2025.</cite>\n4. Equity issued at close: <cite index=\"10-2\">Endeavor received approximately 26.54 million common units of TKO and subscribed for an equal number of shares of TKO Class B common stock.</cite> The filings give no closing-date share price or per-unit value for these units. The 10-Q's Note 10 says the units were issued <cite index=\"2-6\">as consideration paid in connection with the Endeavor Asset Acquisition</cite>, again without a dollar value at close.\n5. Other closing-date items: The 10-Q gives a $23.5 million aggregate value for 160,455 Class A shares issued to NFL Properties LLC <cite index=\"2-7\">as set forth in the Endeavor Asset Acquisition Agreement</cite>. This is a separate item, and I have not added it to the total because the filings do not say it is part of the consideration.\n\nCalculation: $3.25 billion + $50 million = $3.30 billion (contractual total, before any closing-date revaluation of the equity). Implied price per unit on the $3.25 billion base: $3,250 million \u00f7 26.54 million units \u2248 $122.46 (my derived figure, not a disclosed price).\n\nAccounting caveat: Because this was a transaction between entities under common control, the assets were recorded at historical carrying amounts rather than fair value, so no purchase price allocation at fair value exists. The 10-Q says the equity consideration <cite index=\"2-6\">increased the nonredeemable non-controlling interest in TKO OpCo, with a corresponding increase to additional paid-in capital.</cite>\n\nConclusion: The best-supported answer is about $3.30 billion ($3.25 billion plus a $50 million adjustment), with the caveat that the filings do not disclose a closing-date measurement of the equity consideration. I could not locate the separate closing 8-K (accession 0001193125-25-040879) in the search index, so a closing-date value could exist there.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000095017025067220/tko-20250331.htm\",\n            \"name\": \"TKO Group Holdings Form 10-Q for quarter ended March 31, 2025\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000095017025027778/tko-20241231.htm\",\n            \"name\": \"TKO Group Holdings Form 10-K for FY2024\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000119312525057890/d803159dex991.htm\",\n            \"name\": \"TKO Group Holdings 8-K Exhibit 99.1 (filed 2025-03-19)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000119312525057890/R8.htm\",\n            \"name\": \"TKO Group Holdings description of business (SEC R8 page)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000119312525097003/d909805dars.pdf\",\n            \"name\": \"TKO Group Holdings Form ARS FY2024\"\n        }\n    ]\n}"
+     },
+     "output": "Short answer: TKO's filings give a total consideration of about $3.30 billion for the Endeavor assets (approximately $3.25 billion plus a $50 million purchase price adjustment). None of the filings I opened states a closing-date fair value for that consideration, so $3.30 billion is the contractual figure measured against the October 2024 price, not a figure measured at close.\n\nBridge and reasoning:\n1. Headline price at signing: The agreement was signed October 23, 2024. TKO stated that <cite index=\"6-5\">TKO will acquire the Endeavor assets for total consideration of $ 3.25 billion, based on the volume-weighted average sales price of TKO's Class A common stock for the twenty five trading days ending on October 23, 2024.</cite>\n2. Adjustment: The Q1 2025 10-Q states the businesses were acquired <cite index=\"10-1\">for a total consideration of approximately $3.25 billion plus a $50 million purchase price adjustment</cite>. The adjustment was described in the 10-K as <cite index=\"6-6\">subject to certain customary purchase price adjustments to be settled at the closing in equity and cash</cite>, but the filings do not split the $50 million between cash and equity.\n3. Closing date: The 10-Q states the acquisition <cite index=\"2-4\">was accounted for as a common control acquisition and was consummated on February 28, 2025.</cite>\n4. Equity issued at close: <cite index=\"10-2\">Endeavor received approximately 26.54 million common units of TKO and subscribed for an equal number of shares of TKO Class B common stock.</cite> The filings give no closing-date share price or per-unit value for these units. The 10-Q's Note 10 says the units were issued <cite index=\"2-6\">as consideration paid in connection with the Endeavor Asset Acquisition</cite>, again without a dollar value at close.\n5. Other closing-date items: The 10-Q gives a $23.5 million aggregate value for 160,455 Class A shares issued to NFL Properties LLC <cite index=\"2-7\">as set forth in the Endeavor Asset Acquisition Agreement</cite>. This is a separate item, and I have not added it to the total because the filings do not say it is part of the consideration.\n\nCalculation: $3.25 billion + $50 million = $3.30 billion (contractual total, before any closing-date revaluation of the equity). Implied price per unit on the $3.25 billion base: $3,250 million \u00f7 26.54 million units \u2248 $122.46 (my derived figure, not a disclosed price).\n\nAccounting caveat: Because this was a transaction between entities under common control, the assets were recorded at historical carrying amounts rather than fair value, so no purchase price allocation at fair value exists. The 10-Q says the equity consideration <cite index=\"2-6\">increased the nonredeemable non-controlling interest in TKO OpCo, with a corresponding increase to additional paid-in capital.</cite>\n\nConclusion: The best-supported answer is about $3.30 billion ($3.25 billion plus a $50 million adjustment), with the caveat that the filings do not disclose a closing-date measurement of the equity consideration. I could not locate the separate closing 8-K (accession 0001193125-25-040879) in the search index, so a closing-date value could exist there.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000095017025067220/tko-20250331.htm\",\n            \"name\": \"TKO Group Holdings Form 10-Q for quarter ended March 31, 2025\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000095017025027778/tko-20241231.htm\",\n            \"name\": \"TKO Group Holdings Form 10-K for FY2024\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000119312525057890/d803159dex991.htm\",\n            \"name\": \"TKO Group Holdings 8-K Exhibit 99.1 (filed 2025-03-19)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000119312525057890/R8.htm\",\n            \"name\": \"TKO Group Holdings description of business (SEC R8 page)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000119312525097003/d909805dars.pdf\",\n            \"name\": \"TKO Group Holdings Form ARS FY2024\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.001366975
+  }
+ ],
+ "final_answer": "Short answer: TKO's filings give a total consideration of about $3.30 billion for the Endeavor assets (approximately $3.25 billion plus a $50 million purchase price adjustment). None of the filings I opened states a closing-date fair value for that consideration, so $3.30 billion is the contractual figure measured against the October 2024 price, not a figure measured at close.\n\nBridge and reasoning:\n1. Headline price at signing: The agreement was signed October 23, 2024. TKO stated that <cite index=\"6-5\">TKO will acquire the Endeavor assets for total consideration of $ 3.25 billion, based on the volume-weighted average sales price of TKO's Class A common stock for the twenty five trading days ending on October 23, 2024.</cite>\n2. Adjustment: The Q1 2025 10-Q states the businesses were acquired <cite index=\"10-1\">for a total consideration of approximately $3.25 billion plus a $50 million purchase price adjustment</cite>. The adjustment was described in the 10-K as <cite index=\"6-6\">subject to certain customary purchase price adjustments to be settled at the closing in equity and cash</cite>, but the filings do not split the $50 million between cash and equity.\n3. Closing date: The 10-Q states the acquisition <cite index=\"2-4\">was accounted for as a common control acquisition and was consummated on February 28, 2025.</cite>\n4. Equity issued at close: <cite index=\"10-2\">Endeavor received approximately 26.54 million common units of TKO and subscribed for an equal number of shares of TKO Class B common stock.</cite> The filings give no closing-date share price or per-unit value for these units. The 10-Q's Note 10 says the units were issued <cite index=\"2-6\">as consideration paid in connection with the Endeavor Asset Acquisition</cite>, again without a dollar value at close.\n5. Other closing-date items: The 10-Q gives a $23.5 million aggregate value for 160,455 Class A shares issued to NFL Properties LLC <cite index=\"2-7\">as set forth in the Endeavor Asset Acquisition Agreement</cite>. This is a separate item, and I have not added it to the total because the filings do not say it is part of the consideration.\n\nCalculation: $3.25 billion + $50 million = $3.30 billion (contractual total, before any closing-date revaluation of the equity). Implied price per unit on the $3.25 billion base: $3,250 million \u00f7 26.54 million units \u2248 $122.46 (my derived figure, not a disclosed price).\n\nAccounting caveat: Because this was a transaction between entities under common control, the assets were recorded at historical carrying amounts rather than fair value, so no purchase price allocation at fair value exists. The 10-Q says the equity consideration <cite index=\"2-6\">increased the nonredeemable non-controlling interest in TKO OpCo, with a corresponding increase to additional paid-in capital.</cite>\n\nConclusion: The best-supported answer is about $3.30 billion ($3.25 billion plus a $50 million adjustment), with the caveat that the filings do not disclose a closing-date measurement of the equity consideration. I could not locate the separate closing 8-K (accession 0001193125-25-040879) in the search index, so a closing-date value could exist there.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000095017025067220/tko-20250331.htm\",\n            \"name\": \"TKO Group Holdings Form 10-Q for quarter ended March 31, 2025\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000095017025027778/tko-20241231.htm\",\n            \"name\": \"TKO Group Holdings Form 10-K for FY2024\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000119312525057890/d803159dex991.htm\",\n            \"name\": \"TKO Group Holdings 8-K Exhibit 99.1 (filed 2025-03-19)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000119312525057890/R8.htm\",\n            \"name\": \"TKO Group Holdings description of business (SEC R8 page)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1973266/000119312525097003/d909805dars.pdf\",\n            \"name\": \"TKO Group Holdings Form ARS FY2024\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 7,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 10,
+  "input_tokens": 28,
+  "output_tokens": 12306,
+  "cache_creation_input_tokens": 254067,
+  "cache_read_input_tokens": 90872,
+  "web_search_requests": 1,
+  "cost_usd": 0.048822
+ },
+ "cost_usd": 0.048822,
+ "elapsed_s": 69.7,
+ "harness_label": "dom1"
+}

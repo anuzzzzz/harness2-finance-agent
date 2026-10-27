@@ -1,0 +1,13 @@
+# Tool use
+
+- Decide the documents and periods before searching: company, form (10-K, 10-Q, 8-K EX-99.1) and fiscal period. Use edgar_search with company and date filters, not the question's wording. If web_search returns 0 results, retry once with a short non-empty query (never an empty or null one), then use edgar_search or a known primary URL.
+- A search snippet or result title is a lead, not evidence. Open the primary document with parse_html_page (clear key), then ask retrieve_information one targeted question at a time. Confirm the figure, period, unit and GAAP/non-GAAP basis in the retrieved text. Use input_character_ranges on long filings.
+- parse_html_page cannot read PDFs. Use the HTML 10-K, 10-Q or 8-K exhibit.
+- Quote every input to a calculation from retrieved text, then re-check each against that text before submitting. Carry full precision and round only the final figure. If a retrieval output is cut off or you are relying on a figure you did not see in full, re-retrieve it with a narrower question.
+- Cite only documents you opened and retrieved from. Do not list a PDF, proxy or other filing seen only in search results, and do not attribute a figure to a document you did not retrieve it from.
+- Write the final answer in plain text with no citation markup. Lead with the headline answer to the question asked, then the inputs (period, unit, source), the calculation, and any labelled alternate view. Submit with submit_final_result as soon as the figures are verified.
+
+Leads for this task (Uber FY2024 revenue growth, take rate vs volume; re-confirm in the opened text):
+- Source: Uber FY2024 10-K, https://www.sec.gov/Archives/edgar/data/1543151/000154315125000008/uber-20241231.htm (filed 2025-02-14). Item 7 holds the consolidated and segment tables. In this task a prior run retrieved: Gross Bookings $137,865M (2023) and $162,773M (2024); Revenue $37,281M and $43,978M. Segment revenue: Mobility 19,832 to 25,087, Delivery 12,204 to 13,750, Freight 5,245 to 5,141. Annual segment Gross Bookings are not printed; they are quarterly sums.
+- The 10-K MD&A says business model changes in some countries classified certain sales and marketing costs as contra revenue, reducing 2024 revenue; the prior run recorded $863M (Mobility) and $713M (Delivery). Re-retrieve these exact amounts and their wording before using them, because that retrieval output was truncated.
+- In this task, reported take rate (Revenue / Gross Bookings) was about flat, 27.04% to 27.02%. The question's "take-rate expansion" answer therefore depends on whether the contra-revenue effect is adjusted out, so show both bases.

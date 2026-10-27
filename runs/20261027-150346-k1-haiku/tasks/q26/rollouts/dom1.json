@@ -1,0 +1,95 @@
+{
+ "task_id": "q26",
+ "label": "dom1",
+ "question": "As of June 30, 2024, what % of Microsoft's (NASDAQ: MSFT) full-time employees are located outside of the United State? (give the numbers that led to the percentage calculation)",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm",
+      "key": "msft10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: msft10k. (387,464 characters)\nThe data_storage currently contains the following keys:\nmsft10k\n",
+     "is_error": false,
+     "elapsed_s": 2.06,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000846525
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Microsoft 10-K, quote the exact sentence in the Human Capital section stating the number of full-time employees as of June 30, 2024, including the U.S. and international split. Also state whether the filing says \"full-time\" and the exact figures for U.S. and international employees. {{msft10k}}"
+     },
+     "output": "**Exact sentence (Human Capital Resources, Part I, Item 1):**\n\n\"As of June 30, 2024, we employed approximately 228,000 people on a full-time basis, 126,000 in the U.S. and 102,000 internationally.\"\n\n**Does the filing say \"full-time\"?** Yes. The phrase \"on a full-time basis\" appears in that sentence.\n\n**Figures:**\n- Total: approximately 228,000 employees\n- U.S.: 126,000\n- International: 102,000",
+     "is_error": false,
+     "elapsed_s": 2.58,
+     "cost_usd": 0.084492
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000162695
+  },
+  {
+   "turn": 3,
+   "text": "As of June 30, 2024, about 44.74% of Microsoft's full-time employees were located outside the United States.\n\n**Inputs (from the FY2024 Form 10-K, Item 1 Human Capital Resources, filed under CIK 789019):**\n- The filing says that as of June 30, 2024, Microsoft employed approximately 228,000 people on a full-time basis.\n- Of those, 126,000 were in the U.S.\n- The remaining 102,000 were international, so the filing's split is U.S. plus international.\n\n**Check:** 126,000 + 102,000 = 228,000, which matches the total.\n\n**Calculation:**\n- Outside the U.S. share = 102,000 / 228,000 = 0.447368... \u2248 44.74%\n\nThe filing's figures are rounded to the nearest thousand, so the percentage is approximate.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm\",\n            \"name\": \"Microsoft Corp Form 10-K for fiscal year ended June 30, 2024\"\n        }\n    ]\n}",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [],
+   "stop_reason": "end_turn",
+   "cost_usd": 0.00038340499999999997
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "As of June 30, 2024, about 44.74% of Microsoft's full-time employees were located outside the United States.\n\nInputs (FY2024 Form 10-K, Item 1 Human Capital Resources, CIK 789019):\n- The filing states that as of June 30, 2024, Microsoft employed approximately 228,000 people on a full-time basis.\n- Of those, 126,000 were in the U.S.\n- The remaining 102,000 were international, so the filing's split is U.S. plus international.\n\nCheck: 126,000 + 102,000 = 228,000, which matches the total.\n\nCalculation:\n- Outside the U.S. share = 102,000 / 228,000 = 0.447368... \u2248 44.74%\n\nThe filing's figures are rounded to the nearest thousand, so the percentage is approximate.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm\",\n            \"name\": \"Microsoft Corp Form 10-K for fiscal year ended June 30, 2024\"\n        }\n    ]\n}"
+     },
+     "output": "As of June 30, 2024, about 44.74% of Microsoft's full-time employees were located outside the United States.\n\nInputs (FY2024 Form 10-K, Item 1 Human Capital Resources, CIK 789019):\n- The filing states that as of June 30, 2024, Microsoft employed approximately 228,000 people on a full-time basis.\n- Of those, 126,000 were in the U.S.\n- The remaining 102,000 were international, so the filing's split is U.S. plus international.\n\nCheck: 126,000 + 102,000 = 228,000, which matches the total.\n\nCalculation:\n- Outside the U.S. share = 102,000 / 228,000 = 0.447368... \u2248 44.74%\n\nThe filing's figures are rounded to the nearest thousand, so the percentage is approximate.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm\",\n            \"name\": \"Microsoft Corp Form 10-K for fiscal year ended June 30, 2024\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000347485
+  }
+ ],
+ "final_answer": "As of June 30, 2024, about 44.74% of Microsoft's full-time employees were located outside the United States.\n\nInputs (FY2024 Form 10-K, Item 1 Human Capital Resources, CIK 789019):\n- The filing states that as of June 30, 2024, Microsoft employed approximately 228,000 people on a full-time basis.\n- Of those, 126,000 were in the U.S.\n- The remaining 102,000 were international, so the filing's split is U.S. plus international.\n\nCheck: 126,000 + 102,000 = 228,000, which matches the total.\n\nCalculation:\n- Outside the U.S. share = 102,000 / 228,000 = 0.447368... \u2248 44.74%\n\nThe filing's figures are rounded to the nearest thousand, so the percentage is approximate.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm\",\n            \"name\": \"Microsoft Corp Form 10-K for fiscal year ended June 30, 2024\"\n        }\n    ]\n}",
+ "fallback_text": "As of June 30, 2024, about 44.74% of Microsoft's full-time employees were located outside the United States.\n\n**Inputs (from the FY2024 Form 10-K, Item 1 Human Capital Resources, filed under CIK 789019):**\n- The filing says that as of June 30, 2024, Microsoft employed approximately 228,000 people on a full-time basis.\n- Of those, 126,000 were in the U.S.\n- The remaining 102,000 were international, so the filing's split is U.S. plus international.\n\n**Check:** 126,000 + 102,000 = 228,000, which matches the total.\n\n**Calculation:**\n- Outside the U.S. share = 102,000 / 228,000 = 0.447368... \u2248 44.74%\n\nThe filing's figures are rounded to the nearest thousand, so the percentage is approximate.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm\",\n            \"name\": \"Microsoft Corp Form 10-K for fiscal year ended June 30, 2024\"\n        }\n    ]\n}",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 5,
+  "input_tokens": 16,
+  "output_tokens": 1448,
+  "cache_creation_input_tokens": 141770,
+  "cache_read_input_tokens": 19166,
+  "web_search_requests": 0,
+  "cost_usd": 0.086232
+ },
+ "cost_usd": 0.086232,
+ "elapsed_s": 13.5,
+ "harness_label": "dom1"
+}

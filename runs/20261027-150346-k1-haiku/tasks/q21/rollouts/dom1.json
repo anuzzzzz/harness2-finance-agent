@@ -1,0 +1,131 @@
+{
+ "task_id": "q21",
+ "label": "dom1",
+ "question": "What is Shift4's vendor concentration risk as of Dec 31, 2024?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "concentration_risk_disclosure"
+     },
+     "output": "---\nname: concentration_risk_disclosure\ndescription: Answer \"what is company X's vendor / supplier / customer / bank concentration risk as of FY Y\" from a 10-K, with quotes, the scope of each dependency, and no imported or inferred names.\n---\n\n# Concentration-risk questions (vendor, supplier, customer, sponsor bank, geography)\n\nANALYTIC MOVE: classify and trace. Find every place the filing discloses a dependency, then say what is concentrated, on how many counterparties, and with what quantification.\n\nWhere it lives in a 10-K (check each one, in this order):\n1. Financial-statement notes. Note 1 \"Summary of Significant Accounting Policies\" often has a \"Concentration Risk\" or \"Concentration of Credit Risk\" paragraph. A separate \"Significant customers\" or \"Major suppliers\" note may also exist. The note is the controlling source for the as-of year.\n2. Item 1A Risk Factors. Search for \"single third-party\", \"sole source\", \"depend on\", \"sponsor bank\", \"limited number of vendors\". These state the scope of the dependency, such as which services and which regions, and often go beyond the note.\n3. Item 1 Business (sponsorship, processing, supply relationships) and MD&A (percentage-of-revenue or volume statements, such as \"no single customer exceeded X%\").\n\nAnswer contract, with each part labelled:\n- The dependency, quoted verbatim from the filing and tied to a section and page: who or what is concentrated, how many counterparties (\"one vendor\"), which regions and services.\n- Whether the counterparty is named. If the filing does not name it, say \"not named in the filing\". Never supply a name from memory, from inference, or from a different filing or year. If a name is unconfirmed, leave it out.\n- Quantification as of the as-of date, with units and period: % of revenue or volume, or balances. If none is disclosed, say so. Give the prior-year comparison only if the filing gives it.\n- Contractual exit terms and mitigants, such as the termination notice period and backup-systems language. Quote them. Do not reword them into a stronger or weaker claim.\n- Offsetting concentrations (customer, reseller or merchant percentage limits) kept separate from the vendor dependency. Report them only if retrieved from the opened text.\n- A one-line conclusion that assesses the risk (for example, single-point dependency, no quantified share) using only disclosed facts.\n\nChecks before submitting:\n- Use the filing for the as-of fiscal year. An older prospectus or earlier 10-K (for example, one that listed two vendors) is not the as-of position. Open and cite it only if you use it, and label it historical.\n- Every figure or name in the answer must come from text you retrieved. Tool-output truncation means a claim is unverified until you re-retrieve it with a narrower question.\n- Cite only documents you actually opened. End with the sources dictionary in the format the system prompt prescribes.\n\nIn this task (Shift4 Payments, FY2024 10-K, accession 0001794669-25-000011, four-20241231.htm), verified in the retrieved text:\n- Note 1, \"Concentration Risk\": \"The Company's merchant processing activity in North America is facilitated by one vendor.\" The note adds that the company believes the vendor maintains appropriate backup systems and alternative arrangements. The vendor is not named, and no percentage or 2023 comparison is given.\n- The same note, on the sponsor bank: Shift4 is not a \"member bank\" in North America and relies on a sponsorship agreement with a member bank. If the agreement is breached, the bank may terminate it, and the company would have 180 days to find an alternative sponsor. The bank is not named in the note.\n- Item 1A: in the U.S., EU and Canada the company depends on a single third-party processor for services such as merchant authorization and settlement. Re-retrieve the full sentence and cite it, because the earlier retrieval was truncated.\n- A sponsor-bank name (for example, \"Citizens\") was not confirmed in the retrieved text. Do not assert one.\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00074665
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Shift4 single third-party processor merchant authorization settlement",
+      "ciks": [
+       "0001794669"
+      ],
+      "start_date": "2025-01-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "{\"total_matching_documents\": 2, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-19\", \"period_ending\": \"2024-12-31\", \"company\": \"Shift4 Payments, Inc.  (FOUR)  (CIK 0001794669)\", \"ciks\": [\"0001794669\"], \"accession\": \"0001794669-25-000011\", \"document\": \"four-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1794669/000179466925000011/four-20241231.htm\"}, {\"form\": \"SC TO-T\", \"file_date\": \"2025-03-21\", \"period_ending\": null, \"company\": \"Global Blue Group Holding AG  (GB, GBGWF)  (CIK 0001799983)\", \"ciks\": [\"0001799983\", \"0001794669\"], \"accession\": \"0001193125-25-059711\", \"document\": \"d916665dex99b2.htm\", \"description\": \"EX-99.(B)(2)\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1799983/000119312525059711/d916665dex99b2.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.57,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000346315
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1794669/000179466925000011/four-20241231.htm",
+      "key": "shift4_10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: shift4_10k. (534,672 characters)\nThe data_storage currently contains the following keys:\nshift4_10k\n",
+     "is_error": false,
+     "elapsed_s": 1.17,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00020266
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this 10-K text, quote verbatim (full sentences) every passage about concentration risk, including: (1) the Note 1 \"Concentration Risk\" paragraph about the vendor handling merchant processing in North America, backup systems, and the sponsor bank/member bank agreement and 180-day terms; (2) the Item 1A risk factor sentence about depending on a single third-party processor in the U.S., EU and Canada for merchant authorization and settlement, including any termination notice period and backup language. Include the section heading and page number where visible. Do not paraphrase. State if not found. Text: {{shift4_10k}}"
+     },
+     "output": "## (1) Note 1, \"Concentration Risk\" (Notes to Consolidated Financial Statements, Note 1, p. 85)\n\n> Concentration Risk\n>\n> The Company's merchant processing activity in North America is facilitated by one vendor. The Company believes that this vendor maintains appropriate backup systems and alternative arrangements to avoid a significant disruption of the processing in the event of an unforeseen event.\n>\n> A majority of the Company's revenue is derived from the processing of card transactions. Because the Company is not a \"member bank\" in North America, in order to process these bank card transactions, the Company has entered into a sponsorship agreement with a member bank. The agreement with the bank sponsor requires, among other things, that the Company abide by the by-laws and regulations of the credit card companies. If the Company breaches the sponsorship agreement, the bank sponsor may terminate the agreement and, under the terms of the agreement, the Company would have 180 days to identify an alternative bank sponsor.\n\n## (2) Item 1A Risk Factor on the single third-party processor (Item 1A, \"Business risks,\" p. 22)\n\nHeading: \"Because we rely on third-party vendors to provide products and services, we could be adversely impacted if they fail to fulfill their obligations.\"\n\n> For example, in the U.S., EU, and Canada we are dependent on our relationship with a single third-party processor for services such as merchant authorization, processing, risk and chargeback monitoring accounting and clearing and settlement for the transactions we service. There can be no assurance that our backup systems and alternative arrangements would successfully avoid a significant disruption of processing in the event of an unforeseen event with this third-party. In the event our agreement with our third-party processor is terminated, or if upon its expiration we are unable to renew the contract on terms favorable to us, or at all, it may be difficult for us to replace these services, which may adversely affect our operations and profitability.\n\n**Termination notice period:** Not found. The risk factor does not state any notice period for termination of the third-party processor agreement.\n\n## Other concentration-related passages (for reference)\n\n**Item 1A, \"Business risks\" \u2013 sponsor bank (p. 31):**\n\n> We rely on our sponsor bank to provide sponsorship to card and other payment networks and treasury services in the U.S. and Canada. If our sponsor bank stops providing sponsorship and treasury services, we would need to find one or more other financial institutions to provide those services. If we are unable to find a replacement institution, we may no longer be able to provide processing services to certain merchants, which could adversely affect our business, financial condition or results of operations.\n\n**Item 1, \"Government Regulation \u2013 Association and network rules\" (p. 11):**\n\n> In addition, sponsor banks may terminate their sponsorship of us or could require us to stop providing payment processing services, which would adversely affect our ability to conduct our business.\n\n**Item 1, \"Our Company\" \u2013 merchant diversification (p. 6):**\n\n> Our merchant base is diversified, with no single merchant accounting for more than 3% of our revenue in recent years.\n\n**Item 1, \"Sales and Distribution\" \u2013 VAR concentration (p. 8):**\n\n> Our network of VARs provide a consistent and extensive source of new merchant acquisition, with no single VAR accounting for more than 3% of our volume for the year ended December 31, 2024.\n\n**Note 21, \"Segments\" \u2013 customer concentration (p. 110):**\n\n> No single customer accounted for more than 10% of the Company's revenue during the years ended December 31, 2024, 2023 and 2022.",
+     "is_error": false,
+     "elapsed_s": 16.23,
+     "cost_usd": 0.118466
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000224805
+  },
+  {
+   "turn": 5,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Shift4 Payments, Inc. \u2013 vendor concentration risk as of December 31, 2024 (FY2024 Form 10-K, filed 2025-02-19, accession 0001794669-25-000011)**\n\n**1. The dependency (Note 1, \"Concentration Risk,\" p. 85)**\n- The note states that the company's North American merchant processing is facilitated by one vendor, i.e., a single-counterparty dependency. Scope: North America merchant processing.\n- Item 1A (\"Business risks,\" p. 22, heading: \"Because we rely on third-party vendors to provide products and services, we could be adversely impacted if they fail to fulfill their obligations\") describes the dependency more broadly: in the U.S., EU and Canada the company depends on a single third-party processor for merchant authorization, processing, risk and chargeback monitoring, accounting, and clearing and settlement. Note that the 10-K's Item 1A describes the EU as a region, which goes beyond the Note 1 North America wording.\n\n**2. Counterparty name:** Not named in the filing. The vendor is referred to only as \"one vendor\" and \"a single third-party processor.\"\n\n**3. Quantification as of Dec 31, 2024:** None disclosed. The filing gives no percentage of revenue, volume, or balances for this vendor, and no 2023 comparison.\n\n**4. Contractual exit terms and mitigants (quoted/cited as disclosed):**\n- Note 1: the company \"believes that this vendor maintains appropriate backup systems and alternative arrangements to avoid a significant disruption of the processing in the event of an unforeseen event.\"\n- Item 1A: \"There can be no assurance that our backup systems and alternative arrangements would successfully avoid a significant disruption of processing.\" It also says that if the agreement is terminated, or not renewed on favorable terms or at all, \"it may be difficult for us to replace these services.\"\n- Termination notice period: not stated in the risk factor or Note 1.\n\n**5. Related sponsor-bank dependency (separate from the vendor):** Note 1 says the company is not a \"member bank\" in North America and relies on a sponsorship agreement with a member bank. If the company breaches it, the bank sponsor may terminate, and the company would have 180 days to identify an alternative bank sponsor. The bank is not named in the filing. Item 1A (p. 31) adds that the company relies on its sponsor bank for card-network sponsorship and treasury services in the U.S. and Canada.\n\n**6. Offsetting concentrations (customer/reseller limits, reported separately):**\n- No single merchant accounts for more than 3% of revenue in recent years (Item 1, p. 6).\n- No single VAR accounts for more than 3% of volume for the year ended December 31, 2024 (Item 1, p. 8).\n- No single customer accounted for more than 10% of revenue in 2024, 2023 or 2022 (Note 21, p. 110).\n\n**Conclusion:** Shift4 has a single-point dependency for North American merchant processing, and its single third-party processor covers the U.S., EU and Canada. The filing gives no quantified share for this vendor and no notice period for termination. The company points to backup systems and alternative arrangements as mitigants, but the 10-K itself says those arrangements may not avoid disruption. The risk is therefore high in qualitative terms and unquantified in the filing.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1794669/000179466925000011/four-20241231.htm\",\n            \"name\": \"Shift4 Payments, Inc. Form 10-K for fiscal year ended December 31, 2024 (four-20241231.htm)\"\n        }\n    ]\n}"
+     },
+     "output": "**Shift4 Payments, Inc. \u2013 vendor concentration risk as of December 31, 2024 (FY2024 Form 10-K, filed 2025-02-19, accession 0001794669-25-000011)**\n\n**1. The dependency (Note 1, \"Concentration Risk,\" p. 85)**\n- The note states that the company's North American merchant processing is facilitated by one vendor, i.e., a single-counterparty dependency. Scope: North America merchant processing.\n- Item 1A (\"Business risks,\" p. 22, heading: \"Because we rely on third-party vendors to provide products and services, we could be adversely impacted if they fail to fulfill their obligations\") describes the dependency more broadly: in the U.S., EU and Canada the company depends on a single third-party processor for merchant authorization, processing, risk and chargeback monitoring, accounting, and clearing and settlement. Note that the 10-K's Item 1A describes the EU as a region, which goes beyond the Note 1 North America wording.\n\n**2. Counterparty name:** Not named in the filing. The vendor is referred to only as \"one vendor\" and \"a single third-party processor.\"\n\n**3. Quantification as of Dec 31, 2024:** None disclosed. The filing gives no percentage of revenue, volume, or balances for this vendor, and no 2023 comparison.\n\n**4. Contractual exit terms and mitigants (quoted/cited as disclosed):**\n- Note 1: the company \"believes that this vendor maintains appropriate backup systems and alternative arrangements to avoid a significant disruption of the processing in the event of an unforeseen event.\"\n- Item 1A: \"There can be no assurance that our backup systems and alternative arrangements would successfully avoid a significant disruption of processing.\" It also says that if the agreement is terminated, or not renewed on favorable terms or at all, \"it may be difficult for us to replace these services.\"\n- Termination notice period: not stated in the risk factor or Note 1.\n\n**5. Related sponsor-bank dependency (separate from the vendor):** Note 1 says the company is not a \"member bank\" in North America and relies on a sponsorship agreement with a member bank. If the company breaches it, the bank sponsor may terminate, and the company would have 180 days to identify an alternative bank sponsor. The bank is not named in the filing. Item 1A (p. 31) adds that the company relies on its sponsor bank for card-network sponsorship and treasury services in the U.S. and Canada.\n\n**6. Offsetting concentrations (customer/reseller limits, reported separately):**\n- No single merchant accounts for more than 3% of revenue in recent years (Item 1, p. 6).\n- No single VAR accounts for more than 3% of volume for the year ended December 31, 2024 (Item 1, p. 8).\n- No single customer accounted for more than 10% of revenue in 2024, 2023 or 2022 (Note 21, p. 110).\n\n**Conclusion:** Shift4 has a single-point dependency for North American merchant processing, and its single third-party processor covers the U.S., EU and Canada. The filing gives no quantified share for this vendor and no notice period for termination. The company points to backup systems and alternative arrangements as mitigants, but the 10-K itself says those arrangements may not avoid disruption. The risk is therefore high in qualitative terms and unquantified in the filing.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1794669/000179466925000011/four-20241231.htm\",\n            \"name\": \"Shift4 Payments, Inc. Form 10-K for fiscal year ended December 31, 2024 (four-20241231.htm)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00112947
+  }
+ ],
+ "final_answer": "**Shift4 Payments, Inc. \u2013 vendor concentration risk as of December 31, 2024 (FY2024 Form 10-K, filed 2025-02-19, accession 0001794669-25-000011)**\n\n**1. The dependency (Note 1, \"Concentration Risk,\" p. 85)**\n- The note states that the company's North American merchant processing is facilitated by one vendor, i.e., a single-counterparty dependency. Scope: North America merchant processing.\n- Item 1A (\"Business risks,\" p. 22, heading: \"Because we rely on third-party vendors to provide products and services, we could be adversely impacted if they fail to fulfill their obligations\") describes the dependency more broadly: in the U.S., EU and Canada the company depends on a single third-party processor for merchant authorization, processing, risk and chargeback monitoring, accounting, and clearing and settlement. Note that the 10-K's Item 1A describes the EU as a region, which goes beyond the Note 1 North America wording.\n\n**2. Counterparty name:** Not named in the filing. The vendor is referred to only as \"one vendor\" and \"a single third-party processor.\"\n\n**3. Quantification as of Dec 31, 2024:** None disclosed. The filing gives no percentage of revenue, volume, or balances for this vendor, and no 2023 comparison.\n\n**4. Contractual exit terms and mitigants (quoted/cited as disclosed):**\n- Note 1: the company \"believes that this vendor maintains appropriate backup systems and alternative arrangements to avoid a significant disruption of the processing in the event of an unforeseen event.\"\n- Item 1A: \"There can be no assurance that our backup systems and alternative arrangements would successfully avoid a significant disruption of processing.\" It also says that if the agreement is terminated, or not renewed on favorable terms or at all, \"it may be difficult for us to replace these services.\"\n- Termination notice period: not stated in the risk factor or Note 1.\n\n**5. Related sponsor-bank dependency (separate from the vendor):** Note 1 says the company is not a \"member bank\" in North America and relies on a sponsorship agreement with a member bank. If the company breaches it, the bank sponsor may terminate, and the company would have 180 days to identify an alternative bank sponsor. The bank is not named in the filing. Item 1A (p. 31) adds that the company relies on its sponsor bank for card-network sponsorship and treasury services in the U.S. and Canada.\n\n**6. Offsetting concentrations (customer/reseller limits, reported separately):**\n- No single merchant accounts for more than 3% of revenue in recent years (Item 1, p. 6).\n- No single VAR accounts for more than 3% of volume for the year ended December 31, 2024 (Item 1, p. 8).\n- No single customer accounted for more than 10% of revenue in 2024, 2023 or 2022 (Note 21, p. 110).\n\n**Conclusion:** Shift4 has a single-point dependency for North American merchant processing, and its single third-party processor covers the U.S., EU and Canada. The filing gives no quantified share for this vendor and no notice period for termination. The company points to backup systems and alternative arrangements as mitigants, but the 10-K itself says those arrangements may not avoid disruption. The risk is therefore high in qualitative terms and unquantified in the filing.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1794669/000179466925000011/four-20241231.htm\",\n            \"name\": \"Shift4 Payments, Inc. Form 10-K for fiscal year ended December 31, 2024 (four-20241231.htm)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 5,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 6,
+  "input_tokens": 16,
+  "output_tokens": 5497,
+  "cache_creation_input_tokens": 186503,
+  "cache_read_input_tokens": 28020,
+  "web_search_requests": 0,
+  "cost_usd": 0.121116
+ },
+ "cost_usd": 0.121116,
+ "elapsed_s": 31.2,
+ "harness_label": "dom1"
+}

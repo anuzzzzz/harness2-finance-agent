@@ -1,0 +1,121 @@
+{
+ "task_id": "q11",
+ "label": "dom1",
+ "question": "How many common stock shares are outstanding for ABNB? Format \"Class X: X shares\" add line break.",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "cover_page_share_count"
+     },
+     "output": "---\nname: cover_page_share_count\ndescription: Report shares of common stock outstanding by class for a company, from the latest 10-K/10-Q cover page, in the exact format the question requests.\n---\nANALYTIC MOVE: look up (no arithmetic). Required result: the outstanding share count for each class of common stock, with its as-of date and source.\n\n1. Controlling source: the cover page of the most recent periodic filing (10-K or 10-Q) filed on or before the question date. The cover states counts as of a recent date, usually a few weeks after period end. The balance sheet and equity note give counts as of the period end, and these usually differ. Use the cover-page counts unless the question names a balance-sheet date. Say which date you used.\n2. Check that no newer 10-Q has been filed before the question date. Use edgar_search with form_types and a start_date filter.\n3. List every class the cover shows. Include each class with a non-zero count, and name any class shown as zero (\"no shares of Class C outstanding\") only in a short note. If a class is described differently from the others (for example held by a subsidiary), say so in one line and do not silently drop it.\n4. Retrieve the exact cover sentence with retrieve_information and read the numbers from that text, not from memory. Keep full digits, with no rounding and no change of units. Cover counts are in shares, not thousands.\n5. Format: if the question gives a template (for example \"Class X: X shares\" with line breaks), put the answer lines in exactly that template, one class per line, before any explanation. Keep the lines in class order. Put the as-of date, the filing and the sources after the lines.\n6. Cite only the filing you opened.\n\nTask fact (verified in one run, re-confirm in the text): the Airbnb FY2024 10-K (filed 2025-02-13, https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm) cover page, as of January 31, 2025, shows Class A 432,876,657; Class B 188,462,942; Class C none; Class H 9,200,000.\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0007444
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Airbnb quarterly report shares outstanding Class A Class B",
+      "ciks": [
+       "1559720"
+      ],
+      "start_date": "2025-01-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "{\"total_matching_documents\": 6, \"page\": 1, \"results\": [{\"form\": \"SCHEDULE 13G/A\", \"file_date\": \"2025-02-13\", \"period_ending\": null, \"company\": \"Airbnb, Inc.  (ABNB)  (CIK 0001559720)\", \"ciks\": [\"0001559720\", \"0001834152\"], \"accession\": \"0000950170-25-020207\", \"document\": \"primary_doc.xml\", \"description\": null, \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000095017025020207/primary_doc.xml\"}, {\"form\": \"SCHEDULE 13G/A\", \"file_date\": \"2025-02-13\", \"period_ending\": null, \"company\": \"Airbnb, Inc.  (ABNB)  (CIK 0001559720)\", \"ciks\": [\"0001559720\", \"0001834171\"], \"accession\": \"0000950170-25-020212\", \"document\": \"primary_doc.xml\", \"description\": null, \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000095017025020212/primary_doc.xml\"}, {\"form\": \"SCHEDULE 13G/A\", \"file_date\": \"2025-02-13\", \"period_ending\": null, \"company\": \"Airbnb, Inc.  (ABNB)  (CIK 0001559720)\", \"ciks\": [\"0001559720\", \"0001834147\"], \"accession\": \"0000950170-25-020202\", \"document\": \"primary_doc.xml\", \"description\": null, \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000095017025020202/primary_doc.xml\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-13\", \"period_ending\": \"2024-12-31\", \"company\": \"Airbnb, Inc.  (ABNB)  (CIK 0001559720)\", \"ciks\": [\"0001559720\"], \"accession\": \"0001559720-25-000010\", \"document\": \"abnb-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\"}, {\"form\": \"8-K\", \"file_date\": \"2025-02-13\", \"period_ending\": \"2025-02-13\", \"company\": \"Airbnb, Inc.  (ABNB)  (CIK 0001559720)\", \"ciks\": [\"0001559720\"], \"accession\": \"0001193125-25-026054\", \"document\": \"d915198dex991.htm\", \"description\": \"EX-99.1\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-13\", \"period_ending\": \"2024-12-31\", \"company\": \"Airbnb, Inc.  (ABNB)  (CIK 0001559720)\", \"ciks\": [\"0001559720\"], \"accession\": \"0001559720-25-000010\", \"document\": \"exh191-airbnbinsidertradin.htm\", \"description\": \"EX-19.1\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/exh191-airbnbinsidertradin.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.76,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+      "key": "abnb_10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: abnb_10k. (452,800 characters)\nThe data_storage currently contains the following keys:\nabnb_10k\n",
+     "is_error": false,
+     "elapsed_s": 0.82,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00034006
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this 10-K cover page, quote the exact sentence stating shares of common stock outstanding by class and as-of date: {{abnb_10k}}"
+     },
+     "output": "\"As of January 31, 2025, 432,876,657 shares of the registrant's Class A common stock were outstanding, 188,462,942 shares of the registrant's Class B common stock were outstanding, no shares of the registrant's Class C common stock were outstanding, and 9,200,000 shares of the registrant's Class H common stock were outstanding.\"",
+     "is_error": false,
+     "elapsed_s": 4.69,
+     "cost_usd": 0.09221
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000306565
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Class A: 432,876,657 shares\nClass B: 188,462,942 shares\nClass H: 9,200,000 shares\n\nAs of date: January 31, 2025 (cover page of the FY2024 Form 10-K, filed February 13, 2025). Class C has zero shares outstanding, so it is omitted from the lines above.\n\nReasoning: Under the cover-page method, I used the most recent periodic report filed before April 7, 2025, which is the FY2024 10-K. A search of Airbnb's filings from January 1, 2025 to April 7, 2025 turned up no later 10-Q, so the 10-K is the latest. I opened the cover page and read the share counts from its text. The cover states the Class A, Class B, and Class H counts as of January 31, 2025, and reports no Class C shares outstanding. Class H is a non-zero class, so it is included.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year ended December 31, 2024 (cover page)\"\n        }\n    ]\n}"
+     },
+     "output": "Class A: 432,876,657 shares\nClass B: 188,462,942 shares\nClass H: 9,200,000 shares\n\nAs of date: January 31, 2025 (cover page of the FY2024 Form 10-K, filed February 13, 2025). Class C has zero shares outstanding, so it is omitted from the lines above.\n\nReasoning: Under the cover-page method, I used the most recent periodic report filed before April 7, 2025, which is the FY2024 10-K. A search of Airbnb's filings from January 1, 2025 to April 7, 2025 turned up no later 10-Q, so the 10-K is the latest. I opened the cover page and read the share counts from its text. The cover states the Class A, Class B, and Class H counts as of January 31, 2025, and reports no Class C shares outstanding. Class H is a non-zero class, so it is included.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year ended December 31, 2024 (cover page)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00038018
+  }
+ ],
+ "final_answer": "Class A: 432,876,657 shares\nClass B: 188,462,942 shares\nClass H: 9,200,000 shares\n\nAs of date: January 31, 2025 (cover page of the FY2024 Form 10-K, filed February 13, 2025). Class C has zero shares outstanding, so it is omitted from the lines above.\n\nReasoning: Under the cover-page method, I used the most recent periodic report filed before April 7, 2025, which is the FY2024 10-K. A search of Airbnb's filings from January 1, 2025 to April 7, 2025 turned up no later 10-Q, so the 10-K is the latest. I opened the cover page and read the share counts from its text. The cover states the Class A, Class B, and Class H counts as of January 31, 2025, and reports no Class C shares outstanding. Class H is a non-zero class, so it is included.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year ended December 31, 2024 (cover page)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 5,
+  "input_tokens": 14,
+  "output_tokens": 1471,
+  "cache_creation_input_tokens": 154232,
+  "cache_read_input_tokens": 19733,
+  "web_search_requests": 0,
+  "cost_usd": 0.093981
+ },
+ "cost_usd": 0.093981,
+ "elapsed_s": 14.2,
+ "harness_label": "dom1"
+}

@@ -1,0 +1,151 @@
+{
+ "task_id": "q25",
+ "label": "ctl2",
+ "question": "Summarize the regulatory risks Paylocity's (NASDAQ: PCTY) lists in its FY 2024 10-K.",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Paylocity annual report 10-K regulatory risks",
+      "ciks": [
+       "PCTY"
+      ],
+      "start_date": "2024-07-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "{\"total_matching_documents\": 9, \"page\": 1, \"results\": [{\"form\": \"8-K\", \"file_date\": \"2024-09-04\", \"period_ending\": \"2024-08-29\", \"company\": \"Paylocity Holding Corp  (PCTY)  (CIK 0001591698)\", \"ciks\": [\"0001591698\"], \"accession\": \"0001591698-24-000222\", \"document\": \"pcty-20240829.htm\", \"description\": \"8-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1591698/000159169824000222/pcty-20240829.htm\"}, {\"form\": \"8-K\", \"file_date\": \"2024-09-04\", \"period_ending\": \"2024-08-29\", \"company\": \"Paylocity Holding Corp  (PCTY)  (CIK 0001591698)\", \"ciks\": [\"0001591698\"], \"accession\": \"0001591698-24-000222\", \"document\": \"pcty-202408298xkexhibit991.htm\", \"description\": \"EX-99.1\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1591698/000159169824000222/pcty-202408298xkexhibit991.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-08-02\", \"period_ending\": \"2024-06-30\", \"company\": \"Paylocity Holding Corp  (PCTY)  (CIK 0001591698)\", \"ciks\": [\"0001591698\"], \"accession\": \"0001591698-24-000151\", \"document\": \"pcty-20240630.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1591698/000159169824000151/pcty-20240630.htm\"}, {\"form\": \"DEF 14A\", \"file_date\": \"2024-10-24\", \"period_ending\": \"2024-12-05\", \"company\": \"Paylocity Holding Corp  (PCTY)  (CIK 0001591698)\", \"ciks\": [\"0001591698\"], \"accession\": \"0001591698-24-000268\", \"document\": \"pcty-20241022.htm\", \"description\": \"DEF 14A\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1591698/000159169824000268/pcty-20241022.htm\"}, {\"form\": \"8-K\", \"file_date\": \"2025-02-06\", \"period_ending\": \"2025-02-06\", \"company\": \"Paylocity Holding Corp  (PCTY)  (CIK 0001591698)\", \"ciks\": [\"0001591698\"], \"accession\": \"0001591698-25-000008\", \"document\": \"pcty-20250206xex991.htm\", \"description\": \"EX-99.1\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1591698/000159169825000008/pcty-20250206xex991.htm\"}, {\"form\": \"10-Q\", \"file_date\": \"2024-10-31\", \"period_ending\": \"2024-09-30\", \"company\": \"Paylocity Holding Corp  (PCTY)  (CIK 0001591698)\", \"ciks\": [\"0001591698\"], \"accession\": \"0001591698-24-000277\", \"document\": \"pcty-20240930.htm\", \"description\": \"10-Q\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1591698/000159169824000277/pcty-20240930.htm\"}, {\"form\": \"10-Q\", \"file_date\": \"2025-02-07\", \"period_ending\": \"2024-12-31\", \"company\": \"Paylocity Holding Corp  (PCTY)  (CIK 0001591698)\", \"ciks\": [\"0001591698\"], \"accession\": \"0001591698-25-000010\", \"document\": \"pcty-20241231.htm\", \"description\": \"10-Q\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1591698/000159169825000010/pcty-20241231.htm\"}, {\"form\": \"ARS\", \"file_date\": \"2024-10-24\", \"period_ending\": \"2024-06-30\", \"company\": \"Paylocity Holding Corp  (PCTY)  (CIK 0001591698)\", \"ciks\": [\"0001591698\"], \"accession\": \"0001591698-24-000270\", \"document\": \"pcty4377561-ars.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1591698/000159169824000270/pcty4377561-ars.pdf\"}, {\"form\": \"10-K\", \"file_date\": \"2024-08-02\", \"period_ending\": \"2024-06-30\", \"company\": \"Paylocity Holding Corp  (PCTY)  (CIK 0001591698)\", \"ciks\": [\"0001591698\"], \"accession\": \"0001591698-24-000151\", \"document\": \"pcty-20240630xexx191.htm\", \"description\": \"EX-19.1\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1591698/000159169824000151/pcty-20240630xexx191.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 2.01,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00018182
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1591698/000159169824000151/pcty-20240630.htm",
+      "key": "pcty10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: pcty10k. (298,066 characters)\nThe data_storage currently contains the following keys:\npcty10k\n",
+     "is_error": false,
+     "elapsed_s": 0.44,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000343745
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Paylocity 10-K, list every regulatory-related risk factor (laws, regulations, government rules, compliance, privacy, data protection, employment/tax law, healthcare, money transmission, ERISA, AI regulation, sanctions, anti-corruption, etc.) described in Item 1A Risk Factors. For each, give the risk factor heading in short form and a one-to-two sentence summary. Use paraphrase only, no long quotes. Text: {{pcty10k}}"
+     },
+     "output": "# Regulatory-Related Risk Factors in Item 1A\n\n**Risks Related to Our Business and Industry**\n\n1. **Client funds reversed under ACH rules.** ACH banking rules allow credited client funds to be reversed after Paylocity has already paid employees and taxing authorities. If clients default, the company may have to advance funds.\n2. **Product defects amid changing legal requirements.** Frequent changes in employer and legal requirements for benefits, tax filings, and regulatory reports could expose software errors. Those errors could lead to client claims or problems with taxing authorities.\n3. **Regulatory risk from international partners.** Using international business partners to perform services in countries where Paylocity has no operations exposes it to foreign regulatory, economic, and political risks.\n\n**Risks Related to Cybersecurity and Intellectual Property**\n\n4. **Security breaches and regulatory enforcement.** A breach of sensitive employee or client data, including HIPAA-protected health information, could lead to government enforcement actions, fines, and liability.\n5. **Evolving cybersecurity regulations.** Growing regulatory focus on cyber threats may require significant additional spending to comply with new cybersecurity rules.\n\n**Risks Related to Legal and Regulatory Matters**\n\n6. **Changing laws and regulatory requirements.** New or changed tax, benefit, wage and hour, employment, and other domestic and international laws could require costly product changes, delay launches, or reduce demand for certain products.\n7. **Money transmitter and money services licensing.** New statutes, or new regulator interpretations of existing ones, could require licensing or limit business activities. Operating unlicensed could bring civil or criminal penalties, and licensing changes could also reduce interest income from investing client funds.\n8. **AI and machine learning regulation.** Governments in the U.S., EU, and elsewhere are enacting or proposing AI rules, including limits on generative AI. Noncompliance, or misuse of AI by Paylocity or its clients, could bring investigations, fines, and litigation.\n9. **Data privacy laws.** Compliance with HIPAA, GDPR, CCPA, Illinois BIPA, and other privacy laws is complex and evolving, and interpretations vary. GDPR fines can reach 4% of worldwide revenue, and enforcement is increasing.\n10. **Adverse or retroactive tax laws.** New tax la",
+     "is_error": false,
+     "elapsed_s": 20.27,
+     "cost_usd": 0.014026
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00019998000000000002
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Paylocity 10-K Item 1A Risk Factors, list the regulatory-related risk factors that appear after the 'adverse or retroactive tax laws' risk (tax laws, sales tax, international tax, anti-corruption, sanctions, government contracts, healthcare/ACA, ERISA/fiduciary, securities/SOX, litigation, etc.). Give short heading and 1-2 sentence paraphrase for each. Paraphrase only. Text: {{pcty10k}}"
+     },
+     "output": "The filing doesn't contain several of the categories you listed (anti-corruption, sanctions, government contracts, healthcare/ACA, ERISA, and international tax). The regulatory-related risk factors after the tax risk are:\n\n1. **Litigation and claims:** The company may face legal proceedings from clients, employees, or data-breach lawsuits. Defending them could be costly and distract management, and uninsured or underinsured claims could hurt results and the stock price.\n\n2. **Client funds and FDIC insurance:** Client funds are held in consolidated accounts that exceed federal deposit insurance limits. The company believes the FDIC would insure each client's share, but if the FDIC disagreed or reimbursement were delayed, the business and its clients could be materially harmed.\n\n3. **Changes in accounting principles:** Changes in U.S. GAAP or in how the FASB or SEC interpret it could significantly affect reported results, including increased volatility, and could apply to transactions completed before the change was announced.\n\n4. **Securities class action litigation:** Stock price volatility could lead to securities class actions, which could be costly, divert management's attention, and harm the business.\n\n5. **Anti-takeover provisions and Delaware law:** Delaware's business combination statute and the company's charter and bylaws (including blank-check preferred stock, limits on stockholder action, and restrictions on special meetings) could discourage or delay a change in control.\n\n6. **Exclusive forum provision:** Delaware courts are the exclusive forum for certain internal and derivative claims. If that provision were found unenforceable, the company could incur extra litigation costs, and it may discourage claims in other forums.\n\n7. **Sarbanes-Oxley Section 404 internal controls:** The company must evaluate and report on internal control over financial reporting, with auditor attestation. A material weakness could lead to misstated financials, loss of investor confidence, and investigations by the stock exchange, SEC, or other regulators.",
+     "is_error": false,
+     "elapsed_s": 10.73,
+     "cost_usd": 0.012942
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00033626
+  },
+  {
+   "turn": 5,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "In this Paylocity 10-K, describe the risk factor about adverse or retroactive tax laws and any other risk factors between the data privacy laws risk and the litigation risk (e.g., tax, interest, government regulation of the company, Section 230, or other legal regulation). Paraphrase in 1-2 sentences each. Text: {{pcty10k}}"
+     },
+     "output": "Between the data privacy risk factor and the litigation risk factor, the only other risk factor is the one on adverse tax laws:\n\n**Adverse tax laws or regulations:** New or changed tax laws, or existing laws applied to Paylocity or its clients, could raise the cost of its services and hurt its business. Income, sales, use, and other tax rules could be enacted at any time, possibly retroactively, and could fall disproportionately on services delivered over the Internet.\n\nBecause state sales and use tax rules vary and change over time, Paylocity may owe past taxes, interest, and penalties in states where it currently believes no tax is due, which would adversely affect its business, results, and financial condition.",
+     "is_error": false,
+     "elapsed_s": 6.31,
+     "cost_usd": 0.012342
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00034589999999999995
+  },
+  {
+   "turn": 6,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Paylocity's most recent annual report is its Form 10-K for the fiscal year ended June 30, 2024 (filed August 2, 2024). Its Item 1A risk factors include the following regulatory-related risks, grouped as the filing groups them. These are my paraphrases from a review of the filing text, not verbatim quotes.\n\n**Risks related to the business and industry**\n1. **Client funds reversed under ACH rules:** ACH banking rules let credited client funds be reversed after Paylocity has already paid employees and taxing authorities. If clients default, Paylocity may have to advance the funds.\n2. **Product defects amid changing legal requirements:** Frequent changes in employer and legal requirements for benefits, tax filings, and regulatory reports could expose software errors, leading to client claims or problems with taxing authorities.\n3. **Foreign regulatory exposure through international partners:** Using international business partners in countries where Paylocity has no operations exposes it to foreign regulatory, economic, and political risks.\n\n**Cybersecurity and intellectual property**\n4. **Breach-related enforcement:** A breach of sensitive employee or client data, including HIPAA-protected health information, could trigger government enforcement, fines, and liability.\n5. **Evolving cybersecurity regulation:** Growing regulatory focus on cyber threats may require significant additional spending to comply with new rules.\n\n**Legal and regulatory matters**\n6. **Changing laws and requirements:** New or changed tax, benefits, wage-and-hour, employment, and other domestic and international laws could require costly product changes, delay launches, or reduce demand for some products.\n7. **Money transmitter and money services licensing:** New statutes, or new regulator interpretations of existing ones, could require licensing or limit activities. Operating unlicensed could bring civil or criminal penalties, and licensing changes could reduce interest income earned on client funds.\n8. **AI regulation:** The U.S., EU, and other governments are enacting or proposing AI rules, including limits on generative AI. Noncompliance, or misuse of AI by Paylocity or its clients, could bring investigations, fines, and litigation.\n9. **Data privacy laws:** Compliance with HIPAA, GDPR, CCPA, Illinois BIPA, and other privacy laws is complex, evolving, and subject to varying interpretations. GDPR fines can reach 4% of worldwide revenue, and enforcement is increasing.\n10. **Adverse or retroactive tax laws:** New or changed income, sales, use, and other tax laws, possibly applied retroactively, could raise the cost of services. Paylocity may also owe past taxes, interest, and penalties in states where it currently believes no tax is due.\n11. **Litigation and claims:** Client, employee, or data-breach lawsuits could be costly, distract management, and hurt results if uninsured or underinsured.\n12. **Client funds and FDIC insurance:** Client funds sit in consolidated accounts above federal deposit insurance limits. Paylocity believes the FDIC would insure each client's share, but a contrary FDIC position or delayed reimbursement could materially harm the business and its clients.\n13. **Changes in accounting principles:** Changes to U.S. GAAP, or to how the FASB or SEC interpret it, could significantly affect reported results, possibly applying to transactions completed before the change.\n14. **Securities class actions:** Stock price volatility could lead to securities class actions that are costly and distracting.\n15. **Anti-takeover provisions and Delaware law:** Delaware's business combination statute and provisions in the charter and bylaws could discourage or delay a change in control.\n16. **Exclusive forum provision:** Delaware courts are the exclusive forum for certain claims; if that provision were unenforceable, litigation costs could rise.\n17. **Sarbanes-Oxley Section 404:** Internal control evaluation and auditor attestation are required; a material weakness could lead to misstated financials, investor loss of confidence, and investigations by regulators or the stock exchange.\n\n**Overall:** The regulatory risks center on payments and money-transmission rules (ACH reversals, licensing, FDIC coverage of client funds), data privacy and cybersecurity (HIPAA, GDPR, CCPA, BIPA, and emerging cyber rules), tax and payroll-related legal change (including state sales/use tax exposure), emerging AI regulation, and public-company reporting and governance requirements.\n\nCaveat: The filing text was extracted with an automated tool, so I could not confirm every heading word-for-word; the items above reflect that extraction and should be checked against the filing before relying on them for exact wording.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1591698/000159169824000151/pcty-20240630.htm\",\n            \"name\": \"Paylocity Holding Corp Form 10-K for fiscal year ended June 30, 2024\"\n        }\n    ]\n}"
+     },
+     "output": "Paylocity's most recent annual report is its Form 10-K for the fiscal year ended June 30, 2024 (filed August 2, 2024). Its Item 1A risk factors include the following regulatory-related risks, grouped as the filing groups them. These are my paraphrases from a review of the filing text, not verbatim quotes.\n\n**Risks related to the business and industry**\n1. **Client funds reversed under ACH rules:** ACH banking rules let credited client funds be reversed after Paylocity has already paid employees and taxing authorities. If clients default, Paylocity may have to advance the funds.\n2. **Product defects amid changing legal requirements:** Frequent changes in employer and legal requirements for benefits, tax filings, and regulatory reports could expose software errors, leading to client claims or problems with taxing authorities.\n3. **Foreign regulatory exposure through international partners:** Using international business partners in countries where Paylocity has no operations exposes it to foreign regulatory, economic, and political risks.\n\n**Cybersecurity and intellectual property**\n4. **Breach-related enforcement:** A breach of sensitive employee or client data, including HIPAA-protected health information, could trigger government enforcement, fines, and liability.\n5. **Evolving cybersecurity regulation:** Growing regulatory focus on cyber threats may require significant additional spending to comply with new rules.\n\n**Legal and regulatory matters**\n6. **Changing laws and requirements:** New or changed tax, benefits, wage-and-hour, employment, and other domestic and international laws could require costly product changes, delay launches, or reduce demand for some products.\n7. **Money transmitter and money services licensing:** New statutes, or new regulator interpretations of existing ones, could require licensing or limit activities. Operating unlicensed could bring civil or criminal penalties, and licensing changes could reduce interest income earned on client funds.\n8. **AI regulation:** The U.S., EU, and other governments are enacting or proposing AI rules, including limits on generative AI. Noncompliance, or misuse of AI by Paylocity or its clients, could bring investigations, fines, and litigation.\n9. **Data privacy laws:** Compliance with HIPAA, GDPR, CCPA, Illinois BIPA, and other privacy laws is complex, evolving, and subject to varying interpretations. GDPR fines can reach 4% of worldwide revenue, and enforcement is increasing.\n10. **Adverse or retroactive tax laws:** New or changed income, sales, use, and other tax laws, possibly applied retroactively, could raise the cost of services. Paylocity may also owe past taxes, interest, and penalties in states where it currently believes no tax is due.\n11. **Litigation and claims:** Client, employee, or data-breach lawsuits could be costly, distract management, and hurt results if uninsured or underinsured.\n12. **Client funds and FDIC insurance:** Client funds sit in consolidated accounts above federal deposit insurance limits. Paylocity believes the FDIC would insure each client's share, but a contrary FDIC position or delayed reimbursement could materially harm the business and its clients.\n13. **Changes in accounting principles:** Changes to U.S. GAAP, or to how the FASB or SEC interpret it, could significantly affect reported results, possibly applying to transactions completed before the change.\n14. **Securities class actions:** Stock price volatility could lead to securities class actions that are costly and distracting.\n15. **Anti-takeover provisions and Delaware law:** Delaware's business combination statute and provisions in the charter and bylaws could discourage or delay a change in control.\n16. **Exclusive forum provision:** Delaware courts are the exclusive forum for certain claims; if that provision were unenforceable, litigation costs could rise.\n17. **Sarbanes-Oxley Section 404:** Internal control evaluation and auditor attestation are required; a material weakness could lead to misstated financials, investor loss of confidence, and investigations by regulators or the stock exchange.\n\n**Overall:** The regulatory risks center on payments and money-transmission rules (ACH reversals, licensing, FDIC coverage of client funds), data privacy and cybersecurity (HIPAA, GDPR, CCPA, BIPA, and emerging cyber rules), tax and payroll-related legal change (including state sales/use tax exposure), emerging AI regulation, and public-company reporting and governance requirements.\n\nCaveat: The filing text was extracted with an automated tool, so I could not confirm every heading word-for-word; the items above reflect that extraction and should be checked against the filing before relying on them for exact wording.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1591698/000159169824000151/pcty-20240630.htm\",\n            \"name\": \"Paylocity Holding Corp Form 10-K for fiscal year ended June 30, 2024\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00111283
+  }
+ ],
+ "final_answer": "Paylocity's most recent annual report is its Form 10-K for the fiscal year ended June 30, 2024 (filed August 2, 2024). Its Item 1A risk factors include the following regulatory-related risks, grouped as the filing groups them. These are my paraphrases from a review of the filing text, not verbatim quotes.\n\n**Risks related to the business and industry**\n1. **Client funds reversed under ACH rules:** ACH banking rules let credited client funds be reversed after Paylocity has already paid employees and taxing authorities. If clients default, Paylocity may have to advance the funds.\n2. **Product defects amid changing legal requirements:** Frequent changes in employer and legal requirements for benefits, tax filings, and regulatory reports could expose software errors, leading to client claims or problems with taxing authorities.\n3. **Foreign regulatory exposure through international partners:** Using international business partners in countries where Paylocity has no operations exposes it to foreign regulatory, economic, and political risks.\n\n**Cybersecurity and intellectual property**\n4. **Breach-related enforcement:** A breach of sensitive employee or client data, including HIPAA-protected health information, could trigger government enforcement, fines, and liability.\n5. **Evolving cybersecurity regulation:** Growing regulatory focus on cyber threats may require significant additional spending to comply with new rules.\n\n**Legal and regulatory matters**\n6. **Changing laws and requirements:** New or changed tax, benefits, wage-and-hour, employment, and other domestic and international laws could require costly product changes, delay launches, or reduce demand for some products.\n7. **Money transmitter and money services licensing:** New statutes, or new regulator interpretations of existing ones, could require licensing or limit activities. Operating unlicensed could bring civil or criminal penalties, and licensing changes could reduce interest income earned on client funds.\n8. **AI regulation:** The U.S., EU, and other governments are enacting or proposing AI rules, including limits on generative AI. Noncompliance, or misuse of AI by Paylocity or its clients, could bring investigations, fines, and litigation.\n9. **Data privacy laws:** Compliance with HIPAA, GDPR, CCPA, Illinois BIPA, and other privacy laws is complex, evolving, and subject to varying interpretations. GDPR fines can reach 4% of worldwide revenue, and enforcement is increasing.\n10. **Adverse or retroactive tax laws:** New or changed income, sales, use, and other tax laws, possibly applied retroactively, could raise the cost of services. Paylocity may also owe past taxes, interest, and penalties in states where it currently believes no tax is due.\n11. **Litigation and claims:** Client, employee, or data-breach lawsuits could be costly, distract management, and hurt results if uninsured or underinsured.\n12. **Client funds and FDIC insurance:** Client funds sit in consolidated accounts above federal deposit insurance limits. Paylocity believes the FDIC would insure each client's share, but a contrary FDIC position or delayed reimbursement could materially harm the business and its clients.\n13. **Changes in accounting principles:** Changes to U.S. GAAP, or to how the FASB or SEC interpret it, could significantly affect reported results, possibly applying to transactions completed before the change.\n14. **Securities class actions:** Stock price volatility could lead to securities class actions that are costly and distracting.\n15. **Anti-takeover provisions and Delaware law:** Delaware's business combination statute and provisions in the charter and bylaws could discourage or delay a change in control.\n16. **Exclusive forum provision:** Delaware courts are the exclusive forum for certain claims; if that provision were unenforceable, litigation costs could rise.\n17. **Sarbanes-Oxley Section 404:** Internal control evaluation and auditor attestation are required; a material weakness could lead to misstated financials, investor loss of confidence, and investigations by regulators or the stock exchange.\n\n**Overall:** The regulatory risks center on payments and money-transmission rules (ACH reversals, licensing, FDIC coverage of client funds), data privacy and cybersecurity (HIPAA, GDPR, CCPA, BIPA, and emerging cyber rules), tax and payroll-related legal change (including state sales/use tax exposure), emerging AI regulation, and public-company reporting and governance requirements.\n\nCaveat: The filing text was extracted with an automated tool, so I could not confirm every heading word-for-word; the items above reflect that extraction and should be checked against the filing before relying on them for exact wording.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1591698/000159169824000151/pcty-20240630.htm\",\n            \"name\": \"Paylocity Holding Corp Form 10-K for fiscal year ended June 30, 2024\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 6,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 9,
+  "input_tokens": 26,
+  "output_tokens": 9817,
+  "cache_creation_input_tokens": 291920,
+  "cache_read_input_tokens": 42976,
+  "web_search_requests": 0,
+  "cost_usd": 0.041831
+ },
+ "cost_usd": 0.041831,
+ "elapsed_s": 55.3,
+ "harness_label": "ctl2"
+}

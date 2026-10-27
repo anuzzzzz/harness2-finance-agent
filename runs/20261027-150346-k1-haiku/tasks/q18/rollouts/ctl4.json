@@ -1,0 +1,128 @@
+{
+ "task_id": "q18",
+ "label": "ctl4",
+ "question": "Does Workday (NASDAQ: WDAY) report a gross or net retention metric in its annual or quarterly reporting? If so, provide the definition",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_011LHkxzUjcYGHgHDDFMf1fs",
+     "query": "Workday 10-K subscription gross retention rate calculation",
+     "results": []
+    }
+   ],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Workday subscription gross retention rate definition",
+      "ciks": [
+       "WDAY"
+      ],
+      "end_date": "2025-04-07",
+      "top_n_results": 10
+     },
+     "output": "{\"total_matching_documents\": 28, \"page\": 1, \"results\": [{\"form\": \"CORRESP\", \"file_date\": \"2024-09-04\", \"period_ending\": null, \"company\": \"Workday, Inc.  (WDAY)  (CIK 0001327811)\", \"ciks\": [\"0001327811\"], \"accession\": \"0001327811-24-000174\", \"document\": \"filename1.htm\", \"description\": null, \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781124000174/filename1.htm\"}, {\"form\": \"UPLOAD\", \"file_date\": \"2024-08-20\", \"period_ending\": null, \"company\": \"Workday, Inc.  (WDAY)  (CIK 0001327811)\", \"ciks\": [\"0001327811\"], \"accession\": \"0000000000-24-009541\", \"document\": \"filename2.txt\", \"description\": null, \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000000000024009541/filename2.txt\"}, {\"form\": \"UPLOAD\", \"file_date\": \"2024-08-20\", \"period_ending\": null, \"company\": \"Workday, Inc.  (WDAY)  (CIK 0001327811)\", \"ciks\": [\"0001327811\"], \"accession\": \"0000000000-24-009541\", \"document\": \"filename1.pdf\", \"description\": null, \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000000000024009541/filename1.pdf\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-11\", \"period_ending\": \"2025-01-31\", \"company\": \"Workday, Inc.  (WDAY)  (CIK 0001327811)\", \"ciks\": [\"0001327811\"], \"accession\": \"0001327811-25-000056\", \"document\": \"wday-20250131.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781125000056/wday-20250131.htm\"}, {\"form\": \"10-Q\", \"file_date\": \"2024-12-05\", \"period_ending\": \"2024-10-31\", \"company\": \"Workday, Inc.  (WDAY)  (CIK 0001327811)\", \"ciks\": [\"0001327811\"], \"accession\": \"0001327811-24-000242\", \"document\": \"wday-20241031.htm\", \"description\": \"10-Q\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781124000242/wday-20241031.htm\"}, {\"form\": \"ARS\", \"file_date\": \"2023-05-10\", \"period_ending\": \"2023-01-31\", \"company\": \"Workday, Inc.  (WDAY)  (CIK 0001327811)\", \"ciks\": [\"0001327811\"], \"accession\": \"0001104659-23-058436\", \"document\": \"tm233886d2_ars.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000110465923058436/tm233886d2_ars.pdf\"}, {\"form\": \"ARS\", \"file_date\": \"2024-05-07\", \"period_ending\": \"2024-01-31\", \"company\": \"Workday, Inc.  (WDAY)  (CIK 0001327811)\", \"ciks\": [\"0001327811\"], \"accession\": \"0001104659-24-058041\", \"document\": \"tm249896d2_ars.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000110465924058041/tm249896d2_ars.pdf\"}, {\"form\": \"10-Q\", \"file_date\": \"2024-08-28\", \"period_ending\": \"2024-07-31\", \"company\": \"Workday, Inc.  (WDAY)  (CIK 0001327811)\", \"ciks\": [\"0001327811\"], \"accession\": \"0001327811-24-000165\", \"document\": \"wday-20240731.htm\", \"description\": \"10-Q\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781124000165/wday-20240731.htm\"}, {\"form\": \"10-Q\", \"file_date\": \"2022-08-25\", \"period_ending\": \"2022-07-31\", \"company\": \"Workday, Inc.  (WDAY)  (CIK 0001327811)\", \"ciks\": [\"0001327811\"], \"accession\": \"0001327811-22-000154\", \"document\": \"wday-20220731.htm\", \"description\": \"10-Q\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781122000154/wday-20220731.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2016-03-22\", \"period_ending\": \"2016-01-31\", \"company\": \"Workday, Inc.  (WDAY)  (CIK 0001327811)\", \"ciks\": [\"0001327811\"], \"accession\": \"0001327811-16-000032\", \"document\": \"wday-01312016x10k.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781116000032/wday-01312016x10k.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 1.75,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00020087
+  },
+  {
+   "turn": 2,
+   "text": "**Short answer:** Yes, Workday reports a gross retention metric, but it has stopped reporting a net retention metric. As of April 7, 2025, the most recent annual report is the fiscal 2025 Form 10-K, filed March 11, 2025.\n\n**Gross revenue retention rate (reported)**\n- The FY2025 10-K gives the rate as approximately 98% as of January 31, 2025. \nWorkday's gross revenue retention rate is approximately 98% as of January 31, 2025.\n\n- Definition: the metric \nmeasures the percentage of recurring revenue retained from existing customers and is calculated by taking total annual recurring revenue (\"ARR\") of customers as of the corresponding prior period-end and comparing that to ARR from that same set of customers as of the current period-end.\n\n- Treatment of churn and expansion: \nit takes into account recurring revenues lost to product or customer churn but does not account for additional revenue earned from add-ons or net expansions, which include volume and price adjustments.\n\n- ARR basis: \nARR represents the annualized value of active subscription contracts as of the end of each period.\n Each contract is annualized by dividing total contract value by the contract term in days and multiplying by 365. Contracts under one year that are distinct from the core product, such as tenants used for implementation and testing, are excluded. \nARR is only adjusted if the customer churns\n during a renewal negotiation that follows expiration. ARR is calculated on a constant currency basis using exchange rates set at the beginning of each fiscal year.\n\n**Net retention rate (formerly reported, now dropped)**\n- The FY2024 10-K stated that \ngross and net retention rates were over 95% and over 100%, respectively\n.\n- After SEC staff comments on the FY2024 filings, Workday responded that \nupon further consideration... it no longer intends to include disclosure related to net revenue retention rates in its SEC filings.\n It gave the reason that \nthe net revenue retention rate is largely duplicative of the change in revenue from existing customers as a measure of its business performance.\n Instead, it will disclose the percentage change in subscription revenue attributable to existing and new customers.\n- Workday also said it \nplans to disclose the actual, then-current gross revenue retention rate for each period in future filings\n, rather than a floor such as \"over 95%\".\n\n**Caveat:** The search index also returned a later FY2026 10-K. I did not use it, because it postdates the April 7, 2025 reference date.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781125000056/wday-20250131.htm\",\n            \"name\": \"Workday, Inc. Form 10-K for fiscal year ended January 31, 2025\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781124000044/wday-20240131.htm\",\n            \"name\": \"Workday, Inc. Form 10-K for fiscal year ended January 31, 2024\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781124000192/filename1.htm\",\n            \"name\": \"Workday, Inc. SEC correspondence response letter (2024)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000000000024010149/filename1.pdf\",\n            \"name\": \"SEC staff comment letter to Workday, September 9, 2024\"\n        }\n    ]\n}",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_011LHkxzUjcYGHgHDDFMf1fs",
+     "query": null,
+     "results": [
+      {
+       "title": "Workday, Inc. - Form 10-K - FY2026",
+       "url": "https://www.sec.gov/Archives/edgar/data/1327811/000132781126000014/wday-20260131.htm",
+       "page_age": null
+      },
+      {
+       "title": "Workday, Inc. - Form 10-K - FY2025",
+       "url": "https://www.sec.gov/Archives/edgar/data/1327811/000132781125000056/wday-20250131.htm",
+       "page_age": null
+      },
+      {
+       "title": "Workday, Inc. - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1327811/000132781124000044/wday-20240131.htm",
+       "page_age": null
+      },
+      {
+       "title": "Workday, Inc.",
+       "url": "https://www.sec.gov/Archives/edgar/data/1327811/000132781124000192/filename1.htm",
+       "page_age": null
+      },
+      {
+       "title": "September 9, 2024 Zane Rowe Chief Financial Officer Workday, Inc.",
+       "url": "https://www.sec.gov/Archives/edgar/data/1327811/000000000024010149/filename1.pdf",
+       "page_age": "778 days ago"
+      },
+      {
+       "title": "Workday, Inc. - Form 10-K - FY2016",
+       "url": "https://www.sec.gov/Archives/edgar/data/0001327811/000132781116000032/wday-01312016x10k.htm",
+       "page_age": null
+      },
+      {
+       "title": "Workday, Inc. - Form 10-K - FY2015",
+       "url": "https://www.sec.gov/Archives/edgar/data/0001327811/000132781115000006/wday-01312015x10k.htm",
+       "page_age": null
+      },
+      {
+       "title": "Workday, Inc. - Form 10-K - FY2022",
+       "url": "https://www.sec.gov/Archives/edgar/data/1327811/000132781122000030/wday-20220131.htm",
+       "page_age": null
+      },
+      {
+       "title": "Workday, Inc. - Form 10-K - FY2017",
+       "url": "https://www.sec.gov/Archives/edgar/data/0001327811/000132781117000008/wday-01312017x10k.htm",
+       "page_age": null
+      }
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Yes. Workday (WDAY) reports a gross retention metric, the gross revenue retention rate, but it no longer reports a net retention rate.\n\nGross revenue retention rate: The FY2025 10-K (filed March 11, 2025) gives the rate as approximately 98% as of January 31, 2025. Definition: it measures the percentage of recurring revenue retained from existing customers. It is calculated by taking total ARR of customers at the prior period-end and comparing it to ARR from the same set of customers at the current period-end. It accounts for recurring revenue lost to product or customer churn but excludes add-ons and net expansion (volume and price adjustments). ARR is the annualized value of active subscription contracts (contract value divided by term days, times 365), excludes certain short non-core contracts (e.g., implementation/testing tenants), is adjusted only on churn during renewal negotiations, and is calculated at constant currency using fiscal-year-start exchange rates.\n\nNet retention rate: The FY2024 10-K disclosed gross and net retention rates of over 95% and over 100%. Following SEC staff comments, Workday said it no longer intends to disclose net revenue retention rates, since it is largely duplicative of the change in revenue from existing customers. It will instead disclose the percentage change in subscription revenue attributable to existing and new customers, and will disclose the actual then-current gross revenue retention rate.\n\nSources:\n- https://www.sec.gov/Archives/edgar/data/1327811/000132781125000056/wday-20250131.htm (FY2025 10-K)\n- https://www.sec.gov/Archives/edgar/data/1327811/000132781124000044/wday-20240131.htm (FY2024 10-K)\n- https://www.sec.gov/Archives/edgar/data/1327811/000132781124000192/filename1.htm (Workday SEC response letter)\n- https://www.sec.gov/Archives/edgar/data/1327811/000000000024010149/filename1.pdf (SEC staff comment letter, Sept 9, 2024)"
+     },
+     "output": "Yes. Workday (WDAY) reports a gross retention metric, the gross revenue retention rate, but it no longer reports a net retention rate.\n\nGross revenue retention rate: The FY2025 10-K (filed March 11, 2025) gives the rate as approximately 98% as of January 31, 2025. Definition: it measures the percentage of recurring revenue retained from existing customers. It is calculated by taking total ARR of customers at the prior period-end and comparing it to ARR from the same set of customers at the current period-end. It accounts for recurring revenue lost to product or customer churn but excludes add-ons and net expansion (volume and price adjustments). ARR is the annualized value of active subscription contracts (contract value divided by term days, times 365), excludes certain short non-core contracts (e.g., implementation/testing tenants), is adjusted only on churn during renewal negotiations, and is calculated at constant currency using fiscal-year-start exchange rates.\n\nNet retention rate: The FY2024 10-K disclosed gross and net retention rates of over 95% and over 100%. Following SEC staff comments, Workday said it no longer intends to disclose net revenue retention rates, since it is largely duplicative of the change in revenue from existing customers. It will instead disclose the percentage change in subscription revenue attributable to existing and new customers, and will disclose the actual then-current gross revenue retention rate.\n\nSources:\n- https://www.sec.gov/Archives/edgar/data/1327811/000132781125000056/wday-20250131.htm (FY2025 10-K)\n- https://www.sec.gov/Archives/edgar/data/1327811/000132781124000044/wday-20240131.htm (FY2024 10-K)\n- https://www.sec.gov/Archives/edgar/data/1327811/000132781124000192/filename1.htm (Workday SEC response letter)\n- https://www.sec.gov/Archives/edgar/data/1327811/000000000024010149/filename1.pdf (SEC staff comment letter, Sept 9, 2024)",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.012364295
+  }
+ ],
+ "final_answer": "Yes. Workday (WDAY) reports a gross retention metric, the gross revenue retention rate, but it no longer reports a net retention rate.\n\nGross revenue retention rate: The FY2025 10-K (filed March 11, 2025) gives the rate as approximately 98% as of January 31, 2025. Definition: it measures the percentage of recurring revenue retained from existing customers. It is calculated by taking total ARR of customers at the prior period-end and comparing it to ARR from the same set of customers at the current period-end. It accounts for recurring revenue lost to product or customer churn but excludes add-ons and net expansion (volume and price adjustments). ARR is the annualized value of active subscription contracts (contract value divided by term days, times 365), excludes certain short non-core contracts (e.g., implementation/testing tenants), is adjusted only on churn during renewal negotiations, and is calculated at constant currency using fiscal-year-start exchange rates.\n\nNet retention rate: The FY2024 10-K disclosed gross and net retention rates of over 95% and over 100%. Following SEC staff comments, Workday said it no longer intends to disclose net revenue retention rates, since it is largely duplicative of the change in revenue from existing customers. It will instead disclose the percentage change in subscription revenue attributable to existing and new customers, and will disclose the actual then-current gross revenue retention rate.\n\nSources:\n- https://www.sec.gov/Archives/edgar/data/1327811/000132781125000056/wday-20250131.htm (FY2025 10-K)\n- https://www.sec.gov/Archives/edgar/data/1327811/000132781124000044/wday-20240131.htm (FY2024 10-K)\n- https://www.sec.gov/Archives/edgar/data/1327811/000132781124000192/filename1.htm (Workday SEC response letter)\n- https://www.sec.gov/Archives/edgar/data/1327811/000000000024010149/filename1.pdf (SEC staff comment letter, Sept 9, 2024)",
+ "fallback_text": "**Short answer:** Yes, Workday reports a gross retention metric, but it has stopped reporting a net retention metric. As of April 7, 2025, the most recent annual report is the fiscal 2025 Form 10-K, filed March 11, 2025.\n\n**Gross revenue retention rate (reported)**\n- The FY2025 10-K gives the rate as approximately 98% as of January 31, 2025. \nWorkday's gross revenue retention rate is approximately 98% as of January 31, 2025.\n\n- Definition: the metric \nmeasures the percentage of recurring revenue retained from existing customers and is calculated by taking total annual recurring revenue (\"ARR\") of customers as of the corresponding prior period-end and comparing that to ARR from that same set of customers as of the current period-end.\n\n- Treatment of churn and expansion: \nit takes into account recurring revenues lost to product or customer churn but does not account for additional revenue earned from add-ons or net expansions, which include volume and price adjustments.\n\n- ARR basis: \nARR represents the annualized value of active subscription contracts as of the end of each period.\n Each contract is annualized by dividing total contract value by the contract term in days and multiplying by 365. Contracts under one year that are distinct from the core product, such as tenants used for implementation and testing, are excluded. \nARR is only adjusted if the customer churns\n during a renewal negotiation that follows expiration. ARR is calculated on a constant currency basis using exchange rates set at the beginning of each fiscal year.\n\n**Net retention rate (formerly reported, now dropped)**\n- The FY2024 10-K stated that \ngross and net retention rates were over 95% and over 100%, respectively\n.\n- After SEC staff comments on the FY2024 filings, Workday responded that \nupon further consideration... it no longer intends to include disclosure related to net revenue retention rates in its SEC filings.\n It gave the reason that \nthe net revenue retention rate is largely duplicative of the change in revenue from existing customers as a measure of its business performance.\n Instead, it will disclose the percentage change in subscription revenue attributable to existing and new customers.\n- Workday also said it \nplans to disclose the actual, then-current gross revenue retention rate for each period in future filings\n, rather than a floor such as \"over 95%\".\n\n**Caveat:** The search index also returned a later FY2026 10-K. I did not use it, because it postdates the April 7, 2025 reference date.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781125000056/wday-20250131.htm\",\n            \"name\": \"Workday, Inc. Form 10-K for fiscal year ended January 31, 2025\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781124000044/wday-20240131.htm\",\n            \"name\": \"Workday, Inc. Form 10-K for fiscal year ended January 31, 2024\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781124000192/filename1.htm\",\n            \"name\": \"Workday, Inc. SEC correspondence response letter (2024)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000000000024010149/filename1.pdf\",\n            \"name\": \"SEC staff comment letter to Workday, September 9, 2024\"\n        }\n    ]\n}",
+ "submitted": true,
+ "turns": 2,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 2,
+  "input_tokens": 6,
+  "output_tokens": 2600,
+  "cache_creation_input_tokens": 9261,
+  "cache_read_input_tokens": 10694,
+  "web_search_requests": 1,
+  "cost_usd": 0.012565
+ },
+ "cost_usd": 0.012565,
+ "elapsed_s": 13.3,
+ "harness_label": "ctl4"
+}

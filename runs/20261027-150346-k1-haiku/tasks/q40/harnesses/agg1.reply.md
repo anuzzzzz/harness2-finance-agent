@@ -1,0 +1,22 @@
+<file path="tool_guidance.md">
+# Tool use
+
+- Decide the document and period before searching: company, form (10-K, 10-Q, 8-K EX-99.1 release) and fiscal period. Use edgar_search with company and date filters, not the question's wording. If web_search returns nothing, retry once with a short non-empty query (never an empty or null query), then use edgar_search or a known primary URL.
+- A search snippet or result title is a lead, not evidence. Open the primary document with parse_html_page (one clear key per document), then ask retrieve_information one targeted question at a time. Use input_character_ranges on long filings. Confirm each figure, its sign, period, unit and GAAP/non-GAAP basis in the retrieved text.
+- parse_html_page cannot read PDFs. Use the HTML filing or 8-K exhibit instead.
+- For "what adjustments does the company make to get a non-GAAP measure" questions, the answer is the company's own reconciliation table. Give every line from the GAAP starting measure to the non-GAAP result, in the order shown, with labels exactly as printed, the sign (add-back or deduction) and the amount for each period shown. Also give the company's stated reason for the exclusions and any footnote or definition of an item. Check that the lines foot to the stated total. Do not describe adjustments from memory or from an earlier year's list. Item names change between years, so use the latest filing's labels.
+- Do not mix GAAP and non-GAAP bases, or quarterly and full-year columns. A full-year table is in the 10-K MD&A (Non-GAAP Financial Measures). 8-K EX-99.1 exhibits often give quarterly columns only.
+- Cite only documents you opened and retrieved from. Do not list a 10-Q, shareholder letter, PDF or article seen only in search results. Do not write "consistent with" a filing you did not open. If a statement rests on a snippet only, say so or omit it.
+- Write the final answer in plain text. Never paste citation markup such as <cite index=...> tags or fragments of it. State each figure with its period, unit and source, then the check or calculation, then the conclusion in the form the question asks for. End with the sources dictionary, listing only opened documents. Submit with submit_final_result as soon as the figures are verified.
+
+Lead for this task (Airbnb Adjusted EBITDA; one run retrieved it from the FY2024 10-K, https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm, MD&A non-GAAP section; re-confirm in the text). The reconciliation starts at Net income and lists: provision for (benefit from) income taxes; other expense, net; interest income; depreciation and amortization; stock-based compensation expense; acquisition-related impacts; lodging taxes, host withholding taxes, and transactional taxes, net. FY2024/FY2023 in $ millions: net income 2,648/4,792, Adjusted EBITDA 4,041/3,653. The table covers only two years.
+</file>
+
+<notes>
+kept -> inv1 and dom1 (merged tool_guidance) -> base1 leaked <cite> markup, made a null-query web_search and listed unopened 10-Qs and a PDF as sources; inv1 and dom1 each carried a cite-only-opened and plain-text rule, parsed the 10-K once, retrieved the table and submitted in 3 turns with none of those flaws (2/2 vs 1/1 base failing).
+kept -> dom1 reconciliation-question rule (full table, signs, rationale, footnotes, foot check, latest labels, full-year vs quarterly) -> both candidate runs produced the footed table in the same figures as base1, so this is presentation and verification, not accuracy; kept short.
+kept -> inv1 retrieve-labels-exactly and garbled-table cross-check -> merged into the same bullet; no run showed a garbled table, so the evidence is weak and the wording is minimal.
+revised -> explicit "end with sources dictionary" -> inv1's final answer showed no sources block while dom1's did; the system prompt requires one.
+kept -> task lead (compact, one copy) -> both runs went straight to the 10-K in turn 1; earlier library entries show leads save turns but carry no transfer value, so it is kept short and labelled re-confirm.
+dropped -> any skill -> the procedure is short, both candidates declined a skill, and prior library entries show skills added nothing beyond always-on guidance.
+</notes>

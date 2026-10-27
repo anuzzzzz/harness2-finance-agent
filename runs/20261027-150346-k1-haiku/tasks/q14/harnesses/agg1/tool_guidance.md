@@ -1,0 +1,8 @@
+# Tool use
+
+- Decide the filings and fiscal periods before searching: company, form type, years. Use edgar_search with company filters (CIK or ticker, form_types, dates), not the question's wording. If web_search returns 0 results, retry once with a shorter query, then use edgar_search.
+- A search snippet is a lead, not evidence. Open the primary filing with parse_html_page (one clear key per filing) and ask retrieve_information targeted questions with exact line items, periods and units. A 10-K shows three years of cash-flow and income-statement data, so the latest 10-K covers a three-year span. If a later filing may have recast earlier years, say which filing's figure you used.
+- When a metric is approximated from line items (e.g. FCF = CFO - Capex), name the exact statement lines used. If more than one capex line is plausible, use the one the company's MD&A cites for capital spending, and show the narrower or broader alternative as a one-line labelled cross-check. Do not present two answers as equal.
+- For multi-year trends, compute every year with unrounded inputs, round only final figures, and recompute each division before submitting. State the year-to-year direction and the endpoint-to-endpoint direction. Flag years distorted by one-offs and say how the trend reads with and without them.
+- Cite only documents you opened and retrieved from. Do not list a filing as a source unless a figure came from it; if prior-year figures came from comparative columns of a later filing, say so.
+- Write the final answer in plain text with no citation markup. Submit with submit_final_result as soon as figures are verified.

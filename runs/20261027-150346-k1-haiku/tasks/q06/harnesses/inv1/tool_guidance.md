@@ -1,0 +1,15 @@
+# Tool use
+
+- Decide the documents and periods before searching: company, form (8-K EX-99.1 earnings release, 10-K, 10-Q, call transcript) and fiscal period. Use edgar_search with company and date filters rather than the question's wording. If web_search returns nothing, retry once with a short non-empty query (never an empty one), then use edgar_search or a known primary URL.
+- A search snippet or result title is a lead, not evidence. Open the primary document with parse_html_page (one clear key per document), then ask retrieve_information one targeted question at a time. Confirm the figure, period, unit and basis (what the company's capex or other measure includes) in the retrieved text. Use input_character_ranges on long documents.
+- parse_html_page cannot read PDFs. Use the HTML 8-K exhibit or filing instead.
+- The current date is fixed in the system prompt. Use only guidance or results published on or before that date. Search results may include later filings (10-Qs, 10-Ks, 8-Ks dated after it). Do not open them or cite them as evidence.
+- For "who plans to spend the most" or other forward-guidance comparisons across companies, get each company's latest guidance as of the date from its own opened document. Put every figure on one period (calendar or fiscal year) and one unit. Where the guide is a range, show low, high and midpoint. Where it is management commentary (a call remark, "about $X"), say so. If the companies define the measure differently (for example, whether finance leases are included), note this in one line. Then name the largest.
+- Re-check each figure you are about to submit against the retrieved text. A successful tool call does not make a figure correct. If a figure was seen only in a snippet, say so plainly rather than attributing it to a document.
+- Cite only documents you opened and retrieved from. Do not list a press release, article or filing seen only in search results.
+- Write the final answer in plain text. Never paste citation markup such as <cite index=...> tags. Lead with the direct answer, then each figure with its period, unit and source, then the comparison arithmetic. Submit with submit_final_result as soon as the figures are verified. Keep turns in reserve for this.
+
+Leads for this task (taken from search snippets only; re-confirm in the opened text):
+- Meta: Q4/FY2024 results release, 8-K EX-99.1, dated 2025-01-29, https://www.sec.gov/Archives/edgar/data/1326801/000132680125000014/meta-12312024xexhibit991.htm. It was reported to guide 2025 capex, including principal payments on finance leases, at $60-65B. Later Meta releases that raise this guide post-date the as-of date.
+- Alphabet: Q4/FY2024 results of 2025-02-04. Reported guide is about $75B of 2025 capex, stated by the CEO. Find it in the release or the call transcript.
+- Amazon: Q4/FY2024 results of 2025-02-06. The roughly $100B figure was reported as CEO Jassy's call commentary (Q4 capex of $26.3B called representative of the 2025 annualised rate), not a formal range. Confirm in the transcript or the CNBC/GeekWire coverage only if the filing exhibit lacks it, and label it as call commentary.

@@ -1,0 +1,113 @@
+{
+ "task_id": "q19",
+ "label": "ctl2",
+ "question": "As of April 07, 2025, what is the total value of MSCI's operating leases (in $'s, thousands) that are maturing in the next three years? What percentage?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "MSCI operating lease liabilities maturities future minimum lease payments",
+      "ciks": [
+       "MSCI"
+      ],
+      "start_date": "2025-01-01",
+      "form_types": [
+       "10-K"
+      ]
+     },
+     "output": "{\"total_matching_documents\": 1, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-07\", \"period_ending\": \"2024-12-31\", \"company\": \"MSCI Inc.  (MSCI)  (CIK 0001408198)\", \"ciks\": [\"0001408198\"], \"accession\": \"0001408198-25-000053\", \"document\": \"msci-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 1.37,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00020839
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm",
+      "key": "msci10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: msci10k. (407,848 characters)\nThe data_storage currently contains the following keys:\nmsci10k\n",
+     "is_error": false,
+     "elapsed_s": 0.61,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00017319
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this MSCI 10-K document: {{msci10k}}. Find the lease maturity table for operating leases (future minimum lease payments by year, e.g., 2025, 2026, 2027, thereafter, total undiscounted lease payments, less imputed interest, present value of lease liabilities). Return the exact figures in thousands of dollars for each line, and the exact wording of the table caption and the date."
+     },
+     "output": "**Note 7, Leases: Maturity of Lease Liabilities, as of December 31, 2024**\n\nThe table caption reads \"Maturity of Lease Liabilities\" with the units line \"(in thousands)\". The single column is headed \"Operating Leases.\"\n\n| (in thousands) | Operating Leases |\n|---|---|\n| 2025 | $30,220 |\n| 2026 | 30,361 |\n| 2027 | 24,421 |\n| 2028 | 23,931 |\n| 2029 | 16,573 |\n| Thereafter | 40,099 |\n| **Total lease payments** | **$165,605** |\n| Less: Interest | (19,601) |\n| **Present value of lease liabilities** | **$146,004** |\n\nThe present value of $146,004 is split between two balance sheet lines: Other accrued liabilities of $24,851 and Long-term operating lease liabilities of $121,153.",
+     "is_error": false,
+     "elapsed_s": 3.78,
+     "cost_usd": 0.086544
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00017098000000000002
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: $85,002 thousand (about $85.0 million) of MSCI's operating lease payments mature over the next three years, which is 51.33% of total undiscounted operating lease payments.**\n\n**Source data:** MSCI's Form 10-K for fiscal year ended December 31, 2024 (filed February 7, 2025), Note 7, Leases, \"Maturity of Lease Liabilities\" table (in thousands, Operating Leases column):\n\n| Year | Payments ($000s) |\n|---|---|\n| 2025 | 30,220 |\n| 2026 | 30,361 |\n| 2027 | 24,421 |\n| 2028 | 23,931 |\n| 2029 | 16,573 |\n| Thereafter | 40,099 |\n| Total lease payments | 165,605 |\n| Less: interest | (19,601) |\n| Present value of lease liabilities | 146,004 |\n\n**Calculation:**\n- Next three years (2025\u20132027): 30,220 + 30,361 + 24,421 = 85,002 (thousands of dollars)\n- Share of total undiscounted payments: 85,002 / 165,605 = 51.33%\n\n**Note on the denominator:** If the percentage is measured against the present value of lease liabilities instead (146,004), the share would be 58.22%. Because the table's maturities are undiscounted, the 51.33% figure above (against total lease payments of 165,605) is the more direct comparison.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm\",\n            \"name\": \"MSCI Inc. Form 10-K for fiscal year 2024 (filed 2025-02-07)\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: $85,002 thousand (about $85.0 million) of MSCI's operating lease payments mature over the next three years, which is 51.33% of total undiscounted operating lease payments.**\n\n**Source data:** MSCI's Form 10-K for fiscal year ended December 31, 2024 (filed February 7, 2025), Note 7, Leases, \"Maturity of Lease Liabilities\" table (in thousands, Operating Leases column):\n\n| Year | Payments ($000s) |\n|---|---|\n| 2025 | 30,220 |\n| 2026 | 30,361 |\n| 2027 | 24,421 |\n| 2028 | 23,931 |\n| 2029 | 16,573 |\n| Thereafter | 40,099 |\n| Total lease payments | 165,605 |\n| Less: interest | (19,601) |\n| Present value of lease liabilities | 146,004 |\n\n**Calculation:**\n- Next three years (2025\u20132027): 30,220 + 30,361 + 24,421 = 85,002 (thousands of dollars)\n- Share of total undiscounted payments: 85,002 / 165,605 = 51.33%\n\n**Note on the denominator:** If the percentage is measured against the present value of lease liabilities instead (146,004), the share would be 58.22%. Because the table's maturities are undiscounted, the 51.33% figure above (against total lease payments of 165,605) is the more direct comparison.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm\",\n            \"name\": \"MSCI Inc. Form 10-K for fiscal year 2024 (filed 2025-02-07)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00064247
+  }
+ ],
+ "final_answer": "**Answer: $85,002 thousand (about $85.0 million) of MSCI's operating lease payments mature over the next three years, which is 51.33% of total undiscounted operating lease payments.**\n\n**Source data:** MSCI's Form 10-K for fiscal year ended December 31, 2024 (filed February 7, 2025), Note 7, Leases, \"Maturity of Lease Liabilities\" table (in thousands, Operating Leases column):\n\n| Year | Payments ($000s) |\n|---|---|\n| 2025 | 30,220 |\n| 2026 | 30,361 |\n| 2027 | 24,421 |\n| 2028 | 23,931 |\n| 2029 | 16,573 |\n| Thereafter | 40,099 |\n| Total lease payments | 165,605 |\n| Less: interest | (19,601) |\n| Present value of lease liabilities | 146,004 |\n\n**Calculation:**\n- Next three years (2025\u20132027): 30,220 + 30,361 + 24,421 = 85,002 (thousands of dollars)\n- Share of total undiscounted payments: 85,002 / 165,605 = 51.33%\n\n**Note on the denominator:** If the percentage is measured against the present value of lease liabilities instead (146,004), the share would be 58.22%. Because the table's maturities are undiscounted, the 51.33% figure above (against total lease payments of 165,605) is the more direct comparison.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm\",\n            \"name\": \"MSCI Inc. Form 10-K for fiscal year 2024 (filed 2025-02-07)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 5,
+  "input_tokens": 14,
+  "output_tokens": 2178,
+  "cache_creation_input_tokens": 137501,
+  "cache_read_input_tokens": 22578,
+  "web_search_requests": 0,
+  "cost_usd": 0.087738
+ },
+ "cost_usd": 0.087738,
+ "elapsed_s": 16.3,
+ "harness_label": "ctl2"
+}

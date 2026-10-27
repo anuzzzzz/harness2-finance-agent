@@ -1,0 +1,191 @@
+## Rollout `inv1`
+- outcome: submitted
+- turns: 9; cost: $0.048; submitted: True
+
+### Turn 1  (stop_reason=tool_use)
+I'll open the FY2024 10-K and the FY2019 10-K first, since they cover the two ends of the period.
+- parse_html_page({"url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528025000044/nflx-20241231.htm", "key": "nflx2024"})
+  result: SUCCESS: The result has been saved to the data storage under the key: nflx2024. (275,605 characters)
+  The data_storage currently contains the following keys:
+  nflx2024
+  
+- parse_html_page({"url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528020000040/form10kq419.htm", "key": "nflx2019"})
+  result: SUCCESS: The result has been saved to the data storage under the key: nflx2019. (226,208 characters)
+  The data_storage currently contains the following keys:
+  nflx2024
+  nflx2019
+  
+
+### Turn 2  (stop_reason=tool_use)
+- retrieve_information({"prompt": "From this Netflix 10-K text, find the consolidated \"average monthly revenue per paying membership\" (ARM) for 2024, 2023 and 2022, with the year-over-year % change and any constant-currency discussion. Quote the exact sentences describing the ARM change and its drivers. Also state the unit. Text: {{nflx2024}}"})
+  result: ## Consolidated ARM (Average Monthly Revenue per Paying Membership)
+  
+  | Year | ARM | YoY change (reported) | Constant-currency change |
+  |---|---|---|---|
+  | 2024 | $11.70 | +1% (vs. $11.64 in 2023) | +4% |
+  | 2023 | $11.64 | −1% (vs. $11.76 in 2022)* | Not stated in this filing |
+  | 2022 | $11.76 | n/a in this filing | n/a in this filing |
+  
+  *The 2023 vs. 2022 change is my calculation ($11.64 / $11.76 − 1 ≈ −1.0%). This filing does not report it.
+  
+  **Unit:** U.S. dollars per paying membership per month (USD/month). The table header says "in thousands, except revenue per membership and percentages," so the ARM figures are whole dollars, not thousands.
+  
+  ## Quoted language on the ARM change and its drivers
+  
+  The filing has no sentence that explains the consolidated ARM change directly. The closest statements are these:
+  
+  - Table footnote (3), defining the metric: "We believe the non-GAAP financial measure of constant currency revenue is useful in analyzing the underlying trends in average monthly revenue per paying membership ("ARM") absent foreign currency fluctuations."
+  - Footnote (3), on method: "In order to exclude the effect of foreign currency rate fluctuations on ARM, we calculate current period revenue assuming foreign exchange rates had remained constant with foreign exchange rates from each of the corresponding months of the prior-year period and exclude the impact of hedging gains or losses realized as revenues."
+  - Footnote (3), on the size of the FX effect: "For the year ended December 31, 2024, our revenues would have been approximately $1,424 million higher, excluding the impact of hedging and had foreign currency exchange rates remained constant with those for the year ended December 31, 2023."
+  - Footnote (3), on the cause: "The unfavorable foreign exchange rates im
+  …[truncated 1,184 chars]
+- retrieve_information({"prompt": "From this Netflix 10-K text, find the consolidated \"average monthly revenue per paying membership\" (ARM) for 2019 and 2018, with the year-over-year % change and any constant-currency discussion. Quote the exact sentences describing the ARM change and its drivers. Also state the unit. Text: {{nflx2019}}"})
+  result: ## Consolidated Average Monthly Revenue per Paying Membership (ARM)
+  
+  | Metric | 2019 | 2018 | YoY change |
+  |---|---|---|---|
+  | ARM | $10.82 | $10.31 | +$0.51, or about +5% (reported as 5%) |
+  
+  **Unit:** U.S. dollars per paying membership per month. The table header says "in thousands," but that applies only to the membership and revenue dollar figures. ARM is stated in whole dollars.
+  
+  ## Constant-Currency Discussion
+  
+  The filing does not give a consolidated constant-currency percentage change for ARM. It gives the regional figures (UCAN 13%, EMEA 4%, LATAM 13%, APAC 3%) and one consolidated dollar estimate: revenues would have been about $762 million higher at constant 2018 exchange rates.
+  
+  ## Exact Quotes
+  
+  - Table row: "Average monthly revenue per paying membership $10.82 $10.31 $9.43 5 % 9 %"
+  - "The increase in consolidated revenues was due to the 23% growth in average paying memberships and a 5% increase in average monthly revenue per paying membership."
+  - "The increase in average monthly revenue per paying membership resulted from our price changes and plan mix, partially offset by unfavorable fluctuations in foreign exchange rates."
+  - Footnote (1): "We believe constant currency information is useful in analyzing the underlying trends in average monthly revenue per paying membership."
+  - "For the year ended December 31, 2019, our revenues would have been approximately $762 million higher had foreign currency exchange rates remained constant with those for the year ended December 31, 2018."
+
+### Turn 3  (stop_reason=tool_use)
+The FY2024 and FY2019 filings give 2024, 2023, 2022, 2019 and 2018. I still need 2020 and 2021, so I'll locate the FY2021 10-K.
+- edgar_search({"search_query": "Netflix annual report average monthly revenue per paying membership", "ciks": ["NFLX"], "form_types": ["10-K"], "start_date": "2022-01-01", "end_date": "2022-03-31"})
+  result: {"total_matching_documents": 1, "page": 1, "results": [{"form": "10-K", "file_date": "2022-01-27", "period_ending": "2021-12-31", "company": "NETFLIX INC  (NFLX)  (CIK 0001065280)", "ciks": ["0001065280"], "accession": "0001065280-22-000036", "document": "nflx-20211231.htm", "description": "10-K", "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528022000036/nflx-20211231.htm"}]}
+
+### Turn 4  (stop_reason=tool_use)
+- parse_html_page({"url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528022000036/nflx-20211231.htm", "key": "nflx2021"})
+  result: SUCCESS: The result has been saved to the data storage under the key: nflx2021. (226,506 characters)
+  The data_storage currently contains the following keys:
+  nflx2024
+  nflx2019
+  nflx2021
+  
+
+### Turn 5  (stop_reason=tool_use)
+- retrieve_information({"prompt": "From this Netflix 10-K text, find the consolidated \"average monthly revenue per paying membership\" (ARM) for 2021, 2020 and 2019, with the reported year-over-year % changes and any consolidated constant-currency figures. Quote the exact sentences describing the ARM change and its drivers (price changes, plan mix, FX). Also state the unit. Text: {{nflx2021}}"})
+  result: ## Consolidated Average Monthly Revenue per Paying Membership (ARM)
+  
+  | Metric | 2021 | 2020 | 2019 |
+  |---|---|---|---|
+  | Average monthly revenue per paying membership | **$11.67** | **$10.91** | **$10.82** |
+  | Year-over-year change (as reported) | **7%** (2021 vs. 2020) | Not reported in this filing | Not reported in this filing |
+  | Consolidated constant-currency change | **Not reported** | — | — |
+  
+  **Unit:** U.S. dollars per paying membership per month. The table header says "in thousands, except revenue per membership and percentages," so the ARM figures are in whole dollars, not thousands.
+  
+  **Calculated 2020 vs. 2019 change:** About 0.8% ($10.91 vs. $10.82). The filing does not report this figure; it only discusses 2021 vs. 2020 and points to the prior 10-K for 2020 vs. 2019.
+  
+  ## Exact Sentences on the ARM Change and Its Drivers
+  
+  From the Consolidated Results of Operations section:
+  
+  > "Consolidated revenues for the year ended December 31, 2021 increased 19% as compared to the year ended December 31, 2020, due to the 11% growth in average paying memberships and a 7% increase in average monthly revenue per paying membership."
+  
+  > "The increase in average monthly revenue per paying membership resulted from our price changes and favorable fluctuations in foreign exchange rates."
+  
+  ## Notes on the Drivers and Constant Currency
+  
+  - **Price changes:** Cited as a driver of the consolidated increase. The filing does not quantify the price contribution.
+  - **Foreign exchange:** Cited as a driver, but the filing gives no consolidated ARM FX impact. The only consolidated FX figure is a revenue impact: "For the year ended December 31, 2021, our revenues would have been approximately $443 million lower had foreign currency exchange rates remained constant with those for the year ended
+  …[truncated 675 chars]
+
+### Turn 6  (stop_reason=tool_use)
+I have 2019, 2021, 2022, 2023 and 2024 from opened text. The 2020 value ($10.91) comes from the FY2021 table, but the 2020-vs-2019 change and its drivers are not stated there, so I'll check the FY2020 10-K.
+- edgar_search({"search_query": "Netflix 10-K 2020 average monthly revenue per paying membership", "ciks": ["NFLX"], "form_types": ["10-K"], "start_date": "2021-01-01", "end_date": "2021-03-31"})
+  result: {"total_matching_documents": 1, "page": 1, "results": [{"form": "10-K", "file_date": "2021-01-28", "period_ending": "2020-12-31", "company": "NETFLIX INC  (NFLX)  (CIK 0001065280)", "ciks": ["0001065280"], "accession": "0001065280-21-000040", "document": "nflx-20201231.htm", "description": "10-K", "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528021000040/nflx-20201231.htm"}]}
+
+### Turn 7  (stop_reason=tool_use)
+- parse_html_page({"url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528021000040/nflx-20201231.htm", "key": "nflx2020"})
+  result: SUCCESS: The result has been saved to the data storage under the key: nflx2020. (235,615 characters)
+  The data_storage currently contains the following keys:
+  nflx2024
+  nflx2019
+  nflx2021
+  nflx2020
+  
+
+### Turn 8  (stop_reason=tool_use)
+- retrieve_information({"prompt": "From this Netflix 10-K text, find the consolidated \"average monthly revenue per paying membership\" (ARM) for 2020 and 2019, the reported year-over-year % change, and the sentences explaining the drivers of the change (price changes, plan mix, foreign exchange). Quote the exact sentences. Text: {{nflx2020}}"})
+  result: **Average monthly revenue per paying membership (consolidated, Global Streaming Memberships table):**
+  
+  - **2020:** $10.91
+  - **2019:** $10.82
+  - **Reported year-over-year change:** 1%
+  
+  The 2018 figure, for reference, was $10.31.
+  
+  **Driver sentences (quoted exactly):**
+  
+  > "The increase in average monthly revenue per paying membership resulted from our price changes and plan mix, partially offset by unfavorable fluctuations in foreign exchange rates."
+  
+  The same section also states:
+  
+  > "The increase in our consolidated revenues was due to the 24% growth in average paying memberships and a 1% increase in average monthly revenue per paying membership."
+  
+  **Foreign exchange context:**
+  
+  > "For the year ended December 31, 2020, our revenues would have been approximately $596 million higher had foreign currency exchange rates remained constant with those for the year ended December 31, 2019."
+  
+  This sentence is about total revenues rather than ARM specifically. The filing does not give a consolidated constant-currency change for ARM. It provides constant-currency figures only by region.
+
+### Turn 9  (stop_reason=tool_use)
+**Answer:** Netflix's consolidated average monthly revenue per paying membership (ARM) rose from $10.82 in 2019 to $11.70 in 2024, an increase of $0.88 or 8.13%. It grew in most years but dipped in 2023. The 5-year CAGR is about 1.58%.
+
+**Reported figures (consolidated, USD per paying membership per month, whole dollars):**
+
+| Year | ARM | Change vs. prior year (calculated unless noted) |
+|---|---|---|
+| 2019 | $10.82 | +$0.51 (+5%, as reported) vs. 2018's $10.31 |
+| 2020 | $10.91 | +$0.09 (+0.83%); reported as 1% |
+| 2021 | $11.67 | +$0.76 (+6.97%); reported as 7% |
+| 2022 | $11.76 | +$0.09 (+0.77%) |
+| 2023 | $11.64 | −$0.12 (−1.02%) |
+| 2024 | $11.70 | +$0.06 (+0.52%); reported as 1% |
+
+The 2022 and 2023 year-over-year changes are my calculations. The FY2024 10-K does not report them, and the 2022 figure appears only in that filing's comparison table.
+
+**Calculations:**
+- Total change 2019→2024: $11.70 − $10.82 = $0.88; $0.88 / $10.82 = 8.13%.
+- CAGR over 5 years (2019→2024): (11.70 / 10.82)^(1/5) − 1 ≈ 1.58%.
+
+**Drivers and constant currency:**
+- **2020:** The filing says the increase 
+resulted from our price changes and plan mix, partially offset by unfavorable fluctuations in foreign exchange rates.
+ No consolidated constant-currency ARM change is given.
+- **2021:** Reported growth of 7% was attributed to 
+price changes and favorable fluctuations in foreign exchange rates.
+ No consolidated constant-currency ARM figure is given.
+- **2023–2024:** The FY2024 10-K reports c
+…[truncated 1,583 chars]
+- submit_final_result({"final_result": "Netflix's consolidated average monthly revenue per paying membership (ARM) rose from $10.82 in 2019 to $11.70 in 2024, an increase of $0.88 or 8.13%. The 5-year CAGR is about 1.58%. Growth was uneven: 2021 rose about 7%, 2020 and 2022 rose under 1%, and 2023 fell about 1%.\n\nReported figures (consolidated, USD per paying membership per month):\n- 2019: $10.82 (reported +5% vs. 2018's $10.31)\n- 2020: $10.91 (+$0.09, +0.83% calculated; reported as 1%)\n- 2021: $11.67 (+$0.76, +6.97% calculated; reported as 7%)\n- 2022: $11.76 (+$0.09, +0.77% calculated)\n- 2023: $11.64 (−$0.12, −1.02% calculated)\n- 2024: $11.70 (+$0.06, +0.52% calculated; reported as 1%)\n\nCalculations: 1
+…[truncated 867 chars])
+
+### Final answer
+Netflix's consolidated average monthly revenue per paying membership (ARM) rose from $10.82 in 2019 to $11.70 in 2024, an increase of $0.88 or 8.13%. The 5-year CAGR is about 1.58%. Growth was uneven: 2021 rose about 7%, 2020 and 2022 rose under 1%, and 2023 fell about 1%.
+
+Reported figures (consolidated, USD per paying membership per month):
+- 2019: $10.82 (reported +5% vs. 2018's $10.31)
+- 2020: $10.91 (+$0.09, +0.83% calculated; reported as 1%)
+- 2021: $11.67 (+$0.76, +6.97% calculated; reported as 7%)
+- 2022: $11.76 (+$0.09, +0.77% calculated)
+- 2023: $11.64 (−$0.12, −1.02% calculated)
+- 2024: $11.70 (+$0.06, +0.52% calculated; reported as 1%)
+
+Calculations: 11.70 − 10.82 = 0.88; 0.88 / 10.82 = 8.13%. CAGR = (11.70/10.82)^(1/5) − 1 ≈ 1.58%.
+
+Drivers: 2020 ARM growth was attributed to price changes and plan mix, partially offset by unfavorable FX. 2021 growth was attributed to price changes and favorable FX; no consolidated constant-currency ARM figure was given. In 2024, reported ARM rose about 1% but constant-currency ARM rose 4%, with the gap mainly attributed to the Argentine peso devaluation.
+
+Sources: Netflix FY2024 10-K (https://www.sec.gov/Archives/edgar/data/1065280/000106528025000044/nflx-20241231.htm); FY2021 10-K (https://www.sec.gov/Archives/edgar/data/1065280/000106528022000036/nflx-20211231.htm); FY2020 10-K (https://www.sec.gov/Archives/edgar/data/1065280/000106528021000040/nflx-20201231.htm); FY2019 10-K (https://www.sec.gov/Archives/edgar/data/1065280/000106528020000040/form10kq419.htm).

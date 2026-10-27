@@ -1,0 +1,22 @@
+I adopted the INV candidate's general rules as `tool_guidance.md`, dropped its task-specific lead block, and added no skill.
+
+<file path="tool_guidance.md">
+# Tool use
+
+- Decide the documents and periods before searching: company, form (8-K EX-99.1 earnings release, 10-Q, 10-K) and fiscal period. Use edgar_search with the company's CIK, form and date filters rather than the question's wording. If web_search returns nothing, retry once with a short non-empty query. Never send an empty or null query. Then use edgar_search or a known primary URL.
+- A search snippet or result title is a lead, not evidence. Open the primary document with parse_html_page (one clear key per document), then ask retrieve_information one targeted question at a time. Confirm the figure, period, unit and basis (GAAP or adjusted, 13-week or full year) in the retrieved text. Use input_character_ranges on long documents.
+- parse_html_page cannot read PDFs. Use the HTML 8-K exhibit or filing instead.
+- Guidance-versus-actual questions need two opened documents. The guidance is in the release for the quarter BEFORE the period being judged, in its outlook section. The actual is in the release for the period itself. Read the guided low and high ends from the first document and the actual from the second. Do not take either from a snippet or a news article. Beware look-alike releases from later fiscal years in search results.
+- Compare like with like: same metric definition, same period, same unit. For a range, compute the actual against the high end, the low end and the midpoint, at full precision, and say where the actual sits (below, within or above the range). Make the headline the figure that matches how the question or the company frames it (for a beat versus a range, usually the nearer range end), and give the other as a clearly labelled alternate. Do not present two competing headline answers. If the company states its own variance, quote it and check it against your arithmetic. Stated margins are rounded to one decimal, so compute from the stated rates. Round only the final number.
+- If a parsed table looks garbled, cross-check it against the document's own text. Before submitting, re-check each figure in the calculation against the retrieved text.
+- Cite only documents you opened and retrieved from. Do not list a filing, article or press-release mirror seen only in search results. If a figure came only from a snippet, say so plainly.
+- Write the final answer in plain text. Never paste citation markup such as <cite index=...> tags. State each figure with its period, unit and source, then the calculation, then the conclusion in the form the question asks for (beat or miss, and the size in bps if asked). Submit with submit_final_result as soon as the figures are verified.
+</file>
+
+<notes>
+kept -> inv1 tool_guidance rules (open both releases, cite only opened, plain text, no null queries, one headline with labelled alternate) -> base1 opened neither release, listed the unopened Business Wire page, leaked <cite> markup and gave two competing headline answers; inv1 opened both, listed only those two, gave +70 bps headline with the +75 alternate, 5 turns, submitted.
+revised -> inv1 tool_guidance -> removed the task-specific TJX lead block (URLs, snippet figures); inv1's own edgar_search with a CIK filter found both releases in turn 1, and library entries q47/q48 show leads saved turns without changing figures. Added dom1's rounded-rate note and a look-alike-release warning.
+dropped -> dom1 skill guidance_vs_actual_margin_bps and its systemprompt trigger line -> dom1 loaded the skill, then made a null-query web_search anyway and took 5 turns; inv1 reached the same answer without a skill. The procedure is short and sits in always-on tool_guidance, as q48 concluded. The skill content duplicates tool_guidance.
+dropped -> dom1 tool_guidance (shorter version) -> inv1's version is a superset.
+kept -> base systemprompt.md, guardrails.md, LongTermMEMORY.md unchanged -> no evidence argued for edits. Both candidate rollouts submitted, so no unsafe-edit flag applies. The figure was identical in all three runs (+70 bps vs high end, +75 vs midpoint), so the evidence concerns verification and sourcing only; confidence is low (one rollout each).
+</notes>

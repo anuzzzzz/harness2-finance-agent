@@ -1,0 +1,137 @@
+{
+ "task_id": "q11",
+ "label": "ctl4",
+ "question": "How many common stock shares are outstanding for ABNB? Format \"Class X: X shares\" add line break.",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Airbnb annual report shares of Class A Class B common stock outstanding",
+      "ciks": [
+       "ABNB"
+      ],
+      "form_types": [
+       "10-K"
+      ],
+      "start_date": "2024-01-01"
+     },
+     "output": "{\"total_matching_documents\": 3, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-13\", \"period_ending\": \"2024-12-31\", \"company\": \"Airbnb, Inc.  (ABNB)  (CIK 0001559720)\", \"ciks\": [\"0001559720\"], \"accession\": \"0001559720-25-000010\", \"document\": \"abnb-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-02-16\", \"period_ending\": \"2023-12-31\", \"company\": \"Airbnb, Inc.  (ABNB)  (CIK 0001559720)\", \"ciks\": [\"0001559720\"], \"accession\": \"0001559720-24-000006\", \"document\": \"abnb-20231231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000006/abnb-20231231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-13\", \"period_ending\": \"2024-12-31\", \"company\": \"Airbnb, Inc.  (ABNB)  (CIK 0001559720)\", \"ciks\": [\"0001559720\"], \"accession\": \"0001559720-25-000010\", \"document\": \"exh191-airbnbinsidertradin.htm\", \"description\": \"EX-19.1\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/exh191-airbnbinsidertradin.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 1.24,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00020121
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+      "key": "abnb10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: abnb10k. (452,800 characters)\nThe data_storage currently contains the following keys:\nabnb10k\n",
+     "is_error": false,
+     "elapsed_s": 0.93,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this 10-K document, find the cover page statement of shares outstanding of each class of common stock as of the latest date stated (e.g., \"As of February X, 2025, there were ... shares of Class A, Class B and Class C common stock outstanding\"). Quote the exact sentence and the numbers for each class. {{abnb10k}}",
+      "input_character_ranges": [
+       {
+        "key": "abnb10k",
+        "start": 0,
+        "end": 15000
+       }
+      ]
+     },
+     "output": "I can't quote that sentence because the text you provided doesn't include it. The document is only the XBRL header and tag metadata for Airbnb's fiscal 2024 10-K (ticker ABNB). It contains no cover page prose, so the share counts aren't in it.\n\nThe metadata does show the cover page share-count date. Contexts for Class A, Class B, Class C, and Class H common stock are all dated **January 31, 2025**, which is likely the \"as of\" date for the cover page statement. The actual numbers are not in the header.\n\nTo get the exact sentence and figures, paste the cover page text (usually just below the registrant's name and address and the check boxes) or the full 10-K. I can then quote the sentence and list the number of shares for each class.",
+     "is_error": false,
+     "elapsed_s": 5.18,
+     "cost_usd": 0.001359
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000320385
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "Find the sentence on the cover page stating the number of shares outstanding of each class of Airbnb common stock (Class A, Class B, Class C, Class H) and the date. Give the exact numbers. Text: {{abnb10k}}",
+      "input_character_ranges": [
+       {
+        "key": "abnb10k",
+        "start": 15000,
+        "end": 45000
+       }
+      ]
+     },
+     "output": "The cover page states:\n\n\"As of January 31, 2025, 432,876,657 shares of the registrant's Class A common stock were outstanding, 188,462,942 shares of the registrant's Class B common stock were outstanding, no shares of the registrant's Class C common stock were outstanding, and 9,200,000 shares of the registrant's Class H common stock were outstanding.\"\n\nSo, as of January 31, 2025:\n- **Class A:** 432,876,657\n- **Class B:** 188,462,942\n- **Class C:** 0\n- **Class H:** 9,200,000",
+     "is_error": false,
+     "elapsed_s": 2.06,
+     "cost_usd": 0.001816
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00027385500000000004
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Per Airbnb's FY2024 Form 10-K (filed February 13, 2025), the cover page states: \"As of January 31, 2025, 432,876,657 shares of the registrant's Class A common stock were outstanding, 188,462,942 shares of the registrant's Class B common stock were outstanding, no shares of the registrant's Class C common stock were outstanding, and 9,200,000 shares of the registrant's Class H common stock were outstanding.\"\n\nClass A: 432,876,657 shares\nClass B: 188,462,942 shares\nClass C: 0 shares\nClass H: 9,200,000 shares\n\nTotal across all classes: 630,539,599 shares (432,876,657 + 188,462,942 + 9,200,000). Class A and Class B combined: 621,339,599 shares.\n\nNote: these are the most recent counts I could find as of April 7, 2025 (the 10-Q for Q1 2025 had not yet been filed), and they are as of January 31, 2025.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}"
+     },
+     "output": "Per Airbnb's FY2024 Form 10-K (filed February 13, 2025), the cover page states: \"As of January 31, 2025, 432,876,657 shares of the registrant's Class A common stock were outstanding, 188,462,942 shares of the registrant's Class B common stock were outstanding, no shares of the registrant's Class C common stock were outstanding, and 9,200,000 shares of the registrant's Class H common stock were outstanding.\"\n\nClass A: 432,876,657 shares\nClass B: 188,462,942 shares\nClass C: 0 shares\nClass H: 9,200,000 shares\n\nTotal across all classes: 630,539,599 shares (432,876,657 + 188,462,942 + 9,200,000). Class A and Class B combined: 621,339,599 shares.\n\nNote: these are the most recent counts I could find as of April 7, 2025 (the 10-Q for Q1 2025 had not yet been filed), and they are as of January 31, 2025.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000426895
+  }
+ ],
+ "final_answer": "Per Airbnb's FY2024 Form 10-K (filed February 13, 2025), the cover page states: \"As of January 31, 2025, 432,876,657 shares of the registrant's Class A common stock were outstanding, 188,462,942 shares of the registrant's Class B common stock were outstanding, no shares of the registrant's Class C common stock were outstanding, and 9,200,000 shares of the registrant's Class H common stock were outstanding.\"\n\nClass A: 432,876,657 shares\nClass B: 188,462,942 shares\nClass C: 0 shares\nClass H: 9,200,000 shares\n\nTotal across all classes: 630,539,599 shares (432,876,657 + 188,462,942 + 9,200,000). Class A and Class B combined: 621,339,599 shares.\n\nNote: these are the most recent counts I could find as of April 7, 2025 (the 10-Q for Q1 2025 had not yet been filed), and they are as of January 31, 2025.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 6,
+  "input_tokens": 18,
+  "output_tokens": 2512,
+  "cache_creation_input_tokens": 23218,
+  "cache_read_input_tokens": 23697,
+  "web_search_requests": 0,
+  "cost_usd": 0.004397
+ },
+ "cost_usd": 0.004397,
+ "elapsed_s": 20.0,
+ "harness_label": "ctl4"
+}

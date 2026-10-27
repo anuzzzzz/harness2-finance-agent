@@ -1,0 +1,14 @@
+---
+name: material_cash_requirements_table
+description: Answer "what are the company's material cash requirements / contractual obligations / projected cash needs for next year" from a 10-K's MD&A Liquidity and Capital Resources table.
+---
+ANALYTIC MOVE: locate and read (then sum, if needed). Inputs: the latest 10-K on or before the as-of date. Result: the near-term (next-12-months) total of the obligations table, with its components.
+
+1. Where it lives. In a 10-K, "Item 7. MD&A - Liquidity and Capital Resources" has a "Material Cash Requirements" paragraph followed by a table. Netflix-style layout: rows for content obligations, debt (principal plus interest), operating lease obligations and a Total row. Columns: Total, Next 12 Months (also called "Less than 1 year"), Beyond 12 Months. Other filers use 1 year / 2-3 years / 4-5 years / thereafter.
+2. Period mapping. A FY2024 10-K (balance sheet date Dec 31, 2024) gives the "next 12 months" = calendar 2025. For "projected requirements for 2025", use the next-12-months column. Also report the all-period Total and the beyond-12-month figure, and say which one answers the question.
+3. Retrieve every row and column from the opened 10-K text, not from a snippet. Check that the rows sum to the printed Total, and that the Next-12 plus Beyond-12 columns equal the Total column. If a printed total and your sum differ, report both and say so.
+4. Cross-check. The content-obligations row should match the content-obligations footnote (commitments note, "less than one year" line). The debt row should match the debt note's maturities plus interest. State the units (usually $ thousands in the statements; the MD&A may say "in thousands"). Convert to $ billions only at the end.
+5. Exclusions to state plainly. Note any footnote on the table: for example, the obligations may exclude unknown future content titles or other items (such as taxes or uncertain tax positions) that the filing says are not included. Say these are outside the table's figure and that actual 2025 cash outflows will be larger than the table.
+6. Answer contract: the next-12-months total with its components (each with period and units), the arithmetic sum, the all-period total for context, the footnoted exclusions, and the 10-K URL, filing date and period end. Plain text, no citation markup. List only opened documents as sources.
+
+Task fact (this task, Netflix FY2024 10-K, filed 2025-01-27, accession 0001065280-25-000044): https://www.sec.gov/Archives/edgar/data/1065280/000106528025000044/nflx-20241231.htm. A prior run took these numbers from search snippets only. The numbers are NOT yet verified against the opened filing: content 11,424,696; debt 2,486,945; operating leases 514,625 (all next-12-months, $ thousands); next-12 total 14,426,266; all-period total 45,851,513. Re-confirm each in the opened 10-K text before using it.

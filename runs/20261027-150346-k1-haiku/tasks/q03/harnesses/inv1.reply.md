@@ -1,0 +1,22 @@
+<file path="tool_guidance.md">
+# Tool use
+
+- Decide the documents and periods before searching: company, form (8-K EX-99.1 earnings release, 10-Q, 10-K) and fiscal period. Use edgar_search with company, form and date filters rather than the question's wording. If web_search returns nothing, retry once with a short non-empty query. Never send an empty or null query. Then use edgar_search or a known primary URL.
+- A search snippet or result title is a lead, not evidence. Open the primary document with parse_html_page (one clear key per document), then ask retrieve_information one targeted question at a time. Confirm the figure, period, unit and basis in the retrieved text. Use input_character_ranges on long documents.
+- parse_html_page cannot read PDFs. Use the HTML 8-K exhibit or filing instead.
+- Guidance-versus-actual questions need two opened documents. The guidance is in the release for the quarter BEFORE the period being judged, in its outlook section. The actual is in the release for the period itself. Read the guided low and high ends from the first document and the actual from the second. Do not take either from a snippet or a news article.
+- Compare like with like: same metric definition, same period, same unit. For a range, compute the actual against the high end, the low end and the midpoint, at full precision. Say where the actual sits (below, within or above the range). Make the headline the figure that matches how the company or the question frames it, and give the other as a clearly labelled alternate. Do not present two competing headline answers. If the company states its own variance, quote it and check that it matches your arithmetic. Round only the final number.
+- If a parsed table looks garbled, cross-check it against the document's own text. Before submitting, re-check each figure in the calculation against the retrieved text.
+- Cite only documents you opened and retrieved from. Do not list a filing, article or press-release mirror seen only in search results. If a figure came only from a snippet, say so plainly.
+- Write the final answer in plain text. Never paste citation markup such as <cite index=...> tags. State each figure with its period, unit and source, then the calculation, then the conclusion in the form the question asks for (beat or miss, and the size in bps if asked). Submit with submit_final_result as soon as the figures are verified.
+
+Leads for this task (TJX Q4 FY2025 pre-tax profit margin versus guidance). These came from search snippets only, so re-confirm each in the opened text:
+- TJX's fiscal 2025 ended Feb 1, 2025. Q4 is the 13 weeks ended Feb 1, 2025.
+- Actual: the Q4 FY25 earnings release, 8-K EX-99.1, filed around 2025-02-26: https://www.sec.gov/Archives/edgar/data/109198/000010919825000006/tjxq4fy25earningspressrele.htm. It reportedly gives a Q4 pretax profit margin of 11.6%.
+- Guidance: the Q3 FY25 earnings release (around 2024-11-20) has the Q4 outlook, reportedly a pretax profit margin of 10.8% to 10.9%. The URL has not been verified. Find it with edgar_search for TJX 8-K filed 2024-11-01 to 2024-12-15. A Q3 FY26 release (tjxq3fy26...) is a different fiscal year, so do not use it.
+- The Q4 release reportedly says the margin was above the high end of plan by 0.7 percentage points. Verify this in the opened text, and check whether the plan was a range or a point. Pretax margin is a stated percentage to one decimal, so use the stated percentages. Units are percentage points, and 0.1 point = 10 bps.
+</file>
+
+<notes>
+Motivating moment: base1 made one failed web_search, one edgar_search and a null-query web_search, then submitted from snippets. It opened neither the Q3 FY25 release (guidance) nor the Q4 FY25 release (actual). It listed the unopened Business Wire page as a source, leaked raw <cite index> markup, and gave two competing headline answers (70 bps vs high end, 75 bps vs midpoint). The edit is modeled on the q47/q48 library entries, which showed that open-both-documents, cite-only-opened and plain-text rules changed this behavior without changing figures. New here: one headline with a labelled alternate for range guidance. The leads are labelled as snippet-only and unverified. Guidance 10.8–10.9% and actual 11.6% come from search snippets only, and the Q3 FY25 release URL is unknown, so the file says to find it with edgar_search. No skill, because the procedure is short, as in q48.
+</notes>

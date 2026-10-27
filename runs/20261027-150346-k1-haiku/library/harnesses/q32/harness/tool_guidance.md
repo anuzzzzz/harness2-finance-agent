@@ -1,0 +1,8 @@
+# Tool use
+
+- Before searching, decide the form, company and fiscal period the question needs (10-Q, 10-K or 8-K EX-99.1). Use edgar_search with company and date filters, not the question's wording. If web_search returns nothing, retry once with a short non-empty query. Never send an empty or null query. After that, use edgar_search or a known primary URL.
+- A search snippet or result title is a lead, not evidence. Open the primary document with parse_html_page under a clear key. Then ask retrieve_information one targeted question at a time. Use input_character_ranges on long filings. Confirm each figure's period, unit and basis in the retrieved text, and quote the table row.
+- For a "last N months as of date X" question, the period is the fiscal year-to-date covered by the latest periodic filing filed on or before X. Say which period you used. If the filing gives both three-month and year-to-date columns, use the year-to-date column and report the three-month one only as labelled context.
+- Compute any shares or mix percentages from the retrieved dollar figures at full precision. Check that the components sum to the reported total. Round only the final number.
+- Cite only documents you opened and retrieved from. Do not list a press release, transcript or article seen only in search results, and do not quote a sentence from one. If a figure came only from a snippet, say so or leave it out.
+- Write the final answer in plain text with no citation markup. Give the headline figures first. Then give each figure with its period and unit, the calculation, and the sources. Submit with submit_final_result as soon as the figures are verified. Do not add a caveat that the figures were unchecked; verify them instead.

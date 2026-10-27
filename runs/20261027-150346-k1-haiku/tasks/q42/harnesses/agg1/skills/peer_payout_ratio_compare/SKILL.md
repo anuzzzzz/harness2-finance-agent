@@ -1,0 +1,14 @@
+---
+name: peer_payout_ratio_compare
+description: Compare a company's dividend payout ratio with its competitors' for a fiscal year and rank them, using one definition and basis for every company and figures retrieved from each 10-K.
+---
+ANALYTIC MOVE: compute the same ratio for a named company and its peers, then rank highest to lowest.
+
+1. Peer set first. Name the direct listed competitors (from the 10-K competition section or obvious large-cap peers that file 10-Ks) and say why each is in or out. A peer paying no regular dividend cannot be meaningfully ranked: list it as excluded or "no dividend" rather than silently dropping it. Bottlers or companies with special dividends are weak comparables; if included, flag the distortion.
+2. One definition for all. Headline = dividends declared per common share for the fiscal year / GAAP diluted EPS. Cross-check = cash dividends paid (cash-flow statement) / net income attributable to the company's shareholders. Do not mix declared for one company with paid for another. If the two differ by more than rounding, say why (declared vs paid timing, share count).
+3. Basis. Give one primary ranking on GAAP. Adjusted/core EPS (often only in the Q4 earnings release EX-99.1, not the 10-K) is a labelled secondary column, shown only if retrieved from an opened document; say whether the order changes. Never divide GAAP dividends by non-GAAP EPS in the primary ranking, and do not present two rankings as equal answers.
+4. Per company, open the FY 10-K (one key per company) and retrieve: dividends declared per share, diluted EPS, cash dividends paid, net income attributable. Confirm period, unit and basis in the text. Fiscal years may end on a non-December date (PepsiCo: Dec 28, 2024); a per-share dividend that is a sum of quarterly declarations (rate changes mid-year) must be summed, not quarterly x 4, and checked against the annual figure.
+5. Compute with unrounded inputs; round only the final ratio (two decimals).
+6. Answer: ranked list with each ratio; a table of inputs with period, unit and source; the formula and calculations; the cross-check; excluded peers; one line on basis. Flag outliers (payout above 100%, GAAP EPS depressed by impairments/one-offs). Cite only documents actually opened.
+
+Leads from earlier runs (re-confirm in the filings; both runs retrieved these from the 10-Ks): FY2024 KO dividends $1.94/share, GAAP diluted EPS $2.46. PEP dividends $5.33/share (5.3300 in 10-K), GAAP EPS $6.95, core EPS $8.16. KDP dividends $0.89/share, GAAP EPS $1.05. KO 10-K: https://www.sec.gov/Archives/edgar/data/21344/000002134425000011/ko-20241231.htm. KDP 10-K: https://www.sec.gov/Archives/edgar/data/1418135/000141813525000013/kdp-20241231.htm. PEP 10-K: https://www.sec.gov/Archives/edgar/data/77476/000007747625000007/pep-20241228.htm. Coca-Cola Consolidated 10-K: https://www.sec.gov/Archives/edgar/data/317540/000031754025000025/coke-20241231.htm (special dividend distorts its ratio).

@@ -1,0 +1,194 @@
+{
+ "task_id": "q29",
+ "label": "static1",
+ "question": "List the Operating KPIs Spirit Airlines (NYSE: SAVE) tracked in FY 2024. Provide the KPI and FY 2024 Total.",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_015iuvhrzmDTAiRQJESD7GYL",
+     "query": "Spirit Airlines 10-K 2024 operating statistics available seat miles load factor",
+     "results": []
+    }
+   ],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Spirit Airlines annual report 2024 operating statistics",
+      "ciks": [
+       "SAVE"
+      ],
+      "start_date": "2025-01-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "ValueError: Unknown ticker 'SAVE'. Provide a numeric CIK instead.",
+     "is_error": true,
+     "elapsed_s": 0.64,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000208485
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_015iuvhrzmDTAiRQJESD7GYL",
+     "query": null,
+     "results": [
+      {
+       "title": "Spirit Airlines, Inc. - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1498710/000149871025000008/save-20241231.htm",
+       "page_age": null
+      },
+      {
+       "title": "Spirit Aviation Holdings, Inc. (Form: 10-K, Received: 03/16/2026 17:23:02)",
+       "url": "https://www.otcmarkets.com/filing/html?id=19253367&guid=ynC-kpluZfruQOh",
+       "page_age": "225 days ago"
+      },
+      {
+       "title": "Spirit Airlines 2024 Operating Analysis",
+       "url": "https://www.scribd.com/document/867528160/discussion-7-spirit",
+       "page_age": null
+      },
+      {
+       "title": "Spirit Aviation Holdings, Inc. - 10K - Annual Report - February 9, 2024",
+       "url": "https://fintel.io/doc/sec-spirit-airlines-inc-1498710-10k-2024-february-09-19762-4794",
+       "page_age": "785 days ago"
+      },
+      {
+       "title": "Spirit Airlines, Inc.",
+       "url": "https://www.sec.gov/Archives/edgar/data/1498710/000149871024000192/save-20240630.htm",
+       "page_age": null
+      },
+      {
+       "title": "Document",
+       "url": "https://www.sec.gov/Archives/edgar/data/1498710/000149871024000165/earningsrelease1q24.htm",
+       "page_age": null
+      },
+      {
+       "title": "Spirit Airlines Reports $1.2 Billion Loss For 2024 With Plans For Recovery",
+       "url": "https://simpleflying.com/spirit-airlines-1-billion-loss-2024-plans-recovery/",
+       "page_age": "602 days ago"
+      },
+      {
+       "title": "Spirit Airlines Reports First Quarter 2024 Results",
+       "url": "https://www.prnewswire.com/news-releases/spirit-airlines-reports-first-quarter-2024-results-302136411.html",
+       "page_age": "904 days ago"
+      },
+      {
+       "title": "Spirit Airlines Reports Second Quarter 2024 Results",
+       "url": "https://www.prnewswire.com/news-releases/spirit-airlines-reports-second-quarter-2024-results-302211784.html",
+       "page_age": "817 days ago"
+      },
+      {
+       "title": "Spirit Airlines Financials: Bankruptcy, Debt & 10-K Data",
+       "url": "https://dwuconsulting.com/dwu-ai/spirit-airlines-financial-profile",
+       "page_age": "30 days ago"
+      }
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1498710/000149871025000008/save-20241231.htm",
+      "key": "save10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: save10k. (635,378 characters)\nThe data_storage currently contains the following keys:\nsave10k\n",
+     "is_error": false,
+     "elapsed_s": 0.51,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.01127122
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Spirit Airlines FY2024 10-K, list every operating KPI / operating statistic the company tracks (e.g., in the \"Comparative Operating Statistics\" table and any \"Key Performance Indicators\" or non-GAAP/operating metrics section). For each, give the FY2024 (twelve months ended December 31, 2024) total value exactly as reported, with units, and the 2023 comparison. Also note the section heading where each appears. Text: {{save10k}}"
+     },
+     "output": "I'll work from the \"Comparative Operating Statistics\" table in Item 7 (MD&A), plus the other operating metrics the filing defines in its MD&A and Glossary. Values are as reported in the filing.\n\n**Section heading: \"Comparative Operating Statistics\" (Item 7, MD&A, \"Operating Statistics (unaudited)\")**\n\n| Metric | FY2024 (12 months ended Dec 31, 2024) | FY2023 | % Change (as reported) |\n|---|---|---|---|\n| Average aircraft | 209.9 | 199.5 | 5.2% |\n| Aircraft at end of period (includes 21 held for sale) | 213 | 205 | 3.9% |\n| Average daily aircraft utilization (hours) | 9.9 | 11.1 | (10.8)% |\n| Departures | 288,180 | 297,900 | (3.3)% |\n| Passenger flight segments (PFSs) (thousands) | 44,180 | 44,105 | 0.2% |\n| Revenue passenger miles, RPMs (thousands) | 43,671,009 | 45,243,787 | (3.5)% |\n| Available seat miles, ASMs (thousands) | 53,017,948 | 55,665,561 | (4.8)% |\n| Load factor (%) | 82.4% | 81.3% | 1.1 pts |\n| Total revenue per passenger flight segment ($) | 111.21 | 121.58 | (8.5)% |\n| Average yield (cents) | 11.25 | 11.85 | (5.1)% |\n| TRASM (cents) | 9.27 | 9.63 | (3.7)% |\n| CASM (cents) | 11.35 | 10.52 | 7.9% |\n| Adjusted CASM (cents) | 10.76 | 10.33 | 4.2% |\n| Adjusted CASM ex-fuel (cents) | 7.97 | 7.06 | 12.9% |\n| Fuel gallons consumed (thousands) | 551,819 | 591,796 | (6.8)% |\n| Average fuel cost per gallon ($) | 2.68 | 3.08 | (13.0)% |\n\n**Other operating metrics disclosed outside that table**\n\n- **Operating Revenues table (Item 7, \"Operating Revenues\"):** TRASM 9.27 cents (\u22123.7%) and total revenue per passenger flight segment $111.21 (\u22128.5%), same values as above.\n- **CASM table (Item 7, \"Operating Expenses\"):** Per-ASM cost line items for 2024 vs. 2023 (CASM 11.35 vs. 10.52; Salaries, wages and benefits 3.19 vs. 2.90; Aircraft fuel 2.79 vs. 3.27; Aircraft rent 1.02 vs. 0.68; Landing fees and other rentals 0.85 vs. 0.73; Depreciation and amortization 0.61 vs. 0.58; Maintenance, materials and repairs 0.41 vs. 0.40; Distribution 0.37 vs. 0.34; Special charges (credits) 0.07 vs. 0.12; Loss (gain) on disposal of assets 0.52 vs. 0.06; Other operating expenses 1.52 vs. 1.42; Adjusted CASM 10.76 vs. 10.33; Adjusted CASM ex-fuel 7.97 vs. 7.06).\n- **Non-GAAP reconciliation (Item 7, \"Operating Expenses,\" CASM to Adjusted CASM table):** Adjusted CASM reconciliation in $ millions and cents per ASM. 2024: special charges $36.0 (0.07), loss on disposal $273.9 (0.52), litigation loss contingency $(1.7) (\u2014), furlough-related expenses $4.9 (0.01). 2023: special charges $69.5 (0.12), loss on disposal $34.0 (0.06), litigation loss contingency $6.0 (0.01), furlough expenses $\u2014 .\n- **Aircraft fuel table (Item 7, \"Operating Expenses\"):** Fuel gallons consumed 551,819 vs. 591,796 (thousands); into-plane fuel cost per gallon $2.68 vs. $3.08; aircraft fuel expense $1,479,203 vs. $1,821,165 (thousands).\n- **Trends/Glossary and other MD&A narrative:** Operating margin of \u221222.5% (2024) and fleet/utilization figures are mentioned in text; the Glossary defines CASM, ASMs, RPMs, load factor, etc., but does not add new values.\n\n**Note on scope:** The 10-K contains no separate \"Key Performance Indicators\" section. Its operating metrics appear in the Comparative Operating Statistics table, the Operating Revenues and Operating Expenses subsections, and the Adjusted CASM non-GAAP reconciliation within Item 7. Item 6 (Selected Financial Data) is \"Not applicable.\"",
+     "is_error": false,
+     "elapsed_s": 8.0,
+     "cost_usd": 0.138596
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00028098
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "Quote the exact rows of the \"Comparative Operating Statistics\" table and the Operating Revenues / Operating Expenses per-ASM tables for 2024 and 2023 from this text, including any rows for average yield, TRASM, CASM, Adjusted CASM, total revenue per passenger flight segment, fuel gallons, and average fuel cost per gallon. Text: {{save10k}}"
+     },
+     "output": "## Comparative Operating Statistics (Twelve Months Ended December 31)\n\n| Operating Statistic | 2024 | 2023 | Percent Change |\n|---|---|---|---|\n| Average aircraft | 209.9 | 199.5 | 5.2 % |\n| Aircraft at end of period (B) | 213 | 205 | 3.9 % |\n| Average daily aircraft utilization (hours) | 9.9 | 11.1 | (10.8)% |\n| Departures | 288,180 | 297,900 | (3.3)% |\n| Passenger flight segments (PFSs) (thousands) | 44,180 | 44,105 | 0.2 % |\n| Revenue passenger miles (RPMs) (thousands) | 43,671,009 | 45,243,787 | (3.5)% |\n| Available seat miles (ASMs) (thousands) | 53,017,948 | 55,665,561 | (4.8)% |\n| Load factor (%) | 82.4 % | 81.3 % | 1.1 pts |\n| Total revenue per passenger flight segment ($) | 111.21 | 121.58 | (8.5)% |\n| **Average yield (cents)** | **11.25** | **11.85** | **(5.1)%** |\n| **TRASM (cents)** | **9.27** | **9.63** | **(3.7)%** |\n| **CASM (cents)** | **11.35** | **10.52** | **7.9 %** |\n| **Adjusted CASM (cents)** | **10.76** | **10.33** | **4.2 %** |\n| Adjusted CASM ex-fuel (cents) | 7.97 | 7.06 | 12.9 % |\n| **Fuel gallons consumed (thousands)** | **551,819** | **591,796** | **(6.8)%** |\n| **Average fuel cost per gallon ($)** | **2.68** | **3.08** | **(13.0)%** |\n\n## Operating Revenues\n\n| Line item | 2024 | % change 2024 vs. 2023 | 2023 |\n|---|---|---|---|\n| Passenger (thousands) | 4,811,752 | (8.7)% | 5,268,161 |\n| Other (thousands) | 101,669 | 7.7% | 94,388 |\n| Total operating revenue (thousands) | $4,913,421 | (8.4)% | $5,362,549 |\n| **Total operating revenue per ASM (TRASM) (cents)** | **9.27** | **(3.7)%** | **9.63** |\n| **Total revenue per passenger flight segment** | **$111.21** | **(8.5)%** | **$121.58** |\n\nThe text does not present a separate per-ASM table for average yield in the operating revenues section. Average yield (11.25 cents in 2024, 11.85 cents in 2023) appears only in the Comparative Operating Statistics table.\n\n## Operating Expenses (CASM by line item)\n\n| Line item | 2024 CASM | Per-ASM change | Percent change | 2023 CASM |\n|---|---|---|---|---|\n| Salaries, wages and benefits | $3.19 | $0.29 | 10.0% | $2.90 |\n| Aircraft fuel | 2.79 | (0.48) | (14.7) | 3.27 |\n| Aircraft rent | 1.02 | 0.34 | 50.0 | 0.68 |\n| Landing fees and other rentals | 0.85 | 0.12 | 16.4 | 0.73 |\n| Depreciation and amortization | 0.61 | 0.03 | 5.2 | 0.58 |\n| Maintenance, materials and repairs | 0.41 | 0.01 | 2.5 | 0.40 |\n| Distribution | 0.37 | 0.03 | 8.8 | 0.34 |\n| Special charges (credits) | 0.07 | (0.05) | NM | 0.12 |\n| Loss (gain) on disposal of assets | 0.52 | 0.46 | NM | 0.06 |\n| Other operating expenses | 1.52 | 0.10 | 7.0 | 1.42 |\n| **Total operating expense CASM** | **11.35** | **0.83** | **7.9** | **10.52** |\n| **Adjusted CASM (1)** | **10.76** | **0.43** | **4.2** | **10.33** |\n| Adjusted CASM ex fuel (2) | 7.97 | 0.91 | 12.9 | 7.06 |\n\n(1) and (2) are the footnotes given in the source. Adjusted CASM excludes special charges, loss (gain) on disposal of assets, furlough-related expenses and litigation loss contingency adjustments. Adjusted CASM ex fuel also excludes aircraft fuel expense.\n\n## Aircraft Fuel (gallons and cost per gallon)\n\n| Measure | 2024 | 2023 | Percent Change |\n|---|---|---|---|\n| Fuel gallons consumed (thousands) | 551,819 | 591,796 | (6.8)% |\n| Into-plane fuel cost per gallon | $2.68 | $3.08 | (13.0)% |\n| Aircraft fuel expense (per consolidated statements of operations) | $1,479,203 | $1,821,165 | (18.8)% |",
+     "is_error": false,
+     "elapsed_s": 15.01,
+     "cost_usd": 0.142768
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0005302000000000001
+  },
+  {
+   "turn": 5,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Spirit Airlines (NYSE: SAVE, CIK 1498710) does not label a separate \"Key Performance Indicators\" section in its FY2024 Form 10-K. Its operating metrics sit in the MD&A \"Comparative Operating Statistics\" table (twelve months ended December 31, 2024 vs. 2023), plus the per-ASM operating revenue and expense tables and the fuel table. The FY2024 totals are below.\n\n**Operating statistics table (Item 7, MD&A)**\n\n| KPI | FY2024 Total | FY2023 | % Change |\n|---|---|---|---|\n| Average aircraft | 209.9 | 199.5 | 5.2% |\n| Aircraft at end of period | 213 | 205 | 3.9% |\n| Average daily aircraft utilization (hours) | 9.9 | 11.1 | (10.8)% |\n| Departures | 288,180 | 297,900 | (3.3)% |\n| Passenger flight segments (thousands) | 44,180 | 44,105 | 0.2% |\n| Revenue passenger miles (RPMs, thousands) | 43,671,009 | 45,243,787 | (3.5)% |\n| Available seat miles (ASMs, thousands) | 53,017,948 | 55,665,561 | (4.8)% |\n| Load factor (%) | 82.4% | 81.3% | 1.1 pts |\n| Total revenue per passenger flight segment ($) | 111.21 | 121.58 | (8.5)% |\n| Average yield (cents) | 11.25 | 11.85 | (5.1)% |\n| TRASM \u2013 total operating revenue per ASM (cents) | 9.27 | 9.63 | (3.7)% |\n| CASM \u2013 operating cost per ASM (cents) | 11.35 | 10.52 | 7.9% |\n| Adjusted CASM (cents) | 10.76 | 10.33 | 4.2% |\n| Adjusted CASM ex-fuel (cents) | 7.97 | 7.06 | 12.9% |\n| Fuel gallons consumed (thousands) | 551,819 | 591,796 | (6.8)% |\n| Average fuel cost per gallon ($) | 2.68 | 3.08 | (13.0)% |\n\n**Calculation check:** Load factor is RPMs \u00f7 ASMs = 43,671,009 \u00f7 53,017,948 = 82.37%, which rounds to the reported 82.4%. TRASM is consistent with total operating revenue of $4,913,421 thousand \u00f7 53,017,948 thousand ASMs = 9.27 cents.\n\n**Related per-ASM cost detail (Item 7, Operating Expenses), FY2024 cents per ASM:** Salaries, wages and benefits 3.19; aircraft fuel 2.79; aircraft rent 1.02; landing fees and other rentals 0.85; depreciation and amortization 0.61; maintenance, materials and repairs 0.41; distribution 0.37; special charges 0.07; loss on disposal of assets 0.52; other operating expenses 1.52.\n\n**Note:** Average yield and total revenue per passenger flight segment appear only in the statistics table and the revenue section. The filing's operating-revenue table reports passenger revenue of $4,811,752 thousand and total operating revenue of $4,913,421 thousand for 2024.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1498710/000149871025000008/save-20241231.htm\",\n            \"name\": \"Spirit Airlines, Inc. - Form 10-K - FY2024 (SEC EDGAR)\"\n        }\n    ]\n}"
+     },
+     "output": "Spirit Airlines (NYSE: SAVE, CIK 1498710) does not label a separate \"Key Performance Indicators\" section in its FY2024 Form 10-K. Its operating metrics sit in the MD&A \"Comparative Operating Statistics\" table (twelve months ended December 31, 2024 vs. 2023), plus the per-ASM operating revenue and expense tables and the fuel table. The FY2024 totals are below.\n\n**Operating statistics table (Item 7, MD&A)**\n\n| KPI | FY2024 Total | FY2023 | % Change |\n|---|---|---|---|\n| Average aircraft | 209.9 | 199.5 | 5.2% |\n| Aircraft at end of period | 213 | 205 | 3.9% |\n| Average daily aircraft utilization (hours) | 9.9 | 11.1 | (10.8)% |\n| Departures | 288,180 | 297,900 | (3.3)% |\n| Passenger flight segments (thousands) | 44,180 | 44,105 | 0.2% |\n| Revenue passenger miles (RPMs, thousands) | 43,671,009 | 45,243,787 | (3.5)% |\n| Available seat miles (ASMs, thousands) | 53,017,948 | 55,665,561 | (4.8)% |\n| Load factor (%) | 82.4% | 81.3% | 1.1 pts |\n| Total revenue per passenger flight segment ($) | 111.21 | 121.58 | (8.5)% |\n| Average yield (cents) | 11.25 | 11.85 | (5.1)% |\n| TRASM \u2013 total operating revenue per ASM (cents) | 9.27 | 9.63 | (3.7)% |\n| CASM \u2013 operating cost per ASM (cents) | 11.35 | 10.52 | 7.9% |\n| Adjusted CASM (cents) | 10.76 | 10.33 | 4.2% |\n| Adjusted CASM ex-fuel (cents) | 7.97 | 7.06 | 12.9% |\n| Fuel gallons consumed (thousands) | 551,819 | 591,796 | (6.8)% |\n| Average fuel cost per gallon ($) | 2.68 | 3.08 | (13.0)% |\n\n**Calculation check:** Load factor is RPMs \u00f7 ASMs = 43,671,009 \u00f7 53,017,948 = 82.37%, which rounds to the reported 82.4%. TRASM is consistent with total operating revenue of $4,913,421 thousand \u00f7 53,017,948 thousand ASMs = 9.27 cents.\n\n**Related per-ASM cost detail (Item 7, Operating Expenses), FY2024 cents per ASM:** Salaries, wages and benefits 3.19; aircraft fuel 2.79; aircraft rent 1.02; landing fees and other rentals 0.85; depreciation and amortization 0.61; maintenance, materials and repairs 0.41; distribution 0.37; special charges 0.07; loss on disposal of assets 0.52; other operating expenses 1.52.\n\n**Note:** Average yield and total revenue per passenger flight segment appear only in the statistics table and the revenue section. The filing's operating-revenue table reports passenger revenue of $4,811,752 thousand and total operating revenue of $4,913,421 thousand for 2024.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1498710/000149871025000008/save-20241231.htm\",\n            \"name\": \"Spirit Airlines, Inc. - Form 10-K - FY2024 (SEC EDGAR)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00117358
+  }
+ ],
+ "final_answer": "Spirit Airlines (NYSE: SAVE, CIK 1498710) does not label a separate \"Key Performance Indicators\" section in its FY2024 Form 10-K. Its operating metrics sit in the MD&A \"Comparative Operating Statistics\" table (twelve months ended December 31, 2024 vs. 2023), plus the per-ASM operating revenue and expense tables and the fuel table. The FY2024 totals are below.\n\n**Operating statistics table (Item 7, MD&A)**\n\n| KPI | FY2024 Total | FY2023 | % Change |\n|---|---|---|---|\n| Average aircraft | 209.9 | 199.5 | 5.2% |\n| Aircraft at end of period | 213 | 205 | 3.9% |\n| Average daily aircraft utilization (hours) | 9.9 | 11.1 | (10.8)% |\n| Departures | 288,180 | 297,900 | (3.3)% |\n| Passenger flight segments (thousands) | 44,180 | 44,105 | 0.2% |\n| Revenue passenger miles (RPMs, thousands) | 43,671,009 | 45,243,787 | (3.5)% |\n| Available seat miles (ASMs, thousands) | 53,017,948 | 55,665,561 | (4.8)% |\n| Load factor (%) | 82.4% | 81.3% | 1.1 pts |\n| Total revenue per passenger flight segment ($) | 111.21 | 121.58 | (8.5)% |\n| Average yield (cents) | 11.25 | 11.85 | (5.1)% |\n| TRASM \u2013 total operating revenue per ASM (cents) | 9.27 | 9.63 | (3.7)% |\n| CASM \u2013 operating cost per ASM (cents) | 11.35 | 10.52 | 7.9% |\n| Adjusted CASM (cents) | 10.76 | 10.33 | 4.2% |\n| Adjusted CASM ex-fuel (cents) | 7.97 | 7.06 | 12.9% |\n| Fuel gallons consumed (thousands) | 551,819 | 591,796 | (6.8)% |\n| Average fuel cost per gallon ($) | 2.68 | 3.08 | (13.0)% |\n\n**Calculation check:** Load factor is RPMs \u00f7 ASMs = 43,671,009 \u00f7 53,017,948 = 82.37%, which rounds to the reported 82.4%. TRASM is consistent with total operating revenue of $4,913,421 thousand \u00f7 53,017,948 thousand ASMs = 9.27 cents.\n\n**Related per-ASM cost detail (Item 7, Operating Expenses), FY2024 cents per ASM:** Salaries, wages and benefits 3.19; aircraft fuel 2.79; aircraft rent 1.02; landing fees and other rentals 0.85; depreciation and amortization 0.61; maintenance, materials and repairs 0.41; distribution 0.37; special charges 0.07; loss on disposal of assets 0.52; other operating expenses 1.52.\n\n**Note:** Average yield and total revenue per passenger flight segment appear only in the statistics table and the revenue section. The filing's operating-revenue table reports passenger revenue of $4,811,752 thousand and total operating revenue of $4,913,421 thousand for 2024.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1498710/000149871025000008/save-20241231.htm\",\n            \"name\": \"Spirit Airlines, Inc. - Form 10-K - FY2024 (SEC EDGAR)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 5,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 7,
+  "input_tokens": 20,
+  "output_tokens": 7523,
+  "cache_creation_input_tokens": 443275,
+  "cache_read_input_tokens": 56439,
+  "web_search_requests": 1,
+  "cost_usd": 0.294828
+ },
+ "cost_usd": 0.294828,
+ "elapsed_s": 38.5,
+ "harness_label": "static1"
+}

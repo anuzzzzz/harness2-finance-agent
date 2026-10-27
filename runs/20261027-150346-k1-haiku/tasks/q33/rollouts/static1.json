@@ -1,0 +1,114 @@
+{
+ "task_id": "q33",
+ "label": "static1",
+ "question": "What would be the impact to net income in dollars and percent if all debt for Boeing in 2024 were refinanced at 3% higher interest rates than current?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Boeing annual report 2024 debt interest rates net loss",
+      "ciks": [
+       "0000012927"
+      ],
+      "start_date": "2025-01-01",
+      "end_date": "2025-04-07",
+      "form_types": [
+       "10-K"
+      ]
+     },
+     "output": "{\"total_matching_documents\": 1, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-03\", \"period_ending\": \"2024-12-31\", \"company\": \"BOEING CO  (BA, BA-PA)  (CIK 0000012927)\", \"ciks\": [\"0000012927\"], \"accession\": \"0000012927-25-000015\", \"document\": \"ba-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/12927/000001292725000015/ba-20241231.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.63,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00023561
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/12927/000001292725000015/ba-20241231.htm",
+      "key": "ba10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: ba10k. (477,051 characters)\nThe data_storage currently contains the following keys:\nba10k\n",
+     "is_error": false,
+     "elapsed_s": 1.1,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00017715
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Boeing 2024 10-K text: {{ba10k}}. Extract: (1) total debt at Dec 31, 2024 (total debt including current portion, carrying value), and any fair value; (2) the debt table with interest rates/weighted average rates by maturity; (3) interest expense for 2024 and 2023; (4) net loss attributable to Boeing for 2024 and the effective tax/ income statement lines (loss before income taxes, income tax benefit); (5) any statement on the weighted-average interest rate on debt. Quote the exact figures in millions and the relevant text."
+     },
+     "output": "# Boeing 2024 Form 10-K: Debt, Interest, and Net Loss Extract\n\n## 1. Total debt at December 31, 2024\n\n- **Total debt (carrying value): $53,864 million** (2023: $52,307 million). Note 16 gives this total, which is the sum of the balance sheet lines below.\n- Balance sheet: Short-term debt and current portion of long-term debt **$1,278** (2023: $5,204); Long-term debt **$52,586** (2023: $47,103).\n- MD&A text: *\"At December 31, 2024 and 2023 debt balances totaled $53.9 billion and $52.3 billion, of which $1.3 billion and $5.2 billion were classified as short-term.\"*\n\n**Fair value (Note 21):** Debt excluding finance lease obligations:\n\n| | Carrying amount | Total fair value | Level |\n|---|---|---|---|\n| Dec 31, 2024 | $(53,625) | $(51,089) | Level 2 |\n| Dec 31, 2023 | $(52,055) | $(51,039) | Level 2 |\n\nNote 21 states that fair value of debt traded in the secondary market \"is classified as Level 2 and is based on current market yields,\" and that for debt not traded in the secondary market it \"is based on our indicative borrowing cost derived from dealer quotes or discounted cash flows.\"\n\n## 2. Debt table by interest-rate range and maturity (Note 16)\n\n*Carrying values in millions; the filing does not break out maturities by year for these rows.*\n\n| Unsecured debt | Rate range | Maturity | Dec 31, 2024 | Dec 31, 2023 |\n|---|---|---|---|---|\n| Notes | 1.43% \u2013 2.50% | through 2032 | $6,159 | $10,135 |\n| Notes | 2.60% \u2013 3.20% | through 2030 | 5,389 | 6,071 |\n| Notes | 3.25% \u2013 3.90% | through 2059 | 9,637 | 9,584 |\n| Notes | 3.95% \u2013 5.15% | through 2059 | 7,462 | 11,024 |\n| Notes | 5.71% \u2013 6.63% | through 2060 | 18,987 | 13,015 |\n| Notes | 6.86% \u2013 8.75% | through 2064 | 5,577 | 1,855 |\n| Finance lease obligations | \u2014 | through 2044 | 239 | 253 |\n| Other notes | \u2014 | \u2014 | 414 | 370 |\n| **Total debt** | | | **$53,864** | **$52,307** |\n\n**Short-term debt and current portion (Note 16):**\n- Unsecured debt: $850 (2023: $5,072)\n- Finance lease obligations: $86 (2023: $77)\n- Other notes: $342 (2023: $55)\n- Total: $1,278 (2023: $5,204)\n\n**Scheduled principal payments (Note 16):** Debt and other notes of $1,173 (2025), $8,022 (2026), $4,364 (2027), $1,800 (2028), and $2,500 (2029).\n\n**2024 issuance:** $10.0 billion of fixed-rate senior notes were issued in Q2 2024, with coupons from 6.259% (due May 2027) to 7.008% (due May 2064). Net proceeds were $9.9 billion.\n\n## 3. Interest expense\n\n**Consolidated Statements of Operations, \"Interest and debt expense\":**\n- 2024: **$(2,725) million**\n- 2023: **$(2,459) million**\n- 2022: $(2,561) million\n\n**Note 16 detail:**\n- Interest incurred, including amounts capitalized: $2,874 (2024), $2,560 (2023)\n- Interest capitalized: $149 (2024), $101 (2023)\n- Total Company interest payments, net of amounts capitalized: $2,440 (2024), $2,408 (2023)\n\nMD&A: *\"Interest and debt expense increased by $266 million in 2024 primarily due to higher average debt balances.\"*\n\n## 4. Net loss and income statement lines (2024)\n\n| Line item | 2024 | 2023 |\n|---|---|---|\n| Loss from operations | $(10,707) | $(773) |\n| Other income, net | 1,222 | 1,227 |\n| Interest and debt expense | (2,725) | (2,459) |\n| **Loss before income taxes** | **$(12,210)** | $(2,005) |\n| **Income tax benefit/(expense)** | **$381** | $(237) |\n| Net loss | $(11,829) | $(2,242) |\n| Less: net loss attributable to noncontrolling interest | (12) | (20) |\n| **Net loss attributable to Boeing shareholders** | **$(11,817)** | $(2,222) |\n| Less: Mandatory convertible preferred stock dividends accumulated | 58 | \u2014 |\n| Net loss attributable to Boeing common shareholders | $(11,875) | $(2,222) |\n| Diluted loss per share | $(18.36) | $(3.67) |\n\nThe effective income tax rate for 2024 was 3.1% (benefit), per the MD&A table. The 2024 valuation allowance increased by $3,287 million. The tax benefit includes a $490 million benefit from the settlement of the 2018\u20132020 federal tax audit.\n\n## 5. Weighted-average interest rate on debt\n\n**The filing does not state a weighted-average interest rate on total debt.** The only weighted-average rate disclosed is the **3.43%** weighted average discount rate for operating leases (2023: 3.21%), which is a lease measure and not a debt rate. The debt table gives only rate ranges by tranche.\n\nThe MD&A states on interest rate risk: *\"We have financial instruments that are subject to interest rate risk, principally fixed-rate debt obligations... Therefore, exposure to interest rate risk is not believed to be material for our fixed-rate debt.\"*",
+     "is_error": false,
+     "elapsed_s": 13.21,
+     "cost_usd": 0.113463
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000204055
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: Net income would fall by about $1,615.92 million (\u2248 $1.62 billion) on a pre-tax basis, which is 13.66% of the 2024 net loss. On an after-tax basis at the 21% U.S. statutory rate, the hit is about $1,276.58 million, or 10.79%.**\n\n**Inputs (Boeing FY2024 Form 10-K, period ending Dec 31, 2024, $ millions):**\n- Total debt (carrying value): $53,864. The filing gives this total in Note 16 and says debt \"totaled $53.9 billion\" at year-end 2024 (short-term $1,278; long-term $52,586).\n- Net loss (consolidated): $(11,829). Net loss attributable to Boeing shareholders was $(11,817).\n- Interest and debt expense: $(2,725) in 2024, so the current implied average cost is roughly 5.06% (2,725 / 53,864). This is an approximation, since the filing does not disclose a weighted-average debt rate.\n- Income tax: a $381 benefit on a $(12,210) pre-tax loss, an effective rate of 3.1%. The filing notes a valuation allowance, so the tax benefit is not a reliable shield for extra interest.\n\n**Calculation:**\n1. Rate increase: 3% (3 percentage points) on all debt. Because the increase is additive, the result does not depend on the current average rate.\n2. Incremental annual interest: 3% \u00d7 $53,864 = $1,615.92 million.\n3. Pre-tax impact (no tax shield, consistent with Boeing's valuation allowance):\n   - Net loss goes from $(11,829) to $(13,444.92), a decrease in net income of $1,615.92.\n   - Percent change: 1,615.92 / 11,829 = 13.66% (larger net loss).\n4. After-tax impact (illustrative, 21% statutory rate):\n   - After-tax incremental interest: 1,615.92 \u00d7 (1 \u2212 0.21) = $1,276.58 million.\n   - Net loss goes to $(13,105.58). Percent change: 1,276.58 / 11,829 = 10.79%.\n\n**Assumptions:** the 3% applies to year-end 2024 total debt for a full year, with no change in principal, no refinancing fees, and no capitalized interest effects. Interest capitalized in 2024 was $149 million, so the expense-line impact could be modestly lower if capitalization applied.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/12927/000001292725000015/ba-20241231.htm\",\n            \"name\": \"Boeing Co. Form 10-K for fiscal year 2024 (filed 2025-02-03)\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: Net income would fall by about $1,615.92 million (\u2248 $1.62 billion) on a pre-tax basis, which is 13.66% of the 2024 net loss. On an after-tax basis at the 21% U.S. statutory rate, the hit is about $1,276.58 million, or 10.79%.**\n\n**Inputs (Boeing FY2024 Form 10-K, period ending Dec 31, 2024, $ millions):**\n- Total debt (carrying value): $53,864. The filing gives this total in Note 16 and says debt \"totaled $53.9 billion\" at year-end 2024 (short-term $1,278; long-term $52,586).\n- Net loss (consolidated): $(11,829). Net loss attributable to Boeing shareholders was $(11,817).\n- Interest and debt expense: $(2,725) in 2024, so the current implied average cost is roughly 5.06% (2,725 / 53,864). This is an approximation, since the filing does not disclose a weighted-average debt rate.\n- Income tax: a $381 benefit on a $(12,210) pre-tax loss, an effective rate of 3.1%. The filing notes a valuation allowance, so the tax benefit is not a reliable shield for extra interest.\n\n**Calculation:**\n1. Rate increase: 3% (3 percentage points) on all debt. Because the increase is additive, the result does not depend on the current average rate.\n2. Incremental annual interest: 3% \u00d7 $53,864 = $1,615.92 million.\n3. Pre-tax impact (no tax shield, consistent with Boeing's valuation allowance):\n   - Net loss goes from $(11,829) to $(13,444.92), a decrease in net income of $1,615.92.\n   - Percent change: 1,615.92 / 11,829 = 13.66% (larger net loss).\n4. After-tax impact (illustrative, 21% statutory rate):\n   - After-tax incremental interest: 1,615.92 \u00d7 (1 \u2212 0.21) = $1,276.58 million.\n   - Net loss goes to $(13,105.58). Percent change: 1,276.58 / 11,829 = 10.79%.\n\n**Assumptions:** the 3% applies to year-end 2024 total debt for a full year, with no change in principal, no refinancing fees, and no capitalized interest effects. Interest capitalized in 2024 was $149 million, so the expense-line impact could be modestly lower if capitalization applied.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/12927/000001292725000015/ba-20241231.htm\",\n            \"name\": \"Boeing Co. Form 10-K for fiscal year 2024 (filed 2025-02-03)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.001308535
+  }
+ ],
+ "final_answer": "**Answer: Net income would fall by about $1,615.92 million (\u2248 $1.62 billion) on a pre-tax basis, which is 13.66% of the 2024 net loss. On an after-tax basis at the 21% U.S. statutory rate, the hit is about $1,276.58 million, or 10.79%.**\n\n**Inputs (Boeing FY2024 Form 10-K, period ending Dec 31, 2024, $ millions):**\n- Total debt (carrying value): $53,864. The filing gives this total in Note 16 and says debt \"totaled $53.9 billion\" at year-end 2024 (short-term $1,278; long-term $52,586).\n- Net loss (consolidated): $(11,829). Net loss attributable to Boeing shareholders was $(11,817).\n- Interest and debt expense: $(2,725) in 2024, so the current implied average cost is roughly 5.06% (2,725 / 53,864). This is an approximation, since the filing does not disclose a weighted-average debt rate.\n- Income tax: a $381 benefit on a $(12,210) pre-tax loss, an effective rate of 3.1%. The filing notes a valuation allowance, so the tax benefit is not a reliable shield for extra interest.\n\n**Calculation:**\n1. Rate increase: 3% (3 percentage points) on all debt. Because the increase is additive, the result does not depend on the current average rate.\n2. Incremental annual interest: 3% \u00d7 $53,864 = $1,615.92 million.\n3. Pre-tax impact (no tax shield, consistent with Boeing's valuation allowance):\n   - Net loss goes from $(11,829) to $(13,444.92), a decrease in net income of $1,615.92.\n   - Percent change: 1,615.92 / 11,829 = 13.66% (larger net loss).\n4. After-tax impact (illustrative, 21% statutory rate):\n   - After-tax incremental interest: 1,615.92 \u00d7 (1 \u2212 0.21) = $1,276.58 million.\n   - Net loss goes to $(13,105.58). Percent change: 1,276.58 / 11,829 = 10.79%.\n\n**Assumptions:** the 3% applies to year-end 2024 total debt for a full year, with no change in principal, no refinancing fees, and no capitalized interest effects. Interest capitalized in 2024 was $149 million, so the expense-line impact could be modestly lower if capitalization applied.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/12927/000001292725000015/ba-20241231.htm\",\n            \"name\": \"Boeing Co. Form 10-K for fiscal year 2024 (filed 2025-02-03)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 5,
+  "input_tokens": 14,
+  "output_tokens": 5653,
+  "cache_creation_input_tokens": 172474,
+  "cache_read_input_tokens": 23085,
+  "web_search_requests": 0,
+  "cost_usd": 0.115389
+ },
+ "cost_usd": 0.115389,
+ "elapsed_s": 28.8,
+ "harness_label": "static1"
+}

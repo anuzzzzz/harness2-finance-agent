@@ -1,0 +1,25 @@
+<file path="tool_guidance.md">
+# Tool use
+
+- Decide the documents and periods before searching: company, form (8-K EX-99.1 earnings release, 10-K, 10-Q, call transcript) and fiscal period. Use edgar_search with company and date filters rather than the question's wording. If web_search returns nothing, retry once with a short non-empty query (never an empty or null one), then use edgar_search or a known primary URL.
+- A search snippet or result title is a lead, not evidence. Open the primary document with parse_html_page (one clear key per document), then ask retrieve_information one targeted question at a time. Confirm the figure, period, unit and basis (what the company's capex or other measure includes) in the retrieved text. Use input_character_ranges on long documents.
+- parse_html_page cannot read PDFs. Use the HTML 8-K exhibit, filing or transcript page instead.
+- The current date is fixed in the system prompt. Use only guidance or results published on or before that date. Search results may include later filings, articles or revised guidance. Do not open them or cite them as evidence.
+- For "who plans to spend the most" or other forward-guidance comparisons across companies, get each company's latest guidance as of the date from its own opened document. If a company gives the number only on its call, open the call transcript (a web_search result page is fine) and check who said it and whether it was prepared remarks or an analyst's question. An analyst's figure that management did not confirm is not company guidance, so say so. Put every figure on one period and one unit. For a range, show low, high and midpoint. For management commentary ("about $X", a run-rate remark), say so. If the companies define the measure differently (for example, whether finance leases are included), note it in one line. Say whether the ranking holds at every end of each range, then name the largest, with dollar and % gaps.
+- Re-check each figure you are about to submit against the retrieved text. A successful tool call does not make a figure correct. If a figure was seen only in a snippet, say so plainly rather than attributing it to a document.
+- Cite only documents you opened and retrieved from. Do not list a press release, article or filing seen only in search results.
+- Write the final answer in plain text. Never paste citation markup such as <cite index=...> tags. Lead with the direct answer, then each figure with its period, unit and source, then the comparison arithmetic. Submit with submit_final_result as soon as the figures are verified. Keep turns in reserve for this.
+
+Leads for this task (from search snippets; re-confirm in the opened text):
+- Meta: Q4/FY2024 release, 8-K EX-99.1, 2025-01-29, https://www.sec.gov/Archives/edgar/data/1326801/000132680125000014/meta-12312024xexhibit991.htm. Reported 2025 capex guide $60-65B. Later raises post-date the as-of date.
+- Alphabet: Q4/FY2024 release, 8-K EX-99.1, 2025-02-04, https://www.sec.gov/Archives/edgar/data/1652044/000165204425000010/googexhibit991q42024.htm. Reported guide about $75B.
+- Amazon: the Q4 2024 call of 2025-02-06 (transcript at https://www.fool.com/earnings/call-transcripts/2025/02/06/amazoncom-amzn-q4-2024-earnings-call-transcript/). The $26.3B Q4 capex was called representative of the 2025 rate, and about $100B is the commonly reported figure. The FY2024 10-K (https://www.sec.gov/Archives/edgar/data/1018724/000101872425000004/amzn-20241231.htm) says only that cash capex will increase.
+</file>
+
+<notes>
+kept -> inv1 tool_guidance (verification, as-of cutoff, cite-only-opened, no markup, comparison procedure) -> base1 submitted from snippets with unopened sources and leaked cite markup; inv1 and dom1 both opened Meta and Alphabet releases and the Amazon 10-K, and neither leaked markup (1/1 base failed, 2/2 candidates avoided it).
+revised -> dom1 transcript check merged into tool_guidance -> dom1 opened the Amazon call transcript and found the $100B figure was an analyst's question, with management saying only that $26.3B was a representative run-rate. inv1 never opened the transcript and said it could not confirm the wording. I added one rule to open the transcript and check who said it.
+dropped -> dom1 capex_guidance_compare skill and its systemprompt trigger -> dom1 loaded it first, and its run took the same 6 turns as inv1 without any skill. The numbers were the same in both runs. The always-on guidance already carries the comparison procedure, so a narrow skill adds context cost with no visible gain.
+dropped -> inv1 and dom1 definition-specific text beyond one line -> the Amazon, Alphabet and Meta definition notes came from retrieved text in one run each, and the ranking did not depend on them.
+kept -> task-fact leads, shortened -> they only saved discovery turns, and both candidates skipped the discovery that base1 needed. They are labelled for re-confirmation and are unlikely to cause harm. Both runs submitted, so there is no unsafe-edit flag.
+</notes>

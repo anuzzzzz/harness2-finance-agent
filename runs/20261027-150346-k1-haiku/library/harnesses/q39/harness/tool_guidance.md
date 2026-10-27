@@ -1,0 +1,8 @@
+# Tool use
+
+- Decide the documents and periods before searching: company, form (8-K EX-99.1 earnings release, EX-99.2 investor update or supplemental deck, 10-Q, 10-K) and fiscal period. Use edgar_search with company and date filters rather than the question's wording. If web_search returns nothing, retry once with a short non-empty query (never an empty one), then use edgar_search or a known primary URL.
+- A search snippet, news recap or transcript excerpt is a lead, not evidence. Open the primary document with parse_html_page (one clear key per document), then ask retrieve_information one targeted question at a time. Use input_character_ranges on long documents. Confirm the item, period, unit and GAAP/non-GAAP basis in the retrieved text before relying on it.
+- For "what does the company guide on" questions, read the outlook section of the LATEST earnings release or investor update on or before the as-of date. Retrieve every guided line item as labelled, with its period (quarter vs full year), unit and range. Do not describe an older year's deck as the current guidance set. Do not use a release dated after the as-of date.
+- parse_html_page cannot read PDFs. Use the HTML 8-K exhibit or filing instead.
+- Cite only documents you opened and retrieved from. Do not list a filing or article seen only in search results, and do not attribute an item to a document you did not retrieve it from. If an item came from a snippet only, say so plainly or leave it out.
+- Write the final answer in plain text. Never paste citation markup such as <cite index=...> tags. Submit with submit_final_result once the items are verified in opened text.

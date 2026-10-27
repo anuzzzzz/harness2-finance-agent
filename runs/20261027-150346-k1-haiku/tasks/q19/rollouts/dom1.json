@@ -1,0 +1,111 @@
+{
+ "task_id": "q19",
+ "label": "dom1",
+ "question": "As of April 07, 2025, what is the total value of MSCI's operating leases (in $'s, thousands) that are maturing in the next three years? What percentage?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "MSCI operating lease maturities undiscounted cash flows 2025 2026 2027 thereafter",
+      "ciks": [
+       "MSCI"
+      ],
+      "start_date": "2024-01-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "{\"total_matching_documents\": 2, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-07\", \"period_ending\": \"2024-12-31\", \"company\": \"MSCI Inc.  (MSCI)  (CIK 0001408198)\", \"ciks\": [\"0001408198\"], \"accession\": \"0001408198-25-000053\", \"document\": \"msci-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-02-09\", \"period_ending\": \"2023-12-31\", \"company\": \"MSCI Inc.  (MSCI)  (CIK 0001408198)\", \"ciks\": [\"0001408198\"], \"accession\": \"0001408198-24-000030\", \"document\": \"msci-20231231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819824000030/msci-20231231.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 1.23,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00021239000000000002
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm",
+      "key": "msci10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: msci10k. (407,848 characters)\nThe data_storage currently contains the following keys:\nmsci10k\n",
+     "is_error": false,
+     "elapsed_s": 0.56,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00019469
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this MSCI 10-K, find the operating lease maturity table (future minimum lease payments under operating leases as of December 31, 2024), including each year 2025, 2026, 2027, 2028, 2029, thereafter, total undiscounted payments, less imputed interest, and present value. Report the exact figures in thousands as stated, and quote the sentence describing the table's units. Document: {{msci10k}}"
+     },
+     "output": "**Operating lease maturity table (Note 7, Leases, as of December 31, 2024)**\n\n| Maturity of Lease Liabilities (in thousands) | Operating Leases |\n|---|---|\n| 2025 | $30,220 |\n| 2026 | 30,361 |\n| 2027 | 24,421 |\n| 2028 | 23,931 |\n| 2029 | 16,573 |\n| Thereafter | 40,099 |\n| **Total lease payments** | **$165,605** |\n| Less: Interest | (19,601) |\n| **Present value of lease liabilities** | **$146,004** |\n\nThe present value is split between Other accrued liabilities ($24,851) and Long-term operating lease liabilities ($121,153).\n\n**Units:** The document does not contain a standalone sentence describing the table's units. The only unit statement is the column header, \"Maturity of Lease Liabilities(in thousands),\" which indicates that all amounts are stated in thousands of U.S. dollars.",
+     "is_error": false,
+     "elapsed_s": 6.51,
+     "cost_usd": 0.086818
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00017419999999999998
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: $85,002 thousand (about $85.0 million) of MSCI's operating lease payments mature in the next three years (2025\u20132027), which is 51.33% of total undiscounted operating lease payments.**\n\n**Source data:** MSCI's FY2024 Form 10-K (filed February 7, 2025; period ending December 31, 2024), Note 7 (Leases). The most recent filing available as of April 7, 2025 is this one. The lease maturity table is presented in thousands of U.S. dollars:\n\n| Year | Operating lease payments ($000s) |\n|---|---|\n| 2025 | 30,220 |\n| 2026 | 30,361 |\n| 2027 | 24,421 |\n| 2028 | 23,931 |\n| 2029 | 16,573 |\n| Thereafter | 40,099 |\n| **Total undiscounted lease payments** | **165,605** |\n| Less: imputed interest | (19,601) |\n| **Present value of lease liabilities** | **146,004** |\n\n**Calculation:**\n- Next three years: 30,220 + 30,361 + 24,421 = **85,002** (thousands)\n- Check of total: 85,002 + 23,931 + 16,573 + 40,099 = 165,605 \u2713\n- Percentage: 85,002 / 165,605 = **51.33%**\n\n**Notes:**\n- The percentage is computed against total undiscounted lease payments, the basis of the maturity table. The 10-K does not break the present value ($146,004K) out by year, so a percentage of present value can't be calculated on the same basis.\n- The units are in thousands, per the table header. The filing has no separate sentence on units.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm\",\n            \"name\": \"MSCI Inc. Form 10-K for fiscal year ended December 31, 2024 (filed 2025-02-07)\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: $85,002 thousand (about $85.0 million) of MSCI's operating lease payments mature in the next three years (2025\u20132027), which is 51.33% of total undiscounted operating lease payments.**\n\n**Source data:** MSCI's FY2024 Form 10-K (filed February 7, 2025; period ending December 31, 2024), Note 7 (Leases). The most recent filing available as of April 7, 2025 is this one. The lease maturity table is presented in thousands of U.S. dollars:\n\n| Year | Operating lease payments ($000s) |\n|---|---|\n| 2025 | 30,220 |\n| 2026 | 30,361 |\n| 2027 | 24,421 |\n| 2028 | 23,931 |\n| 2029 | 16,573 |\n| Thereafter | 40,099 |\n| **Total undiscounted lease payments** | **165,605** |\n| Less: imputed interest | (19,601) |\n| **Present value of lease liabilities** | **146,004** |\n\n**Calculation:**\n- Next three years: 30,220 + 30,361 + 24,421 = **85,002** (thousands)\n- Check of total: 85,002 + 23,931 + 16,573 + 40,099 = 165,605 \u2713\n- Percentage: 85,002 / 165,605 = **51.33%**\n\n**Notes:**\n- The percentage is computed against total undiscounted lease payments, the basis of the maturity table. The 10-K does not break the present value ($146,004K) out by year, so a percentage of present value can't be calculated on the same basis.\n- The units are in thousands, per the table header. The filing has no separate sentence on units.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm\",\n            \"name\": \"MSCI Inc. Form 10-K for fiscal year ended December 31, 2024 (filed 2025-02-07)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0006963150000000001
+  }
+ ],
+ "final_answer": "**Answer: $85,002 thousand (about $85.0 million) of MSCI's operating lease payments mature in the next three years (2025\u20132027), which is 51.33% of total undiscounted operating lease payments.**\n\n**Source data:** MSCI's FY2024 Form 10-K (filed February 7, 2025; period ending December 31, 2024), Note 7 (Leases). The most recent filing available as of April 7, 2025 is this one. The lease maturity table is presented in thousands of U.S. dollars:\n\n| Year | Operating lease payments ($000s) |\n|---|---|\n| 2025 | 30,220 |\n| 2026 | 30,361 |\n| 2027 | 24,421 |\n| 2028 | 23,931 |\n| 2029 | 16,573 |\n| Thereafter | 40,099 |\n| **Total undiscounted lease payments** | **165,605** |\n| Less: imputed interest | (19,601) |\n| **Present value of lease liabilities** | **146,004** |\n\n**Calculation:**\n- Next three years: 30,220 + 30,361 + 24,421 = **85,002** (thousands)\n- Check of total: 85,002 + 23,931 + 16,573 + 40,099 = 165,605 \u2713\n- Percentage: 85,002 / 165,605 = **51.33%**\n\n**Notes:**\n- The percentage is computed against total undiscounted lease payments, the basis of the maturity table. The 10-K does not break the present value ($146,004K) out by year, so a percentage of present value can't be calculated on the same basis.\n- The units are in thousands, per the table header. The filing has no separate sentence on units.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1408198/000140819825000053/msci-20241231.htm\",\n            \"name\": \"MSCI Inc. Form 10-K for fiscal year ended December 31, 2024 (filed 2025-02-07)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 5,
+  "input_tokens": 14,
+  "output_tokens": 2394,
+  "cache_creation_input_tokens": 137709,
+  "cache_read_input_tokens": 22922,
+  "web_search_requests": 0,
+  "cost_usd": 0.088095
+ },
+ "cost_usd": 0.088095,
+ "elapsed_s": 19.1,
+ "harness_label": "dom1"
+}

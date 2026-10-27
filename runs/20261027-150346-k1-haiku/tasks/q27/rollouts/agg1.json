@@ -1,0 +1,113 @@
+{
+ "task_id": "q27",
+ "label": "agg1",
+ "question": "As of FY 2024, what are the terms of the Junior Subordinated Debentures in the Allstate Corporation's (NYSE: ALL) capital structure?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/899051/000089905125000015/all-20241231.htm",
+      "key": "all10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: all10k. (817,347 characters)\nThe data_storage currently contains the following keys:\nall10k\n",
+     "is_error": false,
+     "elapsed_s": 1.69,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0008501499999999999
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Allstate 10-K text, find every term stated for the Series A 6.500% Fixed-to-Floating Rate Junior Subordinated Debentures due 2067 (Capital Structure note). Include: principal amount, amount outstanding at Dec 31, 2024 and 2023, issue date, coupon and reset benchmark/spread, scheduled maturity and final maturity, redemption/call terms, interest deferral and compounding, dividend restrictions during deferral, replacement capital covenant, ranking/subordination, and any other terms. Quote figures exactly and state units. Say 'not stated' if a term is absent. Text: {{all10k}}"
+     },
+     "output": "# Series A 6.500% Fixed-to-Floating Rate Junior Subordinated Debentures due 2067\n\nSource: Allstate 2024 Form 10-K, Note 14 (Capital Structure), with related references in Item 1A, MD&A (Capital Resources and Liquidity), and the Note 14 debt table. Dollar amounts are in millions unless stated otherwise.\n\n| Term | Stated in filing |\n|---|---|\n| **Principal amount** | \"$500 million of Series A 6.500% Fixed-to-Floating Rate Junior Subordinated Debentures\" (Note 14). |\n| **Amount outstanding, Dec 31, 2024** | $500 million (debt table: \"6.500% Junior Subordinated Debentures, due 2067\" = 500). |\n| **Amount outstanding, Dec 31, 2023** | $500 million (same debt table line, 2023 column = 500). |\n| **Issue date** | Not stated. |\n| **Coupon (initial)** | 6.500% stated fixed annual rate, payable semi-annually, through May 15, 2037. |\n| **Coupon (floating, after May 15, 2037)** | Payable quarterly at \"an annual rate equal to the three-month LIBOR plus 2.120%, which was replaced with the CME Term SOFR Reference Rate published for a three-month tenor plus a spread adjustment of 0.26161%.\" The filing does not state an all-in floating rate. |\n| **Reset benchmark / spread** | Benchmark: CME Term SOFR Reference Rate, three-month tenor (replacing three-month LIBOR). Spread: 2.120% plus a 0.26161% spread adjustment. |\n| **Scheduled maturity** | May 15, 2057. |\n| **Final maturity** | May 15, 2067. |\n| **Optional redemption** | (i) In whole or in part, at any time on or after May 15, 2037, at principal plus accrued and unpaid interest to the redemption date. (ii) In certain circumstances, in whole or in part, prior to May 15, 2037, at principal plus accrued and unpaid interest to the redemption date or, if greater, a make-whole price. The \"certain circumstances\" are not specified. |\n| **Interest payment frequency** | Semi-annual through May 15, 2037; quarterly thereafter. Specific payment dates are not stated. |\n| **Interest deferral** | The Company may elect, at one or more times, to defer interest payments for one or more consecutive interest periods that do not exceed 10 years. |\n| **Interest compounding during deferral** | \"Interest compounds during such deferral periods at the rate in effect for each period.\" |\n| **Share-issuance feature on deferral** | The deferral feature \"obligates the Company in certain circumstances to issue common stock or certain other types of securities if it cannot otherwise raise sufficient funds to make the required interest payments.\" The Company has reserved 75 million shares of authorized and unissued common stock for this purpose. |\n| **Dividend and distribution restrictions during deferral** | The terms \"prohibit the Company from declaring or paying any dividends or distributions on common or preferred stock or redeeming, purchasing, acquiring, or making liquidation payments on common stock or preferred stock if the Company has elected to defer interest payments,\" subject to certain limited exceptions. |\n| **Replacement capital covenant (RCC)** | Entered into in connection with the issuance. It is for the benefit of holders of covered debt, currently the $800 million Floating Rate Subordinated Debentures due 2053, and is not enforceable by Junior Subordinated Debenture holders. The Company agrees not to repay, redeem, or purchase the Junior Subordinated Debentures on or before May 15, 2067 (or an earlier RCC termination date), unless, subject to limitations, it has received net cash proceeds in specified amounts from the sale of common stock or certain other qualifying securities. |\n| **RCC exceptions** | The covenant does not apply if: (i) S&P upgrades the Company's issuer credit rating to A or above; (ii) the Company redeems due to a tax event; (iii) after notice of redemption, a market disruption event prevents the Company from raising proceeds under the RCC; or (iv) the Company repurchases or redeems up to 10% of outstanding principal in any one-year period, provided no more than 25% is so repurchased, redeemed, or purchased in any ten-year period. |\n| **RCC termination** | Terminates in 2067, or earlier if: (i) the debentures are no longer outstanding and obligations are fulfilled, or the RCC no longer applies; (ii) holders of a majority of the then-outstanding covered debt consent; (iii) the Company has no eligible covered debt outstanding; (iv) the debentures are accelerated after an event of default; (v) certain rating agency or change-in-control events occur; (vi) S&P no longer assigns a solicited rating on senior debt; or (vii) termination would have no effect on S&P equity credit for the debentures. |\n| **Events of default** | Per the supplemental indenture, \"includes default in the payment of interest or principal and bankruptcy proceedings.\" |\n| **Ranking / subordination** | Not stated explicitly bey\n[note: all10k was truncated to its first 700,000 characters; use input_character_ranges to read a later portion]",
+     "is_error": false,
+     "elapsed_s": 24.3,
+     "cost_usd": 0.167217
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00022417
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Allstate 10-K text, quote the Note 14 Capital Structure language on the Series A 6.500% Fixed-to-Floating Rate Junior Subordinated Debentures due 2067: issue date (month/year), ranking or subordination to senior/other debt, and the debt table amounts for 2024 and 2023. Say 'not stated' if absent. Text: {{all10k}}",
+      "input_character_ranges": [
+       {
+        "key": "all10k",
+        "start": 600000,
+        "end": 817347
+       }
+      ]
+     },
+     "output": "**Series A 6.500% Fixed-to-Floating Rate Junior Subordinated Debentures due 2067 (Note 14, Capital Structure)**\n\n- **Issue date (month/year):** Not stated. The text gives the maturity dates but not the issuance date.\n- **Ranking or subordination to senior/other debt:** Not stated. Note 14 does not explicitly say these debentures rank junior or are subordinated to the senior notes. The \"Junior Subordinated\" name is the only indication. The text does describe a replacement capital covenant, but that covers the $800 million Floating Rate Subordinated Debentures due 2053, not seniority.\n- **Debt table amounts:**\n  - 2024: $500 million\n  - 2023: $500 million\n\n**Key language from Note 14:**\n\n- Table row: \"6.500% Junior Subordinated Debentures, due 2067 | 500 | 500\" (As of December 31, 2024 and 2023, respectively, under \"Due after ten years\").\n- \"As of December 31, 2024, the Company had outstanding $500 million of Series A 6.500% Fixed-to-Floating Rate Junior Subordinated Debentures ('Junior Subordinated Debentures'). The scheduled maturity date for the Debentures is May 15, 2057 with a final maturity date of May 15, 2067.\"\n- Redemption: \"may be redeemed (i) in whole or in part, at any time on or after May 15, 2037 at the principal amount plus accrued and unpaid interest... or (ii) in certain circumstances... prior to May 15, 2037 at the principal amount plus accrued and unpaid interest... or, if greater, a make-whole price.\"\n- Interest: \"payable semi-annually at the stated fixed annual rate to May 15, 2037, and then payable quarterly at an annual rate equal to the three-month LIBOR plus 2.120%, which was replaced with the CME Term SOFR Reference Rate... plus a spread adjustment of 0.26161%.\"\n- Deferral: the Company may defer interest for consecutive periods not exceeding 10 years, and the deferral feature may require issuing common stock or other securities. The Company has reserved 75 million shares for this obligation.",
+     "is_error": false,
+     "elapsed_s": 6.32,
+     "cost_usd": 0.010081
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0004955949999999999
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Allstate Corporation (NYSE: ALL) \u2013 Series A 6.500% Fixed-to-Floating Rate Junior Subordinated Debentures due 2067, as disclosed in the FY2024 Form 10-K (Note 14, Capital Structure, with cross-references in Item 1A and MD&A).\n\nTerms (paraphrased from the filing; \"not stated\" where the filing is silent):\n\n- Principal / amount outstanding: $500 million. Outstanding was $500 million at December 31, 2024 and also $500 million at December 31, 2023 (debt table row \"6.500% Junior Subordinated Debentures, due 2067,\" shown under \"Due after ten years\").\n- Issue date: not stated in the FY2024 10-K.\n- Fixed coupon: 6.500% per year, paid semi-annually until May 15, 2037.\n- Floating coupon: from May 15, 2037, paid quarterly at a rate equal to three-month LIBOR plus 2.120%. The filing says LIBOR was replaced with the CME Term SOFR Reference Rate (three-month tenor) plus a 0.26161% spread adjustment, so the reset benchmark is three-month Term SOFR and the spread is 2.120% plus 0.26161% (about 2.38161% total spread). The filing does not state an all-in floating rate.\n- Scheduled maturity: May 15, 2057.\n- Final maturity: May 15, 2067.\n- Optional redemption: (i) in whole or in part, at any time on or after May 15, 2037, at principal plus accrued and unpaid interest; (ii) before May 15, 2037, only in certain circumstances (not specified in the excerpt), in whole or in part, at principal plus accrued and unpaid interest or, if greater, a make-whole price.\n- Interest deferral: the Company may defer interest for one or more consecutive interest periods, not exceeding 10 years in total per deferral. Deferred interest compounds at the rate in effect for each period.\n- Share-issuance feature: if the Company cannot otherwise raise funds to pay required interest, it may be obligated in certain circumstances to issue common stock or other qualifying securities. The Company has reserved 75 million shares of authorized but unissued common stock for this purpose.\n- Dividend/distribution restrictions during deferral: while interest is deferred, the Company may not declare or pay dividends or distributions on common or preferred stock, or redeem, purchase, acquire, or make liquidation payments on common or preferred stock, subject to limited exceptions.\n- Replacement capital covenant (RCC): entered into at issuance for the benefit of holders of covered debt (currently the $800 million Floating Rate Subordinated Debentures due 2053), not for the Junior Subordinated Debenture holders. The Company agrees not to repay, redeem, or purchase these debentures on or before May 15, 2067 (or an earlier RCC termination date) unless it receives specified net cash proceeds from qualifying common stock or other securities, subject to limits. Exceptions include: an S&P upgrade of the issuer rating to A or higher; a tax-event redemption; a market disruption event after a redemption notice; and repurchases/redemptions of up to 10% of outstanding principal in any one year, capped at 25% in any ten-year period. The RCC terminates in 2067 or earlier under listed events (e.g., majority consent of covered debt holders, acceleration after default, certain rating or change-of-control events).\n- Events of default: include non-payment of interest or principal and bankruptcy proceedings.\n- Ranking/subordination: not explicitly stated in Note 14 beyond the \"Junior Subordinated\" name.\n\nNote: The filing's own statement on the reset benchmark refers to LIBOR being replaced by Term SOFR, so the benchmark is Term SOFR as stated, not LIBOR.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/899051/000089905125000015/all-20241231.htm\",\n            \"name\": \"Allstate Corporation FY2024 Form 10-K (filed 2025-02-24), Note 14 Capital Structure\"\n        }\n    ]\n}"
+     },
+     "output": "Allstate Corporation (NYSE: ALL) \u2013 Series A 6.500% Fixed-to-Floating Rate Junior Subordinated Debentures due 2067, as disclosed in the FY2024 Form 10-K (Note 14, Capital Structure, with cross-references in Item 1A and MD&A).\n\nTerms (paraphrased from the filing; \"not stated\" where the filing is silent):\n\n- Principal / amount outstanding: $500 million. Outstanding was $500 million at December 31, 2024 and also $500 million at December 31, 2023 (debt table row \"6.500% Junior Subordinated Debentures, due 2067,\" shown under \"Due after ten years\").\n- Issue date: not stated in the FY2024 10-K.\n- Fixed coupon: 6.500% per year, paid semi-annually until May 15, 2037.\n- Floating coupon: from May 15, 2037, paid quarterly at a rate equal to three-month LIBOR plus 2.120%. The filing says LIBOR was replaced with the CME Term SOFR Reference Rate (three-month tenor) plus a 0.26161% spread adjustment, so the reset benchmark is three-month Term SOFR and the spread is 2.120% plus 0.26161% (about 2.38161% total spread). The filing does not state an all-in floating rate.\n- Scheduled maturity: May 15, 2057.\n- Final maturity: May 15, 2067.\n- Optional redemption: (i) in whole or in part, at any time on or after May 15, 2037, at principal plus accrued and unpaid interest; (ii) before May 15, 2037, only in certain circumstances (not specified in the excerpt), in whole or in part, at principal plus accrued and unpaid interest or, if greater, a make-whole price.\n- Interest deferral: the Company may defer interest for one or more consecutive interest periods, not exceeding 10 years in total per deferral. Deferred interest compounds at the rate in effect for each period.\n- Share-issuance feature: if the Company cannot otherwise raise funds to pay required interest, it may be obligated in certain circumstances to issue common stock or other qualifying securities. The Company has reserved 75 million shares of authorized but unissued common stock for this purpose.\n- Dividend/distribution restrictions during deferral: while interest is deferred, the Company may not declare or pay dividends or distributions on common or preferred stock, or redeem, purchase, acquire, or make liquidation payments on common or preferred stock, subject to limited exceptions.\n- Replacement capital covenant (RCC): entered into at issuance for the benefit of holders of covered debt (currently the $800 million Floating Rate Subordinated Debentures due 2053), not for the Junior Subordinated Debenture holders. The Company agrees not to repay, redeem, or purchase these debentures on or before May 15, 2067 (or an earlier RCC termination date) unless it receives specified net cash proceeds from qualifying common stock or other securities, subject to limits. Exceptions include: an S&P upgrade of the issuer rating to A or higher; a tax-event redemption; a market disruption event after a redemption notice; and repurchases/redemptions of up to 10% of outstanding principal in any one year, capped at 25% in any ten-year period. The RCC terminates in 2067 or earlier under listed events (e.g., majority consent of covered debt holders, acceleration after default, certain rating or change-of-control events).\n- Events of default: include non-payment of interest or principal and bankruptcy proceedings.\n- Ranking/subordination: not explicitly stated in Note 14 beyond the \"Junior Subordinated\" name.\n\nNote: The filing's own statement on the reset benchmark refers to LIBOR being replaced by Term SOFR, so the benchmark is Term SOFR as stated, not LIBOR.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/899051/000089905125000015/all-20241231.htm\",\n            \"name\": \"Allstate Corporation FY2024 Form 10-K (filed 2025-02-24), Note 14 Capital Structure\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0010903500000000001
+  }
+ ],
+ "final_answer": "Allstate Corporation (NYSE: ALL) \u2013 Series A 6.500% Fixed-to-Floating Rate Junior Subordinated Debentures due 2067, as disclosed in the FY2024 Form 10-K (Note 14, Capital Structure, with cross-references in Item 1A and MD&A).\n\nTerms (paraphrased from the filing; \"not stated\" where the filing is silent):\n\n- Principal / amount outstanding: $500 million. Outstanding was $500 million at December 31, 2024 and also $500 million at December 31, 2023 (debt table row \"6.500% Junior Subordinated Debentures, due 2067,\" shown under \"Due after ten years\").\n- Issue date: not stated in the FY2024 10-K.\n- Fixed coupon: 6.500% per year, paid semi-annually until May 15, 2037.\n- Floating coupon: from May 15, 2037, paid quarterly at a rate equal to three-month LIBOR plus 2.120%. The filing says LIBOR was replaced with the CME Term SOFR Reference Rate (three-month tenor) plus a 0.26161% spread adjustment, so the reset benchmark is three-month Term SOFR and the spread is 2.120% plus 0.26161% (about 2.38161% total spread). The filing does not state an all-in floating rate.\n- Scheduled maturity: May 15, 2057.\n- Final maturity: May 15, 2067.\n- Optional redemption: (i) in whole or in part, at any time on or after May 15, 2037, at principal plus accrued and unpaid interest; (ii) before May 15, 2037, only in certain circumstances (not specified in the excerpt), in whole or in part, at principal plus accrued and unpaid interest or, if greater, a make-whole price.\n- Interest deferral: the Company may defer interest for one or more consecutive interest periods, not exceeding 10 years in total per deferral. Deferred interest compounds at the rate in effect for each period.\n- Share-issuance feature: if the Company cannot otherwise raise funds to pay required interest, it may be obligated in certain circumstances to issue common stock or other qualifying securities. The Company has reserved 75 million shares of authorized but unissued common stock for this purpose.\n- Dividend/distribution restrictions during deferral: while interest is deferred, the Company may not declare or pay dividends or distributions on common or preferred stock, or redeem, purchase, acquire, or make liquidation payments on common or preferred stock, subject to limited exceptions.\n- Replacement capital covenant (RCC): entered into at issuance for the benefit of holders of covered debt (currently the $800 million Floating Rate Subordinated Debentures due 2053), not for the Junior Subordinated Debenture holders. The Company agrees not to repay, redeem, or purchase these debentures on or before May 15, 2067 (or an earlier RCC termination date) unless it receives specified net cash proceeds from qualifying common stock or other securities, subject to limits. Exceptions include: an S&P upgrade of the issuer rating to A or higher; a tax-event redemption; a market disruption event after a redemption notice; and repurchases/redemptions of up to 10% of outstanding principal in any one year, capped at 25% in any ten-year period. The RCC terminates in 2067 or earlier under listed events (e.g., majority consent of covered debt holders, acceleration after default, certain rating or change-of-control events).\n- Events of default: include non-payment of interest or principal and bankruptcy proceedings.\n- Ranking/subordination: not explicitly stated in Note 14 beyond the \"Junior Subordinated\" name.\n\nNote: The filing's own statement on the reset benchmark refers to LIBOR being replaced by Term SOFR, so the benchmark is Term SOFR as stated, not LIBOR.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/899051/000089905125000015/all-20241231.htm\",\n            \"name\": \"Allstate Corporation FY2024 Form 10-K (filed 2025-02-24), Note 14 Capital Structure\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 6,
+  "input_tokens": 18,
+  "output_tokens": 7939,
+  "cache_creation_input_tokens": 336039,
+  "cache_read_input_tokens": 20889,
+  "web_search_requests": 0,
+  "cost_usd": 0.179958
+ },
+ "cost_usd": 0.179958,
+ "elapsed_s": 44.4,
+ "harness_label": "agg1"
+}

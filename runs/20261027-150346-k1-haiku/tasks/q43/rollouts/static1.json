@@ -1,0 +1,113 @@
+{
+ "task_id": "q43",
+ "label": "static1",
+ "question": "What portion of Uber\u2019s 2024 revenue growth was driven by take-rate expansion versus volume growth?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Uber 2024 annual report gross bookings revenue take rate",
+      "ciks": [
+       "0001543151"
+      ],
+      "form_types": [
+       "10-K"
+      ],
+      "start_date": "2025-01-01"
+     },
+     "output": "{\"total_matching_documents\": 1, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-14\", \"period_ending\": \"2024-12-31\", \"company\": \"Uber Technologies, Inc  (UBER)  (CIK 0001543151)\", \"ciks\": [\"0001543151\"], \"accession\": \"0001543151-25-000008\", \"document\": \"uber-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1543151/000154315125000008/uber-20241231.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.59,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00024661
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1543151/000154315125000008/uber-20241231.htm",
+      "key": "uber10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: uber10k. (649,943 characters)\nThe data_storage currently contains the following keys:\nuber10k\n",
+     "is_error": false,
+     "elapsed_s": 0.92,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00018078000000000001
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Uber 10-K, extract: total revenue for 2024, 2023, 2022 (in millions); Gross Bookings for 2024, 2023 (total and by Mobility, Delivery, Freight); and the take rate figures reported (Revenue as % of Gross Bookings) for 2024 and 2023. Also any MD&A text explaining revenue growth drivers (volume vs. pricing/take rate, FX impact). Quote the exact table values. {{uber10k}}"
+     },
+     "output": "# Uber Technologies FY2024 10-K: Revenue, Gross Bookings, Take Rate, and MD&A Drivers\n\n## 1. Total Revenue (in millions)\n\nFrom the Consolidated Statements of Operations:\n\n| | 2022 | 2023 | 2024 |\n|---|---|---|---|\n| **Revenue** | $31,877 | $37,281 | $43,978 |\n\nSegment revenue (Note 2 and MD&A Segment Results):\n\n| Segment | 2022 | 2023 | 2024 | 2023\u21922024 % Change |\n|---|---|---|---|---|\n| Mobility | $14,029 | $19,832 | $25,087 | 26% |\n| Delivery | $10,901 | $12,204 | $13,750 | 13% |\n| Freight | $6,947 | $5,245 | $5,141 | (2)% |\n| **Total** | **$31,877** | **$37,281** | **$43,978** | **18%** |\n\n## 2. Gross Bookings (in millions)\n\n**Total Gross Bookings** (Financial and Operational Highlights table):\n\n| | 2023 | 2024 | % Change | % Change (Constant Currency) |\n|---|---|---|---|---|\n| **Gross Bookings** | $137,865 | $162,773 | 18% | 21% |\n\n**The 10-K does not report annual Gross Bookings by segment in a table.** It appears only as quarterly data in the \"Certain Key Metrics\" section. The annual segment figures below are my sums of those quarterly values. They reconcile exactly to the reported totals.\n\nQuarterly values as reported:\n\n| (In millions) | Q1 2023 | Q2 2023 | Q3 2023 | Q4 2023 | Q1 2024 | Q2 2024 | Q3 2024 | Q4 2024 |\n|---|---|---|---|---|---|---|---|---|\n| Mobility | $14,981 | $16,728 | $17,903 | $19,285 | $18,670 | $20,554 | $21,002 | $22,798 |\n| Delivery | 15,026 | 15,595 | 16,094 | 17,011 | 17,699 | 18,126 | 18,663 | 20,126 |\n| Freight | 1,401 | 1,278 | 1,284 | 1,279 | 1,282 | 1,272 | 1,308 | 1,273 |\n\nDerived annual totals:\n\n| Segment | 2023 (derived) | 2024 (derived) | Implied % Change |\n|---|---|---|---|\n| Mobility | $68,897 | $83,024 | ~20.5% |\n| Delivery | $63,726 | $74,614 | ~17.1% |\n| Freight | $5,242 | $5,135 | ~(2.0)% |\n| **Total** | **$137,865** | **$162,773** | **18%** |\n\nThe MD&A cites Mobility Gross Bookings growth of 21% and Delivery growth of 17%. These are on a constant-currency basis in the highlights section, so they differ slightly from the reported-dollar figures derived above.\n\n## 3. Take Rate (Revenue as % of Gross Bookings)\n\nThe 10-K does not report this metric as a number. It defines \"Revenue Margin\" only in the forward-looking statements. The figures below are my calculations from the reported values:\n\n| | 2023 | 2024 |\n|---|---|---|\n| **Total (Revenue \u00f7 Gross Bookings)** | 27.0% ($37,281 \u00f7 $137,865) | 27.0% ($43,978 \u00f7 $162,773) |\n| Mobility (derived) | 28.8% ($19,832 \u00f7 $68,897) | 30.2% ($25,087 \u00f7 $83,024) |\n| Delivery (derived) | 19.2% ($12,204 \u00f7 $63,726) | 18.4% ($13,750 \u00f7 $74,614) |\n| Freight (derived) | ~100% ($5,245 \u00f7 $5,242) | ~100% ($5,141 \u00f7 $5,135) |\n\nThe Freight ratio is about 100% because Gross Bookings is defined to include Freight revenue, so it is not a true take rate. Consolidated take rate was flat at about 27.0%. Mobility rose and Delivery fell, and the net effect was roughly neutral. The business model reclassification noted below also affects these ratios.\n\n## 4. MD&A Text on Revenue Growth Drivers\n\n**Consolidated (Highlights for 2024):**\n> \"Revenue was $44.0 billion, up 18% year-over-year, primarily attributable to an increase in Gross Bookings of 18%. The increase in Gross Bookings was primarily driven by an increase in Mobility and Delivery Trip volumes. The increase in revenue was partially offset by business model changes in some countries that classified certain sales and marketing costs as contra revenue, which negatively impacted revenue by $863 million and $713 million across Mobility and Delivery, respectively.\"\n\n**Results of Operations, Revenue:**\n> \"Revenue increased $6.7 billion, or 18% year-over-year, primarily attributable to an increase in Gross Bookings of 18%. The increase in Gross Bookings was primarily driven by an increase in Mobility and",
+     "is_error": false,
+     "elapsed_s": 19.77,
+     "cost_usd": 0.140853
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00018732
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: Essentially all of Uber's 2024 revenue growth came from volume (Gross Bookings growth). Take rate was flat to slightly negative, so its contribution was roughly -0.6% of the growth, not a positive share.**\n\n**Inputs (Uber FY2024 10-K, filed 2025-02-14; $ millions)**\n- Revenue: 2023 = 37,281; 2024 = 43,978. Change = 6,697 (+17.96%).\n- Gross Bookings (GB): 2023 = 137,865; 2024 = 162,773. Change = 24,908 (+18.07%).\n- Take rate (Revenue \u00f7 GB), not reported as a figure in the 10-K, so calculated:\n  - 2023: 37,281 \u00f7 137,865 = 27.0417%\n  - 2024: 43,978 \u00f7 162,773 = 27.0180%\n  - Change = -0.0237 percentage points\n\n**Decomposition (volume at prior-year take rate; rate change at current-year GB)**\n- Volume effect = \u0394GB \u00d7 TR2023 = 24,908 \u00d7 0.270417 \u2248 +6,736.0\n- Take-rate effect = \u0394TR \u00d7 GB2024 = (-0.000237) \u00d7 162,773 \u2248 -38.6\n- Total = 6,736.0 - 38.6 \u2248 6,697.4, which reconciles to the reported 6,697 change.\n\n**Shares of 2024 revenue growth**\n- Volume: 6,736.0 \u00f7 6,697 \u2248 100.6%\n- Take rate: -38.6 \u00f7 6,697 \u2248 -0.58%\n\n**Context and caveats**\n- The 10-K attributes revenue growth primarily to the 18% increase in Gross Bookings, which was driven by Mobility and Delivery trip volume growth. It also says business-model changes that classified certain sales and marketing costs as contra-revenue reduced revenue by $863 million (Mobility) and $713 million (Delivery), or $1,576 million in total. That drag is the main reason the consolidated take rate did not rise.\n- Segment take rates moved in opposite directions. Mobility rose from about 28.8% to 30.2%, while Delivery fell from about 19.2% to 18.4%. Segment GB figures were derived by summing the quarterly values in the 10-K's key metrics section, so they are approximations.\n- Using constant-currency GB growth (21%) instead of reported growth (18%) would not change the conclusion that volume drove the growth.\n- If the $1,576 million contra-revenue reclassification is excluded, underlying take rate would be about 27.99% in 2024 (45,554 \u00f7 162,773). That would make take-rate expansion a meaningful contributor (roughly 1,576 of the growth, or about 24%). This is an analytical adjustment, not a reported figure. It assumes the 2023 base is comparable, which the filing does not confirm.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1543151/000154315125000008/uber-20241231.htm\",\n            \"name\": \"Uber Technologies, Inc. Form 10-K for fiscal year 2024 (SEC EDGAR)\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: Essentially all of Uber's 2024 revenue growth came from volume (Gross Bookings growth). Take rate was flat to slightly negative, so its contribution was roughly -0.6% of the growth, not a positive share.**\n\n**Inputs (Uber FY2024 10-K, filed 2025-02-14; $ millions)**\n- Revenue: 2023 = 37,281; 2024 = 43,978. Change = 6,697 (+17.96%).\n- Gross Bookings (GB): 2023 = 137,865; 2024 = 162,773. Change = 24,908 (+18.07%).\n- Take rate (Revenue \u00f7 GB), not reported as a figure in the 10-K, so calculated:\n  - 2023: 37,281 \u00f7 137,865 = 27.0417%\n  - 2024: 43,978 \u00f7 162,773 = 27.0180%\n  - Change = -0.0237 percentage points\n\n**Decomposition (volume at prior-year take rate; rate change at current-year GB)**\n- Volume effect = \u0394GB \u00d7 TR2023 = 24,908 \u00d7 0.270417 \u2248 +6,736.0\n- Take-rate effect = \u0394TR \u00d7 GB2024 = (-0.000237) \u00d7 162,773 \u2248 -38.6\n- Total = 6,736.0 - 38.6 \u2248 6,697.4, which reconciles to the reported 6,697 change.\n\n**Shares of 2024 revenue growth**\n- Volume: 6,736.0 \u00f7 6,697 \u2248 100.6%\n- Take rate: -38.6 \u00f7 6,697 \u2248 -0.58%\n\n**Context and caveats**\n- The 10-K attributes revenue growth primarily to the 18% increase in Gross Bookings, which was driven by Mobility and Delivery trip volume growth. It also says business-model changes that classified certain sales and marketing costs as contra-revenue reduced revenue by $863 million (Mobility) and $713 million (Delivery), or $1,576 million in total. That drag is the main reason the consolidated take rate did not rise.\n- Segment take rates moved in opposite directions. Mobility rose from about 28.8% to 30.2%, while Delivery fell from about 19.2% to 18.4%. Segment GB figures were derived by summing the quarterly values in the 10-K's key metrics section, so they are approximations.\n- Using constant-currency GB growth (21%) instead of reported growth (18%) would not change the conclusion that volume drove the growth.\n- If the $1,576 million contra-revenue reclassification is excluded, underlying take rate would be about 27.99% in 2024 (45,554 \u00f7 162,773). That would make take-rate expansion a meaningful contributor (roughly 1,576 of the growth, or about 24%). This is an analytical adjustment, not a reported figure. It assumes the 2023 base is comparable, which the filing does not confirm.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1543151/000154315125000008/uber-20241231.htm\",\n            \"name\": \"Uber Technologies, Inc. Form 10-K for fiscal year 2024 (SEC EDGAR)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00136006
+  }
+ ],
+ "final_answer": "**Answer: Essentially all of Uber's 2024 revenue growth came from volume (Gross Bookings growth). Take rate was flat to slightly negative, so its contribution was roughly -0.6% of the growth, not a positive share.**\n\n**Inputs (Uber FY2024 10-K, filed 2025-02-14; $ millions)**\n- Revenue: 2023 = 37,281; 2024 = 43,978. Change = 6,697 (+17.96%).\n- Gross Bookings (GB): 2023 = 137,865; 2024 = 162,773. Change = 24,908 (+18.07%).\n- Take rate (Revenue \u00f7 GB), not reported as a figure in the 10-K, so calculated:\n  - 2023: 37,281 \u00f7 137,865 = 27.0417%\n  - 2024: 43,978 \u00f7 162,773 = 27.0180%\n  - Change = -0.0237 percentage points\n\n**Decomposition (volume at prior-year take rate; rate change at current-year GB)**\n- Volume effect = \u0394GB \u00d7 TR2023 = 24,908 \u00d7 0.270417 \u2248 +6,736.0\n- Take-rate effect = \u0394TR \u00d7 GB2024 = (-0.000237) \u00d7 162,773 \u2248 -38.6\n- Total = 6,736.0 - 38.6 \u2248 6,697.4, which reconciles to the reported 6,697 change.\n\n**Shares of 2024 revenue growth**\n- Volume: 6,736.0 \u00f7 6,697 \u2248 100.6%\n- Take rate: -38.6 \u00f7 6,697 \u2248 -0.58%\n\n**Context and caveats**\n- The 10-K attributes revenue growth primarily to the 18% increase in Gross Bookings, which was driven by Mobility and Delivery trip volume growth. It also says business-model changes that classified certain sales and marketing costs as contra-revenue reduced revenue by $863 million (Mobility) and $713 million (Delivery), or $1,576 million in total. That drag is the main reason the consolidated take rate did not rise.\n- Segment take rates moved in opposite directions. Mobility rose from about 28.8% to 30.2%, while Delivery fell from about 19.2% to 18.4%. Segment GB figures were derived by summing the quarterly values in the 10-K's key metrics section, so they are approximations.\n- Using constant-currency GB growth (21%) instead of reported growth (18%) would not change the conclusion that volume drove the growth.\n- If the $1,576 million contra-revenue reclassification is excluded, underlying take rate would be about 27.99% in 2024 (45,554 \u00f7 162,773). That would make take-rate expansion a meaningful contributor (roughly 1,576 of the growth, or about 24%). This is an analytical adjustment, not a reported figure. It assumes the 2023 base is comparable, which the filing does not confirm.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1543151/000154315125000008/uber-20241231.htm\",\n            \"name\": \"Uber Technologies, Inc. Form 10-K for fiscal year 2024 (SEC EDGAR)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 5,
+  "input_tokens": 14,
+  "output_tokens": 6881,
+  "cache_creation_input_tokens": 211780,
+  "cache_read_input_tokens": 23102,
+  "web_search_requests": 0,
+  "cost_usd": 0.142828
+ },
+ "cost_usd": 0.142828,
+ "elapsed_s": 35.8,
+ "harness_label": "static1"
+}

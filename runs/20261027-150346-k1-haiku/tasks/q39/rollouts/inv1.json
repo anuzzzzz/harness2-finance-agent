@@ -1,0 +1,86 @@
+{
+ "task_id": "q39",
+ "label": "inv1",
+ "question": "What financial metrics does Delta Airlines (NYSE: DAL) guide on in its quarterly earnings reports?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm",
+      "key": "dal_q4_2024"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: dal_q4_2024. (52,998 characters)\nThe data_storage currently contains the following keys:\ndal_q4_2024\n",
+     "is_error": false,
+     "elapsed_s": 0.64,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0008591499999999999
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Delta earnings release, find the outlook / guidance section. List every guided line item exactly as labelled in the outlook table (e.g., first quarter 2025 and full year 2025 items), with its period, unit and range. Also note any items labelled as non-GAAP or with footnotes. Quote labels exactly. Document: {{dal_q4_2024}}"
+     },
+     "output": "## Outlook / Guidance Table\n\nThe release has two guidance tables, both under the \"Financial Guidance\" heading. The \"Financial Guidance\" heading carries footnote marker 1.\n\n**FY 2025 Forecast** (footnote 2 is attached to this heading)\n\n| Label (exact) | Period | Unit | Range / Value |\n|---|---|---|---|\n| Earnings Per Share YoY | FY 2025 | Year-over-year % growth | Greater than 10% |\n| Free Cash Flow ($B) | FY 2025 | US$ billions | Greater than $4 |\n| Gross Leverage3 | FY 2025 | Multiple (x), per footnote 3 | 2x or less |\n\n**1Q25 Forecast** (no footnote marker on this heading)\n\n| Label (exact) | Period | Unit | Range / Value |\n|---|---|---|---|\n| Total Revenue YoY | 1Q25 (March 2025 quarter) | Year-over-year % growth | Up 7% - 9% |\n| Operating Margin | 1Q25 | % of revenue | 6% - 8% |\n| Earnings Per Share | 1Q25 | US$ per diluted share | $0.70 - $1.00 |\n\n**3-5 Year Targets** (a separate column, not 2025 guidance; footnote 4 is attached)\n\n| Label (exact) | Period | Unit | Range / Value |\n|---|---|---|---|\n| Earnings Per Share YoY | 3-5 years | Average YoY % growth | 10% average |\n| Free Cash Flow ($B) | 3-5 years | US$ billions | $3 - $5 |\n| Gross Leverage3 | Long-term | Multiple (x) | 1x |\n\n## Non-GAAP Labelling and Footnotes\n\n- **Footnote 1** (attached to the \"Financial Guidance\" heading): \"Non-GAAP measures; Refer to Non-GAAP reconciliations for historical comparison figures.\" The table labels themselves do not say \"non-GAAP\" or \"adjusted.\" The footnote is the only indication that the guidance is on a non-GAAP basis.\n- **Footnote 2** (attached to \"FY 2025 Forecast\"): \"Year-over-year EPS growth excludes the 45-cent impact of the CrowdStrike-caused outage in 2024.\"\n- **Footnote 3** (attached to \"Gross Leverage\"): \"Adjusted debt to EBITDAR.\"\n- **Footnote 4** (attached to \"3-5 Year Targets\"): \"Introduced at November 2024 Investor Day.\"\n\nThe release also says that Delta cannot reconcile forward-looking non-GAAP measures to GAAP without unreasonable effort, because adjusting items will not be known until period end.\n\n## Related Guidance Outside the Table\n\nThese figures appear in the narrative, not the outlook table:\n\n- **FY 2025 EPS:** \"greater than $7.35 per share.\" The release says this is more than 10% growth versus a normalized 2024 baseline, and greater than 19% growth on a non-GAAP basis.\n- **FY 2025 pre-tax income:** \"greater than $6 billion\" (CEO quote).\n- **FY 2025 free cash flow:** \"greater than $4 billion\" (also in the headline and CFO quote).\n- **FY 2025 non-fuel unit cost (CASM-Ex):** \"low-single digits\" growth (CFO quote).\n- **March quarter revenue:** the headline says \"revenue growth of 7 to 9 percent,\" and the narrative says \"March quarter adjusted revenue to be 7 to 9 percent higher than 2024.\" The table, however, labels this line only as \"Total Revenue YoY,\" without the word \"adjusted.\"",
+     "is_error": false,
+     "elapsed_s": 11.12,
+     "cost_usd": 0.003972
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00017673500000000002
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Delta Air Lines (NYSE: DAL) guides on a small set of metrics in its earnings release outlook. The most recent release I could open and verify is the December-quarter 2024 earnings release (8-K, January 2025). The March-quarter 2025 results come after the April 7, 2025 as-of date, so they are not used.\n\nQuarterly guidance (1Q25 Forecast table, March 2025 quarter):\n- Total Revenue YoY (year-over-year % growth): up 7% to 9%\n- Operating Margin (% of revenue): 6% to 8%\n- Earnings Per Share (US$ per diluted share): $0.70 to $1.00\n\nFull-year guidance (FY 2025 Forecast table):\n- Earnings Per Share YoY (year-over-year % growth): greater than 10%\n- Free Cash Flow ($B, US$ billions): greater than $4\n- Gross Leverage (multiple, x): 2x or less\n\nNarrative-only full-year figures, outside the table: FY 2025 EPS greater than $7.35 per share (more than 10% growth versus a normalized 2024 baseline, and greater than 19% on a non-GAAP basis); FY 2025 pre-tax income greater than $6 billion (CEO quote); and non-fuel unit cost (CASM-Ex) growth in the low-single digits (CFO quote).\n\nBasis and caveats:\n- The guidance is non-GAAP. The table labels do not say \"non-GAAP\" or \"adjusted\"; a footnote on the \"Financial Guidance\" heading says the measures are non-GAAP and refers to reconciliations for historical figures. The release also says forward-looking non-GAAP measures cannot be reconciled to GAAP without unreasonable effort.\n- FY 2025 EPS growth excludes the 45-cent impact of the 2024 CrowdStrike-caused outage.\n- Gross Leverage is adjusted debt to EBITDAR.\n- The 3-5 year targets (EPS YoY 10% average, free cash flow $3 to $5 billion, long-term gross leverage 1x) were introduced at the November 2024 Investor Day. They are not 2025 guidance.\n- The March-quarter revenue guidance is described as \"adjusted revenue\" in the narrative, but the table label is only \"Total Revenue YoY.\"\n- An earlier January 2024 supplemental deck exists, but I did not open it, so I have not relied on it for current guidance.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm\",\n            \"name\": \"Delta Air Lines Q4 2024 earnings release (8-K Exhibit 99.1, January 2025)\"\n        }\n    ]\n}"
+     },
+     "output": "Delta Air Lines (NYSE: DAL) guides on a small set of metrics in its earnings release outlook. The most recent release I could open and verify is the December-quarter 2024 earnings release (8-K, January 2025). The March-quarter 2025 results come after the April 7, 2025 as-of date, so they are not used.\n\nQuarterly guidance (1Q25 Forecast table, March 2025 quarter):\n- Total Revenue YoY (year-over-year % growth): up 7% to 9%\n- Operating Margin (% of revenue): 6% to 8%\n- Earnings Per Share (US$ per diluted share): $0.70 to $1.00\n\nFull-year guidance (FY 2025 Forecast table):\n- Earnings Per Share YoY (year-over-year % growth): greater than 10%\n- Free Cash Flow ($B, US$ billions): greater than $4\n- Gross Leverage (multiple, x): 2x or less\n\nNarrative-only full-year figures, outside the table: FY 2025 EPS greater than $7.35 per share (more than 10% growth versus a normalized 2024 baseline, and greater than 19% on a non-GAAP basis); FY 2025 pre-tax income greater than $6 billion (CEO quote); and non-fuel unit cost (CASM-Ex) growth in the low-single digits (CFO quote).\n\nBasis and caveats:\n- The guidance is non-GAAP. The table labels do not say \"non-GAAP\" or \"adjusted\"; a footnote on the \"Financial Guidance\" heading says the measures are non-GAAP and refers to reconciliations for historical figures. The release also says forward-looking non-GAAP measures cannot be reconciled to GAAP without unreasonable effort.\n- FY 2025 EPS growth excludes the 45-cent impact of the 2024 CrowdStrike-caused outage.\n- Gross Leverage is adjusted debt to EBITDAR.\n- The 3-5 year targets (EPS YoY 10% average, free cash flow $3 to $5 billion, long-term gross leverage 1x) were introduced at the November 2024 Investor Day. They are not 2025 guidance.\n- The March-quarter revenue guidance is described as \"adjusted revenue\" in the narrative, but the table label is only \"Total Revenue YoY.\"\n- An earlier January 2024 supplemental deck exists, but I did not open it, so I have not relied on it for current guidance.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm\",\n            \"name\": \"Delta Air Lines Q4 2024 earnings release (8-K Exhibit 99.1, January 2025)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0008847050000000001
+  }
+ ],
+ "final_answer": "Delta Air Lines (NYSE: DAL) guides on a small set of metrics in its earnings release outlook. The most recent release I could open and verify is the December-quarter 2024 earnings release (8-K, January 2025). The March-quarter 2025 results come after the April 7, 2025 as-of date, so they are not used.\n\nQuarterly guidance (1Q25 Forecast table, March 2025 quarter):\n- Total Revenue YoY (year-over-year % growth): up 7% to 9%\n- Operating Margin (% of revenue): 6% to 8%\n- Earnings Per Share (US$ per diluted share): $0.70 to $1.00\n\nFull-year guidance (FY 2025 Forecast table):\n- Earnings Per Share YoY (year-over-year % growth): greater than 10%\n- Free Cash Flow ($B, US$ billions): greater than $4\n- Gross Leverage (multiple, x): 2x or less\n\nNarrative-only full-year figures, outside the table: FY 2025 EPS greater than $7.35 per share (more than 10% growth versus a normalized 2024 baseline, and greater than 19% on a non-GAAP basis); FY 2025 pre-tax income greater than $6 billion (CEO quote); and non-fuel unit cost (CASM-Ex) growth in the low-single digits (CFO quote).\n\nBasis and caveats:\n- The guidance is non-GAAP. The table labels do not say \"non-GAAP\" or \"adjusted\"; a footnote on the \"Financial Guidance\" heading says the measures are non-GAAP and refers to reconciliations for historical figures. The release also says forward-looking non-GAAP measures cannot be reconciled to GAAP without unreasonable effort.\n- FY 2025 EPS growth excludes the 45-cent impact of the 2024 CrowdStrike-caused outage.\n- Gross Leverage is adjusted debt to EBITDAR.\n- The 3-5 year targets (EPS YoY 10% average, free cash flow $3 to $5 billion, long-term gross leverage 1x) were introduced at the November 2024 Investor Day. They are not 2025 guidance.\n- The March-quarter revenue guidance is described as \"adjusted revenue\" in the narrative, but the table label is only \"Total Revenue YoY.\"\n- An earlier January 2024 supplemental deck exists, but I did not open it, so I have not relied on it for current guidance.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm\",\n            \"name\": \"Delta Air Lines Q4 2024 earnings release (8-K Exhibit 99.1, January 2025)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 3,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 4,
+  "input_tokens": 12,
+  "output_tokens": 4220,
+  "cache_creation_input_tokens": 29243,
+  "cache_read_input_tokens": 12579,
+  "web_search_requests": 0,
+  "cost_usd": 0.005893
+ },
+ "cost_usd": 0.005893,
+ "elapsed_s": 19.9,
+ "harness_label": "inv1"
+}

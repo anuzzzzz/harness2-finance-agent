@@ -1,0 +1,127 @@
+{
+ "task_id": "q09",
+ "label": "inv1",
+ "question": "How many basis points did MU beat or miss its Q3 2024 GAAP gross margin guidance?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "guidance_vs_actual"
+     },
+     "output": "---\nname: guidance_vs_actual\ndescription: Compare a company's reported result with its own earlier guidance (beat or miss, in bps, percent or dollars) using the right pair of earnings releases.\n---\nANALYTIC MOVE: result minus guidance, where guidance was issued one quarter earlier than the result.\n\n1. Fix the two documents before searching. The ACTUAL is in the earnings release (8-K EX-99.1) for the target quarter. The GUIDANCE is in the \"Outlook\" section of the PRIOR quarter's release (the one issued about three months earlier). Use edgar_search with the company and filing-date filters, then parse_html_page each release under its own key.\n2. With retrieve_information, ask separately: (a) the guided metric for the target quarter: midpoint and range, GAAP and non-GAAP, as labelled in the table; (b) the actual metric for that quarter, same basis. Check that the basis (GAAP vs non-GAAP) and unit (% of revenue vs $) match on both sides.\n3. Compute actual minus the guidance midpoint (1 percentage point = 100 bps). Use the company-stated rounded actual (e.g. the release's \"26.9%\") rather than a recomputed ratio. Mention the unrounded recomputation only as a cross-check. If the question says only \"beat or miss\", use the midpoint, and also state the position against the range ends from the document.\n4. Check that the range width and midpoint you quote come from the retrieved text, not memory. Do not carry a \u00b1 width from a snippet.\n5. Answer with: the sign (beat/miss), the size in the requested unit, both inputs with period and basis, the calculation, and the URLs of both releases.\n\nTask lead (unverified; re-confirm in text): Micron fiscal Q3 2024 (quarter ended May 30, 2024). Actual release: https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm. Guidance release (fiscal Q2 2024, issued March 2024): https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm. The Q3 10-Q rounds gross margin to a whole percent, so use the release for the actual. In the earlier run, the guided GAAP gross margin was taken from a news-site copy and never confirmed in the SEC release.\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00081165
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm",
+      "key": "guide_q2"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: guide_q2. (17,072 characters)\nThe data_storage currently contains the following keys:\nguide_q2\n",
+     "is_error": false,
+     "elapsed_s": 0.55,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm",
+      "key": "actual_q3"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: actual_q3. (17,118 characters)\nThe data_storage currently contains the following keys:\nguide_q2\nactual_q3\n",
+     "is_error": false,
+     "elapsed_s": 0.25,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00029540999999999997
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Micron fiscal Q2 2024 earnings release, find the Outlook section for fiscal Q3 2024: the GAAP gross margin guidance (midpoint and range, as a percentage), and the non-GAAP gross margin guidance for comparison. Quote the exact table labels and figures. Text: {{guide_q2}}"
+     },
+     "output": "**Business Outlook, fiscal Q3 2024 (table \"FQ3-24\"):**\n\n| Row label | GAAP(1) Outlook | Non-GAAP(2) Outlook |\n|---|---|---|\n| Gross margin | 25.5% \u00b1 1.5% | 26.5% \u00b1 1.5% |\n\n- **GAAP gross margin guidance:** midpoint 25.5%, range 24.0% to 27.0%.\n- **Non-GAAP gross margin guidance:** midpoint 26.5%, range 25.0% to 28.0%.\n\nThe non-GAAP midpoint is 1.0 percentage point higher. The press release's \"Reconciliation of GAAP to Non-GAAP Outlook\" table shows this as an adjustment of \"1.0%\" with footnote \"A,\" which covers stock-based compensation in cost of goods sold ($78 million) and other cost of goods sold ($4 million).",
+     "is_error": false,
+     "elapsed_s": 3.98,
+     "cost_usd": 0.001274
+    },
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Micron fiscal Q3 2024 earnings release, find the GAAP gross margin for the quarter (stated percentage), and the non-GAAP gross margin for comparison. Quote exact labels and figures. Text: {{actual_q3}}"
+     },
+     "output": "**GAAP gross margin, fiscal Q3 2024: 26.9%**\n\n- The Quarterly Financial Results table lists \"Gross margin\" with \"1,832\" in the GAAP column, followed by the row \"percent of revenue\" showing \"26.9 %\".\n- The reconciliation table labels the same figure \"GAAP gross margin\" at \"$1,832\" million.\n\n**Non-GAAP gross margin, fiscal Q3 2024: 28.1%**\n\n- The same table shows \"Gross margin\" at \"1,917\" in the Non-GAAP column, with \"percent of revenue\" at \"28.1 %\".\n- The reconciliation table labels it \"Non-GAAP gross margin\" at \"$1,917\" million.\n\nThe difference of 1.2 points comes from the stock-based compensation (\"80\") and \"Other\" (\"5\") adjustments to cost of goods sold.",
+     "is_error": false,
+     "elapsed_s": 3.31,
+     "cost_usd": 0.001168
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000269255
+  },
+  {
+   "turn": 4,
+   "text": "**Answer: MU beat its Q3 2024 GAAP gross margin guidance midpoint by 140 basis points.**\n\n**Inputs**\n\n- **Guidance (issued in the fiscal Q2 2024 release, March 2024):** The Business Outlook table for fiscal Q3 2024 shows GAAP gross margin of 25.5% \u00b1 1.5%, so the midpoint is 25.5% and the range is 24.0% to 27.0%. The non-GAAP outlook was 26.5% \u00b1 1.5%. Source: \nMicron fiscal Q2 2024 earnings release (EX-99.1), Business Outlook, table \"FQ3-24\"\n, https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\n- **Actual (fiscal Q3 2024, quarter ended May 30, 2024):** The release reports GAAP gross margin of 26.9% of revenue, with GAAP gross margin of $1,832 million. The non-GAAP figure was 28.1%. Source: Micron fiscal Q3 2024 earnings release (EX-99.1), https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\n\n**Calculation**\n\n- Actual minus guidance midpoint: 26.9% \u2212 25.5% = 1.4 percentage points\n- 1.4 percentage points \u00d7 100 = 140 basis points (beat)\n\n**Context**\n\n- The actual 26.9% falls inside the 24.0%\u201327.0% guided range, in the upper part of it.\n- Both sides are on a GAAP basis and both are stated as a percent of revenue, so the comparison is like-for-like.\n- I did not recompute the ratio from revenue, so no unrounded cross-check is included.\n\n```json\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\",\n            \"name\": \"Micron Technology fiscal Q2 2024 earnings release (EX-99.1), Business Outlook\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\",\n            \"name\": \"Micron Technology fiscal Q3 2024 earnings release (EX-99.1)\"\n        }\n    ]\n}\n```",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Answer: MU beat its Q3 2024 GAAP gross margin guidance midpoint by 140 basis points.\n\nInputs:\n- Guidance (fiscal Q2 2024 release, March 2024, Business Outlook table \"FQ3-24\"): GAAP gross margin 25.5% \u00b1 1.5%, i.e. midpoint 25.5%, range 24.0% to 27.0%. Non-GAAP outlook was 26.5% \u00b1 1.5%. Source: https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\n- Actual (fiscal Q3 2024, quarter ended May 30, 2024): GAAP gross margin 26.9% of revenue ($1,832 million). Non-GAAP was 28.1%. Source: https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\n\nCalculation: 26.9% \u2212 25.5% = 1.4 percentage points \u00d7 100 = 140 bps (beat). The actual falls inside the 24.0%\u201327.0% range, in its upper part. Both figures are GAAP, % of revenue. No unrounded recomputation was performed.\n\n{\"sources\": [{\"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\", \"name\": \"Micron Technology fiscal Q2 2024 earnings release (EX-99.1), Business Outlook\"}, {\"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\", \"name\": \"Micron Technology fiscal Q3 2024 earnings release (EX-99.1)\"}]}"
+     },
+     "output": "Answer: MU beat its Q3 2024 GAAP gross margin guidance midpoint by 140 basis points.\n\nInputs:\n- Guidance (fiscal Q2 2024 release, March 2024, Business Outlook table \"FQ3-24\"): GAAP gross margin 25.5% \u00b1 1.5%, i.e. midpoint 25.5%, range 24.0% to 27.0%. Non-GAAP outlook was 26.5% \u00b1 1.5%. Source: https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\n- Actual (fiscal Q3 2024, quarter ended May 30, 2024): GAAP gross margin 26.9% of revenue ($1,832 million). Non-GAAP was 28.1%. Source: https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\n\nCalculation: 26.9% \u2212 25.5% = 1.4 percentage points \u00d7 100 = 140 bps (beat). The actual falls inside the 24.0%\u201327.0% range, in its upper part. Both figures are GAAP, % of revenue. No unrounded recomputation was performed.\n\n{\"sources\": [{\"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\", \"name\": \"Micron Technology fiscal Q2 2024 earnings release (EX-99.1), Business Outlook\"}, {\"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\", \"name\": \"Micron Technology fiscal Q3 2024 earnings release (EX-99.1)\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0010276100000000002
+  }
+ ],
+ "final_answer": "Answer: MU beat its Q3 2024 GAAP gross margin guidance midpoint by 140 basis points.\n\nInputs:\n- Guidance (fiscal Q2 2024 release, March 2024, Business Outlook table \"FQ3-24\"): GAAP gross margin 25.5% \u00b1 1.5%, i.e. midpoint 25.5%, range 24.0% to 27.0%. Non-GAAP outlook was 26.5% \u00b1 1.5%. Source: https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\n- Actual (fiscal Q3 2024, quarter ended May 30, 2024): GAAP gross margin 26.9% of revenue ($1,832 million). Non-GAAP was 28.1%. Source: https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\n\nCalculation: 26.9% \u2212 25.5% = 1.4 percentage points \u00d7 100 = 140 bps (beat). The actual falls inside the 24.0%\u201327.0% range, in its upper part. Both figures are GAAP, % of revenue. No unrounded recomputation was performed.\n\n{\"sources\": [{\"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\", \"name\": \"Micron Technology fiscal Q2 2024 earnings release (EX-99.1), Business Outlook\"}, {\"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\", \"name\": \"Micron Technology fiscal Q3 2024 earnings release (EX-99.1)\"}]}",
+ "fallback_text": "**Answer: MU beat its Q3 2024 GAAP gross margin guidance midpoint by 140 basis points.**\n\n**Inputs**\n\n- **Guidance (issued in the fiscal Q2 2024 release, March 2024):** The Business Outlook table for fiscal Q3 2024 shows GAAP gross margin of 25.5% \u00b1 1.5%, so the midpoint is 25.5% and the range is 24.0% to 27.0%. The non-GAAP outlook was 26.5% \u00b1 1.5%. Source: \nMicron fiscal Q2 2024 earnings release (EX-99.1), Business Outlook, table \"FQ3-24\"\n, https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\n- **Actual (fiscal Q3 2024, quarter ended May 30, 2024):** The release reports GAAP gross margin of 26.9% of revenue, with GAAP gross margin of $1,832 million. The non-GAAP figure was 28.1%. Source: Micron fiscal Q3 2024 earnings release (EX-99.1), https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\n\n**Calculation**\n\n- Actual minus guidance midpoint: 26.9% \u2212 25.5% = 1.4 percentage points\n- 1.4 percentage points \u00d7 100 = 140 basis points (beat)\n\n**Context**\n\n- The actual 26.9% falls inside the 24.0%\u201327.0% guided range, in the upper part of it.\n- Both sides are on a GAAP basis and both are stated as a percent of revenue, so the comparison is like-for-like.\n- I did not recompute the ratio from revenue, so no unrounded cross-check is included.\n\n```json\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\",\n            \"name\": \"Micron Technology fiscal Q2 2024 earnings release (EX-99.1), Business Outlook\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\",\n            \"name\": \"Micron Technology fiscal Q3 2024 earnings release (EX-99.1)\"\n        }\n    ]\n}\n```",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 6,
+  "input_tokens": 18,
+  "output_tokens": 3732,
+  "cache_creation_input_tokens": 22190,
+  "cache_read_input_tokens": 20405,
+  "web_search_requests": 0,
+  "cost_usd": 0.004846
+ },
+ "cost_usd": 0.004846,
+ "elapsed_s": 18.1,
+ "harness_label": "inv1"
+}

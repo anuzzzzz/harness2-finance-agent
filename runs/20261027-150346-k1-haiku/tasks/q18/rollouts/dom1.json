@@ -1,0 +1,198 @@
+{
+ "task_id": "q18",
+ "label": "dom1",
+ "question": "Does Workday (NASDAQ: WDAY) report a gross or net retention metric in its annual or quarterly reporting? If so, provide the definition",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "company_kpi_definition_lookup"
+     },
+     "output": "---\nname: company_kpi_definition_lookup\ndescription: Answer \"does the company report metric X (retention, churn, ARR, backlog, etc.) and how does it define it\" from the 10-K/10-Q, including how the disclosure changed over time.\n---\nANALYTIC MOVE: classify and trace. Decide whether the company reports the metric, in which documents, with what exact definition and latest value, and whether the disclosure changed.\n\n1. Controlling source: the latest 10-K before the as-of date, in Item 7 MD&A \"Key Business Metrics\" or a section named for the metric. Check the latest 10-Q too. Earnings releases and prepared remarks only repeat the value. Retrieve the heading, the definition, the value and its as-of date, all from the opened text.\n2. Check the gross and the net variant separately. Report each as reported, or state \"not reported\" only after retrieving from the relevant section of the opened filing. Do not infer absence from one failed retrieval. Re-ask with different wording.\n3. Definition contract. Give the company's own wording on: the numerator and denominator (or what is compared); what is included and excluded (expansion, price, churn, contract terms under one year); the measurement basis (ARR, constant currency, annualisation method); and the measurement date. Give the latest value with its date and unit.\n4. Disclosure history. Metrics are sometimes changed after SEC staff comment letters. Check the prior-year 10-K and the CORRESP/UPLOAD letters in edgar_search results. Open them before saying a metric was dropped or added, and give the period of the change. Open the letters if you cite them.\n5. Answer: yes/no per metric, then the definition, the value with its date, and the history. State plainly anything you did not verify.\n\nTask facts (Workday, WDAY; from search results, re-confirm in the opened text):\n- The FY2025 10-K (fiscal year ended Jan 31, 2025, filed 2025-03-11) is https://www.sec.gov/Archives/edgar/data/1327811/000132781125000056/wday-20250131.htm. The 10-Q for the quarter ended Oct 31, 2024 is https://www.sec.gov/Archives/edgar/data/1327811/000132781124000242/wday-20241031.htm.\n- SEC correspondence found in edgar_search: CORRESP filed 2024-09-04 (https://www.sec.gov/Archives/edgar/data/1327811/000132781124000174/filename1.htm) and an UPLOAD staff letter dated 2024-08-20. A later 10-K for FY2026 may appear in search results. It postdates the 2025-04-07 as-of date, so do not use it.\n- Snippet-level leads, not yet confirmed from opened text: the FY2025 10-K carries a \"Gross Revenue Retention Rate\" section with a value of about 98%, and Workday told the SEC it would drop net retention disclosure after the quarter ended Oct 31, 2024. Retrieve the definition wording from the 10-K itself.\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000803275
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1327811/000132781125000056/wday-20250131.htm",
+      "key": "wday10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: wday10k. (369,273 characters)\nThe data_storage currently contains the following keys:\nwday10k\n",
+     "is_error": false,
+     "elapsed_s": 0.87,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1327811/000132781124000242/wday-20241031.htm",
+      "key": "wday10q"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: wday10q. (264,510 characters)\nThe data_storage currently contains the following keys:\nwday10k\nwday10q\n",
+     "is_error": false,
+     "elapsed_s": 0.45,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00030949
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Workday 10-K text: {{wday10k}} \u2014 Find the \"Key Business Metrics\" section or any section on Gross Revenue Retention Rate / Subscription Revenue Retention / net retention. Quote the heading, the full definition (numerator, denominator, what is included/excluded, measurement basis, measurement date), the reported value and its as-of date, and any statement about net retention rate being discontinued or changed. Also state whether a net retention rate is reported."
+     },
+     "output": "The filing has no section titled \"Key Business Metrics.\" The closest match is **\"Gross Revenue Retention Rate,\"** a subsection of Item 7 (MD&A), under \"Results of Operations\" > \"Revenues,\" immediately after the revenue table. It is not in the \"Financial Results Overview\" key metrics table.\n\n**Heading:** \"Gross Revenue Retention Rate\"\n\n**Reported value and as-of date:** \"our gross revenue retention rate of approximately 98% as of January 31, 2025.\"\n\n**Definition, as stated in the filing:**\n\n- **What it measures:** \"the percentage of recurring revenue retained from existing customers.\"\n- **Calculation:** \"calculated by taking total annual recurring revenue ('ARR') of our customers as of the corresponding prior period-end and comparing that to ARR from that same set of customers as of the current period-end.\"\n- **Numerator and denominator:** The filing describes the comparison (current-period ARR from the prior-period customer set against prior-period ARR) but does not state a formula in those terms.\n- **Included/excluded:** \"The metric takes into account recurring revenues lost to product or customer churn but does not account for additional revenue earned from add-ons or net expansions, which include volume and price adjustments.\"\n- **Measurement basis:** ARR, which \"represents the annualized value of active subscription contracts as of the end of each period.\" Each contract is \"annualized by dividing the total contract value by the number of days in the contract term and then multiplying by 365.\"\n- **Exclusions from ARR:** \"contracts with terms less than one year that are distinct from our core product offering, such as contracts for tenants which are used for implementation and testing.\"\n- **Renewals:** \"To the extent that we are negotiating a renewal with a customer after the expiration of the subscription, ARR is only adjusted if the customer churns.\"\n- **Currency:** \"We calculate ARR on a constant currency basis using exchange rates set at the beginning of each fiscal year.\"\n- **Non-GAAP status:** \"ARR is a non-GAAP financial measure and should be viewed independently of, and not as a substitute for or combined with, revenue and unearned revenue.\"\n- **Measurement dates:** Comparison of the prior period-end to the current period-end (fiscal 2025 metric as of January 31, 2025). The filing does not give a prior-year rate.\n\n**Purpose statement:** The filing says the metric \"demonstrates our ability to maintain our existing customer base and drive strong overall customer satisfaction.\"\n\n**Net retention rate:** The filing does not report a net retention rate, net revenue retention, or any equivalent metric that includes expansion. The gross metric is explicitly defined to exclude \"net expansions.\" The text contains no statement that a net retention rate was discontinued or changed.",
+     "is_error": false,
+     "elapsed_s": 8.92,
+     "cost_usd": 0.078988
+    },
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Workday 10-Q text: {{wday10q}} \u2014 Find any \"Key Business Metrics\" section, gross retention rate, or net retention rate disclosure. Quote the heading, definition, value and as-of date, and any statement about discontinuing net retention disclosure."
+     },
+     "output": "The filing has no section titled \"Key Business Metrics.\" The retention disclosure appears under a different heading.\n\n**Heading:** \"Gross Revenue Retention Rate,\" in Item 2, MD&A, under \"Results of Operations\" > \"Revenues.\"\n\n**Value and as-of date:** 98% as of October 31, 2024.\n\n**Quoted text:** \"Our growth in subscription services revenues attributable to existing customers is further reflected by our gross revenue retention rate of 98% as of October 31, 2024. Our gross revenue retention rate measures the percentage of recurring revenue retained from existing customers and is calculated by taking total annual recurring revenue (\"ARR\") of our customers as of the corresponding prior period-end and comparing that to ARR from that same set of customers as of the current period-end. The metric takes into account recurring revenues lost to product or customer churn but does not account for additional revenue earned from add-ons or net expansions, which include volume and price adjustments.\"\n\nThe filing also states that ARR is calculated per subscription contract (total contract value divided by contract-term days, times 365), excludes certain short-term or non-core contracts, is measured on a constant-currency basis using exchange rates set at the beginning of each fiscal year, and is a non-GAAP measure.\n\n**Net retention rate:** The filing does not disclose a net retention rate. It does not use that term.\n\n**Discontinuation statement:** None. The filing does not say that Workday is discontinuing any retention disclosure.\n\nThe \"Financial Results Overview\" table in MD&A lists the other operating metrics (subscription revenue backlog, 12-month backlog, cash and marketable securities, and headcount), but it does not include a retention rate.",
+     "is_error": false,
+     "elapsed_s": 5.12,
+     "cost_usd": 0.011297
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0002922
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1327811/000132781124000174/filename1.htm",
+      "key": "corresp"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: corresp. (10,327 characters)\nThe data_storage currently contains the following keys:\nwday10k\nwday10q\ncorresp\n",
+     "is_error": false,
+     "elapsed_s": 0.32,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Workday 10-K text: {{wday10k}} \u2014 Does the filing mention \"net retention\" or \"subscription revenue retention\" or a prior-year net retention rate? Quote any sentence describing a change in how retention is disclosed."
+     },
+     "output": "**No.** The filing does not mention \"net retention,\" \"net revenue retention,\" or \"subscription revenue retention.\" It discloses only a **gross revenue retention rate**, and it gives no prior-year figure for that metric.\n\nThe only retention disclosure is in MD&A, under \"Gross Revenue Retention Rate\":\n\n> \"Our growth in subscription services revenues attributable to existing customers is further reflected by our gross revenue retention rate of approximately 98% as of January 31, 2025.\"\n\nThe filing also defines the metric and says what it excludes:\n\n> \"The metric takes into account recurring revenues lost to product or customer churn but does not account for additional revenue earned from add-ons or net expansions, which include volume and price adjustments.\"\n\nThe filing does not describe any change in how retention is calculated or disclosed. The \"Change in Non-GAAP Financial Measures\" section refers to changes in excluded items for operating income (acquisition-related and restructuring costs), not to retention metrics.",
+     "is_error": false,
+     "elapsed_s": 8.88,
+     "cost_usd": 0.077688
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00045547
+  },
+  {
+   "turn": 5,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this SEC correspondence letter: {{corresp}} \u2014 Quote what Workday says about net retention rate disclosure, including whether it will stop disclosing it, the period it applies from, and what it will disclose instead. Quote the sentences."
+     },
+     "output": "Workday does not say it will stop disclosing net revenue retention. It says it will expand the disclosure, starting with the Form 10-Q for the quarter ended October 31, 2024, and will report the rate as a threshold rather than an exact figure. The relevant sentences are:\n\n**Period and scope of the change:**\n> \"We advise the Staff that in future filings, beginning with our Quarterly Report on Form 10-Q for the quarter ended October 31, 2024, we will disclose information about gross and net revenue retention rates, including a description and definition of each and how they are calculated.\"\n\n**Proposed disclosure:**\n> \"Our growth with existing customers is further reflected by our gross and net revenue retention rates exceeding XX% and XX%, respectively, as of October 31, 2024.\"\n\n**Definition of net revenue retention:**\n> \"Net revenue retention rates measure the net change in recurring revenue from existing customers. The metric includes both positive and negative impacts on revenue, such as add-ons, net expansions, and product and customer churn. Net revenue retention rates are calculated by taking the current period-end ARR of our customers that we retained year-over-year, including add-ons and net expansion, divided by the total ARR at the end of the corresponding prior period.\"\n\n**Why exact figures are not disclosed:**\n> \"Since we do not consider these metrics to be key performance indicators, we do not disclose the exact figures. Providing these amounts with greater precision may suggest that small fluctuations are indicative of fundamental changes in our retention patterns, which we believe is unfounded and potentially misleading for readers.\"\n\n**Future treatment of changes:**\n> \"In future filings, to the extent any changes in our revenue retention rates are material, we will consider the need to include further disclosure to provide adequate context for an investor to understand significant fluctuations in revenue retention between periods.\"\n\nSo the company will replace exact rates with a \"exceeding XX%\" threshold and add definitions and calculation methodology. The \"will consider\" language in the last sentence is non-committal. The actual historical rates for fiscal 2022 through 2024 were provided to the Staff supplementally and are redacted (\"[*]\") in the public letter.",
+     "is_error": false,
+     "elapsed_s": 6.33,
+     "cost_usd": 0.001157
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000250275
+  },
+  {
+   "turn": 6,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Workday 10-Q text: {{wday10q}} \u2014 Search for the phrases \"net revenue retention\", \"net retention\", \"net expansion\", and \"exceeding\". Quote every sentence containing them, or state that none appear."
+     },
+     "output": "Only one of the four phrases appears. \"Net expansion\" (in the plural form \"net expansions\") occurs in one sentence, in the Gross Revenue Retention Rate discussion in Item 2:\n\n\"The metric takes into account recurring revenues lost to product or customer churn but does not account for additional revenue earned from add-ons or net expansions, which include volume and price adjustments.\"\n\n\"Net revenue retention,\" \"net retention,\" and \"exceeding\" do not appear in the text.",
+     "is_error": false,
+     "elapsed_s": 4.5,
+     "cost_usd": 0.011186
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000348355
+  },
+  {
+   "turn": 7,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Short answer: Yes, Workday reports a gross revenue retention rate in its annual and quarterly filings. As of the latest filing I reviewed (FY2025 10-K, as of the April 7, 2025 as-of date), it does not report a net retention rate in those filings, although it told the SEC it would add net retention disclosure starting with the Oct 31, 2024 10-Q. It did not do so in that 10-Q.\n\n1. Gross revenue retention rate (reported)\n- FY2025 10-K (fiscal year ended January 31, 2025), MD&A, \"Gross Revenue Retention Rate\" subsection under Results of Operations > Revenues: the company reports a gross revenue retention rate of approximately 98% as of January 31, 2025. The filing says the metric \"measures the percentage of recurring revenue retained from existing customers\" and is calculated by taking total ARR of customers as of the corresponding prior period-end and comparing that to ARR from that same set of customers as of the current period-end.\n- Inclusions/exclusions: the metric \"takes into account recurring revenues lost to product or customer churn but does not account for additional revenue earned from add-ons or net expansions, which include volume and price adjustments.\" No prior-year rate is given in the 10-K.\n- ARR basis (per the 10-K): ARR \"represents the annualized value of active subscription contracts as of the end of each period,\" annualized by dividing total contract value by contract-term days and multiplying by 365. Contracts under one year that are distinct from the core product (e.g., tenants used for implementation and testing) are excluded. ARR is calculated on a constant currency basis using exchange rates set at the beginning of each fiscal year. ARR is a non-GAAP measure.\n- Renewals: ARR is adjusted for a customer in renewal negotiations only if the customer churns.\n- 10-Q (quarter ended October 31, 2024): the same metric and definition were disclosed, with a gross revenue retention rate of 98% as of October 31, 2024.\n\n2. Net retention rate\n- Neither the FY2025 10-K nor the Q3 FY2025 10-Q (October 31, 2024) reports a net revenue retention rate. Searches of both filings found no \"net revenue retention\" or \"net retention\" wording; \"net expansions\" appears only in the gross-metric definition as an exclusion.\n- SEC correspondence (CORRESP filed 2024-09-04, responding to staff comments): Workday said that \"in future filings, beginning with our Quarterly Report on Form 10-Q for the quarter ended October 31, 2024, we will disclose information about gross and net revenue retention rates, including a description and definition of each and how they are calculated.\" The proposed net definition was: \"Net revenue retention rates are calculated by taking the current period-end ARR of our customers that we retained year-over-year, including add-ons and net expansion, divided by the total ARR at the end of the corresponding prior period.\" Workday also said it would show rates as thresholds (e.g., \"exceeding XX%\") rather than exact figures, because it does not consider these metrics to be key performance indicators.\n- Discrepancy: the letter's commitment to disclose net retention from the October 2024 10-Q does not appear in the 10-Q text I opened, and the 10-K also omits it. I did not find a later filing or letter explaining this. I did not verify whether an amendment or other filing added net retention disclosure.\n\nNot verified: I did not check the earnings releases, and I did not review the UPLOAD staff letter dated 2024-08-20. The FY2026 10-K postdates the as-of date and was not used.\n\n{\"sources\": [{\"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781125000056/wday-20250131.htm\", \"name\": \"Workday FY2025 Form 10-K (fiscal year ended January 31, 2025)\"}, {\"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781124000242/wday-20241031.htm\", \"name\": \"Workday Form 10-Q for quarter ended October 31, 2024\"}, {\"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781124000174/filename1.htm\", \"name\": \"Workday SEC correspondence (CORRESP) filed 2024-09-04\"}]}"
+     },
+     "output": "Short answer: Yes, Workday reports a gross revenue retention rate in its annual and quarterly filings. As of the latest filing I reviewed (FY2025 10-K, as of the April 7, 2025 as-of date), it does not report a net retention rate in those filings, although it told the SEC it would add net retention disclosure starting with the Oct 31, 2024 10-Q. It did not do so in that 10-Q.\n\n1. Gross revenue retention rate (reported)\n- FY2025 10-K (fiscal year ended January 31, 2025), MD&A, \"Gross Revenue Retention Rate\" subsection under Results of Operations > Revenues: the company reports a gross revenue retention rate of approximately 98% as of January 31, 2025. The filing says the metric \"measures the percentage of recurring revenue retained from existing customers\" and is calculated by taking total ARR of customers as of the corresponding prior period-end and comparing that to ARR from that same set of customers as of the current period-end.\n- Inclusions/exclusions: the metric \"takes into account recurring revenues lost to product or customer churn but does not account for additional revenue earned from add-ons or net expansions, which include volume and price adjustments.\" No prior-year rate is given in the 10-K.\n- ARR basis (per the 10-K): ARR \"represents the annualized value of active subscription contracts as of the end of each period,\" annualized by dividing total contract value by contract-term days and multiplying by 365. Contracts under one year that are distinct from the core product (e.g., tenants used for implementation and testing) are excluded. ARR is calculated on a constant currency basis using exchange rates set at the beginning of each fiscal year. ARR is a non-GAAP measure.\n- Renewals: ARR is adjusted for a customer in renewal negotiations only if the customer churns.\n- 10-Q (quarter ended October 31, 2024): the same metric and definition were disclosed, with a gross revenue retention rate of 98% as of October 31, 2024.\n\n2. Net retention rate\n- Neither the FY2025 10-K nor the Q3 FY2025 10-Q (October 31, 2024) reports a net revenue retention rate. Searches of both filings found no \"net revenue retention\" or \"net retention\" wording; \"net expansions\" appears only in the gross-metric definition as an exclusion.\n- SEC correspondence (CORRESP filed 2024-09-04, responding to staff comments): Workday said that \"in future filings, beginning with our Quarterly Report on Form 10-Q for the quarter ended October 31, 2024, we will disclose information about gross and net revenue retention rates, including a description and definition of each and how they are calculated.\" The proposed net definition was: \"Net revenue retention rates are calculated by taking the current period-end ARR of our customers that we retained year-over-year, including add-ons and net expansion, divided by the total ARR at the end of the corresponding prior period.\" Workday also said it would show rates as thresholds (e.g., \"exceeding XX%\") rather than exact figures, because it does not consider these metrics to be key performance indicators.\n- Discrepancy: the letter's commitment to disclose net retention from the October 2024 10-Q does not appear in the 10-Q text I opened, and the 10-K also omits it. I did not find a later filing or letter explaining this. I did not verify whether an amendment or other filing added net retention disclosure.\n\nNot verified: I did not check the earnings releases, and I did not review the UPLOAD staff letter dated 2024-08-20. The FY2026 10-K postdates the as-of date and was not used.\n\n{\"sources\": [{\"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781125000056/wday-20250131.htm\", \"name\": \"Workday FY2025 Form 10-K (fiscal year ended January 31, 2025)\"}, {\"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781124000242/wday-20241031.htm\", \"name\": \"Workday Form 10-Q for quarter ended October 31, 2024\"}, {\"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781124000174/filename1.htm\", \"name\": \"Workday SEC correspondence (CORRESP) filed 2024-09-04\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0009072850000000001
+  }
+ ],
+ "final_answer": "Short answer: Yes, Workday reports a gross revenue retention rate in its annual and quarterly filings. As of the latest filing I reviewed (FY2025 10-K, as of the April 7, 2025 as-of date), it does not report a net retention rate in those filings, although it told the SEC it would add net retention disclosure starting with the Oct 31, 2024 10-Q. It did not do so in that 10-Q.\n\n1. Gross revenue retention rate (reported)\n- FY2025 10-K (fiscal year ended January 31, 2025), MD&A, \"Gross Revenue Retention Rate\" subsection under Results of Operations > Revenues: the company reports a gross revenue retention rate of approximately 98% as of January 31, 2025. The filing says the metric \"measures the percentage of recurring revenue retained from existing customers\" and is calculated by taking total ARR of customers as of the corresponding prior period-end and comparing that to ARR from that same set of customers as of the current period-end.\n- Inclusions/exclusions: the metric \"takes into account recurring revenues lost to product or customer churn but does not account for additional revenue earned from add-ons or net expansions, which include volume and price adjustments.\" No prior-year rate is given in the 10-K.\n- ARR basis (per the 10-K): ARR \"represents the annualized value of active subscription contracts as of the end of each period,\" annualized by dividing total contract value by contract-term days and multiplying by 365. Contracts under one year that are distinct from the core product (e.g., tenants used for implementation and testing) are excluded. ARR is calculated on a constant currency basis using exchange rates set at the beginning of each fiscal year. ARR is a non-GAAP measure.\n- Renewals: ARR is adjusted for a customer in renewal negotiations only if the customer churns.\n- 10-Q (quarter ended October 31, 2024): the same metric and definition were disclosed, with a gross revenue retention rate of 98% as of October 31, 2024.\n\n2. Net retention rate\n- Neither the FY2025 10-K nor the Q3 FY2025 10-Q (October 31, 2024) reports a net revenue retention rate. Searches of both filings found no \"net revenue retention\" or \"net retention\" wording; \"net expansions\" appears only in the gross-metric definition as an exclusion.\n- SEC correspondence (CORRESP filed 2024-09-04, responding to staff comments): Workday said that \"in future filings, beginning with our Quarterly Report on Form 10-Q for the quarter ended October 31, 2024, we will disclose information about gross and net revenue retention rates, including a description and definition of each and how they are calculated.\" The proposed net definition was: \"Net revenue retention rates are calculated by taking the current period-end ARR of our customers that we retained year-over-year, including add-ons and net expansion, divided by the total ARR at the end of the corresponding prior period.\" Workday also said it would show rates as thresholds (e.g., \"exceeding XX%\") rather than exact figures, because it does not consider these metrics to be key performance indicators.\n- Discrepancy: the letter's commitment to disclose net retention from the October 2024 10-Q does not appear in the 10-Q text I opened, and the 10-K also omits it. I did not find a later filing or letter explaining this. I did not verify whether an amendment or other filing added net retention disclosure.\n\nNot verified: I did not check the earnings releases, and I did not review the UPLOAD staff letter dated 2024-08-20. The FY2026 10-K postdates the as-of date and was not used.\n\n{\"sources\": [{\"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781125000056/wday-20250131.htm\", \"name\": \"Workday FY2025 Form 10-K (fiscal year ended January 31, 2025)\"}, {\"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781124000242/wday-20241031.htm\", \"name\": \"Workday Form 10-Q for quarter ended October 31, 2024\"}, {\"url\": \"https://www.sec.gov/Archives/edgar/data/1327811/000132781124000174/filename1.htm\", \"name\": \"Workday SEC correspondence (CORRESP) filed 2024-09-04\"}]}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 7,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 12,
+  "input_tokens": 36,
+  "output_tokens": 8602,
+  "cache_creation_input_tokens": 428181,
+  "cache_read_input_tokens": 51475,
+  "web_search_requests": 0,
+  "cost_usd": 0.183681
+ },
+ "cost_usd": 0.183681,
+ "elapsed_s": 53.0,
+ "harness_label": "dom1"
+}

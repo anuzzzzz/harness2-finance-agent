@@ -1,0 +1,127 @@
+{
+ "task_id": "q26",
+ "label": "ctl2",
+ "question": "As of June 30, 2024, what % of Microsoft's (NASDAQ: MSFT) full-time employees are located outside of the United State? (give the numbers that led to the percentage calculation)",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Microsoft full-time employees June 30, 2024 United States international",
+      "ciks": [
+       "0000789019"
+      ],
+      "start_date": "2024-07-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "{\"total_matching_documents\": 0, \"page\": 1, \"results\": [], \"hint\": \"No documents matched. Try fewer/shorter terms, drop the form filter, widen the dates, or check the company's CIK/ticker.\"}",
+     "is_error": false,
+     "elapsed_s": 0.46,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00019700999999999999
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_016JSd99TXqFc2Rq1V7dQNkf",
+     "query": "Microsoft 10-K fiscal 2024 employees full-time United States outside",
+     "results": [
+      {
+       "title": "MICROSOFT CORP - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm",
+       "page_age": null
+      },
+      {
+       "title": "MICROSOFT CORP - Form 10-K - FY2024 (Annual Financial Statement Tables - full year 2024)",
+       "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "Microsoft Workforce 2026: 228,000 Employees and the First Hiring Plateau in a Decade",
+       "url": "https://sqmagazine.co.uk/how-many-people-work-at-microsoft/",
+       "page_age": "116 days ago"
+      },
+      {
+       "title": "Microsoft Corporation Annual Report 2026 Form 10-K (NASDAQ: ...",
+       "url": "https://stocklight.com/stocks/us/nasdaq-msft/microsoft-corporation/annual-reports/nasdaq-msft-2026-10K-261217433.pdf",
+       "page_age": "90 days ago"
+      },
+      {
+       "title": "Microsoft's total number of employees has...",
+       "url": "https://www.chaincatcher.com/en/article/2298072",
+       "page_age": "5 days ago"
+      },
+      {
+       "title": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549",
+       "url": "https://microsoft.gcs-web.com/static-files/1c864583-06f7-40cc-a94d-d11400c83cc8",
+       "page_age": "819 days ago"
+      },
+      {
+       "title": "Microsoft Corporation Annual Report 2024 Form 10-K ( ...",
+       "url": "https://stocklight.com/stocks/us/nasdaq-msft/microsoft-corporation/annual-reports/nasdaq-msft-2024-10K-241157360.pdf",
+       "page_age": "819 days ago"
+      },
+      {
+       "title": "Microsoft Corporation Annual Report 2025 Form 10-K ( ...",
+       "url": "https://stocklight.com/stocks/us/nasdaq-msft/microsoft-corporation/annual-reports/nasdaq-msft-2025-10K-251167157.pdf",
+       "page_age": "454 days ago"
+      },
+      {
+       "title": "Microsoft 2024 Annual Report",
+       "url": "https://www.microsoft.com/investor/reports/ar24/",
+       "page_age": "491 days ago"
+      },
+      {
+       "title": "Microsoft Corporation Number of Employees 2017-2026",
+       "url": "https://bullfincher.io/companies/microsoft-corporation/number-of-employees",
+       "page_age": "13 days ago"
+      }
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: about 44.74% of Microsoft's full-time employees were located outside the United States as of June 30, 2024.**\n\n**Inputs (from Microsoft's FY2024 Form 10-K, fiscal year ended June 30, 2024):**\n- The Human Capital section of Microsoft's 2024 annual report reports a total of approximately 228,000 full-time employees, with 126,000 based in the U.S. and 102,000 international (<cite index=\"9-2\">As of June 30, 2024, we employed approximately 228,000 people on a full-time basis, 126,000 in the U.S. and 102,000 internationally.</cite>)\n- A secondary source (sqmagazine) also lists 126,000 U.S. employees for June 30, 2024, which matches the 10-K figure. Other sources cite 228,000 as the FY2024 total, consistent with the filing.\n\n**Calculation:**\n- International (non-U.S.) employees = 102,000\n- Total full-time employees = 228,000 (check: 126,000 + 102,000 = 228,000)\n- Share outside the U.S. = 102,000 / 228,000 = 0.447368... = **44.74%**\n- For reference, the U.S. share is 126,000 / 228,000 = 55.26%.\n\n**Note:** Microsoft reports these headcounts rounded to the nearest thousand, so the percentage is approximate.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.microsoft.com/investor/reports/ar24/\",\n            \"name\": \"Microsoft 2024 Annual Report (Form 10-K, FY2024 Human Capital Resources)\"\n        },\n        {\n            \"url\": \"https://sqmagazine.co.uk/how-many-people-work-at-microsoft/\",\n            \"name\": \"SQ Magazine \u2013 How many people work at Microsoft (cross-check of June 30, 2024 U.S. headcount)\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: about 44.74% of Microsoft's full-time employees were located outside the United States as of June 30, 2024.**\n\n**Inputs (from Microsoft's FY2024 Form 10-K, fiscal year ended June 30, 2024):**\n- The Human Capital section of Microsoft's 2024 annual report reports a total of approximately 228,000 full-time employees, with 126,000 based in the U.S. and 102,000 international (<cite index=\"9-2\">As of June 30, 2024, we employed approximately 228,000 people on a full-time basis, 126,000 in the U.S. and 102,000 internationally.</cite>)\n- A secondary source (sqmagazine) also lists 126,000 U.S. employees for June 30, 2024, which matches the 10-K figure. Other sources cite 228,000 as the FY2024 total, consistent with the filing.\n\n**Calculation:**\n- International (non-U.S.) employees = 102,000\n- Total full-time employees = 228,000 (check: 126,000 + 102,000 = 228,000)\n- Share outside the U.S. = 102,000 / 228,000 = 0.447368... = **44.74%**\n- For reference, the U.S. share is 126,000 / 228,000 = 55.26%.\n\n**Note:** Microsoft reports these headcounts rounded to the nearest thousand, so the percentage is approximate.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.microsoft.com/investor/reports/ar24/\",\n            \"name\": \"Microsoft 2024 Annual Report (Form 10-K, FY2024 Human Capital Resources)\"\n        },\n        {\n            \"url\": \"https://sqmagazine.co.uk/how-many-people-work-at-microsoft/\",\n            \"name\": \"SQ Magazine \u2013 How many people work at Microsoft (cross-check of June 30, 2024 U.S. headcount)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.01171629
+  }
+ ],
+ "final_answer": "**Answer: about 44.74% of Microsoft's full-time employees were located outside the United States as of June 30, 2024.**\n\n**Inputs (from Microsoft's FY2024 Form 10-K, fiscal year ended June 30, 2024):**\n- The Human Capital section of Microsoft's 2024 annual report reports a total of approximately 228,000 full-time employees, with 126,000 based in the U.S. and 102,000 international (<cite index=\"9-2\">As of June 30, 2024, we employed approximately 228,000 people on a full-time basis, 126,000 in the U.S. and 102,000 internationally.</cite>)\n- A secondary source (sqmagazine) also lists 126,000 U.S. employees for June 30, 2024, which matches the 10-K figure. Other sources cite 228,000 as the FY2024 total, consistent with the filing.\n\n**Calculation:**\n- International (non-U.S.) employees = 102,000\n- Total full-time employees = 228,000 (check: 126,000 + 102,000 = 228,000)\n- Share outside the U.S. = 102,000 / 228,000 = 0.447368... = **44.74%**\n- For reference, the U.S. share is 126,000 / 228,000 = 55.26%.\n\n**Note:** Microsoft reports these headcounts rounded to the nearest thousand, so the percentage is approximate.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.microsoft.com/investor/reports/ar24/\",\n            \"name\": \"Microsoft 2024 Annual Report (Form 10-K, FY2024 Human Capital Resources)\"\n        },\n        {\n            \"url\": \"https://sqmagazine.co.uk/how-many-people-work-at-microsoft/\",\n            \"name\": \"SQ Magazine \u2013 How many people work at Microsoft (cross-check of June 30, 2024 U.S. headcount)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 2,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 2,
+  "input_tokens": 8,
+  "output_tokens": 1309,
+  "cache_creation_input_tokens": 8748,
+  "cache_read_input_tokens": 16450,
+  "web_search_requests": 1,
+  "cost_usd": 0.011913
+ },
+ "cost_usd": 0.011913,
+ "elapsed_s": 8.3,
+ "harness_label": "ctl2"
+}

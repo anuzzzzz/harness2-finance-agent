@@ -1,0 +1,133 @@
+{
+ "task_id": "q26",
+ "label": "ctl3",
+ "question": "As of June 30, 2024, what % of Microsoft's (NASDAQ: MSFT) full-time employees are located outside of the United State? (give the numbers that led to the percentage calculation)",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01BZfgTUdqTXLogxj6W49r4p",
+     "query": "Microsoft 10-K fiscal 2024 employees full-time U.S. and international",
+     "results": []
+    }
+   ],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Microsoft full-time employees June 30, 2024 United States international",
+      "ciks": [
+       "0000789019"
+      ],
+      "start_date": "2024-07-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "{\"total_matching_documents\": 0, \"page\": 1, \"results\": [], \"hint\": \"No documents matched. Try fewer/shorter terms, drop the form filter, widen the dates, or check the company's CIK/ticker.\"}",
+     "is_error": false,
+     "elapsed_s": 0.27,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00023651
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01BZfgTUdqTXLogxj6W49r4p",
+     "query": null,
+     "results": [
+      {
+       "title": "MICROSOFT CORP - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm",
+       "page_age": null
+      },
+      {
+       "title": "MICROSOFT CORP - Form 10-K - FY2024 (Annual Financial Statement Tables - full year 2024)",
+       "url": "https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "Microsoft Employees by Year: 223,000 in 2026 (10-K)",
+       "url": "https://fourweekmba.com/microsoft-employees-number/",
+       "page_age": "15 days ago"
+      },
+      {
+       "title": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549",
+       "url": "https://microsoft.gcs-web.com/static-files/8a9beeed-0e9e-48e6-b4fb-593d558e2693",
+       "page_age": "90 days ago"
+      },
+      {
+       "title": "Microsoft is stuck at 228,000 employees and that's by design",
+       "url": "https://sqmagazine.co.uk/how-many-people-work-at-microsoft/",
+       "page_age": "116 days ago"
+      },
+      {
+       "title": "Microsoft Corporation Annual Report 2024 Form 10-K ( ...",
+       "url": "https://stocklight.com/stocks/us/nasdaq-msft/microsoft-corporation/annual-reports/nasdaq-msft-2024-10K-241157360.pdf",
+       "page_age": "819 days ago"
+      },
+      {
+       "title": "Microsoft Corporation Annual Report 2025 Form 10-K ( ...",
+       "url": "https://stocklight.com/stocks/us/nasdaq-msft/microsoft-corporation/annual-reports/nasdaq-msft-2025-10K-251167157.pdf",
+       "page_age": "454 days ago"
+      },
+      {
+       "title": "Microsoft Corporation Number of Employees 2017-2026",
+       "url": "https://bullfincher.io/companies/microsoft-corporation/number-of-employees",
+       "page_age": "13 days ago"
+      },
+      {
+       "title": "Microsoft 2024 Annual Report",
+       "url": "https://www.microsoft.com/investor/reports/ar24/",
+       "page_age": "491 days ago"
+      },
+      {
+       "title": "Microsoft 2025 Annual Report",
+       "url": "https://www.microsoft.com/investor/reports/ar25/index.html",
+       "page_age": "371 days ago"
+      }
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: about 44.74% of Microsoft's full-time employees were located outside the United States as of June 30, 2024.**\n\n**Inputs (from the FY2024 Form 10-K, human capital section):** <cite index=\"6-3\">As of June 30, 2024, Microsoft employed approximately 228,000 people on a full-time basis, 126,000 in the U.S. and 102,000 internationally.</cite>\n\n**Calculation:**\n- Total full-time employees: 228,000\n- Employees outside the U.S. (international): 102,000\n- Check: 126,000 (U.S.) + 102,000 (international) = 228,000, which matches the reported total.\n- Percentage outside the U.S. = 102,000 / 228,000 \u00d7 100 = 44.736...% \u2248 **44.74%**\n\n(For reference, the U.S. share is 126,000 / 228,000 = 55.26%.)\n\n**Note on sources:** A secondary summary (sqmagazine) lists the June 30, 2024 U.S. count as 126,000 and the international count as 102,000, consistent with the 10-K. The FY2025 10-K reports the same 228,000 total for June 30, 2025 but splits it as 125,000 U.S. and 103,000 international, which does not apply to the June 30, 2024 date asked about. I used the FY2024 10-K figures because they are the figures as of the requested date.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://stocklight.com/stocks/us/nasdaq-msft/microsoft-corporation/annual-reports/nasdaq-msft-2024-10K-241157360.pdf\",\n            \"name\": \"Microsoft Corporation Annual Report 2024 Form 10-K (FY ended June 30, 2024), via StockLight\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm\",\n            \"name\": \"Microsoft Form 10-K FY2024 (SEC EDGAR)\"\n        },\n        {\n            \"url\": \"https://stocklight.com/stocks/us/nasdaq-msft/microsoft-corporation/annual-reports/nasdaq-msft-2025-10K-251167157.pdf\",\n            \"name\": \"Microsoft Corporation Annual Report 2025 Form 10-K, via StockLight\"\n        },\n        {\n            \"url\": \"https://sqmagazine.co.uk/how-many-people-work-at-microsoft/\",\n            \"name\": \"SQ Magazine \u2013 How many people work at Microsoft\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: about 44.74% of Microsoft's full-time employees were located outside the United States as of June 30, 2024.**\n\n**Inputs (from the FY2024 Form 10-K, human capital section):** <cite index=\"6-3\">As of June 30, 2024, Microsoft employed approximately 228,000 people on a full-time basis, 126,000 in the U.S. and 102,000 internationally.</cite>\n\n**Calculation:**\n- Total full-time employees: 228,000\n- Employees outside the U.S. (international): 102,000\n- Check: 126,000 (U.S.) + 102,000 (international) = 228,000, which matches the reported total.\n- Percentage outside the U.S. = 102,000 / 228,000 \u00d7 100 = 44.736...% \u2248 **44.74%**\n\n(For reference, the U.S. share is 126,000 / 228,000 = 55.26%.)\n\n**Note on sources:** A secondary summary (sqmagazine) lists the June 30, 2024 U.S. count as 126,000 and the international count as 102,000, consistent with the 10-K. The FY2025 10-K reports the same 228,000 total for June 30, 2025 but splits it as 125,000 U.S. and 103,000 international, which does not apply to the June 30, 2024 date asked about. I used the FY2024 10-K figures because they are the figures as of the requested date.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://stocklight.com/stocks/us/nasdaq-msft/microsoft-corporation/annual-reports/nasdaq-msft-2024-10K-241157360.pdf\",\n            \"name\": \"Microsoft Corporation Annual Report 2024 Form 10-K (FY ended June 30, 2024), via StockLight\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm\",\n            \"name\": \"Microsoft Form 10-K FY2024 (SEC EDGAR)\"\n        },\n        {\n            \"url\": \"https://stocklight.com/stocks/us/nasdaq-msft/microsoft-corporation/annual-reports/nasdaq-msft-2025-10K-251167157.pdf\",\n            \"name\": \"Microsoft Corporation Annual Report 2025 Form 10-K, via StockLight\"\n        },\n        {\n            \"url\": \"https://sqmagazine.co.uk/how-many-people-work-at-microsoft/\",\n            \"name\": \"SQ Magazine \u2013 How many people work at Microsoft\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.011670185
+  }
+ ],
+ "final_answer": "**Answer: about 44.74% of Microsoft's full-time employees were located outside the United States as of June 30, 2024.**\n\n**Inputs (from the FY2024 Form 10-K, human capital section):** <cite index=\"6-3\">As of June 30, 2024, Microsoft employed approximately 228,000 people on a full-time basis, 126,000 in the U.S. and 102,000 internationally.</cite>\n\n**Calculation:**\n- Total full-time employees: 228,000\n- Employees outside the U.S. (international): 102,000\n- Check: 126,000 (U.S.) + 102,000 (international) = 228,000, which matches the reported total.\n- Percentage outside the U.S. = 102,000 / 228,000 \u00d7 100 = 44.736...% \u2248 **44.74%**\n\n(For reference, the U.S. share is 126,000 / 228,000 = 55.26%.)\n\n**Note on sources:** A secondary summary (sqmagazine) lists the June 30, 2024 U.S. count as 126,000 and the international count as 102,000, consistent with the 10-K. The FY2025 10-K reports the same 228,000 total for June 30, 2025 but splits it as 125,000 U.S. and 103,000 international, which does not apply to the June 30, 2024 date asked about. I used the FY2024 10-K figures because they are the figures as of the requested date.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://stocklight.com/stocks/us/nasdaq-msft/microsoft-corporation/annual-reports/nasdaq-msft-2024-10K-241157360.pdf\",\n            \"name\": \"Microsoft Corporation Annual Report 2024 Form 10-K (FY ended June 30, 2024), via StockLight\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm\",\n            \"name\": \"Microsoft Form 10-K FY2024 (SEC EDGAR)\"\n        },\n        {\n            \"url\": \"https://stocklight.com/stocks/us/nasdaq-msft/microsoft-corporation/annual-reports/nasdaq-msft-2025-10K-251167157.pdf\",\n            \"name\": \"Microsoft Corporation Annual Report 2025 Form 10-K, via StockLight\"\n        },\n        {\n            \"url\": \"https://sqmagazine.co.uk/how-many-people-work-at-microsoft/\",\n            \"name\": \"SQ Magazine \u2013 How many people work at Microsoft\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 2,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 2,
+  "input_tokens": 6,
+  "output_tokens": 1537,
+  "cache_creation_input_tokens": 8243,
+  "cache_read_input_tokens": 10722,
+  "web_search_requests": 1,
+  "cost_usd": 0.011907
+ },
+ "cost_usd": 0.011907,
+ "elapsed_s": 7.6,
+ "harness_label": "ctl3"
+}

@@ -1,0 +1,30 @@
+## Rollout `ctl4`
+- outcome: submitted
+- turns: 2; cost: $0.012; submitted: True
+
+### Turn 1  (stop_reason=tool_use)
+- web_search(query="Allstate junior subordinated debentures 2024 10-K terms") → 0 results: 
+- edgar_search({"search_query": "Allstate junior subordinated debentures interest rate maturity 2024 annual report", "ciks": ["ALL"], "start_date": "2025-01-01", "end_date": "2025-04-07"})
+  result: {"total_matching_documents": 1, "page": 1, "results": [{"form": "10-K", "file_date": "2025-02-24", "period_ending": "2024-12-31", "company": "ALLSTATE CORP  (ALL, ALL-PB, ALL-PH, ALL-PI, ALL-PJ)  (CIK 0000899051)", "ciks": ["0000899051"], "accession": "0000899051-25-000015", "document": "all-20241231.htm", "description": "10-K", "url": "https://www.sec.gov/Archives/edgar/data/899051/000089905125000015/all-20241231.htm"}]}
+
+### Turn 2  (stop_reason=tool_use)
+- web_search(query=null) → 9 results: ALLSTATE CORP - Form 10-K - FY2024 <https://www.sec.gov/Archives/edgar/data/899051/000089905125000015/all-20241231.htm>; ALLSTATE CORP - Form 10-K - FY2024 (Annual Financial Statement Tables - full year 2024) <https://www.sec.gov/Archives/edgar/data/899051/000089905125000015/Financial_Report.xlsx>; Document <https://www.sec.gov/Archives/edgar/data/899051/000162828024029201/allstate-424b2xseniordebto.htm>; UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549 <https://fortune.com/company-assets/1695/quartr/annual-report-10-k-df038-2025-02-24-05-12-26.pdf>; FOR IMMEDIATE RELEASE August 23, 2024 CONTACTS: Elizabeth Blamble <https://www.ambest.com/press/082307ALLSTATE.pdf>
+- submit_final_result({"final_result": "As of December 31, 2024, Allstate's only outstanding junior subordinated debentures were a single series, the Series A 6.500% Fixed-to-Floating Rate Junior Subordinated Debentures, with $500 million principal outstanding. Key terms from the FY2024 Form 10-K:\n\n- **Principal and maturity:** $500 million. The scheduled maturity is May 15, 2057, with a final maturity of May 15, 2067. The 10-K states that <cite index=\"1-4\">As of December 31, 2024, the Company had outstanding $ 500million of Series A 6.500% Fixed-to-Floating Rate Junior Subordinated Debentures</cite>, and that <cite index=\"1-5\">the scheduled maturity date for the Debentures is May 15, 2057 with a final matu
+…[truncated 2,900 chars])
+
+### Final answer
+As of December 31, 2024, Allstate's only outstanding junior subordinated debentures were a single series, the Series A 6.500% Fixed-to-Floating Rate Junior Subordinated Debentures, with $500 million principal outstanding. Key terms from the FY2024 Form 10-K:
+
+- **Principal and maturity:** $500 million. The scheduled maturity is May 15, 2057, with a final maturity of May 15, 2067. The 10-K states that <cite index="1-4">As of December 31, 2024, the Company had outstanding $ 500million of Series A 6.500% Fixed-to-Floating Rate Junior Subordinated Debentures</cite>, and that <cite index="1-5">the scheduled maturity date for the Debentures is May 15, 2057 with a final maturity date of May 15, 2067.</cite>
+
+- **Optional redemption:** <cite index="1-6">The Junior Subordinated Debentures may be redeemed (i) in whole or in part, at any time on or after May 15, 2037 at the principal amount plus accrued and unpaid interest to the date of redemption, or (ii) in certain circumstances, in whole or in part, prior to May 15, 2037 at the principal amount plus accrued and unpaid interest to the date of redemption or, if greater, a make-whole price.</cite>
+
+- **Interest:** <cite index="1-7">Interest on the Junior Subordinated Debentures is payable semi-annually at the stated fixed annual rate to May 15, 2037, and then payable quarterly at an annual rate equal to the three-month LIBOR plus 2.120%, which was replaced with the CME Term SOFR Reference Rate published for a three-month tenor plus a spread adjustment of 0.26161%.</cite> In other words, the 6.500% fixed coupon applies until May 15, 2037. After that, the rate floats at three-month Term SOFR plus a 2.120% margin and the 0.26161% spread adjustment. My own arithmetic puts the all-in floating margin over Term SOFR at 2.120% + 0.26161% = 2.38161%.
+
+- **Deferral:** The Company may defer interest payments for consecutive periods (the 10-K text on this is cut off in the source). While deferred, the company cannot pay dividends on or redeem its common or preferred stock. <cite index="2-2">The terms of the Subordinated Debentures and Junior Subordinated Debentures prohibit the Company from declaring or paying any dividends or distributions on common or preferred stock or redeeming, purchasing, acquiring, or making liquidation payments on common stock or preferred stock if the Company has elected to defer interest payments on the Subordinated Debentures or Junior Subordinated Debentures, respectively, subject to certain limited exceptions.</cite>
+
+- **Replacement capital covenant:** <cite index="2-3">In connection with the issuance of the Junior Subordinated Debentures, the Company entered into a replacement capital covenant ("RCC").</cite> The covenant is for the benefit of holders of other designated debt, <cite index="2-5">currently the $800 million Floating Rate Subordinated Debentures due in 2053.</cite> Under it, <cite index="2-6">the Company has agreed that it will not repay, redeem, or purchase the Junior Subordinated Debentures on or before May 15, 2067</cite>, unless it has raised net cash proceeds from specified qualifying sales, such as common stock. The covenant is not enforceable by the debenture holders themselves, and it ends in 2067.
+
+- **Ratings:** AM Best rated the Series A debentures "bbb" (Good) in its August 2024 affirmation.
+
+Note: an earlier Allstate filing listed a Series B 6.125% Junior Subordinated Debenture due 2067 alongside the Series A. The FY2024 10-K reports only the $500 million Series A as outstanding at year-end 2024.

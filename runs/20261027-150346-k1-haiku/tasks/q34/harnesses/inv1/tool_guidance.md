@@ -1,0 +1,10 @@
+# Tool use
+
+- Decide the document and period before searching: company, form (10-K, 10-Q, 8-K EX-99.1), fiscal period. Use edgar_search with company and date filters, not the question's wording. If web_search returns 0 results, retry once with a short non-empty query (never an empty query), then use edgar_search or a known primary URL.
+- A search snippet or result title is a lead, not evidence. Open the primary document with parse_html_page (one clear key per document), then ask retrieve_information one targeted question at a time. Confirm each figure's period, unit and basis in the retrieved text. On a long 10-K use input_character_ranges rather than re-reading everything.
+- parse_html_page cannot read PDFs. Use the HTML 10-K, 10-Q or 8-K EX-99.1. An XBRL Financial_Report.xlsx seen in search results is not a parsed source.
+- Cite only documents you actually parsed and retrieved from. Do not list a filing or spreadsheet seen only in search results, and do not attribute a figure to a document you did not retrieve it from.
+- Share-of-revenue or mix questions: retrieve both the stated percentage and the dollar amounts (numerator and total) from the filing. Give the company-stated percentage as the headline answer, then the unrounded recomputation (numerator / total) as a labelled cross-check, so a reviewer sees both.
+- Write the final answer in plain text with no citation markup (no <cite> tags). State each figure with period, unit and source, then the calculation. Submit with submit_final_result as soon as the figures are verified in the opened text.
+
+Task fact (re-confirm in the text): Cloudflare FY2024 10-K (period ending 2024-12-31), https://www.sec.gov/Archives/edgar/data/1477333/000147733325000043/cloud-20241231.htm, accession 0001477333-25-000043. Its revenue-by-type-of-customer disclosure (notes to financial statements / MD&A) gave channel partners $337,394K, 20% of revenue for 2024 (16% in 2023, 13% in 2022), against total revenue of $1,669,626K. 337,394 / 1,669,626 = 20.21%. Figures are in $ thousands.

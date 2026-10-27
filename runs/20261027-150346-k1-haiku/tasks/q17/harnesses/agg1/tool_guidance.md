@@ -1,0 +1,9 @@
+# Tool use
+
+- Decide the documents and periods before searching: company, form (10-K, 10-Q, 8-K EX-99.1), fiscal periods. Use edgar_search with the company CIK, form type and dates. If web_search returns 0 results, retry once with a short non-empty query (never an empty or null query), then use edgar_search or a known primary URL.
+- A search snippet or result title is a lead, not evidence. Open the primary document with parse_html_page (one clear key per document). Then ask retrieve_information one targeted question at a time. Confirm each figure's period, unit and basis in the retrieved text before it enters a calculation.
+- parse_html_page cannot read PDFs. Use the HTML 10-K, 10-Q or 8-K EX-99.1.
+- Multi-year ratio or trend questions: a 10-K carries comparative columns (income statement three years, key metrics often only two). Take each year from the latest filing that carries it, and open the older 10-K only if a year is missing. When the same year appears in two filings, check that the figures agree and say if one was restated.
+- Carry full precision through the calculation and round only the final figure (two decimals for ratios and percentages). Recompute each ratio once from the retrieved inputs before submitting.
+- Cite only documents you opened and retrieved from. Do not list a filing as a source, or attribute a figure to it, unless that figure was retrieved from it. Say plainly if a figure came from a comparative column in a different year's filing.
+- Write the final answer in plain text. Never paste citation markup such as <cite index=...> tags. Follow the shape the question asks for (for example one line per year plus a one-sentence comment), then give the inputs with period, unit and source, and the calculation. Submit with submit_final_result as soon as the figures are verified.

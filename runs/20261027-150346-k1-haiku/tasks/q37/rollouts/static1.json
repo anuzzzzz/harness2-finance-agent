@@ -1,0 +1,136 @@
+{
+ "task_id": "q37",
+ "label": "static1",
+ "question": "As of Dec 31, 2024, what was Warner Discovery's (NASDQ: WBD) Total Restructuring Costs incurred as a result of its 2022 Merger?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Warner Bros. Discovery 10-K 2024 restructuring costs 2022 Merger total",
+      "ciks": [
+       "WBD"
+      ],
+      "start_date": "2025-01-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "ValueError: Unknown ticker 'WBD'. Provide a numeric CIK instead.",
+     "is_error": true,
+     "elapsed_s": 0.67,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000189485
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Warner Bros. Discovery annual report restructuring costs 2022 Merger",
+      "ciks": [
+       "1437107"
+      ],
+      "start_date": "2025-01-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "{\"total_matching_documents\": 2, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-27\", \"period_ending\": \"2024-12-31\", \"company\": \"Warner Bros. Discovery, Inc.  (WBD)  (CIK 0001437107)\", \"ciks\": [\"0001437107\"], \"accession\": \"0001437107-25-000031\", \"document\": \"wbd-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/wbd-20241231.htm\"}, {\"form\": \"8-K\", \"file_date\": \"2025-02-27\", \"period_ending\": \"2025-02-27\", \"company\": \"Warner Bros. Discovery, Inc.  (WBD)  (CIK 0001437107)\", \"ciks\": [\"0001437107\"], \"accession\": \"0001437107-25-000028\", \"document\": \"wbd4q24shareholderletter.htm\", \"description\": \"EX-99.2\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1437107/000143710725000028/wbd4q24shareholderletter.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.56,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00017101
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/wbd-20241231.htm",
+      "key": "wbd10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: wbd10k. (563,397 characters)\nThe data_storage currently contains the following keys:\nwbd10k\n",
+     "is_error": false,
+     "elapsed_s": 0.93,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000184205
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this 10-K document: {{wbd10k}}, find the table or text stating restructuring costs incurred as a result of the 2022 Merger (Total restructuring costs) for the year ended December 31, 2024, and cumulative amounts. Quote the exact figures, the years covered, and the units (millions). Also note any \"Restructuring and other\" line item in the Merger-related or transaction costs section."
+     },
+     "output": "## Restructuring costs tied to the 2022 Merger\n\n**Cumulative amount (MD&A, Business Overview):**\n> \"At that time, we expected to incur approximately $4.1 - $5.3 billion in pre-tax restructuring charges, of which we have incurred $4.7 billion as of December 31, 2024. Of the total expected pre-tax restructuring charges, we expected total cash expenditures to be $1.0 - $1.5 billion.\"\n\n- **Expected total:** $4.1 to $5.3 billion (pre-tax)\n- **Incurred through December 31, 2024:** $4.7 billion\n- **Expected cash expenditures:** $1.0 to $1.5 billion\n- The document says the Merger-related restructuring program \"was substantially completed at the end of 2024.\"\n\nThe filing gives this cumulative figure only in billions and does not provide a per-year breakdown of the $4.7 billion.\n\n**Annual \"Restructuring and other charges\" (Consolidated Statements of Operations, $ in millions):**\n\n| Year | Restructuring and other charges |\n|---|---|\n| 2024 | $447 |\n| 2023 | $585 |\n| 2022 | $3,757 |\n\nFor 2024, Note 6 states that restructuring and other charges \"primarily included organization restructuring costs of $246 million, content impairments and other content development costs and write-offs of $165 million, and contract terminations and other restructuring costs of $36 million.\" It also notes that \"Facility consolidation impairment charges of $411 million were recorded in impairment and loss on dispositions.\" Note 6 does not say how much of the 2024 total is Merger-related, and the 2024 charges include new initiatives (Warner Bros. Games and an organizational restructuring).\n\nFor reference, adding the three years of the income statement line gives $4,789 million, which does not match the $4.7 billion figure. The filing does not reconcile the two.\n\n**\"Restructuring and other\" in transaction or Merger-related costs:**\nThe filing does not contain a Merger-related section with a line item called \"Restructuring and other.\" The closest items are:\n\n- **Transaction and integration costs** (Note 23, consolidated): $242 million in 2024, $162 million in 2023, $1,195 million in 2022. The Corporate reconciliation shows $239 million for 2024.\n- **Restructuring and other charges, Corporate and inter-segment eliminations** (Note 6): $96 million in 2024, $93 million in 2023, $153 million in 2022.\n- **Acquisition-related costs** (Note 4): $162 million (2023) and $406 million (2022). No 2024 figure is given.\n- **Merger-related share issuance expense** (Note 3 and Note 4): $789 million, recorded in selling, general and administrative expense in 2022.",
+     "is_error": false,
+     "elapsed_s": 10.62,
+     "cost_usd": 0.130279
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00017581999999999998
+  },
+  {
+   "turn": 5,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: About $4.7 billion in pre-tax restructuring charges had been incurred as of December 31, 2024, for the 2022 Merger (Discovery\u2013WarnerMedia combination).**\n\n**How I got there**\n\n1. I located Warner Bros. Discovery's (CIK 0001437107) Form 10-K for the period ended December 31, 2024, filed February 27, 2025, and read the MD&A and financial statement notes.\n2. The MD&A (Business Overview) describes the merger-related restructuring program. The company expected roughly $4.1 to $5.3 billion in pre-tax restructuring charges, of which $4.7 billion had been incurred as of December 31, 2024. Expected cash expenditures were $1.0 to $1.5 billion. The program was described as substantially completed at the end of 2024.\n3. Cross-check: the income statement \"restructuring and other charges\" line was $3,757 million (2022), $585 million (2023) and $447 million (2024), totaling $4,789 million. That does not match the $4.7 billion figure, and the filing does not reconcile the two. The $4.7 billion is the figure the filing explicitly ties to the 2022 Merger, so I report it, but the difference should be kept in mind.\n\n**Caveats**\n- The filing gives the cumulative merger figure only in billions, with no per-year breakdown of the $4.7 billion.\n- The 2024 restructuring charges of $447 million include items unrelated to the merger (e.g., Warner Bros. Games and organizational restructuring), so they are not a substitute for the merger total.\n- Transaction and integration costs ($242 million in 2024, $162 million in 2023, $1,195 million in 2022) are a separate line and are not the restructuring total.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/wbd-20241231.htm\",\n            \"name\": \"Warner Bros. Discovery, Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: About $4.7 billion in pre-tax restructuring charges had been incurred as of December 31, 2024, for the 2022 Merger (Discovery\u2013WarnerMedia combination).**\n\n**How I got there**\n\n1. I located Warner Bros. Discovery's (CIK 0001437107) Form 10-K for the period ended December 31, 2024, filed February 27, 2025, and read the MD&A and financial statement notes.\n2. The MD&A (Business Overview) describes the merger-related restructuring program. The company expected roughly $4.1 to $5.3 billion in pre-tax restructuring charges, of which $4.7 billion had been incurred as of December 31, 2024. Expected cash expenditures were $1.0 to $1.5 billion. The program was described as substantially completed at the end of 2024.\n3. Cross-check: the income statement \"restructuring and other charges\" line was $3,757 million (2022), $585 million (2023) and $447 million (2024), totaling $4,789 million. That does not match the $4.7 billion figure, and the filing does not reconcile the two. The $4.7 billion is the figure the filing explicitly ties to the 2022 Merger, so I report it, but the difference should be kept in mind.\n\n**Caveats**\n- The filing gives the cumulative merger figure only in billions, with no per-year breakdown of the $4.7 billion.\n- The 2024 restructuring charges of $447 million include items unrelated to the merger (e.g., Warner Bros. Games and organizational restructuring), so they are not a substitute for the merger total.\n- Transaction and integration costs ($242 million in 2024, $162 million in 2023, $1,195 million in 2022) are a separate line and are not the restructuring total.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/wbd-20241231.htm\",\n            \"name\": \"Warner Bros. Discovery, Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000654725
+  }
+ ],
+ "final_answer": "**Answer: About $4.7 billion in pre-tax restructuring charges had been incurred as of December 31, 2024, for the 2022 Merger (Discovery\u2013WarnerMedia combination).**\n\n**How I got there**\n\n1. I located Warner Bros. Discovery's (CIK 0001437107) Form 10-K for the period ended December 31, 2024, filed February 27, 2025, and read the MD&A and financial statement notes.\n2. The MD&A (Business Overview) describes the merger-related restructuring program. The company expected roughly $4.1 to $5.3 billion in pre-tax restructuring charges, of which $4.7 billion had been incurred as of December 31, 2024. Expected cash expenditures were $1.0 to $1.5 billion. The program was described as substantially completed at the end of 2024.\n3. Cross-check: the income statement \"restructuring and other charges\" line was $3,757 million (2022), $585 million (2023) and $447 million (2024), totaling $4,789 million. That does not match the $4.7 billion figure, and the filing does not reconcile the two. The $4.7 billion is the figure the filing explicitly ties to the 2022 Merger, so I report it, but the difference should be kept in mind.\n\n**Caveats**\n- The filing gives the cumulative merger figure only in billions, with no per-year breakdown of the $4.7 billion.\n- The 2024 restructuring charges of $447 million include items unrelated to the merger (e.g., Warner Bros. Games and organizational restructuring), so they are not a substitute for the merger total.\n- Transaction and integration costs ($242 million in 2024, $162 million in 2023, $1,195 million in 2022) are a separate line and are not the restructuring total.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/wbd-20241231.htm\",\n            \"name\": \"Warner Bros. Discovery, Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 5,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 6,
+  "input_tokens": 16,
+  "output_tokens": 3583,
+  "cache_creation_input_tokens": 202742,
+  "cache_read_input_tokens": 29517,
+  "web_search_requests": 0,
+  "cost_usd": 0.131654
+ },
+ "cost_usd": 0.131654,
+ "elapsed_s": 23.0,
+ "harness_label": "static1"
+}

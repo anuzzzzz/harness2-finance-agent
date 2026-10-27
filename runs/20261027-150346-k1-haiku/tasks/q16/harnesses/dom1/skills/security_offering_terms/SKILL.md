@@ -1,0 +1,17 @@
+---
+name: security_offering_terms
+description: Summarise the key terms of a registered securities offering (preferred, convertible, notes) from the prospectus supplement, with each term tied to the opened document.
+---
+ANALYTIC MOVE: extract and summarise terms. Inputs are the final 424B5 prospectus supplement, the pricing press release or FWP, and the closing 8-K. The result is one term-by-term summary.
+
+1. Controlling sources. The final 424B5 holds the price, share count, discount, liquidation preference, dividend, conversion, voting and use-of-proceeds terms. An 8-K filed after closing holds the certificate of designations (EX-3.1) and the underwriting agreement. The 8-K or press release is the place to confirm closing and over-allotment exercise.
+2. Several 424B5s or FWPs may exist for one deal: a launch version, a pricing version and an upsize. Use the pricing or final version for terms. Say when the deal was upsized, and give the launched size and the priced size separately.
+3. Keep these apart, each with its own figure:
+   - base deal size versus size if the over-allotment option is exercised in full;
+   - gross proceeds versus net proceeds (after the underwriting discount and expenses);
+   - pricing date versus settlement or closing date (T+2 is stated in the supplement).
+4. Do not state that the over-allotment option was exercised, or give a final post-exercise total, unless an opened document (8-K, press release, later filing) says so. Otherwise write "option for up to X additional shares".
+5. For a mandatory convertible preferred, cover: price and liquidation preference per share; dividend rate, the dollar amount per share per year, payment dates, the first payment date, form of payment (cash, stock or both) and the cumulative or non-cumulative status; the minimum and maximum conversion rates with the price thresholds, the mandatory conversion date, the early-conversion and fundamental-change terms; voting rights (usually none, with exceptions for unpaid dividends and protective provisions); the NYSE listing symbol; use of proceeds. Check that the thresholds are consistent: initial price x maximum rate should equal the liquidation preference.
+6. Answer contract: a labelled line for each term the question names, plus the share count and dollar size, with the source document for each. Use plain text with no citation markup. List only documents that were parsed and retrieved from.
+
+Task facts (verified in a prior run from the 424B5, https://www.sec.gov/Archives/edgar/data/1404912/000114036125007426/ny20042797x2_424b5.htm; re-confirm in the text). KKR & Co. Inc. 6.25% Series D Mandatory Convertible Preferred Stock. Priced March 4, 2025. Settlement March 7, 2025. Upsized from $1.5B to $2.25B (45,000,000 shares at $50.00, with an option for 6,750,000 more, which would make it $2.5875B). Underwriting discount is $1.125 per share. Net proceeds are about $2.20B, or about $2.53B with the option. Liquidation preference is $50.00 plus accumulated and unpaid dividends. Dividends are cumulative, at 6.25%, or $3.125 per year. Payment dates are March 1, June 1, September 1 and December 1, starting June 1, 2025 through March 1, 2028. Conversion rates run from 0.3312 to 0.4140. Mandatory conversion date is March 1, 2028. Proceeds are for additional equity interests in core private equity portfolio companies (Strategic Holdings) and general corporate purposes. Option exercise was not confirmed from an opened document.

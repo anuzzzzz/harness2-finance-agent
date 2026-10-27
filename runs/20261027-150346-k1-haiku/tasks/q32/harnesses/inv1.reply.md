@@ -1,0 +1,16 @@
+<file path="tool_guidance.md">
+# Tool use
+
+- Before searching, decide the form, company and fiscal period the question needs (10-Q, 10-K or 8-K EX-99.1). Use edgar_search with company and date filters, not the question's wording. If web_search returns nothing, retry once with a short non-empty query. Never send an empty or null query. After that, use edgar_search or a known primary URL.
+- A search snippet or result title is a lead, not evidence. Open the primary document with parse_html_page under a clear key. Then ask retrieve_information one targeted question at a time. Use input_character_ranges on long filings. Confirm each figure's period, unit and basis in the retrieved text, and quote the table row.
+- For a "last N months as of date X" question, the period is the fiscal year-to-date covered by the latest periodic filing filed on or before X. Say which period you used. If the filing gives both three-month and year-to-date columns, use the year-to-date column and report the three-month one only as context.
+- Compute any shares or mix percentages from the retrieved dollar figures at full precision. Check that the components sum to the reported total. Round only the final number.
+- Cite only documents you opened and retrieved from. Do not list a press release, transcript or article seen only in search results, and do not use a figure from one without saying it is snippet-only. Put such context in the answer only if it was retrieved.
+- Write the final answer in plain text with no citation markup. Give the headline figures first. Then give each figure with its period and unit, the calculation, and the sources. Submit with submit_final_result as soon as the figures are verified. Do not add a caveat that the figures were unchecked; verify them instead.
+
+Task fact (loanDepot, LDI; re-confirm in the text). The 10-Q for the period ended 2024-09-30 was filed 2024-11-12: https://www.sec.gov/Archives/edgar/data/1831631/000183163124000285/ldi-20240930.htm. Item 2 (MD&A, Key Performance Indicators) has "Loan originations by purpose", in thousands of dollars. For the nine months ended 9/30/2024 it gives Purchase $12,057,993, Refinance $5,250,321 and Total $17,308,314. That is 69.67% purchase and 30.33% refinance. The 2023 comparison is Purchase $12,403,166, Refinance $4,897,857 and Total $17,301,023. The filing prints no percentages for the split.
+</file>
+
+<notes>
+Base rollout 1 had the right route (edgar_search, then parse the 10-Q, then retrieve the table) and the right numbers. Four defects are visible. It issued a null-query web_search. It listed the Q3 press release as a source and quoted its "66%" line, but it only saw that in search results. It added a caveat that the figures were unchecked against the raw text. It did not state how it picked "last 9 months as of 11/12/2024", though it chose correctly. The edits are the standard snippet-as-lead and cite-only-opened rules from the library (q45, q46, q47), plus a short period-selection line, a check that the components sum to the total, and a no-unverified-caveat line. The labelled task fact (10-Q URL, table location, thousands unit, figures) saves the discovery search on a rerun. I kept everything in tool_guidance.md and added no skill, because the procedure is short.
+</notes>

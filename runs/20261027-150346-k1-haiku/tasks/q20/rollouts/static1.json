@@ -1,0 +1,146 @@
+{
+ "task_id": "q20",
+ "label": "static1",
+ "question": "What was ORCL's effective tax rate for the fiscal year ended 5/31/2024 and how did it change vs. the prior year? Each section represents a KPI. Format the change as: \"Delta: XXXbps\"",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Oracle annual report effective tax rate fiscal 2024",
+      "ciks": [
+       "ORCL"
+      ],
+      "start_date": "2024-06-01",
+      "end_date": "2024-08-31"
+     },
+     "output": "{\"total_matching_documents\": 2, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2024-06-20\", \"period_ending\": \"2024-05-31\", \"company\": \"ORACLE CORP  (ORCL)  (CIK 0001341439)\", \"ciks\": [\"0001341439\"], \"accession\": \"0000950170-24-075605\", \"document\": \"orcl-20240531.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1341439/000095017024075605/orcl-20240531.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-06-20\", \"period_ending\": \"2024-05-31\", \"company\": \"ORACLE CORP  (ORCL)  (CIK 0001341439)\", \"ciks\": [\"0001341439\"], \"accession\": \"0000950170-24-075605\", \"document\": \"orcl-ex99_01.htm\", \"description\": \"EX-99.01\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1341439/000095017024075605/orcl-ex99_01.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 1.18,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Oracle 10-K fiscal 2024 provision for income taxes effective tax rate",
+      "form_types": [
+       "10-K"
+      ],
+      "start_date": "2024-06-01",
+      "end_date": "2024-08-31"
+     },
+     "output": "{\"total_matching_documents\": 21, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2024-06-20\", \"period_ending\": \"2024-05-31\", \"company\": \"ORACLE CORP  (ORCL)  (CIK 0001341439)\", \"ciks\": [\"0001341439\"], \"accession\": \"0000950170-24-075605\", \"document\": \"orcl-20240531.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1341439/000095017024075605/orcl-20240531.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-07-30\", \"period_ending\": \"2024-06-30\", \"company\": \"MICROSOFT CORP  (MSFT)  (CIK 0000789019)\", \"ciks\": [\"0000789019\"], \"accession\": \"0000950170-24-087843\", \"document\": \"msft-20240630.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/789019/000095017024087843/msft-20240630.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-08-01\", \"period_ending\": \"2024-06-30\", \"company\": \"OPEN TEXT CORP  (OTEX)  (CIK 0001002638)\", \"ciks\": [\"0001002638\"], \"accession\": \"0001002638-24-000052\", \"document\": \"otex-20240630.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1002638/000100263824000052/otex-20240630.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-06-13\", \"period_ending\": \"2024-03-31\", \"company\": \"ITERIS, INC.  (ITI)  (CIK 0000350868)\", \"ciks\": [\"0000350868\"], \"accession\": \"0000350868-24-000016\", \"document\": \"iti-20240331.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/350868/000035086824000016/iti-20240331.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-07-15\", \"period_ending\": \"2024-03-31\", \"company\": \"DIH HOLDING US, INC.  (DHAI, DHAIW)  (CIK 0001883788)\", \"ciks\": [\"0001883788\"], \"accession\": \"0000950170-24-083628\", \"document\": \"dhai-20240331.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1883788/000095017024083628/dhai-20240331.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-08-23\", \"period_ending\": \"2024-06-30\", \"company\": \"BILL Holdings, Inc.  (BILL)  (CIK 0001786352)\", \"ciks\": [\"0001786352\"], \"accession\": \"0001786352-24-000035\", \"document\": \"bill-20240630.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1786352/000178635224000035/bill-20240630.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-06-28\", \"period_ending\": \"2024-04-30\", \"company\": \"KEWAUNEE SCIENTIFIC CORP /DE/  (KEQU)  (CIK 0000055529)\", \"ciks\": [\"0000055529\"], \"accession\": \"0000055529-24-000021\", \"document\": \"kequ-20240430.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/55529/000005552924000021/kequ-20240430.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-08-16\", \"period_ending\": \"2024-06-30\", \"company\": \"EXTREME NETWORKS INC  (EXTR)  (CIK 0001078271)\", \"ciks\": [\"0001078271\"], \"accession\": \"0000950170-24-098129\", \"document\": \"extr-20240630.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1078271/000095017024098129/extr-20240630.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-06-20\", \"period_ending\": \"2024-05-31\", \"company\": \"ORACLE CORP  (ORCL)  (CIK 0001341439)\", \"ciks\": [\"0001341439\"], \"accession\": \"0000950170-24-075605\", \"document\": \"orcl-ex99_01.htm\", \"description\": \"EX-99.01\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1341439/000095017024075605/orcl-ex99_01.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-07-01\", \"period_ending\": \"2024-04-30\", \"company\": \"AMERICAN SOFTWARE INC  (AMSWA)  (CIK 0000713425)\", \"ciks\": [\"0000713425\"], \"accession\": \"0001628280-24-030530\", \"document\": \"amswa-20240430.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/713425/000162828024030530/amswa-20240430.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-06-10\", \"period_ending\": \"2024-04-26\", \"company\": \"NetApp, Inc.  (NTAP)  (CIK 0001002047)\", \"ciks\": [\"0001002047\"], \"accession\": \"0000950170-24-071327\", \"document\": \"ntap-20240426.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1002047/000095017024071327/ntap-20240426.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-07-29\", \"period_ending\": \"2024-04-30\", \"company\": \"U.S. GOLD CORP.  (USAU)  (CIK 0000027093)\", \"ciks\": [\"0000027093\"], \"accession\": \"0001493152-24-029423\", \"document\": \"form10-k.htm\", \"description\": null, \"url\": \"https://www.sec.gov/Archives/edgar/data/27093/000149315224029423/form10-k.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-06-18\", \"period_ending\": \"2024-04-30\", \"company\": \"C3.ai, Inc.  (AI)  (CIK 0001577526)\", \"ciks\": [\"0001577526\"], \"accession\": \"0001628280-24-028786\", \"document\": \"ai-20240430.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1577526/000162828024028786/ai-20240430.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-08-13\", \"period_ending\": \"2024-06-28\", \"company\": \"MERCURY SYSTEMS INC  (MRCY)  (CIK 0001049521)\", \"ciks\": [\"0001049521\"], \"accession\": \"0001049521-24-000029\", \"document\": \"mrcy-20240628.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1049521/000104952124000029/mrcy-20240628.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-08-13\", \"period_ending\": \"2023-12-31\", \"company\": \"DZS INC.  (DZSI)  (CIK 0001101680)\", \"ciks\": [\"0001101680\"], \"accession\": \"0000950170-24-096409\", \"document\": \"dzsi-20231231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1101680/000095017024096409/dzsi-20231231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-07-16\", \"period_ending\": \"2023-12-31\", \"company\": \"Value Exchange International, Inc.  (VEII)  (CIK 0001417664)\", \"ciks\": [\"0001417664\"], \"accession\": \"0001214659-24-012449\", \"document\": \"x71024110k.htm\", \"description\": null, \"url\": \"https://www.sec.gov/Archives/edgar/data/1417664/000121465924012449/x71024110k.htm\"}, {\"form\": \"10-K/A\", \"file_date\": \"2024-08-13\", \"period_ending\": \"2022-12-31\", \"company\": \"DZS INC.  (DZSI)  (CIK 0001101680)\", \"ciks\": [\"0001101680\"], \"accession\": \"0000950170-24-096338\", \"document\": \"dzsi-20221231.htm\", \"description\": \"10-K/A\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1101680/000095017024096338/dzsi-20221231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-08-07\", \"period_ending\": \"2024-06-30\", \"company\": \"Stride, Inc.  (LRN)  (CIK 0001157408)\", \"ciks\": [\"0001157408\"], \"accession\": \"0001558370-24-011134\", \"document\": \"lrn-20240630x10k.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1157408/000155837024011134/lrn-20240630x10k.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-06-10\", \"period_ending\": \"2024-01-31\", \"company\": \"Autodesk, Inc.  (ADSK)  (CIK 0000769397)\", \"ciks\": [\"0000769397\"], \"accession\": \"0000769397-24-000090\", \"document\": \"adsk-20240131.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/769397/000076939724000090/adsk-20240131.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2024-08-21\", \"period_ending\": \"2024-06-30\", \"company\": \"Premier, Inc.  (PINC)  (CIK 0001577916)\", \"ciks\": [\"0001577916\"], \"accession\": \"0001577916-24-000009\", \"document\": \"pinc-20240630.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1577916/000157791624000009/pinc-20240630.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.44,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00033635999999999996
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1341439/000095017024075605/orcl-20240531.htm",
+      "key": "orcl10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: orcl10k. (453,803 characters)\nThe data_storage currently contains the following keys:\norcl10k\n",
+     "is_error": false,
+     "elapsed_s": 0.87,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000655745
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Oracle 10-K, find the effective tax rate for fiscal 2024 and fiscal 2023 (years ended May 31, 2024 and May 31, 2023). Give the exact percentages as stated, plus the provision for income taxes and income before provision for income taxes for each year, and the sentence describing the change in effective tax rate and the reasons. Quote exact text: {{orcl10k}}"
+     },
+     "output": "**Effective tax rates (Oracle Corporation, Form 10-K for fiscal year ended May 31, 2024)**\n\n| | Fiscal 2024 (year ended May 31, 2024) | Fiscal 2023 (year ended May 31, 2023) |\n|---|---|---|\n| Effective tax rate | 10.9% | 6.8% |\n| Provision for income taxes | $1,274 million | $623 million |\n| Income before income taxes | $11,741 million | $9,126 million |\n\nThe 10-K reports these figures in millions of dollars. The effective tax rate also appears in Note 13 (Income Taxes), which gives the same 10.9% and 6.8%.\n\n**Sentence on the change and its reasons** (MD&A, \"Provision for Income Taxes\"):\n\n> \"Provision for income taxes increased in fiscal 2024 relative to fiscal 2023 primarily due to the absence of unrecognized tax benefits due to settlements with tax authorities, an unfavorable jurisdictional mix of earnings, and higher income before provision for income taxes, partially offset by a combination of an increase in tax benefits related to stock-based compensation, the realization of a one-time tax attribute and the revaluation of net deferred tax assets due to a change in tax rate.\"\n\nThe 10-K does not contain a separate sentence that describes the effective tax rate change on its own. The sentence above is the closest statement, and it explains the change in the provision.",
+     "is_error": false,
+     "elapsed_s": 7.04,
+     "cost_usd": 0.098927
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00021255000000000002
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "Quote the exact sentences in this Oracle 10-K that state the effective tax rate for fiscal 2024 and fiscal 2023, and the exact provision for income taxes and income before provision for income taxes figures in the income statement: {{orcl10k}}"
+     },
+     "output": "**Effective tax rate**\n\nThe 10-K has no standalone prose sentence that states the effective tax rate. The rates appear in tables, and in one sentence in the MD&A supplemental disclosure, footnote (5):\n\n> \"These adjustments resulted in an effective tax rate of 19.2%, instead of 10.9%, for fiscal 2024 and 16.3%, instead of 6.8%, for fiscal 2023, which in each case represented our effective tax rates as derived per our consolidated statements of operations.\"\n\nThe reported (GAAP) rates are 10.9% for fiscal 2024 and 6.8% for fiscal 2023. The 19.2% and 16.3% figures in that sentence are adjusted rates, not the reported ones.\n\nThe MD&A \"Provision for Income Taxes\" table shows \"Effective tax rate: 10.9% / 6.8%,\" and Note 13 shows \"Effective income tax rate: 10.9% / 6.8% / 12.2%\" for 2024, 2023 and 2022.\n\n**Income statement figures (Consolidated Statements of Operations, Year Ended May 31)**\n\nThese figures are in tabular form, not sentences:\n\n- Income before income taxes: $11,741 million (2024); $9,126 million (2023)\n- Provision for income taxes: $1,274 million (2024); $623 million (2023)",
+     "is_error": false,
+     "elapsed_s": 5.83,
+     "cost_usd": 0.099142
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000383955
+  },
+  {
+   "turn": 5,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Oracle (ORCL) GAAP effective tax rate, fiscal years ended May 31**\n\n| KPI | FY2024 (ended 5/31/2024) | FY2023 (ended 5/31/2023) |\n|---|---|---|\n| Effective tax rate (as reported) | 10.9% | 6.8% |\n| Provision for income taxes | $1,274M | $623M |\n| Income before income taxes | $11,741M | $9,126M |\n\n**Calculation check**\n- FY2024: $1,274M / $11,741M = 10.85% (reported as 10.9%)\n- FY2023: $623M / $9,126M = 6.83% (reported as 6.8%)\n\n**Change vs. prior year (reported rates):** 10.9% \u2212 6.8% = 4.1 percentage points.\n\n**Delta: 410bps**\n\nNote: If the change is computed from unrounded ratios (10.85% \u2212 6.83%), the increase is about 402bps. The reported-basis figure of 410bps is given as the answer because it matches the rates Oracle publishes.\n\n**Drivers (per the 10-K MD&A):** The provision increased mainly because of the absence of prior-year unrecognized tax benefits from tax-authority settlements, an unfavorable jurisdictional mix of earnings, and higher pre-tax income. These were partly offset by larger tax benefits from stock-based compensation, a one-time tax attribute realization, and the revaluation of net deferred tax assets from a tax-rate change.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1341439/000095017024075605/orcl-20240531.htm\",\n            \"name\": \"Oracle Corp Form 10-K for fiscal year ended May 31, 2024 (filed 2024-06-20)\"\n        }\n    ]\n}"
+     },
+     "output": "**Oracle (ORCL) GAAP effective tax rate, fiscal years ended May 31**\n\n| KPI | FY2024 (ended 5/31/2024) | FY2023 (ended 5/31/2023) |\n|---|---|---|\n| Effective tax rate (as reported) | 10.9% | 6.8% |\n| Provision for income taxes | $1,274M | $623M |\n| Income before income taxes | $11,741M | $9,126M |\n\n**Calculation check**\n- FY2024: $1,274M / $11,741M = 10.85% (reported as 10.9%)\n- FY2023: $623M / $9,126M = 6.83% (reported as 6.8%)\n\n**Change vs. prior year (reported rates):** 10.9% \u2212 6.8% = 4.1 percentage points.\n\n**Delta: 410bps**\n\nNote: If the change is computed from unrounded ratios (10.85% \u2212 6.83%), the increase is about 402bps. The reported-basis figure of 410bps is given as the answer because it matches the rates Oracle publishes.\n\n**Drivers (per the 10-K MD&A):** The provision increased mainly because of the absence of prior-year unrecognized tax benefits from tax-authority settlements, an unfavorable jurisdictional mix of earnings, and higher pre-tax income. These were partly offset by larger tax benefits from stock-based compensation, a one-time tax attribute realization, and the revaluation of net deferred tax assets from a tax-rate change.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1341439/000095017024075605/orcl-20240531.htm\",\n            \"name\": \"Oracle Corp Form 10-K for fiscal year ended May 31, 2024 (filed 2024-06-20)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000637335
+  }
+ ],
+ "final_answer": "**Oracle (ORCL) GAAP effective tax rate, fiscal years ended May 31**\n\n| KPI | FY2024 (ended 5/31/2024) | FY2023 (ended 5/31/2023) |\n|---|---|---|\n| Effective tax rate (as reported) | 10.9% | 6.8% |\n| Provision for income taxes | $1,274M | $623M |\n| Income before income taxes | $11,741M | $9,126M |\n\n**Calculation check**\n- FY2024: $1,274M / $11,741M = 10.85% (reported as 10.9%)\n- FY2023: $623M / $9,126M = 6.83% (reported as 6.8%)\n\n**Change vs. prior year (reported rates):** 10.9% \u2212 6.8% = 4.1 percentage points.\n\n**Delta: 410bps**\n\nNote: If the change is computed from unrounded ratios (10.85% \u2212 6.83%), the increase is about 402bps. The reported-basis figure of 410bps is given as the answer because it matches the rates Oracle publishes.\n\n**Drivers (per the 10-K MD&A):** The provision increased mainly because of the absence of prior-year unrecognized tax benefits from tax-authority settlements, an unfavorable jurisdictional mix of earnings, and higher pre-tax income. These were partly offset by larger tax benefits from stock-based compensation, a one-time tax attribute realization, and the revaluation of net deferred tax assets from a tax-rate change.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1341439/000095017024075605/orcl-20240531.htm\",\n            \"name\": \"Oracle Corp Form 10-K for fiscal year ended May 31, 2024 (filed 2024-06-20)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 5,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 7,
+  "input_tokens": 20,
+  "output_tokens": 4197,
+  "cache_creation_input_tokens": 314595,
+  "cache_read_input_tokens": 41487,
+  "web_search_requests": 0,
+  "cost_usd": 0.200295
+ },
+ "cost_usd": 0.200295,
+ "elapsed_s": 28.9,
+ "harness_label": "static1"
+}

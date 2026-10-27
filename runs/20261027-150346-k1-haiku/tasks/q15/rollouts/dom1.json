@@ -1,0 +1,130 @@
+{
+ "task_id": "q15",
+ "label": "dom1",
+ "question": "Calculate the inventory turnover for US Steel in FY2024.",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "ratio_from_10k_statements"
+     },
+     "output": "---\nname: ratio_from_10k_statements\ndescription: Compute a turnover, margin, leverage or return ratio (inventory turnover, DIO, asset turnover, ROE) from a company's 10-K income statement and balance sheet, with the definition, the average-vs-ending choice and a labelled alternate.\n---\nANALYTIC MOVE: calculate. Inputs are one flow figure (income statement or cash flow) and one stock figure (balance sheet), each for the right fiscal year. Result is the ratio, with the formula shown.\n\n1. Source. Open the company's 10-K for the named fiscal year with parse_html_page. Retrieve the figures from the Consolidated Statements of Operations and the Consolidated Balance Sheets. One 10-K carries two balance-sheet dates (current and prior year-end), so it supplies both ends of a year's average. Earnings-release snippets are leads only. Confirm each figure, period and unit ($ millions vs thousands) in the retrieved text.\n2. Definitions.\n   - Inventory turnover = cost of goods sold (the \"Cost of sales\" line) / average inventory. Average inventory = (beginning-of-year + end-of-year inventory) / 2. Beginning is the prior year-end balance.\n   - Also give days inventory outstanding = 365 / turnover, if it helps the reader.\n   - Use net inventories as shown on the balance sheet (after LIFO reserves and write-downs). Do not add a LIFO reserve unless the question asks.\n3. Average vs ending. State the primary basis explicitly. Default to the average-balance version, because it is the standard definition. Also show the ending-balance ratio as a clearly labelled alternate, with one line each. Never present two unlabelled headline numbers.\n4. Cost-line caveat. Check whether \"Cost of sales\" excludes depreciation, depletion and amortization, which some industrial and steel issuers report on a separate line. If so, use the reported cost-of-sales line as the default and note the exclusion in one sentence. Do not add D&A unless the question asks.\n5. Period alignment. The flow figure must be for the same 12-month fiscal year as the ending balance. Check the fiscal year-end date. Do not mix a calendar-year and a fiscal-year figure, and do not use a 10-Q's quarterly cost of sales.\n6. Answer contract: the headline ratio at two decimals; the cost of sales, beginning inventory and ending inventory with period and unit; the average and the division at full precision, rounded only at the end; the labelled alternate; sources limited to documents actually opened.\n\nTask facts (US Steel, FY2024; a prior run took these from earnings-release snippets without opening anything, so re-confirm in the opened 10-K). The FY2024 10-K is https://www.sec.gov/Archives/edgar/data/1163302/000116330225000018/x-20241231.htm. The leads: cost of sales 2024 = $14,060M, inventories $2,168M at 12/31/2024 and $2,128M at 12/31/2023. These give 14,060 / 2,148 = 6.5456 on average inventory and 14,060 / 2,168 = 6.4852 on ending inventory. U. S. Steel reports depreciation, depletion and amortization on a separate line, outside cost of sales.\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "United States Steel annual report 2024 10-K inventories cost of sales",
+      "start_date": "2025-01-01",
+      "end_date": "2025-04-07",
+      "form_types": [
+       "10-K"
+      ]
+     },
+     "output": "{\"total_matching_documents\": 591, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-21\", \"period_ending\": \"2024-12-31\", \"company\": \"OLYMPIC STEEL INC  (ZEUS)  (CIK 0000917470)\", \"ciks\": [\"0000917470\"], \"accession\": \"0001437749-25-004742\", \"document\": \"zeus20241231_10k.htm\", \"description\": \"FORM 10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/917470/000143774925004742/zeus20241231_10k.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-27\", \"period_ending\": \"2024-12-31\", \"company\": \"NUCOR CORP  (NUE)  (CIK 0000073309)\", \"ciks\": [\"0000073309\"], \"accession\": \"0000950170-25-028427\", \"document\": \"nue-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/73309/000095017025028427/nue-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-27\", \"period_ending\": \"2024-12-31\", \"company\": \"NORTHWEST PIPE CO  (NWPX)  (CIK 0001001385)\", \"ciks\": [\"0001001385\"], \"accession\": \"0001437749-25-005465\", \"document\": \"nwpx20241231_10k.htm\", \"description\": \"FORM 10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1001385/000143774925005465/nwpx20241231_10k.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-27\", \"period_ending\": \"2024-12-31\", \"company\": \"RELIANCE, INC.  (RS)  (CIK 0000861884)\", \"ciks\": [\"0000861884\"], \"accession\": \"0001558370-25-001806\", \"document\": \"rs-20241231x10k.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/861884/000155837025001806/rs-20241231x10k.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-05\", \"period_ending\": \"2024-12-31\", \"company\": \"COMPX INTERNATIONAL INC  (CIX)  (CIK 0001049606)\", \"ciks\": [\"0001049606\"], \"accession\": \"0001558370-25-002264\", \"document\": \"cix-20241231x10k.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1049606/000155837025002264/cix-20241231x10k.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-26\", \"period_ending\": \"2024-12-31\", \"company\": \"LEGGETT & PLATT INC  (LEG)  (CIK 0000058492)\", \"ciks\": [\"0000058492\"], \"accession\": \"0000058492-25-000136\", \"document\": \"leg-20241231.htm\", \"description\": \"FORM 10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/58492/000005849225000136/leg-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-01-31\", \"period_ending\": \"2024-12-31\", \"company\": \"UNITED STATES STEEL CORP  (X)  (CIK 0001163302)\", \"ciks\": [\"0001163302\"], \"accession\": \"0001163302-25-000018\", \"document\": \"x-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1163302/000116330225000018/x-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-27\", \"period_ending\": \"2024-12-31\", \"company\": \"Metallus Inc.  (MTUS)  (CIK 0001598428)\", \"ciks\": [\"0001598428\"], \"accession\": \"0000950170-25-029085\", \"document\": \"mtus-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1598428/000095017025029085/mtus-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-25\", \"period_ending\": \"2024-12-31\", \"company\": \"CLEVELAND-CLIFFS INC.  (CLF)  (CIK 0000764065)\", \"ciks\": [\"0000764065\"], \"accession\": \"0000764065-25-000058\", \"document\": \"clf-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/764065/000076406525000058/clf-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-28\", \"period_ending\": \"2024-12-31\", \"company\": \"STEEL DYNAMICS INC  (STLD)  (CIK 0001022671)\", \"ciks\": [\"0001022671\"], \"accession\": \"0001558370-25-001886\", \"document\": \"stld-20241231x10k.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1022671/000155837025001886/stld-20241231x10k.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-20\", \"period_ending\": \"2024-12-31\", \"company\": \"Ryerson Holding Corp  (RYI)  (CIK 0001481582)\", \"ciks\": [\"0001481582\"], \"accession\": \"0000950170-25-024199\", \"document\": \"ryi-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1481582/000095017025024199/ryi-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-26\", \"period_ending\": \"2024-12-31\", \"company\": \"ASTEC INDUSTRIES INC  (ASTE)  (CIK 0000792987)\", \"ciks\": [\"0000792987\"], \"accession\": \"0000792987-25-000013\", \"document\": \"aste-20241231.htm\", \"description\": \"FORM 10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/792987/000079298725000013/aste-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-12\", \"period_ending\": \"2024-12-31\", \"company\": \"FreightCar America, Inc.  (RAIL)  (CIK 0001320854)\", \"ciks\": [\"0001320854\"], \"accession\": \"0000950170-25-037977\", \"document\": \"rail-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1320854/000095017025037977/rail-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-19\", \"period_ending\": \"2024-12-31\", \"company\": \"STURM RUGER & CO INC  (RGR)  (CIK 0000095029)\", \"ciks\": [\"0000095029\"], \"accession\": \"0001174947-25-000197\", \"document\": \"rgr-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/95029/000117494725000197/rgr-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-24\", \"period_ending\": \"2024-12-31\", \"company\": \"DMC Global Inc.  (BOOM)  (CIK 0000034067)\", \"ciks\": [\"0000034067\"], \"accession\": \"0000034067-25-000028\", \"document\": \"boom-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/34067/000003406725000028/boom-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-25\", \"period_ending\": \"2024-12-31\", \"company\": \"DOUGLAS DYNAMICS, INC  (PLOW)  (CIK 0001287213)\", \"ciks\": [\"0001287213\"], \"accession\": \"0001437749-25-005050\", \"document\": \"plow20241231_10k.htm\", \"description\": \"FORM 10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1287213/000143774925005050/plow20241231_10k.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-26\", \"period_ending\": \"2024-12-31\", \"company\": \"LINCOLN ELECTRIC HOLDINGS INC  (LECO)  (CIK 0000059527)\", \"ciks\": [\"0000059527\"], \"accession\": \"0000059527-25-000006\", \"document\": \"leco-20241231x10k.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/59527/000005952725000006/leco-20241231x10k.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-18\", \"period_ending\": \"2024-12-31\", \"company\": \"DNOW Inc.  (DNOW)  (CIK 0001599617)\", \"ciks\": [\"0001599617\"], \"accession\": \"0000950170-25-021784\", \"document\": \"dnow-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1599617/000095017025021784/dnow-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-11\", \"period_ending\": \"2024-12-31\", \"company\": \"STEEL PARTNERS HOLDINGS L.P.  (SPLP, SPLP-PA)  (CIK 0001452857)\", \"ciks\": [\"0001452857\"], \"accession\": \"0001452857-25-000010\", \"document\": \"splp-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1452857/000145285725000010/splp-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-25\", \"period_ending\": \"2024-12-28\", \"company\": \"VALMONT INDUSTRIES INC  (VMI)  (CIK 0000102729)\", \"ciks\": [\"0000102729\"], \"accession\": \"0000102729-25-000009\", \"document\": \"vmi-20241228x10k.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/102729/000010272925000009/vmi-20241228x10k.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.77,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0008706499999999999
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1163302/000116330225000018/x-20241231.htm",
+      "key": "x10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: x10k. (638,086 characters)\nThe data_storage currently contains the following keys:\nx10k\n",
+     "is_error": false,
+     "elapsed_s": 1.14,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0007259500000000001
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From {{x10k}}, extract the Consolidated Statements of Operations line \"Cost of sales\" for 2024, 2023, 2022 (in $ millions), and the Consolidated Balance Sheet \"Inventories\" line for December 31, 2024 and December 31, 2023 (in $ millions). Also state whether Cost of sales excludes depreciation, depletion and amortization (which is reported on a separate line). Quote the exact line labels."
+     },
+     "output": "**Consolidated Statements of Operations** (dollars in millions)\n\n| Line label (as printed) | 2024 | 2023 | 2022 |\n|---|---|---|---|\n| \"Cost of sales (excludes items shown below)\" | $14,060 | $15,803 | $16,777 |\n\n**Consolidated Balance Sheets** (dollars in millions)\n\n| Line label (as printed) | Dec 31, 2024 | Dec 31, 2023 |\n|---|---|---|\n| \"Inventories (Note 10)\" | $2,168 | $2,128 |\n\n**Depreciation treatment:** Yes, Cost of sales excludes depreciation, depletion and amortization. The label says \"excludes items shown below,\" and depreciation, depletion and amortization is reported on its own line, \"Depreciation, depletion and amortization (Notes 13 and 14),\" at $913 million (2024), $916 million (2023), and $791 million (2022).",
+     "is_error": false,
+     "elapsed_s": 8.72,
+     "cost_usd": 0.152954
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00022831000000000001
+  },
+  {
+   "turn": 4,
+   "text": "**US Steel (NYSE: X) inventory turnover, FY2024 (fiscal year ended December 31, 2024)**\n\n**Headline (average inventory basis): 6.55x**\n\n**Inputs (from the FY2024 Form 10-K, dollars in millions):**\n- Cost of sales, FY2024: $14,060. The line is printed as \"Cost of sales (excludes items shown below).\"\n- Inventories, December 31, 2024 (ending): $2,168. The balance sheet line is \"Inventories (Note 10).\"\n- Inventories, December 31, 2023 (beginning): $2,128.\n\n**Calculation:**\n- Average inventory = (2,128 + 2,168) / 2 = 2,148\n- Inventory turnover = 14,060 / 2,148 = 6.5456, which rounds to **6.55**\n- Days inventory outstanding = 365 / 6.5456 \u2248 55.76 days\n\n**Alternate (ending-inventory basis, labelled): 6.49x**\n- Turnover = 14,060 / 2,168 = 6.4852, which rounds to 6.49\n- Days inventory outstanding \u2248 56.28 days\n\n**Cost-line note:** U.S. Steel reports depreciation, depletion and amortization on a separate line ($913 million in 2024), so the cost-of-sales figure used here excludes D&A. I did not add D&A, since the question did not ask for it.\n\n**Conclusion:** US Steel's FY2024 inventory turnover was about 6.55x on average inventory, or about 6.49x on ending inventory. Both figures were checked against the primary 10-K text.\n\n```json\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1163302/000116330225000018/x-20241231.htm\",\n            \"name\": \"United States Steel Corp (X) Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}\n```",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [],
+   "stop_reason": "end_turn",
+   "cost_usd": 0.00073776
+  },
+  {
+   "turn": 5,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "US Steel (NYSE: X) inventory turnover, FY2024 (fiscal year ended December 31, 2024)\n\nHeadline (average inventory basis): 6.55x\n\nInputs (FY2024 Form 10-K, dollars in millions):\n- Cost of sales, FY2024: $14,060. Printed as \"Cost of sales (excludes items shown below).\"\n- Inventories, December 31, 2024 (ending): $2,168. Balance sheet line \"Inventories (Note 10).\"\n- Inventories, December 31, 2023 (beginning): $2,128.\n\nCalculation:\n- Average inventory = (2,128 + 2,168) / 2 = 2,148\n- Inventory turnover = 14,060 / 2,148 = 6.5456, rounded to 6.55\n- Days inventory outstanding = 365 / 6.5456 = about 55.76 days\n\nAlternate (ending-inventory basis, labelled): 6.49x\n- Turnover = 14,060 / 2,168 = 6.4852, rounded to 6.49\n- Days inventory outstanding = about 56.28 days\n\nCost-line note: U.S. Steel reports depreciation, depletion and amortization on a separate line ($913 million in 2024), so the cost-of-sales figure excludes D&A. D&A was not added, since the question did not ask for it.\n\nConclusion: US Steel's FY2024 inventory turnover was about 6.55x on average inventory (about 6.49x on ending inventory). Figures were verified against the primary 10-K text.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1163302/000116330225000018/x-20241231.htm\",\n            \"name\": \"United States Steel Corp (X) Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}"
+     },
+     "output": "US Steel (NYSE: X) inventory turnover, FY2024 (fiscal year ended December 31, 2024)\n\nHeadline (average inventory basis): 6.55x\n\nInputs (FY2024 Form 10-K, dollars in millions):\n- Cost of sales, FY2024: $14,060. Printed as \"Cost of sales (excludes items shown below).\"\n- Inventories, December 31, 2024 (ending): $2,168. Balance sheet line \"Inventories (Note 10).\"\n- Inventories, December 31, 2023 (beginning): $2,128.\n\nCalculation:\n- Average inventory = (2,128 + 2,168) / 2 = 2,148\n- Inventory turnover = 14,060 / 2,148 = 6.5456, rounded to 6.55\n- Days inventory outstanding = 365 / 6.5456 = about 55.76 days\n\nAlternate (ending-inventory basis, labelled): 6.49x\n- Turnover = 14,060 / 2,168 = 6.4852, rounded to 6.49\n- Days inventory outstanding = about 56.28 days\n\nCost-line note: U.S. Steel reports depreciation, depletion and amortization on a separate line ($913 million in 2024), so the cost-of-sales figure excludes D&A. D&A was not added, since the question did not ask for it.\n\nConclusion: US Steel's FY2024 inventory turnover was about 6.55x on average inventory (about 6.49x on ending inventory). Figures were verified against the primary 10-K text.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1163302/000116330225000018/x-20241231.htm\",\n            \"name\": \"United States Steel Corp (X) Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0006402049999999999
+  }
+ ],
+ "final_answer": "US Steel (NYSE: X) inventory turnover, FY2024 (fiscal year ended December 31, 2024)\n\nHeadline (average inventory basis): 6.55x\n\nInputs (FY2024 Form 10-K, dollars in millions):\n- Cost of sales, FY2024: $14,060. Printed as \"Cost of sales (excludes items shown below).\"\n- Inventories, December 31, 2024 (ending): $2,168. Balance sheet line \"Inventories (Note 10).\"\n- Inventories, December 31, 2023 (beginning): $2,128.\n\nCalculation:\n- Average inventory = (2,128 + 2,168) / 2 = 2,148\n- Inventory turnover = 14,060 / 2,148 = 6.5456, rounded to 6.55\n- Days inventory outstanding = 365 / 6.5456 = about 55.76 days\n\nAlternate (ending-inventory basis, labelled): 6.49x\n- Turnover = 14,060 / 2,168 = 6.4852, rounded to 6.49\n- Days inventory outstanding = about 56.28 days\n\nCost-line note: U.S. Steel reports depreciation, depletion and amortization on a separate line ($913 million in 2024), so the cost-of-sales figure excludes D&A. D&A was not added, since the question did not ask for it.\n\nConclusion: US Steel's FY2024 inventory turnover was about 6.55x on average inventory (about 6.49x on ending inventory). Figures were verified against the primary 10-K text.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1163302/000116330225000018/x-20241231.htm\",\n            \"name\": \"United States Steel Corp (X) Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+ "fallback_text": "**US Steel (NYSE: X) inventory turnover, FY2024 (fiscal year ended December 31, 2024)**\n\n**Headline (average inventory basis): 6.55x**\n\n**Inputs (from the FY2024 Form 10-K, dollars in millions):**\n- Cost of sales, FY2024: $14,060. The line is printed as \"Cost of sales (excludes items shown below).\"\n- Inventories, December 31, 2024 (ending): $2,168. The balance sheet line is \"Inventories (Note 10).\"\n- Inventories, December 31, 2023 (beginning): $2,128.\n\n**Calculation:**\n- Average inventory = (2,128 + 2,168) / 2 = 2,148\n- Inventory turnover = 14,060 / 2,148 = 6.5456, which rounds to **6.55**\n- Days inventory outstanding = 365 / 6.5456 \u2248 55.76 days\n\n**Alternate (ending-inventory basis, labelled): 6.49x**\n- Turnover = 14,060 / 2,168 = 6.4852, which rounds to 6.49\n- Days inventory outstanding \u2248 56.28 days\n\n**Cost-line note:** U.S. Steel reports depreciation, depletion and amortization on a separate line ($913 million in 2024), so the cost-of-sales figure used here excludes D&A. I did not add D&A, since the question did not ask for it.\n\n**Conclusion:** US Steel's FY2024 inventory turnover was about 6.55x on average inventory, or about 6.49x on ending inventory. Both figures were checked against the primary 10-K text.\n\n```json\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1163302/000116330225000018/x-20241231.htm\",\n            \"name\": \"United States Steel Corp (X) Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}\n```",
+ "submitted": true,
+ "turns": 5,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 6,
+  "input_tokens": 18,
+  "output_tokens": 3095,
+  "cache_creation_input_tokens": 254811,
+  "cache_read_input_tokens": 39310,
+  "web_search_requests": 0,
+  "cost_usd": 0.156158
+ },
+ "cost_usd": 0.156158,
+ "elapsed_s": 22.8,
+ "harness_label": "dom1"
+}

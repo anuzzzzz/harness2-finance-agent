@@ -1,0 +1,86 @@
+{
+ "task_id": "q35",
+ "label": "agg1",
+ "question": "For the fiscal year ended 12/31/2023, what was Uber's (NYSE: UBER) largest adjustment to EBITDA. Provide the line item and amount in billions of dollars.",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1543151/000154315124000008/uberq423earningspressrelea.htm",
+      "key": "uber_q4_2023"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: uber_q4_2023. (49,646 characters)\nThe data_storage currently contains the following keys:\nuber_q4_2023\n",
+     "is_error": false,
+     "elapsed_s": 0.45,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000863525
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Uber Q4 2023 earnings release, find the full-year 2023 Adjusted EBITDA reconciliation table. List every line item with its exact value and sign (in $ millions), starting from net income (loss) attributable to Uber, and state the total Adjusted EBITDA. Also confirm the period and unit. Text: {{uber_q4_2023}}"
+     },
+     "output": "**Period and unit:** Year ended December 31, 2023 (January 1 to December 31, 2023), in US$ millions.\n\n**Full-year 2023 Adjusted EBITDA reconciliation** (signs as presented in the release, where parentheses are deductions):\n\n| Line item | FY2023 ($M) |\n|---|---|\n| Net income attributable to Uber Technologies, Inc. | 1,887 |\n| *Add (deduct):* | |\n| Net income attributable to non-controlling interests, net of tax | 269 |\n| Provision for income taxes | 213 |\n| Income from equity method investments | (48) |\n| Interest expense | 633 |\n| Other (income) expense, net | (1,844) |\n| Depreciation and amortization | 823 |\n| Stock-based compensation expense | 1,935 |\n| Legal, tax, and regulatory reserve changes and settlements | 9 |\n| Goodwill and asset impairments/loss on sale of assets, net | 84 |\n| Acquisition, financing and divestitures related expenses | 36 |\n| Accelerated lease costs related to cease-use of ROU assets | \u2014 |\n| COVID-19 response initiatives | \u2014 |\n| Loss on lease arrangement, net | 4 |\n| Restructuring and related charges | 51 |\n| Mass arbitration fees, net | \u2014 |\n| **Adjusted EBITDA** | **4,052** |\n\n**Check:** 1,887 + 269 + 213 \u2212 48 + 633 \u2212 1,844 + 823 + 1,935 + 9 + 84 + 36 + 4 + 51 = 4,052. This matches the release's full-year Adjusted EBITDA of $4,052 million, up 137% from $1,713 million in 2022.",
+     "is_error": false,
+     "elapsed_s": 5.57,
+     "cost_usd": 0.002939
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000178245
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Answer: Uber's largest adjustment to Adjusted EBITDA for the fiscal year ended December 31, 2023 was Stock-based compensation expense, an add-back of $1,935 million, or $1.935 billion (about $1.94 billion when rounded to two decimals).\n\nHow it was derived:\n- I opened Uber's Q4 2023 earnings release (8-K EX-99.1 dated February 7, 2024) and retrieved the full-year 2023 Adjusted EBITDA reconciliation, in US$ millions.\n- Starting from Net income attributable to Uber Technologies, Inc. of 1,887, the line items are: non-controlling interests net of tax +269; provision for income taxes +213; income from equity method investments (48); interest expense +633; other (income) expense, net (1,844); depreciation and amortization +823; stock-based compensation expense +1,935; legal, tax and regulatory reserve changes and settlements +9; goodwill and asset impairments/loss on sale of assets, net +84; acquisition, financing and divestitures related expenses +36; loss on lease arrangement, net +4; restructuring and related charges +51. Accelerated lease costs, COVID-19 response initiatives and mass arbitration fees are zero for 2023.\n- The lines sum to 4,052, which matches the reported full-year Adjusted EBITDA of $4,052 million.\n- Ranking by absolute value: stock-based compensation (+1,935, add-back) is largest. The runner-up is Other (income) expense, net (1,844), which is a deduction rather than an add-back, so it does not qualify as the largest adjustment. The largest add-back and the largest absolute item are therefore the same line.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1543151/000154315124000008/uberq423earningspressrelea.htm\",\n            \"name\": \"Uber Technologies Q4 2023 earnings press release (Form 8-K EX-99.1, February 7, 2024)\"\n        }\n    ]\n}"
+     },
+     "output": "Answer: Uber's largest adjustment to Adjusted EBITDA for the fiscal year ended December 31, 2023 was Stock-based compensation expense, an add-back of $1,935 million, or $1.935 billion (about $1.94 billion when rounded to two decimals).\n\nHow it was derived:\n- I opened Uber's Q4 2023 earnings release (8-K EX-99.1 dated February 7, 2024) and retrieved the full-year 2023 Adjusted EBITDA reconciliation, in US$ millions.\n- Starting from Net income attributable to Uber Technologies, Inc. of 1,887, the line items are: non-controlling interests net of tax +269; provision for income taxes +213; income from equity method investments (48); interest expense +633; other (income) expense, net (1,844); depreciation and amortization +823; stock-based compensation expense +1,935; legal, tax and regulatory reserve changes and settlements +9; goodwill and asset impairments/loss on sale of assets, net +84; acquisition, financing and divestitures related expenses +36; loss on lease arrangement, net +4; restructuring and related charges +51. Accelerated lease costs, COVID-19 response initiatives and mass arbitration fees are zero for 2023.\n- The lines sum to 4,052, which matches the reported full-year Adjusted EBITDA of $4,052 million.\n- Ranking by absolute value: stock-based compensation (+1,935, add-back) is largest. The runner-up is Other (income) expense, net (1,844), which is a deduction rather than an add-back, so it does not qualify as the largest adjustment. The largest add-back and the largest absolute item are therefore the same line.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1543151/000154315124000008/uberq423earningspressrelea.htm\",\n            \"name\": \"Uber Technologies Q4 2023 earnings press release (Form 8-K EX-99.1, February 7, 2024)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0006615500000000001
+  }
+ ],
+ "final_answer": "Answer: Uber's largest adjustment to Adjusted EBITDA for the fiscal year ended December 31, 2023 was Stock-based compensation expense, an add-back of $1,935 million, or $1.935 billion (about $1.94 billion when rounded to two decimals).\n\nHow it was derived:\n- I opened Uber's Q4 2023 earnings release (8-K EX-99.1 dated February 7, 2024) and retrieved the full-year 2023 Adjusted EBITDA reconciliation, in US$ millions.\n- Starting from Net income attributable to Uber Technologies, Inc. of 1,887, the line items are: non-controlling interests net of tax +269; provision for income taxes +213; income from equity method investments (48); interest expense +633; other (income) expense, net (1,844); depreciation and amortization +823; stock-based compensation expense +1,935; legal, tax and regulatory reserve changes and settlements +9; goodwill and asset impairments/loss on sale of assets, net +84; acquisition, financing and divestitures related expenses +36; loss on lease arrangement, net +4; restructuring and related charges +51. Accelerated lease costs, COVID-19 response initiatives and mass arbitration fees are zero for 2023.\n- The lines sum to 4,052, which matches the reported full-year Adjusted EBITDA of $4,052 million.\n- Ranking by absolute value: stock-based compensation (+1,935, add-back) is largest. The runner-up is Other (income) expense, net (1,844), which is a deduction rather than an add-back, so it does not qualify as the largest adjustment. The largest add-back and the largest absolute item are therefore the same line.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1543151/000154315124000008/uberq423earningspressrelea.htm\",\n            \"name\": \"Uber Technologies Q4 2023 earnings press release (Form 8-K EX-99.1, February 7, 2024)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 3,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 4,
+  "input_tokens": 12,
+  "output_tokens": 2643,
+  "cache_creation_input_tokens": 25543,
+  "cache_read_input_tokens": 12677,
+  "web_search_requests": 0,
+  "cost_usd": 0.004643
+ },
+ "cost_usd": 0.004643,
+ "elapsed_s": 13.2,
+ "harness_label": "agg1"
+}

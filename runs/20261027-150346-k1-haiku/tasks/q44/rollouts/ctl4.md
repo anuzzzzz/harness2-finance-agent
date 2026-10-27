@@ -1,0 +1,61 @@
+## Rollout `ctl4`
+- outcome: submitted
+- turns: 2; cost: $0.012; submitted: True
+
+### Turn 1  (stop_reason=tool_use)
+- web_search(query="Airbnb 2024 annual report average nights per booking by region Asia Pacific") → 0 results: 
+- edgar_search({"search_query": "Airbnb average nights per booking Asia Pacific 2024", "ciks": ["ABNB"], "start_date": "2025-01-01", "end_date": "2025-04-07"})
+  result: {"total_matching_documents": 2, "page": 1, "results": [{"form": "8-K", "file_date": "2025-02-13", "period_ending": "2025-02-13", "company": "Airbnb, Inc.  (ABNB)  (CIK 0001559720)", "ciks": ["0001559720"], "accession": "0001193125-25-026054", "document": "d915198dex991.htm", "description": "EX-99.1", "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm"}, {"form": "10-K", "file_date": "2025-02-13", "period_ending": "2024-12-31", "company": "Airbnb, Inc.  (ABNB)  (CIK 0001559720)", "ciks": ["0001559720"], "accession": "0001559720-25-000010", "document": "abnb-20241231.htm", "description": "10-K", "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm"}]}
+
+### Turn 2  (stop_reason=tool_use)
+The answer is **3.3 nights** per booking for Asia Pacific in 2024.
+
+Airbnb's own 2024 filing material reports that the company's average nights per booking for Asia Pacific was 3.3 in 2024. 
+Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.
+ The same passage notes that the company-wide figure, excluding experiences, was 3.8 in 2024, versus 3.9 in 2023.
+
+Third-party data agrees. One statistics site reports the 2024 Asia Pacific figure as 3.33 nights, and a table on the same page lists 3.3 for 2024. 
+The average night stay varies by region, with North America being home to the longest average Airbnb night stay (4.14) compared to the shortest stay in Asia Pacific (3.33) in 2024.
+ Asia Pacific's 2024 figure is 3.3 rounded to one decimal place, which matches the company's reported number.
+
+I did not open the 10-K directly. The figure comes from the Airbnb investor-relations document that contains the 2024 annual report text, which I matched against the 10-K filed February 13, 2025.
+
+{
+    "sources": [
+        {
+            "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf",
+            "name": "Airbnb, Inc. 2024 annual report excerpt (investor relations, Q4 2024)"
+        },
+        {
+            "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+            "name": "Airbnb, Inc. Form 10-K for fiscal year
+…[truncated 208 chars]
+- web_search(query=null) → 10 results: Airbnb Statistics - Airbnb Facts, Stats, Trends & Data (2026) <https://www.wallstreetzen.com/stocks/us/nasdaq/abnb/statistics>; Airbnb, Inc. - Cloudfront.net <https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf>; Airbnb average nights per booking by region 2025| Statista <https://www.statista.com/statistics/1193597/airbnb-average-nights-per-booking-by-region-worldwide/>; Discover Latest Airbnb Statistics (2025) <https://analyzify.com/statsup/airbnb>; Airbnb Statistics: Revenue and Users <https://radicalstorage.com/travel/airbnb-statistics/>
+- submit_final_result({"final_result": "The Average Nights per Booking for Airbnb's Asia Pacific region in 2024 was 3.3 nights.\n\nReasoning and support:\n- Airbnb's 2024 annual report material (the investor-relations document containing the 2024 annual report text, which I matched to the Form 10-K filed Feb 13, 2025) gives the 2024 regional averages: 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific. The same passage gives a company-wide figure, excluding experiences, of 3.8 in 2024 versus 3.9 in 2023.\n- A third-party statistics page reports the 2024 Asia Pacific figure as 3.33 nights, which rounds to 3.3 and corroborates the company figure.\n- I did not open the 10-K directly
+…[truncated 793 chars])
+
+### Final answer
+The Average Nights per Booking for Airbnb's Asia Pacific region in 2024 was 3.3 nights.
+
+Reasoning and support:
+- Airbnb's 2024 annual report material (the investor-relations document containing the 2024 annual report text, which I matched to the Form 10-K filed Feb 13, 2025) gives the 2024 regional averages: 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific. The same passage gives a company-wide figure, excluding experiences, of 3.8 in 2024 versus 3.9 in 2023.
+- A third-party statistics page reports the 2024 Asia Pacific figure as 3.33 nights, which rounds to 3.3 and corroborates the company figure.
+- I did not open the 10-K directly; the figure was taken from the investor-relations document that carries the annual report text.
+
+Sources:
+{
+    "sources": [
+        {
+            "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf",
+            "name": "Airbnb, Inc. 2024 annual report excerpt (investor relations, Q4 2024)"
+        },
+        {
+            "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+            "name": "Airbnb, Inc. Form 10-K for fiscal year 2024 (SEC EDGAR)"
+        },
+        {
+            "url": "https://radicalstorage.com/travel/airbnb-statistics/",
+            "name": "Radical Storage, Airbnb Statistics: Revenue and Users"
+        }
+    ]
+}

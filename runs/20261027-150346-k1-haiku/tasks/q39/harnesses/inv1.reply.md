@@ -1,0 +1,18 @@
+Only the always-on `tool_guidance.md` changes; no skills or other files.
+
+<file path="tool_guidance.md">
+# Tool use
+
+- Decide the documents and periods before searching: company, form (8-K EX-99.1 earnings release, EX-99.2 investor update or supplemental deck, 10-Q, 10-K) and fiscal period. Use edgar_search with company and date filters rather than the question's wording. If web_search returns nothing, retry once with a short non-empty query (never an empty one), then use edgar_search or a known primary URL.
+- A search snippet, news recap or transcript excerpt is a lead, not evidence. Open the primary document with parse_html_page (one clear key per document), then ask retrieve_information one targeted question at a time. Use input_character_ranges on long documents. Confirm the item, period, unit and GAAP/non-GAAP basis in the retrieved text before relying on it.
+- For "what does the company guide on" questions, read the outlook section of the LATEST earnings release or investor update on or before the as-of date. Retrieve every guided line item exactly as labelled, with its period (quarter vs full year), unit and range. Then check whether the prior-year release lists the same set, and say which items are in the latest release and which only in an older one. Do not describe an older year's deck as the current guidance set. A release dated after the as-of date must not be used.
+- parse_html_page cannot read PDFs. Use the HTML 8-K exhibit or filing instead.
+- Cite only documents you opened and retrieved from. Do not list a filing or article seen only in search results, and do not attribute an item to a document you did not retrieve it from. If an item came from a snippet only, say so plainly or leave it out.
+- Write the final answer in plain text. Never paste citation markup such as <cite index=...> tags. Submit with submit_final_result once the items are verified in opened text.
+
+Leads in this task (Delta Air Lines, as of April 7, 2025; from search results only, so re-confirm in the opened text): the December-quarter 2024 earnings release and outlook were reported at https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm (8-K, January 2025). The earlier base run did not open it and instead cited a January 2024 supplemental deck (https://www.sec.gov/Archives/edgar/data/27904/000168316824000244/delta_ex9902.htm) for several items. The March-quarter 2025 results come after the as-of date. Look for an outlook table giving March-quarter and full-year guided items, and list the items exactly as labelled there.
+</file>
+
+<notes>
+Motivation: base1 answered from snippets and a Motley Fool transcript. It never ran parse_html_page or retrieve_information on Delta's 8-K, and it listed unopened sources. It also filled the guidance set (fuel price, free cash flow, leverage) from the 2024 deck and hedged that these "may not match" the current outlook. The new guidance requires opening the latest outlook document, retrieving each guided line item with its period, and separating items by document. Sources are limited to opened documents. The listed URLs are labelled as leads and not verified facts. The as-of date rule is kept because the quarter-end report falls after April 7, 2025. No skill, since the procedure is short.
+</notes>

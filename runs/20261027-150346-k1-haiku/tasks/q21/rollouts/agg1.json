@@ -1,0 +1,170 @@
+{
+ "task_id": "q21",
+ "label": "agg1",
+ "question": "What is Shift4's vendor concentration risk as of Dec 31, 2024?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Shift4 Payments 10-K 2024 concentration risk vendor",
+      "start_date": "2025-01-01",
+      "end_date": "2025-04-07",
+      "form_types": [
+       "10-K"
+      ]
+     },
+     "output": "{\"total_matching_documents\": 2, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-19\", \"period_ending\": \"2024-12-31\", \"company\": \"Shift4 Payments, Inc.  (FOUR)  (CIK 0001794669)\", \"ciks\": [\"0001794669\"], \"accession\": \"0001794669-25-000011\", \"document\": \"four-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1794669/000179466925000011/four-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-25\", \"period_ending\": \"2024-12-31\", \"company\": \"DIEBOLD NIXDORF, Inc  (DBD)  (CIK 0000028823)\", \"ciks\": [\"0000028823\"], \"accession\": \"0000028823-25-000022\", \"document\": \"dbd-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/28823/000002882325000022/dbd-20241231.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.52,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000847525
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1794669/000179466925000011/four-20241231.htm",
+      "key": "four10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: four10k. (534,672 characters)\nThe data_storage currently contains the following keys:\nfour10k\n",
+     "is_error": false,
+     "elapsed_s": 1.02,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00018701499999999998
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Shift4 10-K, find all disclosures about vendor concentration or supplier/vendor dependency, including Note 1 concentration paragraph and Item 1A risk factors about reliance on third-party vendors (e.g., Global Blue, Worldpay, Visa, Mastercard, card networks, processors, Shift4's principal vendor). Quote each dependency, state how many vendors it covers, whether they are named, any quantified percentage, and exit terms/backup language. Also report customer/merchant concentration limits separately. Text: {{four10k}}"
+     },
+     "output": "",
+     "is_error": false,
+     "elapsed_s": 19.83,
+     "cost_usd": 0.12103
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00020437
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "In this Shift4 Payments 10-K for fiscal 2024, what does the Concentration of Risk or Concentrations note say about vendors or suppliers? Does it state a percentage of purchases from any vendor, and does the filing name the vendor? Text: {{four10k}}"
+     },
+     "output": "The Concentration Risk note (in Note 1, Summary of Significant Accounting Policies) discusses a vendor dependency but does not quantify it or name the vendor.\n\nThe note says:\n\n> \"The Company's merchant processing activity in North America is facilitated by one vendor. The Company believes that this vendor maintains appropriate backup systems and alternative arrangements to avoid a significant disruption of the processing in the event of an unforeseen event.\"\n\nThe note also covers a related dependency on a sponsor bank. It explains that, because Shift4 is not a \"member bank\" in North America, it has a sponsorship agreement with an unnamed member bank. If that agreement is breached and terminated, Shift4 would have 180 days to identify an alternative bank sponsor.\n\nTo answer your specific questions:\n\n- **Percentage of purchases:** No. The note does not state what share of purchases, processing costs, or volume goes to the vendor.\n- **Vendor named:** No. The processor and the sponsor bank are both described only generically.\n\nThe risk factors give a little more context but still don't name the vendor or give a percentage. They say the company is \"dependent on our relationship with a single third-party processor\" for merchant authorization, processing, risk and chargeback monitoring, and clearing and settlement in the U.S., EU, and Canada. They also say the company relies on \"our sponsor bank\" for sponsorship and treasury services in the U.S. and Canada.\n\nThe filing's other concentration statements concern customers, not vendors. Item 1 says no single merchant accounted for more than 3% of revenue in recent years, and no single VAR accounted for more than 3% of volume in 2024. Note 21 says no single customer accounted for more than 10% of revenue in 2024, 2023, or 2022.",
+     "is_error": false,
+     "elapsed_s": 9.02,
+     "cost_usd": 0.11279
+    },
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "In this Shift4 Payments 10-K for fiscal 2024, what do the risk factors say about dependence on third-party vendors, key suppliers, card networks, or a single principal processing vendor? Are any vendors named, and is there backup or exit language? Text: {{four10k}}"
+     },
+     "output": "The risk factors discuss third-party dependence in several places. None of the vendors is named, but the single processor, the sponsor bank, and the component suppliers are all described. Backup and exit language is present but limited.\n\n**1. Single principal processing vendor (the most direct statement)**\n\nThe risk factor \"Because we rely on third-party vendors to provide products and services, we could be adversely impacted if they fail to fulfill their obligations\" states that \"in the U.S., EU, and Canada we are dependent on our relationship with a single third-party processor\" for merchant authorization, processing, risk and chargeback monitoring, accounting, and clearing and settlement.\n\n- **Backup:** The company says \"there can be no assurance that our backup systems and alternative arrangements would successfully avoid a significant disruption of processing\" if the processor has an unforeseen event.\n- **Exit:** If the agreement is terminated, or not renewed on favorable terms \"or at all,\" the company says \"it may be difficult for us to replace these services.\" No transition period or replacement timeline is given in the risk factor.\n- **Consequences listed:** loss of revenues, merchants and software partners, merchant and cardholder data, payment network fines, regulatory enforcement, and reputational harm.\n\n**2. Concentration note (Note 1, \"Concentration Risk\")**\n\nThis note repeats the point with more detail: \"The Company's merchant processing activity in North America is facilitated by one vendor.\" It says the company \"believes that this vendor maintains appropriate backup systems and alternative arrangements.\" The vendor is not named, and the note makes no statement about the company's own contingency plan.\n\n**3. Sponsor bank and card networks**\n\n- The company relies on a sponsor bank for card network sponsorship and treasury services in the U.S. and Canada. If the sponsor stops providing these services, the company \"would need to find one or more other financial institutions.\" If it cannot, it \"may no longer be able to provide processing services to certain merchants.\"\n- Note 1 gives the only specific exit term: if the company breaches the sponsorship agreement, the bank may terminate it, and the company \"would have 180 days to identify an alternative bank sponsor.\"\n- The sponsor bank is not named in the risk factors or Note 1. The MD&A and Note 1 refer to a Sponsorship Agreement with Citizens Bank, N.A. in connection with the settlement line, so Citizens is the only bank identified in connection with sponsorship.\n- Visa, Mastercard, American Express, Discover, Interlink, and Maestro are named as the networks whose rules apply. The risk factors say networks could suspend or terminate registration, and that they could refuse to let the company process through their networks. The risk factor on network fee increases says the company may not be able to pass them to merchants.\n\n**4. Hardware and component suppliers**\n\nThe risk factor \"Certain key components are procured from a limited number of suppliers\" says that for some products \"we rely only on one manufacturer to fabricate, test, and assemble our products.\" It adds:\n\n- \"we do not have firm commitments from all of these manufacturers\"\n- the company \"may not be able to develop alternate sources quickly, cost-effectively, or at all\"\n- tariffs on goods from China are flagged as a possible cost increase\n\nNo suppliers are named.\n\n**5. Other third parties**\n\n- Software and devices: the company relies on third parties for specific software and devices, some of which also serve competitors. It says \"we do not have long-term or exclusive contracts with them.\"\n- Disaster recovery: \"To the extent we outsource any disaster recovery functions, we are at risk of the merchant's unresponsiveness or other failures.\"\n- Cybersecurity: \"Associated Third Parties\" (merchants, software partners, service providers) are treated as a risk, and the company says it does not control their actions.\n- AI and infrastructure: the company's AI use may depend on third-party software and infrastructure whose \"availability or pricing\" it cannot control.\n- Crypto custody: a third-party custodian holds crypto assets, with risks around theft, insurance, and custodian failure.\n- Global Blue transaction: suppliers or distributors may seek to terminate or modify contracts because of the deal.\n\n**Summary**\n\n- **Named vendors:** None in the risk factors. The only named counterparties relevant to this topic are the card networks and Citizens Bank in the MD&A and notes.\n- **Backup language:** Present but hedged. The company points to the processor's and its own backup arrangements without assurance that they would prevent disruption.\n- **Exit language:** Limited to a 180-day window to replace a sponsor bank after breach (Note 1). For the processor and component suppliers, the filing describes difficulty replacing them but gives no timeline or contingency plan.",
+     "is_error": false,
+     "elapsed_s": 18.62,
+     "cost_usd": 0.118405
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00024056999999999998
+  },
+  {
+   "turn": 5,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "Quote exactly any sentence in this Shift4 10-K that names Citizens Bank, N.A. or a sponsorship agreement, and the sentence in Note 1 Concentration Risk about the 180 days to identify an alternative bank sponsor. Text: {{four10k}}"
+     },
+     "output": "**Sentences naming Citizens Bank, N.A. or a sponsorship agreement:**\n\n1. **Item 1, Government Regulation (Association and network rules):**\n\"Instead, those payment networks require payment service providers to be sponsored by a member bank, which, for the relevant entities, we have accomplished through a sponsorship agreement with a sponsor bank.\"\n\n2. **Item 7, Liquidity and Capital Resources (Settlement Line Agreement):**\n\"In September 2024, we entered into the Settlement Line Credit Agreement (the \u201cSettlement Line Agreement\u201d), by and between Shift4 LLC, as the borrower, and Citizens Bank, N.A. (\u201cCitizens\u201d), as the lender, providing for a settlement line of credit with an aggregate available amount of up to $100.0 million (the \u201cSettlement Line\u201d).\"\n\n3. **Item 7, Liquidity and Capital Resources (Settlement Line Agreement):**\n\"The purpose of the Settlement Line is to provide financing for certain settlement obligations of Shift4 LLC\u2019s merchants and to eliminate the requirement for cash collateral under the sponsorship agreement with Citizens (the \u201cSponsorship Agreement\u201d), which was amended in conjunction with the closing of the settlement line agreement.\"\n\n4. **Note 1, Cash and Cash Equivalents and Restricted Cash:**\n\"On September 30, 2024, the Company entered into the Settlement Line Credit Agreement (the \u201cSettlement Line Agreement\u201d), by and between Shift4 LLC, as the borrower, and Citizens Bank, N.A. (\u201cCitizens\u201d), as the lender, providing for a settlement line of credit with an aggregate available amount of up to $100.0 million (the \u201cSettlement Line\u201d).\"\n\n5. **Note 1, Cash and Cash Equivalents and Restricted Cash:**\n\"The purpose of the Settlement Line is to provide financing for certain settlement obligations of Shift4 LLC\u2019s merchants and to eliminate the requirement for cash collateral under the sponsorship agreement with Citizens (the \u201cSponsorship Agreement\u201d), which was amended in conjunction with the closing the Settlement Line Agreement.\"\n\n6. **Note 1, Concentration Risk:**\n\"Because the Company is not a \u201cmember bank\u201d in North America, in order to process these bank card transactions, the Company has entered into a sponsorship agreement with a member bank.\"\n\n7. **Item 15, Exhibit Index (Exhibit 10.18):**\n\"Settlement Line Credit Agreement, dates as of September 30, 2024, by and between Shift4 Payments, LLC, as the borrower, and Citizens Bank N.A., as the lender\"\n\n**Note 1, Concentration Risk sentence about the 180 days:**\n\"If the Company breaches the sponsorship agreement, the bank sponsor may terminate the agreement and, under the terms of the agreement, the Company would have 180 days to identify an alternative bank sponsor.\"",
+     "is_error": false,
+     "elapsed_s": 13.55,
+     "cost_usd": 0.117663
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0005289
+  },
+  {
+   "turn": 6,
+   "text": "Shift4's FY2024 10-K (period ended Dec 31, 2024, filed Feb 19, 2025) shows a single-processor dependency. The filing does not name the vendor and does not quantify its share of volume or cost.\n\n**1. North American processing vendor (Note 1, Concentration Risk)**\n- The note says merchant processing in North America runs through one vendor. Management believes that vendor has backup systems and alternative arrangements to avoid significant disruption.\n- The vendor is not named, and no percentage of purchases, processing costs, or volume is given.\n\n**2. Single third-party processor (Item 1A risk factors)**\n- The risk factor on reliance on third-party vendors says Shift4 depends on one third-party processor in the U.S., EU, and Canada. That processor handles authorization, processing, risk and chargeback monitoring, accounting, and clearing and settlement.\n- Backup: the company says it cannot assure that backup systems and alternative arrangements would prevent a significant disruption.\n- Exit: if the agreement is terminated or not renewed on favorable terms, the company says it may be difficult to replace the services. The filing gives no transition period or replacement timeline.\n- Listed consequences include lost revenue, merchants and software partners, data exposure, network fines, regulatory action, and reputational harm.\n\n**3. Sponsor bank (Note 1 and risk factors)**\n- Because Shift4 is not a member bank in North America, it relies on a sponsorship agreement with a sponsor bank for card-network sponsorship and treasury services in the U.S. and Canada.\n- Note 1 gives the only specific exit term: if Shift4 breaches the sponsorship agreement and the bank terminates it, Shift4 has 180 days to identify an alternative bank sponsor.\n- The Concentration Risk note does not name the bank. Elsewhere in the same 10-K, the Settlement Line Credit Agreement (September 2024) is with Citizens Bank, N.A., and the filing refers to the sponsorship agreement \"with Citizens.\" Treating Citizens as the sponsor bank is therefore supported by the filing's own language, but the filing does not explicitly say Citizens is the processing sponsor bank in the concentration note itself.\n\n**4. Hardware and component suppliers (risk factors)**\n- For some products, Shift4 relies on only one manufacturer and does not have firm commitments from all of them. It says it may not be able to develop alternate sources quickly, cost-effectively, or at all. No suppliers are named.\n\n**Customer concentration (reported separately)**\n- Item 1 states that no single merchant accounted for more than 3% of revenue in recent years, and no single VAR accounted for more than 3% of volume in 2024.\n- Note 21 states that no single customer accounted for more than 10% of revenue in 2024, 2023, or 2022.\n\n**Summary:** Vendor concentration is qualitative. One processor handles North American merchant processing, with no named vendor, no quantified share, a hedged backup statement, and no stated replacement timeline. The only quantified exit term is the 180-day window to replace the sponsor bank after a breach.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1794669/000179466925000011/four-20241231.htm\",\n            \"name\": \"Shift4 Payments, Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [],
+   "stop_reason": "end_turn",
+   "cost_usd": 0.000965
+  },
+  {
+   "turn": 7,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Shift4 Payments, Inc. - vendor concentration risk as of December 31, 2024 (Form 10-K for fiscal year ended Dec 31, 2024, filed Feb 19, 2025)\n\nSummary: Vendor concentration is qualitative. One third-party processor handles North American merchant processing. The filing does not name the vendor, does not quantify its share of volume or cost, gives a hedged backup statement, and states no replacement timeline. The only quantified exit term is a 180-day window to replace the sponsor bank after a breach.\n\n1. North American processing vendor (Note 1, Concentration Risk)\n- Merchant processing in North America is facilitated by one vendor. Management believes that vendor maintains backup systems and alternative arrangements to avoid significant disruption.\n- The vendor is not named. No percentage of purchases, processing costs, or volume is given.\n\n2. Single third-party processor (Item 1A risk factors)\n- Shift4 is dependent on a single third-party processor in the U.S., EU, and Canada for authorization, processing, risk and chargeback monitoring, accounting, and clearing and settlement.\n- Backup: the company cannot assure that its backup systems and alternative arrangements would avoid a significant disruption of processing.\n- Exit: if the agreement is terminated or not renewed on favorable terms, or at all, the company says it may be difficult to replace these services. No transition period or replacement timeline is given.\n- Listed consequences include lost revenue, merchants and software partners, merchant and cardholder data exposure, network fines, regulatory enforcement, and reputational harm.\n\n3. Sponsor bank (Note 1 and risk factors)\n- Because Shift4 is not a member bank in North America, it relies on a sponsorship agreement with a sponsor bank for card-network sponsorship and treasury services in the U.S. and Canada.\n- Exit term (Note 1): if Shift4 breaches the sponsorship agreement and the bank terminates it, Shift4 has 180 days to identify an alternative bank sponsor.\n- The Concentration Risk note does not name the bank. Elsewhere in the 10-K, a September 2024 Settlement Line Credit Agreement is with Citizens Bank, N.A., and the filing refers to the sponsorship agreement \"with Citizens.\" Identifying Citizens as the sponsor bank is supported by that language, but the concentration note itself does not state it explicitly.\n\n4. Hardware and component suppliers (risk factors)\n- For some products, Shift4 relies on one manufacturer to fabricate, test, and assemble them, and it does not have firm commitments from all of its manufacturers. It may not be able to develop alternate sources quickly, cost-effectively, or at all. No suppliers are named.\n\nCustomer concentration (reported separately from vendor dependency)\n- Item 1: no single merchant accounted for more than 3% of revenue in recent years, and no single VAR accounted for more than 3% of volume in 2024.\n- Note 21: no single customer accounted for more than 10% of revenue in 2024, 2023, or 2022.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1794669/000179466925000011/four-20241231.htm\",\n            \"name\": \"Shift4 Payments, Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}"
+     },
+     "output": "Shift4 Payments, Inc. - vendor concentration risk as of December 31, 2024 (Form 10-K for fiscal year ended Dec 31, 2024, filed Feb 19, 2025)\n\nSummary: Vendor concentration is qualitative. One third-party processor handles North American merchant processing. The filing does not name the vendor, does not quantify its share of volume or cost, gives a hedged backup statement, and states no replacement timeline. The only quantified exit term is a 180-day window to replace the sponsor bank after a breach.\n\n1. North American processing vendor (Note 1, Concentration Risk)\n- Merchant processing in North America is facilitated by one vendor. Management believes that vendor maintains backup systems and alternative arrangements to avoid significant disruption.\n- The vendor is not named. No percentage of purchases, processing costs, or volume is given.\n\n2. Single third-party processor (Item 1A risk factors)\n- Shift4 is dependent on a single third-party processor in the U.S., EU, and Canada for authorization, processing, risk and chargeback monitoring, accounting, and clearing and settlement.\n- Backup: the company cannot assure that its backup systems and alternative arrangements would avoid a significant disruption of processing.\n- Exit: if the agreement is terminated or not renewed on favorable terms, or at all, the company says it may be difficult to replace these services. No transition period or replacement timeline is given.\n- Listed consequences include lost revenue, merchants and software partners, merchant and cardholder data exposure, network fines, regulatory enforcement, and reputational harm.\n\n3. Sponsor bank (Note 1 and risk factors)\n- Because Shift4 is not a member bank in North America, it relies on a sponsorship agreement with a sponsor bank for card-network sponsorship and treasury services in the U.S. and Canada.\n- Exit term (Note 1): if Shift4 breaches the sponsorship agreement and the bank terminates it, Shift4 has 180 days to identify an alternative bank sponsor.\n- The Concentration Risk note does not name the bank. Elsewhere in the 10-K, a September 2024 Settlement Line Credit Agreement is with Citizens Bank, N.A., and the filing refers to the sponsorship agreement \"with Citizens.\" Identifying Citizens as the sponsor bank is supported by that language, but the concentration note itself does not state it explicitly.\n\n4. Hardware and component suppliers (risk factors)\n- For some products, Shift4 relies on one manufacturer to fabricate, test, and assemble them, and it does not have firm commitments from all of its manufacturers. It may not be able to develop alternate sources quickly, cost-effectively, or at all. No suppliers are named.\n\nCustomer concentration (reported separately from vendor dependency)\n- Item 1: no single merchant accounted for more than 3% of revenue in recent years, and no single VAR accounted for more than 3% of volume in 2024.\n- Note 21: no single customer accounted for more than 10% of revenue in 2024, 2023, or 2022.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1794669/000179466925000011/four-20241231.htm\",\n            \"name\": \"Shift4 Payments, Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00098295
+  }
+ ],
+ "final_answer": "Shift4 Payments, Inc. - vendor concentration risk as of December 31, 2024 (Form 10-K for fiscal year ended Dec 31, 2024, filed Feb 19, 2025)\n\nSummary: Vendor concentration is qualitative. One third-party processor handles North American merchant processing. The filing does not name the vendor, does not quantify its share of volume or cost, gives a hedged backup statement, and states no replacement timeline. The only quantified exit term is a 180-day window to replace the sponsor bank after a breach.\n\n1. North American processing vendor (Note 1, Concentration Risk)\n- Merchant processing in North America is facilitated by one vendor. Management believes that vendor maintains backup systems and alternative arrangements to avoid significant disruption.\n- The vendor is not named. No percentage of purchases, processing costs, or volume is given.\n\n2. Single third-party processor (Item 1A risk factors)\n- Shift4 is dependent on a single third-party processor in the U.S., EU, and Canada for authorization, processing, risk and chargeback monitoring, accounting, and clearing and settlement.\n- Backup: the company cannot assure that its backup systems and alternative arrangements would avoid a significant disruption of processing.\n- Exit: if the agreement is terminated or not renewed on favorable terms, or at all, the company says it may be difficult to replace these services. No transition period or replacement timeline is given.\n- Listed consequences include lost revenue, merchants and software partners, merchant and cardholder data exposure, network fines, regulatory enforcement, and reputational harm.\n\n3. Sponsor bank (Note 1 and risk factors)\n- Because Shift4 is not a member bank in North America, it relies on a sponsorship agreement with a sponsor bank for card-network sponsorship and treasury services in the U.S. and Canada.\n- Exit term (Note 1): if Shift4 breaches the sponsorship agreement and the bank terminates it, Shift4 has 180 days to identify an alternative bank sponsor.\n- The Concentration Risk note does not name the bank. Elsewhere in the 10-K, a September 2024 Settlement Line Credit Agreement is with Citizens Bank, N.A., and the filing refers to the sponsorship agreement \"with Citizens.\" Identifying Citizens as the sponsor bank is supported by that language, but the concentration note itself does not state it explicitly.\n\n4. Hardware and component suppliers (risk factors)\n- For some products, Shift4 relies on one manufacturer to fabricate, test, and assemble them, and it does not have firm commitments from all of its manufacturers. It may not be able to develop alternate sources quickly, cost-effectively, or at all. No suppliers are named.\n\nCustomer concentration (reported separately from vendor dependency)\n- Item 1: no single merchant accounted for more than 3% of revenue in recent years, and no single VAR accounted for more than 3% of volume in 2024.\n- Note 21: no single customer accounted for more than 10% of revenue in 2024, 2023, or 2022.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1794669/000179466925000011/four-20241231.htm\",\n            \"name\": \"Shift4 Payments, Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+ "fallback_text": "Shift4's FY2024 10-K (period ended Dec 31, 2024, filed Feb 19, 2025) shows a single-processor dependency. The filing does not name the vendor and does not quantify its share of volume or cost.\n\n**1. North American processing vendor (Note 1, Concentration Risk)**\n- The note says merchant processing in North America runs through one vendor. Management believes that vendor has backup systems and alternative arrangements to avoid significant disruption.\n- The vendor is not named, and no percentage of purchases, processing costs, or volume is given.\n\n**2. Single third-party processor (Item 1A risk factors)**\n- The risk factor on reliance on third-party vendors says Shift4 depends on one third-party processor in the U.S., EU, and Canada. That processor handles authorization, processing, risk and chargeback monitoring, accounting, and clearing and settlement.\n- Backup: the company says it cannot assure that backup systems and alternative arrangements would prevent a significant disruption.\n- Exit: if the agreement is terminated or not renewed on favorable terms, the company says it may be difficult to replace the services. The filing gives no transition period or replacement timeline.\n- Listed consequences include lost revenue, merchants and software partners, data exposure, network fines, regulatory action, and reputational harm.\n\n**3. Sponsor bank (Note 1 and risk factors)**\n- Because Shift4 is not a member bank in North America, it relies on a sponsorship agreement with a sponsor bank for card-network sponsorship and treasury services in the U.S. and Canada.\n- Note 1 gives the only specific exit term: if Shift4 breaches the sponsorship agreement and the bank terminates it, Shift4 has 180 days to identify an alternative bank sponsor.\n- The Concentration Risk note does not name the bank. Elsewhere in the same 10-K, the Settlement Line Credit Agreement (September 2024) is with Citizens Bank, N.A., and the filing refers to the sponsorship agreement \"with Citizens.\" Treating Citizens as the sponsor bank is therefore supported by the filing's own language, but the filing does not explicitly say Citizens is the processing sponsor bank in the concentration note itself.\n\n**4. Hardware and component suppliers (risk factors)**\n- For some products, Shift4 relies on only one manufacturer and does not have firm commitments from all of them. It says it may not be able to develop alternate sources quickly, cost-effectively, or at all. No suppliers are named.\n\n**Customer concentration (reported separately)**\n- Item 1 states that no single merchant accounted for more than 3% of revenue in recent years, and no single VAR accounted for more than 3% of volume in 2024.\n- Note 21 states that no single customer accounted for more than 10% of revenue in 2024, 2023, or 2022.\n\n**Summary:** Vendor concentration is qualitative. One processor handles North American merchant processing, with no named vendor, no quantified share, a hedged backup statement, and no stated replacement timeline. The only quantified exit term is the 180-day window to replace the sponsor bank after a breach.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1794669/000179466925000011/four-20241231.htm\",\n            \"name\": \"Shift4 Payments, Inc. Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+ "submitted": true,
+ "turns": 7,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 11,
+  "input_tokens": 34,
+  "output_tokens": 14704,
+  "cache_creation_input_tokens": 720920,
+  "cache_read_input_tokens": 46353,
+  "web_search_requests": 0,
+  "cost_usd": 0.473845
+ },
+ "cost_usd": 0.473845,
+ "elapsed_s": 85.7,
+ "harness_label": "agg1"
+}

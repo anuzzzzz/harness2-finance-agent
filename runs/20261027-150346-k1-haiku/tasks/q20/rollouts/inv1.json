@@ -1,0 +1,86 @@
+{
+ "task_id": "q20",
+ "label": "inv1",
+ "question": "What was ORCL's effective tax rate for the fiscal year ended 5/31/2024 and how did it change vs. the prior year? Each section represents a KPI. Format the change as: \"Delta: XXXbps\"",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1341439/000095017024075605/orcl-20240531.htm",
+      "key": "orcl10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: orcl10k. (453,803 characters)\nThe data_storage currently contains the following keys:\norcl10k\n",
+     "is_error": false,
+     "elapsed_s": 1.18,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0008724
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Oracle FY2024 10-K text, find the MD&A \"Provision for Income Taxes\" section. Quote the effective tax rate stated for fiscal 2024 and fiscal 2023, the provision for income taxes and income before provision for income taxes in $ millions for both years, and any footnote explaining non-GAAP rates. Text: {{orcl10k}}"
+     },
+     "output": "## Provision for Income Taxes (MD&A, Item 7)\n\n**Effective tax rate (as stated in the MD&A table):**\n- Fiscal 2024: **10.9%**\n- Fiscal 2023: **6.8%**\n\n**Provision for income taxes and income before income taxes ($ millions):**\n\n| | FY2024 | FY2023 |\n|---|---|---|\n| Provision for income taxes | $1,274 | $623 |\n| Income before income taxes | $11,741 | $9,126 |\n\nThe MD&A table itself shows only the provision and the rate. The pre-tax income figures come from the Consolidated Statements of Operations, which the MD&A does not restate in this section. Both rates reconcile to these figures ($1,274 \u00f7 $11,741 \u2248 10.9%; $623 \u00f7 $9,126 \u2248 6.8%).\n\n**MD&A narrative:** \"Provision for income taxes increased in fiscal 2024 relative to fiscal 2023 primarily due to the absence of unrecognized tax benefits due to settlements with tax authorities, an unfavorable jurisdictional mix of earnings, and higher income before provision for income taxes, partially offset by a combination of an increase in tax benefits related to stock-based compensation, the realization of a one-time tax attribute and the revaluation of net deferred tax assets due to a change in tax rate.\"\n\n## Footnote on Adjusted Rates\n\nThe MD&A's Provision for Income Taxes section does not contain an adjusted-rate footnote. The explanation appears in footnote (5) to the table of \"Income tax effects\" in the \"Supplemental Disclosure Related to Certain Charges\" section, which states:\n\n> \"For fiscal 2024 and 2023, the applicable jurisdictional tax rates applied to our income before income taxes after excluding the tax effects of items within the table above such as for stock-based compensation, amortization of intangible assets, restructuring, and certain acquisition related and other items, and after excluding the net deferred tax effects associated with a previously recorded income tax benefit that resulted from a partial realignment of our legal entity structure. These adjustments resulted in an effective tax rate of 19.2%, instead of 10.9%, for fiscal 2024 and 16.3%, instead of 6.8%, for fiscal 2023, which in each case represented our effective tax rates as derived per our consolidated statements of operations.\"\n\nSo the adjusted rates are **19.2% (FY2024)** and **16.3% (FY2023)**. The footnote does not use the phrase \"non-GAAP\" for these rates. The only place the filing uses \"non-GAAP\" is in the free cash flow discussion.\n\nThe MD&A Provision section also refers readers to Note 13 for a reconciliation of the effective rates to the U.S. federal statutory rate of 21.0%.",
+     "is_error": false,
+     "elapsed_s": 17.89,
+     "cost_usd": 0.100421
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00018269
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Oracle (ORCL) effective tax rate, fiscal year ended May 31, 2024\n\nHeadline (company-stated GAAP effective tax rate, MD&A \"Provision for Income Taxes\"):\n- FY2024: 10.9%\n- FY2023: 6.8%\n\nDelta: 410bps (10.9% minus 6.8% = 4.1 percentage points, computed from the company-stated rates)\n\nCross-check (recomputed from unrounded dollar amounts, $ millions, from the same filing):\n- FY2024: provision $1,274 / pre-tax income $11,741 = 10.8504%\n- FY2023: provision $623 / pre-tax income $9,126 = 6.8267%\n- Recomputed delta: 4.0237 points, about 402bps. This differs from the headline 410bps only because the filing's rates are rounded to one decimal. The Delta line above uses the stated rates.\n\nContext: The filing attributes the higher FY2024 provision mainly to the absence of prior unrecognized tax benefits from tax-authority settlements, an unfavorable jurisdictional mix of earnings, and higher pre-tax income. These were partly offset by higher stock-based compensation tax benefits, a one-time tax attribute realization, and a deferred tax asset revaluation from a tax rate change.\n\nNot to be confused with the adjusted rates: footnote (5) in the \"Supplemental Disclosure Related to Certain Charges\" section gives 19.2% (FY2024) and 16.3% (FY2023) after excluding certain tax effects. These are adjusted figures, not the GAAP effective rate, so they are not used here.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1341439/000095017024075605/orcl-20240531.htm\",\n            \"name\": \"Oracle Corporation FY2024 Form 10-K (fiscal year ended May 31, 2024)\"\n        }\n    ]\n}"
+     },
+     "output": "Oracle (ORCL) effective tax rate, fiscal year ended May 31, 2024\n\nHeadline (company-stated GAAP effective tax rate, MD&A \"Provision for Income Taxes\"):\n- FY2024: 10.9%\n- FY2023: 6.8%\n\nDelta: 410bps (10.9% minus 6.8% = 4.1 percentage points, computed from the company-stated rates)\n\nCross-check (recomputed from unrounded dollar amounts, $ millions, from the same filing):\n- FY2024: provision $1,274 / pre-tax income $11,741 = 10.8504%\n- FY2023: provision $623 / pre-tax income $9,126 = 6.8267%\n- Recomputed delta: 4.0237 points, about 402bps. This differs from the headline 410bps only because the filing's rates are rounded to one decimal. The Delta line above uses the stated rates.\n\nContext: The filing attributes the higher FY2024 provision mainly to the absence of prior unrecognized tax benefits from tax-authority settlements, an unfavorable jurisdictional mix of earnings, and higher pre-tax income. These were partly offset by higher stock-based compensation tax benefits, a one-time tax attribute realization, and a deferred tax asset revaluation from a tax rate change.\n\nNot to be confused with the adjusted rates: footnote (5) in the \"Supplemental Disclosure Related to Certain Charges\" section gives 19.2% (FY2024) and 16.3% (FY2023) after excluding certain tax effects. These are adjusted figures, not the GAAP effective rate, so they are not used here.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1341439/000095017024075605/orcl-20240531.htm\",\n            \"name\": \"Oracle Corporation FY2024 Form 10-K (fiscal year ended May 31, 2024)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00098422
+  }
+ ],
+ "final_answer": "Oracle (ORCL) effective tax rate, fiscal year ended May 31, 2024\n\nHeadline (company-stated GAAP effective tax rate, MD&A \"Provision for Income Taxes\"):\n- FY2024: 10.9%\n- FY2023: 6.8%\n\nDelta: 410bps (10.9% minus 6.8% = 4.1 percentage points, computed from the company-stated rates)\n\nCross-check (recomputed from unrounded dollar amounts, $ millions, from the same filing):\n- FY2024: provision $1,274 / pre-tax income $11,741 = 10.8504%\n- FY2023: provision $623 / pre-tax income $9,126 = 6.8267%\n- Recomputed delta: 4.0237 points, about 402bps. This differs from the headline 410bps only because the filing's rates are rounded to one decimal. The Delta line above uses the stated rates.\n\nContext: The filing attributes the higher FY2024 provision mainly to the absence of prior unrecognized tax benefits from tax-authority settlements, an unfavorable jurisdictional mix of earnings, and higher pre-tax income. These were partly offset by higher stock-based compensation tax benefits, a one-time tax attribute realization, and a deferred tax asset revaluation from a tax rate change.\n\nNot to be confused with the adjusted rates: footnote (5) in the \"Supplemental Disclosure Related to Certain Charges\" section gives 19.2% (FY2024) and 16.3% (FY2023) after excluding certain tax effects. These are adjusted figures, not the GAAP effective rate, so they are not used here.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1341439/000095017024075605/orcl-20240531.htm\",\n            \"name\": \"Oracle Corporation FY2024 Form 10-K (fiscal year ended May 31, 2024)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 3,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 4,
+  "input_tokens": 12,
+  "output_tokens": 3559,
+  "cache_creation_input_tokens": 161740,
+  "cache_read_input_tokens": 12526,
+  "web_search_requests": 0,
+  "cost_usd": 0.10246
+ },
+ "cost_usd": 0.10246,
+ "elapsed_s": 29.6,
+ "harness_label": "inv1"
+}

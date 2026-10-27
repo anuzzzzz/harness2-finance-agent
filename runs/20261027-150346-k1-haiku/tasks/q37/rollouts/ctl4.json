@@ -1,0 +1,128 @@
+{
+ "task_id": "q37",
+ "label": "ctl4",
+ "question": "As of Dec 31, 2024, what was Warner Discovery's (NASDQ: WBD) Total Restructuring Costs incurred as a result of its 2022 Merger?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01Htp6btkHBSDrrUkGvL3cCQ",
+     "query": "Warner Bros. Discovery 10-K 2024 restructuring costs related to the 2022 Merger",
+     "results": []
+    }
+   ],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Warner Bros. Discovery restructuring costs 2022 Merger total",
+      "ciks": [
+       "WBD"
+      ],
+      "start_date": "2025-01-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "ValueError: Unknown ticker 'WBD'. Provide a numeric CIK instead.",
+     "is_error": true,
+     "elapsed_s": 0.64,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00020847
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01Htp6btkHBSDrrUkGvL3cCQ",
+     "query": null,
+     "results": [
+      {
+       "title": "Warner Bros. Discovery, Inc. - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/wbd-20241231.htm",
+       "page_age": null
+      },
+      {
+       "title": "Warner Bros. Discovery, Inc. - Form 10-K - FY2022",
+       "url": "https://www.sec.gov/Archives/edgar/data/1437107/000143710723000019/disca-20221231.htm",
+       "page_age": null
+      },
+      {
+       "title": "Warner Bros. Discovery, Inc. - Form 10-K - FY2024 (Annual Financial Statement Tables - full year 2024)",
+       "url": "https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "Warner Bros. Discovery, Inc. - Form 10-K - FY2022 (Annual Financial Statement Tables - full year 2022)",
+       "url": "https://www.sec.gov/Archives/edgar/data/1437107/000143710723000019/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "Warner Bros Discovery Will Take Up To $4.3 Billion In Restructuring Charges From Merger",
+       "url": "https://deadline.com/2022/10/warner-bros-discovery-restructuring-charges-merger-1235153772/",
+       "page_age": "1463 days ago"
+      },
+      {
+       "title": "Warner Bros. Discovery to Take up to $4.3 Billion in Post-Merger Restructuring Charges, Including up to $2.5 Billion in Content Write-Offs",
+       "url": "https://variety.com/2022/tv/news/warner-bros-discovery-restructuring-charge-q3-2022-1235413112/",
+       "page_age": "1453 days ago"
+      },
+      {
+       "title": "Warner-Bros-Discovery-2024-Annual-Report.pdf",
+       "url": "https://s201.q4cdn.com/336605034/files/doc_financials/2024/ar/Warner-Bros-Discovery-2024-Annual-Report.pdf",
+       "page_age": "607 days ago"
+      },
+      {
+       "title": "Warner Bros. Discovery, Inc. (Form: 10-Q, Received: 08/03/2023 14:42:49)",
+       "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001437107-23-000144.html?hash=89e07811209922b069e3e0fb21b6db4cf26cbb6018cb79aaed88e9ec6c191c3b&dest=a2023630-ex102amendmentn_htm",
+       "page_age": null
+      },
+      {
+       "title": "Warner Bros Discovery Will Take Up To 4.3 Billion In Restructuring Charges From Merger",
+       "url": "https://www.imdb.com/news/ni63805149/",
+       "page_age": null
+      }
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: approximately $4.7 billion** of pre-tax restructuring charges tied to the 2022 Merger had been incurred as of December 31, 2024.\n\n**Supporting logic**\n- Warner Bros. Discovery's 2024 Annual Report says that at the time of the 2022 framework, the company expected about $4.1\u2013$5.3 billion in pre-tax restructuring charges, and that it had incurred $4.7 billion as of December 31, 2024 (<cite index=\"7-3\">At that time, we expected to incur approximately $4.1 - $5.3 billion in pre-tax restructuring charges, of which we have incurred $4.7 billion as of December 31, 2024.</cite>).\n- The same report notes that the merger-related program was substantially completed at the end of 2024 (<cite index=\"7-5\">the Merger-related restructuring program was substantially completed at the end of 2024.</cite>).\n- The 10-K's note on restructuring reports total restructuring and other charges of $3,757 million in 2022, $585 million in 2023, and $447 million in 2024 (<cite index=\"3-6\">Total restructuring and other charges $ 447 $ 585 $ 3,757</cite>). Summing all three years gives $4,789 million, which is about $4.8 billion. That gap is likely because the 2023 Warner Bros. Pictures Animation realignment and the 2024 initiatives are not all merger-related, so I used the company's own merger-specific figure of $4.7 billion.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s201.q4cdn.com/336605034/files/doc_financials/2024/ar/Warner-Bros-Discovery-2024-Annual-Report.pdf\",\n            \"name\": \"Warner Bros. Discovery 2024 Annual Report\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/Financial_Report.xlsx\",\n            \"name\": \"Warner Bros. Discovery, Inc. Form 10-K FY2024 (Financial Report)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/wbd-20241231.htm\",\n            \"name\": \"Warner Bros. Discovery, Inc. Form 10-K FY2024\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: approximately $4.7 billion** of pre-tax restructuring charges tied to the 2022 Merger had been incurred as of December 31, 2024.\n\n**Supporting logic**\n- Warner Bros. Discovery's 2024 Annual Report says that at the time of the 2022 framework, the company expected about $4.1\u2013$5.3 billion in pre-tax restructuring charges, and that it had incurred $4.7 billion as of December 31, 2024 (<cite index=\"7-3\">At that time, we expected to incur approximately $4.1 - $5.3 billion in pre-tax restructuring charges, of which we have incurred $4.7 billion as of December 31, 2024.</cite>).\n- The same report notes that the merger-related program was substantially completed at the end of 2024 (<cite index=\"7-5\">the Merger-related restructuring program was substantially completed at the end of 2024.</cite>).\n- The 10-K's note on restructuring reports total restructuring and other charges of $3,757 million in 2022, $585 million in 2023, and $447 million in 2024 (<cite index=\"3-6\">Total restructuring and other charges $ 447 $ 585 $ 3,757</cite>). Summing all three years gives $4,789 million, which is about $4.8 billion. That gap is likely because the 2023 Warner Bros. Pictures Animation realignment and the 2024 initiatives are not all merger-related, so I used the company's own merger-specific figure of $4.7 billion.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s201.q4cdn.com/336605034/files/doc_financials/2024/ar/Warner-Bros-Discovery-2024-Annual-Report.pdf\",\n            \"name\": \"Warner Bros. Discovery 2024 Annual Report\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/Financial_Report.xlsx\",\n            \"name\": \"Warner Bros. Discovery, Inc. Form 10-K FY2024 (Financial Report)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/wbd-20241231.htm\",\n            \"name\": \"Warner Bros. Discovery, Inc. Form 10-K FY2024\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.01164677
+  }
+ ],
+ "final_answer": "**Answer: approximately $4.7 billion** of pre-tax restructuring charges tied to the 2022 Merger had been incurred as of December 31, 2024.\n\n**Supporting logic**\n- Warner Bros. Discovery's 2024 Annual Report says that at the time of the 2022 framework, the company expected about $4.1\u2013$5.3 billion in pre-tax restructuring charges, and that it had incurred $4.7 billion as of December 31, 2024 (<cite index=\"7-3\">At that time, we expected to incur approximately $4.1 - $5.3 billion in pre-tax restructuring charges, of which we have incurred $4.7 billion as of December 31, 2024.</cite>).\n- The same report notes that the merger-related program was substantially completed at the end of 2024 (<cite index=\"7-5\">the Merger-related restructuring program was substantially completed at the end of 2024.</cite>).\n- The 10-K's note on restructuring reports total restructuring and other charges of $3,757 million in 2022, $585 million in 2023, and $447 million in 2024 (<cite index=\"3-6\">Total restructuring and other charges $ 447 $ 585 $ 3,757</cite>). Summing all three years gives $4,789 million, which is about $4.8 billion. That gap is likely because the 2023 Warner Bros. Pictures Animation realignment and the 2024 initiatives are not all merger-related, so I used the company's own merger-specific figure of $4.7 billion.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s201.q4cdn.com/336605034/files/doc_financials/2024/ar/Warner-Bros-Discovery-2024-Annual-Report.pdf\",\n            \"name\": \"Warner Bros. Discovery 2024 Annual Report\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/Financial_Report.xlsx\",\n            \"name\": \"Warner Bros. Discovery, Inc. Form 10-K FY2024 (Financial Report)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/wbd-20241231.htm\",\n            \"name\": \"Warner Bros. Discovery, Inc. Form 10-K FY2024\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 2,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 2,
+  "input_tokens": 6,
+  "output_tokens": 1588,
+  "cache_creation_input_tokens": 7628,
+  "cache_read_input_tokens": 10714,
+  "web_search_requests": 1,
+  "cost_usd": 0.011855
+ },
+ "cost_usd": 0.011855,
+ "elapsed_s": 8.6,
+ "harness_label": "ctl4"
+}

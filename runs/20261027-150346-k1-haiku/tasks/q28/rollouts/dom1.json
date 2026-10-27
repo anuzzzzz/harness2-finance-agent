@@ -1,0 +1,106 @@
+{
+ "task_id": "q28",
+ "label": "dom1",
+ "question": "What are Netflix's (NASDAQ: NFLX) Total Projected Material Cash Requirements for 2025?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "material_cash_requirements_table"
+     },
+     "output": "---\nname: material_cash_requirements_table\ndescription: Answer \"what are the company's material cash requirements / contractual obligations / projected cash needs for next year\" from a 10-K's MD&A Liquidity and Capital Resources table.\n---\nANALYTIC MOVE: locate and read (then sum, if needed). Inputs: the latest 10-K on or before the as-of date. Result: the near-term (next-12-months) total of the obligations table, with its components.\n\n1. Where it lives. In a 10-K, \"Item 7. MD&A - Liquidity and Capital Resources\" has a \"Material Cash Requirements\" paragraph followed by a table. Netflix-style layout: rows for content obligations, debt (principal plus interest), operating lease obligations and a Total row. Columns: Total, Next 12 Months (also called \"Less than 1 year\"), Beyond 12 Months. Other filers use 1 year / 2-3 years / 4-5 years / thereafter.\n2. Period mapping. A FY2024 10-K (balance sheet date Dec 31, 2024) gives the \"next 12 months\" = calendar 2025. For \"projected requirements for 2025\", use the next-12-months column. Also report the all-period Total and the beyond-12-month figure, and say which one answers the question.\n3. Retrieve every row and column from the opened 10-K text, not from a snippet. Check that the rows sum to the printed Total, and that the Next-12 plus Beyond-12 columns equal the Total column. If a printed total and your sum differ, report both and say so.\n4. Cross-check. The content-obligations row should match the content-obligations footnote (commitments note, \"less than one year\" line). The debt row should match the debt note's maturities plus interest. State the units (usually $ thousands in the statements; the MD&A may say \"in thousands\"). Convert to $ billions only at the end.\n5. Exclusions to state plainly. Note any footnote on the table: for example, the obligations may exclude unknown future content titles or other items (such as taxes or uncertain tax positions) that the filing says are not included. Say these are outside the table's figure and that actual 2025 cash outflows will be larger than the table.\n6. Answer contract: the next-12-months total with its components (each with period and units), the arithmetic sum, the all-period total for context, the footnoted exclusions, and the 10-K URL, filing date and period end. Plain text, no citation markup. List only opened documents as sources.\n\nTask fact (this task, Netflix FY2024 10-K, filed 2025-01-27, accession 0001065280-25-000044): https://www.sec.gov/Archives/edgar/data/1065280/000106528025000044/nflx-20241231.htm. A prior run took these numbers from search snippets only. The numbers are NOT yet verified against the opened filing: content 11,424,696; debt 2,486,945; operating leases 514,625 (all next-12-months, $ thousands); next-12 total 14,426,266; all-period total 45,851,513. Re-confirm each in the opened 10-K text before using it.\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0007685249999999999
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528025000044/nflx-20241231.htm",
+      "key": "nflx10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: nflx10k. (275,605 characters)\nThe data_storage currently contains the following keys:\nnflx10k\n",
+     "is_error": false,
+     "elapsed_s": 0.72,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00025375
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Netflix 10-K text, find the \"Material Cash Requirements\" paragraph and table in Liquidity and Capital Resources. Report every row (content obligations, debt principal and interest, operating lease obligations, other, Total) with columns Total, Next 12 Months, Beyond 12 months, and the units stated. Also quote any footnote text about exclusions (e.g., unknown future content titles, taxes). Text: {{nflx10k}}"
+     },
+     "output": "**Liquidity and Capital Resources: Material Cash Requirements**\n\n**Paragraph:**\n\"Our material cash requirements from known contractual and other obligations primarily relate to our content, debt and lease obligations. As of December 31, 2024, the expected timing of those payments are as follows:\"\n\n**Table: Contractual obligations (in thousands)**\n\n| Row | Total | Next 12 Months | Beyond 12 Months |\n|---|---|---|---|\n| Content obligations (1) | $23,248,931 | $11,424,696 | $11,824,235 |\n| Debt (2) | $19,841,462 | $2,486,945 | $17,354,517 |\n| Operating lease obligations (3) | $2,761,120 | $514,625 | $2,246,495 |\n| Total | $45,851,513 | $14,426,266 | $31,425,247 |\n\nUnits are in thousands of U.S. dollars. The table has no \"Other\" row. The rows are content obligations, debt, operating lease obligations, and Total. The debt row is labeled \"Debt (2),\" and footnote (2) describes it as principal and interest.\n\n**Footnote text on exclusions and related items:**\n\n**Footnote (1), content obligations:**\n- \"Certain agreements include the obligation to license rights for unknown future titles, the ultimate quantity and/or fees for which are not yet determinable as of the reporting date. Traditional film output deals, or certain TV series license agreements where the number of seasons to be aired is unknown, are examples of these types of agreements. The contractual obligations table above does not include any estimated obligation for the unknown future titles, payment for which could range from less than one year to more than five years.\"\n- \"However, these unknown obligations are expected to be significant and we believe could include approximately $1 billion to $4 billion over the next three years, with the payments for the vast majority of such amounts expected to occur after the next twelve months.\"\n- \"The foregoing range is based on considerable management judgments and the actual amounts may differ. Once we know the title that we will receive and the license fees, we include the amount in the contractual obligations table above.\"\n- Footnote (1) also states that $17.0 billion of content obligations \"are not reflected on the Consolidated Balance Sheets as they did not then meet the criteria for recognition.\"\n\n**Footnote (2), debt:**\n- \"Debt obligations include our Notes consisting of principal and interest payments.\"\n\n**Footnote (3), operating leases and taxes:**\n- \"Operating lease obligations are comprised of operating lease liabilities included in 'Accrued expenses and other liabilities' and 'Other non-current liabilities' on the Consolidated Balance Sheets, inclusive of imputed interest. Operating lease obligations also include additional obligations that are not reflected on the Consolidated Balance Sheets as they did not meet the criteria for recognition.\"\n- \"As of December 31, 2024, the Company has additional operating leases for real estate that have not yet commenced of $38 million which has been included above.\"\n- \"As of December 31, 2024, we had gross unrecognized tax benefits of $432 million, of which $302 million was classified in 'Other non-current liabilities' in the Consolidated Balance Sheets. At this time, an estimate of the range of reasonably possible adjustments to the balance of unrecognized tax benefits cannot be made.\"\n- \"In addition, we may be required to pay deposits of approximately $800 million related to certain direct and indirect taxes in the next twelve months, which are in excess of our typical annual obligations.\"\n\nThe footnote (3) tax language means the unrecognized tax benefits and the ~$800 million tax deposits are discussed in the footnote but are not separately shown as rows in the table.",
+     "is_error": false,
+     "elapsed_s": 9.85,
+     "cost_usd": 0.012708
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00019104000000000001
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Netflix's projected material cash requirements for 2025 (the next 12 months after the December 31, 2024 balance sheet date) total $14,426,266 thousand, or about $14.43 billion.\n\nSource and period: Netflix's FY2024 Form 10-K, filed January 27, 2025, for the fiscal year ended December 31, 2024. The figures come from the \"Liquidity and Capital Resources: Material Cash Requirements\" table, which is stated in thousands of U.S. dollars.\n\nComponents (Next 12 Months column):\n- Content obligations: $11,424,696 thousand (about $11.42 billion)\n- Debt (principal plus interest): $2,486,945 thousand (about $2.49 billion)\n- Operating lease obligations: $514,625 thousand (about $0.51 billion)\n- Arithmetic sum: 11,424,696 + 2,486,945 + 514,625 = 14,426,266, which matches the printed next-12-month total.\n\nContext: The all-period total is $45,851,513 thousand (about $45.85 billion). Beyond 12 months the total is $31,425,247 thousand (about $31.43 billion), made up of content $11,824,235 thousand, debt $17,354,517 thousand and leases $2,246,495 thousand. Each row's Next 12 Months plus Beyond 12 Months figure equals its Total, and the next-12 plus beyond-12 totals equal the all-period total of $45,851,513 thousand.\n\nExclusions stated in the filing:\n- The content obligations row does not include an estimate for unknown future titles, where license fees are not yet determinable. Netflix says these could be roughly $1 billion to $4 billion over the next three years, with most expected after the next twelve months. Actual 2025 outflows will therefore be larger than the table shows.\n- Gross unrecognized tax benefits of $432 million are discussed in the footnotes but are not shown as a table row. The filing also says Netflix may need to pay about $800 million of tax deposits in the next twelve months. These items sit outside the table's figure.\n\nAnswer: $14,426,266 thousand (about $14.43 billion) for the next 12 months, excluding the unknown future content titles and the tax items noted above.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528025000044/nflx-20241231.htm\",\n            \"name\": \"Netflix, Inc. Form 10-K for fiscal year ended December 31, 2024 (filed 2025-01-27)\"\n        }\n    ]\n}"
+     },
+     "output": "Netflix's projected material cash requirements for 2025 (the next 12 months after the December 31, 2024 balance sheet date) total $14,426,266 thousand, or about $14.43 billion.\n\nSource and period: Netflix's FY2024 Form 10-K, filed January 27, 2025, for the fiscal year ended December 31, 2024. The figures come from the \"Liquidity and Capital Resources: Material Cash Requirements\" table, which is stated in thousands of U.S. dollars.\n\nComponents (Next 12 Months column):\n- Content obligations: $11,424,696 thousand (about $11.42 billion)\n- Debt (principal plus interest): $2,486,945 thousand (about $2.49 billion)\n- Operating lease obligations: $514,625 thousand (about $0.51 billion)\n- Arithmetic sum: 11,424,696 + 2,486,945 + 514,625 = 14,426,266, which matches the printed next-12-month total.\n\nContext: The all-period total is $45,851,513 thousand (about $45.85 billion). Beyond 12 months the total is $31,425,247 thousand (about $31.43 billion), made up of content $11,824,235 thousand, debt $17,354,517 thousand and leases $2,246,495 thousand. Each row's Next 12 Months plus Beyond 12 Months figure equals its Total, and the next-12 plus beyond-12 totals equal the all-period total of $45,851,513 thousand.\n\nExclusions stated in the filing:\n- The content obligations row does not include an estimate for unknown future titles, where license fees are not yet determinable. Netflix says these could be roughly $1 billion to $4 billion over the next three years, with most expected after the next twelve months. Actual 2025 outflows will therefore be larger than the table shows.\n- Gross unrecognized tax benefits of $432 million are discussed in the footnotes but are not shown as a table row. The filing also says Netflix may need to pay about $800 million of tax deposits in the next twelve months. These items sit outside the table's figure.\n\nAnswer: $14,426,266 thousand (about $14.43 billion) for the next 12 months, excluding the unknown future content titles and the tax items noted above.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528025000044/nflx-20241231.htm\",\n            \"name\": \"Netflix, Inc. Form 10-K for fiscal year ended December 31, 2024 (filed 2025-01-27)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000874945
+  }
+ ],
+ "final_answer": "Netflix's projected material cash requirements for 2025 (the next 12 months after the December 31, 2024 balance sheet date) total $14,426,266 thousand, or about $14.43 billion.\n\nSource and period: Netflix's FY2024 Form 10-K, filed January 27, 2025, for the fiscal year ended December 31, 2024. The figures come from the \"Liquidity and Capital Resources: Material Cash Requirements\" table, which is stated in thousands of U.S. dollars.\n\nComponents (Next 12 Months column):\n- Content obligations: $11,424,696 thousand (about $11.42 billion)\n- Debt (principal plus interest): $2,486,945 thousand (about $2.49 billion)\n- Operating lease obligations: $514,625 thousand (about $0.51 billion)\n- Arithmetic sum: 11,424,696 + 2,486,945 + 514,625 = 14,426,266, which matches the printed next-12-month total.\n\nContext: The all-period total is $45,851,513 thousand (about $45.85 billion). Beyond 12 months the total is $31,425,247 thousand (about $31.43 billion), made up of content $11,824,235 thousand, debt $17,354,517 thousand and leases $2,246,495 thousand. Each row's Next 12 Months plus Beyond 12 Months figure equals its Total, and the next-12 plus beyond-12 totals equal the all-period total of $45,851,513 thousand.\n\nExclusions stated in the filing:\n- The content obligations row does not include an estimate for unknown future titles, where license fees are not yet determinable. Netflix says these could be roughly $1 billion to $4 billion over the next three years, with most expected after the next twelve months. Actual 2025 outflows will therefore be larger than the table shows.\n- Gross unrecognized tax benefits of $432 million are discussed in the footnotes but are not shown as a table row. The filing also says Netflix may need to pay about $800 million of tax deposits in the next twelve months. These items sit outside the table's figure.\n\nAnswer: $14,426,266 thousand (about $14.43 billion) for the next 12 months, excluding the unknown future content titles and the tax items noted above.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1065280/000106528025000044/nflx-20241231.htm\",\n            \"name\": \"Netflix, Inc. Form 10-K for fiscal year ended December 31, 2024 (filed 2025-01-27)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 5,
+  "input_tokens": 14,
+  "output_tokens": 3700,
+  "cache_creation_input_tokens": 101974,
+  "cache_read_input_tokens": 19801,
+  "web_search_requests": 0,
+  "cost_usd": 0.014797
+ },
+ "cost_usd": 0.014797,
+ "elapsed_s": 20.1,
+ "harness_label": "dom1"
+}

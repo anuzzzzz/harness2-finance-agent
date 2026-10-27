@@ -1,0 +1,21 @@
+<file path="tool_guidance.md">
+# Tool use
+
+- Decide the filing and period before searching: company, form (10-K, 10-Q, 8-K EX-99.1) and fiscal period. edgar_search takes a numeric CIK, not a ticker (a ticker such as 'SAVE' raises "Unknown ticker"). Retry once with the CIK. Never send an empty or null query to web_search. If web_search returns nothing, retry once with a short non-empty query, then use edgar_search or a known primary URL.
+- A search snippet or result title is a lead, not evidence. Open the primary document with parse_html_page (one clear key per document), then ask retrieve_information one targeted question at a time. Use input_character_ranges on long filings.
+- "List the KPIs / operating statistics / metrics" questions: the company's own table is usually in Item 7 MD&A (for example "Comparative Operating Statistics" or "Key Performance Indicators"). Retrieve every row of that table in the filing's order, with the unit, the period and the prior-year comparative. Retrieval output can be cut off. If the answer ends mid-table or mid-sentence, ask again for the rows after the last one shown, then confirm the row count against the table before submitting. Keep rows that look like inputs (aircraft, departures, fuel gallons) if the company tabulates them. Mark non-GAAP rows. Say that averages, rates and unit-cost rows are full-year figures, not sums. Put metrics discussed elsewhere in the filing in a separate, labelled line, not in the table.
+- Before submitting, re-check each figure against the retrieved text (period, unit, GAAP vs non-GAAP). A successful retrieval does not make a figure correct.
+- Cite only documents you opened and retrieved from. Do not list an article or filing seen only in search results, and do not present unopened secondary pages as "cross-checks". If a figure came only from a snippet, say so. Do not refer to a "reference list" or any source you did not open.
+- Write the final answer in plain text. Never paste citation markup such as <cite> tags. State each figure with its period, unit and source. Submit with submit_final_result as soon as the figures are verified.
+
+Lead for this task (Spirit Airlines FY2024; from a prior run, so re-confirm in the opened text): CIK 1498710. The FY2024 10-K is https://www.sec.gov/Archives/edgar/data/1498710/000149871025000008/save-20241231.htm (about 635k characters parsed). The KPI table is "Comparative Operating Statistics" in Item 7 MD&A, twelve months ended Dec 31, 2024 vs 2023, unaudited.
+</file>
+
+<notes>
+kept -> inv1 tool_guidance general rules (numeric CIK, no null queries, snippet is a lead, cite only opened docs, plain text) -> base1 hit "Unknown ticker" on edgar_search, issued a null-query web_search, and listed an unopened Simple Flying article as a cross-check; inv1 and dom1 avoided all three (0 of 2 candidate runs repeated them, 1 of 1 base run showed them).
+kept -> inv1/dom1 truncation handling and row-count check, merged into one list-question rule -> base1's retrieval was truncated and the agent claimed to have confirmed the rest without a second retrieval; both candidates retrieved the table in a dedicated call and submitted all 16 rows.
+revised -> dom1 basis checks (non-GAAP rows, non-additive averages, separate "also discussed" line) -> folded into a single always-on sentence; dom1's answer used these well, but a skill is not warranted because the procedure is short.
+dropped -> dom1 skill company_kpi_list_from_10k and its systemprompt trigger line -> dom1 took 4 turns against inv1's 3 with the same 16 rows and no skill; no moment shows the skill adding anything, and it costs a turn to load. Deleting it also removes the trigger-line requirement.
+dropped -> per-row Spirit value lists in both candidates' task facts -> they are unneeded since the table is retrieved from the filing, and dom1's answer wrote "matches the task's reference list", which shows pre-seeded values lead to unsupported claims. Kept only the CIK, URL and table name as a short, labelled lead. Added a rule not to refer to a reference list.
+kept -> final answers in all three runs reproduce the same 16 rows and FY2024 values, and all submitted; no rollout produced nothing, so none of the edits is flagged unsafe.
+</notes>

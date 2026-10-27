@@ -1,0 +1,5 @@
+<notes>
+dropped -> inv1 LongTermMEMORY.md -> It stores the answer to this single task (MSCI figures and URL). That is task-specific, would sit in always-on context on every later task, and could bias the next run to skip verification. The run that did retrieve the figures, base1, already had them right.
+dropped -> inv1 tool_guidance.md -> The behaviour it describes already occurred in base1 (right filing, targeted retrieval, schedule-sum check, stated denominator) and in dom1. All three rollouts reached 85,002 and 51.33% with no failure to fix, so the guidance would add always-on cost without any observed gain.
+kept -> dom1 KEEP_BASE -> 3 of 3 rollouts (base1, inv1, dom1) identified the FY2024 10-K, retrieved the Note 7 table, got 85,002 / 165,605 = 51.33%, and submitted. No unsubmitted runs and no divergence, so no edit is supported.
+</notes>

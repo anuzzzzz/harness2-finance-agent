@@ -1,0 +1,153 @@
+{
+ "task_id": "q29",
+ "label": "ctl4",
+ "question": "List the Operating KPIs Spirit Airlines (NYSE: SAVE) tracked in FY 2024. Provide the KPI and FY 2024 Total.",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Spirit Airlines operating statistics available seat miles load factor 2024 annual report",
+      "ciks": [
+       "SAVE"
+      ],
+      "start_date": "2025-01-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "ValueError: Unknown ticker 'SAVE'. Provide a numeric CIK instead.",
+     "is_error": true,
+     "elapsed_s": 0.73,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00017893
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Spirit Airlines 10-K 2024 operating statistics available seat miles load factor",
+      "start_date": "2025-01-01",
+      "end_date": "2025-04-07"
+     },
+     "output": "{\"total_matching_documents\": 17, \"page\": 1, \"results\": [{\"form\": \"8-K\", \"file_date\": \"2025-01-28\", \"period_ending\": \"2025-01-28\", \"company\": \"JETBLUE AIRWAYS CORP  (JBLU)  (CIK 0001158463)\", \"ciks\": [\"0001158463\"], \"accession\": \"0001158463-25-000001\", \"document\": \"ex991-earningsreleaseq42024.htm\", \"description\": \"EX-99.1\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1158463/000115846325000001/ex991-earningsreleaseq42024.htm\"}, {\"form\": \"8-K\", \"file_date\": \"2025-02-07\", \"period_ending\": \"2025-02-07\", \"company\": \"Frontier Group Holdings, Inc.  (ULCC)  (CIK 0001670076)\", \"ciks\": [\"0001670076\"], \"accession\": \"0001670076-25-000009\", \"document\": \"frontier_earningsreleasexq.htm\", \"description\": \"EX-99.1\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1670076/000167007625000009/frontier_earningsreleasexq.htm\"}, {\"form\": \"ARS\", \"file_date\": \"2025-04-03\", \"period_ending\": \"2024-12-31\", \"company\": \"Frontier Group Holdings, Inc.  (ULCC)  (CIK 0001670076)\", \"ciks\": [\"0001670076\"], \"accession\": \"0001670076-25-000083\", \"document\": \"ars.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1670076/000167007625000083/ars.pdf\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-18\", \"period_ending\": \"2024-12-31\", \"company\": \"Frontier Group Holdings, Inc.  (ULCC)  (CIK 0001670076)\", \"ciks\": [\"0001670076\"], \"accession\": \"0001670076-25-000041\", \"document\": \"fron-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1670076/000167007625000041/fron-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-03\", \"period_ending\": \"2024-12-31\", \"company\": \"Allegiant Travel CO  (ALGT)  (CIK 0001362468)\", \"ciks\": [\"0001362468\"], \"accession\": \"0001362468-25-000008\", \"document\": \"algt-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1362468/000136246825000008/algt-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-12\", \"period_ending\": \"2024-12-31\", \"company\": \"Sun Country Airlines Holdings, Inc.  (SNCY)  (CIK 0001743907)\", \"ciks\": [\"0001743907\"], \"accession\": \"0001743907-25-000005\", \"document\": \"sncy-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1743907/000174390725000005/sncy-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-03-03\", \"period_ending\": \"2024-12-31\", \"company\": \"Spirit Airlines, Inc.  (SAVEQ)  (CIK 0001498710)\", \"ciks\": [\"0001498710\"], \"accession\": \"0001498710-25-000008\", \"document\": \"save-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1498710/000149871025000008/save-20241231.htm\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-11\", \"period_ending\": \"2024-12-31\", \"company\": \"DELTA AIR LINES, INC.  (DAL)  (CIK 0000027904)\", \"ciks\": [\"0000027904\"], \"accession\": \"0000027904-25-000004\", \"document\": \"dal-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/27904/000002790425000004/dal-20241231.htm\"}, {\"form\": \"ARS\", \"file_date\": \"2025-04-04\", \"period_ending\": \"2024-12-31\", \"company\": \"SOUTHWEST AIRLINES CO  (LUV)  (CIK 0000092380)\", \"ciks\": [\"0000092380\"], \"accession\": \"0001193125-25-072757\", \"document\": \"d900615dars.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/92380/000119312525072757/d900615dars.pdf\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-13\", \"period_ending\": \"2024-12-31\", \"company\": \"SKYWEST INC  (SKYW)  (CIK 0000793733)\", \"ciks\": [\"0000793733\"], \"accession\": \"0001558370-25-000943\", \"document\": \"skyw-20241231x10k.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/793733/000155837025000943/skyw-20241231x10k.htm\"}, {\"form\": \"ARS\", \"file_date\": \"2025-03-25\", \"period_ending\": \"2024-12-31\", \"company\": \"SKYWEST INC  (SKYW)  (CIK 0000793733)\", \"ciks\": [\"0000793733\"], \"accession\": \"0001104659-25-027778\", \"document\": \"tm254329d3_ars.pdf\", \"description\": \"ARS\", \"url\": \"https://www.sec.gov/Archives/edgar/data/793733/000110465925027778/tm254329d3_ars.pdf\"}, {\"form\": \"10-K\", \"file_date\": \"2025-02-19\", \"period_ending\": \"2024-12-31\", \"company\": \"American Airlines Group Inc.  (AAL)  (CIK 0000006201)\", \"ciks\": [\"0000006201\", \"0000004515\"], \"accession\": \"0000006201-25-000010\", \"document\": \"aal-20241231.htm\", \"description\": \"10-K 12.31.24\", \"url\": \"https://www.sec.gov/Archives/edgar/data/6201/000000620125000010/aal-20241231.htm\"}, {\"form\": \"424B3\", \"file_date\": \"2025-03-07\", \"period_ending\": null, \"company\": \"Flybondi Holdings plc  (FLYB)  (CIK 0002013602)\", \"ciks\": [\"0002013602\", \"0002053229\"], \"accession\": \"0000950170-25-035509\", \"document\": \"flybondi_424b3.htm\", \"description\": \"424B3\", \"url\": \"https://www.sec.gov/Archives/edgar/data/2013602/000095017025035509/flybondi_424b3.htm\"}, {\"form\": \"F-4/A\", \"file_date\": \"2025-02-11\", \"period_ending\": null, \"company\": \"Flybondi Holdings plc  (FLYB)  (CIK 0002013602)\", \"ciks\": [\"0002013602\", \"0002053229\"], \"accession\": \"0000950170-25-017395\", \"document\": \"flybondi_holdings_f-4a.htm\", \"description\": \"F-4/A\", \"url\": \"https://www.sec.gov/Archives/edgar/data/2013602/000095017025017395/flybondi_holdings_f-4a.htm\"}, {\"form\": \"DEFM14A\", \"file_date\": \"2025-03-07\", \"period_ending\": null, \"company\": \"Integral Acquisition Corp 1  (INTE, INTEU, INTEW)  (CIK 0001850262)\", \"ciks\": [\"0001850262\"], \"accession\": \"0000950170-25-035541\", \"document\": \"integral_defm14a.htm\", \"description\": \"DEFM14A\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1850262/000095017025035541/integral_defm14a.htm\"}, {\"form\": \"POS AM\", \"file_date\": \"2025-02-25\", \"period_ending\": null, \"company\": \"Flybondi Holdings plc  (FLYB)  (CIK 0002013602)\", \"ciks\": [\"0002013602\", \"0002053229\"], \"accession\": \"0000950170-25-026705\", \"document\": \"flybondi_f-4a-pos_am.htm\", \"description\": \"POS AM\", \"url\": \"https://www.sec.gov/Archives/edgar/data/2013602/000095017025026705/flybondi_f-4a-pos_am.htm\"}, {\"form\": \"F-4\", \"file_date\": \"2025-01-24\", \"period_ending\": null, \"company\": \"Flybondi Holdings plc  (CIK 0002013602)\", \"ciks\": [\"0002013602\", \"0002053229\"], \"accession\": \"0000950170-25-008440\", \"document\": \"flybondi_holdings_public.htm\", \"description\": \"F-4\", \"url\": \"https://www.sec.gov/Archives/edgar/data/2013602/000095017025008440/flybondi_holdings_public.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.57,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00015823
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1498710/000149871025000008/save-20241231.htm",
+      "key": "spirit10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: spirit10k. (635,378 characters)\nThe data_storage currently contains the following keys:\nspirit10k\n",
+     "is_error": false,
+     "elapsed_s": 0.48,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00050494
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Spirit Airlines 10-K, list every operating KPI / operating statistic the company tracks and reports (e.g., Available Seat Miles, Revenue Passenger Miles, Load Factor, Average Fare, Yield, PRASM, TRASM, CASM, CASM-ex fuel, Average stage length, Aircraft utilization, Fuel gallons, Average fuel price, Departures, Block hours, Passengers flown, Average daily aircraft utilization, On-time performance, Full-time equivalent employees, etc.). For each, give the FY 2024 total/value as stated in the filing, and the exact table or section where it appears. Quote the table headings exactly. Text: {{spirit10k}}"
+     },
+     "output": "# Spirit Airlines FY2024 Form 10-K: Operating KPIs and Statistics\n\nMost of the operating statistics appear in one table in Item 7 (MD&A). Other KPIs appear in the Operating Revenues and Operating Expenses subsections, the fuel discussion, Items 1, 1A and 2, and the glossary.\n\n## 1. Core Operating Statistics\n\n**Source:** Item 7, MD&A, \"Comparative Operating Statistics.\" The table is headed \"Twelve Months Ended December 31, Percent Change 20242023\" and the first row is \"Operating Statistics (unaudited) (A):\". Footnote (A) refers to the \"Glossary of Airline Terms\" and footnote (B) covers the 21 aircraft held for sale.\n\n| KPI (row label as filed) | FY2024 | FY2023 | % Change |\n|---|---|---|---|\n| Average aircraft | 209.9 | 199.5 | 5.2% |\n| Aircraft at end of period (B) | 213 | 205 | 3.9% |\n| Average daily aircraft utilization (hours) | 9.9 | 11.1 | (10.8)% |\n| Departures | 288,180 | 297,900 | (3.3)% |\n| Passenger flight segments (PFSs) (thousands) | 44,180 | 44,105 | 0.2% |\n| Revenue passenger miles (RPMs) (thousands) | 43,671,009 | 45,243,787 | (3.5)% |\n| Available seat miles (ASMs) (thousands) | 53,017,948 | 55,665,561 | (4.8)% |\n| Load factor (%) | 82.4% | 81.3% | 1.1 pts |\n| Total revenue per passenger flight segment ($) | 111.21 | 121.58 | (8.5)% |\n| Average yield (cents) | 11.25 | 11.85 | (5.1)% |\n| TRASM (cents) | 9.27 | 9.63 | (3.7)% |\n| CASM (cents) | 11.35 | 10.52 | 7.9% |\n| Adjusted CASM (cents) | 10.76 | 10.33 | 4.2% |\n| Adjusted CASM ex-fuel (cents) | 7.97 | 7.06 | 12.9% |\n| Fuel gallons consumed (thousands) | 551,819 | 591,796 | (6.8)% |\n| Average fuel cost per gallon ($) | 2.",
+     "is_error": false,
+     "elapsed_s": 21.94,
+     "cost_usd": 0.144689
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00025453
+  },
+  {
+   "turn": 5,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "In this Spirit Airlines 10-K, find the \"Comparative Operating Statistics\" table in Item 7 MD&A. Give the complete list of every row label after \"Fuel gallons consumed (thousands)\" with their FY2024 and FY2023 values exactly as printed (including Average fuel cost per gallon, Full-time equivalent employees, and any others such as PRASM, CASM-ex, block hours, average stage length, on-time performance, etc.). Text: {{spirit10k}}"
+     },
+     "output": "Only one row follows \"Fuel gallons consumed (thousands)\" in the Comparative Operating Statistics table:\n\n| Row label | FY2024 | FY2023 | Percent Change |\n|---|---|---|---|\n| Average fuel cost per gallon ($) | 2.68 | 3.08 | (13.0)% |\n\nThe other items you listed are not in this table. \"Full-time equivalent employees,\" PRASM, CASM-ex, block hours, average stage length, and on-time performance do not appear in it. The table ends with the footnotes \"(A) See 'Glossary of Airline Terms'\" and \"(B) Includes 21 aircraft recorded as assets held for sale.\"",
+     "is_error": false,
+     "elapsed_s": 6.93,
+     "cost_usd": 0.135759
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00036291499999999995
+  },
+  {
+   "turn": 6,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Spirit Airlines' FY2024 operating statistics are in the \"Comparative Operating Statistics\" table in Item 7 (MD&A) of its Form 10-K for the year ended December 31, 2024, filed March 3, 2025. The table is labeled \"Operating Statistics (unaudited)\" and compares FY2024 with FY2023. Spirit's stock was trading under the ticker SAVEQ, reflecting its Chapter 11 status, when this filing was made.\n\nFY2024 operating KPIs and totals (FY2023 shown for reference):\n\n| KPI | FY2024 Total | FY2023 |\n|---|---|---|\n| Average aircraft | 209.9 | 199.5 |\n| Aircraft at end of period (includes 21 aircraft held for sale) | 213 | 205 |\n| Average daily aircraft utilization (hours) | 9.9 | 11.1 |\n| Departures | 288,180 | 297,900 |\n| Passenger flight segments (thousands) | 44,180 | 44,105 |\n| Revenue passenger miles (thousands) | 43,671,009 | 45,243,787 |\n| Available seat miles (thousands) | 53,017,948 | 55,665,561 |\n| Load factor (%) | 82.4% | 81.3% |\n| Total revenue per passenger flight segment ($) | 111.21 | 121.58 |\n| Average yield (cents) | 11.25 | 11.85 |\n| TRASM (cents) | 9.27 | 9.63 |\n| CASM (cents) | 11.35 | 10.52 |\n| Adjusted CASM (cents) | 10.76 | 10.33 |\n| Adjusted CASM ex-fuel (cents) | 7.97 | 7.06 |\n| Fuel gallons consumed (thousands) | 551,819 | 591,796 |\n| Average fuel cost per gallon ($) | 2.68 | 3.08 |\n\nNotes: The table does not include full-time equivalent employees, PRASM, block hours, average stage length, or on-time performance. The \"Operating Statistics\" section is the only one I found that gives FY2024 totals in this format. I read the table from the filing text through an automated extraction, so the figures should be checked against the original document before use.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1498710/000149871025000008/save-20241231.htm\",\n            \"name\": \"Spirit Airlines, Inc. Form 10-K for fiscal year ended December 31, 2024 (filed 2025-03-03)\"\n        }\n    ]\n}"
+     },
+     "output": "Spirit Airlines' FY2024 operating statistics are in the \"Comparative Operating Statistics\" table in Item 7 (MD&A) of its Form 10-K for the year ended December 31, 2024, filed March 3, 2025. The table is labeled \"Operating Statistics (unaudited)\" and compares FY2024 with FY2023. Spirit's stock was trading under the ticker SAVEQ, reflecting its Chapter 11 status, when this filing was made.\n\nFY2024 operating KPIs and totals (FY2023 shown for reference):\n\n| KPI | FY2024 Total | FY2023 |\n|---|---|---|\n| Average aircraft | 209.9 | 199.5 |\n| Aircraft at end of period (includes 21 aircraft held for sale) | 213 | 205 |\n| Average daily aircraft utilization (hours) | 9.9 | 11.1 |\n| Departures | 288,180 | 297,900 |\n| Passenger flight segments (thousands) | 44,180 | 44,105 |\n| Revenue passenger miles (thousands) | 43,671,009 | 45,243,787 |\n| Available seat miles (thousands) | 53,017,948 | 55,665,561 |\n| Load factor (%) | 82.4% | 81.3% |\n| Total revenue per passenger flight segment ($) | 111.21 | 121.58 |\n| Average yield (cents) | 11.25 | 11.85 |\n| TRASM (cents) | 9.27 | 9.63 |\n| CASM (cents) | 11.35 | 10.52 |\n| Adjusted CASM (cents) | 10.76 | 10.33 |\n| Adjusted CASM ex-fuel (cents) | 7.97 | 7.06 |\n| Fuel gallons consumed (thousands) | 551,819 | 591,796 |\n| Average fuel cost per gallon ($) | 2.68 | 3.08 |\n\nNotes: The table does not include full-time equivalent employees, PRASM, block hours, average stage length, or on-time performance. The \"Operating Statistics\" section is the only one I found that gives FY2024 totals in this format. I read the table from the filing text through an automated extraction, so the figures should be checked against the original document before use.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1498710/000149871025000008/save-20241231.htm\",\n            \"name\": \"Spirit Airlines, Inc. Form 10-K for fiscal year ended December 31, 2024 (filed 2025-03-03)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00071525
+  }
+ ],
+ "final_answer": "Spirit Airlines' FY2024 operating statistics are in the \"Comparative Operating Statistics\" table in Item 7 (MD&A) of its Form 10-K for the year ended December 31, 2024, filed March 3, 2025. The table is labeled \"Operating Statistics (unaudited)\" and compares FY2024 with FY2023. Spirit's stock was trading under the ticker SAVEQ, reflecting its Chapter 11 status, when this filing was made.\n\nFY2024 operating KPIs and totals (FY2023 shown for reference):\n\n| KPI | FY2024 Total | FY2023 |\n|---|---|---|\n| Average aircraft | 209.9 | 199.5 |\n| Aircraft at end of period (includes 21 aircraft held for sale) | 213 | 205 |\n| Average daily aircraft utilization (hours) | 9.9 | 11.1 |\n| Departures | 288,180 | 297,900 |\n| Passenger flight segments (thousands) | 44,180 | 44,105 |\n| Revenue passenger miles (thousands) | 43,671,009 | 45,243,787 |\n| Available seat miles (thousands) | 53,017,948 | 55,665,561 |\n| Load factor (%) | 82.4% | 81.3% |\n| Total revenue per passenger flight segment ($) | 111.21 | 121.58 |\n| Average yield (cents) | 11.25 | 11.85 |\n| TRASM (cents) | 9.27 | 9.63 |\n| CASM (cents) | 11.35 | 10.52 |\n| Adjusted CASM (cents) | 10.76 | 10.33 |\n| Adjusted CASM ex-fuel (cents) | 7.97 | 7.06 |\n| Fuel gallons consumed (thousands) | 551,819 | 591,796 |\n| Average fuel cost per gallon ($) | 2.68 | 3.08 |\n\nNotes: The table does not include full-time equivalent employees, PRASM, block hours, average stage length, or on-time performance. The \"Operating Statistics\" section is the only one I found that gives FY2024 totals in this format. I read the table from the filing text through an automated extraction, so the figures should be checked against the original document before use.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1498710/000149871025000008/save-20241231.htm\",\n            \"name\": \"Spirit Airlines, Inc. Form 10-K for fiscal year ended December 31, 2024 (filed 2025-03-03)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 6,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 8,
+  "input_tokens": 22,
+  "output_tokens": 6797,
+  "cache_creation_input_tokens": 435376,
+  "cache_read_input_tokens": 44177,
+  "web_search_requests": 0,
+  "cost_usd": 0.282623
+ },
+ "cost_usd": 0.282623,
+ "elapsed_s": 45.1,
+ "harness_label": "ctl4"
+}

@@ -1,0 +1,8 @@
+# Tool use
+
+- Decide the document and period before searching: company, form (10-K, 10-Q, 8-K EX-99.1), fiscal period. Use edgar_search with company and date filters, not the question's wording. If web_search returns 0 results, retry once with a short non-empty query (never an empty one), then use edgar_search or a known primary URL.
+- A search snippet or result title is a lead, not evidence. Open the primary document with parse_html_page (one clear key per document), then ask retrieve_information one targeted question at a time. Confirm each figure's period, unit and basis in the retrieved text. On a long 10-K use input_character_ranges rather than re-reading everything.
+- parse_html_page cannot read PDFs. Use the HTML 10-K, 10-Q or 8-K EX-99.1. An XBRL Financial_Report.xlsx seen in search results is not a parsed source.
+- Share-of-revenue or mix questions (channel partners, customer type, segment, region, product line): the controlling source is the 10-K revenue note ("disaggregation of revenue"). Retrieve the dollar amount, the same-year total revenue (not a subtotal), and any percentage the company prints. Give the company-stated percentage as the headline answer, then the unrounded recomputation (amount / total, two decimals) as a labelled cross-check, so a reviewer sees both.
+- Cite only documents you actually parsed and retrieved from. Do not list a filing, spreadsheet, article or mirror seen only in search results, and do not attribute a figure to a document you did not retrieve it from.
+- Write the final answer in plain text with no citation markup (no <cite> tags). State each figure with period, unit and source, then the calculation. Submit with submit_final_result as soon as the figures are verified in the opened text.

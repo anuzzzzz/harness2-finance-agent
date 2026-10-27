@@ -1,0 +1,127 @@
+{
+ "task_id": "q48",
+ "label": "dom1",
+ "question": "How did Lemonade Insurance FY2024 results compare to the prior quarter's full year guidance?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "guidance_vs_actual_range"
+     },
+     "output": "---\nname: guidance_vs_actual_range\ndescription: Compare a company's reported period results (quarter or full year) with the guidance range it issued in an earlier release, metric by metric, against both the range and the midpoint.\n---\nANALYTIC MOVE: compare. Inputs: (a) the guidance table for the target period from the release that issued it (for \"prior quarter's full-year guidance\", the quarterly release immediately before the period-end release; for guidance given in a named period, that period's release); (b) the actuals from the release or filing reporting the target period. Result: per metric, BEAT / IN RANGE / MISS, with the variance.\n\n1. Guidance source. Open the prior release (8-K EX-99.1 or shareholder letter, HTML) and retrieve the outlook table with every metric, low and high, for the right column (full-year vs next-quarter columns sit side by side in the same table; pick the one for the period asked). Note whether the release says guidance was raised, lowered or reaffirmed versus earlier. Releases often revise guidance each quarter, so the \"prior quarter\" guidance is not the initial guidance. Mention the initial guidance only as context.\n2. Actual source. Open the period-end release (the Q4 / full-year letter or release) and retrieve the full-year actuals. Prefer a stated full-year figure over summing quarters. Match each metric's definition exactly (e.g. in-force premium is an end-of-period figure, gross earned premium and revenue are period sums, Adjusted EBITDA is non-GAAP and a loss is negative). Check units ($M vs $K) and the sign convention for losses.\n3. Calculation, unrounded until the end, for each metric: midpoint = (low + high)/2; variance $ = actual - midpoint; variance % = variance / |midpoint| x 100. Position: above the high end, within the range, or below the low end. For a loss metric state plainly whether the loss was smaller (better) or larger (worse) than guided; do not let the sign flip the verdict.\n4. Answer contract: a one-line overall verdict first (beat / met / missed, metric by metric), then a table: metric, guidance low-high (source release and date), actual (source and period), variance vs midpoint ($ and %), position vs range; then the arithmetic and any caveat (derived figures, rounding, draft markers). Only documents actually opened are listed as sources. No citation markup.\n5. Consistency checks before submitting: each metric's guidance and actual are for the same period; the guidance is from the document the question implies; any figure you could not retrieve from an opened document is omitted or flagged as unverified, not filled in from memory or a snippet.\n\nTask facts (in this task; leads from search snippets, re-confirm in the opened text). Lemonade (LMND), FY2024 vs the guidance in the Q3 2024 letter (8-K, 2024-10-30, https://www.sec.gov/Archives/edgar/data/1691421/000169142124000128/lmndq32024shlfinal103024.htm). Its outlook table has Q4 and FY2024 columns; the FY2024 ranges in $M appeared as IFP 940-944, gross earned premium 823-826, revenue 522-524, Adjusted EBITDA loss (155)-(151); the letter said GEP and revenue guidance were raised and the other metrics reaffirmed. Actuals come from the Q4 2024 letter (8-K filed Feb 2025, https://www.sec.gov/Archives/edgar/data/1691421/000169142125000021/lmndshareholderletterq42.htm): IFP about $944M, Adjusted EBITDA loss about ($150)M, revenue about $526.5M; the full-year GEP was not confirmed from a stated figure, so retrieve it from that letter rather than summing quarters. Also check the Q4 letter for gross profit, net loss and free cash flow if the guidance table lists them.\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0008039
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1691421/000169142124000128/lmndq32024shlfinal103024.htm",
+      "key": "q3letter"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: q3letter. (45,843 characters)\nThe data_storage currently contains the following keys:\nq3letter\n",
+     "is_error": false,
+     "elapsed_s": 0.39,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1691421/000169142125000021/lmndshareholderletterq42.htm",
+      "key": "q4letter"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: q4letter. (53,419 characters)\nThe data_storage currently contains the following keys:\nq3letter\nq4letter\n",
+     "is_error": false,
+     "elapsed_s": 0.35,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00035549
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Q3 2024 letter, find the outlook/guidance table. List every metric with Q4 2024 and FY2024 guidance low and high values, and state whether each was raised, lowered or reaffirmed. Also list the exact wording on which metrics were raised. Document: {{q3letter}}"
+     },
+     "output": "## FY2024 and Q4 2024 Guidance (Q3 2024 Shareholder Letter)\n\n| Metric | Q4 2024 Low | Q4 2024 High | FY2024 Low | FY2024 High | Status (FY2024) |\n|---|---|---|---|---|---|\n| In Force Premium (IFP) | $940M | $944M | $940M | $944M | Reaffirmed |\n| Gross Earned Premium (GEP) | $222M | $225M | $823M | $826M | **Raised** |\n| Revenue | $144M | $146M | $522M | $524M | **Raised** |\n| Adjusted EBITDA Loss | ($29M) | ($25M) | ($155M) | ($151M) | Reaffirmed |\n| Stock-based compensation expense | $16M | n/a (single value) | $64M | n/a (single value) | Reaffirmed |\n| Capital expenditures | $3M | n/a (single value) | $10M | n/a (single value) | Reaffirmed |\n| Weighted common shares | 72M | n/a (single value) | 71M | n/a (single value) | Reaffirmed |\n\nThe table in the document is garbled, so the stock-based compensation, capex, and weighted share figures appear as single values. I've read them as point estimates.\n\n**Exact wording on the raised metrics:**\n\n> \"We are increasing full year guidance for gross earned premium and revenue, and reaffirming guidance for FY 2024 for all other metrics.\"\n\nSo the raises are gross earned premium (FY2024 $823M\u2013$826M) and revenue (FY2024 $522M\u2013$524M). The letter does not give the prior ranges, so the size of each increase cannot be determined from this document. The letter also does not explicitly label the Q4 2024 ranges as raised or reaffirmed. The raise language refers to full-year guidance.",
+     "is_error": false,
+     "elapsed_s": 8.76,
+     "cost_usd": 0.003047
+    },
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Q4 2024 shareholder letter, find full-year 2024 actuals for: in-force premium (end of period), gross earned premium (full year), revenue (full year), Adjusted EBITDA (full year), gross profit, net loss, free cash flow. Give exact figures, units and periods, and any full-year outlook for 2025 is not needed. Document: {{q4letter}}"
+     },
+     "output": "Figures are for fiscal year 2024 (year ended December 31, 2024) unless noted. All dollar amounts are in US$ millions, except per-share data.\n\n| Metric | FY 2024 Actual | Period / Basis | Source in letter |\n|---|---|---|---|\n| In-force premium (IFP), end of period | **$943.7 million** | As of Dec 31, 2024 (point in time) | Key Operating and Financial Metrics table |\n| Gross earned premium (GEP) | **$827.3 million** | Year ended Dec 31, 2024 | Key Operating and Financial Metrics table |\n| Total revenue | **$526.5 million** | Year ended Dec 31, 2024 | Condensed Consolidated Statements of Operations |\n| Adjusted EBITDA | **($149.7) million** (loss) | Year ended Dec 31, 2024 | Adjusted EBITDA reconciliation (non-GAAP) |\n| Gross profit | **$166.9 million** | Year ended Dec 31, 2024 (GAAP; 32% margin on total revenue) | Key Operating and Financial Metrics table |\n| Net loss | **($202.2) million** | Year ended Dec 31, 2024 (($2.85) per share, basic and diluted) | Statements of Operations |\n| Free cash flow (FCF) | **($20.8) million** | Year ended Dec 31, 2024 (operating cash flow of ($11.4)M less capex of $9.4M) | Adjusted Free Cash Flow reconciliation (non-GAAP) |\n\nNotes:\n- The letter rounds several of these figures in its narrative: Adjusted EBITDA to \"($150) million\", gross profit to \"$167 million\", and IFP to \"$944 million\".\n- The letter's headline \"Adjusted Free Cash Flow\" is a different non-GAAP measure. For FY 2024 it was **$47.6 million** (adds $68.4M of net borrowings under the financing agreement to FCF). The letter's \"$48 million\" headline uses this figure.",
+     "is_error": false,
+     "elapsed_s": 5.58,
+     "cost_usd": 0.003194
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00028628999999999997
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "\nOverall verdict: Lemonade beat its prior full-year 2024 guidance on every metric with a range. Gross earned premium, revenue and Adjusted EBITDA finished above the top of their ranges, and in-force premium landed inside its range, in the upper half.\n\nGuidance source: the Q3 2024 shareholder letter (8-K dated 2024-10-30). Its FY2024 outlook raised gross earned premium and revenue, and reaffirmed in-force premium (IFP), Adjusted EBITDA and the other metrics. The letter does not give the prior ranges, so the size of the raises cannot be measured from it. The Q3 letter's outlook table was garbled in parsing; the FY2024 ranges used below were read from it and match the ranges supplied in the task brief.\n\nActuals source: the Q4 2024 shareholder letter (8-K filed February 2025). Figures are for the year ended December 31, 2024, except IFP, which is an end-of-period figure.\n\nResults table (midpoint = (low + high) / 2; variance = actual - midpoint; variance % = variance / |midpoint|):\n\n1. In-force premium (end of period): guidance $940M\u2013$944M (midpoint $942M). Actual $943.7M. Variance +$1.70M (+0.18%). Position: within the range, in the upper part.\n\n2. Gross earned premium: guidance $823M\u2013$826M (midpoint $824.5M), raised in Q3. Actual $827.3M. Variance +$2.80M (+0.34%). Position: above the high end.\n\n3. Total revenue: guidance $522M\u2013$524M (midpoint $523M), raised in Q3. Actual $526.5M. Variance +$3.50M (+0.67%). Position: above the high end.\n\n4. Adjusted EBITDA (non-GAAP, loss shown as negative): guidance ($155M) to ($151M) (midpoint ($153M)). Actual ($149.7M). Variance +$3.30M (+2.16% of the guided loss magnitude). Position: above the high end. The loss was smaller than guided, which is better for the company.\n\nContext: the letter itself rounds Adjusted EBITDA to about ($150M), and IFP to about $944M. Gross profit ($166.9M), net loss ($202.2M, or ($2.85) per share) and free cash flow (($20.8M)) were reported but had no guidance in the Q3 table. The company's headline \"Adjusted Free Cash Flow\" of $47.6M is a different non-GAAP measure and was not compared. The variance percentages above are derived by me from the stated figures.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1691421/000169142124000128/lmndq32024shlfinal103024.htm\",\n            \"name\": \"Lemonade Q3 2024 Shareholder Letter (8-K, 2024-10-30)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1691421/000169142125000021/lmndshareholderletterq42.htm\",\n            \"name\": \"Lemonade Q4 2024 Shareholder Letter (8-K, February 2025)\"\n        }\n    ]\n}\n"
+     },
+     "output": "\nOverall verdict: Lemonade beat its prior full-year 2024 guidance on every metric with a range. Gross earned premium, revenue and Adjusted EBITDA finished above the top of their ranges, and in-force premium landed inside its range, in the upper half.\n\nGuidance source: the Q3 2024 shareholder letter (8-K dated 2024-10-30). Its FY2024 outlook raised gross earned premium and revenue, and reaffirmed in-force premium (IFP), Adjusted EBITDA and the other metrics. The letter does not give the prior ranges, so the size of the raises cannot be measured from it. The Q3 letter's outlook table was garbled in parsing; the FY2024 ranges used below were read from it and match the ranges supplied in the task brief.\n\nActuals source: the Q4 2024 shareholder letter (8-K filed February 2025). Figures are for the year ended December 31, 2024, except IFP, which is an end-of-period figure.\n\nResults table (midpoint = (low + high) / 2; variance = actual - midpoint; variance % = variance / |midpoint|):\n\n1. In-force premium (end of period): guidance $940M\u2013$944M (midpoint $942M). Actual $943.7M. Variance +$1.70M (+0.18%). Position: within the range, in the upper part.\n\n2. Gross earned premium: guidance $823M\u2013$826M (midpoint $824.5M), raised in Q3. Actual $827.3M. Variance +$2.80M (+0.34%). Position: above the high end.\n\n3. Total revenue: guidance $522M\u2013$524M (midpoint $523M), raised in Q3. Actual $526.5M. Variance +$3.50M (+0.67%). Position: above the high end.\n\n4. Adjusted EBITDA (non-GAAP, loss shown as negative): guidance ($155M) to ($151M) (midpoint ($153M)). Actual ($149.7M). Variance +$3.30M (+2.16% of the guided loss magnitude). Position: above the high end. The loss was smaller than guided, which is better for the company.\n\nContext: the letter itself rounds Adjusted EBITDA to about ($150M), and IFP to about $944M. Gross profit ($166.9M), net loss ($202.2M, or ($2.85) per share) and free cash flow (($20.8M)) were reported but had no guidance in the Q3 table. The company's headline \"Adjusted Free Cash Flow\" of $47.6M is a different non-GAAP measure and was not compared. The variance percentages above are derived by me from the stated figures.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1691421/000169142124000128/lmndq32024shlfinal103024.htm\",\n            \"name\": \"Lemonade Q3 2024 Shareholder Letter (8-K, 2024-10-30)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1691421/000169142125000021/lmndshareholderletterq42.htm\",\n            \"name\": \"Lemonade Q4 2024 Shareholder Letter (8-K, February 2025)\"\n        }\n    ]\n}\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00109843
+  }
+ ],
+ "final_answer": "\nOverall verdict: Lemonade beat its prior full-year 2024 guidance on every metric with a range. Gross earned premium, revenue and Adjusted EBITDA finished above the top of their ranges, and in-force premium landed inside its range, in the upper half.\n\nGuidance source: the Q3 2024 shareholder letter (8-K dated 2024-10-30). Its FY2024 outlook raised gross earned premium and revenue, and reaffirmed in-force premium (IFP), Adjusted EBITDA and the other metrics. The letter does not give the prior ranges, so the size of the raises cannot be measured from it. The Q3 letter's outlook table was garbled in parsing; the FY2024 ranges used below were read from it and match the ranges supplied in the task brief.\n\nActuals source: the Q4 2024 shareholder letter (8-K filed February 2025). Figures are for the year ended December 31, 2024, except IFP, which is an end-of-period figure.\n\nResults table (midpoint = (low + high) / 2; variance = actual - midpoint; variance % = variance / |midpoint|):\n\n1. In-force premium (end of period): guidance $940M\u2013$944M (midpoint $942M). Actual $943.7M. Variance +$1.70M (+0.18%). Position: within the range, in the upper part.\n\n2. Gross earned premium: guidance $823M\u2013$826M (midpoint $824.5M), raised in Q3. Actual $827.3M. Variance +$2.80M (+0.34%). Position: above the high end.\n\n3. Total revenue: guidance $522M\u2013$524M (midpoint $523M), raised in Q3. Actual $526.5M. Variance +$3.50M (+0.67%). Position: above the high end.\n\n4. Adjusted EBITDA (non-GAAP, loss shown as negative): guidance ($155M) to ($151M) (midpoint ($153M)). Actual ($149.7M). Variance +$3.30M (+2.16% of the guided loss magnitude). Position: above the high end. The loss was smaller than guided, which is better for the company.\n\nContext: the letter itself rounds Adjusted EBITDA to about ($150M), and IFP to about $944M. Gross profit ($166.9M), net loss ($202.2M, or ($2.85) per share) and free cash flow (($20.8M)) were reported but had no guidance in the Q3 table. The company's headline \"Adjusted Free Cash Flow\" of $47.6M is a different non-GAAP measure and was not compared. The variance percentages above are derived by me from the stated figures.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1691421/000169142124000128/lmndq32024shlfinal103024.htm\",\n            \"name\": \"Lemonade Q3 2024 Shareholder Letter (8-K, 2024-10-30)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1691421/000169142125000021/lmndshareholderletterq42.htm\",\n            \"name\": \"Lemonade Q4 2024 Shareholder Letter (8-K, February 2025)\"\n        }\n    ]\n}\n",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 6,
+  "input_tokens": 18,
+  "output_tokens": 5032,
+  "cache_creation_input_tokens": 48457,
+  "cache_read_input_tokens": 20986,
+  "web_search_requests": 0,
+  "cost_usd": 0.008784
+ },
+ "cost_usd": 0.008784,
+ "elapsed_s": 25.9,
+ "harness_label": "dom1"
+}

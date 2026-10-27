@@ -1,0 +1,106 @@
+{
+ "task_id": "q29",
+ "label": "dom1",
+ "question": "List the Operating KPIs Spirit Airlines (NYSE: SAVE) tracked in FY 2024. Provide the KPI and FY 2024 Total.",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "company_kpi_list_from_10k"
+     },
+     "output": "---\nname: company_kpi_list_from_10k\ndescription: Answer \"list the operating KPIs / operating statistics the company tracked in FY X, with the FY total\" from a 10-K, completely and with units and bases.\n---\nANALYTIC MOVE: classify and list. Inputs: the company's own operating-statistics table in the 10-K. Result: every KPI row the company reports, with the FY value, unit and basis.\n\n1. Governing source: the 10-K, Item 7 MD&A. Look for \"Operating Statistics\", \"Comparative Operating Statistics\" or \"Key Performance Indicators\". Item 1 and the risk factors do not hold the KPI table. Use the company's own table, not a list you build from memory or from articles.\n2. Completeness: retrieve the whole table in one dedicated retrieve_information call (ask for \"every row of the table, in order, with units\"). Then check the row count against the table. Ask again for the missing rows if the output is cut off. Do not drop rows because they look like inputs (aircraft count, departures, fuel gallons). They are KPIs if the company tabulates them.\n3. Answer contract: a table with the KPI name exactly as printed, the FY value as printed, the unit (thousands, cents, $, hours, %), and the prior-year comparative if shown. Keep the period \"twelve months ended December 31\" and say it is unaudited if the filing says so.\n4. Basis checks:\n   - Mark non-GAAP rows (for airlines: Adjusted CASM, Adjusted CASM ex-fuel). Note that the 10-K reconciles them to CASM in the same Item.\n   - Some KPIs are not additive totals, such as load factor, yield, CASM and average aircraft. Report them as the FY figure and say \"FY value, not a sum\".\n   - Items in the MD&A text but not in the table (operating margin, liquidity) go in a separate \"also discussed\" line. Do not blend them into the KPI table.\n   - Do not rename or recompute a value. If you derive anything, label it as derived.\n5. Before submitting: confirm that the period is FY2024 (not Q4, not FY2023) and that the units match the table's header. List only the filing(s) actually opened as sources.\n\nTask fact (Spirit Airlines FY2024, labelled; the base run retrieved these rows from the 10-K table and they should be re-confirmed in the text): average aircraft 209.9; aircraft at end of period 213 (includes 21 held for sale); average daily utilization 9.9 hours; departures 288,180; passenger flight segments 44,180 thousand; RPMs 43,671,009 thousand; ASMs 53,017,948 thousand; load factor 82.4%; total revenue per PFS $111.21; average yield 11.25 cents; TRASM 9.27 cents; CASM 11.35 cents; Adjusted CASM 10.76 cents; Adjusted CASM ex-fuel 7.97 cents; fuel gallons 551,819 thousand; average fuel cost per gallon $2.68. Check whether the table has any row not in this list (for example stage length) before submitting.\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000800275
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1498710/000149871025000008/save-20241231.htm",
+      "key": "spirit10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: spirit10k. (635,378 characters)\nThe data_storage currently contains the following keys:\nspirit10k\n",
+     "is_error": false,
+     "elapsed_s": 0.88,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000260045
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "Find the \"Comparative Operating Statistics\" table in Item 7 MD&A of this 10-K. Reproduce every row of the table, in order, with units, for the twelve months ended December 31, 2024 and 2023 columns. Also note the footnote text for any non-GAAP rows and the period label in the header. Text: {{spirit10k}}"
+     },
+     "output": "**Comparative Operating Statistics** (Item 7, MD&A)\n\n**Period label:** \"Twelve Months Ended December 31,\" with columns for 2024, 2023, and Percent Change.\n\n| Operating Statistic (unit) | 2024 | 2023 | Percent Change |\n|---|---|---|---|\n| Average aircraft (number) | 209.9 | 199.5 | 5.2% |\n| Aircraft at end of period (B) (number) | 213 | 205 | 3.9% |\n| Average daily aircraft utilization (hours) | 9.9 | 11.1 | (10.8)% |\n| Departures (number) | 288,180 | 297,900 | (3.3)% |\n| Passenger flight segments (PFSs) (thousands) | 44,180 | 44,105 | 0.2% |\n| Revenue passenger miles (RPMs) (thousands) | 43,671,009 | 45,243,787 | (3.5)% |\n| Available seat miles (ASMs) (thousands) | 53,017,948 | 55,665,561 | (4.8)% |\n| Load factor (%) | 82.4% | 81.3% | 1.1 pts |\n| Total revenue per passenger flight segment ($) | 111.21 | 121.58 | (8.5)% |\n| Average yield (cents) | 11.25 | 11.85 | (5.1)% |\n| TRASM (cents) | 9.27 | 9.63 | (3.7)% |\n| CASM (cents) | 11.35 | 10.52 | 7.9% |\n| Adjusted CASM (cents) | 10.76 | 10.33 | 4.2% |\n| Adjusted CASM ex-fuel (cents) | 7.97 | 7.06 | 12.9% |\n| Fuel gallons consumed (thousands) | 551,819 | 591,796 | (6.8)% |\n| Average fuel cost per gallon ($) | 2.68 | 3.08 | (13.0)% |\n\nThe table is labeled \"Operating Statistics (unaudited).\"\n\n**Footnotes to the table:**\n- **(A)** \"See 'Glossary of Airline Terms' elsewhere in this annual report for definitions used in this table.\" This is attached to the \"Operating Statistics (unaudited)\" caption.\n- **(B)** \"Includes 21 aircraft recorded as assets held for sale on our consolidated balance sheets as of December 31, 2024. Refer to 'Notes to Consolidated Financial Statements\u20141. Summary of Significant Accounting Policies' for additional information on the aircraft recorded as assets held for sale.\" This is attached to the \"Aircraft at end of period\" row.\n\n**Non-GAAP rows:** Adjusted CASM and Adjusted CASM ex-fuel are the two non-GAAP rows. The table itself carries no non-GAAP footnote marker on those rows. The definitions appear in the Item 7 introduction and the Glossary:\n- **Adjusted CASM:** operating expenses excluding loss (gain) on disposal of assets, special charges (credits), furlough-related expenses, and litigation loss contingency adjustments recorded in the first and third quarters of 2024 and a litigation loss contingency recorded in the second quarter of 2023, divided by ASMs.\n- **Adjusted CASM ex-fuel:** operating expenses excluding aircraft fuel expense and the same items listed above, divided by ASMs.",
+     "is_error": false,
+     "elapsed_s": 10.13,
+     "cost_usd": 0.140236
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00017518
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Spirit Airlines (NYSE: SAVE) FY2024 operating KPIs, from the \"Comparative Operating Statistics\" table (Item 7, MD&A) of its 10-K for the year ended December 31, 2024. The table is labeled \"Operating Statistics (unaudited)\" and covers the twelve months ended December 31. The table has 16 KPI rows, which matches the task's reference list. Values are as printed; the FY2024 total is the table's full-year figure.\n\n| KPI (as printed) | FY2024 | FY2023 (comparative) | Unit |\n|---|---|---|---|\n| Average aircraft | 209.9 | 199.5 | number |\n| Aircraft at end of period (includes 21 aircraft held for sale) | 213 | 205 | number |\n| Average daily aircraft utilization | 9.9 | 11.1 | hours |\n| Departures | 288,180 | 297,900 | number |\n| Passenger flight segments (PFSs) | 44,180 | 44,105 | thousands |\n| Revenue passenger miles (RPMs) | 43,671,009 | 45,243,787 | thousands |\n| Available seat miles (ASMs) | 53,017,948 | 55,665,561 | thousands |\n| Load factor | 82.4% | 81.3% | % |\n| Total revenue per passenger flight segment | 111.21 | 121.58 | $ |\n| Average yield | 11.25 | 11.85 | cents |\n| TRASM | 9.27 | 9.63 | cents |\n| CASM | 11.35 | 10.52 | cents |\n| Adjusted CASM (non-GAAP) | 10.76 | 10.33 | cents |\n| Adjusted CASM ex-fuel (non-GAAP) | 7.97 | 7.06 | cents |\n| Fuel gallons consumed | 551,819 | 591,796 | thousands |\n| Average fuel cost per gallon | 2.68 | 3.08 | $ |\n\nNotes:\n- Not additive totals: average aircraft, utilization, load factor, total revenue per PFS, average yield, TRASM, CASM, Adjusted CASM, Adjusted CASM ex-fuel and average fuel cost per gallon are per-unit or average figures. The FY2024 value is reported as printed, not as a sum.\n- Non-GAAP: Adjusted CASM and Adjusted CASM ex-fuel exclude items such as special charges, furlough-related expenses, and litigation contingency adjustments. Their definitions are in the Item 7 introduction and the Glossary, not in a footnote on the table rows.\n- Footnote (B) on \"Aircraft at end of period\" states that it includes 21 aircraft recorded as assets held for sale as of December 31, 2024.\n- The table's percent-change column is not a KPI and is omitted above.\n- Operating margin and liquidity are discussed elsewhere in MD&A and are not part of this table, so they are not listed.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1498710/000149871025000008/save-20241231.htm\",\n            \"name\": \"Spirit Airlines, Inc. Form 10-K for fiscal year 2024 (CIK 1498710)\"\n        }\n    ]\n}"
+     },
+     "output": "Spirit Airlines (NYSE: SAVE) FY2024 operating KPIs, from the \"Comparative Operating Statistics\" table (Item 7, MD&A) of its 10-K for the year ended December 31, 2024. The table is labeled \"Operating Statistics (unaudited)\" and covers the twelve months ended December 31. The table has 16 KPI rows, which matches the task's reference list. Values are as printed; the FY2024 total is the table's full-year figure.\n\n| KPI (as printed) | FY2024 | FY2023 (comparative) | Unit |\n|---|---|---|---|\n| Average aircraft | 209.9 | 199.5 | number |\n| Aircraft at end of period (includes 21 aircraft held for sale) | 213 | 205 | number |\n| Average daily aircraft utilization | 9.9 | 11.1 | hours |\n| Departures | 288,180 | 297,900 | number |\n| Passenger flight segments (PFSs) | 44,180 | 44,105 | thousands |\n| Revenue passenger miles (RPMs) | 43,671,009 | 45,243,787 | thousands |\n| Available seat miles (ASMs) | 53,017,948 | 55,665,561 | thousands |\n| Load factor | 82.4% | 81.3% | % |\n| Total revenue per passenger flight segment | 111.21 | 121.58 | $ |\n| Average yield | 11.25 | 11.85 | cents |\n| TRASM | 9.27 | 9.63 | cents |\n| CASM | 11.35 | 10.52 | cents |\n| Adjusted CASM (non-GAAP) | 10.76 | 10.33 | cents |\n| Adjusted CASM ex-fuel (non-GAAP) | 7.97 | 7.06 | cents |\n| Fuel gallons consumed | 551,819 | 591,796 | thousands |\n| Average fuel cost per gallon | 2.68 | 3.08 | $ |\n\nNotes:\n- Not additive totals: average aircraft, utilization, load factor, total revenue per PFS, average yield, TRASM, CASM, Adjusted CASM, Adjusted CASM ex-fuel and average fuel cost per gallon are per-unit or average figures. The FY2024 value is reported as printed, not as a sum.\n- Non-GAAP: Adjusted CASM and Adjusted CASM ex-fuel exclude items such as special charges, furlough-related expenses, and litigation contingency adjustments. Their definitions are in the Item 7 introduction and the Glossary, not in a footnote on the table rows.\n- Footnote (B) on \"Aircraft at end of period\" states that it includes 21 aircraft recorded as assets held for sale as of December 31, 2024.\n- The table's percent-change column is not a KPI and is omitted above.\n- Operating margin and liquidity are discussed elsewhere in MD&A and are not part of this table, so they are not listed.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1498710/000149871025000008/save-20241231.htm\",\n            \"name\": \"Spirit Airlines, Inc. Form 10-K for fiscal year 2024 (CIK 1498710)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0009389400000000001
+  }
+ ],
+ "final_answer": "Spirit Airlines (NYSE: SAVE) FY2024 operating KPIs, from the \"Comparative Operating Statistics\" table (Item 7, MD&A) of its 10-K for the year ended December 31, 2024. The table is labeled \"Operating Statistics (unaudited)\" and covers the twelve months ended December 31. The table has 16 KPI rows, which matches the task's reference list. Values are as printed; the FY2024 total is the table's full-year figure.\n\n| KPI (as printed) | FY2024 | FY2023 (comparative) | Unit |\n|---|---|---|---|\n| Average aircraft | 209.9 | 199.5 | number |\n| Aircraft at end of period (includes 21 aircraft held for sale) | 213 | 205 | number |\n| Average daily aircraft utilization | 9.9 | 11.1 | hours |\n| Departures | 288,180 | 297,900 | number |\n| Passenger flight segments (PFSs) | 44,180 | 44,105 | thousands |\n| Revenue passenger miles (RPMs) | 43,671,009 | 45,243,787 | thousands |\n| Available seat miles (ASMs) | 53,017,948 | 55,665,561 | thousands |\n| Load factor | 82.4% | 81.3% | % |\n| Total revenue per passenger flight segment | 111.21 | 121.58 | $ |\n| Average yield | 11.25 | 11.85 | cents |\n| TRASM | 9.27 | 9.63 | cents |\n| CASM | 11.35 | 10.52 | cents |\n| Adjusted CASM (non-GAAP) | 10.76 | 10.33 | cents |\n| Adjusted CASM ex-fuel (non-GAAP) | 7.97 | 7.06 | cents |\n| Fuel gallons consumed | 551,819 | 591,796 | thousands |\n| Average fuel cost per gallon | 2.68 | 3.08 | $ |\n\nNotes:\n- Not additive totals: average aircraft, utilization, load factor, total revenue per PFS, average yield, TRASM, CASM, Adjusted CASM, Adjusted CASM ex-fuel and average fuel cost per gallon are per-unit or average figures. The FY2024 value is reported as printed, not as a sum.\n- Non-GAAP: Adjusted CASM and Adjusted CASM ex-fuel exclude items such as special charges, furlough-related expenses, and litigation contingency adjustments. Their definitions are in the Item 7 introduction and the Glossary, not in a footnote on the table rows.\n- Footnote (B) on \"Aircraft at end of period\" states that it includes 21 aircraft recorded as assets held for sale as of December 31, 2024.\n- The table's percent-change column is not a KPI and is omitted above.\n- Operating margin and liquidity are discussed elsewhere in MD&A and are not part of this table, so they are not listed.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1498710/000149871025000008/save-20241231.htm\",\n            \"name\": \"Spirit Airlines, Inc. Form 10-K for fiscal year 2024 (CIK 1498710)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 5,
+  "input_tokens": 14,
+  "output_tokens": 4139,
+  "cache_creation_input_tokens": 223580,
+  "cache_read_input_tokens": 20319,
+  "web_search_requests": 0,
+  "cost_usd": 0.14241
+ },
+ "cost_usd": 0.14241,
+ "elapsed_s": 22.5,
+ "harness_label": "dom1"
+}

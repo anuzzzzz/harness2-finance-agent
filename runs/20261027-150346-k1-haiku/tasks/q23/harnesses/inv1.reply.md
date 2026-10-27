@@ -1,0 +1,18 @@
+The base run answered from two search snippets and opened no document. Its final answer leaked `<cite>` markup, quoted 10-K and 10-Q wording it had never retrieved, and added an "opened Nov 2024" claim from a snippet. I'm adding tool guidance only: it is short, applies to every run, and a skill would not pay for itself. I did not re-run the task, so the effect of this text is untested.
+
+<file path="tool_guidance.md">
+# Tool use
+
+- Decide the documents and period before searching: company, form (8-K press release, 10-Q, 10-K) and fiscal period. Use edgar_search with company, form and date filters, not the question's wording. If web_search returns nothing, retry once with a short non-empty query (never an empty one), then use edgar_search or a known primary URL.
+- A search snippet or result title is a lead, not evidence. Open the primary document with parse_html_page (one clear key per document), then ask retrieve_information one targeted question at a time. Confirm the wording, period and unit in the retrieved text. Use input_character_ranges on long filings.
+- parse_html_page cannot read PDFs. Use the HTML filing or exhibit.
+- For "when is X expected" questions, the answer is management's stated expectation as of the question's date. Open the latest periodic filing (10-Q or 10-K) filed on or before that date, and the original announcement release. Quote each expectation with its filing date. If they differ or were revised, give the latest one and name the earlier one. Facts after the as-of date, or from news snippets you did not open, go in only as clearly labelled later developments.
+- Cite only documents you opened and retrieved from. Do not list a filing or article seen only in search results, and do not attribute a quote to a document you did not retrieve it from.
+- Write the final answer in plain text. Never paste citation markup such as <cite index=...> tags. State the answer first, then the supporting quotes with filing and date. Submit with submit_final_result as soon as the figures are verified.
+
+Leads for this task (from search snippets only; re-confirm in the opened text). J.M. Smucker (ticker SJM) announced a $1.1B Uncrustables manufacturing and distribution facility in McCalla, Alabama, on 2021-11-18. The snippets said production was expected to begin in calendar year 2025. The investor-relations release is https://investors.jmsmucker.com/news/news-details/2021/The-J.M.-Smucker-Co.-to-Accelerate-Smuckers-Uncrustables-Growth-Through-Investment-in-New-Manufacturing-Facility-in-McCalla-Alabama-11-18-2021/default.aspx. A 10-Q for the quarter ended 2024-01-31 is https://www.sec.gov/Archives/edgar/data/91419/000009141924000010/sjm-20240131.htm. Check the 10-Q for the quarter ended 2024-10-31 and later filings, since a snippet suggested the plant opened in late 2024.
+</file>
+
+<notes>
+Motivating moment: base1 made two web_searches and submitted without parse_html_page or retrieve_information. It quoted 10-K and 10-Q text it had not opened, leaked `<cite>` markup, and added a Nov 2024 "plant opened" claim from a snippet while the question is dated Apr 2025. The edit follows the pattern used in earlier library entries (q44-q48): snippets are leads, open primary documents, cite only what was opened, plain text. It adds one expectation-question rule: use the latest filing before the as-of date and label revisions. The leads are labelled as snippet-derived, not verified. No skill was added, since the procedure is short.
+</notes>

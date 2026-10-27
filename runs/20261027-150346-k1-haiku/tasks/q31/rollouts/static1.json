@@ -1,0 +1,113 @@
+{
+ "task_id": "q31",
+ "label": "static1",
+ "question": "Assume BROS grows revenue by 30% CAGR and gross margins compress by 500bps from YE 2024. What is BROS gross profit in 2026? Round answer to nearest million.",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Dutch Bros annual report 2024 total revenue cost of sales gross margin",
+      "ciks": [
+       "BROS"
+      ],
+      "form_types": [
+       "10-K"
+      ],
+      "start_date": "2025-01-01"
+     },
+     "output": "{\"total_matching_documents\": 1, \"page\": 1, \"results\": [{\"form\": \"10-K\", \"file_date\": \"2025-02-13\", \"period_ending\": \"2024-12-31\", \"company\": \"Dutch Bros Inc.  (BROS)  (CIK 0001866581)\", \"ciks\": [\"0001866581\"], \"accession\": \"0001866581-25-000048\", \"document\": \"bros-20241231.htm\", \"description\": \"10-K\", \"url\": \"https://www.sec.gov/Archives/edgar/data/1866581/000186658125000048/bros-20241231.htm\"}]}",
+     "is_error": false,
+     "elapsed_s": 1.26,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00022536000000000002
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1866581/000186658125000048/bros-20241231.htm",
+      "key": "bros10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: bros10k. (450,132 characters)\nThe data_storage currently contains the following keys:\nbros10k\n",
+     "is_error": false,
+     "elapsed_s": 0.68,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00017491500000000002
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Dutch Bros 10-K: {{bros10k}}. Find total revenue for fiscal 2024 and fiscal 2023 (in thousands), total cost of sales for 2024, and gross profit / gross margin for 2024 as reported (or computed as revenue minus cost of sales). Quote the exact figures and the line items they come from."
+     },
+     "output": "**Fiscal 2024 and 2023 total revenue (Consolidated Statements of Operations, in thousands):**\n\n- **Total revenues, 2024: $1,281,015**\n- **Total revenues, 2023: $965,776**\n\nThese are the sum of two revenue lines:\n\n| Revenue line | 2024 | 2023 |\n|---|---|---|\n| Company-operated shops | $1,165,830 | $857,939 |\n| Franchising and other | $115,185 | $107,837 |\n| **Total revenues** | **$1,281,015** | **$965,776** |\n\n**Cost of sales, 2024:** $940,886 (reported as \"Cost of sales\" in the statement of operations)\n\n**Gross profit and gross margin, 2024:**\n\n- Gross profit = $1,281,015 \u2212 $940,886 = **$340,129** (about $340.1 million)\n- Gross margin = $340,129 \u00f7 $1,281,015 = **about 26.6%** (26.55%)\n\nThe 10-K does not report a gross profit line on the face of the income statement, so this figure is computed. Cost of sales includes depreciation and amortization, occupancy costs, and pre-opening costs. The company's segment table reconciles to the same total: company-operated shop gross profit of $259,959 plus franchising and other gross profit of $80,170 equals $340,129.",
+     "is_error": false,
+     "elapsed_s": 7.51,
+     "cost_usd": 0.09571
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00016459
+  },
+  {
+   "turn": 4,
+   "text": "**Answer: BROS 2026 gross profit is about $467 million** (based on FY2024 revenue of $1,281.0M and a 26.55% gross margin, grown at 30% CAGR with a 5-point margin compression).\n\n**Step 1: FY2024 baseline from the 10-K (fiscal year ended Dec 31, 2024)**\n- Total revenues: $1,281,015K (company-operated shops $1,165,830K plus franchising and other $115,185K).\n- Cost of sales: $940,886K. The 10-K has no gross profit line on the face of the income statement, so I computed it.\n- Gross profit: $1,281,015K \u2212 $940,886K = $340,129K.\n- Gross margin: $340,129K \u00f7 $1,281,015K = 26.55% (0.265515).\n\n**Step 2: Project 2026 revenue (two years of 30% CAGR from 2024)**\n- Growth factor: 1.30\u00b2 = 1.69.\n- 2026 revenue: $1,281.015M \u00d7 1.69 = $2,164.92M.\n\n**Step 3: Compress gross margin by 500 bps**\n- 2026 margin: 26.55% \u2212 5.00 pts = 21.55% (0.215515).\n\n**Step 4: 2026 gross profit**\n- $2,164.92M \u00d7 0.215515 = $466.57M, which rounds to **$467 million**.\n\n**Assumptions:** \"500bps\" is read as 5 percentage points, and the margin is the computed gross margin (revenue less cost of sales, which includes occupancy, D&A and pre-opening costs), since the 10-K reports no gross profit line.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1866581/000186658125000048/bros-20241231.htm\",\n            \"name\": \"Dutch Bros Inc. (BROS) Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "BROS 2026 gross profit \u2248 $467 million.\n\nSteps:\n1. FY2024 (10-K, FYE 12/31/2024): total revenues $1,281,015K; cost of sales $940,886K; gross profit (computed) = $340,129K; gross margin = 26.55%.\n2. 2026 revenue at 30% CAGR over two years: $1,281.015M \u00d7 1.30\u00b2 = $2,164.92M.\n3. 2026 gross margin: 26.55% \u2212 5.00 pts (500 bps) = 21.55%.\n4. 2026 gross profit: $2,164.92M \u00d7 21.55% = $466.57M \u2248 $467M.\n\nAssumptions: 500 bps read as 5 percentage points; gross margin computed as revenue less cost of sales (the 10-K reports no gross profit line).\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1866581/000186658125000048/bros-20241231.htm\",\n            \"name\": \"Dutch Bros Inc. (BROS) Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}"
+     },
+     "output": "BROS 2026 gross profit \u2248 $467 million.\n\nSteps:\n1. FY2024 (10-K, FYE 12/31/2024): total revenues $1,281,015K; cost of sales $940,886K; gross profit (computed) = $340,129K; gross margin = 26.55%.\n2. 2026 revenue at 30% CAGR over two years: $1,281.015M \u00d7 1.30\u00b2 = $2,164.92M.\n3. 2026 gross margin: 26.55% \u2212 5.00 pts (500 bps) = 21.55%.\n4. 2026 gross profit: $2,164.92M \u00d7 21.55% = $466.57M \u2248 $467M.\n\nAssumptions: 500 bps read as 5 percentage points; gross margin computed as revenue less cost of sales (the 10-K reports no gross profit line).\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1866581/000186658125000048/bros-20241231.htm\",\n            \"name\": \"Dutch Bros Inc. (BROS) Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.001011455
+  }
+ ],
+ "final_answer": "BROS 2026 gross profit \u2248 $467 million.\n\nSteps:\n1. FY2024 (10-K, FYE 12/31/2024): total revenues $1,281,015K; cost of sales $940,886K; gross profit (computed) = $340,129K; gross margin = 26.55%.\n2. 2026 revenue at 30% CAGR over two years: $1,281.015M \u00d7 1.30\u00b2 = $2,164.92M.\n3. 2026 gross margin: 26.55% \u2212 5.00 pts (500 bps) = 21.55%.\n4. 2026 gross profit: $2,164.92M \u00d7 21.55% = $466.57M \u2248 $467M.\n\nAssumptions: 500 bps read as 5 percentage points; gross margin computed as revenue less cost of sales (the 10-K reports no gross profit line).\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1866581/000186658125000048/bros-20241231.htm\",\n            \"name\": \"Dutch Bros Inc. (BROS) Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+ "fallback_text": "**Answer: BROS 2026 gross profit is about $467 million** (based on FY2024 revenue of $1,281.0M and a 26.55% gross margin, grown at 30% CAGR with a 5-point margin compression).\n\n**Step 1: FY2024 baseline from the 10-K (fiscal year ended Dec 31, 2024)**\n- Total revenues: $1,281,015K (company-operated shops $1,165,830K plus franchising and other $115,185K).\n- Cost of sales: $940,886K. The 10-K has no gross profit line on the face of the income statement, so I computed it.\n- Gross profit: $1,281,015K \u2212 $940,886K = $340,129K.\n- Gross margin: $340,129K \u00f7 $1,281,015K = 26.55% (0.265515).\n\n**Step 2: Project 2026 revenue (two years of 30% CAGR from 2024)**\n- Growth factor: 1.30\u00b2 = 1.69.\n- 2026 revenue: $1,281.015M \u00d7 1.69 = $2,164.92M.\n\n**Step 3: Compress gross margin by 500 bps**\n- 2026 margin: 26.55% \u2212 5.00 pts = 21.55% (0.215515).\n\n**Step 4: 2026 gross profit**\n- $2,164.92M \u00d7 0.215515 = $466.57M, which rounds to **$467 million**.\n\n**Assumptions:** \"500bps\" is read as 5 percentage points, and the margin is the computed gross margin (revenue less cost of sales, which includes occupancy, D&A and pre-opening costs), since the 10-K reports no gross profit line.\n\n**Sources:**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1866581/000186658125000048/bros-20241231.htm\",\n            \"name\": \"Dutch Bros Inc. (BROS) Form 10-K for fiscal year ended December 31, 2024\"\n        }\n    ]\n}",
+ "submitted": true,
+ "turns": 4,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 5,
+  "input_tokens": 14,
+  "output_tokens": 3186,
+  "cache_creation_input_tokens": 151144,
+  "cache_read_input_tokens": 23082,
+  "web_search_requests": 0,
+  "cost_usd": 0.097285
+ },
+ "cost_usd": 0.097285,
+ "elapsed_s": 20.7,
+ "harness_label": "static1"
+}

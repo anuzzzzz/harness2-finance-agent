@@ -1,0 +1,86 @@
+{
+ "task_id": "q37",
+ "label": "dom1",
+ "question": "As of Dec 31, 2024, what was Warner Discovery's (NASDQ: WBD) Total Restructuring Costs incurred as a result of its 2022 Merger?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/wbd-20241231.htm",
+      "key": "wbd10k"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: wbd10k. (563,397 characters)\nThe data_storage currently contains the following keys:\nwbd10k\n",
+     "is_error": false,
+     "elapsed_s": 1.07,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00084515
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this 10-K text, find the sentence(s) about Merger restructuring charges expected pre-tax range and the cumulative amount incurred as of December 31, 2024, and whether the program was substantially completed. Also find the income statement 'Restructuring and other charges' amounts for 2022, 2023, 2024. Quote exactly. {{wbd10k}}"
+     },
+     "output": "**Merger restructuring charges (MD&A, Business Overview):**\n\n> \"At that time, we expected to incur approximately $4.1 - $5.3 billion in pre-tax restructuring charges, of which we have incurred $4.7 billion as of December 31, 2024.\"\n\n> \"While our restructuring efforts are ongoing, the Merger-related restructuring program was substantially completed at the end of 2024.\"\n\nThe same sentences appear in Note 6 in similar form: \"While the Company's restructuring efforts are ongoing, the merger-related restructuring program was considered to be substantially completed as of December 31, 2024.\"\n\n**Income statement, \"Restructuring and other charges\" (Consolidated Statements of Operations, in millions):**\n\n> \"Restructuring and other charges447 585 3,757\"\n\n| Year | Amount (in millions) |\n|---|---|\n| 2024 | $447 |\n| 2023 | $585 |\n| 2022 | $3,757 |",
+     "is_error": false,
+     "elapsed_s": 7.16,
+     "cost_usd": 0.126954
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00017324000000000002
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Answer: About $4.7 billion (pre-tax) of Merger-related restructuring costs had been incurred as of December 31, 2024.\n\nBasis: I opened the FY2024 Form 10-K of Warner Bros. Discovery (CIK 1437107). In the MD&A business overview, the filing says the company expected to incur approximately $4.1 to $5.3 billion in pre-tax restructuring charges in connection with the 2022 Merger, \"of which we have incurred $4.7 billion as of December 31, 2024.\" It also states that the Merger-related restructuring program was substantially completed at the end of 2024, with efforts still ongoing. Note 6 repeats this, saying the merger-related restructuring program was considered substantially completed as of December 31, 2024.\n\nCross-check (not the stated figure): The Consolidated Statements of Operations line \"Restructuring and other charges\" shows $447 million (2024), $585 million (2023) and $3,757 million (2022), in millions of USD. These sum to $4,789 million (about $4.79 billion). This differs from the $4.7 billion the company labels as incurred under the program. The income-statement line is a broader \"restructuring and other\" caption, so it is not a direct reconciliation of the program total. The company's stated cumulative figure of $4.7 billion is therefore the answer, with the income-statement sum shown as a cross-check only.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/wbd-20241231.htm\",\n            \"name\": \"Warner Bros. Discovery FY2024 Form 10-K (wbd-20241231.htm)\"\n        }\n    ]\n}"
+     },
+     "output": "Answer: About $4.7 billion (pre-tax) of Merger-related restructuring costs had been incurred as of December 31, 2024.\n\nBasis: I opened the FY2024 Form 10-K of Warner Bros. Discovery (CIK 1437107). In the MD&A business overview, the filing says the company expected to incur approximately $4.1 to $5.3 billion in pre-tax restructuring charges in connection with the 2022 Merger, \"of which we have incurred $4.7 billion as of December 31, 2024.\" It also states that the Merger-related restructuring program was substantially completed at the end of 2024, with efforts still ongoing. Note 6 repeats this, saying the merger-related restructuring program was considered substantially completed as of December 31, 2024.\n\nCross-check (not the stated figure): The Consolidated Statements of Operations line \"Restructuring and other charges\" shows $447 million (2024), $585 million (2023) and $3,757 million (2022), in millions of USD. These sum to $4,789 million (about $4.79 billion). This differs from the $4.7 billion the company labels as incurred under the program. The income-statement line is a broader \"restructuring and other\" caption, so it is not a direct reconciliation of the program total. The company's stated cumulative figure of $4.7 billion is therefore the answer, with the income-statement sum shown as a cross-check only.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/wbd-20241231.htm\",\n            \"name\": \"Warner Bros. Discovery FY2024 Form 10-K (wbd-20241231.htm)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00051565
+  }
+ ],
+ "final_answer": "Answer: About $4.7 billion (pre-tax) of Merger-related restructuring costs had been incurred as of December 31, 2024.\n\nBasis: I opened the FY2024 Form 10-K of Warner Bros. Discovery (CIK 1437107). In the MD&A business overview, the filing says the company expected to incur approximately $4.1 to $5.3 billion in pre-tax restructuring charges in connection with the 2022 Merger, \"of which we have incurred $4.7 billion as of December 31, 2024.\" It also states that the Merger-related restructuring program was substantially completed at the end of 2024, with efforts still ongoing. Note 6 repeats this, saying the merger-related restructuring program was considered substantially completed as of December 31, 2024.\n\nCross-check (not the stated figure): The Consolidated Statements of Operations line \"Restructuring and other charges\" shows $447 million (2024), $585 million (2023) and $3,757 million (2022), in millions of USD. These sum to $4,789 million (about $4.79 billion). This differs from the $4.7 billion the company labels as incurred under the program. The income-statement line is a broader \"restructuring and other\" caption, so it is not a direct reconciliation of the program total. The company's stated cumulative figure of $4.7 billion is therefore the answer, with the income-statement sum shown as a cross-check only.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1437107/000143710725000031/wbd-20241231.htm\",\n            \"name\": \"Warner Bros. Discovery FY2024 Form 10-K (wbd-20241231.htm)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 3,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 4,
+  "input_tokens": 12,
+  "output_tokens": 1762,
+  "cache_creation_input_tokens": 207340,
+  "cache_read_input_tokens": 12524,
+  "web_search_requests": 0,
+  "cost_usd": 0.128489
+ },
+ "cost_usd": 0.128489,
+ "elapsed_s": 14.7,
+ "harness_label": "dom1"
+}

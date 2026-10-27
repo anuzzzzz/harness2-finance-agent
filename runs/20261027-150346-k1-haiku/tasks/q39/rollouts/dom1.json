@@ -1,0 +1,126 @@
+{
+ "task_id": "q39",
+ "label": "dom1",
+ "question": "What financial metrics does Delta Airlines (NYSE: DAL) guide on in its quarterly earnings reports?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "guidance_metrics_inventory"
+     },
+     "output": "---\nname: guidance_metrics_inventory\ndescription: Answer \"what metrics does company X guide on in its earnings reports\" by reading the outlook section of the latest earnings release and supplemental deck, then listing each guided metric with its period, basis and latest range.\n---\nANALYTIC MOVE: classify and list. Input: the company's most recent earnings release and any supplemental or investor deck filed as of the question's date. Result: the complete list of metrics the company gives forward ranges or targets for, each with its period, basis and unit.\n\n1. Find the controlling documents.\n   - Open the latest earnings release (8-K EX-99.1) for the most recent completed quarter before the as-of date. Open the supplemental or investor-update exhibit (often EX-99.2) if the filing has one.\n   - Ignore filings dated after the as-of date. Search results often surface later quarters.\n   - Guidance is usually in an \"Outlook\" or \"Guidance\" section, a table at the end of the release or deck, or the CFO prepared remarks. Do not infer the list from news snippets or the earnings-call Q&A, since journalists report only the headline items (usually EPS).\n2. Build the list by asking retrieve_information for every guided line: \"list every forward-looking metric in the outlook or guidance section, with its period (next quarter or full year), range, and whether it is GAAP or adjusted\". Ask a second time for items the first answer may have missed. Common categories are revenue or revenue growth, capacity or volume, unit costs, margin, fuel or other key input prices, EPS, non-operating items, tax rate, capital expenditure, free cash flow, and leverage or debt targets.\n3. Separate the metrics into three groups.\n   - Next-quarter guidance (the quarterly outlook table).\n   - Full-year guidance (often a different set, for example free cash flow, capex and leverage appear only for the year).\n   - Longer-term targets (multi-year, investor-day items). Label each metric with its group.\n4. Record for each metric: the exact name as the company writes it, the unit (percent change versus the prior-year period, cents or dollars per share, $ per gallon, $ billions), the GAAP or adjusted basis, and the range. Keep \"year over year growth\" separate from \"absolute level\". Never convert or restate a range.\n5. Do not mix periods. A quarter guided in January is not the same as a full year guided at the same time. If the question is generic (\"what does it guide on\"), give the structure (the full list) first, then the latest ranges as illustrations, labelled with the date of the release they came from.\n6. Consistency checks before submitting.\n   - Each metric you list was seen in the opened text. If you add one from another source (a transcript, a prior-year deck), say which document and mark it as not in the latest release.\n   - If the release and the deck disagree on the metric list, report both and say which is more recent.\n   - Do not claim that a metric is not guided unless you searched the outlook table and the remarks and found nothing. Say \"not found in the opened documents\" instead.\n7. Answer contract: a headline sentence; a table or list of metrics grouped as quarterly, full-year and longer-term, each with unit, basis and latest range with its period; the release and date; and sources limited to documents actually opened and retrieved from. Write plain text with no citation markup.\n\nTask leads (Delta Air Lines, NYSE: DAL; taken from search results only, so confirm in the opened text). The December-quarter 2024 earnings release is likely https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm (filed January 2025, the latest before April 7, 2025). The January 2024 supplemental deck is https://www.sec.gov/Archives/edgar/data/27904/000168316824000244/delta_ex9902.htm, which is the prior-year version and not the latest. Check whether the January 2025 filing has its own EX-99.2 deck or investor-update exhibit. Do not use filings dated after April 7, 2025 (for example the one that reports the March 2025 quarter). Earlier snippets suggested the guided items include revenue growth, operating margin, EPS, capacity, non-fuel unit cost, fuel price per gallon, free cash flow and leverage. That list is not yet verified in opened text, so confirm each one and add any that appear (for example non-operating expense or tax rate).\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00077465
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm",
+      "key": "dal_q4_2024"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: dal_q4_2024. (52,998 characters)\nThe data_storage currently contains the following keys:\ndal_q4_2024\n",
+     "is_error": false,
+     "elapsed_s": 0.64,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00031128499999999996
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "List every forward-looking metric in the outlook or guidance section of this earnings release, with its period (first quarter 2025 or full year 2025), range, unit, and whether it is GAAP or adjusted. Also list any other guidance items (e.g., capex, free cash flow, leverage, tax rate, non-operating expense, capacity, fuel price, non-fuel unit cost). Quote the section headings used. {{dal_q4_2024}}"
+     },
+     "output": "## Forward-looking metrics in the outlook/guidance section\n\nThe release does not label each guidance line as GAAP or adjusted. Footnote 1 on the \"Financial Guidance\" heading says the guidance uses \"Non-GAAP measures,\" and the text confirms that for EPS and revenue. The \"Basis\" column below reflects that footnote and the text, so the adjusted classifications for operating margin and EPS are inferred from the footnote rather than stated line by line.\n\n| Metric | Period | Range / Value | Unit | GAAP or Adjusted | Source heading |\n|---|---|---|---|---|---|\n| Earnings per share | FY 2025 | Greater than $7.35 | $ per diluted share | Adjusted (non-GAAP per footnote 1; text says \"On a non-GAAP basis\" growth is >19%) | \"FY 2025 Forecast\"; \"Financial Guidance\" |\n| Earnings per share growth YoY | FY 2025 | Greater than 10% (vs. normalized 2024 baseline excluding the 45\u00a2 CrowdStrike impact) | % YoY | Adjusted (non-GAAP per footnote 1) | \"FY 2025 Forecast\"; \"Financial Guidance\" |\n| Free cash flow | FY 2025 | Greater than $4 billion | $ billions | Adjusted/non-GAAP (FCF is defined only in Note A) | \"FY 2025 Forecast\" |\n| Gross leverage (adjusted debt to EBITDAR) | FY 2025 | 2x or less | multiple (x) | Adjusted/non-GAAP (footnote 3; defined in Note A) | \"FY 2025 Forecast\" |\n| Total revenue growth YoY | 1Q 2025 | Up 7% to 9% | % YoY | Adjusted (text: \"March quarter adjusted revenue to be 7 to 9 percent higher\") | \"1Q25 Forecast\"; \"Revenue Environment and Outlook\" |\n| Operating margin | 1Q 2025 | 6% to 8% | % | Adjusted (non-GAAP per footnote 1; not labeled line by line) | \"1Q25 Forecast\" |\n| Earnings per share | 1Q 2025 | $0.70 to $1.00 | $ per diluted share | Adjusted (non-GAAP per footnote 1) | \"1Q25 Forecast\" |\n\n**Other forward-looking items in the release:**\n\n- **Pre-tax income, FY 2025:** The CEO quote in the opening section says \"pre-tax income greater than $6 billion.\" It is not in the guidance table, and the release does not state whether it is GAAP or adjusted. Treat it as unclassified.\n- **Non-fuel unit cost (CASM-Ex), FY 2025:** \"Continue in the low-single digits for the full year 2025.\" Unit: % YoY. Range is qualitative. Non-GAAP per Note A. Heading: \"Cost Performance and Outlook.\"\n- **Free cash flow, 3\u20135 year target:** $3\u20135 billion. Long-term target introduced at the November 2024 Investor Day. Non-GAAP.\n- **Earnings per share, 3\u20135 year target:** 10% average YoY growth. Long-term target, non-GAAP.\n- **Gross leverage, long-term target:** 1x. Long-term target, adjusted debt to EBITDAR. The \"Balance Sheet, Cash and Liquidity\" section says leverage should move toward this target after reaching 2x or less in 2025.\n\n**Guidance items the release does not provide (or only describes qualitat",
+     "is_error": false,
+     "elapsed_s": 18.54,
+     "cost_usd": 0.004729
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00019402000000000002
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this release: (1) Which guidance items are NOT provided (e.g., full-year capacity, full-year revenue growth, fuel price per gallon, non-operating expense, tax rate, capex)? (2) Quote the exact outlook table rows for 1Q25 and FY 2025, including any capacity (ASM) or fuel rows, and any footnote 1 text on non-GAAP. {{dal_q4_2024}}"
+     },
+     "output": "**(1) Guidance not provided in this release**\n\nThe release gives no numeric guidance for any of these:\n\n- **Full-year 2025 capacity (ASM) growth:** Not given. Management only says 2025 will see \"slower capacity growth,\" with no figure.\n- **Full-year 2025 revenue growth:** Not given. Only the 1Q25 total revenue growth range is provided.\n- **Fuel price per gallon:** Not given for 1Q25 or FY 2025.\n- **Non-operating expense:** Not given.\n- **Tax rate:** Not given.\n- **Capital expenditures:** Not given. Only free cash flow is guided.\n\nThe release also omits 1Q25 capacity and fuel guidance. Some items are only qualitative: non-fuel unit cost growth is expected to be \"in the low-single digits\" for FY 2025, and the CEO cites pre-tax income \"greater than $6 billion\" in a quote rather than in the outlook table.\n\n**(2) Outlook table rows and footnote 1**\n\nThe outlook section is titled \"Financial Guidance1\" and the table reads:\n\n*FY 2025 Forecast2 / 3-5 Year Targets4*\n- Earnings Per Share YoY: Greater than 10% / 10% average\n- Free Cash Flow ($B): Greater than $4 / $3 - $5\n- Gross Leverage3: 2x or less / 1x\n\n*1Q25 Forecast*\n- Total Revenue YoY: Up 7% - 9%\n- Operating Margin: 6% - 8%\n- Earnings Per Share: $0.70 - $1.00\n\nNo ASM or fuel rows appear in the table.\n\nFootnote 1 text: \"Non-GAAP measures; Refer to Non-GAAP reconciliations for historical comparison figures\"\n\nThe release also has footnotes 2\u20134: (2) \"Year-over-year EPS growth excludes the 45-cent impact of the CrowdStrike-caused outage in 2024\"; (3) \"Adjusted debt to EBITDAR\"; (4) \"Introduced at November 2024 Investor Day.\"",
+     "is_error": false,
+     "elapsed_s": 6.57,
+     "cost_usd": 0.003518
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00040338
+  },
+  {
+   "turn": 5,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Headline: In its most recent earnings release before April 7, 2025 (the December-quarter 2024 results, released January 2025), Delta Air Lines guides on a short list of non-GAAP metrics: EPS, total revenue growth, operating margin, free cash flow and gross leverage, with qualitative comments on non-fuel unit cost. It gives no numeric guidance on capacity, fuel price, non-operating expense, tax rate or capex in that release.\n\nSource document: Delta's Q4 2024 earnings release (Form 8-K, Exhibit 99.1), dated January 2025. I did not find a separate EX-99.2 investor deck in the materials I opened, so this list is based on the release only.\n\nGuidance table, grouped by period (all items footnoted as non-GAAP):\n\nNext quarter (1Q 2025 forecast):\n- Total revenue growth, year over year: up 7% to 9% (the release text describes this as adjusted revenue growth)\n- Operating margin: 6% to 8% (non-GAAP per footnote 1; not labeled line by line)\n- Earnings per share: $0.70 to $1.00 per diluted share\n\nFull year (FY 2025 forecast):\n- Earnings per share growth, year over year: greater than 10%, measured against a 2024 baseline that excludes the 45-cent CrowdStrike-related impact (footnote 2)\n- Earnings per share level: one extraction reported \"greater than $7.35\" under the FY 2025 forecast heading, but the table extraction did not show that figure, so I treat it as unconfirmed\n- Free cash flow: greater than $4 billion\n- Gross leverage (adjusted debt to EBITDAR): 2x or less (footnote 3)\n- Non-fuel unit cost (CASM-Ex): qualitative, expected to rise in the low-single digits year over year\n- Pre-tax income: the CEO's quote says \"greater than $6 billion.\" This is outside the guidance table and its GAAP or non-GAAP basis is not stated.\n\nLonger-term targets (3 to 5 year, introduced at the November 2024 Investor Day, footnote 4):\n- Earnings per share: 10% average annual growth\n- Free cash flow: $3 billion to $5 billion\n- Gross leverage: 1x\n\nNot provided in this release: full-year 2025 capacity (ASM) growth (only described as \"slower capacity growth\"), full-year 2025 revenue growth, first-quarter capacity and fuel guidance, fuel price per gallon, non-operating expense, tax rate and capital expenditures.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm\",\n            \"name\": \"Delta Air Lines Q4 2024 earnings release (8-K Exhibit 99.1), January 2025\"\n        }\n    ]\n}"
+     },
+     "output": "Headline: In its most recent earnings release before April 7, 2025 (the December-quarter 2024 results, released January 2025), Delta Air Lines guides on a short list of non-GAAP metrics: EPS, total revenue growth, operating margin, free cash flow and gross leverage, with qualitative comments on non-fuel unit cost. It gives no numeric guidance on capacity, fuel price, non-operating expense, tax rate or capex in that release.\n\nSource document: Delta's Q4 2024 earnings release (Form 8-K, Exhibit 99.1), dated January 2025. I did not find a separate EX-99.2 investor deck in the materials I opened, so this list is based on the release only.\n\nGuidance table, grouped by period (all items footnoted as non-GAAP):\n\nNext quarter (1Q 2025 forecast):\n- Total revenue growth, year over year: up 7% to 9% (the release text describes this as adjusted revenue growth)\n- Operating margin: 6% to 8% (non-GAAP per footnote 1; not labeled line by line)\n- Earnings per share: $0.70 to $1.00 per diluted share\n\nFull year (FY 2025 forecast):\n- Earnings per share growth, year over year: greater than 10%, measured against a 2024 baseline that excludes the 45-cent CrowdStrike-related impact (footnote 2)\n- Earnings per share level: one extraction reported \"greater than $7.35\" under the FY 2025 forecast heading, but the table extraction did not show that figure, so I treat it as unconfirmed\n- Free cash flow: greater than $4 billion\n- Gross leverage (adjusted debt to EBITDAR): 2x or less (footnote 3)\n- Non-fuel unit cost (CASM-Ex): qualitative, expected to rise in the low-single digits year over year\n- Pre-tax income: the CEO's quote says \"greater than $6 billion.\" This is outside the guidance table and its GAAP or non-GAAP basis is not stated.\n\nLonger-term targets (3 to 5 year, introduced at the November 2024 Investor Day, footnote 4):\n- Earnings per share: 10% average annual growth\n- Free cash flow: $3 billion to $5 billion\n- Gross leverage: 1x\n\nNot provided in this release: full-year 2025 capacity (ASM) growth (only described as \"slower capacity growth\"), full-year 2025 revenue growth, first-quarter capacity and fuel guidance, fuel price per gallon, non-operating expense, tax rate and capital expenditures.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm\",\n            \"name\": \"Delta Air Lines Q4 2024 earnings release (8-K Exhibit 99.1), January 2025\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000897735
+  }
+ ],
+ "final_answer": "Headline: In its most recent earnings release before April 7, 2025 (the December-quarter 2024 results, released January 2025), Delta Air Lines guides on a short list of non-GAAP metrics: EPS, total revenue growth, operating margin, free cash flow and gross leverage, with qualitative comments on non-fuel unit cost. It gives no numeric guidance on capacity, fuel price, non-operating expense, tax rate or capex in that release.\n\nSource document: Delta's Q4 2024 earnings release (Form 8-K, Exhibit 99.1), dated January 2025. I did not find a separate EX-99.2 investor deck in the materials I opened, so this list is based on the release only.\n\nGuidance table, grouped by period (all items footnoted as non-GAAP):\n\nNext quarter (1Q 2025 forecast):\n- Total revenue growth, year over year: up 7% to 9% (the release text describes this as adjusted revenue growth)\n- Operating margin: 6% to 8% (non-GAAP per footnote 1; not labeled line by line)\n- Earnings per share: $0.70 to $1.00 per diluted share\n\nFull year (FY 2025 forecast):\n- Earnings per share growth, year over year: greater than 10%, measured against a 2024 baseline that excludes the 45-cent CrowdStrike-related impact (footnote 2)\n- Earnings per share level: one extraction reported \"greater than $7.35\" under the FY 2025 forecast heading, but the table extraction did not show that figure, so I treat it as unconfirmed\n- Free cash flow: greater than $4 billion\n- Gross leverage (adjusted debt to EBITDAR): 2x or less (footnote 3)\n- Non-fuel unit cost (CASM-Ex): qualitative, expected to rise in the low-single digits year over year\n- Pre-tax income: the CEO's quote says \"greater than $6 billion.\" This is outside the guidance table and its GAAP or non-GAAP basis is not stated.\n\nLonger-term targets (3 to 5 year, introduced at the November 2024 Investor Day, footnote 4):\n- Earnings per share: 10% average annual growth\n- Free cash flow: $3 billion to $5 billion\n- Gross leverage: 1x\n\nNot provided in this release: full-year 2025 capacity (ASM) growth (only described as \"slower capacity growth\"), full-year 2025 revenue growth, first-quarter capacity and fuel guidance, fuel price per gallon, non-operating expense, tax rate and capital expenditures.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/27904/000168316825000182/delta_ex9901.htm\",\n            \"name\": \"Delta Air Lines Q4 2024 earnings release (8-K Exhibit 99.1), January 2025\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 5,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 7,
+  "input_tokens": 20,
+  "output_tokens": 7868,
+  "cache_creation_input_tokens": 52776,
+  "cache_read_input_tokens": 29437,
+  "web_search_requests": 0,
+  "cost_usd": 0.010827
+ },
+ "cost_usd": 0.010827,
+ "elapsed_s": 38.1,
+ "harness_label": "dom1"
+}

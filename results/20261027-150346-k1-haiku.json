@@ -1,0 +1,1018 @@
+{
+ "run_id": "20261027-150346-k1-haiku",
+ "models": {
+  "executor": "claude-haiku-5-5",
+  "editor": "claude-sonnet-5-5",
+  "judge": "claude-sonnet-5-5"
+ },
+ "k": 1,
+ "n_tasks": 50,
+ "web_search": true,
+ "base": {
+  "correct": 0.62,
+  "pass_rate": 0.7718659999999999,
+  "delivered": 1.0,
+  "mean_cost_usd": 0.08779482
+ },
+ "harness2": {
+  "correct": 0.72,
+  "pass_rate": 0.837586,
+  "delivered": 1.0,
+  "mean_task_cost_usd": 1.05123242,
+  "mean_editor_cost_usd": 0.32045831999999996
+ },
+ "paired": {
+  "h2_better": 8,
+  "base_better": 1,
+  "tie": 41,
+  "sign_test_p": 0.0390625,
+  "mean_pass_rate_diff": 0.06572,
+  "diff_ci95": [
+   0.015053999999999998,
+   0.132666
+  ]
+ },
+ "control": {
+  "correct": 0.62,
+  "pass_rate": 0.795864,
+  "delivered": 1.0,
+  "base_rollouts_per_task": 4.0,
+  "base_pass_rate_mean_of_reps": 0.7807835,
+  "base_pass_rate_within_task_sd": 0.06994187366502148,
+  "oracle_best_of_base": {
+   "correct": 0.7,
+   "pass_rate": 0.8498640000000001
+  },
+  "paired_vs_h2": {
+   "h2_better": 6,
+   "control_better": 3,
+   "tie": 41,
+   "sign_test_p": 0.5078125
+  }
+ },
+ "static": {
+  "correct": 0.68,
+  "pass_rate": 0.822038,
+  "delivered": 1.0,
+  "mean_cost_usd": 0.11170224,
+  "paired_vs_h2": {
+   "h2_better": 6,
+   "static_better": 5,
+   "tie": 39,
+   "sign_test_p": 1.0
+  },
+  "paired_vs_base": {
+   "static_better": 9,
+   "base_better": 3
+  }
+ },
+ "judge": {
+  "unanimity": 0.9705,
+  "parse_failures": 11
+ },
+ "answer_chars": {
+  "base": 2690.4,
+  "h2": 2394.94
+ },
+ "any_of_k": {
+  "base": 0.62,
+  "finals": 0.72
+ },
+ "by_category": {
+  "Adjustments": {
+   "n": 4,
+   "base_correct": 0.75,
+   "h2_correct": 0.75,
+   "base_pass_rate": 0.75,
+   "h2_pass_rate": 0.75
+  },
+  "Beat or Miss": {
+   "n": 7,
+   "base_correct": 0.42857142857142855,
+   "h2_correct": 0.5714285714285714,
+   "base_pass_rate": 0.6666714285714285,
+   "h2_pass_rate": 0.7321428571428571
+  },
+  "Complex Retrieval": {
+   "n": 3,
+   "base_correct": 0.3333333333333333,
+   "h2_correct": 0.6666666666666666,
+   "base_pass_rate": 0.9055666666666666,
+   "h2_pass_rate": 0.9444333333333333
+  },
+  "Financial Modeling  Projections": {
+   "n": 4,
+   "base_correct": 0.5,
+   "h2_correct": 0.5,
+   "base_pass_rate": 0.831825,
+   "h2_pass_rate": 0.856825
+  },
+  "Market Analysis": {
+   "n": 3,
+   "base_correct": 0.0,
+   "h2_correct": 0.0,
+   "base_pass_rate": 0.28306666666666663,
+   "h2_pass_rate": 0.3201
+  },
+  "Numerical Reasoning": {
+   "n": 8,
+   "base_correct": 0.75,
+   "h2_correct": 1.0,
+   "base_pass_rate": 0.8125,
+   "h2_pass_rate": 1.0
+  },
+  "Simple retrieval - Qualitative": {
+   "n": 9,
+   "base_correct": 0.7777777777777778,
+   "h2_correct": 0.8888888888888888,
+   "base_pass_rate": 0.8518555555555555,
+   "h2_pass_rate": 0.9629666666666667
+  },
+  "Simple retrieval - Quantitative": {
+   "n": 9,
+   "base_correct": 0.8888888888888888,
+   "h2_correct": 0.8888888888888888,
+   "base_pass_rate": 0.8888888888888888,
+   "h2_pass_rate": 0.8888888888888888
+  },
+  "Trends": {
+   "n": 3,
+   "base_correct": 0.3333333333333333,
+   "h2_correct": 0.3333333333333333,
+   "base_pass_rate": 0.6222333333333333,
+   "h2_pass_rate": 0.6222333333333333
+  }
+ },
+ "by_stage": {
+  "agg1": {
+   "n": 50,
+   "correct": 0.72,
+   "pass_rate": 0.837586,
+   "delivered": 1.0,
+   "mean_cost_usd": 0.1084059,
+   "keep_base": 0.06
+  },
+  "base1": {
+   "n": 50,
+   "correct": 0.62,
+   "pass_rate": 0.7718659999999999,
+   "delivered": 1.0,
+   "mean_cost_usd": 0.08779482,
+   "keep_base": null
+  },
+  "ctl2": {
+   "n": 50,
+   "correct": 0.62,
+   "pass_rate": 0.798364,
+   "delivered": 1.0,
+   "mean_cost_usd": 0.0721548,
+   "keep_base": null
+  },
+  "ctl3": {
+   "n": 50,
+   "correct": 0.66,
+   "pass_rate": 0.7919719999999999,
+   "delivered": 1.0,
+   "mean_cost_usd": 0.07080086,
+   "keep_base": null
+  },
+  "ctl4": {
+   "n": 50,
+   "correct": 0.64,
+   "pass_rate": 0.7609319999999999,
+   "delivered": 1.0,
+   "mean_cost_usd": 0.0726648,
+   "keep_base": null
+  },
+  "dom1": {
+   "n": 50,
+   "correct": 0.68,
+   "pass_rate": 0.8155079999999999,
+   "delivered": 1.0,
+   "mean_cost_usd": 0.10563832,
+   "keep_base": 0.06
+  },
+  "inv1": {
+   "n": 50,
+   "correct": 0.64,
+   "pass_rate": 0.805952,
+   "delivered": 1.0,
+   "mean_cost_usd": 0.10161237999999999,
+   "keep_base": 0.06
+  },
+  "static1": {
+   "n": 50,
+   "correct": 0.68,
+   "pass_rate": 0.822038,
+   "delivered": 1.0,
+   "mean_cost_usd": 0.11170224,
+   "keep_base": null
+  }
+ },
+ "library_entries": 47,
+ "errors": 0,
+ "judge_cost_usd": 5.1954,
+ "total_cost_usd": 57.757,
+ "tasks": [
+  {
+   "task_id": "q07",
+   "category": "Simple retrieval - Qualitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.253692
+  },
+  {
+   "task_id": "q44",
+   "category": "Simple retrieval - Quantitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.562448
+  },
+  {
+   "task_id": "q19",
+   "category": "Numerical Reasoning",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.956829
+  },
+  {
+   "task_id": "q09",
+   "category": "Beat or Miss",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.408879
+  },
+  {
+   "task_id": "q45",
+   "category": "Adjustments",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.84917
+  },
+  {
+   "task_id": "q30",
+   "category": "Financial Modeling  Projections",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 1.661965
+  },
+  {
+   "task_id": "q04",
+   "category": "Complex Retrieval",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.556635
+  },
+  {
+   "task_id": "q42",
+   "category": "Market Analysis",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.1667,
+    "delivered": true
+   },
+   "h2": {
+    "correct": false,
+    "pass_rate": 0.1667,
+    "delivered": true
+   },
+   "cost_usd": 2.313649
+  },
+  {
+   "task_id": "q14",
+   "category": "Trends",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.1667,
+    "delivered": true
+   },
+   "h2": {
+    "correct": false,
+    "pass_rate": 0.1667,
+    "delivered": true
+   },
+   "cost_usd": 1.5119
+  },
+  {
+   "task_id": "q05",
+   "category": "Simple retrieval - Qualitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.422408
+  },
+  {
+   "task_id": "q11",
+   "category": "Simple retrieval - Quantitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 1.038415
+  },
+  {
+   "task_id": "q20",
+   "category": "Numerical Reasoning",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.5,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 1.037875
+  },
+  {
+   "task_id": "q47",
+   "category": "Beat or Miss",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.620084
+  },
+  {
+   "task_id": "q35",
+   "category": "Adjustments",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.517404
+  },
+  {
+   "task_id": "q12",
+   "category": "Financial Modeling  Projections",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.7273,
+    "delivered": true
+   },
+   "h2": {
+    "correct": false,
+    "pass_rate": 0.7273,
+    "delivered": true
+   },
+   "cost_usd": 1.06908
+  },
+  {
+   "task_id": "q16",
+   "category": "Complex Retrieval",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.9167,
+    "delivered": true
+   },
+   "h2": {
+    "correct": false,
+    "pass_rate": 0.8333,
+    "delivered": true
+   },
+   "cost_usd": 2.297461
+  },
+  {
+   "task_id": "q01",
+   "category": "Market Analysis",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.1111,
+    "delivered": true
+   },
+   "h2": {
+    "correct": false,
+    "pass_rate": 0.2222,
+    "delivered": true
+   },
+   "cost_usd": 2.178173
+  },
+  {
+   "task_id": "q17",
+   "category": "Trends",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 1.737023
+  },
+  {
+   "task_id": "q25",
+   "category": "Simple retrieval - Qualitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.6667,
+    "delivered": true
+   },
+   "h2": {
+    "correct": false,
+    "pass_rate": 0.6667,
+    "delivered": true
+   },
+   "cost_usd": 0.657572
+  },
+  {
+   "task_id": "q34",
+   "category": "Simple retrieval - Quantitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.785625
+  },
+  {
+   "task_id": "q24",
+   "category": "Numerical Reasoning",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.748234
+  },
+  {
+   "task_id": "q48",
+   "category": "Beat or Miss",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.625,
+    "delivered": true
+   },
+   "h2": {
+    "correct": false,
+    "pass_rate": 0.625,
+    "delivered": true
+   },
+   "cost_usd": 0.573759
+  },
+  {
+   "task_id": "q40",
+   "category": "Adjustments",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.92787
+  },
+  {
+   "task_id": "q43",
+   "category": "Financial Modeling  Projections",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.6,
+    "delivered": true
+   },
+   "h2": {
+    "correct": false,
+    "pass_rate": 0.7,
+    "delivered": true
+   },
+   "cost_usd": 1.390326
+  },
+  {
+   "task_id": "q06",
+   "category": "Complex Retrieval",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.8,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.689928
+  },
+  {
+   "task_id": "q46",
+   "category": "Market Analysis",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.5714,
+    "delivered": true
+   },
+   "h2": {
+    "correct": false,
+    "pass_rate": 0.5714,
+    "delivered": true
+   },
+   "cost_usd": 2.595855
+  },
+  {
+   "task_id": "q02",
+   "category": "Trends",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.7,
+    "delivered": true
+   },
+   "h2": {
+    "correct": false,
+    "pass_rate": 0.7,
+    "delivered": true
+   },
+   "cost_usd": 0.61749
+  },
+  {
+   "task_id": "q18",
+   "category": "Simple retrieval - Qualitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.866917
+  },
+  {
+   "task_id": "q32",
+   "category": "Simple retrieval - Quantitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.44892
+  },
+  {
+   "task_id": "q10",
+   "category": "Numerical Reasoning",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 1.212745
+  },
+  {
+   "task_id": "q38",
+   "category": "Beat or Miss",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": false,
+    "pass_rate": 0.0,
+    "delivered": true
+   },
+   "cost_usd": 0.502744
+  },
+  {
+   "task_id": "q33",
+   "category": "Adjustments",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": false,
+    "pass_rate": 0.0,
+    "delivered": true
+   },
+   "cost_usd": 1.42021
+  },
+  {
+   "task_id": "q31",
+   "category": "Financial Modeling  Projections",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.477003
+  },
+  {
+   "task_id": "q39",
+   "category": "Simple retrieval - Qualitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.474183
+  },
+  {
+   "task_id": "q08",
+   "category": "Simple retrieval - Quantitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": false,
+    "pass_rate": 0.0,
+    "delivered": true
+   },
+   "cost_usd": 0.927017
+  },
+  {
+   "task_id": "q13",
+   "category": "Numerical Reasoning",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.974489
+  },
+  {
+   "task_id": "q03",
+   "category": "Beat or Miss",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.6667,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.51108
+  },
+  {
+   "task_id": "q23",
+   "category": "Simple retrieval - Qualitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.860962
+  },
+  {
+   "task_id": "q37",
+   "category": "Simple retrieval - Quantitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 1.366279
+  },
+  {
+   "task_id": "q15",
+   "category": "Numerical Reasoning",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 1.555126
+  },
+  {
+   "task_id": "q49",
+   "category": "Beat or Miss",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.375,
+    "delivered": true
+   },
+   "h2": {
+    "correct": false,
+    "pass_rate": 0.5,
+    "delivered": true
+   },
+   "cost_usd": 0.904538
+  },
+  {
+   "task_id": "q29",
+   "category": "Simple retrieval - Qualitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 1.909241
+  },
+  {
+   "task_id": "q36",
+   "category": "Simple retrieval - Quantitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.704725
+  },
+  {
+   "task_id": "q26",
+   "category": "Numerical Reasoning",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.706314
+  },
+  {
+   "task_id": "q50",
+   "category": "Beat or Miss",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.643993
+  },
+  {
+   "task_id": "q27",
+   "category": "Simple retrieval - Qualitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 1.28923
+  },
+  {
+   "task_id": "q28",
+   "category": "Simple retrieval - Quantitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.405747
+  },
+  {
+   "task_id": "q22",
+   "category": "Numerical Reasoning",
+   "chosen": "agg1",
+   "base": {
+    "correct": false,
+    "pass_rate": 0.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 3.556152
+  },
+  {
+   "task_id": "q21",
+   "category": "Simple retrieval - Qualitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 1.437294
+  },
+  {
+   "task_id": "q41",
+   "category": "Simple retrieval - Quantitative",
+   "chosen": "agg1",
+   "base": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "h2": {
+    "correct": true,
+    "pass_rate": 1.0,
+    "delivered": true
+   },
+   "cost_usd": 0.426963
+  }
+ ]
+}

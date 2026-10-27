@@ -1,0 +1,3 @@
+<notes>
+KEEP_BASE. The single base rollout (base1) searched twice and found Ellie (Elinor) Mertz as CFO. The 8-K announced her appointment effective March 1, 2024, and the FY2024 10-K signed February 13, 2025 lists her as CFO. The answer was correct and gave dated evidence and sources. It also excluded post-April-7-2025 documents correctly. No divergence, repeated failure, or visible risk argues for a change. A skill or always-on text for this single-fact lookup would only add context cost, and putting this task's facts into durable memory would create a wrong anchor for later tasks.
+</notes>

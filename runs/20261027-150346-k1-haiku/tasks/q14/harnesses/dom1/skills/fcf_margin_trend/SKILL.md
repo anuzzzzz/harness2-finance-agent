@@ -1,0 +1,18 @@
+---
+name: fcf_margin_trend
+description: Compute free cash flow (CFO minus capex) and FCF margin (FCF / revenue) for several fiscal years and describe the trend, with consistent capex definition and flagged distortions.
+---
+ANALYTIC MOVE: calculate then explain a trend. For each fiscal year: FCF = net cash provided by operating activities - capex; FCF margin = FCF / total revenue. Then state the direction year to year and over the whole span.
+
+1. Inputs, each retrieved from the cash-flow statement and income statement (not from memory), for every year asked: CFO, each investing-line capex item, total revenue. A 10-K carries three years of both statements, so the latest 10-K covers a 3-year window; open the older 10-K too if you need to confirm a year or if figures may have been recast.
+2. Capex definition. Name the lines used. Check the MD&A liquidity section for the company's own stated capex total and reconcile to it. Capitalized software is often inside "purchases of intangible assets" or a "capitalized software" line, not "purchases of property and equipment". Headline capex = PP&E purchases plus capitalized software / intangible purchases (the company-stated total when MD&A gives one). Because "capex" is ambiguous, also show the margin on PP&E-only as a one-line labelled alternate, and say whether the trend direction changes. Do not include acquisitions, investments or purchases of securities.
+3. Basis and period checks. Revenue and CFO must cover the same scope: if a business was moved to discontinued operations, the revenue line may be continuing operations only while the cash-flow statement still includes the discontinued business. Say so. Check units (millions) and that each figure's fiscal year matches the question.
+4. Distortions. A margin above 100% or a swing of more than ~10x signals a one-off (e.g. inventory liquidation, working-capital release, litigation settlement). Identify the cause from the MD&A cash-flow discussion, quantify it (e.g. change in inventory), and give the trend both as reported and with the distorted year flagged. Do not drop the year or smooth it silently.
+5. Compute with unrounded inputs; round only final margins to two decimals. Give FCF in dollars and margin in percent for every year, plus the change in percentage points between years.
+6. Answer contract: table of CFO, capex lines, FCF, revenue, margin per year; formulas with the arithmetic; trend sentence (direction year over year and end to end); distortion note; the capex-definition note; sources limited to documents actually opened.
+
+Task facts (Zillow Group, CIK 1617640; retrieved in a prior run from the FY2024 and FY2023 10-Ks; re-confirm in the text), $ millions, FY2022 / FY2023 / FY2024:
+- CFO 4,504 / 354 / 428. Purchases of property and equipment 115 / 135 / 143. Purchases of intangible assets (includes capitalized internal-use software) 25 / 30 / 28. Company-stated 2024 capex in MD&A: 171.
+- Total revenue 1,958 / 1,945 / 2,236 (continuing operations; Zillow Offers is wound down and discontinued, but its cash flows remain in the cash-flow statement).
+- FY2022 CFO is inflated by about 3,904 of decrease in inventory from the Zillow Offers wind-down, so the FY2022 margin (about 222.9% with capex 140) is not comparable to FY2023 (about 9.7% with capex 165) and FY2024 (about 11.5% with capex 171). PP&E-only alternates: about 224.1%, 11.3%, 12.7%.
+- 10-K URLs: FY2024 https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm ; FY2023 https://www.sec.gov/Archives/edgar/data/1617640/000161764024000022/z-20231231.htm ; FY2022 https://www.sec.gov/Archives/edgar/data/1617640/000161764023000010/z-20221231.htm . List the FY2022 filing as a source only if you opened it.

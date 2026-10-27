@@ -1,0 +1,13 @@
+---
+name: period_mix_from_filing
+description: Split a company's volume or revenue between categories (for example purchase vs refinance originations) over a "last N months as of <date>" window, using the latest periodic filing's category table, with shares computed and period-aligned.
+---
+ANALYTIC MOVE: classify and calculate. Inputs are the category amounts for the period the question names. Result is each category's dollars, its share of the total, and a check that the categories sum to the reported total.
+
+1. Resolve the window. "Last 9 months as of <date>" means the year-to-date period of the latest 10-Q filed on or before that date. Check the filing date and the period end date. Say which period you chose and why, for example "nine months ended Sep 30, 2024, from the 10-Q filed 2024-11-12". Do not substitute the quarter alone or the prior-year column. Give the quarter and prior year only as labelled context after the answer.
+2. Source. Use the filing's own category table (for a mortgage lender, the 10-Q Item 2 MD&A "Key Performance Indicators / Loan origination and sales" table, "Loan originations by purpose"). Do not take the split from a press-release sentence or a search snippet. The release gives rounded quarterly shares, not the nine-month split. Read the table through parse_html_page and retrieve_information, and if the figures matter, ask a second narrow retrieval for the exact table row labels and the column headers (three months vs nine months, 2024 vs 2023).
+3. Units. Check the unit in the table header ("Dollars in thousands" means $12,057,993 is $12.06B). Do not mix origination dollars with unit counts, locked volume, or funded-and-sold volume.
+4. Calculation. Share = category / reported total, computed unrounded and rounded only at the end. Confirm that category + category = reported total. If they do not sum, there is an "other" category, so say so.
+5. Answer contract. Provide: the period; each category's dollars with units; each share to two decimals; the total; the arithmetic; and optionally the prior-year comparison and the quarter alone, labelled. Cite only documents actually opened.
+
+Task facts (loanDepot, LDI; verified once from the opened 10-Q, so re-confirm in the text). Form 10-Q for the period ended 2024-09-30, filed 2024-11-12: https://www.sec.gov/Archives/edgar/data/1831631/000183163124000285/ldi-20240930.htm. The table is in $ thousands. Nine months ended Sep 30, 2024: Purchase 12,057,993; Refinance 5,250,321; Total 17,308,314, which gives 69.67% purchase and 30.33% refinance. Nine months 2023: Purchase 12,403,166; Refinance 4,897,857; Total 17,301,023 (71.69% / 28.31%). Three months ended Sep 30, 2024: Purchase 4,378,575; Refinance 2,280,754; Total 6,659,329 (65.75% / 34.25%).
