@@ -16,3 +16,7 @@ jobs:
       - run: pip install -r requirements.txt pytest
       - run: python -m pytest -q tests
       - run: python -m h2fin.experiment --offline --tasks 2 --k 2 --run-id smoke --out /tmp/runs && rm -f results/smoke.json
+      - name: EDGAR reachability (same User-Agent the experiment uses)
+        env:
+          SEC_USER_AGENT: ${{ vars.SEC_USER_AGENT || format('{0} harness2-finance-agent {1}+{0}@users.noreply.github.com', github.actor, github.actor_id) }}
+        run: python -c "from h2fin.tools import edgar_preflight; ok, d = edgar_preflight(); print(d); raise SystemExit(0 if ok else 1)"
