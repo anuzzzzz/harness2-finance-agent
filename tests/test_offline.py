@@ -116,3 +116,12 @@ def test_agent_loop_handles_server_tools_and_pause_turn():
     assert t.steps[0].searches[0]["query"] == "netflix buyback" and t.steps[0].searches[0]["results"][0]["url"] == "https://x"
     assert t.steps[1].calls[0]["name"] == "edgar_search" and not t.steps[1].calls[0]["is_error"]
     assert t.turns == 4 and t.steps[2].stop_reason == "end_turn"
+
+
+def test_web_search_tool_blocks_answer_key_domains():
+    from h2fin import config
+    ctx = tools.ToolContext(retriever=None)  # type: ignore[arg-type]
+    ws = tools.tool_schemas(ctx, web_search=True, max_web_searches=3)[0]
+    assert ws["name"] == "web_search" and ws["max_uses"] == 3
+    assert "github.com" in ws["blocked_domains"] and "vals.ai" in ws["blocked_domains"]
+    assert set(config.WEB_SEARCH_BLOCKED_DOMAINS) <= set(ws["blocked_domains"])

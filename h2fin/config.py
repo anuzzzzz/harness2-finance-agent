@@ -46,6 +46,12 @@ API_VERSION = "2023-06-01"
 # want inside a tool loop we are trying to keep identical across runs.
 WEB_SEARCH_TOOL_TYPE = "web_search_20250305"
 
+# Domains the hosted web search must never return: the public question set with its expert
+# answers lives on GitHub (vals-ai/finance-agent and this repo), the leaderboard site has worked
+# examples, and dataset mirrors exist on Hugging Face.
+WEB_SEARCH_BLOCKED_DOMAINS = ["github.com", "raw.githubusercontent.com", "gist.github.com",
+                              "vals.ai", "huggingface.co"]
+
 # Always-on harness text is capped so proposals cannot bloat the executor's context.
 ALWAYS_ON_CHAR_CAP = 14_000
 

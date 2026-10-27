@@ -58,7 +58,8 @@ def tool_schemas(ctx: ToolContext, *, web_search: bool, max_web_searches: int) -
     tools: list[dict] = []
     if web_search:
         tools.append({"type": config.WEB_SEARCH_TOOL_TYPE, "name": "web_search",
-                      "max_uses": max_web_searches})
+                      "max_uses": max_web_searches,
+                      "blocked_domains": list(config.WEB_SEARCH_BLOCKED_DOMAINS)})
     tools += [EDGAR_SEARCH, PARSE_HTML_PAGE, RETRIEVE_INFORMATION]
     if ctx.skills:
         tools.append(load_skill_schema(ctx.skills))

@@ -93,9 +93,12 @@ questions past a ceiling; `--max-run-cost` caps a single rollout.
 
 1. **n is small.** 10 questions tell you whether the loop works and roughly where it helps;
    treat differences under ~15 points of pass rate as noise. Run all 50 before concluding anything.
-2. **Web search can leak the future.** The questions are frozen at April 7, 2025; hosted web
-   search is not. The trajectory logs record every query and result URL, so leakage is auditable,
-   and `--no-web-search` removes the channel.
+2. **Web search can leak.** The questions are frozen at April 7, 2025; hosted web search is not,
+   and the public question set (with expert answers) is on GitHub. The search tool therefore blocks
+   `github.com`, `raw.githubusercontent.com`, `gist.github.com`, `vals.ai` and `huggingface.co`;
+   every query and result URL is logged, and `python -m h2fin.audit runs/<run_id>` flags any hit
+   on those domains and prints answer lengths per stage (a judge-gaming tell). `--no-web-search`
+   removes the channel entirely.
 3. **The judge is a model.** Per-criterion majority voting reduces variance, not bias; look at
    the per-task `graded.json` before trusting a single flip.
 4. **Narrower surface than the paper.** No scripts, subagents or plugins, so some of the paper's
