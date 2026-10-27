@@ -134,3 +134,28 @@ def test_sec_user_agent_always_carries_an_email(monkeypatch=None):
     os.environ["SEC_USER_AGENT"] = "Jane Doe jane@example.com"
     assert tools._ua() == "Jane Doe jane@example.com"
     del os.environ["SEC_USER_AGENT"]
+
+
+def test_validate_rejects_dropped_task_frame():
+    t = harness.base_tree()
+    t["systemprompt.md"] = "You are a financial agent. Answer the question."
+    errs = harness.validate(t)
+    assert any("as-of date" in e for e in errs) and any("submit instruction" in e for e in errs)
+
+
+def test_sign_test_and_bootstrap():
+    assert experiment._sign_test_p(0, 0) is None
+    assert abs(experiment._sign_test_p(5, 0) - 2 * (1 / 32)) < 1e-9
+    assert experiment._sign_test_p(3, 3) == 1.0
+    lo, hi = experiment._bootstrap_ci([0.1, 0.1, 0.1])
+    assert abs(lo - 0.1) < 1e-9 and abs(hi - 0.1) < 1e-9
+
+
+def test_control_condition_in_summary(tmp_path):
+    rc = experiment.main(["--offline", "--tasks", "2", "--k", "1", "--base-reps", "2", "--run-id", "c", "--out", str(tmp_path)])
+    assert rc == 0
+    s = json.loads((tmp_path / "c" / "summary.json").read_text())
+    assert s["control"]["base_rollouts_per_task"] == 3
+    assert "ctl2" in s["by_stage"] and "ctl3" in s["by_stage"]
+    assert s["paired"]["sign_test_p"] is not None
+    (ROOT / "results" / "c.json").unlink(missing_ok=True)

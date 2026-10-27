@@ -99,8 +99,13 @@ def validate(tree: Tree) -> list[str]:
     for rel in tree:
         if rel not in ALWAYS_ON and not SKILL_RE.match(rel):
             errors.append(f"{rel}: not on the editable surface")
-    if not tree.get("systemprompt.md", "").strip():
+    sp = tree.get("systemprompt.md", "")
+    if not sp.strip():
         errors.append("systemprompt.md is empty")
+    for needle, what in ((config.AS_OF_DATE_HUMAN, "the as-of date"), ("submit_final_result", "the submit instruction"),
+                         ('"sources"', "the sources format")):
+        if needle not in sp:
+            errors.append(f"systemprompt.md no longer contains {what} ({needle!r}); the task frame must survive edits")
     on = always_on_text(tree)
     if len(on) > config.ALWAYS_ON_CHAR_CAP:
         errors.append(f"always-on text is {len(on):,} chars; cap is {config.ALWAYS_ON_CHAR_CAP:,}")

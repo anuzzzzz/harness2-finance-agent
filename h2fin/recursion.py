@@ -61,6 +61,8 @@ class TaskRecord:
     chosen: str = ""
     selection_why: str = ""
     selection_ids: dict[str, str] = field(default_factory=dict)
+    control_chosen: str = ""
+    control_why: str = ""
     experience: dict | None = None
     edits_record: str = ""
     library_added: bool = False
@@ -76,6 +78,7 @@ class TaskRecord:
                              "cost_usd": s.cost_usd, "inventory": harness.inventory(s.tree),
                              "tree": s.tree} for lbl, s in self.stages.items()},
             "chosen": self.chosen, "selection_why": self.selection_why, "selection_ids": self.selection_ids,
+            "control_chosen": self.control_chosen, "control_why": self.control_why,
             "experience": self.experience, "edits_record": self.edits_record,
             "library_added": self.library_added, "editor_cost_usd": round(self.editor_cost_usd, 6),
             "total_cost_usd": round(self.total_cost_usd, 6), "errors": self.errors,
@@ -111,9 +114,39 @@ def _stage_from_reply(label: str, dim: str, base: harness.Tree, reply: str, cost
     return st
 
 
+def blind_select(editor: LLM, question: str, pool: dict[str, Trajectory], *, bp: prompts.BenchPrompts,
+                 seed: str) -> tuple[str, str, dict[str, str], float]:
+    """Pick one delivered answer from `pool` with the harnesses hidden and the ids shuffled.
+    Returns (chosen_label, why, id_map, cost). Trivial when at most one answer was delivered."""
+    labels = list(pool)
+    delivered = [lbl for lbl in labels if pool[lbl].submitted]
+    if len(delivered) <= 1:
+        chosen = delivered[0] if delivered else labels[0]
+        why = "trivial: single candidate" if len(labels) == 1 else "trivial: at most one candidate delivered"
+        return chosen, why, {}, 0.0
+    rng = random.Random(seed)
+    order = list(delivered)
+    rng.shuffle(order)
+    ids = {lbl: chr(ord("A") + i) for i, lbl in enumerate(order)}
+    cands = "\n\n".join(f"## Candidate {ids[lbl]}\n\n{render.answer_md(pool[lbl])}" for lbl in order)
+    mission = prompts.select(bp, len(order)) + f"\n\n# THE QUESTION\n\n{question}\n\n# THE CANDIDATES\n\n{cands}"
+    try:
+        reply, cost = _editor_call(editor, "# SELECTION\n\n(candidates follow in the message)", mission, max_tokens=8000)
+        m = re.search(r"```choice\s*(\S+?)\s*```", reply)
+        pick = m.group(1).strip().strip("`") if m else ""
+        inv = {v: k_ for k_, v in ids.items()}
+        chosen = inv.get(pick.upper(), order[0])
+        w = re.search(r"<why>(.*?)</why>", reply, re.S)
+        why = (w.group(1).strip() if w else reply.strip())[:2000]
+        return chosen, why, ids, cost
+    except Exception as e:  # noqa: BLE001
+        return order[0], f"selector failed: {e}", ids, 0.0
+
+
 def run_task_parallel(*, task_id: str, question: str, k: int, base: harness.Tree, lib: Library,
                       run: RunFn, editor: LLM, bp: prompts.BenchPrompts = prompts.FINANCE,
-                      out_dir: Path | None = None, log=None, seed: int = 0, workers: int = 2) -> TaskRecord:
+                      out_dir: Path | None = None, log=None, seed: int = 0, workers: int = 2,
+                      base_reps: int = 0) -> TaskRecord:
     log = log or (lambda s: None)
     rec = TaskRecord(task_id=task_id, k=k)
     out = Path(out_dir) if out_dir else None
@@ -185,31 +218,22 @@ def run_task_parallel(*, task_id: str, question: str, k: int, base: harness.Tree
 
     # 4. selection among the k finals (answers only, harnesses hidden)
     finals = [f"agg{i}" for i in range(1, k + 1)]
-    delivered = [lbl for lbl in finals if rec.rollouts[lbl].submitted]
-    if k == 1 or len(delivered) <= 1:
-        rec.chosen = delivered[0] if delivered else finals[0]
-        rec.selection_why = "trivial: single final" if k == 1 else "trivial: at most one final delivered"
-    else:
-        rng = random.Random(f"{seed}:{task_id}")
-        order = list(delivered)
-        rng.shuffle(order)
-        ids = {lbl: chr(ord("A") + i) for i, lbl in enumerate(order)}
-        rec.selection_ids = ids
-        cands = "\n\n".join(f"## Candidate {ids[lbl]}\n\n{render.answer_md(rec.rollouts[lbl])}" for lbl in order)
-        mission = prompts.select(bp, len(order)) + f"\n\n# THE QUESTION\n\n{question}\n\n# THE CANDIDATES\n\n{cands}"
-        try:
-            reply, cost = _editor_call(editor, "# SELECTION\n\n(candidates follow in the message)", mission, max_tokens=8000)
-            rec.editor_cost_usd += cost
-            m = re.search(r"```choice\s*(\S+?)\s*```", reply)
-            pick = m.group(1).strip().strip("`") if m else ""
-            inv = {v: k_ for k_, v in ids.items()}
-            rec.chosen = inv.get(pick.upper(), order[0])
-            w = re.search(r"<why>(.*?)</why>", reply, re.S)
-            rec.selection_why = (w.group(1).strip() if w else reply.strip())[:2000]
-        except Exception as e:  # noqa: BLE001
-            rec.chosen = order[0]
-            rec.selection_why = f"selector failed: {e}"
-            rec.errors.append(rec.selection_why)
+    rec.chosen, rec.selection_why, rec.selection_ids, cost = blind_select(
+        editor, question, {lbl: rec.rollouts[lbl] for lbl in finals}, bp=bp, seed=f"{seed}:{task_id}")
+    rec.editor_cost_usd += cost
+    if rec.selection_why.startswith("selector failed"):
+        rec.errors.append(rec.selection_why)
+
+    # 4b. matched-cost control: extra base rollouts, then the same blind selection over all base
+    # runs. This answers "would re-running the base harness and picking blind have done as well?"
+    if base_reps > 0:
+        extra = [f"ctl{i}" for i in range(2, base_reps + 2)]
+        log(f"[{task_id}] control rollouts {', '.join(extra)}")
+        for t in _pmap(lambda lbl: run(question, base, lbl), extra, workers):
+            save(t.label, t)
+        pool = {lbl: rec.rollouts[lbl] for lbl in ["base1", *extra]}
+        rec.control_chosen, rec.control_why, _, cost = blind_select(editor, question, pool, bp=bp, seed=f"{seed}:{task_id}:ctl")
+        rec.editor_cost_usd += cost
 
     # 5. reflect → library
     record = [

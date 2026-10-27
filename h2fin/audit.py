@@ -13,7 +13,8 @@ from pathlib import Path
 
 from . import config
 
-SUSPECT = set(config.WEB_SEARCH_BLOCKED_DOMAINS) | {"benchlm.ai", "benchmarklist.com", "fintool.com"}
+SUSPECT = set(config.WEB_SEARCH_BLOCKED_DOMAINS)
+SUSPECT_TITLE = ("benchmark", "finance agent", "vals ai", "leaderboard", "public.csv")
 
 
 def main(argv=None) -> int:
@@ -36,8 +37,9 @@ def main(argv=None) -> int:
                 for r in ws.get("results", []):
                     n_results += 1
                     url = (r.get("url") or "").lower()
-                    if any(d in url for d in SUSPECT):
-                        flagged.append((t["task_id"], label, q, url))
+                    title = (r.get("title") or "").lower()
+                    if any(d in url for d in SUSPECT) or any(w in title for w in SUSPECT_TITLE):
+                        flagged.append((t["task_id"], label, q, f"{url}  [{title[:60]}]"))
     print(f"run {run.name}: {n_search} web searches, {n_results} result URLs, {len(flagged)} flagged")
     for task, label, q, url in flagged:
         print(f"  LEAK? {task}/{label}: query={q!r} -> {url}")

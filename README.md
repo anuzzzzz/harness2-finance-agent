@@ -34,7 +34,8 @@ python -m h2fin.experiment --tasks 10 --k 1 --executor haiku --editor sonnet --j
 python -m h2fin.experiment --offline --tasks 2 --k 2      # scripted models, no key, no network
 ```
 
-A run is resumable: re-running with the same `--run-id` skips finished questions.
+A run is resumable: re-running with the same `--run-id` skips finished questions. `--base-reps 0` turns
+off the matched-cost control (saves ~3 cheap rollouts per question).
 
 ## What one run does
 
@@ -89,6 +90,22 @@ pricing page on 2026‑10‑26) and reported per rollout, per task and per run. 
 
 k=5 multiplies the rollout and editor counts by about 5. `--max-total-cost` stops starting new
 questions past a ceiling; `--max-run-cost` caps a single rollout.
+
+## Red-team notes: ways this experiment can mislead, and what guards against each
+
+| threat | status |
+|---|---|
+| **Cost mismatch.** Harness² spends ~4 rollouts + 4 editor calls per question; a plain base run spends one. Gains could be "more tries", not "better harness". | `--base-reps 3` (default) runs 3 extra base rollouts and picks one with the same blind selector: the *matched-cost control*. Harness² must beat that, not the single base run. The oracle best-of-base is reported as the ceiling of what re-running alone could give. |
+| **Noise floor unknown.** Haiku at default temperature varies run to run; a 7-point pass-rate difference on 10 questions may be nothing. | The control rollouts also give the within-question SD of base pass rate; the summary reports a paired sign test and a bootstrap CI. Treat anything inside the CI as nothing. |
+| **n is tiny.** 10 questions cannot distinguish a 5-point effect from zero. | Pilot only. The 50-question run is the first one worth quoting, and even that only detects large effects. |
+| **k=1 composer prompt said "a defect in 1/1 is noise".** Ported faithfully from the official prompt, where the sentence is written for k>1; at k=1 it tells the composer to ignore the only base failure it has. Run 1 showed the composer rejecting two correct candidates on that reasoning. | Deviation from the official text: at k=1 the sentence is replaced by one that treats the candidates' rollouts as the second and third samples. k≥2 keeps the original wording. |
+| **The base run's answer leaks into the Harness² run.** The editors see the base trajectory and may write its findings into the harness ("in this task, …"), as the paper allows. At k=1 that makes `agg1` partly a re-run with the base's answer in the prompt: ties are inflated when the base was right, and a wrong base answer can be entrenched. | Inherent to the method. The library-transfer effect (next question starts from the base harness) and the matched-cost control are the measurements that do not suffer from it. |
+| **A stronger editor can inject knowledge.** With Sonnet editing and Haiku executing, "harness improvement" and "Sonnet knew the answer" are confounded. | Run the ablation `--editor haiku` (same model edits and executes, as in the paper's same-model table). |
+| **Web search is a leaky channel.** It is not frozen at April 2025 and can return pages that discuss this benchmark. Run 1's library lessons were mostly "when sec.gov fails, go to web search", i.e. the loop learned to lean on the leaky channel. | Benchmark-discussion domains are blocked at the tool; `h2fin.audit` flags suspect URLs/titles. The clean primary condition is `--no-web-search` (EDGAR is date-capped). |
+| **Judge = model, same family as editor.** Style preferences and shared beliefs can move scores. | Per-criterion majority of 3 reduces variance, not bias; the summary reports unanimity, parse failures and mean answer length per condition (a length gap is a judge-gaming tell). Spot-check `graded.json` on any flipped task. |
+| **Editors could rewrite the task frame.** Dropping "answer as of April 07, 2025" or the submit instruction would change the task, not the harness. | Validation now rejects a proposal whose `systemprompt.md` lost the as-of date, the submit instruction or the sources format. |
+| **Temperature.** Vals ran the executor at temperature 0; this runs the API default. | Not changed (thinking-enabled models do not accept a temperature override); the noise-floor measurement is the mitigation. |
+| **Training data.** Claude's training runs past these filings and past the public question file. | Inflates both conditions equally and shrinks the headroom; it cannot be removed, only kept in mind. |
 
 ## Caveats, in order of importance
 

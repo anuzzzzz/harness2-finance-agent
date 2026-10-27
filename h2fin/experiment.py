@@ -106,6 +106,8 @@ def main(argv=None) -> int:
     p.add_argument("--categories", nargs="*", default=None)
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--workers", type=int, default=2, help="parallel rollouts/editor calls within a stage")
+    p.add_argument("--base-reps", type=int, default=3, help="extra base rollouts per task for the matched-cost "
+                   "control (blind selection over base runs) and the noise floor; 0 disables")
     p.add_argument("--run-id", default=None)
     p.add_argument("--out", default="runs")
     p.add_argument("--offline", action="store_true", help="scripted models + canned HTTP; no network, no key")
@@ -172,7 +174,8 @@ def main(argv=None) -> int:
         rec = run_task_parallel(
             task_id=t["task_id"], question=t["question"], k=args.k, base=base, lib=lib,
             run=lambda q, tree, lbl, _tid=t["task_id"]: run_fn(q, tree, lbl, _tid),
-            editor=editor, bp=prompts.FINANCE, out_dir=tdir, log=log, seed=args.seed, workers=args.workers)
+            editor=editor, bp=prompts.FINANCE, out_dir=tdir, log=log, seed=args.seed, workers=args.workers,
+            base_reps=args.base_reps)
         total += rec.total_cost_usd
         log(f"[{t['task_id']}] done in {time.time() - t0:.0f}s, task ${rec.total_cost_usd:.2f}, total ${total:.2f}")
         records.append(rec.to_dict())
@@ -184,6 +187,7 @@ def main(argv=None) -> int:
     for rec in records:
         t = next(x for x in tasks if x["task_id"] == rec["task_id"])
         g = {"task_id": t["task_id"], "category": t["category"], "k": rec["k"], "chosen": rec["chosen"],
+             "control_chosen": rec.get("control_chosen", ""),
              "rollouts": {}, "stage_keep_base": {lbl: s["keep_base"] for lbl, s in rec["stages"].items()},
              "stage_errors": {lbl: s["error"] for lbl, s in rec["stages"].items() if s["error"]},
              "library_added": rec["library_added"], "total_cost_usd": rec["total_cost_usd"],
@@ -194,7 +198,10 @@ def main(argv=None) -> int:
             judge_cost += v["cost_usd"]
             g["rollouts"][lbl] = {"correct": v["correct"], "pass_rate": round(v["pass_rate"], 4),
                                   "delivered": traj["submitted"], "stop": traj["stop"], "turns": traj["turns"],
-                                  "cost_usd": traj["cost_usd"], "criteria": v["criteria"], "votes": v["votes"]}
+                                  "cost_usd": traj["cost_usd"], "criteria": v["criteria"], "votes": v["votes"],
+                                  "parse_failures": v.get("parse_failures", 0), "unanimous": v.get("unanimous", 0),
+                                  "n_criteria": v.get("n_criteria", len(v["criteria"])),
+                                  "answer_chars": len(traj["final_answer"]) if traj["submitted"] else 0}
         graded.append(g)
         (out / "tasks" / t["task_id"] / "graded.json").write_text(json.dumps(g, indent=1), encoding="utf-8")
 
@@ -214,6 +221,34 @@ def _mean(xs):
     return (sum(xs) / len(xs)) if xs else 0.0
 
 
+def _sd(xs):
+    xs = list(xs)
+    if len(xs) < 2:
+        return 0.0
+    m = _mean(xs)
+    return (sum((x - m) ** 2 for x in xs) / (len(xs) - 1)) ** 0.5
+
+
+def _sign_test_p(wins: int, losses: int) -> float | None:
+    """Two-sided exact sign test on the non-tied pairs (None when there are none)."""
+    from math import comb
+    m = wins + losses
+    if m == 0:
+        return None
+    k = min(wins, losses)
+    p = sum(comb(m, i) for i in range(0, k + 1)) / 2 ** m
+    return min(1.0, 2 * p)
+
+
+def _bootstrap_ci(xs, iters: int = 4000, seed: int = 0):
+    xs = list(xs)
+    if not xs:
+        return None
+    rng = random.Random(seed)
+    means = sorted(_mean(rng.choice(xs) for _ in xs) for _ in range(iters))
+    return [means[int(0.025 * iters)], means[int(0.975 * iters) - 1]]
+
+
 def summarize(graded: list[dict], manifest: dict, judge_cost: float) -> dict:
     n = len(graded)
     k = graded[0]["k"] if graded else 1
@@ -225,6 +260,16 @@ def summarize(graded: list[dict], manifest: dict, judge_cost: float) -> dict:
     h2 = [cond(g, g["chosen"]) for g in graded]
     wins = sum(1 for b, h in zip(base, h2) if h["pass_rate"] > b["pass_rate"])
     losses = sum(1 for b, h in zip(base, h2) if h["pass_rate"] < b["pass_rate"])
+    diffs = [h["pass_rate"] - b["pass_rate"] for b, h in zip(base, h2)]
+    # matched-cost control: blind selection over base1 + ctl rollouts; plus noise floor and oracle
+    has_ctl = any(g.get("control_chosen") for g in graded)
+    ctl = [cond(g, g.get("control_chosen") or "base1") for g in graded]
+    base_pool = [[g["rollouts"][l] for l in g["rollouts"] if l == "base1" or l.startswith("ctl")] for g in graded]
+    oracle = [max(p, key=lambda r: r["pass_rate"]) for p in base_pool]
+    base_rep_means = [_mean(r["pass_rate"] for r in p) for p in base_pool]
+    base_rep_sd = _mean(_sd([r["pass_rate"] for r in p]) for p in base_pool if len(p) > 1) if has_ctl else None
+    ctl_wins = sum(1 for c, h in zip(ctl, h2) if h["pass_rate"] > c["pass_rate"])
+    ctl_losses = sum(1 for c, h in zip(ctl, h2) if h["pass_rate"] < c["pass_rate"])
     by_cat: dict[str, dict] = {}
     cats = defaultdict(list)
     for g in graded:
@@ -254,7 +299,24 @@ def summarize(graded: list[dict], manifest: dict, judge_cost: float) -> dict:
                      "delivered": _mean(h["delivered"] for h in h2),
                      "mean_task_cost_usd": _mean(g["total_cost_usd"] for g in graded),
                      "mean_editor_cost_usd": _mean(g["editor_cost_usd"] for g in graded)},
-        "paired": {"h2_better": wins, "base_better": losses, "tie": n - wins - losses},
+        "paired": {"h2_better": wins, "base_better": losses, "tie": n - wins - losses,
+                   "sign_test_p": _sign_test_p(wins, losses),
+                   "mean_pass_rate_diff": _mean(diffs), "diff_ci95": _bootstrap_ci(diffs)},
+        "control": ({"correct": _mean(c["correct"] for c in ctl), "pass_rate": _mean(c["pass_rate"] for c in ctl),
+                     "delivered": _mean(c["delivered"] for c in ctl),
+                     "base_rollouts_per_task": _mean(len(p) for p in base_pool),
+                     "base_pass_rate_mean_of_reps": _mean(base_rep_means),
+                     "base_pass_rate_within_task_sd": base_rep_sd,
+                     "oracle_best_of_base": {"correct": _mean(o["correct"] for o in oracle),
+                                             "pass_rate": _mean(o["pass_rate"] for o in oracle)},
+                     "paired_vs_h2": {"h2_better": ctl_wins, "control_better": ctl_losses,
+                                      "tie": n - ctl_wins - ctl_losses, "sign_test_p": _sign_test_p(ctl_wins, ctl_losses)}}
+                    if has_ctl else None),
+        "judge": {"unanimity": (sum(r.get("unanimous", 0) for g in graded for r in g["rollouts"].values() if r["delivered"])
+                                / max(1, sum(r.get("n_criteria", 0) for g in graded for r in g["rollouts"].values() if r["delivered"]))),
+                  "parse_failures": sum(r.get("parse_failures", 0) for g in graded for r in g["rollouts"].values())},
+        "answer_chars": {"base": _mean(cond(g, "base1").get("answer_chars", 0) for g in graded),
+                         "h2": _mean(cond(g, g["chosen"]).get("answer_chars", 0) for g in graded)},
         "any_of_k": {"base": any_base, "finals": any_final},
         "by_category": by_cat, "by_stage": stage_stats,
         "library_entries": sum(1 for g in graded if g["library_added"]),
@@ -268,6 +330,27 @@ def summarize(graded: list[dict], manifest: dict, judge_cost: float) -> dict:
     }
 
 
+def _fmt_p(p):
+    return "n/a" if p is None else f"{p:.2f}"
+
+
+def _fmt_ci(ci):
+    return "n/a" if not ci else f"[{100 * ci[0]:+.1f}, {100 * ci[1]:+.1f}]"
+
+
+def _control_lines(s: dict) -> list[str]:
+    c = s["control"]
+    pct = lambda x: f"{100 * x:.1f}%"  # noqa: E731
+    sd = c["base_pass_rate_within_task_sd"]
+    return [
+        f"Matched-cost control (blind pick among {c['base_rollouts_per_task']:.0f} base runs): correct {pct(c['correct'])}, "
+        f"pass rate {pct(c['pass_rate'])}; oracle best-of-base {pct(c['oracle_best_of_base']['correct'])} / "
+        f"{pct(c['oracle_best_of_base']['pass_rate'])}. Harness² vs control paired: {c['paired_vs_h2']['h2_better']} / "
+        f"{c['paired_vs_h2']['control_better']} / {c['paired_vs_h2']['tie']} (p = {_fmt_p(c['paired_vs_h2']['sign_test_p'])}). "
+        f"Noise floor: base pass rate varies by {100 * sd:.1f} points (SD) between re-runs of the same question." if sd is not None else "",
+    ]
+
+
 def summary_md(s: dict) -> str:
     pct = lambda x: f"{100 * x:.1f}%"  # noqa: E731
     lines = [f"# Run `{s['run_id']}`", "",
@@ -277,8 +360,16 @@ def summary_md(s: dict) -> str:
              "|---|---|---|---|---|",
              f"| base harness | {pct(s['base']['correct'])} | {pct(s['base']['pass_rate'])} | {pct(s['base']['delivered'])} | ${s['base']['mean_cost_usd']:.2f} |",
              f"| Harness² k={s['k']} | {pct(s['harness2']['correct'])} | {pct(s['harness2']['pass_rate'])} | {pct(s['harness2']['delivered'])} | ${s['harness2']['mean_task_cost_usd']:.2f} (incl. ${s['harness2']['mean_editor_cost_usd']:.2f} editor) |",
+             *([f"| base ×{s['control']['base_rollouts_per_task']:.0f}, blind pick (matched-cost control) | {pct(s['control']['correct'])} | {pct(s['control']['pass_rate'])} | {pct(s['control']['delivered'])} | — |"]
+               if s.get("control") else []),
              "",
-             f"Paired by task (criteria pass rate): Harness² better {s['paired']['h2_better']}, base better {s['paired']['base_better']}, tie {s['paired']['tie']}.",
+             f"Paired by task (criteria pass rate): Harness² better {s['paired']['h2_better']}, base better {s['paired']['base_better']}, "
+             f"tie {s['paired']['tie']}; sign test p = {_fmt_p(s['paired']['sign_test_p'])}; mean difference "
+             f"{100 * s['paired']['mean_pass_rate_diff']:+.1f} points (bootstrap 95% CI "
+             f"{_fmt_ci(s['paired']['diff_ci95'])}).",
+             *(_control_lines(s) if s.get("control") else []),
+             f"Judge: {pct(s['judge']['unanimity'])} of criteria unanimous across votes, {s['judge']['parse_failures']} "
+             f"parse failures. Mean answer length: base {s['answer_chars']['base']:.0f} chars, Harness² {s['answer_chars']['h2']:.0f}.",
              f"Library entries written: {s['library_entries']}. Stage errors: {s['errors']}. Judge cost ${s['judge_cost_usd']:.2f}. Total ${s['total_cost_usd']:.2f}.", "",
              "## By stage", "", "| stage | n | correct | pass rate | delivered | KEEP_BASE | mean cost |", "|---|---|---|---|---|---|---|"]
     for lbl, st in s["by_stage"].items():

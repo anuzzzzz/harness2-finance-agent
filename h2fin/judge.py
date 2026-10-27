@@ -44,6 +44,7 @@ def judge_answer(llm: LLM, *, question: str, expert: str, rubric: list[dict], re
     tallies: list[list[bool]] = []
     cost = 0.0
     calls = 0
+    parse_failures = 0
     for _ in range(max(1, votes)):
         resp = llm.complete(system=prompts.JUDGE_SYSTEM, messages=[{"role": "user", "content": user}],
                             max_tokens=2000)
@@ -51,15 +52,20 @@ def judge_answer(llm: LLM, *, question: str, expert: str, rubric: list[dict], re
         calls += 1
         parsed = _parse(text_of(resp), n)
         if parsed is None:  # one retry on a malformed verdict
+            parse_failures += 1
             resp = llm.complete(system=prompts.JUDGE_SYSTEM, messages=[{"role": "user", "content": user}],
                                 max_tokens=2000)
             cost += resp.get("_cost_usd", 0.0)
             calls += 1
             parsed = _parse(text_of(resp), n)
+        if parsed is None:
+            parse_failures += 1
         tallies.append(parsed if parsed is not None else [False] * n)
     crit = []
     for i in range(n):
         c = Counter(t[i] for t in tallies)
         crit.append(c[True] > c[False])
+    unanimous = sum(1 for i in range(n) if len({t[i] for t in tallies}) == 1)
     return {"correct": all(crit), "pass_rate": (sum(crit) / n) if n else 0.0, "criteria": crit,
-            "votes": tallies, "delivered": True, "cost_usd": round(cost, 6), "judge_calls": calls}
+            "votes": tallies, "delivered": True, "cost_usd": round(cost, 6), "judge_calls": calls,
+            "parse_failures": parse_failures, "unanimous": unanimous, "n_criteria": n}

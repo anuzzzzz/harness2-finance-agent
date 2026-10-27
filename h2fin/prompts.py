@@ -297,9 +297,14 @@ def aggregate(bp: BenchPrompts, *, k: int = 1, index: int = 1) -> str:
         "# HOW TO WEIGH THE EVIDENCE\n\n"
         f"The {k} base rollout{'s are' if k > 1 else ' is'} draws from ONE distribution -- read them as "
         f"a set, not as {k} separate stories.\n\n"
-        f"- A failure that repeats across the base set is a real property of the base harness and the "
-        f"strongest thing you can act on. A defect in 1/{k} is noise, and an edit aimed at it is "
-        "overfitting to one sample.\n"
+        + ((f"- A failure that repeats across the base set is a real property of the base harness and the "
+            f"strongest thing you can act on. A defect in 1/{k} is noise, and an edit aimed at it is "
+            "overfitting to one sample.\n") if k > 1 else
+           ("- There is ONE base rollout, so you cannot tell a systematic failure from a one-off from the "
+            "base set alone. Use the candidates' rollouts as the second and third samples of the same "
+            "task: a failure the base showed and a candidate's rollout avoided is the strongest evidence "
+            "you have; a failure all three share is a property of the task or the tools.\n"))
+        +
         "- Each candidate has ONE rollout, so a single good or bad outcome is weak evidence either "
         "way. An edit earns its place when a SPECIFIC MOMENT in a trajectory shows the mechanism -- "
         "'this looks like good practice' is not evidence; name the moment.\n"
@@ -423,7 +428,8 @@ Reply with ONLY a JSON array, one object per criterion in the order given:
 
 
 def judge_user(question: str, expert: str, rubric: list[dict], response: str) -> str:
-    crit = "\n".join(f'{i + 1}. [{c.get("operator")}] {c.get("criteria")}' for i, c in enumerate(rubric))
+    crit = "\n".join(f'{i + 1}. [{c.get("operator")}] {" ".join(str(c.get("criteria", "")).split())}'
+                     for i, c in enumerate(rubric))
     return (f"QUESTION:\n{question}\n\nEXPERT ANSWER:\n{expert}\n\nCRITERIA:\n{crit}\n\n"
             f"AGENT RESPONSE (empty means nothing was delivered):\n<<<\n{response}\n>>>\n\n"
             "Grade each criterion. Output only the JSON array.")
