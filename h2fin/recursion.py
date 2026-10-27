@@ -146,7 +146,7 @@ def blind_select(editor: LLM, question: str, pool: dict[str, Trajectory], *, bp:
 def run_task_parallel(*, task_id: str, question: str, k: int, base: harness.Tree, lib: Library,
                       run: RunFn, editor: LLM, bp: prompts.BenchPrompts = prompts.FINANCE,
                       out_dir: Path | None = None, log=None, seed: int = 0, workers: int = 2,
-                      base_reps: int = 0) -> TaskRecord:
+                      base_reps: int = 0, extra_arms: dict[str, harness.Tree] | None = None) -> TaskRecord:
     log = log or (lambda s: None)
     rec = TaskRecord(task_id=task_id, k=k)
     out = Path(out_dir) if out_dir else None
@@ -234,6 +234,12 @@ def run_task_parallel(*, task_id: str, question: str, k: int, base: harness.Tree
         pool = {lbl: rec.rollouts[lbl] for lbl in ["base1", *extra]}
         rec.control_chosen, rec.control_why, _, cost = blind_select(editor, question, pool, bp=bp, seed=f"{seed}:{task_id}:ctl")
         rec.editor_cost_usd += cost
+
+    # 4c. fixed comparison arms (e.g. a hand-written guidance harness), one rollout each
+    if extra_arms:
+        log(f"[{task_id}] arm rollouts {', '.join(extra_arms)}")
+        for t in _pmap(lambda item: run(question, item[1], item[0]), list(extra_arms.items()), workers):
+            save(t.label, t)
 
     # 5. reflect → library
     record = [

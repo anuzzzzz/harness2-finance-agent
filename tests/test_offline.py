@@ -159,3 +159,14 @@ def test_control_condition_in_summary(tmp_path):
     assert "ctl2" in s["by_stage"] and "ctl3" in s["by_stage"]
     assert s["paired"]["sign_test_p"] is not None
     (ROOT / "results" / "c.json").unlink(missing_ok=True)
+
+
+def test_static_arm(tmp_path):
+    rc = experiment.main(["--offline", "--tasks", "2", "--k", "1", "--base-reps", "1", "--static-guidance",
+                          "--run-id", "s", "--out", str(tmp_path)])
+    assert rc == 0
+    s = json.loads((tmp_path / "s" / "summary.json").read_text())
+    assert s["static"] is not None and "static1" in s["by_stage"]
+    assert (tmp_path / "s" / "static_harness" / "tool_guidance.md").is_file()
+    assert harness.validate(harness.static_tree()) == []
+    (ROOT / "results" / "s.json").unlink(missing_ok=True)

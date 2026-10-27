@@ -65,7 +65,7 @@ jobs:
             --tasks "${{ inputs.tasks }}" --k "${{ inputs.k }}" \
             --executor "${{ inputs.executor }}" --editor "${{ inputs.editor }}" --judge "${{ inputs.judge }}" \
             --judge-votes "${{ inputs.judge_votes }}" --max-total-cost "${{ inputs.max_total_cost }}" \
-            --workers "${{ inputs.workers }}" --run-id "$RUN_ID" $WS ${{ inputs.extra_args }} 2>&1 | tee run.log
+            --workers "${{ inputs.workers }}" --run-id "$RUN_ID" --static-guidance $WS ${{ inputs.extra_args }} 2>&1 | tee run.log
       - name: Upload full run (trajectories, harnesses, library)
         if: always()
         uses: actions/upload-artifact@v4

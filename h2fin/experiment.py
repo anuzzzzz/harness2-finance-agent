@@ -106,6 +106,8 @@ def main(argv=None) -> int:
     p.add_argument("--categories", nargs="*", default=None)
     p.add_argument("--seed", type=int, default=42)
     p.add_argument("--workers", type=int, default=2, help="parallel rollouts/editor calls within a stage")
+    p.add_argument("--static-guidance", action="store_true", help="also run the hand-written "
+                   "'open the primary filing' guidance (harness.STATIC_TOOL_GUIDANCE) once per task as a fixed arm")
     p.add_argument("--base-reps", type=int, default=3, help="extra base rollouts per task for the matched-cost "
                    "control (blind selection over base runs) and the noise floor; 0 disables")
     p.add_argument("--run-id", default=None)
@@ -148,6 +150,9 @@ def main(argv=None) -> int:
     tasks = load_tasks(n=args.tasks, seed=args.seed, categories=args.categories)
     base = harness.base_tree()
     harness.write_tree(base, out / "base_harness")
+    extra_arms = {"static1": harness.static_tree()} if args.static_guidance else {}
+    if extra_arms:
+        harness.write_tree(extra_arms["static1"], out / "static_harness")
     lib = Library(out / "library")
     lib.rebuild_index()
 
@@ -175,7 +180,7 @@ def main(argv=None) -> int:
             task_id=t["task_id"], question=t["question"], k=args.k, base=base, lib=lib,
             run=lambda q, tree, lbl, _tid=t["task_id"]: run_fn(q, tree, lbl, _tid),
             editor=editor, bp=prompts.FINANCE, out_dir=tdir, log=log, seed=args.seed, workers=args.workers,
-            base_reps=args.base_reps)
+            base_reps=args.base_reps, extra_arms=extra_arms)
         total += rec.total_cost_usd
         log(f"[{t['task_id']}] done in {time.time() - t0:.0f}s, task ${rec.total_cost_usd:.2f}, total ${total:.2f}")
         records.append(rec.to_dict())
@@ -270,6 +275,10 @@ def summarize(graded: list[dict], manifest: dict, judge_cost: float) -> dict:
     base_rep_sd = _mean(_sd([r["pass_rate"] for r in p]) for p in base_pool if len(p) > 1) if has_ctl else None
     ctl_wins = sum(1 for c, h in zip(ctl, h2) if h["pass_rate"] > c["pass_rate"])
     ctl_losses = sum(1 for c, h in zip(ctl, h2) if h["pass_rate"] < c["pass_rate"])
+    has_static = any("static1" in g["rollouts"] for g in graded)
+    stat = [cond(g, "static1") for g in graded]
+    st_wins = sum(1 for c, h in zip(stat, h2) if h["pass_rate"] > c["pass_rate"])
+    st_losses = sum(1 for c, h in zip(stat, h2) if h["pass_rate"] < c["pass_rate"])
     by_cat: dict[str, dict] = {}
     cats = defaultdict(list)
     for g in graded:
@@ -312,6 +321,13 @@ def summarize(graded: list[dict], manifest: dict, judge_cost: float) -> dict:
                      "paired_vs_h2": {"h2_better": ctl_wins, "control_better": ctl_losses,
                                       "tie": n - ctl_wins - ctl_losses, "sign_test_p": _sign_test_p(ctl_wins, ctl_losses)}}
                     if has_ctl else None),
+        "static": ({"correct": _mean(c["correct"] for c in stat), "pass_rate": _mean(c["pass_rate"] for c in stat),
+                    "delivered": _mean(c["delivered"] for c in stat), "mean_cost_usd": _mean(c["cost_usd"] for c in stat),
+                    "paired_vs_h2": {"h2_better": st_wins, "static_better": st_losses, "tie": n - st_wins - st_losses,
+                                     "sign_test_p": _sign_test_p(st_wins, st_losses)},
+                    "paired_vs_base": {"static_better": sum(1 for b, c in zip(base, stat) if c["pass_rate"] > b["pass_rate"]),
+                                       "base_better": sum(1 for b, c in zip(base, stat) if c["pass_rate"] < b["pass_rate"])}}
+                   if has_static else None),
         "judge": {"unanimity": (sum(r.get("unanimous", 0) for g in graded for r in g["rollouts"].values() if r["delivered"])
                                 / max(1, sum(r.get("n_criteria", 0) for g in graded for r in g["rollouts"].values() if r["delivered"]))),
                   "parse_failures": sum(r.get("parse_failures", 0) for g in graded for r in g["rollouts"].values())},
@@ -362,12 +378,19 @@ def summary_md(s: dict) -> str:
              f"| Harness² k={s['k']} | {pct(s['harness2']['correct'])} | {pct(s['harness2']['pass_rate'])} | {pct(s['harness2']['delivered'])} | ${s['harness2']['mean_task_cost_usd']:.2f} (incl. ${s['harness2']['mean_editor_cost_usd']:.2f} editor) |",
              *([f"| base ×{s['control']['base_rollouts_per_task']:.0f}, blind pick (matched-cost control) | {pct(s['control']['correct'])} | {pct(s['control']['pass_rate'])} | {pct(s['control']['delivered'])} | — |"]
                if s.get("control") else []),
+             *([f"| hand-written 'open the filing' guidance (static arm) | {pct(s['static']['correct'])} | {pct(s['static']['pass_rate'])} | {pct(s['static']['delivered'])} | ${s['static']['mean_cost_usd']:.2f} |"]
+               if s.get("static") else []),
              "",
              f"Paired by task (criteria pass rate): Harness² better {s['paired']['h2_better']}, base better {s['paired']['base_better']}, "
              f"tie {s['paired']['tie']}; sign test p = {_fmt_p(s['paired']['sign_test_p'])}; mean difference "
              f"{100 * s['paired']['mean_pass_rate_diff']:+.1f} points (bootstrap 95% CI "
              f"{_fmt_ci(s['paired']['diff_ci95'])}).",
              *(_control_lines(s) if s.get("control") else []),
+             *([f"Static arm vs Harness² paired: Harness² better {s['static']['paired_vs_h2']['h2_better']}, static better "
+                f"{s['static']['paired_vs_h2']['static_better']}, tie {s['static']['paired_vs_h2']['tie']} "
+                f"(p = {_fmt_p(s['static']['paired_vs_h2']['sign_test_p'])}); static vs base: static better "
+                f"{s['static']['paired_vs_base']['static_better']}, base better {s['static']['paired_vs_base']['base_better']}."]
+               if s.get("static") else []),
              f"Judge: {pct(s['judge']['unanimity'])} of criteria unanimous across votes, {s['judge']['parse_failures']} "
              f"parse failures. Mean answer length: base {s['answer_chars']['base']:.0f} chars, Harness² {s['answer_chars']['h2']:.0f}.",
              f"Library entries written: {s['library_entries']}. Stage errors: {s['errors']}. Judge cost ${s['judge_cost_usd']:.2f}. Total ${s['total_cost_usd']:.2f}.", "",

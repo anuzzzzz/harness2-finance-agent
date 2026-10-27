@@ -57,6 +57,24 @@ At the end of your answer, you should provide your sources in a dictionary with 
 """
 
 
+# A control arm: the one rule a person would write after watching the base agent answer from web
+# snippets. Hand-written once, never edited by the loop. If Harness² only ties this, all it found
+# was the obvious.
+STATIC_TOOL_GUIDANCE = """\
+# Tool guidance
+
+- Answer from primary documents. Find the relevant SEC filing with edgar_search (company, form type, date range), open it with parse_html_page, and read the figures with retrieve_information. Web search results and third-party sites are leads, not evidence.
+- Before using a figure, check that its period, units and basis match the question. Show the calculation.
+- Call submit_final_result with the answer and its sources before running out of turns.
+"""
+
+
+def static_tree() -> Tree:
+    t = base_tree()
+    t["tool_guidance.md"] = STATIC_TOOL_GUIDANCE
+    return t
+
+
 def base_tree() -> Tree:
     return {
         "systemprompt.md": BASE_SYSTEM_PROMPT,
