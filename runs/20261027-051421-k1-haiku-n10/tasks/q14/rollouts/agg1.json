@@ -1,0 +1,280 @@
+{
+ "task_id": "q14",
+ "label": "agg1",
+ "question": "Approximate Zillow's Free Cash Flow as CFO - Capex. What was the trend of FCF margin from FY2022 to FY2024?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "fcf_margin_trend"
+     },
+     "output": "---\nname: fcf_margin_trend\ndescription: Approximate free cash flow as operating cash flow minus capex, compute FCF margin over several fiscal years, and describe the trend.\n---\n\n# FCF margin trend (FCF \u2248 CFO \u2212 capex, \u00f7 revenue, multi-year)\n\n**Analytic move:** retrieve three inputs per year (CFO, capex, total revenue), calculate FCF and FCF \u00f7 revenue unrounded, then state the direction year over year.\n\n**Where the figures live**\n- CFO: cash flow statement, \"Net cash provided by (used in) operating activities\", total-company line.\n- Capex: investing section, \"Purchases of property and equipment\" (name the exact line used). Purchases of intangibles (e.g. domain names) are a separate line. Headline CFO \u2212 purchases of property and equipment as the question's approximation; show the version that also deducts intangibles only as a labelled one-line sensitivity.\n- Revenue: income statement, total revenue, same fiscal year.\n- A 10-K carries three years of cash flows and income statement, so FY(N\u22122) to FY(N) come from one filing. If the latest 10-K is unreachable, use the prior 10-K plus the latest Q4 8-K Exhibit 99.1. Check whether comparatives were recast.\n\n**Checks that change the answer**\n1. Discontinued operations: if a business was wound down (e.g. an inventory unwind), the cash flow statement may include it while revenue shows continuing operations only. A margin far above 100% is a red flag for this. Give the headline on the stated formula, then identify the distorted year and cause, quoting the working-capital or discontinued-operations line. Show the change between the later, comparable years separately.\n2. Keep CFO and revenue on the same basis and recast status; say so if they differ.\n3. Prefer figures read from filings. Aggregator pages (stockanalysis, macrotrends, marketbeat) are leads or cross-checks only: do not take their precomputed FCF or margin as inputs, and name any year whose input came only from an aggregator or was derived (e.g. backed out from a percentage).\n4. Confirm units (millions vs thousands). Report changes between years in percentage points.\n5. Trend wording: for each step say rises or falls with the pp change; say whether the whole path is monotonic; if one year is an outlier, state the trend excluding it.\n6. Recheck: FCF = CFO \u2212 capex each year, margin = FCF \u00f7 revenue, and the stated direction matches the numbers.\n\n**Answer contract:** a per-year table (CFO, capex, FCF, revenue, margin to two decimals, units, period), formula and arithmetic, pp change per step, one-sentence trend conclusion, any outlier explanation, and each figure's source type (opened filing, search excerpt, or third-party page). Plain text, no raw citation tags.\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0007986499999999999
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01T2Pg1ao1n5ePWpwUHvbRpt",
+     "query": "Zillow Group 10-K 2024 net cash provided by operating activities purchases of property and equipment",
+     "results": [
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. (Form: 10-K, Received: 02/11/2025 16:21:55)",
+       "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001617640-25-000016.html?hash=0cbc5b58372fd7624126f2551e8e8a884de4b57fe379aaaa014e219af2339afa&dest=z-20241231_htm",
+       "page_age": "665 days ago"
+      },
+      {
+       "title": "Zillow Group, Inc. - 10K - Annual Report - February 15, 2024",
+       "url": "https://fintel.io/doc/sec-zillow-group-inc-1617640-10k-2024-february-15-19768-9224",
+       "page_age": "985 days ago"
+      },
+      {
+       "title": "Zillow Group Reports Third-Quarter 2025 Financial Results",
+       "url": "https://www.prnewswire.com/news-releases/zillow-group-reports-third-quarter-2025-financial-results-302600215.html",
+       "page_age": "361 days ago"
+      },
+      {
+       "title": "Zillow Group Reports Fourth-Quarter and Full-Year 2025 Financial Results",
+       "url": "https://www.prnewswire.com/news-releases/zillow-group-reports-fourth-quarter-and-full-year-2025-financial-results-302684089.html",
+       "page_age": "258 days ago"
+      },
+      {
+       "title": "Form 10-K",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000119312516461241/d78539d10k.htm",
+       "page_age": null
+      },
+      {
+       "title": "Zillow Cash Flow from Operating Activities 2011-2025",
+       "url": "https://www.macrotrends.net/stocks/charts/ZG/zillow/cash-flow-from-operating-activities",
+       "page_age": null
+      },
+      {
+       "title": "Document",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000149/q32025992.htm",
+       "page_age": null
+      },
+      {
+       "title": "Reported Consolidated Results",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000125/q32024992.htm",
+       "page_age": null
+      }
+     ]
+    },
+    {
+     "id": "srvtoolu_01Aw7QMi2TqbfvcYSR73JAGx",
+     "query": "Zillow Group fourth quarter full year 2024 results total revenue operating cash flow",
+     "results": [
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000012/q42023991.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000125/q32024991.htm",
+       "page_age": null
+      },
+      {
+       "title": "Z Q4-2025 Earnings Call - Alpha Spread",
+       "url": "https://www.alphaspread.com/security/nasdaq/z/investor-relations/earnings-call/q4-2025",
+       "page_age": null
+      },
+      {
+       "title": "NEWS RELEASE Zillow Group Reports Fourth-Quarter and Full-Year",
+       "url": "https://s25.q4cdn.com/975009107/files/doc_news/Zillow-Group-Reports-Fourth-Quarter-and-Full-Year-2024-Financial-Results-2025.pdf",
+       "page_age": null
+      },
+      {
+       "title": "Zillow Group Reports Fourth-Quarter and Full-Year 2024 Financial Results - Feb 11, 2025",
+       "url": "https://zillowgroup.mediaroom.com/2025-02-11-Zillow-Group-Reports-Fourth-Quarter-and-Full-Year-2024-Financial-Results",
+       "page_age": "623 days ago"
+      },
+      {
+       "title": "Document",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000015/q42024991.htm",
+       "page_age": null
+      },
+      {
+       "title": "Zillow Group Reports Fourth-Quarter and Full-Year 2024 Financial Results",
+       "url": "https://www.nasdaq.com/press-release/zillow-group-reports-fourth-quarter-and-full-year-2024-financial-results-2025-02-11",
+       "page_age": "623 days ago"
+      },
+      {
+       "title": "Zillow Group Reports Fourth-Quarter and Full-Year 2024 Financial Results",
+       "url": "https://www.prnewswire.com/news-releases/zillow-group-reports-fourth-quarter-and-full-year-2024-financial-results-302373842.html",
+       "page_age": "622 days ago"
+      },
+      {
+       "title": "Zillow\u2019s (NASDAQ:ZG) Q4: Beats On Revenue But Stock Drops",
+       "url": "https://finance.yahoo.com/news/zillow-nasdaq-zg-q4-beats-222831693.html",
+       "page_age": "622 days ago"
+      }
+     ]
+    },
+    {
+     "id": "srvtoolu_019Hbb4u1McnuNy1m9gKwMBA",
+     "query": "Zillow Group fourth-quarter full-year 2023 results purchases of property and equipment year ended December 31 2023 2022",
+     "results": [
+      {
+       "title": "Zillow Group Reports Fourth-Quarter and Full-Year 2023 Financial Results",
+       "url": "https://www.marketscreener.com/quote/stock/ZILLOW-GROUP-INC-20814107/news/Zillow-Group-Reports-Fourth-Quarter-and-Full-Year-2023-Financial-Results-45943388/",
+       "page_age": "986 days ago"
+      },
+      {
+       "title": "Zillow Group Reports Fourth-Quarter and Full-Year 2023 Financial Results - Feb 13, 2024",
+       "url": "https://zillowgroup.mediaroom.com/2024-02-13-Zillow-Group-Reports-Fourth-Quarter-and-Full-Year-2023-Financial-Results",
+       "page_age": "987 days ago"
+      },
+      {
+       "title": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION Washington, D.C. 20549",
+       "url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001617640/843e13f6-5f09-40ec-9d0d-c43e39c38be7.pdf",
+       "page_age": "987 days ago"
+      },
+      {
+       "title": "Zillow Group, Inc. - Zillow Group Reports Fourth-Quarter and Full-Year 2023 Financial Results",
+       "url": "https://investors.zillowgroup.com/investors/news-and-events/news/news-details/2024/Zillow-Group-Reports-Fourth-Quarter-and-Full-Year-2023-Financial-Results/default.aspx",
+       "page_age": "987 days ago"
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2025",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000015/q42024991.htm",
+       "page_age": null
+      },
+      {
+       "title": "Zillow Group Reports Fourth-Quarter and Full-Year 2023 Financial Results",
+       "url": "https://www.nasdaq.com/press-release/zillow-group-reports-fourth-quarter-and-full-year-2023-financial-results-2024-02-13",
+       "page_age": "987 days ago"
+      },
+      {
+       "title": "Zillow Group Reports Fourth-Quarter and Full-Year 2022 Financial Results",
+       "url": "https://www.nasdaq.com/press-release/zillow-group-reports-fourth-quarter-and-full-year-2022-financial-results-2023-02-15",
+       "page_age": "1350 days ago"
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000012/q42023991.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000012/exhibit993.htm",
+       "page_age": null
+      },
+      {
+       "title": "Zillow Group Reports Fourth-Quarter and Full-Year 2023 Financial Results",
+       "url": "https://www.prnewswire.com/news-releases/zillow-group-reports-fourth-quarter-and-full-year-2023-financial-results-302061041.html",
+       "page_age": "986 days ago"
+      }
+     ]
+    },
+    {
+     "id": "srvtoolu_012FCo1BSFBGDSaoRqgDFx9K",
+     "query": "Zillow 2022 annual report purchases of property and equipment net cash provided by operating activities 4,504 revenue 1,958",
+     "results": [
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-Q - FY2022",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764022000081/z-20220630.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-K - FY2022",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764023000010/z-20221231.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-Q - FY2022",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764022000106/z-20220930.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form ARS - FY2022",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764023000060/zg202210k5a.pdf",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-Q - FY2022",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764022000063/z-20220331.htm",
+       "page_age": null
+      },
+      {
+       "title": "Zillow Group, Inc. - 10K - Annual Report - February 15, 2024",
+       "url": "https://fintel.io/doc/sec-zillow-group-inc-1617640-10k-2024-february-15-19768-9224",
+       "page_age": "985 days ago"
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2022",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764022000104/q32022992.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. (Form: 10-K, Received: 02/11/2025 16:21:55)",
+       "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001617640-25-000016.html?hash=0cbc5b58372fd7624126f2551e8e8a884de4b57fe379aaaa014e219af2339afa&dest=z-20241231_htm",
+       "page_age": "665 days ago"
+      },
+      {
+       "title": "z-20241231",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm",
+       "page_age": null
+      },
+      {
+       "title": "z-20231231",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000022/z-20231231.htm",
+       "page_age": null
+      }
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "\nZillow Group (NASDAQ: Z/ZG): FCF \u2248 CFO \u2212 purchases of property and equipment; FCF margin = FCF \u00f7 total revenue. Figures in USD millions.\n\nInputs and results (source type: search excerpts from the FY2024 10-K cash flow and income statement tables, plus the FY2023 and FY2022 press-release/10-K excerpts; I did not open the full filings):\n\nFY2022: CFO 4,504; capex 115; FCF = 4,504 \u2212 115 = 4,389; revenue 1,958; margin = 4,389 \u00f7 1,958 = 224.16%\nFY2023: CFO 354; capex 135; FCF = 354 \u2212 135 = 219; revenue 1,945; margin = 219 \u00f7 1,945 = 11.26%\nFY2024: CFO 428; capex 143; FCF = 428 \u2212 143 = 285; revenue 2,236; margin = 285 \u00f7 2,236 = 12.75%\n\nCapex line: \"Purchases of property and equipment\" (2024: 143, 2023: 135, 2022: 115), as shown in the FY2024 10-K table. Purchases of intangible assets (28, 30, 25) are a separate line and were excluded from the headline.\n\nTrend:\n- FY2022\u2192FY2023: margin fell by about 212.90 percentage points (224.16% \u2192 11.26%).\n- FY2023\u2192FY2024: margin rose by about 1.49 percentage points (11.26% \u2192 12.75%).\n- The path is not monotonic. The FY2022 value is an outlier: CFO of 4,504 reflected the wind-down of Zillow Offers, when operating cash flow included cash from home sales and home purchases, while revenue of 1,958 is the reported total. The 2022 margin is therefore not comparable with later years. Excluding 2022, the trend from FY2023 to FY2024 is a modest improvement of about 1.49 pp.\n\nSensitivity (CFO \u2212 property and equipment purchases \u2212 intangible asset purchases): FY2022 222.88% (4,364 \u00f7 1,958); FY2023 9.72% (189 \u00f7 1,945); FY2024 11.49% (257 \u00f7 2,236). Change: \u2212213.16 pp, then +1.78 pp. The conclusion is the same.\n\nConclusion: On the headline formula, Zillow's FCF margin collapsed from about 224% in FY2022 (distorted by the Zillow Offers wind-down) to about 11.26% in FY2023, then recovered modestly to about 12.75% in FY2024.\n\nSources:\n- Zillow FY2024 10-K (EDGAR-hosted, via edgar-online excerpt): cash flow and revenue figures for 2024, 2023, 2022\n- Zillow FY2024 10-K (sec.gov z-20241231.htm) excerpts: operating cash flow and revenue for 2024, 2023, 2022\n- Zillow FY2023 10-K (sec.gov z-20231231.htm) and FY2023 Q4 press release excerpts: 2023 and 2022 revenue and operating cash flow\n- Zillow FY2022 10-K (sec.gov z-20221231.htm) excerpt: 2022 investing activity, purchases of property and equipment and intangibles\n- Zillow Q4 2024 press release (prnewswire) excerpts: full-year 2024 revenue\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://content.edgar-online.com/ExternalLink/EDGAR/0001617640-25-000016.html?hash=0cbc5b58372fd7624126f2551e8e8a884de4b57fe379aaaa014e219af2339afa&dest=z-20241231_htm\",\n            \"name\": \"Zillow Group FY2024 Form 10-K (EDGAR Online excerpt)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm\",\n            \"name\": \"Zillow Group FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764024000022/z-20231231.htm\",\n            \"name\": \"Zillow Group FY2023 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764023000010/z-20221231.htm\",\n            \"name\": \"Zillow Group FY2022 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.nasdaq.com/press-release/zillow-group-reports-fourth-quarter-and-full-year-2022-financial-results-2023-02-15\",\n            \"name\": \"Zillow Group Q4 and Full-Year 2022 Financial Results press release\"\n        }\n    ]\n}\n"
+     },
+     "output": "\nZillow Group (NASDAQ: Z/ZG): FCF \u2248 CFO \u2212 purchases of property and equipment; FCF margin = FCF \u00f7 total revenue. Figures in USD millions.\n\nInputs and results (source type: search excerpts from the FY2024 10-K cash flow and income statement tables, plus the FY2023 and FY2022 press-release/10-K excerpts; I did not open the full filings):\n\nFY2022: CFO 4,504; capex 115; FCF = 4,504 \u2212 115 = 4,389; revenue 1,958; margin = 4,389 \u00f7 1,958 = 224.16%\nFY2023: CFO 354; capex 135; FCF = 354 \u2212 135 = 219; revenue 1,945; margin = 219 \u00f7 1,945 = 11.26%\nFY2024: CFO 428; capex 143; FCF = 428 \u2212 143 = 285; revenue 2,236; margin = 285 \u00f7 2,236 = 12.75%\n\nCapex line: \"Purchases of property and equipment\" (2024: 143, 2023: 135, 2022: 115), as shown in the FY2024 10-K table. Purchases of intangible assets (28, 30, 25) are a separate line and were excluded from the headline.\n\nTrend:\n- FY2022\u2192FY2023: margin fell by about 212.90 percentage points (224.16% \u2192 11.26%).\n- FY2023\u2192FY2024: margin rose by about 1.49 percentage points (11.26% \u2192 12.75%).\n- The path is not monotonic. The FY2022 value is an outlier: CFO of 4,504 reflected the wind-down of Zillow Offers, when operating cash flow included cash from home sales and home purchases, while revenue of 1,958 is the reported total. The 2022 margin is therefore not comparable with later years. Excluding 2022, the trend from FY2023 to FY2024 is a modest improvement of about 1.49 pp.\n\nSensitivity (CFO \u2212 property and equipment purchases \u2212 intangible asset purchases): FY2022 222.88% (4,364 \u00f7 1,958); FY2023 9.72% (189 \u00f7 1,945); FY2024 11.49% (257 \u00f7 2,236). Change: \u2212213.16 pp, then +1.78 pp. The conclusion is the same.\n\nConclusion: On the headline formula, Zillow's FCF margin collapsed from about 224% in FY2022 (distorted by the Zillow Offers wind-down) to about 11.26% in FY2023, then recovered modestly to about 12.75% in FY2024.\n\nSources:\n- Zillow FY2024 10-K (EDGAR-hosted, via edgar-online excerpt): cash flow and revenue figures for 2024, 2023, 2022\n- Zillow FY2024 10-K (sec.gov z-20241231.htm) excerpts: operating cash flow and revenue for 2024, 2023, 2022\n- Zillow FY2023 10-K (sec.gov z-20231231.htm) and FY2023 Q4 press release excerpts: 2023 and 2022 revenue and operating cash flow\n- Zillow FY2022 10-K (sec.gov z-20221231.htm) excerpt: 2022 investing activity, purchases of property and equipment and intangibles\n- Zillow Q4 2024 press release (prnewswire) excerpts: full-year 2024 revenue\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://content.edgar-online.com/ExternalLink/EDGAR/0001617640-25-000016.html?hash=0cbc5b58372fd7624126f2551e8e8a884de4b57fe379aaaa014e219af2339afa&dest=z-20241231_htm\",\n            \"name\": \"Zillow Group FY2024 Form 10-K (EDGAR Online excerpt)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm\",\n            \"name\": \"Zillow Group FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764024000022/z-20231231.htm\",\n            \"name\": \"Zillow Group FY2023 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764023000010/z-20221231.htm\",\n            \"name\": \"Zillow Group FY2022 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.nasdaq.com/press-release/zillow-group-reports-fourth-quarter-and-full-year-2022-financial-results-2023-02-15\",\n            \"name\": \"Zillow Group Q4 and Full-Year 2022 Financial Results press release\"\n        }\n    ]\n}\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.046422705
+  }
+ ],
+ "final_answer": "\nZillow Group (NASDAQ: Z/ZG): FCF \u2248 CFO \u2212 purchases of property and equipment; FCF margin = FCF \u00f7 total revenue. Figures in USD millions.\n\nInputs and results (source type: search excerpts from the FY2024 10-K cash flow and income statement tables, plus the FY2023 and FY2022 press-release/10-K excerpts; I did not open the full filings):\n\nFY2022: CFO 4,504; capex 115; FCF = 4,504 \u2212 115 = 4,389; revenue 1,958; margin = 4,389 \u00f7 1,958 = 224.16%\nFY2023: CFO 354; capex 135; FCF = 354 \u2212 135 = 219; revenue 1,945; margin = 219 \u00f7 1,945 = 11.26%\nFY2024: CFO 428; capex 143; FCF = 428 \u2212 143 = 285; revenue 2,236; margin = 285 \u00f7 2,236 = 12.75%\n\nCapex line: \"Purchases of property and equipment\" (2024: 143, 2023: 135, 2022: 115), as shown in the FY2024 10-K table. Purchases of intangible assets (28, 30, 25) are a separate line and were excluded from the headline.\n\nTrend:\n- FY2022\u2192FY2023: margin fell by about 212.90 percentage points (224.16% \u2192 11.26%).\n- FY2023\u2192FY2024: margin rose by about 1.49 percentage points (11.26% \u2192 12.75%).\n- The path is not monotonic. The FY2022 value is an outlier: CFO of 4,504 reflected the wind-down of Zillow Offers, when operating cash flow included cash from home sales and home purchases, while revenue of 1,958 is the reported total. The 2022 margin is therefore not comparable with later years. Excluding 2022, the trend from FY2023 to FY2024 is a modest improvement of about 1.49 pp.\n\nSensitivity (CFO \u2212 property and equipment purchases \u2212 intangible asset purchases): FY2022 222.88% (4,364 \u00f7 1,958); FY2023 9.72% (189 \u00f7 1,945); FY2024 11.49% (257 \u00f7 2,236). Change: \u2212213.16 pp, then +1.78 pp. The conclusion is the same.\n\nConclusion: On the headline formula, Zillow's FCF margin collapsed from about 224% in FY2022 (distorted by the Zillow Offers wind-down) to about 11.26% in FY2023, then recovered modestly to about 12.75% in FY2024.\n\nSources:\n- Zillow FY2024 10-K (EDGAR-hosted, via edgar-online excerpt): cash flow and revenue figures for 2024, 2023, 2022\n- Zillow FY2024 10-K (sec.gov z-20241231.htm) excerpts: operating cash flow and revenue for 2024, 2023, 2022\n- Zillow FY2023 10-K (sec.gov z-20231231.htm) and FY2023 Q4 press release excerpts: 2023 and 2022 revenue and operating cash flow\n- Zillow FY2022 10-K (sec.gov z-20221231.htm) excerpt: 2022 investing activity, purchases of property and equipment and intangibles\n- Zillow Q4 2024 press release (prnewswire) excerpts: full-year 2024 revenue\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://content.edgar-online.com/ExternalLink/EDGAR/0001617640-25-000016.html?hash=0cbc5b58372fd7624126f2551e8e8a884de4b57fe379aaaa014e219af2339afa&dest=z-20241231_htm\",\n            \"name\": \"Zillow Group FY2024 Form 10-K (EDGAR Online excerpt)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm\",\n            \"name\": \"Zillow Group FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764024000022/z-20231231.htm\",\n            \"name\": \"Zillow Group FY2023 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764023000010/z-20221231.htm\",\n            \"name\": \"Zillow Group FY2022 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.nasdaq.com/press-release/zillow-group-reports-fourth-quarter-and-full-year-2022-financial-results-2023-02-15\",\n            \"name\": \"Zillow Group Q4 and Full-Year 2022 Financial Results press release\"\n        }\n    ]\n}\n",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 2,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 2,
+  "input_tokens": 10,
+  "output_tokens": 4064,
+  "cache_creation_input_tokens": 38661,
+  "cache_read_input_tokens": 35573,
+  "web_search_requests": 4,
+  "cost_usd": 0.047222
+ },
+ "cost_usd": 0.047222,
+ "elapsed_s": 23.3,
+ "harness_label": "agg1"
+}

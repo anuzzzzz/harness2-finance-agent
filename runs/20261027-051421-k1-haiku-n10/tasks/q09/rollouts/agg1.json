@@ -1,0 +1,173 @@
+{
+ "task_id": "q09",
+ "label": "agg1",
+ "question": "How many basis points did MU beat or miss its Q3 2024 GAAP gross margin guidance?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "guidance_vs_actual"
+     },
+     "output": "---\nname: guidance_vs_actual\ndescription: Answer \"how much did company X beat or miss its guidance\" for a margin, revenue or EPS line, in basis points, dollars or percent.\n---\n\n# Guidance vs actual\n\n**Analytic move:** compare. Take the actual from the earnings release for the guided quarter, take the guidance from the PRIOR quarter's release (its \"Business Outlook\" table), and subtract them on the same basis.\n\n**Where the figures live**\n- Guidance: the 8-K Exhibit 99.1 press release for the quarter BEFORE the one in question, in the outlook table, usually as a midpoint \u00b1 a range.\n- Actual: the 8-K Exhibit 99.1 for the guided quarter, which reports the margin to one decimal. The 10-Q income statement gives the dollars (gross margin and revenue) so the ratio can be computed. The 10-Q's percentage column is often rounded to a whole number, so do not use it as the reported margin.\n- Management remarks such as \"above the high end of guidance\" often refer to the non-GAAP line. Do not transfer them to GAAP.\n\n**Procedure**\n1. Fix the basis the question names (GAAP or non-GAAP). Use the same basis for guidance and actual.\n2. Fix the guided period. Match the company's fiscal quarter, not the calendar quarter.\n3. The default beat or miss is actual minus the guidance MIDPOINT. Also state the low and high ends and whether the actual is inside, above or below the range.\n4. For a margin, 1 percentage point = 100 bps. Compute two figures:\n   - the company-reported one-decimal percentage minus the midpoint (how the company and analysts state it);\n   - the unrounded ratio ($ gross margin / $ revenue) minus the midpoint.\n   Headline the answer with the one-decimal reported figure and show the unrounded figure beside it. If they differ by under 1 bp, say so. Do not build a headline on a whole-percent rounding from a table.\n5. State the sign (beat or miss) in words, with period, units, arithmetic and the source of each figure.\n6. Before submitting, confirm that both figures are on the same basis, come from the right two releases, and use the same unit. If the figures came from search excerpts rather than an opened filing, say so.\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000806775
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01WwUqXTZExvZGnZhae5ysXv",
+     "query": "Micron fiscal Q3 2024 results GAAP gross margin",
+     "results": [
+      {
+       "title": "MICRON TECHNOLOGY INC - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm",
+       "page_age": null
+      },
+      {
+       "title": "MICRON TECHNOLOGY INC - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000023/a2024q4ex991-pressrelease.htm",
+       "page_age": null
+      },
+      {
+       "title": "MICRON TECHNOLOGY INC - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm",
+       "page_age": null
+      },
+      {
+       "title": "MICRON TECHNOLOGY INC - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000019/mu-20240530.htm",
+       "page_age": null
+      },
+      {
+       "title": "MICRON TECHNOLOGY INC - Form ARS - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000041/a2024q4copyforarsfilingxne.pdf",
+       "page_age": null
+      },
+      {
+       "title": "MICRON TECHNOLOGY INC - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000007/mu-20240229.htm",
+       "page_age": null
+      },
+      {
+       "title": "MICRON TECHNOLOGY INC - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000047/mu-20241128.htm",
+       "page_age": null
+      },
+      {
+       "title": "Financial results - Micron Investor Relations",
+       "url": "https://micron.gcs-web.com/static-files/a531c7f0-fca2-48f3-8f24-79c945aaa2d2",
+       "page_age": "853 days ago"
+      },
+      {
+       "title": "Micron Technology, Inc. (NASDAQ:MU) Q3 2024 Earnings Call Transcript",
+       "url": "https://finance.yahoo.com/news/micron-technology-inc-nasdaq-mu-130223583.html/",
+       "page_age": "850 days ago"
+      }
+     ]
+    },
+    {
+     "id": "srvtoolu_01TGEJ2PdBs3HxmbUe29p1NP",
+     "query": "Micron fiscal Q2 2024 results outlook third quarter GAAP gross margin guidance",
+     "results": [
+      {
+       "title": "MICRON TECHNOLOGY INC - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm",
+       "page_age": null
+      },
+      {
+       "title": "MICRON TECHNOLOGY INC - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm",
+       "page_age": null
+      },
+      {
+       "title": "MICRON TECHNOLOGY INC - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000019/mu-20240530.htm",
+       "page_age": null
+      },
+      {
+       "title": "MICRON TECHNOLOGY INC - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000046/a2025q1ex991-pressrelease.htm",
+       "page_age": null
+      },
+      {
+       "title": "MICRON TECHNOLOGY INC - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312524000023/a2024q4ex991-pressrelease.htm",
+       "page_age": null
+      },
+      {
+       "title": "Micron Technology, Inc. Reports Results for the Second Quarter of Fiscal 2024",
+       "url": "https://www.nasdaq.com/press-release/micron-technology-inc.-reports-results-for-the-second-quarter-of-fiscal-2024-2024-03",
+       "page_age": null
+      },
+      {
+       "title": "Micron Technology, Inc. Reports Results for the Third Quarter of Fiscal 2024",
+       "url": "https://www.techpowerup.com/323949/micron-technology-inc-reports-results-for-the-third-quarter-of-fiscal-2024",
+       "page_age": "852 days ago"
+      },
+      {
+       "title": "Press Release issued on March 20, 2025",
+       "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000006/a2025q2ex991-pressrelease.htm",
+       "page_age": null
+      },
+      {
+       "title": "Micron Technology Inc (MU) Q3 2026 Earnings Call Highlights: Record Revenue and Strategic ...",
+       "url": "https://finance.yahoo.com/markets/stocks/articles/micron-technology-inc-mu-q3-050020645.html",
+       "page_age": "124 days ago"
+      },
+      {
+       "title": "Document",
+       "url": "https://www.sec.gov/Archives/edgar/data/723125/000072312525000019/a2025q3ex991-pressrelease.htm",
+       "page_age": null
+      }
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Answer: On a GAAP basis, Micron (MU) beat its fiscal Q3 2024 gross margin guidance midpoint by about 140 basis points (139.77 bps unrounded). The actual landed inside the guided range, below its high end.\n\nGuidance (from the Q2 FY2024 earnings release, dated March 2024, Business Outlook table): FQ3-24 GAAP gross margin outlook was 25.5% \u00b1 1.5%, so the range was 24.0% to 27.0% with a 25.5% midpoint. The same table gave the non-GAAP outlook as 26.5% \u00b1 1.5%.\n\nActual (FQ3-24, quarter ended May 30, 2024): from the Q3 FY2024 Form 10-Q consolidated results table, revenue was $6,811 million and gross margin was $1,832 million, shown as 27% of revenue (the 10-Q percentage is rounded to a whole number). Unrounded GAAP gross margin = 1,832 / 6,811 = 26.8977%. The company-level one-decimal figure is therefore 26.9%, which I computed from the dollar figures; I did not see the press release's own percentage line in the excerpts.\n\nCalculation:\n- Versus midpoint (unrounded): 26.8977% \u2212 25.5% = 1.3977 percentage points = +139.77 bps (beat).\n- Versus midpoint (one-decimal 26.9%): 26.9% \u2212 25.5% = 1.4 points = +140 bps (beat).\n- Versus high end: 26.8977% \u2212 27.0% = \u221210.2 bps, so the actual was about 10 bps below the top of the range.\n- Versus low end: 26.8977% \u2212 24.0% = +289.8 bps.\n\nNote on management commentary: the Q3 FY2024 release and call said revenue, gross margin and EPS were above the high end of guidance. That refers to the non-GAAP gross margin (about 28%, from the release's $1,917 million non-GAAP gross margin on $6,811 million revenue, versus a 26.5% \u00b1 1.5% non-GAAP outlook). It does not apply to the GAAP line, which was inside its range.\n\nSources:\n- Micron Q2 FY2024 earnings release (8-K Exhibit 99.1), Business Outlook table: https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\n- Micron Q3 FY2024 Form 10-Q (quarter ended May 30, 2024), Results of Operations: https://www.sec.gov/Archives/edgar/data/723125/000072312524000019/mu-20240530.htm\n- Micron Q3 FY2024 earnings release (8-K Exhibit 99.1): https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\n\n{\"sources\": [{\"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\", \"name\": \"Micron Q2 FY2024 earnings release (8-K Ex. 99.1) - Business Outlook\"}, {\"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000019/mu-20240530.htm\", \"name\": \"Micron Q3 FY2024 Form 10-Q\"}, {\"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\", \"name\": \"Micron Q3 FY2024 earnings release (8-K Ex. 99.1)\"}]}"
+     },
+     "output": "Answer: On a GAAP basis, Micron (MU) beat its fiscal Q3 2024 gross margin guidance midpoint by about 140 basis points (139.77 bps unrounded). The actual landed inside the guided range, below its high end.\n\nGuidance (from the Q2 FY2024 earnings release, dated March 2024, Business Outlook table): FQ3-24 GAAP gross margin outlook was 25.5% \u00b1 1.5%, so the range was 24.0% to 27.0% with a 25.5% midpoint. The same table gave the non-GAAP outlook as 26.5% \u00b1 1.5%.\n\nActual (FQ3-24, quarter ended May 30, 2024): from the Q3 FY2024 Form 10-Q consolidated results table, revenue was $6,811 million and gross margin was $1,832 million, shown as 27% of revenue (the 10-Q percentage is rounded to a whole number). Unrounded GAAP gross margin = 1,832 / 6,811 = 26.8977%. The company-level one-decimal figure is therefore 26.9%, which I computed from the dollar figures; I did not see the press release's own percentage line in the excerpts.\n\nCalculation:\n- Versus midpoint (unrounded): 26.8977% \u2212 25.5% = 1.3977 percentage points = +139.77 bps (beat).\n- Versus midpoint (one-decimal 26.9%): 26.9% \u2212 25.5% = 1.4 points = +140 bps (beat).\n- Versus high end: 26.8977% \u2212 27.0% = \u221210.2 bps, so the actual was about 10 bps below the top of the range.\n- Versus low end: 26.8977% \u2212 24.0% = +289.8 bps.\n\nNote on management commentary: the Q3 FY2024 release and call said revenue, gross margin and EPS were above the high end of guidance. That refers to the non-GAAP gross margin (about 28%, from the release's $1,917 million non-GAAP gross margin on $6,811 million revenue, versus a 26.5% \u00b1 1.5% non-GAAP outlook). It does not apply to the GAAP line, which was inside its range.\n\nSources:\n- Micron Q2 FY2024 earnings release (8-K Exhibit 99.1), Business Outlook table: https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\n- Micron Q3 FY2024 Form 10-Q (quarter ended May 30, 2024), Results of Operations: https://www.sec.gov/Archives/edgar/data/723125/000072312524000019/mu-20240530.htm\n- Micron Q3 FY2024 earnings release (8-K Exhibit 99.1): https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\n\n{\"sources\": [{\"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\", \"name\": \"Micron Q2 FY2024 earnings release (8-K Ex. 99.1) - Business Outlook\"}, {\"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000019/mu-20240530.htm\", \"name\": \"Micron Q3 FY2024 Form 10-Q\"}, {\"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\", \"name\": \"Micron Q3 FY2024 earnings release (8-K Ex. 99.1)\"}]}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.023448985000000002
+  }
+ ],
+ "final_answer": "Answer: On a GAAP basis, Micron (MU) beat its fiscal Q3 2024 gross margin guidance midpoint by about 140 basis points (139.77 bps unrounded). The actual landed inside the guided range, below its high end.\n\nGuidance (from the Q2 FY2024 earnings release, dated March 2024, Business Outlook table): FQ3-24 GAAP gross margin outlook was 25.5% \u00b1 1.5%, so the range was 24.0% to 27.0% with a 25.5% midpoint. The same table gave the non-GAAP outlook as 26.5% \u00b1 1.5%.\n\nActual (FQ3-24, quarter ended May 30, 2024): from the Q3 FY2024 Form 10-Q consolidated results table, revenue was $6,811 million and gross margin was $1,832 million, shown as 27% of revenue (the 10-Q percentage is rounded to a whole number). Unrounded GAAP gross margin = 1,832 / 6,811 = 26.8977%. The company-level one-decimal figure is therefore 26.9%, which I computed from the dollar figures; I did not see the press release's own percentage line in the excerpts.\n\nCalculation:\n- Versus midpoint (unrounded): 26.8977% \u2212 25.5% = 1.3977 percentage points = +139.77 bps (beat).\n- Versus midpoint (one-decimal 26.9%): 26.9% \u2212 25.5% = 1.4 points = +140 bps (beat).\n- Versus high end: 26.8977% \u2212 27.0% = \u221210.2 bps, so the actual was about 10 bps below the top of the range.\n- Versus low end: 26.8977% \u2212 24.0% = +289.8 bps.\n\nNote on management commentary: the Q3 FY2024 release and call said revenue, gross margin and EPS were above the high end of guidance. That refers to the non-GAAP gross margin (about 28%, from the release's $1,917 million non-GAAP gross margin on $6,811 million revenue, versus a 26.5% \u00b1 1.5% non-GAAP outlook). It does not apply to the GAAP line, which was inside its range.\n\nSources:\n- Micron Q2 FY2024 earnings release (8-K Exhibit 99.1), Business Outlook table: https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\n- Micron Q3 FY2024 Form 10-Q (quarter ended May 30, 2024), Results of Operations: https://www.sec.gov/Archives/edgar/data/723125/000072312524000019/mu-20240530.htm\n- Micron Q3 FY2024 earnings release (8-K Exhibit 99.1): https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\n\n{\"sources\": [{\"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000004/a2024q2ex991-pressrelease.htm\", \"name\": \"Micron Q2 FY2024 earnings release (8-K Ex. 99.1) - Business Outlook\"}, {\"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000019/mu-20240530.htm\", \"name\": \"Micron Q3 FY2024 Form 10-Q\"}, {\"url\": \"https://www.sec.gov/Archives/edgar/data/723125/000072312524000016/a2024q3ex991-pressrelease.htm\", \"name\": \"Micron Q3 FY2024 earnings release (8-K Ex. 99.1)\"}]}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 2,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 2,
+  "input_tokens": 8,
+  "output_tokens": 2566,
+  "cache_creation_input_tokens": 22750,
+  "cache_read_input_tokens": 12821,
+  "web_search_requests": 2,
+  "cost_usd": 0.024256
+ },
+ "cost_usd": 0.024256,
+ "elapsed_s": 14.1,
+ "harness_label": "agg1"
+}

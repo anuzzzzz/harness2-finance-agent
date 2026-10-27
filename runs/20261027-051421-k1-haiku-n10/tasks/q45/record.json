@@ -1,0 +1,1056 @@
+{
+ "task_id": "q45",
+ "k": 1,
+ "rollouts": {
+  "base1": {
+   "task_id": "q45",
+   "label": "base1",
+   "question": "In 2024, what was Airbnb's (NASDAQ: ABNB) adjustment for Stock-based Compensation Expense?",
+   "steps": [
+    {
+     "turn": 1,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [
+      {
+       "id": "srvtoolu_01RR8izhy7ZwWrfqaC4QigVf",
+       "query": "Airbnb fourth quarter full year 2024 results adjusted EBITDA stock-based compensation",
+       "results": []
+      }
+     ],
+     "calls": [
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "Airbnb adjusted EBITDA reconciliation stock-based compensation expense 2024",
+        "ciks": [
+         "ABNB"
+        ],
+        "start_date": "2025-01-01",
+        "end_date": "2025-04-07"
+       },
+       "output": "HTTPError: 403 Client Error: Forbidden for url: https://www.sec.gov/files/company_tickers.json",
+       "is_error": true,
+       "elapsed_s": 0.34,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.00023462
+    },
+    {
+     "turn": 2,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [
+      {
+       "id": "srvtoolu_01RR8izhy7ZwWrfqaC4QigVf",
+       "query": null,
+       "results": [
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524134183/d813800dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524253103/d886752dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524033706/d646462dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000017/abnb-20240331.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb Q4 2024 Earnings Analysis - by Sergey",
+         "url": "https://sergeycyw.substack.com/p/airbnb-q4-2024-earnings-analysis",
+         "page_age": "619 days ago"
+        },
+        {
+         "title": "Q3 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q3/Airbnb_Q3-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "719 days ago"
+        },
+        {
+         "title": "Airbnb Reports Strong Q4 2024 Financial Results with Impressive Growth",
+         "url": "https://www.gurufocus.com/news/2698100/airbnb-reports-strong-q4-2024-financial-results-with-impressive-growth",
+         "page_age": "619 days ago"
+        },
+        {
+         "title": "Airbnb's Earnings: Sky High Results, Grounded Guidance? - The Globe and Mail",
+         "url": "https://www.theglobeandmail.com/investing/markets/stocks/ABNB/pressreleases/30979535/airbnbs-earnings-sky-high-results-grounded-guidance/",
+         "page_age": "617 days ago"
+        },
+        {
+         "title": "Airbnb, Inc. (Form: 10-Q, Received: 11/07/2024 16:11:19)",
+         "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000032.html?hash=a643e8dabffb3836e06f49b2a4a9b345a8db1f7d9ac322bececde9bc6fbf2818&dest=exh101eleventhamendment-ex_htm",
+         "page_age": null
+        }
+       ]
+      },
+      {
+       "id": "srvtoolu_01M4EzMDJFBeUhSS8SC5TLBY",
+       "query": "Airbnb 2024 10-K adjusted EBITDA reconciliation year ended December 31, 2024 stock-based compensation expense",
+       "results": []
+      }
+     ],
+     "calls": [
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "Airbnb adjusted EBITDA stock-based compensation expense year ended December 31, 2024",
+        "start_date": "2025-02-01",
+        "end_date": "2025-04-07"
+       },
+       "output": "ValueError: EDGAR full-text search returned HTTP 403: <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n<title>SEC.gov | Your Request Originates from an Undeclar",
+       "is_error": true,
+       "elapsed_s": 0.25,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.01131412
+    },
+    {
+     "turn": 3,
+     "text": "In 2024, Airbnb added back **$1,407 million** of stock-based compensation expense when reconciling net income to Adjusted EBITDA. That is up from $1,120 million in 2023.\n\nThe 10-K reconciliation table shows the full-year figures. \nAdjusted EBITDA was $4,041 million in 2024, with a 36% margin, versus $3,653 million in 2023.\n The stock-based compensation line sits between depreciation and amortization and acquisition-related impacts in that table. Its 2024 value was 1,407 against 1,120 in 2023, an increase of about 26%, which the filing also reports as a year-over-year change.\n\nAs a share of revenue, the add-back equals about 12.67% of 2024 revenue ($1,407M \u00f7 $11,102M). Airbnb's own filings say this expense is a significant recurring cost that it will keep incurring for the foreseeable future, which is why it is excluded from Adjusted EBITDA rather than treated as a non-recurring item.\n\nNote that this is the adjustment amount; it is not a separate line in the GAAP income statement.",
+     "thinking_chars": 0,
+     "searches": [
+      {
+       "id": "srvtoolu_01M4EzMDJFBeUhSS8SC5TLBY",
+       "query": null,
+       "results": [
+        {
+         "title": "Airbnb, Inc. - Form 10-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. (Form: 10-K, Received: 02/16/2024 16:03:41)",
+         "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000006.html?hash=8fb59a79794331d61fbddd144f54c3e63f372875378160b08c84a6274e949294&dest=exh1011sfo_888brannanxgrou_htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. (Form: 10-Q, Received: 08/06/2024 16:11:04)",
+         "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000024.html?hash=54847390365eef7f589b106218c8b09ff9bf5be46e968ce19f94e5ad9747f4ef&dest=exh101airbnb-elinormertzpr_htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Cloudfront.net",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf",
+         "page_age": "621 days ago"
+        },
+        {
+         "title": "Q3 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q3/Airbnb_Q3-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "719 days ago"
+        },
+        {
+         "title": "Airbnb, Inc. (ABNB) 10K Annual Reports & 10Q SEC Filings",
+         "url": "https://last10k.com/sec-filings/abnb",
+         "page_age": "256 days ago"
+        },
+        {
+         "title": "Q2 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q2/Airbnb_Q2-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "812 days ago"
+        },
+        {
+         "title": "abnb-20240930",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm",
+         "page_age": null
+        },
+        {
+         "title": "abnb-20240630",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm",
+         "page_age": null
+        }
+       ]
+      }
+     ],
+     "calls": [
+      {
+       "name": "submit_final_result",
+       "input": {
+        "final_result": "Airbnb's 2024 stock-based compensation adjustment (added back to net income in the Adjusted EBITDA reconciliation) was $1,407 million, up from $1,120 million in 2023 (about a 26% increase).\n\nSupporting details:\n- The FY2024 10-K reconciliation shows net income of $2,648M for 2024 and Adjusted EBITDA of $4,041M (36% margin), versus $3,653M in 2023.\n- Stock-based compensation expense added back: $1,407M (2024) vs. $1,120M (2023).\n- As a share of 2024 revenue ($11,102M): 1,407 / 11,102 = 12.67%.\n\nContext: Airbnb states that stock-based compensation is a significant recurring expense that it expects to continue for the foreseeable future, and it excludes it from Adjusted EBITDA for that reason.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-K - FY2024\"\n        },\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb, Inc. FY2024 annual report (Cloudfront PDF)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-Q - Q3 2024\"\n        }\n    ]\n}"
+       },
+       "output": "Airbnb's 2024 stock-based compensation adjustment (added back to net income in the Adjusted EBITDA reconciliation) was $1,407 million, up from $1,120 million in 2023 (about a 26% increase).\n\nSupporting details:\n- The FY2024 10-K reconciliation shows net income of $2,648M for 2024 and Adjusted EBITDA of $4,041M (36% margin), versus $3,653M in 2023.\n- Stock-based compensation expense added back: $1,407M (2024) vs. $1,120M (2023).\n- As a share of 2024 revenue ($11,102M): 1,407 / 11,102 = 12.67%.\n\nContext: Airbnb states that stock-based compensation is a significant recurring expense that it expects to continue for the foreseeable future, and it excludes it from Adjusted EBITDA for that reason.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-K - FY2024\"\n        },\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb, Inc. FY2024 annual report (Cloudfront PDF)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-Q - Q3 2024\"\n        }\n    ]\n}",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.011741775
+    }
+   ],
+   "final_answer": "Airbnb's 2024 stock-based compensation adjustment (added back to net income in the Adjusted EBITDA reconciliation) was $1,407 million, up from $1,120 million in 2023 (about a 26% increase).\n\nSupporting details:\n- The FY2024 10-K reconciliation shows net income of $2,648M for 2024 and Adjusted EBITDA of $4,041M (36% margin), versus $3,653M in 2023.\n- Stock-based compensation expense added back: $1,407M (2024) vs. $1,120M (2023).\n- As a share of 2024 revenue ($11,102M): 1,407 / 11,102 = 12.67%.\n\nContext: Airbnb states that stock-based compensation is a significant recurring expense that it expects to continue for the foreseeable future, and it excludes it from Adjusted EBITDA for that reason.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-K - FY2024\"\n        },\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb, Inc. FY2024 annual report (Cloudfront PDF)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-Q - Q3 2024\"\n        }\n    ]\n}",
+   "fallback_text": "In 2024, Airbnb added back **$1,407 million** of stock-based compensation expense when reconciling net income to Adjusted EBITDA. That is up from $1,120 million in 2023.\n\nThe 10-K reconciliation table shows the full-year figures. \nAdjusted EBITDA was $4,041 million in 2024, with a 36% margin, versus $3,653 million in 2023.\n The stock-based compensation line sits between depreciation and amortization and acquisition-related impacts in that table. Its 2024 value was 1,407 against 1,120 in 2023, an increase of about 26%, which the filing also reports as a year-over-year change.\n\nAs a share of revenue, the add-back equals about 12.67% of 2024 revenue ($1,407M \u00f7 $11,102M). Airbnb's own filings say this expense is a significant recurring cost that it will keep incurring for the foreseeable future, which is why it is excluded from Adjusted EBITDA rather than treated as a non-recurring item.\n\nNote that this is the adjustment amount; it is not a separate line in the GAAP income statement.",
+   "submitted": true,
+   "turns": 3,
+   "stop": "submitted",
+   "error": "",
+   "usage": {
+    "calls": 3,
+    "input_tokens": 8,
+    "output_tokens": 1925,
+    "cache_creation_input_tokens": 16631,
+    "cache_read_input_tokens": 24834,
+    "web_search_requests": 2,
+    "cost_usd": 0.023291
+   },
+   "cost_usd": 0.023291,
+   "elapsed_s": 11.8,
+   "harness_label": "base1"
+  },
+  "inv1": {
+   "task_id": "q45",
+   "label": "inv1",
+   "question": "In 2024, what was Airbnb's (NASDAQ: ABNB) adjustment for Stock-based Compensation Expense?",
+   "steps": [
+    {
+     "turn": 1,
+     "text": "In fiscal 2024, Airbnb's adjustment for stock-based compensation expense in its Adjusted EBITDA reconciliation was **$1,407 million**.\n\nThis figure comes from a search excerpt of the FY2024 Form 10-K, not from an opened copy of the filing. The reconciliation table is in millions and shows 2023 and 2024 side by side. \nNet income | $4,792 | $2,648\n and the table lists \nStock-based compensation expense | 1,120 | 1,407\n, so the 2024 column is $1,407 million.\n\nThe 2023 figure of $1,120 million matches the prior-year 10-K. That filing's table shows \n1,120.\n for stock-based compensation expense.\n\nAs a consistency check, the 10-Q for the nine months ended September 30, 2024 shows \nStock-based compensation expense(1) | 286 | 362 | 830 | 1,039\n. That implies roughly $368 million in Q4 2024 (1,407 \u2212 1,039), which is plausible.\n\nNote that this adjustment is the add-back line in the Adjusted EBITDA reconciliation. It is the same expense recognized in the income statement, and the 10-K's stock-based compensation expense note reports the same total.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-K - FY2024\"\n        },\n        {\n            \"url\": \"https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000006.html?hash=8fb59a79794331d61fbddd144f54c3e63f372875378160b08c84a6274e949294&dest=exh1011sfo_888brannanxgrou_htm\",\n            \"name\": \"Airbnb, Inc. (Form: 10-K, Received: 02/16/2024) - FY2023 Adjusted EBITDA reconciliation\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-Q - FY2024 (Q3)\"\n        }\n    ]\n}",
+     "thinking_chars": 0,
+     "searches": [
+      {
+       "id": "srvtoolu_01Sp3N3XcWmY2WtyXZ4vTueJ",
+       "query": "Airbnb 2024 10-K adjusted EBITDA reconciliation stock-based compensation expense",
+       "results": [
+        {
+         "title": "Airbnb, Inc. - Form 10-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. (Form: 10-K, Received: 02/16/2024 16:03:41)",
+         "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000006.html?hash=8fb59a79794331d61fbddd144f54c3e63f372875378160b08c84a6274e949294&dest=exh1011sfo_888brannanxgrou_htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. (Form: 10-Q, Received: 11/07/2024 16:11:19)",
+         "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000032.html?hash=a643e8dabffb3836e06f49b2a4a9b345a8db1f7d9ac322bececde9bc6fbf2818&dest=exh101eleventhamendment-ex_htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. (Form: 10-Q, Received: 08/06/2024 16:11:04)",
+         "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000024.html?hash=54847390365eef7f589b106218c8b09ff9bf5be46e968ce19f94e5ad9747f4ef&dest=exh101airbnb-elinormertzpr_htm",
+         "page_age": null
+        },
+        {
+         "title": "Q3 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q3/Airbnb_Q3-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "719 days ago"
+        },
+        {
+         "title": "Q2 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q2/Airbnb_Q2-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "812 days ago"
+        },
+        {
+         "title": "abnb-20240331",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000017/abnb-20240331.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. (ABNB) 10K Annual Reports & 10Q SEC Filings",
+         "url": "https://last10k.com/sec-filings/abnb",
+         "page_age": "256 days ago"
+        },
+        {
+         "title": "abnb-20240630",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm",
+         "page_age": null
+        }
+       ]
+      },
+      {
+       "id": "srvtoolu_013pY8vFZ9eWsjMn2deLY6hD",
+       "query": "Airbnb fourth quarter full year 2024 results adjusted EBITDA reconciliation table stock-based compensation",
+       "results": [
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524253103/d886752dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524134183/d813800dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524033706/d646462dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000017/abnb-20240331.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524194849/d831385dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Q3 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q3/Airbnb_Q3-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "719 days ago"
+        },
+        {
+         "title": "Airbnb, Inc. (Form: 10-K, Received: 02/16/2024 16:03:41)",
+         "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000006.html?hash=8fb59a79794331d61fbddd144f54c3e63f372875378160b08c84a6274e949294&dest=exh1011sfo_888brannanxgrou_htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. (Form: 10-Q, Received: 08/06/2024 16:11:04)",
+         "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000024.html?hash=54847390365eef7f589b106218c8b09ff9bf5be46e968ce19f94e5ad9747f4ef&dest=exh101airbnb-elinormertzpr_htm",
+         "page_age": null
+        }
+       ]
+      }
+     ],
+     "calls": [],
+     "stop_reason": "end_turn",
+     "cost_usd": 0.02356014
+    },
+    {
+     "turn": 2,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "submit_final_result",
+       "input": {
+        "final_result": "Airbnb's adjustment for stock-based compensation expense in fiscal 2024 was $1,407 million.\n\nSource and basis: This figure comes from a search excerpt of the FY2024 Form 10-K, not from an opened copy of the filing. The Adjusted EBITDA reconciliation table is presented in millions, with 2023 and 2024 columns. Net income was $4,792 million (2023) and $2,648 million (2024). The stock-based compensation expense line reads 1,120 (2023) and 1,407 (2024). The 2024 figure is therefore $1,407 million.\n\nCross-checks:\n- The prior-year 10-K (FY2023) shows stock-based compensation expense of 1,120 for 2023, matching the 2023 column above.\n- The Q3 2024 Form 10-Q shows stock-based compensation expense of 1,039 for the nine months ended September 30, 2024. The implied Q4 2024 amount is about 368 (1,407 minus 1,039), which is plausible.\n\nNote: This is the add-back line in the non-GAAP Adjusted EBITDA reconciliation. It is not separately verified against the stock-based compensation note in the FY2024 10-K, since I did not open that section of the filing.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-K - FY2024\"\n        },\n        {\n            \"url\": \"https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000006.html?hash=8fb59a79794331d61fbddd144f54c3e63f372875378160b08c84a6274e949294&dest=exh1011sfo_888brannanxgrou_htm\",\n            \"name\": \"Airbnb, Inc. (Form: 10-K, Received: 02/16/2024) - FY2023 Adjusted EBITDA reconciliation\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-Q - FY2024 (Q3)\"\n        }\n    ]\n}"
+       },
+       "output": "Airbnb's adjustment for stock-based compensation expense in fiscal 2024 was $1,407 million.\n\nSource and basis: This figure comes from a search excerpt of the FY2024 Form 10-K, not from an opened copy of the filing. The Adjusted EBITDA reconciliation table is presented in millions, with 2023 and 2024 columns. Net income was $4,792 million (2023) and $2,648 million (2024). The stock-based compensation expense line reads 1,120 (2023) and 1,407 (2024). The 2024 figure is therefore $1,407 million.\n\nCross-checks:\n- The prior-year 10-K (FY2023) shows stock-based compensation expense of 1,120 for 2023, matching the 2023 column above.\n- The Q3 2024 Form 10-Q shows stock-based compensation expense of 1,039 for the nine months ended September 30, 2024. The implied Q4 2024 amount is about 368 (1,407 minus 1,039), which is plausible.\n\nNote: This is the add-back line in the non-GAAP Adjusted EBITDA reconciliation. It is not separately verified against the stock-based compensation note in the FY2024 10-K, since I did not open that section of the filing.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-K - FY2024\"\n        },\n        {\n            \"url\": \"https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000006.html?hash=8fb59a79794331d61fbddd144f54c3e63f372875378160b08c84a6274e949294&dest=exh1011sfo_888brannanxgrou_htm\",\n            \"name\": \"Airbnb, Inc. (Form: 10-K, Received: 02/16/2024) - FY2023 Adjusted EBITDA reconciliation\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-Q - FY2024 (Q3)\"\n        }\n    ]\n}",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.0009274549999999999
+    }
+   ],
+   "final_answer": "Airbnb's adjustment for stock-based compensation expense in fiscal 2024 was $1,407 million.\n\nSource and basis: This figure comes from a search excerpt of the FY2024 Form 10-K, not from an opened copy of the filing. The Adjusted EBITDA reconciliation table is presented in millions, with 2023 and 2024 columns. Net income was $4,792 million (2023) and $2,648 million (2024). The stock-based compensation expense line reads 1,120 (2023) and 1,407 (2024). The 2024 figure is therefore $1,407 million.\n\nCross-checks:\n- The prior-year 10-K (FY2023) shows stock-based compensation expense of 1,120 for 2023, matching the 2023 column above.\n- The Q3 2024 Form 10-Q shows stock-based compensation expense of 1,039 for the nine months ended September 30, 2024. The implied Q4 2024 amount is about 368 (1,407 minus 1,039), which is plausible.\n\nNote: This is the add-back line in the non-GAAP Adjusted EBITDA reconciliation. It is not separately verified against the stock-based compensation note in the FY2024 10-K, since I did not open that section of the filing.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-K - FY2024\"\n        },\n        {\n            \"url\": \"https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000006.html?hash=8fb59a79794331d61fbddd144f54c3e63f372875378160b08c84a6274e949294&dest=exh1011sfo_888brannanxgrou_htm\",\n            \"name\": \"Airbnb, Inc. (Form: 10-K, Received: 02/16/2024) - FY2023 Adjusted EBITDA reconciliation\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-Q - FY2024 (Q3)\"\n        }\n    ]\n}",
+   "fallback_text": "In fiscal 2024, Airbnb's adjustment for stock-based compensation expense in its Adjusted EBITDA reconciliation was **$1,407 million**.\n\nThis figure comes from a search excerpt of the FY2024 Form 10-K, not from an opened copy of the filing. The reconciliation table is in millions and shows 2023 and 2024 side by side. \nNet income | $4,792 | $2,648\n and the table lists \nStock-based compensation expense | 1,120 | 1,407\n, so the 2024 column is $1,407 million.\n\nThe 2023 figure of $1,120 million matches the prior-year 10-K. That filing's table shows \n1,120.\n for stock-based compensation expense.\n\nAs a consistency check, the 10-Q for the nine months ended September 30, 2024 shows \nStock-based compensation expense(1) | 286 | 362 | 830 | 1,039\n. That implies roughly $368 million in Q4 2024 (1,407 \u2212 1,039), which is plausible.\n\nNote that this adjustment is the add-back line in the Adjusted EBITDA reconciliation. It is the same expense recognized in the income statement, and the 10-K's stock-based compensation expense note reports the same total.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-K - FY2024\"\n        },\n        {\n            \"url\": \"https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000006.html?hash=8fb59a79794331d61fbddd144f54c3e63f372875378160b08c84a6274e949294&dest=exh1011sfo_888brannanxgrou_htm\",\n            \"name\": \"Airbnb, Inc. (Form: 10-K, Received: 02/16/2024) - FY2023 Adjusted EBITDA reconciliation\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm\",\n            \"name\": \"Airbnb, Inc. - Form 10-Q - FY2024 (Q3)\"\n        }\n    ]\n}",
+   "submitted": true,
+   "turns": 2,
+   "stop": "submitted",
+   "error": "",
+   "usage": {
+    "calls": 2,
+    "input_tokens": 10,
+    "output_tokens": 2446,
+    "cache_creation_input_tokens": 23813,
+    "cache_read_input_tokens": 28697,
+    "web_search_requests": 2,
+    "cost_usd": 0.024487
+   },
+   "cost_usd": 0.024487,
+   "elapsed_s": 12.8,
+   "harness_label": "inv1"
+  },
+  "dom1": {
+   "task_id": "q45",
+   "label": "dom1",
+   "question": "In 2024, what was Airbnb's (NASDAQ: ABNB) adjustment for Stock-based Compensation Expense?",
+   "steps": [
+    {
+     "turn": 1,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "load_skill",
+       "input": {
+        "name": "non_gaap_adjustment_lookup"
+       },
+       "output": "---\nname: non_gaap_adjustment_lookup\ndescription: Retrieve a specific adjustment line (e.g. stock-based compensation) from a company's Adjusted EBITDA / non-GAAP reconciliation for a fiscal year.\n---\n\n# Non-GAAP adjustment lookup (\"what was the adjustment for X in year Y\")\n\n**Analytic move:** retrieve and reconcile. The answer is one line of the company's own reconciliation table for the stated fiscal year, with its units and a check that the table foots.\n\n**Where the figure lives**\n- Q4/full-year earnings release (8-K Exhibit 99.1): the \"Reconciliation of Net Income to Adjusted EBITDA\" table, with quarterly and full-year columns. Use the full-year column for a \"in 2024\" question, not the Q4 column.\n- 10-K, MD&A, \"Adjusted EBITDA\" or \"Non-GAAP Financial Measures\" section: the same table for the fiscal year, with the prior year beside it.\n- The cash flow statement and the stock-based compensation footnote also report a stock-based compensation figure. It can differ from the add-back because of capitalized amounts, restructuring-related items, or items shown on other lines. For an \"adjustment\" question the reconciliation line is the controlling figure. Mention the cash-flow figure only if it differs, and label it.\n\n**Procedure**\n1. Fix the fiscal year the question names and the measure (Adjusted EBITDA vs free cash flow vs non-GAAP net income). Each has its own reconciliation and can list the same item separately.\n2. Read the line from the opened document (the reconciliation table in the 10-K or release), not from memory. Record the unit in the table header (millions or thousands).\n3. Foot the table: net income plus every listed adjustment must equal Adjusted EBITDA, with the correct signs. If the sum does not match, you misread a line, a column or a year.\n4. Give the prior-year comparative from the same table, and the year-over-year change, only if useful for context. Do not add figures the question did not ask for.\n5. Answer contract: the adjustment amount with year and units, the table it came from (document, section), Adjusted EBITDA and net income for the same year as the footing evidence, and the URL. If the figure came from a search excerpt rather than an opened filing, say so.\n\n**This task's sources (Airbnb, FY2024):** the FY2024 10-K is at https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm. The Q4 2024 shareholder letter is at https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf. In the earlier run the stock-based compensation add-back (about $1,407M) was reported without the table having been opened and footed, so treat it as unconfirmed until the table is read and foots.\n",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.0007733999999999999
+    },
+    {
+     "turn": 2,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+        "key": "abnb_10k_2024"
+       },
+       "output": "ValueError: HTTP 403 when fetching https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+       "is_error": true,
+       "elapsed_s": 0.22,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.00029211
+    },
+    {
+     "turn": 3,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf",
+        "key": "abnb_q4_2024"
+       },
+       "output": "ValueError: The URL points to a PDF, which this tool cannot parse. Find an HTML version.",
+       "is_error": true,
+       "elapsed_s": 0.19,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.00016928500000000003
+    },
+    {
+     "turn": 4,
+     "text": "**Answer: Airbnb's 2024 stock-based compensation add-back in its Adjusted EBITDA reconciliation was $1,407 million** (about $1.41 billion), up from $1,120 million in 2023.\n\n**Source table:** The full-year figure comes from the \"Reconciliation of Net Income to Adjusted EBITDA\" table in Airbnb's Q4 2024 shareholder letter. The search excerpt showed the full-year 2024 and 2023 columns. I could not open the FY2024 10-K or the PDF directly (the SEC page returned HTTP 403 and the PDF can't be parsed), so the figure comes from a search excerpt, not an opened filing.\n\n**Footing check (FY2024, $ millions):**\n- Net income 2,648 + tax provision 683 + other expense 40 \u2212 interest income 818 + D&A 65 + SBC 1,407 \u2212 acquisition-related impacts 7 + lodging/withholding taxes 23 = **4,041**\n- This matches reported FY2024 Adjusted EBITDA of $4,041 million, so the table foots.\n- The same check for 2023 (4,792 \u2212 2,690 + 137 \u2212 721 + 44 + 1,120 \u2212 3 + 974 = 3,653) also foots.\n\n**Cross-check on quarterly data:** Q1\u2013Q3 2024 SBC add-backs were $295M, $382M and $362M (per the 10-Q and shareholder letters), summing to $1,039M for nine months. That implies Q4 2024 SBC of about $368M, consistent with the $1,407M full-year figure. This is my inference, not a reported number.\n\n**Context:** Airbnb said full-year 2024 SBC expense increased 26%. Computed from the table, 1,407 / 1,120 \u2212 1 = 25.63%.\n\n**Unverified:** I did not confirm whether the cash flow statement's SBC figure for 2024 differs from the add-back. The reconciliation line is the controlling figure for an \"adjustment\" question.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 Shareholder Letter (Adjusted EBITDA reconciliation, FY2024 and FY2023)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year 2024 (not opened; referenced for the Adjusted EBITDA section)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm\",\n            \"name\": \"Airbnb Form 10-Q for Q3 2024 (quarterly SBC add-back check)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm\",\n            \"name\": \"Airbnb Form 10-Q for Q2 2024 (quarterly SBC add-back check)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000017/abnb-20240331.htm\",\n            \"name\": \"Airbnb Form 10-Q for Q1 2024 (quarterly SBC add-back check)\"\n        }\n    ]\n}",
+     "thinking_chars": 0,
+     "searches": [
+      {
+       "id": "srvtoolu_01B96gr7o5MD5rwstXNaXaNb",
+       "query": "Airbnb full year 2024 reconciliation net income to adjusted EBITDA stock-based compensation",
+       "results": [
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524253103/d886752dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000017/abnb-20240331.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524033706/d646462dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524134183/d813800dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form DEF 14A - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524102960/d636281ddef14a.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524194849/d831385dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Q2 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q2/Airbnb_Q2-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "812 days ago"
+        }
+       ]
+      },
+      {
+       "id": "srvtoolu_01B5vrvSnhKPtvbE29voh7o4",
+       "query": "Airbnb Q4 2024 shareholder letter full year 2024 Adjusted EBITDA reconciliation stock-based compensation expense",
+       "results": [
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524134183/d813800dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524033706/d646462dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524253103/d886752dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000017/abnb-20240331.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524194849/d831385dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm",
+         "page_age": null
+        },
+        {
+         "title": "Q3 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q3/Airbnb_Q3-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "719 days ago"
+        },
+        {
+         "title": "Q4 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/Airbnb_Q4-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "621 days ago"
+        },
+        {
+         "title": "Airbnb, Inc. (Form: 10-K, Received: 02/16/2024 16:03:41)",
+         "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000006.html?hash=8fb59a79794331d61fbddd144f54c3e63f372875378160b08c84a6274e949294&dest=exh1011sfo_888brannanxgrou_htm",
+         "page_age": null
+        }
+       ]
+      },
+      {
+       "id": "srvtoolu_01SHXWD1z2wWKDRYsvkrU5fm",
+       "query": "Airbnb 10-K 2024 annual Adjusted EBITDA reconciliation year ended December 31, 2024 stock-based compensation expense 2023 2024",
+       "results": [
+        {
+         "title": "Airbnb, Inc. - Form 10-K - FY2023",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000006/abnb-20231231.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-K - FY2023 (Annual Financial Statement Tables - full year 2023)",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000006/Financial_Report.xlsx",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. (Form: 10-K, Received: 02/16/2024 16:03:41)",
+         "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000006.html?hash=8fb59a79794331d61fbddd144f54c3e63f372875378160b08c84a6274e949294&dest=exh1011sfo_888brannanxgrou_htm",
+         "page_age": null
+        },
+        {
+         "title": "Q2 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q2/Airbnb_Q2-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "812 days ago"
+        },
+        {
+         "title": "Q3 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q3/Airbnb_Q3-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "719 days ago"
+        },
+        {
+         "title": "Airbnb, Inc. - Cloudfront.net",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf",
+         "page_age": "621 days ago"
+        },
+        {
+         "title": "Airbnb, Inc. (ABNB) 10K Annual Reports & 10Q SEC Filings",
+         "url": "https://last10k.com/sec-filings/abnb",
+         "page_age": "256 days ago"
+        },
+        {
+         "title": "Airbnb, Inc. (ABNB) 8-K Earnings Release - Feb 2025",
+         "url": "https://last10k.com/sec-filings/abnb/0001193125-25-026054.htm",
+         "page_age": "620 days ago"
+        }
+       ]
+      }
+     ],
+     "calls": [
+      {
+       "name": "submit_final_result",
+       "input": {
+        "final_result": "Airbnb's 2024 stock-based compensation add-back in its Adjusted EBITDA reconciliation was $1,407 million (about $1.41 billion), up from $1,120 million in 2023.\n\nSource table: the \"Reconciliation of Net Income to Adjusted EBITDA\" in Airbnb's Q4 2024 shareholder letter (full-year 2024 and 2023 columns, from a search excerpt). I could not open the FY2024 10-K (SEC returned HTTP 403) or the PDF directly, so the figure is from a search excerpt, not an opened filing.\n\nFooting check (FY2024, $ millions): Net income 2,648 + tax provision 683 + other expense 40 - interest income 818 + D&A 65 + SBC 1,407 - acquisition-related impacts 7 + lodging/withholding taxes 23 = 4,041, which matches reported FY2024 Adjusted EBITDA of $4,041M. The 2023 column also foots (3,653).\n\nCross-check: Q1-Q3 2024 SBC add-backs were $295M, $382M and $362M (sum $1,039M), implying Q4 2024 of about $368M. This is my inference.\n\nContext: SBC grew 1,407 / 1,120 - 1 = 25.63% (Airbnb described the increase as 26%).\n\nUnverified: whether the cash flow statement's 2024 SBC figure differs from the add-back.\n\n{\"sources\": [\n{\"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\", \"name\": \"Airbnb Q4 2024 Shareholder Letter\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\", \"name\": \"Airbnb Form 10-K FY2024 (not opened)\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm\", \"name\": \"Airbnb Form 10-Q Q3 2024\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm\", \"name\": \"Airbnb Form 10-Q Q2 2024\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000017/abnb-20240331.htm\", \"name\": \"Airbnb Form 10-Q Q1 2024\"}\n]}"
+       },
+       "output": "Airbnb's 2024 stock-based compensation add-back in its Adjusted EBITDA reconciliation was $1,407 million (about $1.41 billion), up from $1,120 million in 2023.\n\nSource table: the \"Reconciliation of Net Income to Adjusted EBITDA\" in Airbnb's Q4 2024 shareholder letter (full-year 2024 and 2023 columns, from a search excerpt). I could not open the FY2024 10-K (SEC returned HTTP 403) or the PDF directly, so the figure is from a search excerpt, not an opened filing.\n\nFooting check (FY2024, $ millions): Net income 2,648 + tax provision 683 + other expense 40 - interest income 818 + D&A 65 + SBC 1,407 - acquisition-related impacts 7 + lodging/withholding taxes 23 = 4,041, which matches reported FY2024 Adjusted EBITDA of $4,041M. The 2023 column also foots (3,653).\n\nCross-check: Q1-Q3 2024 SBC add-backs were $295M, $382M and $362M (sum $1,039M), implying Q4 2024 of about $368M. This is my inference.\n\nContext: SBC grew 1,407 / 1,120 - 1 = 25.63% (Airbnb described the increase as 26%).\n\nUnverified: whether the cash flow statement's 2024 SBC figure differs from the add-back.\n\n{\"sources\": [\n{\"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\", \"name\": \"Airbnb Q4 2024 Shareholder Letter\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\", \"name\": \"Airbnb Form 10-K FY2024 (not opened)\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm\", \"name\": \"Airbnb Form 10-Q Q3 2024\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm\", \"name\": \"Airbnb Form 10-Q Q2 2024\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000017/abnb-20240331.htm\", \"name\": \"Airbnb Form 10-Q Q1 2024\"}\n]}",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.035409295
+    }
+   ],
+   "final_answer": "Airbnb's 2024 stock-based compensation add-back in its Adjusted EBITDA reconciliation was $1,407 million (about $1.41 billion), up from $1,120 million in 2023.\n\nSource table: the \"Reconciliation of Net Income to Adjusted EBITDA\" in Airbnb's Q4 2024 shareholder letter (full-year 2024 and 2023 columns, from a search excerpt). I could not open the FY2024 10-K (SEC returned HTTP 403) or the PDF directly, so the figure is from a search excerpt, not an opened filing.\n\nFooting check (FY2024, $ millions): Net income 2,648 + tax provision 683 + other expense 40 - interest income 818 + D&A 65 + SBC 1,407 - acquisition-related impacts 7 + lodging/withholding taxes 23 = 4,041, which matches reported FY2024 Adjusted EBITDA of $4,041M. The 2023 column also foots (3,653).\n\nCross-check: Q1-Q3 2024 SBC add-backs were $295M, $382M and $362M (sum $1,039M), implying Q4 2024 of about $368M. This is my inference.\n\nContext: SBC grew 1,407 / 1,120 - 1 = 25.63% (Airbnb described the increase as 26%).\n\nUnverified: whether the cash flow statement's 2024 SBC figure differs from the add-back.\n\n{\"sources\": [\n{\"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\", \"name\": \"Airbnb Q4 2024 Shareholder Letter\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\", \"name\": \"Airbnb Form 10-K FY2024 (not opened)\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm\", \"name\": \"Airbnb Form 10-Q Q3 2024\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm\", \"name\": \"Airbnb Form 10-Q Q2 2024\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000017/abnb-20240331.htm\", \"name\": \"Airbnb Form 10-Q Q1 2024\"}\n]}",
+   "fallback_text": "**Answer: Airbnb's 2024 stock-based compensation add-back in its Adjusted EBITDA reconciliation was $1,407 million** (about $1.41 billion), up from $1,120 million in 2023.\n\n**Source table:** The full-year figure comes from the \"Reconciliation of Net Income to Adjusted EBITDA\" table in Airbnb's Q4 2024 shareholder letter. The search excerpt showed the full-year 2024 and 2023 columns. I could not open the FY2024 10-K or the PDF directly (the SEC page returned HTTP 403 and the PDF can't be parsed), so the figure comes from a search excerpt, not an opened filing.\n\n**Footing check (FY2024, $ millions):**\n- Net income 2,648 + tax provision 683 + other expense 40 \u2212 interest income 818 + D&A 65 + SBC 1,407 \u2212 acquisition-related impacts 7 + lodging/withholding taxes 23 = **4,041**\n- This matches reported FY2024 Adjusted EBITDA of $4,041 million, so the table foots.\n- The same check for 2023 (4,792 \u2212 2,690 + 137 \u2212 721 + 44 + 1,120 \u2212 3 + 974 = 3,653) also foots.\n\n**Cross-check on quarterly data:** Q1\u2013Q3 2024 SBC add-backs were $295M, $382M and $362M (per the 10-Q and shareholder letters), summing to $1,039M for nine months. That implies Q4 2024 SBC of about $368M, consistent with the $1,407M full-year figure. This is my inference, not a reported number.\n\n**Context:** Airbnb said full-year 2024 SBC expense increased 26%. Computed from the table, 1,407 / 1,120 \u2212 1 = 25.63%.\n\n**Unverified:** I did not confirm whether the cash flow statement's SBC figure for 2024 differs from the add-back. The reconciliation line is the controlling figure for an \"adjustment\" question.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 Shareholder Letter (Adjusted EBITDA reconciliation, FY2024 and FY2023)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year 2024 (not opened; referenced for the Adjusted EBITDA section)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm\",\n            \"name\": \"Airbnb Form 10-Q for Q3 2024 (quarterly SBC add-back check)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm\",\n            \"name\": \"Airbnb Form 10-Q for Q2 2024 (quarterly SBC add-back check)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972024000017/abnb-20240331.htm\",\n            \"name\": \"Airbnb Form 10-Q for Q1 2024 (quarterly SBC add-back check)\"\n        }\n    ]\n}",
+   "submitted": true,
+   "turns": 4,
+   "stop": "submitted",
+   "error": "",
+   "usage": {
+    "calls": 4,
+    "input_tokens": 16,
+    "output_tokens": 3727,
+    "cache_creation_input_tokens": 32830,
+    "cache_read_input_tokens": 67524,
+    "web_search_requests": 3,
+    "cost_usd": 0.036643
+   },
+   "cost_usd": 0.036643,
+   "elapsed_s": 20.2,
+   "harness_label": "dom1"
+  },
+  "agg1": {
+   "task_id": "q45",
+   "label": "agg1",
+   "question": "In 2024, what was Airbnb's (NASDAQ: ABNB) adjustment for Stock-based Compensation Expense?",
+   "steps": [
+    {
+     "turn": 1,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "load_skill",
+       "input": {
+        "name": "non_gaap_adjustment_lookup"
+       },
+       "output": "---\nname: non_gaap_adjustment_lookup\ndescription: Retrieve a specific adjustment line (e.g. stock-based compensation) from a company's Adjusted EBITDA / non-GAAP reconciliation for a fiscal year.\n---\n\n# Non-GAAP adjustment lookup (\"what was the adjustment for X in year Y\")\n\n**Analytic move:** retrieve and reconcile. The answer is one line of the company's own reconciliation table for the stated fiscal year, with its units and a check that the table foots.\n\n**Where the figure lives**\n- Q4/full-year earnings release or shareholder letter (8-K Exhibit 99.1): the \"Reconciliation of Net Income to Adjusted EBITDA\" table, with quarterly and full-year columns. Use the full-year column for an \"in 2024\" question, not the Q4 column.\n- 10-K, MD&A, \"Adjusted EBITDA\" or \"Non-GAAP Financial Measures\" section: the same table for the fiscal year, with the prior year beside it.\n- The cash flow statement and the stock-based compensation footnote also report a stock-based compensation figure. It can differ from the add-back. For an \"adjustment\" question the reconciliation line is the controlling figure. Mention the cash-flow figure only if it differs, and label it.\n\n**Procedure**\n1. Fix the fiscal year the question names and the measure (Adjusted EBITDA vs free cash flow vs non-GAAP net income). Each has its own reconciliation.\n2. Read the line from the reconciliation table (opened document or a search excerpt quoting it), not from memory. Record the unit in the table header.\n3. Foot the table where the excerpt allows: net income plus every listed adjustment, with signs, must equal Adjusted EBITDA. If it does not, you misread a line, column or year.\n4. Give the prior-year comparative and the year-over-year change only as brief context. Do not add figures the question did not ask for.\n5. Answer contract: the adjustment amount with year and units, the table it came from (document, section), net income and Adjusted EBITDA for the same year as footing evidence, and the URL. Say plainly if the figure came from a search excerpt rather than an opened filing, and do not call it \"verified\" in that case.\n",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.00082015
+    },
+    {
+     "turn": 2,
+     "text": "**Answer: Airbnb's 2024 stock-based compensation adjustment was $1,407 million.**\n\n**Source and units:** The figure comes from the \"Adjusted EBITDA Reconciliation\" table in Airbnb's FY2024 annual report (10-K), where the reconciliation runs from net income to Adjusted EBITDA for the year ended December 31, 2024, in millions. I saw this table in a search excerpt, not in an opened filing, so I am not calling it verified. The same figure appears as the $1,407 million stock-based compensation expense in the cash flow statement in the Q4 2024 shareholder letter excerpt, which is consistent with the add-back.\n\n**Footing check (2024, $ millions), from the excerpt:**\n- Net income: 2,648\n- Provision for income taxes: 683\n- Other expense, net: 40\n- Interest income: (818)\n- Depreciation and amortization: 65\n- Stock-based compensation expense: 1,407\n- Acquisition-related impacts: (7)\n- Lodging taxes, host withholding taxes, and transactional taxes, net: 23\n- Sum: 2,648 + 683 + 40 \u2212 818 + 65 + 1,407 \u2212 7 + 23 = 4,041, which matches the reported Adjusted EBITDA of $4,041 million.\n\n**Context:** The 2023 comparative was $1,120 million, so the 2024 figure was about 25.63% higher ((1,407 \u2212 1,120) / 1,120). Airbnb's Q4 2024 letter also reports full-year 2024 net income of $2.6 billion and Adjusted EBITDA of $4.0 billion, which agrees with the table.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb FY2024 Form 10-K (annual report PDF), Adjusted EBITDA Reconciliation\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm\",\n            \"name\": \"Airbnb Q4 2024 Shareholder Letter (Exhibit 99.1 to Form 8-K, February 13, 2025)\"\n        }\n    ]\n}",
+     "thinking_chars": 0,
+     "searches": [
+      {
+       "id": "srvtoolu_01SWorfCwXV9dA196HniRoYg",
+       "query": "Airbnb full year 2024 Adjusted EBITDA reconciliation stock-based compensation expense",
+       "results": [
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524134183/d813800dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524033706/d646462dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524253103/d886752dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000017/abnb-20240331.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524194849/d831385dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Q3 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q3/Airbnb_Q3-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "719 days ago"
+        },
+        {
+         "title": "Q2 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q2/Airbnb_Q2-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "812 days ago"
+        },
+        {
+         "title": "Airbnb : Q2 2024 Shareholder Letter Form 8 K",
+         "url": "https://www.marketscreener.com/quote/stock/AIRBNB-INC-116310849/news/Airbnb-Q2-2024-Shareholder-Letter-Form-8-K-47571435/",
+         "page_age": "811 days ago"
+        }
+       ]
+      },
+      {
+       "id": "srvtoolu_01Qw45nQncnDPgKVaPL1E3qR",
+       "query": "Airbnb fourth quarter 2024 shareholder letter exhibit 99.1 reconciliation",
+       "results": [
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524033706/d646462dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524253103/d886752dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524194849/d831385dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524134183/d813800dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524033706/d646462d8k.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524253103/d886752d8k.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524194849/d831385d8k.htm",
+         "page_age": null
+        },
+        {
+         "title": "UNITED STATES SECURITIES AND EXCHANGE COMMISSION WASHINGTON, D.C. 20549",
+         "url": "https://d18rn0p25nwr6d.cloudfront.net/CIK-0001559720/07496819-e77e-49bd-b82f-460239afed50.pdf",
+         "page_age": "987 days ago"
+        },
+        {
+         "title": "8-K",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198d8k.htm",
+         "page_age": null
+        },
+        {
+         "title": "Q3 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q3/Airbnb_Q3-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "719 days ago"
+        }
+       ]
+      },
+      {
+       "id": "srvtoolu_01Vs5LbjBj63Rcr5aYvwqknd",
+       "query": "Airbnb 2024 full year stock-based compensation expense adjusted EBITDA $3.5 billion reconciliation table",
+       "results": [
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524253103/d886752dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524134183/d813800dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524033706/d646462dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000017/abnb-20240331.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524194849/d831385dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form DEF 14A - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524102960/d636281ddef14a.htm",
+         "page_age": null
+        },
+        {
+         "title": "Q2 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q2/Airbnb_Q2-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "812 days ago"
+        },
+        {
+         "title": "Q3 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q3/Airbnb_Q3-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "719 days ago"
+        }
+       ]
+      },
+      {
+       "id": "srvtoolu_01Sn1nEmhLXfeSB7cvF5Fmp6",
+       "query": "Airbnb Q4 2024 shareholder letter exhibit 99.1 February 2025",
+       "results": [
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2025",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524194849/d831385dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524253103/d886752dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524134183/d813800dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2025",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312525109934/d40594dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2025",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312525174438/d17531dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524033706/d646462dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524033706/d646462d8k.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2025",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198d8k.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2025",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312525269432/d40503d8k.htm",
+         "page_age": null
+        }
+       ]
+      },
+      {
+       "id": "srvtoolu_01MX6rd4iJDZ2Tt7XzD5xspr",
+       "query": "Airbnb 10-K 2024 Adjusted EBITDA reconciliation year ended December 31, 2024 stock-based compensation expense net income $2,646",
+       "results": [
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000032/abnb-20240930.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000017/abnb-20240331.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-K - FY2021",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972022000006/abnb-20211231.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. (Form: 10-K, Received: 02/16/2024 16:03:41)",
+         "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001559720-24-000006.html?hash=8fb59a79794331d61fbddd144f54c3e63f372875378160b08c84a6274e949294&dest=exh1011sfo_888brannanxgrou_htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Cloudfront.net",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf",
+         "page_age": "621 days ago"
+        },
+        {
+         "title": "Q2 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q2/Airbnb_Q2-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "812 days ago"
+        },
+        {
+         "title": "Q3 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q3/Airbnb_Q3-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "719 days ago"
+        },
+        {
+         "title": "Airbnb, Inc. (ABNB) 10K Annual Reports & 10Q SEC Filings",
+         "url": "https://last10k.com/sec-filings/abnb",
+         "page_age": "256 days ago"
+        }
+       ]
+      }
+     ],
+     "calls": [],
+     "stop_reason": "end_turn",
+     "cost_usd": 0.08794015
+    },
+    {
+     "turn": 3,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "submit_final_result",
+       "input": {
+        "final_result": "Airbnb's 2024 stock-based compensation adjustment in its Adjusted EBITDA reconciliation was $1,407 million (in millions of USD, year ended December 31, 2024).\n\nSource and units: The figure comes from the \"Adjusted EBITDA Reconciliation\" table in Airbnb's FY2024 annual report (10-K), which reconciles net income to Adjusted EBITDA in millions. I saw this table in a search excerpt, not in an opened filing, so it is not described as verified. The same $1,407 million appears as stock-based compensation expense in the cash flow statement excerpt from the Q4 2024 shareholder letter, which is consistent with the add-back.\n\nFooting check (2024, $ millions): Net income 2,648 + provision for income taxes 683 + other expense, net 40 + interest income (818) + depreciation and amortization 65 + stock-based compensation 1,407 + acquisition-related impacts (7) + lodging taxes, host withholding taxes and transactional taxes, net 23 = 4,041, matching reported Adjusted EBITDA of $4,041 million.\n\nContext: The 2023 comparative was $1,120 million, so the 2024 figure rose about 25.63% ((1,407 \u2212 1,120) / 1,120 = 25.625%).\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb FY2024 Form 10-K (annual report PDF), Adjusted EBITDA Reconciliation\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm\",\n            \"name\": \"Airbnb Q4 2024 Shareholder Letter (Exhibit 99.1 to Form 8-K, February 13, 2025)\"\n        }\n    ]\n}"
+       },
+       "output": "Airbnb's 2024 stock-based compensation adjustment in its Adjusted EBITDA reconciliation was $1,407 million (in millions of USD, year ended December 31, 2024).\n\nSource and units: The figure comes from the \"Adjusted EBITDA Reconciliation\" table in Airbnb's FY2024 annual report (10-K), which reconciles net income to Adjusted EBITDA in millions. I saw this table in a search excerpt, not in an opened filing, so it is not described as verified. The same $1,407 million appears as stock-based compensation expense in the cash flow statement excerpt from the Q4 2024 shareholder letter, which is consistent with the add-back.\n\nFooting check (2024, $ millions): Net income 2,648 + provision for income taxes 683 + other expense, net 40 + interest income (818) + depreciation and amortization 65 + stock-based compensation 1,407 + acquisition-related impacts (7) + lodging taxes, host withholding taxes and transactional taxes, net 23 = 4,041, matching reported Adjusted EBITDA of $4,041 million.\n\nContext: The 2023 comparative was $1,120 million, so the 2024 figure rose about 25.63% ((1,407 \u2212 1,120) / 1,120 = 25.625%).\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb FY2024 Form 10-K (annual report PDF), Adjusted EBITDA Reconciliation\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm\",\n            \"name\": \"Airbnb Q4 2024 Shareholder Letter (Exhibit 99.1 to Form 8-K, February 13, 2025)\"\n        }\n    ]\n}",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.00103908
+    }
+   ],
+   "final_answer": "Airbnb's 2024 stock-based compensation adjustment in its Adjusted EBITDA reconciliation was $1,407 million (in millions of USD, year ended December 31, 2024).\n\nSource and units: The figure comes from the \"Adjusted EBITDA Reconciliation\" table in Airbnb's FY2024 annual report (10-K), which reconciles net income to Adjusted EBITDA in millions. I saw this table in a search excerpt, not in an opened filing, so it is not described as verified. The same $1,407 million appears as stock-based compensation expense in the cash flow statement excerpt from the Q4 2024 shareholder letter, which is consistent with the add-back.\n\nFooting check (2024, $ millions): Net income 2,648 + provision for income taxes 683 + other expense, net 40 + interest income (818) + depreciation and amortization 65 + stock-based compensation 1,407 + acquisition-related impacts (7) + lodging taxes, host withholding taxes and transactional taxes, net 23 = 4,041, matching reported Adjusted EBITDA of $4,041 million.\n\nContext: The 2023 comparative was $1,120 million, so the 2024 figure rose about 25.63% ((1,407 \u2212 1,120) / 1,120 = 25.625%).\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb FY2024 Form 10-K (annual report PDF), Adjusted EBITDA Reconciliation\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm\",\n            \"name\": \"Airbnb Q4 2024 Shareholder Letter (Exhibit 99.1 to Form 8-K, February 13, 2025)\"\n        }\n    ]\n}",
+   "fallback_text": "**Answer: Airbnb's 2024 stock-based compensation adjustment was $1,407 million.**\n\n**Source and units:** The figure comes from the \"Adjusted EBITDA Reconciliation\" table in Airbnb's FY2024 annual report (10-K), where the reconciliation runs from net income to Adjusted EBITDA for the year ended December 31, 2024, in millions. I saw this table in a search excerpt, not in an opened filing, so I am not calling it verified. The same figure appears as the $1,407 million stock-based compensation expense in the cash flow statement in the Q4 2024 shareholder letter excerpt, which is consistent with the add-back.\n\n**Footing check (2024, $ millions), from the excerpt:**\n- Net income: 2,648\n- Provision for income taxes: 683\n- Other expense, net: 40\n- Interest income: (818)\n- Depreciation and amortization: 65\n- Stock-based compensation expense: 1,407\n- Acquisition-related impacts: (7)\n- Lodging taxes, host withholding taxes, and transactional taxes, net: 23\n- Sum: 2,648 + 683 + 40 \u2212 818 + 65 + 1,407 \u2212 7 + 23 = 4,041, which matches the reported Adjusted EBITDA of $4,041 million.\n\n**Context:** The 2023 comparative was $1,120 million, so the 2024 figure was about 25.63% higher ((1,407 \u2212 1,120) / 1,120). Airbnb's Q4 2024 letter also reports full-year 2024 net income of $2.6 billion and Adjusted EBITDA of $4.0 billion, which agrees with the table.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb FY2024 Form 10-K (annual report PDF), Adjusted EBITDA Reconciliation\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000119312525026054/d915198dex991.htm\",\n            \"name\": \"Airbnb Q4 2024 Shareholder Letter (Exhibit 99.1 to Form 8-K, February 13, 2025)\"\n        }\n    ]\n}",
+   "submitted": true,
+   "turns": 3,
+   "stop": "submitted",
+   "error": "",
+   "usage": {
+    "calls": 3,
+    "input_tokens": 16,
+    "output_tokens": 2952,
+    "cache_creation_input_tokens": 53086,
+    "cache_read_input_tokens": 133391,
+    "web_search_requests": 5,
+    "cost_usd": 0.089799
+   },
+   "cost_usd": 0.089799,
+   "elapsed_s": 23.0,
+   "harness_label": "agg1"
+  }
+ },
+ "stages": {
+  "inv1": {
+   "dim": "INV",
+   "notes": "Motivation (base1): the run hit edgar_search 403 twice (turns 1-2) and issued a null-query web_search. Its final answer gave detailed figures (net income, Adjusted EBITDA, 1,120 prior year) with no opened-filing evidence in the trace. It also cited a Q3 10-Q URL that never appeared in a tool result. The edits add one bounded 403 fallback with a stop condition, a ban on null queries, a definition of \"enough evidence\", a rule to cite only seen URLs and to disclose the excerpt basis, and a note that \"adjustment\" means the add-back line in the non-GAAP reconciliation. The last is a procedure point, not a matter fact. The library's q19 and q09 show the same fallback pattern; I copied its core idea. I did not encode Airbnb figures or a memory entry: the 1,407 figure was never confirmed from filing text in the trace, so it is not established fact.",
+   "keep_base": false,
+   "error": "",
+   "cost_usd": 0.0530555,
+   "inventory": "0 skills; 3,364 always-on chars",
+   "tree": {
+    "systemprompt.md": "You are a financial agent. You are given a question and you need to answer it using the tools provided.\nYou will not be able to interact with the user or ask clarifications, you must answer the question only based on the information provided.\n\nYou should answer all questions as if the current date is April 07, 2025.\n\nYou will have access to a data storage system. You can use this system to store parsed contents of HTML pages retrieved from the web.\nYou can then use the retrieve_information tool to apply answer questions or gather information from the stored documents using LLM-based prompts.\nThis data storage system is designed to help you avoid context window issues.\n\nWhen you have the final answer, you should call the `submit_final_result` tool with it. Your submission will not be processed unless you call this tool.\n\nYou should include any necessary step-by-step reasoning, justification, calculations, or explanation in your answer. You will be evaluated both on the accuracy of the final answer, and the correctness of the supporting logic.\n\nWhen possible, please provide any calculated answers to at least two decimal places (e.g. 18.78% rather than 19%). Please do not round intermediate steps in any calculations - you should only round your final answer.\n\nAt the end of your answer, you should provide your sources in a dictionary with the following format:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://example.com\",\n            \"name\": \"Name of the source\"\n        },\n        ...\n    ]\n}\n",
+    "guardrails.md": "",
+    "LongTermMEMORY.md": "",
+    "tool_guidance.md": "# Tool use\n\n- Before searching, fix the company, form type (10-K / 10-Q / 8-K Exhibit 99.1), and fiscal period. Use the latest filing already published as of the question date. Search with those terms plus the exact line item, not with the question's wording. Always pass a non-empty `query`; a null query returned unrelated results.\n- `edgar_search` and `parse_html_page` on sec.gov often return HTTP 403 here. `edgar_search` failed twice in the one Airbnb run. Do not retry a 403 and do not call `edgar_search` again after one failure. Make one or two targeted `web_search` calls (company, form, year, table name). The results often give the sec.gov URL and the table text. You may try `parse_html_page` once on a non-sec.gov copy of the filing, such as the company's IR or q4cdn PDF. If it succeeds, ask `retrieve_information` one targeted question at a time.\n- Check the line item before using it. \"Adjustment\" in a non-GAAP reconciliation (Adjusted EBITDA, adjusted net income, free cash flow) means the add-back line in that reconciliation table. It can differ from the cash-flow-statement line of the same name, so name the table the figure came from.\n- Enough evidence is the figure, with its period, units (thousands vs millions) and table, read from filing text or a search excerpt that quotes the table. Do not give a figure you have not seen in some tool output, and do not cite a document you did not see.\n- Say in the answer whether the figure came from an opened filing or from a search excerpt. Do not write \"verified\" for a figure seen only in an excerpt. Cite only URLs that appeared in tool results.\n- Do the arithmetic on unrounded numbers, re-check it once, and round only the final result.\n- Write the answer as plain text with no raw citation tags. Once the figure is in hand, call `submit_final_result` right away.\n"
+   }
+  },
+  "dom1": {
+   "dim": "DOM",
+   "notes": "Moment: in base1 the agent hit 403s on edgar_search, then submitted $1,407M for Airbnb's 2024 SBC add-back without any visible retrieval of the reconciliation table. It cited a 10-Q (Q3) that was not among its search results. No footing check was shown and the source basis was not disclosed. I added a skill giving the practitioner knowledge: the full-year column of the Adjusted EBITDA reconciliation (10-K MD&A / Q4 release Ex. 99.1) is the controlling source; the cash-flow SBC figure can differ; the table must foot to Adjusted EBITDA; units and source basis must be stated. It also records verified source URLs from the search results for this task, and flags the $1,407M figure as unconfirmed rather than encoding it as fact. The trigger line is in systemprompt.md. I left tool guidance to the procedure candidate.",
+   "keep_base": false,
+   "error": "",
+   "cost_usd": 0.0660805,
+   "inventory": "1 skill; 1,754 always-on chars",
+   "tree": {
+    "systemprompt.md": "You are a financial agent. You are given a question and you need to answer it using the tools provided.\nYou will not be able to interact with the user or ask clarifications, you must answer the question only based on the information provided.\n\nYou should answer all questions as if the current date is April 07, 2025.\n\nYou will have access to a data storage system. You can use this system to store parsed contents of HTML pages retrieved from the web.\nYou can then use the retrieve_information tool to apply answer questions or gather information from the stored documents using LLM-based prompts.\nThis data storage system is designed to help you avoid context window issues.\n\nWhen a question asks for a specific adjustment or add-back in a non-GAAP reconciliation (Adjusted EBITDA, adjusted net income, free cash flow), such as stock-based compensation, call load_skill with `non_gaap_adjustment_lookup`.\n\nWhen you have the final answer, you should call the `submit_final_result` tool with it. Your submission will not be processed unless you call this tool.\n\nYou should include any necessary step-by-step reasoning, justification, calculations, or explanation in your answer. You will be evaluated both on the accuracy of the final answer, and the correctness of the supporting logic.\n\nWhen possible, please provide any calculated answers to at least two decimal places (e.g. 18.78% rather than 19%). Please do not round intermediate steps in any calculation - you should only round your final answer.\n\nAt the end of your answer, you should provide your sources in a dictionary with the following format:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://example.com\",\n            \"name\": \"Name of the source\"\n        },\n        ...\n    ]\n}\n",
+    "guardrails.md": "",
+    "LongTermMEMORY.md": "",
+    "tool_guidance.md": "",
+    "skills/non_gaap_adjustment_lookup/SKILL.md": "---\nname: non_gaap_adjustment_lookup\ndescription: Retrieve a specific adjustment line (e.g. stock-based compensation) from a company's Adjusted EBITDA / non-GAAP reconciliation for a fiscal year.\n---\n\n# Non-GAAP adjustment lookup (\"what was the adjustment for X in year Y\")\n\n**Analytic move:** retrieve and reconcile. The answer is one line of the company's own reconciliation table for the stated fiscal year, with its units and a check that the table foots.\n\n**Where the figure lives**\n- Q4/full-year earnings release (8-K Exhibit 99.1): the \"Reconciliation of Net Income to Adjusted EBITDA\" table, with quarterly and full-year columns. Use the full-year column for a \"in 2024\" question, not the Q4 column.\n- 10-K, MD&A, \"Adjusted EBITDA\" or \"Non-GAAP Financial Measures\" section: the same table for the fiscal year, with the prior year beside it.\n- The cash flow statement and the stock-based compensation footnote also report a stock-based compensation figure. It can differ from the add-back because of capitalized amounts, restructuring-related items, or items shown on other lines. For an \"adjustment\" question the reconciliation line is the controlling figure. Mention the cash-flow figure only if it differs, and label it.\n\n**Procedure**\n1. Fix the fiscal year the question names and the measure (Adjusted EBITDA vs free cash flow vs non-GAAP net income). Each has its own reconciliation and can list the same item separately.\n2. Read the line from the opened document (the reconciliation table in the 10-K or release), not from memory. Record the unit in the table header (millions or thousands).\n3. Foot the table: net income plus every listed adjustment must equal Adjusted EBITDA, with the correct signs. If the sum does not match, you misread a line, a column or a year.\n4. Give the prior-year comparative from the same table, and the year-over-year change, only if useful for context. Do not add figures the question did not ask for.\n5. Answer contract: the adjustment amount with year and units, the table it came from (document, section), Adjusted EBITDA and net income for the same year as the footing evidence, and the URL. If the figure came from a search excerpt rather than an opened filing, say so.\n\n**This task's sources (Airbnb, FY2024):** the FY2024 10-K is at https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm. The Q4 2024 shareholder letter is at https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf. In the earlier run the stock-based compensation add-back (about $1,407M) was reported without the table having been opened and footed, so treat it as unconfirmed until the table is read and foots.\n"
+   }
+  },
+  "agg1": {
+   "dim": "AGG",
+   "notes": "kept -> inv1 tool_guidance.md (trimmed, Airbnb-specific run count removed) -> base1 hit edgar_search 403 twice plus a null-query search and cited a Q3 10-Q URL not in its results; inv1 made two targeted web_searches, submitted in 2 turns, and disclosed the excerpt basis (1 rollout each, so weak but mechanism visible).\nkept -> dom1 skill non_gaap_adjustment_lookup plus trigger line in systemprompt.md -> dom1 loaded it at turn 1 and produced a footing check (2,648+683+40-818+65+1,407-7+23=4,041), which base1 and inv1 lacked.\nrevised -> dom1 skill -> removed the task-specific Airbnb URLs and the \"$1,407M unconfirmed\" note; the library lesson from q19 says task-specific figures in a skill add provenance risk and no accuracy, and every run reached the same $1,407M.\ndropped -> dom1 systemprompt typo tweak (\"calculations\" to \"calculation\") -> cosmetic, no evidence of effect.\nkept -> no LongTermMEMORY.md or guardrails.md entries -> the 1,407 figure was not read from an opened filing in any run, so it should not be stored as fact, and always-on text stays small.",
+   "keep_base": false,
+   "error": "",
+   "cost_usd": 0.0567596,
+   "inventory": "1 skill; 3,132 always-on chars",
+   "tree": {
+    "systemprompt.md": "You are a financial agent. You are given a question and you need to answer it using the tools provided.\nYou will not be able to interact with the user or ask clarifications, you must answer the question only based on the information provided.\n\nYou should answer all questions as if the current date is April 07, 2025.\n\nYou will have access to a data storage system. You can use this system to store parsed contents of HTML pages retrieved from the web.\nYou can then use the retrieve_information tool to apply answer questions or gather information from the stored documents using LLM-based prompts.\nThis data storage system is designed to help you avoid context window issues.\n\nWhen a question asks for a specific adjustment or add-back in a non-GAAP reconciliation (Adjusted EBITDA, adjusted net income, free cash flow), such as stock-based compensation, call load_skill with `non_gaap_adjustment_lookup`.\n\nWhen you have the final answer, you should call the `submit_final_result` tool with it. Your submission will not be processed unless you call this tool.\n\nYou should include any necessary step-by-step reasoning, justification, calculations, or explanation in your answer. You will be evaluated both on the accuracy of the final answer, and the correctness of the supporting logic.\n\nWhen possible, please provide any calculated answers to at least two decimal places (e.g. 18.78% rather than 19%). Please do not round intermediate steps in any calculations - you should only round your final answer.\n\nAt the end of your answer, you should provide your sources in a dictionary with the following format:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://example.com\",\n            \"name\": \"Name of the source\"\n        },\n        ...\n    ]\n}\n",
+    "guardrails.md": "",
+    "LongTermMEMORY.md": "",
+    "tool_guidance.md": "# Tool use\n\n- Before searching, fix the company, form type (10-K / 10-Q / 8-K Exhibit 99.1) and fiscal period. Use the latest filing already published as of the question date. Search with those terms plus the exact line item. Always pass a non-empty `query`; a null query returned unrelated results.\n- `edgar_search` and `parse_html_page` on sec.gov often return HTTP 403 here, and `parse_html_page` cannot read PDFs. Do not retry a 403 and do not call `edgar_search` again after one failure. Make one or two targeted `web_search` calls (company, form, year, table name); results often quote the table text and give the sec.gov URL. You may try `parse_html_page` once on a non-sec.gov HTML copy. If it succeeds, ask `retrieve_information` one targeted question at a time.\n- Check the line item before using it: name the table it came from, its period, and its units (thousands vs millions).\n- Do not give a figure you have not seen in some tool output, and cite only URLs that appeared in tool results.\n- Say in the answer whether the figure came from an opened filing or from a search excerpt. Do not write \"verified\" for a figure seen only in an excerpt.\n- Do the arithmetic on unrounded numbers, re-check it once, and round only the final result.\n- Write the answer as plain text with no raw citation tags. Once the figure is in hand, call `submit_final_result` right away.\n",
+    "skills/non_gaap_adjustment_lookup/SKILL.md": "---\nname: non_gaap_adjustment_lookup\ndescription: Retrieve a specific adjustment line (e.g. stock-based compensation) from a company's Adjusted EBITDA / non-GAAP reconciliation for a fiscal year.\n---\n\n# Non-GAAP adjustment lookup (\"what was the adjustment for X in year Y\")\n\n**Analytic move:** retrieve and reconcile. The answer is one line of the company's own reconciliation table for the stated fiscal year, with its units and a check that the table foots.\n\n**Where the figure lives**\n- Q4/full-year earnings release or shareholder letter (8-K Exhibit 99.1): the \"Reconciliation of Net Income to Adjusted EBITDA\" table, with quarterly and full-year columns. Use the full-year column for an \"in 2024\" question, not the Q4 column.\n- 10-K, MD&A, \"Adjusted EBITDA\" or \"Non-GAAP Financial Measures\" section: the same table for the fiscal year, with the prior year beside it.\n- The cash flow statement and the stock-based compensation footnote also report a stock-based compensation figure. It can differ from the add-back. For an \"adjustment\" question the reconciliation line is the controlling figure. Mention the cash-flow figure only if it differs, and label it.\n\n**Procedure**\n1. Fix the fiscal year the question names and the measure (Adjusted EBITDA vs free cash flow vs non-GAAP net income). Each has its own reconciliation.\n2. Read the line from the reconciliation table (opened document or a search excerpt quoting it), not from memory. Record the unit in the table header.\n3. Foot the table where the excerpt allows: net income plus every listed adjustment, with signs, must equal Adjusted EBITDA. If it does not, you misread a line, column or year.\n4. Give the prior-year comparative and the year-over-year change only as brief context. Do not add figures the question did not ask for.\n5. Answer contract: the adjustment amount with year and units, the table it came from (document, section), net income and Adjusted EBITDA for the same year as footing evidence, and the URL. Say plainly if the figure came from a search excerpt rather than an opened filing, and do not call it \"verified\" in that case.\n"
+   }
+  }
+ },
+ "chosen": "agg1",
+ "selection_why": "trivial: single final",
+ "selection_ids": {},
+ "experience": {
+  "cue": "A \"what was the adjustment/add-back for X in year Y\" question on a non-GAAP reconciliation, where sec.gov fetches return 403, PDFs cannot be parsed, and the figure is reachable only through web_search excerpts.",
+  "lesson": "In tool_guidance.md, state the fallback order: one targeted web_search naming company, form, year and reconciliation table, with a non-empty query. Do not call edgar_search again after a 403, do not call parse_html_page on PDFs, and cite only URLs that appeared in tool output. In the skill's answer contract, require a footing check (net income plus the listed adjustments equals the reported total) and a plain statement of whether the figure came from an opened filing or a search excerpt. Do not embed the task's figure or URLs in a skill.",
+  "evidence": "tool_guidance.md row (base1 flailed on two 403s, used a null query and cited an unseen URL; inv1 and agg1 avoided those failures and disclosed the excerpt basis) and the skill row (dom1 and agg1 produced footing checks that base1 and inv1 lacked). Both rows are confounded, and the figure was identical across all four runs.",
+  "confidence": "low. One rollout per candidate, bundled edits, and no difference in the final number. The record shows only differences in wasted calls, disclosure and footing evidence."
+ },
+ "edits_record": "component: tool_guidance.md\ncandidates: inv1, agg1\nchange: Went from empty to a bounded fallback for SEC 403s. It says to pass a non-empty query, not to retry edgar_search after one failure, to make one or two targeted web_searches, to cite only URLs seen in tool output, and to say whether a figure came from an opened filing or a search excerpt. agg1 trimmed it and added that parse_html_page cannot read PDFs.\nobserved: base1 hit edgar_search 403 twice, issued a null-query web_search, and cited a Q3 10-Q URL that never appeared in its tool results, with no disclosure. inv1 made two targeted web_searches, submitted in 2 turns, and wrote \"from a search excerpt, not an opened copy\". agg1 made no failed fetch, ran several searches, and also disclosed the excerpt basis. dom1, which had no tool guidance, tried parse_html_page on the sec.gov URL (403) and then on the PDF (error) before searching. It still disclosed the excerpt basis, because the skill asked for that. All four runs reached the same $1,407M, so the effect is on wasted calls and sourcing honesty, not on the number. Each candidate has one rollout and other edits were bundled with it.\nverdict: confounded\n\ncomponent: skills/non_gaap_adjustment_lookup/SKILL.md\ncandidates: dom1, agg1\nchange: Added a skill for pulling a named add-back from a non-GAAP reconciliation. It names the full-year column, notes the cash-flow SBC figure may differ, and requires a footing check and an answer contract. dom1 also embedded Airbnb URLs and an \"unconfirmed $1,407M\" note. agg1 removed both and added \"say plainly if from a search excerpt\".\nobserved: Both runs loaded the skill at turn 1 and produced the same footing arithmetic (2,648+683+40\u2212818+65+1,407\u22127+23 = 4,041), which base1 and inv1 did not show. dom1 and agg1 gave the same figure and the same 2023 comparative. agg1 ran about five searches and cost $0.090, against $0.037 for dom1 and $0.024 for inv1. The footing check is visible only in the skill runs, but the skill was bundled with the trigger line, and in agg1 with the tool guidance too. The dom1 URL and figure block added nothing visible: dom1 still tried the 403 URL and the PDF. Since the figure matched in every run, it is not clear whether the \"unconfirmed\" note affected behavior.\nverdict: confounded\n\ncomponent: systemprompt.md (trigger line to load non_gaap_adjustment_lookup)\ncandidates: dom1, agg1\nchange: Added one line telling the agent to load the skill for add-back or adjustment questions in a non-GAAP reconciliation. dom1 also made a trivial \"calculations\" to \"calculation\" wording change, which agg1 dropped.\nobserved: Both dom1 and agg1 called load_skill as their first action. base1 and inv1 never loaded a skill. The trigger works mechanically. The skill's own contribution is confounded, as in the skill row.\nverdict: helped\n\ncomponent: LongTermMEMORY.md / guardrails.md\ncandidates: none\nchange: No candidate changed them. Both stayed empty.\nobserved: Not applicable. The editors declined to store the 1,407 figure because no run read it from an opened filing.\nverdict: no observed effect",
+ "library_added": true,
+ "editor_cost_usd": 0.261266,
+ "total_cost_usd": 0.435486,
+ "errors": []
+}

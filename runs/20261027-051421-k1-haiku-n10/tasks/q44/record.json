@@ -1,0 +1,720 @@
+{
+ "task_id": "q44",
+ "k": 1,
+ "rollouts": {
+  "base1": {
+   "task_id": "q44",
+   "label": "base1",
+   "question": "In 2024, what was the Average Nights per Booking for Airbnb (NASDAQ: ABNB) in the Asia Pacific region?",
+   "steps": [
+    {
+     "turn": 1,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [
+      {
+       "id": "srvtoolu_01UmmrQXcaGiyHKGEihbrBYX",
+       "query": "Airbnb 2024 annual report average nights per booking by region Asia Pacific",
+       "results": []
+      }
+     ],
+     "calls": [
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "Airbnb average nights per booking Asia Pacific 2024",
+        "ciks": [
+         "ABNB"
+        ],
+        "start_date": "2025-01-01",
+        "end_date": "2025-04-07"
+       },
+       "output": "HTTPError: 403 Client Error: Forbidden for url: https://www.sec.gov/files/company_tickers.json",
+       "is_error": true,
+       "elapsed_s": 0.3,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.000214495
+    },
+    {
+     "turn": 2,
+     "text": "In 2024, Airbnb's average nights per booking in the Asia Pacific region was **3.3 nights**.\n\nAirbnb's own 2024 disclosure reports regional averages, and the Asia Pacific figure is 3.3. The same disclosure puts the company-wide average at 3.8 nights for 2024 (excluding experiences), down from 3.9 in 2023, and the North America and EMEA averages were higher. Secondary aggregators such as Wallstreetzen and Radical Storage also show Asia Pacific at about 3.3 for 2024, which matches the company figure.\n\nBecause Airbnb's own filing is the primary source, I relied on it for the answer. I did not access the 10-K directly; the figure comes from an Airbnb-hosted document that I could only see in search excerpts.",
+     "thinking_chars": 0,
+     "searches": [
+      {
+       "id": "srvtoolu_01UmmrQXcaGiyHKGEihbrBYX",
+       "query": null,
+       "results": [
+        {
+         "title": "Airbnb Revenue and Booking Statistics (2026)",
+         "url": "https://backlinko.com/airbnb-stats",
+         "page_age": "279 days ago"
+        },
+        {
+         "title": "Discover Latest Airbnb Statistics (2025)",
+         "url": "https://analyzify.com/statsup/airbnb",
+         "page_age": "603 days ago"
+        },
+        {
+         "title": "Airbnb, Inc. - Cloudfront.net",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf",
+         "page_age": "621 days ago"
+        },
+        {
+         "title": "Airbnb Statistics: Revenue and Users",
+         "url": "https://radicalstorage.com/travel/airbnb-statistics/",
+         "page_age": "242 days ago"
+        },
+        {
+         "title": "Airbnb Statistics 2026: Revenue, Hosts, Listings and Bookings",
+         "url": "https://sqmagazine.co.uk/airbnb-statistics/",
+         "page_age": "5 days ago"
+        },
+        {
+         "title": "Airbnb: Weak Consumer Raises Travel Concerns",
+         "url": "https://www.thewolfofharcourtstreet.com/p/airbnb-weak-consumer-raises-travel",
+         "page_age": "809 days ago"
+        },
+        {
+         "title": "Airbnb Annual Report 2024 Form 10-K (NASDAQ:ABNB)",
+         "url": "https://stocklight.com/stocks/us/nasdaq-abnb/airbnb/annual-reports/nasdaq-abnb-2024-10K-24648248.pdf",
+         "page_age": "984 days ago"
+        },
+        {
+         "title": "Airbnb Statistics - Airbnb Facts, Stats, Trends & Data (2026)",
+         "url": "https://www.wallstreetzen.com/stocks/us/nasdaq/abnb/statistics",
+         "page_age": "13 days ago"
+        },
+        {
+         "title": "airbnb nights experiences by region worldwide",
+         "url": "https://statista.com/statistics/1193543/airbnb-nights-experiences-by-region-worldwide",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb Q2 2024 Earnings Analysis",
+         "url": "https://sergeycyw.substack.com/p/airbnb-q2-2024-earnings-review",
+         "page_age": null
+        }
+       ]
+      }
+     ],
+     "calls": [
+      {
+       "name": "submit_final_result",
+       "input": {
+        "final_result": "Answer: In 2024, Airbnb's average nights per booking in the Asia Pacific region was 3.3 nights.\n\nSupporting details:\n- Airbnb's 2024 disclosure states that average nights per booking in 2024 were 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific. The company-wide figure, excluding experiences, was 3.8 in 2024 versus 3.9 in 2023.\n- Secondary sources (Radical Storage, Wallstreetzen) also show Asia Pacific at approximately 3.3 nights for 2024, consistent with the company figure.\n- Caveat: I could not open the original Airbnb filing directly; the figure is taken from the search excerpt of Airbnb's Q4 2024 document.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb, Inc. Q4 2024 financial document (Cloudfront)\"\n        },\n        {\n            \"url\": \"https://radicalstorage.com/travel/airbnb-statistics/\",\n            \"name\": \"Radical Storage - Airbnb Statistics: Revenue and Users\"\n        },\n        {\n            \"url\": \"https://www.wallstreetzen.com/stocks/us/nasdaq/abnb/statistics\",\n            \"name\": \"Wallstreetzen - Airbnb Statistics\"\n        }\n    ]\n}"
+       },
+       "output": "Answer: In 2024, Airbnb's average nights per booking in the Asia Pacific region was 3.3 nights.\n\nSupporting details:\n- Airbnb's 2024 disclosure states that average nights per booking in 2024 were 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific. The company-wide figure, excluding experiences, was 3.8 in 2024 versus 3.9 in 2023.\n- Secondary sources (Radical Storage, Wallstreetzen) also show Asia Pacific at approximately 3.3 nights for 2024, consistent with the company figure.\n- Caveat: I could not open the original Airbnb filing directly; the figure is taken from the search excerpt of Airbnb's Q4 2024 document.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb, Inc. Q4 2024 financial document (Cloudfront)\"\n        },\n        {\n            \"url\": \"https://radicalstorage.com/travel/airbnb-statistics/\",\n            \"name\": \"Radical Storage - Airbnb Statistics: Revenue and Users\"\n        },\n        {\n            \"url\": \"https://www.wallstreetzen.com/stocks/us/nasdaq/abnb/statistics\",\n            \"name\": \"Wallstreetzen - Airbnb Statistics\"\n        }\n    ]\n}",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.011692025
+    }
+   ],
+   "final_answer": "Answer: In 2024, Airbnb's average nights per booking in the Asia Pacific region was 3.3 nights.\n\nSupporting details:\n- Airbnb's 2024 disclosure states that average nights per booking in 2024 were 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific. The company-wide figure, excluding experiences, was 3.8 in 2024 versus 3.9 in 2023.\n- Secondary sources (Radical Storage, Wallstreetzen) also show Asia Pacific at approximately 3.3 nights for 2024, consistent with the company figure.\n- Caveat: I could not open the original Airbnb filing directly; the figure is taken from the search excerpt of Airbnb's Q4 2024 document.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb, Inc. Q4 2024 financial document (Cloudfront)\"\n        },\n        {\n            \"url\": \"https://radicalstorage.com/travel/airbnb-statistics/\",\n            \"name\": \"Radical Storage - Airbnb Statistics: Revenue and Users\"\n        },\n        {\n            \"url\": \"https://www.wallstreetzen.com/stocks/us/nasdaq/abnb/statistics\",\n            \"name\": \"Wallstreetzen - Airbnb Statistics\"\n        }\n    ]\n}",
+   "fallback_text": "In 2024, Airbnb's average nights per booking in the Asia Pacific region was **3.3 nights**.\n\nAirbnb's own 2024 disclosure reports regional averages, and the Asia Pacific figure is 3.3. The same disclosure puts the company-wide average at 3.8 nights for 2024 (excluding experiences), down from 3.9 in 2023, and the North America and EMEA averages were higher. Secondary aggregators such as Wallstreetzen and Radical Storage also show Asia Pacific at about 3.3 for 2024, which matches the company figure.\n\nBecause Airbnb's own filing is the primary source, I relied on it for the answer. I did not access the 10-K directly; the figure comes from an Airbnb-hosted document that I could only see in search excerpts.",
+   "submitted": true,
+   "turns": 2,
+   "stop": "submitted",
+   "error": "",
+   "usage": {
+    "calls": 2,
+    "input_tokens": 6,
+    "output_tokens": 1326,
+    "cache_creation_input_tokens": 9098,
+    "cache_read_input_tokens": 10567,
+    "web_search_requests": 1,
+    "cost_usd": 0.011906
+   },
+   "cost_usd": 0.011906,
+   "elapsed_s": 7.2,
+   "harness_label": "base1"
+  },
+  "inv1": {
+   "task_id": "q44",
+   "label": "inv1",
+   "question": "In 2024, what was the Average Nights per Booking for Airbnb (NASDAQ: ABNB) in the Asia Pacific region?",
+   "steps": [
+    {
+     "turn": 1,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [
+      {
+       "id": "srvtoolu_01GjhVQqS1tthyP6fe3LcZPS",
+       "query": "Airbnb 2024 10-K average nights per booking by region sec.gov",
+       "results": []
+      }
+     ],
+     "calls": [
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "Airbnb average nights per booking Asia Pacific 2024",
+        "ciks": [
+         "ABNB"
+        ],
+        "start_date": "2025-01-01",
+        "end_date": "2025-04-07"
+       },
+       "output": "HTTPError: 403 Client Error: Forbidden for url: https://www.sec.gov/files/company_tickers.json",
+       "is_error": true,
+       "elapsed_s": 0.29,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.0009119
+    },
+    {
+     "turn": 2,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [
+      {
+       "id": "srvtoolu_01GjhVQqS1tthyP6fe3LcZPS",
+       "query": null,
+       "results": [
+        {
+         "title": "Airbnb, Inc. - Form 10-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb Revenue and Booking Statistics (2026)",
+         "url": "https://backlinko.com/airbnb-stats",
+         "page_age": "279 days ago"
+        },
+        {
+         "title": "Form 10-K Airbnb, Inc.",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972021000010/airbnb-10k.htm",
+         "page_age": "2069 days ago"
+        },
+        {
+         "title": "Airbnb, Inc. - Cloudfront.net",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf",
+         "page_age": "621 days ago"
+        },
+        {
+         "title": "Airbnb Statistics [2026]: User & Market Growth Data",
+         "url": "https://www.searchlogistics.com/learn/statistics/airbnb-statistics/",
+         "page_age": "167 days ago"
+        },
+        {
+         "title": "Discover Latest Airbnb Statistics (2025)",
+         "url": "https://analyzify.com/statsup/airbnb",
+         "page_age": "603 days ago"
+        },
+        {
+         "title": "Airbnb Statistics: Revenue and Users",
+         "url": "https://radicalstorage.com/travel/airbnb-statistics/",
+         "page_age": "242 days ago"
+        },
+        {
+         "title": "Airbnb, Inc. SEC 10-K Report \u2014 TradingView News",
+         "url": "https://www.tradingview.com/news/tradingview:06fd7a63af197:0-airbnb-inc-sec-10-k-report/",
+         "page_age": "620 days ago"
+        },
+        {
+         "title": "Airbnb Statistics 2026: Revenue, Hosts, Listings and Bookings",
+         "url": "https://sqmagazine.co.uk/airbnb-statistics/",
+         "page_age": "5 days ago"
+        }
+       ]
+      }
+     ],
+     "calls": [
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+        "key": "abnb_10k_2024"
+       },
+       "output": "ValueError: HTTP 403 when fetching https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+       "is_error": true,
+       "elapsed_s": 0.17,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.011281435
+    },
+    {
+     "turn": 3,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf",
+        "key": "abnb_q4_2024"
+       },
+       "output": "ValueError: The URL points to a PDF, which this tool cannot parse. Find an HTML version.",
+       "is_error": true,
+       "elapsed_s": 0.42,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.00028539
+    },
+    {
+     "turn": 4,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "submit_final_result",
+       "input": {
+        "final_result": "Answer: Airbnb's average nights per booking in Asia Pacific for 2024 was 3.3 nights (excluding experiences).\n\nSupporting detail:\n- Airbnb's FY2024 Form 10-K states that <cite index=\"1-6\">our total Company average nights per booking, excluding experiences, was 3.8 in 2024 compared to 3.9 in 2023.</cite> <cite index=\"1-7\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>\n- The Q4 2024 financial document shows the same regional figures: <cite index=\"4-8\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>\n- Comparison check: the 2023 Asia Pacific figure was 3.3 per a third-party summary of Airbnb data (Backlinko), so the regional figure was flat year over year. This is a secondary source and is not needed for the answer.\n\nVerification note: I could not open the 10-K on sec.gov or the Q4 PDF with the parsing tool (403 error on the HTML filing, and the PDF is not parseable). The 3.3 figure is taken from the text excerpts of the FY2024 10-K (sec.gov) and the Q4 2024 financial document, which agree with each other. The figure is confirmed by two excerpts of the same company text, but neither was opened in full.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for FY2024 (sec.gov)\"\n        },\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 financial document (q4cdn)\"\n        },\n        {\n            \"url\": \"https://backlinko.com/airbnb-stats\",\n            \"name\": \"Backlinko - Airbnb Revenue and Booking Statistics (secondary, 2023 comparison)\"\n        }\n    ]\n}"
+       },
+       "output": "Answer: Airbnb's average nights per booking in Asia Pacific for 2024 was 3.3 nights (excluding experiences).\n\nSupporting detail:\n- Airbnb's FY2024 Form 10-K states that <cite index=\"1-6\">our total Company average nights per booking, excluding experiences, was 3.8 in 2024 compared to 3.9 in 2023.</cite> <cite index=\"1-7\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>\n- The Q4 2024 financial document shows the same regional figures: <cite index=\"4-8\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>\n- Comparison check: the 2023 Asia Pacific figure was 3.3 per a third-party summary of Airbnb data (Backlinko), so the regional figure was flat year over year. This is a secondary source and is not needed for the answer.\n\nVerification note: I could not open the 10-K on sec.gov or the Q4 PDF with the parsing tool (403 error on the HTML filing, and the PDF is not parseable). The 3.3 figure is taken from the text excerpts of the FY2024 10-K (sec.gov) and the Q4 2024 financial document, which agree with each other. The figure is confirmed by two excerpts of the same company text, but neither was opened in full.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for FY2024 (sec.gov)\"\n        },\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 financial document (q4cdn)\"\n        },\n        {\n            \"url\": \"https://backlinko.com/airbnb-stats\",\n            \"name\": \"Backlinko - Airbnb Revenue and Booking Statistics (secondary, 2023 comparison)\"\n        }\n    ]\n}",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.000651635
+    }
+   ],
+   "final_answer": "Answer: Airbnb's average nights per booking in Asia Pacific for 2024 was 3.3 nights (excluding experiences).\n\nSupporting detail:\n- Airbnb's FY2024 Form 10-K states that <cite index=\"1-6\">our total Company average nights per booking, excluding experiences, was 3.8 in 2024 compared to 3.9 in 2023.</cite> <cite index=\"1-7\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>\n- The Q4 2024 financial document shows the same regional figures: <cite index=\"4-8\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>\n- Comparison check: the 2023 Asia Pacific figure was 3.3 per a third-party summary of Airbnb data (Backlinko), so the regional figure was flat year over year. This is a secondary source and is not needed for the answer.\n\nVerification note: I could not open the 10-K on sec.gov or the Q4 PDF with the parsing tool (403 error on the HTML filing, and the PDF is not parseable). The 3.3 figure is taken from the text excerpts of the FY2024 10-K (sec.gov) and the Q4 2024 financial document, which agree with each other. The figure is confirmed by two excerpts of the same company text, but neither was opened in full.\n\nSources:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for FY2024 (sec.gov)\"\n        },\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 financial document (q4cdn)\"\n        },\n        {\n            \"url\": \"https://backlinko.com/airbnb-stats\",\n            \"name\": \"Backlinko - Airbnb Revenue and Booking Statistics (secondary, 2023 comparison)\"\n        }\n    ]\n}",
+   "fallback_text": "",
+   "submitted": true,
+   "turns": 4,
+   "stop": "submitted",
+   "error": "",
+   "usage": {
+    "calls": 4,
+    "input_tokens": 10,
+    "output_tokens": 1759,
+    "cache_creation_input_tokens": 15152,
+    "cache_read_input_tokens": 35586,
+    "web_search_requests": 1,
+    "cost_usd": 0.01313
+   },
+   "cost_usd": 0.01313,
+   "elapsed_s": 10.8,
+   "harness_label": "inv1"
+  },
+  "dom1": {
+   "task_id": "q44",
+   "label": "dom1",
+   "question": "In 2024, what was the Average Nights per Booking for Airbnb (NASDAQ: ABNB) in the Asia Pacific region?",
+   "steps": [
+    {
+     "turn": 1,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "load_skill",
+       "input": {
+        "name": "operating_kpi_lookup"
+       },
+       "output": "---\nname: operating_kpi_lookup\ndescription: Retrieve a company-reported operating metric (e.g. average nights per booking, ADR, nights booked, by region or segment) for a fiscal year from the primary source, with label, period and definition verified.\n---\n# Operating KPI by region / segment, for one fiscal year\n\nANALYTIC MOVE: look up (or derive) a single company-defined KPI for a named segment and period. Inputs: company, exact metric label, segment, fiscal year. Result: one figure with units, its period, and its source document.\n\n1. Find the governing document. A company-defined KPI lives in the company's own filings and releases, not in aggregator sites (Backlinko, Wallstreetzen, Radical Storage and similar).\n   - Candidates: the 10-K \"Key Business Metrics\" and MD&A sections and segment or geographic notes; the Q4/full-year 8-K earnings release (Ex. 99.1); the shareholder letter; the Q4 financial or investor deck on the IR site.\n   - A search-result excerpt is a lead, not a verified figure. Open the document with parse_html_page or retrieve_information and read the table row yourself before citing it.\n2. Verify the label, period and segment before quoting.\n   - The label must match the question exactly. \"Average nights per booking\" is not \"average length of stay\", \"nights and seats booked\" or \"ADR\".\n   - The period must be the full fiscal year asked, not a quarter, and not the prior-year comparative column. Read the column header.\n   - Confirm the region definition. Company regions (e.g. North America, EMEA, Latin America, Asia Pacific) must match the question's wording.\n   - Check footnotes for scope exclusions (e.g. \"excluding Experiences\") and quote them.\n3. If the metric is not disclosed directly, derive it from disclosed components (e.g. nights booked \u00f7 bookings, or gross booking value \u00f7 ADR) for the same region and period. Show the arithmetic unrounded and state the units of each input (thousands vs millions). Say plainly that the figure is derived.\n4. Run a consistency check. The segment figure should sit plausibly against the company-wide figure and the other regions in the same table. Where two sources disagree, prefer the primary filing and name the discrepancy.\n5. Answer contract:\n   - the figure with units and fiscal-year period;\n   - the document and table it came from;\n   - the company-wide figure and prior year, if shown, as context;\n   - sources listed as URLs of documents actually opened.\n   - If the figure rests only on a search excerpt or aggregator, say so explicitly in the answer.\n\nTask fact (Airbnb, FY2024 average nights per booking, Asia Pacific): in the first run, the value 3.3 came only from a search excerpt of Airbnb's Q4 2024 financial deck (s26.q4cdn.com ... doc_financials/2024/q4/...pdf) and aggregators. It was not confirmed in a primary document the agent opened. Treat 3.3 as an unverified lead. Open the Q4 2024 deck, shareholder letter or 10-K, confirm the Asia Pacific row and the 2024 column, and only then cite it.\n",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.00074665
+    },
+    {
+     "turn": 2,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [
+      {
+       "id": "srvtoolu_01Sxe62p3BugQjbn65WfiktY",
+       "query": "Airbnb Q4 2024 financial supplement average nights per booking Asia Pacific",
+       "results": []
+      }
+     ],
+     "calls": [
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "Airbnb average nights per booking Asia Pacific 2024",
+        "ciks": [
+         "ABNB"
+        ],
+        "start_date": "2025-01-01"
+       },
+       "output": "HTTPError: 403 Client Error: Forbidden for url: https://www.sec.gov/files/company_tickers.json",
+       "is_error": true,
+       "elapsed_s": 0.28,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.00030134499999999995
+    },
+    {
+     "turn": 3,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [
+      {
+       "id": "srvtoolu_01Sxe62p3BugQjbn65WfiktY",
+       "query": null,
+       "results": [
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524194849/d831385dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524134183/d813800dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524033706/d646462dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 8-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524253103/d886752dex991.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-K - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+         "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm",
+         "page_age": null
+        },
+        {
+         "title": "Airbnb Revenue and Booking Statistics (2026)",
+         "url": "https://backlinko.com/airbnb-stats",
+         "page_age": "279 days ago"
+        },
+        {
+         "title": "Q4 2024 Shareholder Letter",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/Airbnb_Q4-2024-Shareholder-Letter_Final.pdf",
+         "page_age": "621 days ago"
+        },
+        {
+         "title": "Airbnb, Inc. - Cloudfront.net",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf",
+         "page_age": "621 days ago"
+        },
+        {
+         "title": "ABNB Q4 Earnings Beat Estimates, Revenue Growth Drives the Stock",
+         "url": "https://finance.yahoo.com/news/abnb-q4-earnings-beat-estimates-163500242.html",
+         "page_age": "619 days ago"
+        }
+       ]
+      }
+     ],
+     "calls": [
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+        "key": "airbnb_10k_2024"
+       },
+       "output": "ValueError: HTTP 403 when fetching https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+       "is_error": true,
+       "elapsed_s": 0.17,
+       "cost_usd": 0.0
+      },
+      {
+       "name": "retrieve_information",
+       "input": {
+        "prompt": "From this Airbnb FY2024 10-K text, find the sentence(s) giving average nights per booking by region for 2024, and the total company average nights per booking excluding experiences for 2024 and 2023. Also find the table row for Asia Pacific under Nights and Experiences Booked and its column headers (year labels). Quote the exact sentence. {{airbnb_10k_2024}}"
+       },
+       "output": "KeyError: \"ERROR: The key 'airbnb_10k_2024' was not found in the data storage. Available keys are: . Use parse_html_page to add keys.\"",
+       "is_error": true,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.011421915
+    },
+    {
+     "turn": 4,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf",
+        "key": "airbnb_q4_2024_deck"
+       },
+       "output": "ValueError: The URL points to a PDF, which this tool cannot parse. Find an HTML version.",
+       "is_error": true,
+       "elapsed_s": 0.31,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.00032669999999999997
+    },
+    {
+     "turn": 5,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "parse_html_page",
+       "input": {
+        "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/Airbnb_Q4-2024-Shareholder-Letter_Final.pdf",
+        "key": "airbnb_q4_2024_letter"
+       },
+       "output": "ValueError: The URL points to a PDF, which this tool cannot parse. Find an HTML version.",
+       "is_error": true,
+       "elapsed_s": 0.08,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.00026617000000000004
+    },
+    {
+     "turn": 6,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [],
+     "calls": [
+      {
+       "name": "submit_final_result",
+       "input": {
+        "final_result": "**Answer: Airbnb's FY2024 average nights per booking for Asia Pacific was 3.3 nights.**\n\n**Source and verification**\n- Airbnb's FY2024 Form 10-K (filed with the SEC) reports the regional figures in its key business metrics discussion. The filing states that average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific. <cite index=\"5-3\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>\n- The same figure appears in the Q4 2024 financial supplement that Airbnb published on its investor relations site, which gives the same 2024 regional values (<cite index=\"9-7\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>).\n- Limitation: the SEC filing and the investor-relations PDF could not be opened directly. Both the 10-K and the deck returned access errors or a PDF-format error in my tools. I therefore verified the figure from the text excerpts of those two primary documents, not from a full read of the table. The period label (2024) and the region label (Asia Pacific) match the question exactly in both excerpts.\n\n**Context**\n- Company-wide, <cite index=\"5-2\">total Company average nights per booking, excluding experiences, was 3.8 in 2024 compared to 3.9 in 2023.</cite>\n- Asia Pacific (3.3) is the lowest of the four regions, which is consistent with the rest of the table. I did not find a verified Asia Pacific figure for 2023 in the primary documents.\n- An aggregator (Backlinko) lists 3.3 nights for Asia Pacific under a 2023 heading. This conflicts with the primary filing's 2024 attribution, so I have not relied on it. The primary filing takes precedence.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year 2024\"\n        },\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 financial supplement (investor relations PDF, excerpt only)\"\n        },\n        {\n            \"url\": \"https://backlinko.com/airbnb-stats\",\n            \"name\": \"Backlinko Airbnb Revenue and Booking Statistics (aggregator, used only to flag a conflicting year label)\"\n        }\n    ]\n}"
+       },
+       "output": "**Answer: Airbnb's FY2024 average nights per booking for Asia Pacific was 3.3 nights.**\n\n**Source and verification**\n- Airbnb's FY2024 Form 10-K (filed with the SEC) reports the regional figures in its key business metrics discussion. The filing states that average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific. <cite index=\"5-3\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>\n- The same figure appears in the Q4 2024 financial supplement that Airbnb published on its investor relations site, which gives the same 2024 regional values (<cite index=\"9-7\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>).\n- Limitation: the SEC filing and the investor-relations PDF could not be opened directly. Both the 10-K and the deck returned access errors or a PDF-format error in my tools. I therefore verified the figure from the text excerpts of those two primary documents, not from a full read of the table. The period label (2024) and the region label (Asia Pacific) match the question exactly in both excerpts.\n\n**Context**\n- Company-wide, <cite index=\"5-2\">total Company average nights per booking, excluding experiences, was 3.8 in 2024 compared to 3.9 in 2023.</cite>\n- Asia Pacific (3.3) is the lowest of the four regions, which is consistent with the rest of the table. I did not find a verified Asia Pacific figure for 2023 in the primary documents.\n- An aggregator (Backlinko) lists 3.3 nights for Asia Pacific under a 2023 heading. This conflicts with the primary filing's 2024 attribution, so I have not relied on it. The primary filing takes precedence.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year 2024\"\n        },\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 financial supplement (investor relations PDF, excerpt only)\"\n        },\n        {\n            \"url\": \"https://backlinko.com/airbnb-stats\",\n            \"name\": \"Backlinko Airbnb Revenue and Booking Statistics (aggregator, used only to flag a conflicting year label)\"\n        }\n    ]\n}",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.00093551
+    }
+   ],
+   "final_answer": "**Answer: Airbnb's FY2024 average nights per booking for Asia Pacific was 3.3 nights.**\n\n**Source and verification**\n- Airbnb's FY2024 Form 10-K (filed with the SEC) reports the regional figures in its key business metrics discussion. The filing states that average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific. <cite index=\"5-3\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>\n- The same figure appears in the Q4 2024 financial supplement that Airbnb published on its investor relations site, which gives the same 2024 regional values (<cite index=\"9-7\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>).\n- Limitation: the SEC filing and the investor-relations PDF could not be opened directly. Both the 10-K and the deck returned access errors or a PDF-format error in my tools. I therefore verified the figure from the text excerpts of those two primary documents, not from a full read of the table. The period label (2024) and the region label (Asia Pacific) match the question exactly in both excerpts.\n\n**Context**\n- Company-wide, <cite index=\"5-2\">total Company average nights per booking, excluding experiences, was 3.8 in 2024 compared to 3.9 in 2023.</cite>\n- Asia Pacific (3.3) is the lowest of the four regions, which is consistent with the rest of the table. I did not find a verified Asia Pacific figure for 2023 in the primary documents.\n- An aggregator (Backlinko) lists 3.3 nights for Asia Pacific under a 2023 heading. This conflicts with the primary filing's 2024 attribution, so I have not relied on it. The primary filing takes precedence.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year 2024\"\n        },\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 financial supplement (investor relations PDF, excerpt only)\"\n        },\n        {\n            \"url\": \"https://backlinko.com/airbnb-stats\",\n            \"name\": \"Backlinko Airbnb Revenue and Booking Statistics (aggregator, used only to flag a conflicting year label)\"\n        }\n    ]\n}",
+   "fallback_text": "",
+   "submitted": true,
+   "turns": 6,
+   "stop": "submitted",
+   "error": "",
+   "usage": {
+    "calls": 6,
+    "input_tokens": 14,
+    "output_tokens": 2511,
+    "cache_creation_input_tokens": 16992,
+    "cache_read_input_tokens": 61739,
+    "web_search_requests": 1,
+    "cost_usd": 0.013999
+   },
+   "cost_usd": 0.013999,
+   "elapsed_s": 14.9,
+   "harness_label": "dom1"
+  },
+  "agg1": {
+   "task_id": "q44",
+   "label": "agg1",
+   "question": "In 2024, what was the Average Nights per Booking for Airbnb (NASDAQ: ABNB) in the Asia Pacific region?",
+   "steps": [
+    {
+     "turn": 1,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [
+      {
+       "id": "srvtoolu_01J8pCYw64yUTHhsjK9bbsk5",
+       "query": "Airbnb 2024 annual report average nights per booking by region Asia Pacific",
+       "results": []
+      }
+     ],
+     "calls": [
+      {
+       "name": "edgar_search",
+       "input": {
+        "search_query": "Airbnb average nights per booking Asia Pacific 2024",
+        "ciks": [
+         "ABNB"
+        ],
+        "top_n_results": 10
+       },
+       "output": "HTTPError: 403 Client Error: Forbidden for url: https://www.sec.gov/files/company_tickers.json",
+       "is_error": true,
+       "elapsed_s": 0.29,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.0008992749999999999
+    },
+    {
+     "turn": 2,
+     "text": "",
+     "thinking_chars": 0,
+     "searches": [
+      {
+       "id": "srvtoolu_01J8pCYw64yUTHhsjK9bbsk5",
+       "query": null,
+       "results": [
+        {
+         "title": "Airbnb Revenue and Booking Statistics (2026)",
+         "url": "https://backlinko.com/airbnb-stats",
+         "page_age": "279 days ago"
+        },
+        {
+         "title": "Discover Latest Airbnb Statistics (2025)",
+         "url": "https://analyzify.com/statsup/airbnb",
+         "page_age": "603 days ago"
+        },
+        {
+         "title": "Airbnb, Inc. - Cloudfront.net",
+         "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf",
+         "page_age": "621 days ago"
+        },
+        {
+         "title": "Airbnb Statistics: Revenue and Users",
+         "url": "https://radicalstorage.com/travel/airbnb-statistics/",
+         "page_age": "242 days ago"
+        },
+        {
+         "title": "Airbnb Statistics 2026: Revenue, Hosts, Listings and Bookings",
+         "url": "https://sqmagazine.co.uk/airbnb-statistics/",
+         "page_age": "5 days ago"
+        },
+        {
+         "title": "Airbnb: The Next Chapter - The Wolf of Harcourt Street",
+         "url": "https://www.thewolfofharcourtstreet.com/p/airbnb-the-next-chapter",
+         "page_age": "616 days ago"
+        },
+        {
+         "title": "Airbnb: Weak Consumer Raises Travel Concerns",
+         "url": "https://www.thewolfofharcourtstreet.com/p/airbnb-weak-consumer-raises-travel",
+         "page_age": "809 days ago"
+        },
+        {
+         "title": "Airbnb Annual Report 2024 Form 10-K (NASDAQ:ABNB)",
+         "url": "https://stocklight.com/stocks/us/nasdaq-abnb/airbnb/annual-reports/nasdaq-abnb-2024-10K-24648248.pdf",
+         "page_age": "984 days ago"
+        },
+        {
+         "title": "Airbnb Statistics - Airbnb Facts, Stats, Trends & Data (2026)",
+         "url": "https://www.wallstreetzen.com/stocks/us/nasdaq/abnb/statistics",
+         "page_age": "13 days ago"
+        },
+        {
+         "title": "airbnb nights experiences by region worldwide",
+         "url": "https://statista.com/statistics/1193543/airbnb-nights-experiences-by-region-worldwide",
+         "page_age": null
+        }
+       ]
+      }
+     ],
+     "calls": [
+      {
+       "name": "submit_final_result",
+       "input": {
+        "final_result": "**Answer: Airbnb's average nights per booking in Asia Pacific for 2024 was 3.3 nights.**\n\n**How I got there**\n- I looked for Airbnb's own 2024 disclosure of regional stay length. The Q4 2024 shareholder letter (published in early 2025, so it predates your April 7, 2025 reference date) reports the 2024 figures by region. The letter's excerpt gives Asia Pacific at 3.3 nights, with North America at 4.1, EMEA at 3.8, and Latin America at 3.7. The same passage gives the company-wide figure, excluding experiences, as 3.8 for 2024, down from 3.9 in 2023.\n- Independent aggregators are consistent with this. One lists Asia Pacific at 3.3 for 2024 and describes it as the region with the shortest average stay. Another lists 3.3 for Asia Pacific in 2024 and 3.2 for 2023.\n- Limitation: the shareholder letter is a PDF, which my tools cannot open. The 3.3 figure therefore rests on the search excerpt of that letter, cross-checked against secondary sources. I did not open the primary document directly.\n- I ignored the 2025 figures that appeared in search results, since they fall after the reference date.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 Shareholder Letter (PDF)\"\n        },\n        {\n            \"url\": \"https://radicalstorage.com/travel/airbnb-statistics/\",\n            \"name\": \"Radical Storage \u2013 Airbnb Statistics: Revenue and Users\"\n        },\n        {\n            \"url\": \"https://www.wallstreetzen.com/stocks/us/nasdaq/abnb/statistics\",\n            \"name\": \"WallStreetZen \u2013 Airbnb Statistics\"\n        }\n    ]\n}"
+       },
+       "output": "**Answer: Airbnb's average nights per booking in Asia Pacific for 2024 was 3.3 nights.**\n\n**How I got there**\n- I looked for Airbnb's own 2024 disclosure of regional stay length. The Q4 2024 shareholder letter (published in early 2025, so it predates your April 7, 2025 reference date) reports the 2024 figures by region. The letter's excerpt gives Asia Pacific at 3.3 nights, with North America at 4.1, EMEA at 3.8, and Latin America at 3.7. The same passage gives the company-wide figure, excluding experiences, as 3.8 for 2024, down from 3.9 in 2023.\n- Independent aggregators are consistent with this. One lists Asia Pacific at 3.3 for 2024 and describes it as the region with the shortest average stay. Another lists 3.3 for Asia Pacific in 2024 and 3.2 for 2023.\n- Limitation: the shareholder letter is a PDF, which my tools cannot open. The 3.3 figure therefore rests on the search excerpt of that letter, cross-checked against secondary sources. I did not open the primary document directly.\n- I ignored the 2025 figures that appeared in search results, since they fall after the reference date.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 Shareholder Letter (PDF)\"\n        },\n        {\n            \"url\": \"https://radicalstorage.com/travel/airbnb-statistics/\",\n            \"name\": \"Radical Storage \u2013 Airbnb Statistics: Revenue and Users\"\n        },\n        {\n            \"url\": \"https://www.wallstreetzen.com/stocks/us/nasdaq/abnb/statistics\",\n            \"name\": \"WallStreetZen \u2013 Airbnb Statistics\"\n        }\n    ]\n}",
+       "is_error": false,
+       "elapsed_s": 0.0,
+       "cost_usd": 0.0
+      }
+     ],
+     "stop_reason": "tool_use",
+     "cost_usd": 0.0117188
+    }
+   ],
+   "final_answer": "**Answer: Airbnb's average nights per booking in Asia Pacific for 2024 was 3.3 nights.**\n\n**How I got there**\n- I looked for Airbnb's own 2024 disclosure of regional stay length. The Q4 2024 shareholder letter (published in early 2025, so it predates your April 7, 2025 reference date) reports the 2024 figures by region. The letter's excerpt gives Asia Pacific at 3.3 nights, with North America at 4.1, EMEA at 3.8, and Latin America at 3.7. The same passage gives the company-wide figure, excluding experiences, as 3.8 for 2024, down from 3.9 in 2023.\n- Independent aggregators are consistent with this. One lists Asia Pacific at 3.3 for 2024 and describes it as the region with the shortest average stay. Another lists 3.3 for Asia Pacific in 2024 and 3.2 for 2023.\n- Limitation: the shareholder letter is a PDF, which my tools cannot open. The 3.3 figure therefore rests on the search excerpt of that letter, cross-checked against secondary sources. I did not open the primary document directly.\n- I ignored the 2025 figures that appeared in search results, since they fall after the reference date.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 Shareholder Letter (PDF)\"\n        },\n        {\n            \"url\": \"https://radicalstorage.com/travel/airbnb-statistics/\",\n            \"name\": \"Radical Storage \u2013 Airbnb Statistics: Revenue and Users\"\n        },\n        {\n            \"url\": \"https://www.wallstreetzen.com/stocks/us/nasdaq/abnb/statistics\",\n            \"name\": \"WallStreetZen \u2013 Airbnb Statistics\"\n        }\n    ]\n}",
+   "fallback_text": "",
+   "submitted": true,
+   "turns": 2,
+   "stop": "submitted",
+   "error": "",
+   "usage": {
+    "calls": 2,
+    "input_tokens": 6,
+    "output_tokens": 1381,
+    "cache_creation_input_tokens": 14957,
+    "cache_read_input_tokens": 5735,
+    "web_search_requests": 1,
+    "cost_usd": 0.012618
+   },
+   "cost_usd": 0.012618,
+   "elapsed_s": 8.8,
+   "harness_label": "agg1"
+  }
+ },
+ "stages": {
+  "inv1": {
+   "dim": "INV",
+   "notes": "Base run 1: edgar_search hit a 403 and the agent gave up on primary sources. It then submitted from a search snippet, admitting it never opened the document (3.3 for APAC). The edits address that earlier divergence:\n- one bounded fallback for the edgar_search failure, plus a rule to avoid web_search with an empty query (it was called with query=null);\n- an explicit \"enough evidence\" definition requiring the primary document to be opened and the figure re-checked before submission;\n- the unverified task lead (the Q4 2024 PDF URL and the 3.3 figure), labelled as unverified so the next run can confirm it quickly.\nNo skill was added, because the issue is ordinary sequencing and tool failure, not a multi-step workflow.",
+   "keep_base": false,
+   "error": "",
+   "cost_usd": 0.031668,
+   "inventory": "0 skills; 3,780 always-on chars",
+   "tree": {
+    "systemprompt.md": "You are a financial agent. You are given a question and you need to answer it using the tools provided.\nYou will not be able to interact with the user or ask clarifications, you must answer the question only based on the information provided.\n\nYou should answer all questions as if the current date is April 07, 2025.\n\nYou will have access to a data storage system. You can use this system to store parsed contents of HTML pages retrieved from the web.\nYou can then use the retrieve_information tool to apply answer questions or gather information from the stored documents using LLM-based prompts.\nThis data storage system is designed to help you avoid context window issues.\n\nWhen you have the final answer, you should call the `submit_final_result` tool with it. Your submission will not be processed unless you call this tool.\n\nYou should include any necessary step-by-step reasoning, justification, calculations, or explanation in your answer. You will be evaluated both on the accuracy of the final answer, and the correctness of the supporting logic.\n\nWhen possible, please provide any calculated answers to at least two decimal places (e.g. 18.78% rather than 19%). Please do not round intermediate steps in any calculations - you should only round your final answer.\n\nAt the end of your answer, you should provide your sources in a dictionary with the following format:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://example.com\",\n            \"name\": \"Name of the source\"\n        },\n        ...\n    ]\n}\n",
+    "guardrails.md": "",
+    "LongTermMEMORY.md": "",
+    "tool_guidance.md": "# Tool guidance\n\n**Order of work:** Before searching, decide the company, form type (10-K, 10-Q, 8-K earnings exhibit or shareholder letter) and fiscal period the question needs. Search with those filters, not with the question's wording.\n\n**Chain:** Use edgar_search (or web_search for the primary document URL), then parse_html_page to store the document under a clear key, then retrieve_information. Ask retrieve_information one targeted question at a time. On long filings, use input_character_ranges instead of re-reading everything.\n\n**edgar_search failure** (for example a 403 on the ticker lookup): do not repeat the same call.\n- Make one retry with the numeric CIK instead of the ticker if you know it.\n- Otherwise switch to web_search. Always give web_search a non-empty query with the company, form and year, for example \"Airbnb 2024 10-K sec.gov\".\n- Look for the primary document: sec.gov/Archives, or the company investor-relations site or its CDN.\n- Then run parse_html_page on that URL.\n\n**Enough evidence:**\n- The submitted figure must be read from the text of a primary document that you opened with parse_html_page and queried with retrieve_information. Search-result snippets and aggregator sites are leads, not confirmation.\n- Confirm the metric name, the region or segment, the period, and the units or definition. Examples are \"excluding experiences\", or full year versus quarter.\n- If the primary document truly cannot be opened after two different attempts, submit the best-supported figure and say plainly which source it came from. Do this before the budget runs low.\n\n**Re-check before submitting:** Re-read the exact line the figure came from. Make sure it is the requested year and not the prior-year column, and the requested region and not the total.\n\n**Task fact (unverified lead, from one earlier run):** For Airbnb FY2024 \"Average Nights per Booking\" by region, search excerpts of Airbnb's Q4 2024 financial document (https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf) suggested Asia Pacific = 3.3. The company-wide figure was 3.8 for 2024 against 3.9 for 2023. The document was never opened, so confirm this in the document text, or in the 10-K, before relying on it.\n"
+   }
+  },
+  "dom1": {
+   "dim": "DOM",
+   "notes": "Motivating moment: base1 ended after one search; it quoted 3.3 for Asia Pacific (plus other regions' numbers) from search excerpts and aggregators, admitting it never opened the Airbnb document. Nothing verified the row, the 2024 column, or the label. I added an on-demand skill, operating_kpi_lookup, covering where company-defined KPIs live, label/period/segment verification, derivation when a KPI is not disclosed directly, and an answer contract. I recorded the Airbnb fact as an unverified lead only, since the evidence does not establish it from a primary document. The systemprompt change is one trigger line, and the skill costs nothing until it is invoked.",
+   "keep_base": false,
+   "error": "",
+   "cost_usd": 0.039553,
+   "inventory": "1 skill; 1,736 always-on chars",
+   "tree": {
+    "systemprompt.md": "You are a financial agent. You are given a question and you need to answer it using the tools provided.\nYou will not be able to interact with the user or ask clarifications, you must answer the question only based on the information provided.\n\nYou should answer all questions as if the current date is April 07, 2025.\n\nYou will have access to a data storage system. You can use this system to store parsed contents of HTML pages retrieved from the web.\nYou can then use the retrieve_information tool to apply answer questions or gather information from the stored documents using LLM-based prompts.\nThis data storage system is designed to help you avoid context window issues.\n\nWhen a question asks for a company-reported operating metric (nights per booking, ADR, bookings, users, etc.) for a region, segment or fiscal year, call load_skill with `operating_kpi_lookup` before answering.\n\nWhen you have the final answer, you should call the `submit_final_result` tool with it. Your submission will not be processed unless you call this tool.\n\nYou should include any necessary step-by-step reasoning, justification, calculations, or explanation in your answer. You will be evaluated both on the accuracy of the final answer, and the correctness of the supporting logic.\n\nWhen possible, please provide any calculated answers to at least two decimal places (e.g. 18.78% rather than 19%). Please do not round intermediate steps in any calculations - you should only round your final answer.\n\nAt the end of your answer, you should provide your sources in a dictionary with the following format:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://example.com\",\n            \"name\": \"Name of the source\"\n        },\n        ...\n    ]\n}\n",
+    "guardrails.md": "",
+    "LongTermMEMORY.md": "",
+    "tool_guidance.md": "",
+    "skills/operating_kpi_lookup/SKILL.md": "---\nname: operating_kpi_lookup\ndescription: Retrieve a company-reported operating metric (e.g. average nights per booking, ADR, nights booked, by region or segment) for a fiscal year from the primary source, with label, period and definition verified.\n---\n# Operating KPI by region / segment, for one fiscal year\n\nANALYTIC MOVE: look up (or derive) a single company-defined KPI for a named segment and period. Inputs: company, exact metric label, segment, fiscal year. Result: one figure with units, its period, and its source document.\n\n1. Find the governing document. A company-defined KPI lives in the company's own filings and releases, not in aggregator sites (Backlinko, Wallstreetzen, Radical Storage and similar).\n   - Candidates: the 10-K \"Key Business Metrics\" and MD&A sections and segment or geographic notes; the Q4/full-year 8-K earnings release (Ex. 99.1); the shareholder letter; the Q4 financial or investor deck on the IR site.\n   - A search-result excerpt is a lead, not a verified figure. Open the document with parse_html_page or retrieve_information and read the table row yourself before citing it.\n2. Verify the label, period and segment before quoting.\n   - The label must match the question exactly. \"Average nights per booking\" is not \"average length of stay\", \"nights and seats booked\" or \"ADR\".\n   - The period must be the full fiscal year asked, not a quarter, and not the prior-year comparative column. Read the column header.\n   - Confirm the region definition. Company regions (e.g. North America, EMEA, Latin America, Asia Pacific) must match the question's wording.\n   - Check footnotes for scope exclusions (e.g. \"excluding Experiences\") and quote them.\n3. If the metric is not disclosed directly, derive it from disclosed components (e.g. nights booked \u00f7 bookings, or gross booking value \u00f7 ADR) for the same region and period. Show the arithmetic unrounded and state the units of each input (thousands vs millions). Say plainly that the figure is derived.\n4. Run a consistency check. The segment figure should sit plausibly against the company-wide figure and the other regions in the same table. Where two sources disagree, prefer the primary filing and name the discrepancy.\n5. Answer contract:\n   - the figure with units and fiscal-year period;\n   - the document and table it came from;\n   - the company-wide figure and prior year, if shown, as context;\n   - sources listed as URLs of documents actually opened.\n   - If the figure rests only on a search excerpt or aggregator, say so explicitly in the answer.\n\nTask fact (Airbnb, FY2024 average nights per booking, Asia Pacific): in the first run, the value 3.3 came only from a search excerpt of Airbnb's Q4 2024 financial deck (s26.q4cdn.com ... doc_financials/2024/q4/...pdf) and aggregators. It was not confirmed in a primary document the agent opened. Treat 3.3 as an unverified lead. Open the Q4 2024 deck, shareholder letter or 10-K, confirm the Asia Pacific row and the 2024 column, and only then cite it.\n"
+   }
+  },
+  "agg1": {
+   "dim": "AGG",
+   "notes": "kept -> inv1 (edgar_search fallback, enough-evidence and re-check rules, trimmed) -> edgar_search 403 in 2/2 rollouts that used it (base1, inv1, dom1 all hit it), sec.gov parse 403 and PDF-not-parseable in 2/2 rollouts that tried those; a short generic fallback line addresses the repeated dead ends.\ndropped -> inv1 \"avoid empty web_search query\" rule -> in every rollout the query=null call was the one that returned results, probably a trace artifact; a rule against it could break the working path.\ndropped -> inv1 and dom1 embedded Airbnb \"3.3\" task fact -> a task-specific answer in always-on or skill text is unverified (never opened in any rollout) and does not generalize to later tasks in the library.\ndropped -> dom1 skill operating_kpi_lookup and its systemprompt trigger line -> dom1 took 6 turns versus 4 for inv1 and reached the same answer with the same excerpt-only verification; no specific moment shows the skill changed the outcome, so it adds always-on cost for no demonstrated gain.\nall three rollouts submitted; none produced nothing, so there is no unsafe-edit flag. The change is a small always-on tool_guidance file.",
+   "keep_base": false,
+   "error": "",
+   "cost_usd": 0.0424003,
+   "inventory": "0 skills; 2,661 always-on chars",
+   "tree": {
+    "systemprompt.md": "You are a financial agent. You are given a question and you need to answer it using the tools provided.\nYou will not be able to interact with the user or ask clarifications, you must answer the question only based on the information provided.\n\nYou should answer all questions as if the current date is April 07, 2025.\n\nYou will have access to a data storage system. You can use this system to store parsed contents of HTML pages retrieved from the web.\nYou can then use the retrieve_information tool to apply answer questions or gather information from the stored documents using LLM-based prompts.\nThis data storage system is designed to help you avoid context window issues.\n\nWhen you have the final answer, you should call the `submit_final_result` tool with it. Your submission will not be processed unless you call this tool.\n\nYou should include any necessary step-by-step reasoning, justification, calculations, or explanation in your answer. You will be evaluated both on the accuracy of the final answer, and the correctness of the supporting logic.\n\nWhen possible, please provide any calculated answers to at least two decimal places (e.g. 18.78% rather than 19%). Please do not round intermediate steps in any calculations - you should only round your final answer.\n\nAt the end of your answer, you should provide your sources in a dictionary with the following format:\n{\n    \"sources\": [\n        {\n            \"url\": \"https://example.com\",\n            \"name\": \"Name of the source\"\n        },\n        ...\n    ]\n}\n",
+    "guardrails.md": "",
+    "LongTermMEMORY.md": "",
+    "tool_guidance.md": "# Tool guidance\n\n- Decide the company, form type (10-K, 10-Q, 8-K Ex. 99.1, shareholder letter) and fiscal period before searching. Use those in the query, not the question's wording.\n- Chain: find the primary document URL (edgar_search or web_search), then parse_html_page with a clear key, then retrieve_information with one targeted question and the same key. Ask for the exact sentence or table row, including the column header and the period.\n- If edgar_search fails (for example a 403 on the ticker lookup), don't repeat the identical call. Switch to web_search with a company, form and year query to find the document URL.\n- If parse_html_page returns 403 for a sec.gov URL, try another HTML copy of the same disclosure, such as an 8-K Ex. 99.1 or an IR-site page. parse_html_page cannot read PDFs, so look for an HTML version.\n- Before submitting, check that the figure matches the requested metric label, region or segment, fiscal year (not the prior-year column) and units. If the figure rests only on a search excerpt because the primary document could not be opened, say so in the answer. Submit before the budget runs low.\n"
+   }
+  }
+ },
+ "chosen": "agg1",
+ "selection_why": "trivial: single final",
+ "selection_ids": {},
+ "experience": null,
+ "edits_record": "component: tool_guidance.md\ncandidates: inv1\nchange: Added sequencing guidance, an edgar_search failure fallback (retry with the CIK, then web_search with a non-empty query), an \"enough evidence\" rule requiring the primary document to be opened and queried, a re-check step, and an unverified task-fact lead for Airbnb 3.3.\nobserved: In inv1, after the edgar_search 403 the agent made a web_search call that surfaced the 10-K sec.gov URL, then tried parse_html_page (403) and the PDF (not parseable). It then submitted with an explicit \"could not open\" caveat. It took 4 turns versus 2 in base1 and reached the same 3.3 figure. The \"open the primary document\" rule could not be satisfied because the tools failed. The answer carried 10-K excerpt citations and a clearer caveat, but the figure did not change. The embedded 3.3 lead may have anchored the answer, and no run isolates it.\nverdict: confounded\n\ncomponent: tool_guidance.md\ncandidates: agg1\nchange: Added a short generic file with the same chain, a fallback for edgar_search 403 and for sec.gov 403 (try another HTML copy; PDFs are unreadable), and a pre-submit check, plus \"say so if the figure rests only on an excerpt\". It has no task fact.\nobserved: agg1 ran 2 turns, essentially identical to base1. It made the same edgar_search call (403), then web_search(query=null), then submitted from the excerpt with a limitation statement. It never tried the 8-K Ex. 99.1 or IR HTML fallback it was told about. The only visible difference from base1 is the explicit caveat in the answer. The base1 answer also admitted the primary source was not opened, so the gain is marginal.\nverdict: no observed effect\n\ncomponent: systemprompt.md and skills/operating_kpi_lookup/SKILL.md\ncandidates: dom1\nchange: Added a trigger line to the system prompt and an on-demand skill covering KPI source location, label/period/segment verification, derivation, and an answer contract, with an unverified Airbnb 3.3 lead.\nobserved: dom1 loaded the skill first, then ran the same 403 failures. It tried the 10-K, the Q4 deck and a guessed shareholder letter PDF URL, all failing. It took 6 turns, the most of any run, and ended with the same 3.3 figure from excerpts. It did flag an aggregator conflict (Backlinko 2023 label) and checked the label and period in the excerpts. This is extra diligence in the answer text, but there is no change in outcome, and the extra effort was bounded by tool limits.\nverdict: confounded",
+ "library_added": false,
+ "editor_cost_usd": 0.152372,
+ "total_cost_usd": 0.204025,
+ "errors": []
+}

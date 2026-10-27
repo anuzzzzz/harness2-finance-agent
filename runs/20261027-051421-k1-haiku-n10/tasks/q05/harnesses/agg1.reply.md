@@ -1,0 +1,7 @@
+KEEP_BASE: neither candidate is adopted, and no files change.
+
+<notes>
+dropped -> inv1 (board_nominee_lookup skill, trigger line, tool_guidance) -> In its one rollout it led with "No new person was nominated in 2024" and relegated Mark S. Finn to a caveat. Finn is the only person the 2025 proxy ties to a 2024 Nominating Committee search, and base1 answered him directly. The skill would steer runs away from the answer the filings point to. Its tool-guidance fixes (avoid the null query, skip the sec.gov 403) address failures seen in 1/1 base rollout, which is noise.
+dropped -> dom1 (board_nominee_lookup skill, trigger line) -> Same pattern in its one rollout: it led with "no new director nominated" and mentioned Finn only as selected in 2024 and seated in 2025. Its classification step (nominee vs appointee vs later-seated) pushes toward the narrower reading of "nominated". It also made a null-query search and an edgar_search call that returned 403, so its process was no cleaner.
+kept -> base harness unchanged -> base1 reached Finn from the 2025 proxy's "In 2024, the Nominating Committee..." paragraph, submitted in 3 turns at $0.031, and disclosed that the proxy shows no formal 2024 nomination date. Both candidates reached the same facts (the eight-person 2024 slate and Finn selected in 2024), so the added skills bought no better evidence. All three rollouts submitted, so no unsafe-edit flag applies.
+</notes>

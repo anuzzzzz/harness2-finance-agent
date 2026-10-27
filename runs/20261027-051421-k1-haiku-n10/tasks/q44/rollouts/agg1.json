@@ -1,0 +1,132 @@
+{
+ "task_id": "q44",
+ "label": "agg1",
+ "question": "In 2024, what was the Average Nights per Booking for Airbnb (NASDAQ: ABNB) in the Asia Pacific region?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01J8pCYw64yUTHhsjK9bbsk5",
+     "query": "Airbnb 2024 annual report average nights per booking by region Asia Pacific",
+     "results": []
+    }
+   ],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Airbnb average nights per booking Asia Pacific 2024",
+      "ciks": [
+       "ABNB"
+      ],
+      "top_n_results": 10
+     },
+     "output": "HTTPError: 403 Client Error: Forbidden for url: https://www.sec.gov/files/company_tickers.json",
+     "is_error": true,
+     "elapsed_s": 0.29,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0008992749999999999
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01J8pCYw64yUTHhsjK9bbsk5",
+     "query": null,
+     "results": [
+      {
+       "title": "Airbnb Revenue and Booking Statistics (2026)",
+       "url": "https://backlinko.com/airbnb-stats",
+       "page_age": "279 days ago"
+      },
+      {
+       "title": "Discover Latest Airbnb Statistics (2025)",
+       "url": "https://analyzify.com/statsup/airbnb",
+       "page_age": "603 days ago"
+      },
+      {
+       "title": "Airbnb, Inc. - Cloudfront.net",
+       "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf",
+       "page_age": "621 days ago"
+      },
+      {
+       "title": "Airbnb Statistics: Revenue and Users",
+       "url": "https://radicalstorage.com/travel/airbnb-statistics/",
+       "page_age": "242 days ago"
+      },
+      {
+       "title": "Airbnb Statistics 2026: Revenue, Hosts, Listings and Bookings",
+       "url": "https://sqmagazine.co.uk/airbnb-statistics/",
+       "page_age": "5 days ago"
+      },
+      {
+       "title": "Airbnb: The Next Chapter - The Wolf of Harcourt Street",
+       "url": "https://www.thewolfofharcourtstreet.com/p/airbnb-the-next-chapter",
+       "page_age": "616 days ago"
+      },
+      {
+       "title": "Airbnb: Weak Consumer Raises Travel Concerns",
+       "url": "https://www.thewolfofharcourtstreet.com/p/airbnb-weak-consumer-raises-travel",
+       "page_age": "809 days ago"
+      },
+      {
+       "title": "Airbnb Annual Report 2024 Form 10-K (NASDAQ:ABNB)",
+       "url": "https://stocklight.com/stocks/us/nasdaq-abnb/airbnb/annual-reports/nasdaq-abnb-2024-10K-24648248.pdf",
+       "page_age": "984 days ago"
+      },
+      {
+       "title": "Airbnb Statistics - Airbnb Facts, Stats, Trends & Data (2026)",
+       "url": "https://www.wallstreetzen.com/stocks/us/nasdaq/abnb/statistics",
+       "page_age": "13 days ago"
+      },
+      {
+       "title": "airbnb nights experiences by region worldwide",
+       "url": "https://statista.com/statistics/1193543/airbnb-nights-experiences-by-region-worldwide",
+       "page_age": null
+      }
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: Airbnb's average nights per booking in Asia Pacific for 2024 was 3.3 nights.**\n\n**How I got there**\n- I looked for Airbnb's own 2024 disclosure of regional stay length. The Q4 2024 shareholder letter (published in early 2025, so it predates your April 7, 2025 reference date) reports the 2024 figures by region. The letter's excerpt gives Asia Pacific at 3.3 nights, with North America at 4.1, EMEA at 3.8, and Latin America at 3.7. The same passage gives the company-wide figure, excluding experiences, as 3.8 for 2024, down from 3.9 in 2023.\n- Independent aggregators are consistent with this. One lists Asia Pacific at 3.3 for 2024 and describes it as the region with the shortest average stay. Another lists 3.3 for Asia Pacific in 2024 and 3.2 for 2023.\n- Limitation: the shareholder letter is a PDF, which my tools cannot open. The 3.3 figure therefore rests on the search excerpt of that letter, cross-checked against secondary sources. I did not open the primary document directly.\n- I ignored the 2025 figures that appeared in search results, since they fall after the reference date.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 Shareholder Letter (PDF)\"\n        },\n        {\n            \"url\": \"https://radicalstorage.com/travel/airbnb-statistics/\",\n            \"name\": \"Radical Storage \u2013 Airbnb Statistics: Revenue and Users\"\n        },\n        {\n            \"url\": \"https://www.wallstreetzen.com/stocks/us/nasdaq/abnb/statistics\",\n            \"name\": \"WallStreetZen \u2013 Airbnb Statistics\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: Airbnb's average nights per booking in Asia Pacific for 2024 was 3.3 nights.**\n\n**How I got there**\n- I looked for Airbnb's own 2024 disclosure of regional stay length. The Q4 2024 shareholder letter (published in early 2025, so it predates your April 7, 2025 reference date) reports the 2024 figures by region. The letter's excerpt gives Asia Pacific at 3.3 nights, with North America at 4.1, EMEA at 3.8, and Latin America at 3.7. The same passage gives the company-wide figure, excluding experiences, as 3.8 for 2024, down from 3.9 in 2023.\n- Independent aggregators are consistent with this. One lists Asia Pacific at 3.3 for 2024 and describes it as the region with the shortest average stay. Another lists 3.3 for Asia Pacific in 2024 and 3.2 for 2023.\n- Limitation: the shareholder letter is a PDF, which my tools cannot open. The 3.3 figure therefore rests on the search excerpt of that letter, cross-checked against secondary sources. I did not open the primary document directly.\n- I ignored the 2025 figures that appeared in search results, since they fall after the reference date.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 Shareholder Letter (PDF)\"\n        },\n        {\n            \"url\": \"https://radicalstorage.com/travel/airbnb-statistics/\",\n            \"name\": \"Radical Storage \u2013 Airbnb Statistics: Revenue and Users\"\n        },\n        {\n            \"url\": \"https://www.wallstreetzen.com/stocks/us/nasdaq/abnb/statistics\",\n            \"name\": \"WallStreetZen \u2013 Airbnb Statistics\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.0117188
+  }
+ ],
+ "final_answer": "**Answer: Airbnb's average nights per booking in Asia Pacific for 2024 was 3.3 nights.**\n\n**How I got there**\n- I looked for Airbnb's own 2024 disclosure of regional stay length. The Q4 2024 shareholder letter (published in early 2025, so it predates your April 7, 2025 reference date) reports the 2024 figures by region. The letter's excerpt gives Asia Pacific at 3.3 nights, with North America at 4.1, EMEA at 3.8, and Latin America at 3.7. The same passage gives the company-wide figure, excluding experiences, as 3.8 for 2024, down from 3.9 in 2023.\n- Independent aggregators are consistent with this. One lists Asia Pacific at 3.3 for 2024 and describes it as the region with the shortest average stay. Another lists 3.3 for Asia Pacific in 2024 and 3.2 for 2023.\n- Limitation: the shareholder letter is a PDF, which my tools cannot open. The 3.3 figure therefore rests on the search excerpt of that letter, cross-checked against secondary sources. I did not open the primary document directly.\n- I ignored the 2025 figures that appeared in search results, since they fall after the reference date.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 Shareholder Letter (PDF)\"\n        },\n        {\n            \"url\": \"https://radicalstorage.com/travel/airbnb-statistics/\",\n            \"name\": \"Radical Storage \u2013 Airbnb Statistics: Revenue and Users\"\n        },\n        {\n            \"url\": \"https://www.wallstreetzen.com/stocks/us/nasdaq/abnb/statistics\",\n            \"name\": \"WallStreetZen \u2013 Airbnb Statistics\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 2,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 2,
+  "input_tokens": 6,
+  "output_tokens": 1381,
+  "cache_creation_input_tokens": 14957,
+  "cache_read_input_tokens": 5735,
+  "web_search_requests": 1,
+  "cost_usd": 0.012618
+ },
+ "cost_usd": 0.012618,
+ "elapsed_s": 8.8,
+ "harness_label": "agg1"
+}

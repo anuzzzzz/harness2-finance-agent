@@ -1,0 +1,225 @@
+{
+ "task_id": "q44",
+ "label": "dom1",
+ "question": "In 2024, what was the Average Nights per Booking for Airbnb (NASDAQ: ABNB) in the Asia Pacific region?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "load_skill",
+     "input": {
+      "name": "operating_kpi_lookup"
+     },
+     "output": "---\nname: operating_kpi_lookup\ndescription: Retrieve a company-reported operating metric (e.g. average nights per booking, ADR, nights booked, by region or segment) for a fiscal year from the primary source, with label, period and definition verified.\n---\n# Operating KPI by region / segment, for one fiscal year\n\nANALYTIC MOVE: look up (or derive) a single company-defined KPI for a named segment and period. Inputs: company, exact metric label, segment, fiscal year. Result: one figure with units, its period, and its source document.\n\n1. Find the governing document. A company-defined KPI lives in the company's own filings and releases, not in aggregator sites (Backlinko, Wallstreetzen, Radical Storage and similar).\n   - Candidates: the 10-K \"Key Business Metrics\" and MD&A sections and segment or geographic notes; the Q4/full-year 8-K earnings release (Ex. 99.1); the shareholder letter; the Q4 financial or investor deck on the IR site.\n   - A search-result excerpt is a lead, not a verified figure. Open the document with parse_html_page or retrieve_information and read the table row yourself before citing it.\n2. Verify the label, period and segment before quoting.\n   - The label must match the question exactly. \"Average nights per booking\" is not \"average length of stay\", \"nights and seats booked\" or \"ADR\".\n   - The period must be the full fiscal year asked, not a quarter, and not the prior-year comparative column. Read the column header.\n   - Confirm the region definition. Company regions (e.g. North America, EMEA, Latin America, Asia Pacific) must match the question's wording.\n   - Check footnotes for scope exclusions (e.g. \"excluding Experiences\") and quote them.\n3. If the metric is not disclosed directly, derive it from disclosed components (e.g. nights booked \u00f7 bookings, or gross booking value \u00f7 ADR) for the same region and period. Show the arithmetic unrounded and state the units of each input (thousands vs millions). Say plainly that the figure is derived.\n4. Run a consistency check. The segment figure should sit plausibly against the company-wide figure and the other regions in the same table. Where two sources disagree, prefer the primary filing and name the discrepancy.\n5. Answer contract:\n   - the figure with units and fiscal-year period;\n   - the document and table it came from;\n   - the company-wide figure and prior year, if shown, as context;\n   - sources listed as URLs of documents actually opened.\n   - If the figure rests only on a search excerpt or aggregator, say so explicitly in the answer.\n\nTask fact (Airbnb, FY2024 average nights per booking, Asia Pacific): in the first run, the value 3.3 came only from a search excerpt of Airbnb's Q4 2024 financial deck (s26.q4cdn.com ... doc_financials/2024/q4/...pdf) and aggregators. It was not confirmed in a primary document the agent opened. Treat 3.3 as an unverified lead. Open the Q4 2024 deck, shareholder letter or 10-K, confirm the Asia Pacific row and the 2024 column, and only then cite it.\n",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00074665
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01Sxe62p3BugQjbn65WfiktY",
+     "query": "Airbnb Q4 2024 financial supplement average nights per booking Asia Pacific",
+     "results": []
+    }
+   ],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Airbnb average nights per booking Asia Pacific 2024",
+      "ciks": [
+       "ABNB"
+      ],
+      "start_date": "2025-01-01"
+     },
+     "output": "HTTPError: 403 Client Error: Forbidden for url: https://www.sec.gov/files/company_tickers.json",
+     "is_error": true,
+     "elapsed_s": 0.28,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00030134499999999995
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01Sxe62p3BugQjbn65WfiktY",
+     "query": null,
+     "results": [
+      {
+       "title": "Airbnb, Inc. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524194849/d831385dex991.htm",
+       "page_age": null
+      },
+      {
+       "title": "Airbnb, Inc. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524134183/d813800dex991.htm",
+       "page_age": null
+      },
+      {
+       "title": "Airbnb, Inc. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524033706/d646462dex991.htm",
+       "page_age": null
+      },
+      {
+       "title": "Airbnb, Inc. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1559720/000119312524253103/d886752dex991.htm",
+       "page_age": null
+      },
+      {
+       "title": "Airbnb, Inc. - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+       "page_age": null
+      },
+      {
+       "title": "Airbnb, Inc. - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972024000024/abnb-20240630.htm",
+       "page_age": null
+      },
+      {
+       "title": "Airbnb Revenue and Booking Statistics (2026)",
+       "url": "https://backlinko.com/airbnb-stats",
+       "page_age": "279 days ago"
+      },
+      {
+       "title": "Q4 2024 Shareholder Letter",
+       "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/Airbnb_Q4-2024-Shareholder-Letter_Final.pdf",
+       "page_age": "621 days ago"
+      },
+      {
+       "title": "Airbnb, Inc. - Cloudfront.net",
+       "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf",
+       "page_age": "621 days ago"
+      },
+      {
+       "title": "ABNB Q4 Earnings Beat Estimates, Revenue Growth Drives the Stock",
+       "url": "https://finance.yahoo.com/news/abnb-q4-earnings-beat-estimates-163500242.html",
+       "page_age": "619 days ago"
+      }
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+      "key": "airbnb_10k_2024"
+     },
+     "output": "ValueError: HTTP 403 when fetching https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm",
+     "is_error": true,
+     "elapsed_s": 0.17,
+     "cost_usd": 0.0
+    },
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this Airbnb FY2024 10-K text, find the sentence(s) giving average nights per booking by region for 2024, and the total company average nights per booking excluding experiences for 2024 and 2023. Also find the table row for Asia Pacific under Nights and Experiences Booked and its column headers (year labels). Quote the exact sentence. {{airbnb_10k_2024}}"
+     },
+     "output": "KeyError: \"ERROR: The key 'airbnb_10k_2024' was not found in the data storage. Available keys are: . Use parse_html_page to add keys.\"",
+     "is_error": true,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.011421915
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf",
+      "key": "airbnb_q4_2024_deck"
+     },
+     "output": "ValueError: The URL points to a PDF, which this tool cannot parse. Find an HTML version.",
+     "is_error": true,
+     "elapsed_s": 0.31,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00032669999999999997
+  },
+  {
+   "turn": 5,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/Airbnb_Q4-2024-Shareholder-Letter_Final.pdf",
+      "key": "airbnb_q4_2024_letter"
+     },
+     "output": "ValueError: The URL points to a PDF, which this tool cannot parse. Find an HTML version.",
+     "is_error": true,
+     "elapsed_s": 0.08,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00026617000000000004
+  },
+  {
+   "turn": 6,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "**Answer: Airbnb's FY2024 average nights per booking for Asia Pacific was 3.3 nights.**\n\n**Source and verification**\n- Airbnb's FY2024 Form 10-K (filed with the SEC) reports the regional figures in its key business metrics discussion. The filing states that average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific. <cite index=\"5-3\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>\n- The same figure appears in the Q4 2024 financial supplement that Airbnb published on its investor relations site, which gives the same 2024 regional values (<cite index=\"9-7\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>).\n- Limitation: the SEC filing and the investor-relations PDF could not be opened directly. Both the 10-K and the deck returned access errors or a PDF-format error in my tools. I therefore verified the figure from the text excerpts of those two primary documents, not from a full read of the table. The period label (2024) and the region label (Asia Pacific) match the question exactly in both excerpts.\n\n**Context**\n- Company-wide, <cite index=\"5-2\">total Company average nights per booking, excluding experiences, was 3.8 in 2024 compared to 3.9 in 2023.</cite>\n- Asia Pacific (3.3) is the lowest of the four regions, which is consistent with the rest of the table. I did not find a verified Asia Pacific figure for 2023 in the primary documents.\n- An aggregator (Backlinko) lists 3.3 nights for Asia Pacific under a 2023 heading. This conflicts with the primary filing's 2024 attribution, so I have not relied on it. The primary filing takes precedence.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year 2024\"\n        },\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 financial supplement (investor relations PDF, excerpt only)\"\n        },\n        {\n            \"url\": \"https://backlinko.com/airbnb-stats\",\n            \"name\": \"Backlinko Airbnb Revenue and Booking Statistics (aggregator, used only to flag a conflicting year label)\"\n        }\n    ]\n}"
+     },
+     "output": "**Answer: Airbnb's FY2024 average nights per booking for Asia Pacific was 3.3 nights.**\n\n**Source and verification**\n- Airbnb's FY2024 Form 10-K (filed with the SEC) reports the regional figures in its key business metrics discussion. The filing states that average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific. <cite index=\"5-3\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>\n- The same figure appears in the Q4 2024 financial supplement that Airbnb published on its investor relations site, which gives the same 2024 regional values (<cite index=\"9-7\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>).\n- Limitation: the SEC filing and the investor-relations PDF could not be opened directly. Both the 10-K and the deck returned access errors or a PDF-format error in my tools. I therefore verified the figure from the text excerpts of those two primary documents, not from a full read of the table. The period label (2024) and the region label (Asia Pacific) match the question exactly in both excerpts.\n\n**Context**\n- Company-wide, <cite index=\"5-2\">total Company average nights per booking, excluding experiences, was 3.8 in 2024 compared to 3.9 in 2023.</cite>\n- Asia Pacific (3.3) is the lowest of the four regions, which is consistent with the rest of the table. I did not find a verified Asia Pacific figure for 2023 in the primary documents.\n- An aggregator (Backlinko) lists 3.3 nights for Asia Pacific under a 2023 heading. This conflicts with the primary filing's 2024 attribution, so I have not relied on it. The primary filing takes precedence.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year 2024\"\n        },\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 financial supplement (investor relations PDF, excerpt only)\"\n        },\n        {\n            \"url\": \"https://backlinko.com/airbnb-stats\",\n            \"name\": \"Backlinko Airbnb Revenue and Booking Statistics (aggregator, used only to flag a conflicting year label)\"\n        }\n    ]\n}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00093551
+  }
+ ],
+ "final_answer": "**Answer: Airbnb's FY2024 average nights per booking for Asia Pacific was 3.3 nights.**\n\n**Source and verification**\n- Airbnb's FY2024 Form 10-K (filed with the SEC) reports the regional figures in its key business metrics discussion. The filing states that average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific. <cite index=\"5-3\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>\n- The same figure appears in the Q4 2024 financial supplement that Airbnb published on its investor relations site, which gives the same 2024 regional values (<cite index=\"9-7\">Average nights per booking in 2024 was 4.1 for North America, 3.8 for EMEA, 3.7 for Latin America, and 3.3 for Asia Pacific.</cite>).\n- Limitation: the SEC filing and the investor-relations PDF could not be opened directly. Both the 10-K and the deck returned access errors or a PDF-format error in my tools. I therefore verified the figure from the text excerpts of those two primary documents, not from a full read of the table. The period label (2024) and the region label (Asia Pacific) match the question exactly in both excerpts.\n\n**Context**\n- Company-wide, <cite index=\"5-2\">total Company average nights per booking, excluding experiences, was 3.8 in 2024 compared to 3.9 in 2023.</cite>\n- Asia Pacific (3.3) is the lowest of the four regions, which is consistent with the rest of the table. I did not find a verified Asia Pacific figure for 2023 in the primary documents.\n- An aggregator (Backlinko) lists 3.3 nights for Asia Pacific under a 2023 heading. This conflicts with the primary filing's 2024 attribution, so I have not relied on it. The primary filing takes precedence.\n\n**Sources**\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1559720/000155972025000010/abnb-20241231.htm\",\n            \"name\": \"Airbnb, Inc. Form 10-K for fiscal year 2024\"\n        },\n        {\n            \"url\": \"https://s26.q4cdn.com/656283129/files/doc_financials/2024/q4/2395a7f3-5507-497a-971b-f3e4b606c6c7.pdf\",\n            \"name\": \"Airbnb Q4 2024 financial supplement (investor relations PDF, excerpt only)\"\n        },\n        {\n            \"url\": \"https://backlinko.com/airbnb-stats\",\n            \"name\": \"Backlinko Airbnb Revenue and Booking Statistics (aggregator, used only to flag a conflicting year label)\"\n        }\n    ]\n}",
+ "fallback_text": "",
+ "submitted": true,
+ "turns": 6,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 6,
+  "input_tokens": 14,
+  "output_tokens": 2511,
+  "cache_creation_input_tokens": 16992,
+  "cache_read_input_tokens": 61739,
+  "web_search_requests": 1,
+  "cost_usd": 0.013999
+ },
+ "cost_usd": 0.013999,
+ "elapsed_s": 14.9,
+ "harness_label": "dom1"
+}

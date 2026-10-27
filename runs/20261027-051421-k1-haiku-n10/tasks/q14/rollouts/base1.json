@@ -1,0 +1,321 @@
+{
+ "task_id": "q14",
+ "label": "base1",
+ "question": "Approximate Zillow's Free Cash Flow as CFO - Capex. What was the trend of FCF margin from FY2022 to FY2024?",
+ "steps": [
+  {
+   "turn": 1,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01LoCykwZUSDXVZ1hdkXrpWx",
+     "query": "Zillow Group 2024 full year results operating cash flow revenue",
+     "results": []
+    }
+   ],
+   "calls": [
+    {
+     "name": "edgar_search",
+     "input": {
+      "search_query": "Zillow Group annual report net cash provided by operating activities purchases of property and equipment",
+      "ciks": [
+       "1617640"
+      ],
+      "form_types": [
+       "10-K"
+      ],
+      "start_date": "2023-01-01"
+     },
+     "output": "ValueError: EDGAR full-text search returned HTTP 403: <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n<title>SEC.gov | Your Request Originates from an Undeclar",
+     "is_error": true,
+     "elapsed_s": 0.2,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00022024500000000002
+  },
+  {
+   "turn": 2,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_01LoCykwZUSDXVZ1hdkXrpWx",
+     "query": null,
+     "results": [
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000012/q42023991.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000125/q32024991.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 8-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000095/q22024991.htm",
+       "page_age": null
+      },
+      {
+       "title": "exhibit993",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000015/exhibit993.htm",
+       "page_age": null
+      },
+      {
+       "title": "Document",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000015/q42024991.htm",
+       "page_age": null
+      },
+      {
+       "title": "z-20241231",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm",
+       "page_age": null
+      },
+      {
+       "title": "Zillow Group Reports Fourth-Quarter and Full-Year 2024 Financial Results",
+       "url": "https://www.prnewswire.com/news-releases/zillow-group-reports-fourth-quarter-and-full-year-2024-financial-results-302373842.html",
+       "page_age": "622 days ago"
+      },
+      {
+       "title": "Zillow Group (ZG) Cash Flow Statement",
+       "url": "https://stockanalysis.com/stocks/zg/financials/cash-flow-statement/",
+       "page_age": null
+      },
+      {
+       "title": "Zillow Revenue 2012-2026",
+       "url": "https://www.macrotrends.net/stocks/charts/ZG/zillow/revenue",
+       "page_age": null
+      }
+     ]
+    }
+   ],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm",
+      "key": "zg10k2024"
+     },
+     "output": "ValueError: HTTP 403 when fetching https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm",
+     "is_error": true,
+     "elapsed_s": 0.2,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.011261045
+  },
+  {
+   "turn": 3,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_018J6sPGpGmZVNUiLzdUawY6",
+     "query": "Zillow net cash provided by operating activities 2024 2023 2022 capital expenditures free cash flow",
+     "results": []
+    }
+   ],
+   "calls": [
+    {
+     "name": "parse_html_page",
+     "input": {
+      "url": "https://stockanalysis.com/stocks/zg/financials/cash-flow-statement/",
+      "key": "zg_cf"
+     },
+     "output": "SUCCESS: The result has been saved to the data storage under the key: zg_cf. (5,282 characters)\nThe data_storage currently contains the following keys:\nzg_cf\n",
+     "is_error": false,
+     "elapsed_s": 0.46,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.000280875
+  },
+  {
+   "turn": 4,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_018J6sPGpGmZVNUiLzdUawY6",
+     "query": null,
+     "results": [
+      {
+       "title": "ZILLOW GROUP, INC. - Form ARS - FY2023",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000063/a2023ars.pdf",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form ARS - FY2022",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764023000060/zg202210k5a.pdf",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-Q - FY2023",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764023000090/z-20230630.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-K - FY2023",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000022/z-20231231.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-Q - FY2022",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764022000081/z-20220630.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-Q - FY2023",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764023000110/z-20230930.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-Q - FY2023",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764023000067/z-20230331.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000126/z-20240930.htm",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-Q - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000094/z-20240630.htm",
+       "page_age": null
+      },
+      {
+       "title": "z-20241231",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm",
+       "page_age": null
+      }
+     ]
+    },
+    {
+     "id": "srvtoolu_013qPD6yCxqN817ecQrZ1V2C",
+     "query": "Zillow 2024 10-K purchases of property and equipment and intangible assets year ended December 31 2024",
+     "results": []
+    }
+   ],
+   "calls": [
+    {
+     "name": "retrieve_information",
+     "input": {
+      "prompt": "From this document, extract the Free Cash Flow table and any capital expenditure figures for FY2022, FY2023, FY2024: {{zg_cf}}"
+     },
+     "output": "**Free Cash Flow (USD millions)**\n\n| Metric | FY2022 | FY2023 | FY2024 |\n|---|---|---|---|\n| Free Cash Flow | 4,389 | 219 | 285 |\n| Free Cash Flow Growth | -- | -95.01% | 30.14% |\n| Free Cash Flow Margin | 224.16% | 11.26% | 12.75% |\n| Free Cash Flow Per Share | 18.12 | 0.94 | 1.22 |\n| Levered Free Cash Flow | 1,533 | 294.13 | 292.75 |\n| Unlevered Free Cash Flow | 1,529 | 311.63 | 311.25 |\n\n**Capital Expenditures (USD millions)**\n\n| Metric | FY2022 | FY2023 | FY2024 |\n|---|---|---|---|\n| Capital Expenditures | -115 | -135 | -143 |\n\n**Related investing line (not capex):** Sale (Purchase) of Intangibles was -25 (FY2022), -30 (FY2023), and -28 (FY2024).\n\nFor reference, Operating Cash Flow was 4,504 (FY2022), 354 (FY2023), and 428 (FY2024). Free cash flow equals operating cash flow minus capital expenditures in each year. The FY2022 free cash flow is unusually high because of a large working capital swing (Change in Working Capital of 3,891 that year).",
+     "is_error": false,
+     "elapsed_s": 5.03,
+     "cost_usd": 0.000977
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.011165600000000001
+  },
+  {
+   "turn": 5,
+   "text": "**Answer: Zillow's FCF margin fell sharply from FY2022 to FY2023, then recovered slightly in FY2024. It went from about 224.16% to 11.26% to 12.75%. The FY2022 figure is distorted by the Zillow Offers wind-down, so the cleaner comparison is FY2023 to FY2024, where the margin rose modestly.**\n\n**Method:** FCF = Net cash provided by operating activities (CFO) \u2212 purchases of property and equipment (capex). FCF margin = FCF \u00f7 total revenue.\n\n**Inputs**\n\n| Item ($M) | FY2022 | FY2023 | FY2024 |\n|---|---|---|---|\n| CFO | 4,504 | 354 | 428 |\n| Capex (purchases of property & equipment) | 115 | 135 | 143 |\n| FCF (CFO \u2212 capex) | 4,389 | 219 | 285 |\n| Total revenue | 1,958 | 1,945 | 2,236 |\n| FCF margin | 224.16% | 11.26% | 12.75% |\n\n- **CFO:** For FY2022, \nnet cash provided by (used in) operating activities $ 4,504\n. For FY2023, \nnet cash provided by operating activities was $354 million.\n For FY2024, \nnet cash provided by operating activities was $428 million.\n\n- **Capex:** Purchases of property and equipment were \n(135)\n in 2023, \n(115)\n in 2022 per the FY2023 10-K cash flow statement, and \n(143)\n in 2024 per the FY2025 10-K comparative column. The 2022 figure is cross-checked by a separate third-party data set showing 115 and 2024 showing 143.\n- **Revenue:** \nFor the years ended December 31, 2024 and 2023, we generated total revenue of $2.2 billion and $1.9 billion, respectively\n. The precise figures are \n$ 2,236 \u00b7 $ 1,945\n for 2024 and 2023. FY2022 revenue of $1,958M comes from a third-party revenue history (\n2022 \u00b7 $1,958\n), not from the filing itself.\n\n**Interpretation**\n\n- **FY2022 is an outlier.** \nChanges in operating assets and liabilities increased cash provided by operating activities by $3.9 billion.\n This largely reflects the Zillow Offers inventory unwind, so the 224% margin is not a sustainable baseline.\n- **FY2023 to FY2024 improved modestly.** FCF rose from 219 to 285 (+30.14%), while revenue grew about 15%. The margin therefore edged up by about 1.49 percentage points. CFO was the main driver, since capex only rose from 135 to 143.\n\n**Sensitivity:** If purchases of intangible assets (website/software-type spend) are also treated as capex, the figures are 25, 30 and 28 for FY2022\u2013FY2024. That gives margins of roughly 222.9%, 9.72% and 11.49%. The direction is the same: a sharp fall in 2023, then a rise in 2024.\n\n**Sources:** Zillow's FY2023 10-K and FY2024 results and cash flow disclosures, plus third-party data for the 2022 revenue and FY2024 capex cross-checks.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764024000022/z-20231231.htm\",\n            \"name\": \"Zillow Group FY2023 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764023000060/zg202210k5a.pdf\",\n            \"name\": \"Zillow Group FY2022 Annual Report (ARS)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm\",\n            \"name\": \"Zillow Group FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/q42024991.htm\",\n            \"name\": \"Zillow Group Q4 and FY2024 results (8-K)\"\n        },\n        {\n            \"url\": \"https://fintel.io/doc/sec-zillow-group-inc-1617640-10k-2024-february-15-19768-9224\",\n            \"name\": \"Fintel \u2013 Zillow Group 10-K cash flow excerpt\"\n        },\n        {\n            \"url\": \"https://www.macrotrends.net/stocks/charts/ZG/zillow/revenue\",\n            \"name\": \"Macrotrends \u2013 Zillow Revenue History\"\n        },\n        {\n            \"url\": \"https://stockanalysis.com/stocks/zg/financials/cash-flow-statement/\",\n            \"name\": \"StockAnalysis \u2013 Zillow Group Cash Flow Statement\"\n        }\n    ]\n}",
+   "thinking_chars": 0,
+   "searches": [
+    {
+     "id": "srvtoolu_013qPD6yCxqN817ecQrZ1V2C",
+     "query": null,
+     "results": [
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-K - FY2024 (Annual Financial Statement Tables - full year 2024)",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/Financial_Report.xlsx",
+       "page_age": null
+      },
+      {
+       "title": "ZILLOW GROUP, INC. - Form 10-K - FY2024",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm",
+       "page_age": null
+      },
+      {
+       "title": "Zillow Group, Inc. - 10K - Annual Report - February 15, 2024",
+       "url": "https://fintel.io/doc/sec-zillow-group-inc-1617640-10k-2024-february-15-19768-9224",
+       "page_age": "985 days ago"
+      },
+      {
+       "title": "ZILLOW GROUP, INC. (Form: 10-K, Received: 02/11/2025 16:21:55)",
+       "url": "https://content.edgar-online.com/ExternalLink/EDGAR/0001617640-25-000016.html?hash=0cbc5b58372fd7624126f2551e8e8a884de4b57fe379aaaa014e219af2339afa&dest=z-20241231_htm",
+       "page_age": "665 days ago"
+      },
+      {
+       "title": "Zillow Group Inc. (via Public) / Annual Report for Fiscal Year Ending December 31, 2025 (Form 10-K)",
+       "url": "https://www.publicnow.com/view/C9F33DFA169C1E9E10DD61BA9890EA74C081B313",
+       "page_age": "258 days ago"
+      },
+      {
+       "title": "Zillow Group (Z) Balance Sheet",
+       "url": "https://stockanalysis.com/stocks/z/financials/balance-sheet/",
+       "page_age": null
+      },
+      {
+       "title": "Zillow Group, Inc. (ZG) 10-K Annual Report February 2025",
+       "url": "https://last10k.com/sec-filings/zg/0001617640-25-000016.htm",
+       "page_age": "622 days ago"
+      },
+      {
+       "title": "z-20240630",
+       "url": "https://www.sec.gov/Archives/edgar/data/1617640/000161764024000094/z-20240630.htm",
+       "page_age": null
+      },
+      {
+       "title": "real estate investments",
+       "url": "https://www.sec.gov/Archives/edgar/data/712770/000110465926024579/R13.htm",
+       "page_age": null
+      }
+     ]
+    }
+   ],
+   "calls": [],
+   "stop_reason": "end_turn",
+   "cost_usd": 0.012425685
+  },
+  {
+   "turn": 6,
+   "text": "",
+   "thinking_chars": 0,
+   "searches": [],
+   "calls": [
+    {
+     "name": "submit_final_result",
+     "input": {
+      "final_result": "Answer: Zillow's FCF margin fell sharply from FY2022 to FY2023, then edged up in FY2024. The margins were roughly 224.16% (FY2022), 11.26% (FY2023) and 12.75% (FY2024). The FY2022 figure is distorted by the wind-down of Zillow Offers, so the cleaner comparison is FY2023 to FY2024, where the margin rose modestly.\n\nMethod: Approximate FCF = operating cash flow (CFO) minus purchases of property and equipment (capex). FCF margin = FCF divided by total revenue.\n\nInputs ($ millions):\n- CFO: FY2022 = 4,504; FY2023 = 354; FY2024 = 428.\n- Capex (purchases of property and equipment): FY2022 = 115; FY2023 = 135; FY2024 = 143.\n- FCF: FY2022 = 4,504 - 115 = 4,389; FY2023 = 354 - 135 = 219; FY2024 = 428 - 143 = 285.\n- Total revenue: FY2022 = 1,958; FY2023 = 1,945; FY2024 = 2,236.\n- FCF margin: FY2022 = 4,389 / 1,958 = 224.16%; FY2023 = 219 / 1,945 = 11.26%; FY2024 = 285 / 2,236 = 12.75%.\n\nInterpretation:\n- FY2022 is an outlier. Working-capital changes added roughly $3.9 billion to operating cash flow, largely from the Zillow Offers inventory unwind, so the 224% margin is not a sustainable baseline.\n- From FY2023 to FY2024, FCF rose about 30.14% (219 to 285) while revenue grew about 15%. The margin therefore rose by about 1.49 percentage points, with CFO the main driver since capex only moved from 135 to 143.\n\nSensitivity: If purchases of intangible assets (25, 30 and 28 for FY2022\u2013FY2024) are also counted as capex, margins become about 222.88%, 9.72% and 11.49%. The direction is unchanged: a sharp fall in FY2023, then a rise in FY2024.\n\nData notes: CFO and capex figures come from Zillow's FY2023 10-K and FY2022 annual report, and the FY2024 figures were checked against the comparative columns of later filings. FY2022 revenue ($1,958M) comes from a third-party revenue history rather than a filing, so it is the least verified input. Revenue for FY2023 and FY2024 is taken from Zillow's FY2024 results.\n\nSources:\n{\"sources\": [\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764024000022/z-20231231.htm\", \"name\": \"Zillow Group FY2023 Form 10-K\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764023000060/zg202210k5a.pdf\", \"name\": \"Zillow Group FY2022 Annual Report (ARS)\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm\", \"name\": \"Zillow Group FY2024 Form 10-K\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/q42024991.htm\", \"name\": \"Zillow Group Q4 and FY2024 results (8-K)\"},\n{\"url\": \"https://fintel.io/doc/sec-zillow-group-inc-1617640-10k-2024-february-15-19768-9224\", \"name\": \"Fintel \u2013 Zillow Group 10-K cash flow excerpt\"},\n{\"url\": \"https://www.macrotrends.net/stocks/charts/ZG/zillow/revenue\", \"name\": \"Macrotrends \u2013 Zillow Revenue History\"},\n{\"url\": \"https://stockanalysis.com/stocks/zg/financials/cash-flow-statement/\", \"name\": \"StockAnalysis \u2013 Zillow Group Cash Flow Statement\"}\n]}"
+     },
+     "output": "Answer: Zillow's FCF margin fell sharply from FY2022 to FY2023, then edged up in FY2024. The margins were roughly 224.16% (FY2022), 11.26% (FY2023) and 12.75% (FY2024). The FY2022 figure is distorted by the wind-down of Zillow Offers, so the cleaner comparison is FY2023 to FY2024, where the margin rose modestly.\n\nMethod: Approximate FCF = operating cash flow (CFO) minus purchases of property and equipment (capex). FCF margin = FCF divided by total revenue.\n\nInputs ($ millions):\n- CFO: FY2022 = 4,504; FY2023 = 354; FY2024 = 428.\n- Capex (purchases of property and equipment): FY2022 = 115; FY2023 = 135; FY2024 = 143.\n- FCF: FY2022 = 4,504 - 115 = 4,389; FY2023 = 354 - 135 = 219; FY2024 = 428 - 143 = 285.\n- Total revenue: FY2022 = 1,958; FY2023 = 1,945; FY2024 = 2,236.\n- FCF margin: FY2022 = 4,389 / 1,958 = 224.16%; FY2023 = 219 / 1,945 = 11.26%; FY2024 = 285 / 2,236 = 12.75%.\n\nInterpretation:\n- FY2022 is an outlier. Working-capital changes added roughly $3.9 billion to operating cash flow, largely from the Zillow Offers inventory unwind, so the 224% margin is not a sustainable baseline.\n- From FY2023 to FY2024, FCF rose about 30.14% (219 to 285) while revenue grew about 15%. The margin therefore rose by about 1.49 percentage points, with CFO the main driver since capex only moved from 135 to 143.\n\nSensitivity: If purchases of intangible assets (25, 30 and 28 for FY2022\u2013FY2024) are also counted as capex, margins become about 222.88%, 9.72% and 11.49%. The direction is unchanged: a sharp fall in FY2023, then a rise in FY2024.\n\nData notes: CFO and capex figures come from Zillow's FY2023 10-K and FY2022 annual report, and the FY2024 figures were checked against the comparative columns of later filings. FY2022 revenue ($1,958M) comes from a third-party revenue history rather than a filing, so it is the least verified input. Revenue for FY2023 and FY2024 is taken from Zillow's FY2024 results.\n\nSources:\n{\"sources\": [\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764024000022/z-20231231.htm\", \"name\": \"Zillow Group FY2023 Form 10-K\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764023000060/zg202210k5a.pdf\", \"name\": \"Zillow Group FY2022 Annual Report (ARS)\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm\", \"name\": \"Zillow Group FY2024 Form 10-K\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/q42024991.htm\", \"name\": \"Zillow Group Q4 and FY2024 results (8-K)\"},\n{\"url\": \"https://fintel.io/doc/sec-zillow-group-inc-1617640-10k-2024-february-15-19768-9224\", \"name\": \"Fintel \u2013 Zillow Group 10-K cash flow excerpt\"},\n{\"url\": \"https://www.macrotrends.net/stocks/charts/ZG/zillow/revenue\", \"name\": \"Macrotrends \u2013 Zillow Revenue History\"},\n{\"url\": \"https://stockanalysis.com/stocks/zg/financials/cash-flow-statement/\", \"name\": \"StockAnalysis \u2013 Zillow Group Cash Flow Statement\"}\n]}",
+     "is_error": false,
+     "elapsed_s": 0.0,
+     "cost_usd": 0.0
+    }
+   ],
+   "stop_reason": "tool_use",
+   "cost_usd": 0.00443437
+  }
+ ],
+ "final_answer": "Answer: Zillow's FCF margin fell sharply from FY2022 to FY2023, then edged up in FY2024. The margins were roughly 224.16% (FY2022), 11.26% (FY2023) and 12.75% (FY2024). The FY2022 figure is distorted by the wind-down of Zillow Offers, so the cleaner comparison is FY2023 to FY2024, where the margin rose modestly.\n\nMethod: Approximate FCF = operating cash flow (CFO) minus purchases of property and equipment (capex). FCF margin = FCF divided by total revenue.\n\nInputs ($ millions):\n- CFO: FY2022 = 4,504; FY2023 = 354; FY2024 = 428.\n- Capex (purchases of property and equipment): FY2022 = 115; FY2023 = 135; FY2024 = 143.\n- FCF: FY2022 = 4,504 - 115 = 4,389; FY2023 = 354 - 135 = 219; FY2024 = 428 - 143 = 285.\n- Total revenue: FY2022 = 1,958; FY2023 = 1,945; FY2024 = 2,236.\n- FCF margin: FY2022 = 4,389 / 1,958 = 224.16%; FY2023 = 219 / 1,945 = 11.26%; FY2024 = 285 / 2,236 = 12.75%.\n\nInterpretation:\n- FY2022 is an outlier. Working-capital changes added roughly $3.9 billion to operating cash flow, largely from the Zillow Offers inventory unwind, so the 224% margin is not a sustainable baseline.\n- From FY2023 to FY2024, FCF rose about 30.14% (219 to 285) while revenue grew about 15%. The margin therefore rose by about 1.49 percentage points, with CFO the main driver since capex only moved from 135 to 143.\n\nSensitivity: If purchases of intangible assets (25, 30 and 28 for FY2022\u2013FY2024) are also counted as capex, margins become about 222.88%, 9.72% and 11.49%. The direction is unchanged: a sharp fall in FY2023, then a rise in FY2024.\n\nData notes: CFO and capex figures come from Zillow's FY2023 10-K and FY2022 annual report, and the FY2024 figures were checked against the comparative columns of later filings. FY2022 revenue ($1,958M) comes from a third-party revenue history rather than a filing, so it is the least verified input. Revenue for FY2023 and FY2024 is taken from Zillow's FY2024 results.\n\nSources:\n{\"sources\": [\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764024000022/z-20231231.htm\", \"name\": \"Zillow Group FY2023 Form 10-K\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764023000060/zg202210k5a.pdf\", \"name\": \"Zillow Group FY2022 Annual Report (ARS)\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm\", \"name\": \"Zillow Group FY2024 Form 10-K\"},\n{\"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/q42024991.htm\", \"name\": \"Zillow Group Q4 and FY2024 results (8-K)\"},\n{\"url\": \"https://fintel.io/doc/sec-zillow-group-inc-1617640-10k-2024-february-15-19768-9224\", \"name\": \"Fintel \u2013 Zillow Group 10-K cash flow excerpt\"},\n{\"url\": \"https://www.macrotrends.net/stocks/charts/ZG/zillow/revenue\", \"name\": \"Macrotrends \u2013 Zillow Revenue History\"},\n{\"url\": \"https://stockanalysis.com/stocks/zg/financials/cash-flow-statement/\", \"name\": \"StockAnalysis \u2013 Zillow Group Cash Flow Statement\"}\n]}",
+ "fallback_text": "**Answer: Zillow's FCF margin fell sharply from FY2022 to FY2023, then recovered slightly in FY2024. It went from about 224.16% to 11.26% to 12.75%. The FY2022 figure is distorted by the Zillow Offers wind-down, so the cleaner comparison is FY2023 to FY2024, where the margin rose modestly.**\n\n**Method:** FCF = Net cash provided by operating activities (CFO) \u2212 purchases of property and equipment (capex). FCF margin = FCF \u00f7 total revenue.\n\n**Inputs**\n\n| Item ($M) | FY2022 | FY2023 | FY2024 |\n|---|---|---|---|\n| CFO | 4,504 | 354 | 428 |\n| Capex (purchases of property & equipment) | 115 | 135 | 143 |\n| FCF (CFO \u2212 capex) | 4,389 | 219 | 285 |\n| Total revenue | 1,958 | 1,945 | 2,236 |\n| FCF margin | 224.16% | 11.26% | 12.75% |\n\n- **CFO:** For FY2022, \nnet cash provided by (used in) operating activities $ 4,504\n. For FY2023, \nnet cash provided by operating activities was $354 million.\n For FY2024, \nnet cash provided by operating activities was $428 million.\n\n- **Capex:** Purchases of property and equipment were \n(135)\n in 2023, \n(115)\n in 2022 per the FY2023 10-K cash flow statement, and \n(143)\n in 2024 per the FY2025 10-K comparative column. The 2022 figure is cross-checked by a separate third-party data set showing 115 and 2024 showing 143.\n- **Revenue:** \nFor the years ended December 31, 2024 and 2023, we generated total revenue of $2.2 billion and $1.9 billion, respectively\n. The precise figures are \n$ 2,236 \u00b7 $ 1,945\n for 2024 and 2023. FY2022 revenue of $1,958M comes from a third-party revenue history (\n2022 \u00b7 $1,958\n), not from the filing itself.\n\n**Interpretation**\n\n- **FY2022 is an outlier.** \nChanges in operating assets and liabilities increased cash provided by operating activities by $3.9 billion.\n This largely reflects the Zillow Offers inventory unwind, so the 224% margin is not a sustainable baseline.\n- **FY2023 to FY2024 improved modestly.** FCF rose from 219 to 285 (+30.14%), while revenue grew about 15%. The margin therefore edged up by about 1.49 percentage points. CFO was the main driver, since capex only rose from 135 to 143.\n\n**Sensitivity:** If purchases of intangible assets (website/software-type spend) are also treated as capex, the figures are 25, 30 and 28 for FY2022\u2013FY2024. That gives margins of roughly 222.9%, 9.72% and 11.49%. The direction is the same: a sharp fall in 2023, then a rise in 2024.\n\n**Sources:** Zillow's FY2023 10-K and FY2024 results and cash flow disclosures, plus third-party data for the 2022 revenue and FY2024 capex cross-checks.\n\n{\n    \"sources\": [\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764024000022/z-20231231.htm\",\n            \"name\": \"Zillow Group FY2023 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764023000060/zg202210k5a.pdf\",\n            \"name\": \"Zillow Group FY2022 Annual Report (ARS)\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/z-20241231.htm\",\n            \"name\": \"Zillow Group FY2024 Form 10-K\"\n        },\n        {\n            \"url\": \"https://www.sec.gov/Archives/edgar/data/1617640/000161764025000016/q42024991.htm\",\n            \"name\": \"Zillow Group Q4 and FY2024 results (8-K)\"\n        },\n        {\n            \"url\": \"https://fintel.io/doc/sec-zillow-group-inc-1617640-10k-2024-february-15-19768-9224\",\n            \"name\": \"Fintel \u2013 Zillow Group 10-K cash flow excerpt\"\n        },\n        {\n            \"url\": \"https://www.macrotrends.net/stocks/charts/ZG/zillow/revenue\",\n            \"name\": \"Macrotrends \u2013 Zillow Revenue History\"\n        },\n        {\n            \"url\": \"https://stockanalysis.com/stocks/zg/financials/cash-flow-statement/\",\n            \"name\": \"StockAnalysis \u2013 Zillow Group Cash Flow Statement\"\n        }\n    ]\n}",
+ "submitted": true,
+ "turns": 6,
+ "stop": "submitted",
+ "error": "",
+ "usage": {
+  "calls": 7,
+  "input_tokens": 20,
+  "output_tokens": 7124,
+  "cache_creation_input_tokens": 52447,
+  "cache_read_input_tokens": 64497,
+  "web_search_requests": 3,
+  "cost_usd": 0.040765
+ },
+ "cost_usd": 0.040765,
+ "elapsed_s": 33.6,
+ "harness_label": "base1"
+}
