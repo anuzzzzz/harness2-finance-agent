@@ -102,7 +102,6 @@ def main(argv=None) -> int:
     p.add_argument("--max-web-searches", type=int, default=8)
     p.add_argument("--max-turns", type=int, default=50)
     p.add_argument("--max-run-cost", type=float, default=4.0, help="USD ceiling per rollout")
-    p.add_argument("--max-task-cost", type=float, default=12.0, help="USD ceiling per task (all rollouts + editor)")
     p.add_argument("--max-total-cost", type=float, default=60.0, help="stop starting new tasks past this USD total")
     p.add_argument("--categories", nargs="*", default=None)
     p.add_argument("--seed", type=int, default=42)
